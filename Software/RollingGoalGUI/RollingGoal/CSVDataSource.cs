@@ -47,19 +47,17 @@ namespace RollingGoal
 
             if(reader.EndOfStream)
                 throw new FileLoadException("File is empty", path);
-
-
-
+            
             //Read header
             var line = reader.ReadLine();
             string[] values = line.Split(';');
 
             if(values.Length < 1)
-                throw new FileLoadException("Could not load header", path);
+                throw new FileLoadException("Header is to short", path);
             
 
             if(values[0].ToLower() != "shell_eco_marathon")
-                throw new FileLoadException("The header is not correct", path);
+                throw new FileLoadException("Invalid header", path);
 
 
             while (!reader.EndOfStream)
