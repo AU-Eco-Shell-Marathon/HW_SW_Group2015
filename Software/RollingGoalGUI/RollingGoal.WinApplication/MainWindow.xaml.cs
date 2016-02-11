@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
 {
@@ -36,6 +26,53 @@ namespace RollingGoal.WinApplication
             LiveDataChart.Axes.Add(new LinearAxis());
 
             LiveDataChart.DataContext = valueList;
+        }
+
+        private void MenuBtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".csv";
+            dlg.Filter = "CSV Files (*.csv)|*.csv";
+
+
+            // Display OpenFileDialog by calling ShowDialog method 
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                CSVDataSource dataSource;
+
+                try
+                {
+                    dataSource = CSVDataSource.LoadFromFile(filename);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Error opening file", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void BtnFileSaveDataset_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+
+            dlg.DefaultExt = ".csv";
+            dlg.Filter = "CSV Files (*.csv)|*.csv";
+
+            if (dlg.ShowDialog() == true)
+            {
+                //Open file her
+            }
+        }
+
+        private void MenuBtnQuit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

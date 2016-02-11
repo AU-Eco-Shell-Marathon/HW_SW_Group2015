@@ -36,34 +36,37 @@ namespace RollingGoal
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         /// <param name="path">Path of the csv file to load</param>
-        public static void LoadFromFile(string path)
+        public static CSVDataSource LoadFromFile(string path)
         {
             if(!File.Exists(path))
                 throw new FileNotFoundException("File not found", path);
 
-            FileStream fileStream = File.OpenRead(path);
-
-            StreamReader reader = new StreamReader(fileStream);
-
-            if(reader.EndOfStream)
-                throw new FileLoadException("File is empty", path);
-            
-            //Read header
-            var line = reader.ReadLine();
-            string[] values = line.Split(';');
-
-            if(values.Length < 1)
-                throw new FileLoadException("Header is to short", path);
-            
-
-            if(values[0].ToLower() != "shell_eco_marathon")
-                throw new FileLoadException("Invalid header", path);
-
-
-            while (!reader.EndOfStream)
+            using (FileStream fileStream = File.OpenRead(path))
             {
+                StreamReader reader = new StreamReader(fileStream);
 
+                if (reader.EndOfStream)
+                    throw new FileLoadException("File is empty", path);
+
+                //Read header
+                var line = reader.ReadLine();
+                string[] values = line.Split(';');
+
+                if (values.Length < 1)
+                    throw new FileLoadException("Header is to short", path);
+
+
+                if (values[0].ToLower() != "shell eco marathon")
+                    throw new FileLoadException("Invalid header: " + values[0].ToLower(), path);
+
+
+                while (!reader.EndOfStream)
+                {
+
+                }
             }
+
+            return new CSVDataSource();
         }
     }
 }
