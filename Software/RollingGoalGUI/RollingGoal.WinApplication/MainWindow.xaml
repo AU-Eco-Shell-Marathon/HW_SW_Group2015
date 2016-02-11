@@ -54,10 +54,8 @@
                         <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click">Save</Button>
                     </Grid>
 
-
-                    <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="1" CrosshairVisibility="Hidden">
-                        <chartingToolkit:LineSeries  DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" IsSelectionEnabled="True" Title="Torque (Nm)"/>
-                    </chartingToolkit:Chart>
+                    <!-- Chart -->
+                    <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="1" CrosshairVisibility="Hidden" BorderThickness="0" Foreground="{x:Null}" BorderBrush="{x:Null}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Tab 2">

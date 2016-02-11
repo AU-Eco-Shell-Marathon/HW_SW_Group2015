@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
+using System.Windows.Media;
 using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
@@ -16,16 +17,31 @@ namespace RollingGoal.WinApplication
             InitializeComponent();
 
 
+            //< chartingToolkit:LineSeries DependentValuePath = "Value" IndependentValuePath = "Key" ItemsSource = "{Binding}" IsSelectionEnabled = "True" Title = "Torque (Nm)" />
+
+
+            CreateNewLine(1);
+            CreateNewLine(2);
+        }
+
+        private void CreateNewLine(int mult)
+        {
+            LineSeries line = new LineSeries();
+
             List<KeyValuePair<double, double>> valueList = new List<KeyValuePair<double, double>>();
 
             for (int i = 0; i < 100; i++)
             {
-                valueList.Add(new KeyValuePair<double, double>((double)i / 10, Math.Exp((double)i / 10)));
+
+                valueList.Add(new KeyValuePair<double, double>((double)i / 10, (double)i / 10 * mult));
             }
 
-            LiveDataChart.Axes.Add(new LinearAxis());
+            LiveDataChart.Series.Add(line);
 
-            LiveDataChart.DataContext = valueList;
+            line.Title = "TEST";
+            line.IndependentValuePath = "Key";
+            line.DependentValuePath = "Value";
+            line.ItemsSource = valueList;
         }
 
         private void MenuBtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
