@@ -1,0 +1,30 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Jonathan}
+\title{Applikations model - Rolling Goal - Måle enhed}
+\begin{document}
+	\section{Applikationsmodel Rolling Goal - måleenhed.}
+
+	Rolling Goal måleenhed er den enhed der fortager alle målinger og regulering på Rolling Goal, ud fra de paramter som der bliver sendt fra kontrol enheden. Måleenheden her en række forskellige sensor, der overvåge strømmen, spændingen, Moment og hastighed.
+	
+	\subsection{Klassediagram} 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{"applikationsmodel"}
+\caption[Klassediagram for Rolling Goal]{Klassediagram for Rolling Goal.}
+\label{fig:applikationsmodel}
+\end{figure}
+
+	På figur \ref{fig:applikationsmodel} kan klassediagrammet ses. Der er en Kontrollerklasse og 3 boundary klasser.\\
+	Sensor klassen bruges til at opsamle data fra sensorerne, og klargøre dataet til både PID styringen og til kontrol enheden igennem UART'en.\\
+	PID klassen bruges til at regulere belastningen på generatoren, så det ønsket moment bliver fastholdt.\\
+	UART klassen bruges til kommunikation mellem måleenheden og kontroller enheden. 
+	
+	
+\end{document}
