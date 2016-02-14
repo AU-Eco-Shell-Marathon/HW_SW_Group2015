@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
-using System.Windows.Media;
 using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
@@ -39,11 +38,13 @@ namespace RollingGoal.WinApplication
 
         private void BtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                DefaultExt = ".csv",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
 
             // Set filter for file extension and default file extension 
-            dlg.DefaultExt = ".csv";
-            dlg.Filter = "CSV Files (*.csv)|*.csv";
 
 
             // Display OpenFileDialog by calling ShowDialog method 
@@ -56,7 +57,7 @@ namespace RollingGoal.WinApplication
 
                 try
                 {
-                    CSVDataSource dataSource = CSVDataSource.LoadFromFile(filename);
+                    CsvDataSource dataSource = CsvDataSource.LoadFromFile(filename);
                     IReadOnlyList<double> xAxis = dataSource.GetDataList("Time").GetData();
 
 
@@ -73,16 +74,13 @@ namespace RollingGoal.WinApplication
                             z++;
                         }
 
-                        line.Title = string.Format("{0} ({1})", active.Name, active.Unit);
+                        line.Title = $"{active.Name} ({active.Unit})";
                         line.IndependentValuePath = "Key";
                         line.DependentValuePath = "Value";
                         line.ItemsSource = valueList;
+                        
+                        LinearAxis axis = new LinearAxis {Minimum = active.GetData().Min()};
 
-
-
-                        LinearAxis axis = new LinearAxis();
-
-                        axis.Minimum = active.GetData().Min();
                         axis.Minimum *= -1.10;
                         axis.Maximum = active.GetData().Max();
                         axis.Maximum *= 1.10;
@@ -105,10 +103,12 @@ namespace RollingGoal.WinApplication
 
         private void BtnFileSaveDataset_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
+            SaveFileDialog dlg = new SaveFileDialog
+            {
+                DefaultExt = ".csv",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
 
-            dlg.DefaultExt = ".csv";
-            dlg.Filter = "CSV Files (*.csv)|*.csv";
 
             if (dlg.ShowDialog() == true)
             {

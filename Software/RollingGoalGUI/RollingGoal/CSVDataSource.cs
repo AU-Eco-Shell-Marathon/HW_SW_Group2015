@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 
 namespace RollingGoal
 {
-    public class CSVDataSource : IDataSource
+    public class CsvDataSource : IDataSource
     {
-        public List<DataList> _data = new List<DataList>(); 
+        private readonly List<DataList> _data = new List<DataList>(); 
 
-        private CSVDataSource()
+        private CsvDataSource()
         {
             
         }
@@ -36,9 +34,9 @@ namespace RollingGoal
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         /// <param name="path">Path of the csv file to load</param>
-        public static CSVDataSource LoadFromFile(string path)
+        public static CsvDataSource LoadFromFile(string path)
         {
-            CSVDataSource data = new CSVDataSource();
+            CsvDataSource data = new CsvDataSource();
 
             if(!File.Exists(path))
                 throw new FileNotFoundException("File not found", path);
