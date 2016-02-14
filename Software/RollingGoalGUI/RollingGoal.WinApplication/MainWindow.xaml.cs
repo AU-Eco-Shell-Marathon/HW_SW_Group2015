@@ -44,7 +44,7 @@ namespace RollingGoal.WinApplication
             line.ItemsSource = valueList;
         }
 
-        private void MenuBtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
+        private void BtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
