@@ -9,7 +9,7 @@ namespace RollingGoal
 {
     public class CSVDataSource : IDataSource
     {
-        public List<DataList> _data; 
+        public List<DataList> _data = new List<DataList>(); 
 
         private CSVDataSource()
         {
@@ -28,9 +28,9 @@ namespace RollingGoal
             throw new ArgumentException("Name not found");
         }
 
-        public IReadOnlyCollection<DataList> GetAllData()
+        public IReadOnlyList<DataList> GetAllData()
         {
-            return _data;
+            return _data.AsReadOnly();
         }
 
         /// <exception cref="FileLoadException"></exception>
@@ -38,6 +38,8 @@ namespace RollingGoal
         /// <param name="path">Path of the csv file to load</param>
         public static CSVDataSource LoadFromFile(string path)
         {
+            CSVDataSource data = new CSVDataSource();
+
             if(!File.Exists(path))
                 throw new FileNotFoundException("File not found", path);
 
@@ -50,23 +52,44 @@ namespace RollingGoal
 
                 //Read header
                 var line = reader.ReadLine();
-                string[] values = line.Split(';');
+                string[] names = line.Split(';');
 
-                if (values.Length < 1)
+                if (names.Length < 2)
                     throw new FileLoadException("Header is to short", path);
 
+                if (names[0].ToLower() != "shell eco marathon")
+                    throw new FileLoadException("Invalid header: " + names[0].ToLower(), path);
 
-                if (values[0].ToLower() != "shell eco marathon")
-                    throw new FileLoadException("Invalid header: " + values[0].ToLower(), path);
+                line = reader.ReadLine();
+                string[] units = line.Split(';');
 
+                if (units.Length != names.Length)
+                    throw new FileLoadException("Unit lenght does not match names", path);
 
+                for (int i = 1; i < names.Length; i++)
+                {
+                    data._data.Add(new DataList(names[i], units[i]));
+                }
+
+                int curLine = 2;
                 while (!reader.EndOfStream)
                 {
+                    line = reader.ReadLine();
+                    string[] readData = line.Split(';');
 
+                    if(readData.Length != names.Length)
+                        throw new Exception("Error at line " + curLine);
+
+                    for (int i = 1; i < readData.Length; i++)
+                    {
+                        data._data[i - 1].AddData(double.Parse(readData[i]));
+                    }
+
+                    curLine++;
                 }
             }
 
-            return new CSVDataSource();
+            return data;
         }
     }
 }

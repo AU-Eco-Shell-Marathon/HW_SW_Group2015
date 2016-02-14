@@ -50,8 +50,8 @@
                         <!-- Title -->
                         <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Live Data</TextBlock>
 
-                        <!-- Load button -->
-                        <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileLoadDataset_Click" Margin="10, 10, 10, 10">Save</Button>
+                        <!-- Save button -->
+                        <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
                     </Grid>
 
                     <!-- Chart -->
@@ -82,12 +82,12 @@
                         <!-- Title -->
                         <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Select dataset:</TextBlock>
 
-                        <!-- Save button -->
-                        <Button x:Name="OpenDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Open</Button>
+                        <!-- Load button -->
+                        <Button x:Name="OpenDataSaveButton" Grid.Row="2" Click="BtnFileLoadDataset_Click" Margin="10, 10, 10, 10">Open</Button>
                     </Grid>
 
                     <!-- Chart -->
-                    <chartingToolkit:Chart x:Name="CompareDataChart" Grid.Column="1" CrosshairVisibility="Hidden" BorderThickness="0" Foreground="{x:Null}" BorderBrush="{x:Null}"/>
+                    <chartingToolkit:Chart x:Name="ViewDataChart" Grid.Column="1" CrosshairVisibility="Hidden"/>
                 </Grid>
             </TabItem>
             

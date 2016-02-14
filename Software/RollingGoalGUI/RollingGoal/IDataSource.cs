@@ -16,6 +16,6 @@ namespace RollingGoal
         /// Returns all datalists currently available by this source.
         /// </summary>
         /// <returns>All datalist collected by this source, may be NULL</returns>
-        IReadOnlyCollection<DataList> GetAllData();
+        IReadOnlyList<DataList> GetAllData();
     }
 }

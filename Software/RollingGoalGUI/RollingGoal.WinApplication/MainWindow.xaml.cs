@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Media;
@@ -15,16 +16,9 @@ namespace RollingGoal.WinApplication
         public MainWindow()
         {
             InitializeComponent();
-
-
-            //< chartingToolkit:LineSeries DependentValuePath = "Value" IndependentValuePath = "Key" ItemsSource = "{Binding}" IsSelectionEnabled = "True" Title = "Torque (Nm)" />
-
-
-            CreateNewLine(1);
-            CreateNewLine(2);
         }
 
-        private void CreateNewLine(int mult)
+        /*private void CreateNewLine(int mult)
         {
             LineSeries line = new LineSeries();
 
@@ -32,7 +26,6 @@ namespace RollingGoal.WinApplication
 
             for (int i = 0; i < 100; i++)
             {
-
                 valueList.Add(new KeyValuePair<double, double>((double)i / 10, (double)i / 10 * mult));
             }
 
@@ -42,11 +35,11 @@ namespace RollingGoal.WinApplication
             line.IndependentValuePath = "Key";
             line.DependentValuePath = "Value";
             line.ItemsSource = valueList;
-        }
+        }*/
 
         private void BtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
 
             // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".csv";
@@ -54,17 +47,54 @@ namespace RollingGoal.WinApplication
 
 
             // Display OpenFileDialog by calling ShowDialog method 
-            Nullable<bool> result = dlg.ShowDialog();
+            bool? result = dlg.ShowDialog();
 
             if (result == true)
             {
                 // Open document 
                 string filename = dlg.FileName;
-                CSVDataSource dataSource;
 
                 try
                 {
-                    dataSource = CSVDataSource.LoadFromFile(filename);
+                    CSVDataSource dataSource = CSVDataSource.LoadFromFile(filename);
+                    IReadOnlyList<double> xAxis = dataSource.GetDataList("Time").GetData();
+
+
+                    for (int i = 1; i < dataSource.GetAllData().Count; i++)
+                    {
+                        LineSeries line = new LineSeries();
+                        List<KeyValuePair<double, double>> valueList = new List<KeyValuePair<double, double>>();
+                        DataList active = dataSource.GetAllData()[i];
+
+                        int z = 0;
+                        foreach (double data in active.GetData())
+                        {
+                            valueList.Add(new KeyValuePair<double, double>(xAxis[z], data));
+                            z++;
+                        }
+
+                        line.Title = string.Format("{0} ({1})", active.Name, active.Unit);
+                        line.IndependentValuePath = "Key";
+                        line.DependentValuePath = "Value";
+                        line.ItemsSource = valueList;
+
+
+
+                        LinearAxis axis = new LinearAxis();
+
+                        axis.Minimum = active.GetData().Min();
+                        axis.Minimum *= -1.10;
+                        axis.Maximum = active.GetData().Max();
+                        axis.Maximum *= 1.10;
+                        axis.Orientation = AxisOrientation.Y;
+                        axis.Title = active.Unit;
+
+                        line.DependentRangeAxis = axis;
+
+                        ViewDataChart.Series.Add(line);
+                        
+                    }
+
                 }
                 catch (Exception exception)
                 {

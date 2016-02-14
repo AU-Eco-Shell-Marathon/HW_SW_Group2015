@@ -38,9 +38,9 @@ namespace RollingGoal
         /// Get all data currently storred by this type
         /// </summary>
         /// <returns>All data</returns>
-        public IReadOnlyCollection<double> GetData()
+        public IReadOnlyList<double> GetData()
         {
-            return _data.AsReadOnly();
+            return _data;
         }
 
         /// <summary>
