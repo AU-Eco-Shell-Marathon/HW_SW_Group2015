@@ -1,4 +1,4 @@
-*.cywsp.*
-*.cywrk.*
 *.cydsn/codegentemp/
 *.cydsn/Generated_Source/
+*.cydsn/CortexM3/
+*.cydsn/Export/
