@@ -14,6 +14,10 @@ namespace RollingGoal
             
         }
 
+        public string Name { get; private set; }
+
+        public string Description { get; private set; }
+
         public DataList GetDataList(string name)
         {
 
@@ -85,6 +89,9 @@ namespace RollingGoal
 
                     curLine++;
                 }
+
+                data.Name = Path.GetFileName(path);
+                data.Description = units[0];
             }
 
             return data;

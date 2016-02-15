@@ -5,6 +5,16 @@ namespace RollingGoal
     public interface IDataSource
     {
         /// <summary>
+        /// Data source name
+        /// </summary>
+        string Name { get; }
+    
+        /// <summary>
+        /// Description of the datasource
+        /// </summary>
+        string Description { get; }
+
+        /// <summary>
         /// Gets a datalist based on name(Case-sensitive)
         /// </summary>
         /// <param name="name">The name of data to get</param>

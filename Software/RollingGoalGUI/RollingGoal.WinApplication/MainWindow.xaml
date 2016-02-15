@@ -87,7 +87,7 @@
                     </Grid>
 
                     <!-- Chart -->
-                    <chartingToolkit:Chart x:Name="ViewDataChart" Grid.Column="1" CrosshairVisibility="Hidden"/>
+                    <chartingToolkit:Chart x:Name="ViewDataChart" Grid.Column="1" CrosshairVisibility="Hidden" BorderThickness="0" />
                 </Grid>
             </TabItem>
             
