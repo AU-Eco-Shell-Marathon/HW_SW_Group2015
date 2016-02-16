@@ -12,8 +12,6 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Load Dataset" x:Name="MenuBtnFileLoadDataset" Click="BtnFileLoadDataset_Click"/>
-                    <MenuItem Header="_Save Dataset" x:Name="MenuBtnFileSaveDataset" Click="BtnFileSaveDataset_Click"/>
                     <MenuItem Header="_Quit" x:Name="MenuBtnQuitDataset" Click="MenuBtnQuit_Click"/>
                 </MenuItem>
 
@@ -33,30 +31,7 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- Live data -->
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="22"/>
-                            <RowDefinition/>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-
-                        <!-- Title -->
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Live Data</TextBlock>
-
-                        <!-- Save button -->
-                        <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
-                    </Grid>
-
-                    <!-- Chart -->
-                    <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="1" CrosshairVisibility="Hidden" BorderThickness="0" Foreground="{x:Null}" BorderBrush="{x:Null}"/>
-                </Grid>
+                <local:LiveDataTab/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -65,30 +40,7 @@
                     </StackPanel>
                 </TabItem.Header>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- Data select -->
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="22"/>
-                            <RowDefinition/>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-
-                        <!-- Title -->
-                        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Select dataset:</TextBlock>
-
-                        <!-- Load button -->
-                        <Button x:Name="OpenDataSaveButton" Grid.Row="2" Click="BtnFileLoadDataset_Click" Margin="10, 10, 10, 10">Open</Button>
-                    </Grid>
-
-                    <!-- Chart -->
-                    <chartingToolkit:Chart x:Name="ViewDataChart" Grid.Column="1" CrosshairVisibility="Hidden" BorderThickness="0" />
-                </Grid>
+                <local:ViewDataTab/>
             </TabItem>
             
         </TabControl>
