@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RollingGoal.WinApplication
 {
     /// <summary>
     /// Interaction logic for DatasetDisplay.xaml
     /// </summary>
-    public partial class DatasetDisplay : UserControl
+    public partial class DatasetDisplay
     {
         public IDataSource DataSource { get; set; }
 
@@ -44,9 +32,9 @@ namespace RollingGoal.WinApplication
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ListView view = this.Parent as ListView;
+            ListView view = Parent as ListView;
 
-            view.Items.Remove(this);
+            view?.Items.Remove(this);
         }
     }
 }

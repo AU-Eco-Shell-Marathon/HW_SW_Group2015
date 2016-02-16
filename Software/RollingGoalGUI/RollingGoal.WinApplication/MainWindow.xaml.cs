@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls.DataVisualization.Charting;
+﻿using System.Windows;
 using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
@@ -10,28 +6,21 @@ namespace RollingGoal.WinApplication
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void BtnFileSaveDataset_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog dlg = new SaveFileDialog
-            {
-                DefaultExt = ".csv",
-                Filter = "CSV Files (*.csv)|*.csv"
-            };
-
-
-            if (dlg.ShowDialog() == true)
-            {
-                //Open file her
-            }
-        }
-
+        /// <summary>
+        /// "File" menu quit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuBtnQuit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

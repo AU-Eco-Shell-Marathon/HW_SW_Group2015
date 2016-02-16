@@ -28,7 +28,8 @@
             <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
         </Grid>
 
+
         <!-- Chart -->
-        <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="1" CrosshairVisibility="Hidden" BorderThickness="0" Foreground="{x:Null}" BorderBrush="{x:Null}"/>
+        <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="2" CrosshairVisibility="Hidden" BorderThickness="0" />
     </Grid>
 </UserControl>

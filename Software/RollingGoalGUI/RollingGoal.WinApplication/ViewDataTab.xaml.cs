@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
@@ -20,22 +11,24 @@ namespace RollingGoal.WinApplication
     /// <summary>
     /// Interaction logic for ViewDataTab.xaml
     /// </summary>
-    public partial class ViewDataTab : UserControl
+    public partial class ViewDataTab
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ViewDataTab()
         {
             InitializeComponent();
         }
         
-
         /// <summary>
         /// Append a datasource to a WPFToolkit chart
         /// </summary>
         /// <param name="source">Data source</param>
         /// <param name="chart">Chart to append to</param>
-        private void AppendDataToChart(IDataSource source, ref Chart chart)
+        private static void AppendDataToChart(IDataSource source, ref Chart chart)
         {
-            string xAxisname = "Time";
+            const string xAxisname = "Time";
 
             //TODO allow modification
             //Assume time is used as x-axis
