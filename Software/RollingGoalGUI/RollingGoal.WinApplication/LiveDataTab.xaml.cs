@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
 using Microsoft.Win32;
@@ -21,11 +21,6 @@ namespace RollingGoal.WinApplication
         public LiveDataTab()
         {
             InitializeComponent();
-            Loaded += OnLoaded;
-        }
-
-        private void OnLoaded(object obj, RoutedEventArgs a)
-        {
             SelectSource(new LiveDataEmulator(CsvDataSource.LoadFromFile("3TypesOfData17Rows.csv")));
         }
 
@@ -38,7 +33,7 @@ namespace RollingGoal.WinApplication
             LinearAxis lAxis = new LinearAxis
             {
                 Orientation = AxisOrientation.X,
-                Title = "Time"
+                Title = "Time (Seconds)"
             };
 
             LiveDataChart.Axes.Add(lAxis);
@@ -48,7 +43,7 @@ namespace RollingGoal.WinApplication
 
         private void ThreadMover(IReadOnlyList<DataEntry> entries)
         {
-            Dispatcher.Invoke(() => IncommingData(entries));
+            Dispatcher?.Invoke(() => IncommingData(entries));
         }
 
         private void IncommingData(IReadOnlyList<DataEntry> entries)
@@ -77,25 +72,30 @@ namespace RollingGoal.WinApplication
 
                     list = new KeyValuePair<DataList, ChartStructure>(new DataList(entry.Name, entry.Unit), new ChartStructure());
 
-                    //Create our y-axis
-                    LinearAxis axis = new LinearAxis
-                    {
-                        Orientation = AxisOrientation.Y,
-                        Title = entry.Unit
-                    };
 
-                    //Create out line with data
-                    LineSeries line = new LineSeries
+                    if (entry.Name != "Time")
                     {
-                        Title = $"{entry.Name} ({entry.Unit})",
-                        IndependentValuePath = "Key",
-                        DependentValuePath = "Value",
-                        DependentRangeAxis = axis,
-                        ItemsSource = list.Value.Value
-                    };
 
-                    //Add line to chart
-                    LiveDataChart.Series.Add(line);
+                        //Create our y-axis
+                        LinearAxis axis = new LinearAxis
+                        {
+                            Orientation = AxisOrientation.Y,
+                            Title = entry.Unit
+                        };
+
+                        //Create out line with data
+                        LineSeries line = new LineSeries
+                        {
+                            Title = $"{entry.Name} ({entry.Unit})",
+                            IndependentValuePath = "Key",
+                            DependentValuePath = "Value",
+                            DependentRangeAxis = axis,
+                            ItemsSource = list.Value.Value
+                        };
+
+                        //Add line to chart
+                        LiveDataChart.Series.Add(line);
+                    }
 
                     _data.Add(list);
                 }
@@ -104,6 +104,12 @@ namespace RollingGoal.WinApplication
 
                 if(entry.Name != "Time")
                     list.Value.Value.Add(new KeyValuePair<double, double>(time, entry.Value));
+
+                foreach (LineSeries line in LiveDataChart.Series)
+                {
+                    line.Refresh();
+                }
+
             }
         }
 

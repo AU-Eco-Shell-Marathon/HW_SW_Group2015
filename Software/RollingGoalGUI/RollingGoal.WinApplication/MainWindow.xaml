@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RollingGoal.WinApplication"
-        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
+        x:Name="MainWindowName"
         mc:Ignorable="d"
         Title="Rolling Goal" Height="350" Width="525" MinWidth="525" MinHeight="350">
+
     <Grid>
         <!-- Menu -->
         <DockPanel>
@@ -42,7 +43,7 @@
 
                 <local:ViewDataTab/>
             </TabItem>
-            
+
         </TabControl>
     </Grid>
 </Window>
