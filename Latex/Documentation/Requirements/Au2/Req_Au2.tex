@@ -2,23 +2,42 @@
 The following requirements are specified by Shell Eco-marathon.
 
 \subsection{Functional requirements}
+Text
 
 \begin{table}[h!]
 	\centering
-	\caption{My caption}
 	\label{my-label}
-	\begin{tabular}{|l|l|l|l|}
+	\begin{tabular}{|p{2 cm}|p{7 cm}|p{4 cm}|}
 		\hline
-		\rowcolor[HTML]{C0C0C0} 
-		{\color[HTML]{333333} Req. \#} & {\color[HTML]{333333} Description} & {\color[HTML]{333333} Requirement met?} & {\color[HTML]{333333} Comment} \\ \hline
-		\rowcolor[HTML]{EFEFEF} 
-		AU2\_F1                         & The car must have a built-in electrical horn.       & {[}Requirement met here{]}              & {[}Comment here{]}             \\ \hline
-		\rowcolor[HTML]{C0C0C0} 
-		\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}Test procedure}                                                                                   \\ \hline
-		\rowcolor[HTML]{EFEFEF} 
-		\multicolumn{4}{|l|}{\cellcolor[HTML]{EFEFEF}{[}Test procedure here{]}}                                                                        \\ \hline
+		\textbf{Req. \#} & \textbf{Description} & \textbf{Comments} \\\hline
+		AU2\_F1		& The car must have one electric storage device, one motor and one control unit. &   \\\hline
+		AU2\_F2		& The car must be equipped with a built-in horn mounted towards the front of the vehicle, which can be activated by the driver in the cockpit. &   \\\hline
+		AU2\_F3		& The car must be equipped with an emergency shutdown mechanism, which must isolate the battery from the propulsion system when the button is pressed. &   \\\hline
+		AU2\_F4		& The car must include a "dead man's safety switch" which must be activated at all time in order for the car to drive. &   \\\hline
+		AU2\_F5		& The battery must be placed on a metal tray in order to prevent an eventual battery-fire damaging the system. &   \\\hline
+		AU2\_F6		& The positive and negative circuits of the propulsion battery and super capacitors must be electrically isolated from the vehicle frame. &   \\\hline
+		AU2\_F7		& The battery, all electrical circuits and the super capacitors must be protected against electrical overload. &   \\\hline
+		AU2\_F8		& The battery must be installed outside the cockpit behind a bulk head. &   \\\hline
+		AU2\_F9		& The car must be equipped with a joule-meter located between the battery and the motor controller. The display must be readable from outside the vehicle's body. &   \\\hline
+		AU2\_F10	& The car should be equipped with a data-log, which is able to collect data concerning the power from the battery and the wheel's angular velocity. &   \\\hline
+		AU2\_F11	& The car should be equipped with a speedometer with a display, which is readable from inside the cockpit. &   \\\hline
 	\end{tabular}
+	\caption{Functional requirements concerning AU2}
 \end{table}
 
 \subsection{Non-functional requirements}
 Text
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|p{2 cm}|p{7 cm}|p{4 cm}|}
+		\hline
+		\textbf{Req. \#} & \textbf{Description} & \textbf{Comments} \\\hline
+		AU2\_NF1	& The horn must emit a sound greater than 85 dBa when measured 4 meters horizontally from the vehicle. &	\\\hline
+		AU2\_NF2	& The tone emitted by the horn must have a pitch greater than 420 Hz. &	\\\hline
+		AU2\_NF3	& The maximum voltage in the vehicle must not exceed 48 V nominal and 60 V maximum. &	\\\hline
+		AU2\_NF4	& The capacity of the battery must not exceed 1,000 Wh. &	\\\hline
+	\end{tabular}
+	\caption{Non-functional requirements concerning rolling road}
+\end{table}
