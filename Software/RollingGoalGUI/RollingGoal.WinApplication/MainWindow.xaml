@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RollingGoal.WinApplication"
         x:Name="MainWindowName"
         mc:Ignorable="d"
-        Title="Rolling Goal" Height="350" Width="525" MinWidth="525" MinHeight="350">
+        Title="Rolling Goal" Height="450" Width="800" MinWidth="525" MinHeight="350">
 
     <Grid>
         <!-- Menu -->

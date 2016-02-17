@@ -42,6 +42,7 @@ namespace RollingGoal
 
         public void ListenThead()
         {
+            Thread.Sleep(500);
             while (true)
             {
                 if (_index >= _xAxis.GetData().Count)
@@ -60,7 +61,7 @@ namespace RollingGoal
                 }
 
                 _index++;
-                _lastMs =(int) (time*1000);
+                _lastMs = (int) (time*1000);
 
                 OnNextReadValue?.Invoke(entry);
             }

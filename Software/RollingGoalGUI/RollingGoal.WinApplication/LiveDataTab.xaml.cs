@@ -52,7 +52,8 @@ namespace RollingGoal.WinApplication
             LinearAxis lAxis = new LinearAxis
             {
                 Orientation = AxisOrientation.X,
-                Title = "Time (Seconds)"
+                Title = "Time (Seconds)",
+                Minimum = 0
             };
 
             LiveDataChart.Axes.Add(lAxis);
@@ -94,6 +95,11 @@ namespace RollingGoal.WinApplication
                     DependentRangeAxis = axis,
                     ItemsSource = lineStuct.RawData
                 };
+
+                line.PolylineStyle = null;
+
+                line.DataPointStyle = null;
+                line.Style = null;
 
                 //Add line to chart
                 LiveDataChart.Series.Add(line);

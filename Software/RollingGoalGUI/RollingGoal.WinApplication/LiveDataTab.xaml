@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:RollingGoal.WinApplication"
              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=DotNetProjects.DataVisualization.Toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="533">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*" MinWidth="160"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
@@ -31,13 +31,27 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <!-- Save button -->
-            <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Save button -->
+                <Button x:Name="LiveDataSaveButton" Grid.Column="0" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
+                
+                <!-- Clear button -->
+                <Button x:Name="LiveDataClearButton" Grid.Column="1" Margin="10, 10, 10, 10">Clear</Button>
+                
+                <!-- Start/Stop button -->
+                <Button x:Name="LiveDataStartStopButton" Grid.Column="2" Margin="10, 10, 10, 10">Start</Button>
+            </Grid>
         </Grid>
 
         <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch" Name="GridSplitter1"/>
 
         <!-- Chart -->
-        <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="2" CrosshairVisibility="Hidden" BorderThickness="0" />
+        <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="2" CrosshairVisibility="Hidden" BorderThickness="0"/>
     </Grid>
 </UserControl>

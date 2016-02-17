@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 
@@ -84,7 +85,7 @@ namespace RollingGoal
 
                     for (int i = 1; i < readData.Length; i++)
                     {
-                        data._data[i - 1].AddData(double.Parse(readData[i]));
+                        data._data[i - 1].AddData(double.Parse(readData[i], CultureInfo.InvariantCulture));
                     }
 
                     curLine++;
