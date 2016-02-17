@@ -35,20 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetProjects.DataVisualization.Toolkit, Version=5.0.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.26\lib\net40\DotNetProjects.DataVisualization.Toolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DotNetProjects.Input.Toolkit, Version=5.0.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.26\lib\net40\DotNetProjects.Input.Toolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DotNetProjects.Layout.Toolkit, Version=5.0.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.26\lib\net40\DotNetProjects.Layout.Toolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DotNetProjects.WPF.Themes, Version=5.0.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetProjects.Wpf.Toolkit.5.0.26\lib\net40\DotNetProjects.WPF.Themes.dll</HintPath>
+    <Reference Include="DynamicDataDisplay, Version=0.3.0.1, Culture=neutral, PublicKeyToken=5b7d744a7263923f, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicDataDisplay.0.3.0.1\lib\net45\DynamicDataDisplay.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.DataVisualization.Charting;
-using System.Windows.Threading;
+using Microsoft.Research.DynamicDataDisplay;
+using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
 {
     public struct LineStructure
     {
-        public List<KeyValuePair<double, double>> RawData;
+        public ObservableDataSource<Point> RawData;
         public DataList Data;
-        public LineSeries Line;
         public LiveDataDisplay Label;
 
         public string Name => Data.Name;
@@ -21,9 +19,8 @@ namespace RollingGoal.WinApplication
 
         public LineStructure(string name, string unit)
         {
-            RawData = new List<KeyValuePair<double, double>>();
+            RawData = new ObservableDataSource<Point>();
             Data = new DataList(name, unit);
-            Line = null;
             Label = null;
         }
     }
@@ -47,17 +44,6 @@ namespace RollingGoal.WinApplication
         {
             _data = new List<LineStructure?>();
             _currentSource = source;
-
-            //Setup x-axis
-            LinearAxis lAxis = new LinearAxis
-            {
-                Orientation = AxisOrientation.X,
-                Title = "Time (Seconds)",
-                Minimum = 0
-            };
-
-            LiveDataChart.Axes.Add(lAxis);
-
             _currentSource.OnNextReadValue += ThreadMover;
         }
 
@@ -76,39 +62,19 @@ namespace RollingGoal.WinApplication
         private LineStructure CreateNewLine(DataEntry entry)
         {
             LineStructure lineStuct = new LineStructure(entry.Name, entry.Unit);
+            string dataTitle = $"{entry.Name} ({entry.Unit})";
 
             if (entry.Name != "Time")
             {
-                //Create our y-axis
-                LinearAxis axis = new LinearAxis
-                {
-                    Orientation = AxisOrientation.Y,
-                    Title = entry.Unit
-                };
+                lineStuct.RawData.SetXYMapping(p => p);
 
-                //Create out line with data
-                LineSeries line = new LineSeries
-                {
-                    Title = $"{entry.Name} ({entry.Unit})",
-                    IndependentValuePath = "Key",
-                    DependentValuePath = "Value",
-                    DependentRangeAxis = axis,
-                    ItemsSource = lineStuct.RawData
-                };
-
-                line.PolylineStyle = null;
-
-                line.DataPointStyle = null;
-                line.Style = null;
-
-                //Add line to chart
-                LiveDataChart.Series.Add(line);
+                LiveDataChart.AddLineGraph(lineStuct.RawData, 2, dataTitle);
             }
 
             //Live values
             LiveDataDisplay lab = new LiveDataDisplay
             {
-                TitleTextBlock = {Text = $"{entry.Name} ({entry.Unit})"},
+                TitleTextBlock = {Text = dataTitle},
                 ValueTextBlock = {Text = entry.Value.ToString()}
             };
 
@@ -156,17 +122,9 @@ namespace RollingGoal.WinApplication
                 lineStruct.Value.Data.AddData(entry.Value);
 
                 if(entry.Name != "Time")
-                    lineStruct.Value.RawData.Add(new KeyValuePair<double, double>(time, entry.Value));
+                    lineStruct.Value.RawData.AppendAsync(Dispatcher, new Point(time, entry.Value));
 
                 lineStruct.Value.Label.ValueTextBlock.Text = entry.Value.ToString();
-
-
-
-                //Update lines
-                foreach (LineSeries line in LiveDataChart.Series.Cast<LineSeries>())
-                {
-                    line.Refresh();
-                }
             }
         }
 

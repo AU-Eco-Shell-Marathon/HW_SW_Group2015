@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.DataVisualization.Charting;
+using System.Windows.Threading;
+using Microsoft.Research.DynamicDataDisplay;
+using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Win32;
 
 namespace RollingGoal.WinApplication
@@ -26,25 +26,12 @@ namespace RollingGoal.WinApplication
         /// </summary>
         /// <param name="source">Data source</param>
         /// <param name="chart">Chart to append to</param>
-        private static void AppendDataToChart(IDataSource source, ref Chart chart)
+        private void AppendDataToChart(IDataSource source)
         {
+            //Assume time is used as x-axis
             const string xAxisname = "Time";
 
-            //TODO allow modification
-            //Assume time is used as x-axis
             DataList xDataList = source.GetDataList(xAxisname);
-
-            //Setup x-axis
-            LinearAxis lAxis = new LinearAxis
-            {
-                Minimum = xDataList.GetData().Min() * -1.10,
-                Maximum = xDataList.GetData().Max() * 1.10,
-                Orientation = AxisOrientation.X,
-                Title = $"{xDataList.Name} ({xDataList.Unit})"
-            };
-
-            //Add axis to chart
-            chart.Axes.Add(lAxis);
 
             //Loop through all
             for (int i = 0; i < source.GetAllData().Count; i++)
@@ -53,37 +40,19 @@ namespace RollingGoal.WinApplication
                 if (source.GetAllData()[i].Name != xAxisname)
                 {
                     //Parse our source format to the format the chart requires
-                    List<KeyValuePair<double, double>> valueList = new List<KeyValuePair<double, double>>();
+                    ObservableDataSource<Point> valueList = new ObservableDataSource<Point>();
                     DataList active = source.GetAllData()[i];
 
                     int z = 0;
                     foreach (double data in active.GetData())
                     {
-                        valueList.Add(new KeyValuePair<double, double>(xDataList.GetData()[z], data));
+                        valueList.AppendAsync(Dispatcher.CurrentDispatcher, new Point(xDataList.GetData()[z], data));
                         z++;
                     }
 
-                    //Create our y-axis
-                    LinearAxis axis = new LinearAxis
-                    {
-                        Minimum = active.GetData().Min() * -1.10,
-                        Maximum = active.GetData().Max() * 1.10,
-                        Orientation = AxisOrientation.Y,
-                        Title = active.Unit
-                    };
+                    valueList.SetXYMapping(p => p);
 
-                    //Create out line with data
-                    LineSeries line = new LineSeries
-                    {
-                        Title = $"{active.Name} ({active.Unit})",
-                        IndependentValuePath = "Key",
-                        DependentValuePath = "Value",
-                        ItemsSource = valueList,
-                        DependentRangeAxis = axis
-                    };
-
-                    //Add line to chart
-                    chart.Series.Add(line);
+                    ViewDataChart.AddLineGraph(valueList, 2, active.Name);
                 }
             }
         }
@@ -132,15 +101,13 @@ namespace RollingGoal.WinApplication
         {
             ListView view = (ListView) sender;
 
-            ViewDataChart.Axes.Clear();
-            ViewDataChart.Series.Clear();
+            ViewDataChart.Children.RemoveAll((typeof(LineGraph)));
 
             if (view.SelectedItem != null)
             {
                 IDataSource source = ((DatasetDisplay)view.SelectedItem).DataSource;
 
-                AppendDataToChart(source, ref ViewDataChart);
-                ViewDataChart.Title = source.Name;
+                AppendDataToChart(source);
             }
         }
     }
