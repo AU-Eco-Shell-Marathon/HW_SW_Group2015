@@ -74,10 +74,17 @@
     <Compile Include="DatasetDisplay.xaml.cs">
       <DependentUpon>DatasetDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LiveDataDisplay.xaml.cs">
+      <DependentUpon>LiveDataDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewDataTab.xaml.cs">
       <DependentUpon>ViewDataTab.xaml</DependentUpon>
     </Compile>
     <Page Include="DatasetDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LiveDataDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

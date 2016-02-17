@@ -10,11 +10,12 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Live data -->
-        <Grid>
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="22"/>
                 <RowDefinition/>
@@ -23,11 +24,18 @@
 
             <!-- Title -->
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Live Data</TextBlock>
+            
+            <!-- Live data -->
+            <ScrollViewer Grid.Row="1" Margin="5, 0, 5, 0" VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="LiveDataStackPanel" Orientation="Vertical">
+                </StackPanel>
+            </ScrollViewer>
 
             <!-- Save button -->
             <Button x:Name="LiveDataSaveButton" Grid.Row="2" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
         </Grid>
 
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch" Name="GridSplitter1"/>
 
         <!-- Chart -->
         <chartingToolkit:Chart x:Name="LiveDataChart" Grid.Column="2" CrosshairVisibility="Hidden" BorderThickness="0" />

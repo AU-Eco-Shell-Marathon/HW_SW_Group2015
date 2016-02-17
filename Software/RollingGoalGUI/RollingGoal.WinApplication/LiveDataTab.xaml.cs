@@ -1,22 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
+using System.Windows.Threading;
 using Microsoft.Win32;
-using ChartStructure = System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<double, double>>;
 
 namespace RollingGoal.WinApplication
 {
+    public struct LineStructure
+    {
+        public List<KeyValuePair<double, double>> RawData;
+        public DataList Data;
+        public LineSeries Line;
+        public LiveDataDisplay Label;
+
+        public string Name => Data.Name;
+        public string Unit => Data.Unit;
+
+        public LineStructure(string name, string unit)
+        {
+            RawData = new List<KeyValuePair<double, double>>();
+            Data = new DataList(name, unit);
+            Line = null;
+            Label = null;
+        }
+    }
+
     /// <summary>
     /// Interaction logic for LiveDataTab.xaml
     /// </summary>
     public partial class LiveDataTab
     {
         private ILiveDataSource _currentSource;
-        private List<KeyValuePair<DataList, ChartStructure>?> _data = new List<KeyValuePair<DataList, ChartStructure>?>();
-        private bool _hasBeenSaved = true;
+        private List<LineStructure?> _data = new List<LineStructure?>();
+        public bool HasBeenSaved { get; private set; } = true;
 
         public LiveDataTab()
         {
@@ -26,7 +45,7 @@ namespace RollingGoal.WinApplication
 
         private void SelectSource(ILiveDataSource source)
         {
-            _data = new List<KeyValuePair<DataList, ChartStructure>?>();
+            _data = new List<LineStructure?>();
             _currentSource = source;
 
             //Setup x-axis
@@ -43,73 +62,105 @@ namespace RollingGoal.WinApplication
 
         private void ThreadMover(IReadOnlyList<DataEntry> entries)
         {
-            Dispatcher?.Invoke(() => IncommingData(entries));
+            try
+            {
+                Dispatcher?.Invoke(() => IncommingData(entries));
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        private LineStructure CreateNewLine(DataEntry entry)
+        {
+            LineStructure lineStuct = new LineStructure(entry.Name, entry.Unit);
+
+            if (entry.Name != "Time")
+            {
+                //Create our y-axis
+                LinearAxis axis = new LinearAxis
+                {
+                    Orientation = AxisOrientation.Y,
+                    Title = entry.Unit
+                };
+
+                //Create out line with data
+                LineSeries line = new LineSeries
+                {
+                    Title = $"{entry.Name} ({entry.Unit})",
+                    IndependentValuePath = "Key",
+                    DependentValuePath = "Value",
+                    DependentRangeAxis = axis,
+                    ItemsSource = lineStuct.RawData
+                };
+
+                //Add line to chart
+                LiveDataChart.Series.Add(line);
+            }
+
+            //Live values
+            LiveDataDisplay lab = new LiveDataDisplay
+            {
+                TitleTextBlock = {Text = $"{entry.Name} ({entry.Unit})"},
+                ValueTextBlock = {Text = entry.Value.ToString()}
+            };
+
+
+            LiveDataStackPanel.Children.Add(lab);
+
+            lineStuct.Label = lab;
+
+            return lineStuct;
+        }
+
+        private bool TryGetLineStructure(DataEntry entry, out LineStructure? value)
+        {
+            try
+            {
+                value = _data.FirstOrDefault(x => x != null && x.Value.Name == entry.Name);
+                return value != null;
+            }
+            catch (Exception)
+            {
+                value = null;
+                return false;
+            }
         }
 
         private void IncommingData(IReadOnlyList<DataEntry> entries)
         {
-            _hasBeenSaved = false;
+            HasBeenSaved = false;
 
             double time = entries.First(x => x.Name == "Time").Value;
 
-            for (int i = 0; i < entries.Count; i++)
+            foreach (DataEntry entry in entries)
             {
-                DataEntry entry = entries[i];
+                LineStructure? lineStruct;
 
-                KeyValuePair<DataList, ChartStructure>? list = null;
-
-                try
+                //Try to get structure if exists, else create new
+                if (!TryGetLineStructure(entry, out lineStruct))
                 {
-                    list = _data.FirstOrDefault(x => x.Value.Key.Name == entry.Name);
-                }
-                catch (Exception e)
-                {
-                        
+                    lineStruct = CreateNewLine(entry);
+                    _data.Add(lineStruct);
                 }
 
-                if (list == null)
-                {
-
-                    list = new KeyValuePair<DataList, ChartStructure>(new DataList(entry.Name, entry.Unit), new ChartStructure());
-
-
-                    if (entry.Name != "Time")
-                    {
-
-                        //Create our y-axis
-                        LinearAxis axis = new LinearAxis
-                        {
-                            Orientation = AxisOrientation.Y,
-                            Title = entry.Unit
-                        };
-
-                        //Create out line with data
-                        LineSeries line = new LineSeries
-                        {
-                            Title = $"{entry.Name} ({entry.Unit})",
-                            IndependentValuePath = "Key",
-                            DependentValuePath = "Value",
-                            DependentRangeAxis = axis,
-                            ItemsSource = list.Value.Value
-                        };
-
-                        //Add line to chart
-                        LiveDataChart.Series.Add(line);
-                    }
-
-                    _data.Add(list);
-                }
-
-                list.Value.Key.AddData(entry.Value);
+                //The above code ensures that linestruct is not null
+                // ReSharper disable once PossibleInvalidOperationException
+                lineStruct.Value.Data.AddData(entry.Value);
 
                 if(entry.Name != "Time")
-                    list.Value.Value.Add(new KeyValuePair<double, double>(time, entry.Value));
+                    lineStruct.Value.RawData.Add(new KeyValuePair<double, double>(time, entry.Value));
 
-                foreach (LineSeries line in LiveDataChart.Series)
+                lineStruct.Value.Label.ValueTextBlock.Text = entry.Value.ToString();
+
+
+
+                //Update lines
+                foreach (LineSeries line in LiveDataChart.Series.Cast<LineSeries>())
                 {
                     line.Refresh();
                 }
-
             }
         }
 

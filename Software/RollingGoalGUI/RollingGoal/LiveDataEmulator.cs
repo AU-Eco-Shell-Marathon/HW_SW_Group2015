@@ -9,8 +9,9 @@ namespace RollingGoal
     {
         private readonly IDataSource _source;
         private readonly DataList _xAxis;
-        private int _index = 0;
+        private int _index;
         private Thread _waitThread;
+        private int _lastMs;
 
         public event ReadOnlyDataEntryList OnNextReadValue;
 
@@ -18,8 +19,25 @@ namespace RollingGoal
         {
             _source = source;
             _xAxis = _source.GetDataList(timeAxis);
+
+            Reset();
+        }
+
+        public void Reset()
+        {
+            _waitThread?.Abort();
+
+            _index = 0;
+            _lastMs = 0;
+
             _waitThread = new Thread(ListenThead);
+            _waitThread.IsBackground = true;
             _waitThread.Start();
+        }
+
+        public void Stop()
+        {
+            _waitThread?.Abort();
         }
 
         public void ListenThead()
@@ -30,7 +48,7 @@ namespace RollingGoal
                     return;
                 
                 double time = _xAxis.GetData()[_index];
-                Thread.Sleep((int) (time*1000));
+                Thread.Sleep((int) (time*1000)-_lastMs);
 
                 List<DataEntry> entry = new List<DataEntry>();
 
@@ -42,6 +60,7 @@ namespace RollingGoal
                 }
 
                 _index++;
+                _lastMs =(int) (time*1000);
 
                 OnNextReadValue?.Invoke(entry);
             }
