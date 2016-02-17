@@ -31,32 +31,21 @@ namespace RollingGoal.WinApplication
     public partial class LiveDataTab
     {
         private ILiveDataSource _currentSource;
-        private List<LineStructure?> _data = new List<LineStructure?>();
+        private List<LineStructure?> _data;
         public bool HasBeenSaved { get; private set; } = true;
 
         public LiveDataTab()
         {
             InitializeComponent();
+            ClearChart();
             SelectSource(new LiveDataEmulator(CsvDataSource.LoadFromFile("3TypesOfData17Rows.csv")));
         }
 
-        private void SelectSource(ILiveDataSource source)
+        public void SelectSource(ILiveDataSource source)
         {
             _data = new List<LineStructure?>();
             _currentSource = source;
             _currentSource.OnNextReadValue += ThreadMover;
-        }
-
-        private void ThreadMover(IReadOnlyList<DataEntry> entries)
-        {
-            try
-            {
-                Dispatcher?.Invoke(() => IncommingData(entries));
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
         }
 
         private LineStructure CreateNewLine(DataEntry entry)
@@ -100,6 +89,27 @@ namespace RollingGoal.WinApplication
             }
         }
 
+
+        /// <summary>
+        /// The <see cref="IncommingData"/> method need to be run from the main/gui-thread, therefor we create a translator
+        /// </summary>
+        /// <param name="entries"></param>
+        private void ThreadMover(IReadOnlyList<DataEntry> entries)
+        {
+            try
+            {
+                Dispatcher?.Invoke(() => IncommingData(entries));
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        /// <summary>
+        /// Handles incomming data and creates new lines if no line for the data type is present
+        /// </summary>
+        /// <param name="entries"></param>
         private void IncommingData(IReadOnlyList<DataEntry> entries)
         {
             HasBeenSaved = false;
@@ -128,7 +138,17 @@ namespace RollingGoal.WinApplication
             }
         }
 
+        /// <summary>
+        /// When the user request a save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnFileSaveDataset_Click(object sender, RoutedEventArgs e)
+        {
+            SaveCurrentData();
+        }
+
+        private bool SaveCurrentData()
         {
             SaveFileDialog dlg = new SaveFileDialog
             {
@@ -141,6 +161,37 @@ namespace RollingGoal.WinApplication
             {
                 //Open file her
             }
+
+            return false;
+        }
+
+        private void ClearChart()
+        {
+            _data = new List<LineStructure?>();
+            LiveDataChart.Children.RemoveAll(typeof(LineGraph));
+        }
+
+        private void LiveDataClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!HasBeenSaved)
+            {
+                MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Unsaved changes", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        SaveCurrentData();
+                        break;
+                    case MessageBoxResult.No:
+                        ClearChart();
+                        break;
+                }
+            }
+        }
+
+        private void LiveDataStartStopButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

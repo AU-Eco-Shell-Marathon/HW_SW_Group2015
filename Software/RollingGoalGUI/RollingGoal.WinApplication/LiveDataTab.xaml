@@ -41,10 +41,10 @@
                 <Button x:Name="LiveDataSaveButton" Grid.Column="0" Click="BtnFileSaveDataset_Click" Margin="10, 10, 10, 10">Save</Button>
                 
                 <!-- Clear button -->
-                <Button x:Name="LiveDataClearButton" Grid.Column="1" Margin="10, 10, 10, 10">Clear</Button>
+                <Button x:Name="LiveDataClearButton" Grid.Column="1" Margin="10, 10, 10, 10" Click="LiveDataClearButton_Click">Clear</Button>
                 
                 <!-- Start/Stop button -->
-                <Button x:Name="LiveDataStartStopButton" Grid.Column="2" Margin="10, 10, 10, 10">Start</Button>
+                <Button x:Name="LiveDataStartStopButton" Grid.Column="2" Margin="10, 10, 10, 10" Click="LiveDataStartStopButton_Click">Stop</Button>
             </Grid>
         </Grid>
 

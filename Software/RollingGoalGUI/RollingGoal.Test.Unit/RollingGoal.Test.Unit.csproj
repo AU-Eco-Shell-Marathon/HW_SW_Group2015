@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvDataSourceTests.cs" />
     <Compile Include="DataEntryTests.cs" />
     <Compile Include="DataListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

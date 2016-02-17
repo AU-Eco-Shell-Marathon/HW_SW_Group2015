@@ -101,7 +101,7 @@ namespace RollingGoal.WinApplication
         {
             ListView view = (ListView) sender;
 
-            ViewDataChart.Children.RemoveAll((typeof(LineGraph)));
+            ViewDataChart.Children.RemoveAll(typeof(LineGraph));
 
             if (view.SelectedItem != null)
             {
