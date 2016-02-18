@@ -36,5 +36,7 @@ namespace RollingGoal
         /// Value for this data-entry
         /// </summary>
         public double Value { get; }
+
+        public string Title => $"{Name} ({Unit})";
     }
 }

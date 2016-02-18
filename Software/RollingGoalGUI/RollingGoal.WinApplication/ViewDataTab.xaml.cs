@@ -52,7 +52,7 @@ namespace RollingGoal.WinApplication
 
                     valueList.SetXYMapping(p => p);
 
-                    ViewDataChart.AddLineGraph(valueList, 2, active.Name);
+                    ViewDataChart.AddLineGraph(valueList, 2, active.Title);
                 }
             }
         }

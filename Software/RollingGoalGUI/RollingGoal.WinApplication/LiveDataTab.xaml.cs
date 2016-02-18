@@ -34,6 +34,9 @@ namespace RollingGoal.WinApplication
         private List<LineStructure?> _data;
         public bool HasBeenSaved { get; private set; } = true;
 
+
+        private const string XAxisName = "Time";
+
         public LiveDataTab()
         {
             InitializeComponent();
@@ -51,19 +54,17 @@ namespace RollingGoal.WinApplication
         private LineStructure CreateNewLine(DataEntry entry)
         {
             LineStructure lineStuct = new LineStructure(entry.Name, entry.Unit);
-            string dataTitle = $"{entry.Name} ({entry.Unit})";
 
-            if (entry.Name != "Time")
+            if (entry.Name != XAxisName)
             {
                 lineStuct.RawData.SetXYMapping(p => p);
-
-                LiveDataChart.AddLineGraph(lineStuct.RawData, 2, dataTitle);
+                LiveDataChart.AddLineGraph(lineStuct.RawData, 2, entry.Title);
             }
 
             //Live values
             LiveDataDisplay lab = new LiveDataDisplay
             {
-                TitleTextBlock = {Text = dataTitle},
+                TitleTextBlock = {Text = entry.Title},
                 ValueTextBlock = {Text = entry.Value.ToString()}
             };
 
@@ -112,9 +113,11 @@ namespace RollingGoal.WinApplication
         /// <param name="entries"></param>
         private void IncommingData(IReadOnlyList<DataEntry> entries)
         {
+            //New data, so it's no longer saved
             HasBeenSaved = false;
 
-            double time = entries.First(x => x.Name == "Time").Value;
+            //Find the time value from incomming data
+            double time = entries.First(x => x.Name == XAxisName).Value;
 
             foreach (DataEntry entry in entries)
             {
@@ -159,7 +162,8 @@ namespace RollingGoal.WinApplication
 
             if (dlg.ShowDialog() == true)
             {
-                //Open file her
+                //Save file here
+                CsvDataSource.WriteToFile(dlg.FileName, _data.Select(x => x.Value.Data).ToList(), DateTime.Now.ToLongDateString());
             }
 
             return false;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 
 
 namespace RollingGoal
@@ -61,13 +62,46 @@ namespace RollingGoal
             return _data.AsReadOnly();
         }
 
+
+        private const string HeaderName = "shell eco marathon";
+
         /// <summary>
         /// Save datasource to file
         /// </summary>
         /// <param name="path"></param>
-        public void SaveToFile(string path)
+        /// <param name="source"></param>
+        public static void WriteToFile(string path, List<DataList> data, string description)
         {
+            using (FileStream fileStream = File.Open(path, FileMode.Create, FileAccess.Write))
+            {
+                StreamWriter writer = new StreamWriter(fileStream);
+
+                WriteToStream(writer, data, description);
+            }
+        }
+
+        public static void WriteToStream(StreamWriter writer, List<DataList> data, string description)
+        {
+            string seperator = ";";
+            int dataLength = data[0].GetData().Count;
+
+            writer.WriteLine(HeaderName + seperator + string.Join(seperator, data.Select(x => x.Name))); //Names
+            writer.WriteLine(description + seperator + string.Join(seperator, data.Select(x => x.Unit))); //Units
+
+            //Data
+            for (int i = 0; i < dataLength; i++)
+            {
+                string stringout = "";
+
+                foreach (DataList dataList in data)
+                {
+                    stringout += ";" + dataList.GetData()[i];
+                }
+
+                writer.WriteLine(stringout);
+            }
             
+            writer.Flush();
         }
 
         public static CsvDataSource LoadFromStream(StreamReader reader)
@@ -86,7 +120,7 @@ namespace RollingGoal
                 throw new Exception("Header is to short");
 
             //Make sure header name matches (basic check to make not all files are loaded)
-            if (names[0].ToLower() != "shell eco marathon")
+            if (names[0].ToLower() != HeaderName)
                 throw new Exception("Invalid header: " + names[0].ToLower());
 
             //Units

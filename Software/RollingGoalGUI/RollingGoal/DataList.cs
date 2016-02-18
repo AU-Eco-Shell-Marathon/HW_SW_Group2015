@@ -16,6 +16,11 @@ namespace RollingGoal
         public string Unit { get; }
 
         /// <summary>
+        /// A concat of the name nad unit
+        /// </summary>
+        public string Title => $"{Name} ({Unit})";
+
+        /// <summary>
         /// All data collected
         /// </summary>
         private readonly List<double> _data = new List<double>();
