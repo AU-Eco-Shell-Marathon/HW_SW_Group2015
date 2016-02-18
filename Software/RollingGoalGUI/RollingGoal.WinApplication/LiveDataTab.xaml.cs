@@ -186,15 +186,16 @@ namespace RollingGoal.WinApplication
 
         private void ClearChart()
         {
-            _data = new List<LineStructure?>();
             LiveDataChart.Children.RemoveAll(typeof(LineGraph));
+            _data = new List<LineStructure?>();
         }
 
         private void LiveDataClearButton_Click(object sender, RoutedEventArgs e)
         {
             if (!HasBeenSaved)
             {
-                MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Unsaved changes", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Unsaved changes",
+                    MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
 
                 switch (result)
                 {
@@ -205,6 +206,10 @@ namespace RollingGoal.WinApplication
                         ClearChart();
                         break;
                 }
+            }
+            else
+            {
+                ClearChart();
             }
         }
 
