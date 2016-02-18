@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Rolling_Goal\RollingGoal\Source Files">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Rolling_Goal\RollingGoal\Source Files\sensor.c">
 <ExpandedNodeIds>
 <v>Rolling_Goal</v>
 <v>Rolling_Goal\RollingGoal</v>
@@ -22,9 +22,11 @@
 <v>Rolling_Goal\RollingGoal\Header Files</v>
 <v>Rolling_Goal\RollingGoal\Header Files\cyapicallbacks.h</v>
 <v>Rolling_Goal\RollingGoal\Header Files\PID.h</v>
+<v>Rolling_Goal\RollingGoal\Header Files\sensor.h</v>
 <v>Rolling_Goal\RollingGoal\Source Files</v>
 <v>Rolling_Goal\RollingGoal\Source Files\main.c</v>
 <v>Rolling_Goal\RollingGoal\Source Files\PID.c</v>
+<v>Rolling_Goal\RollingGoal\Source Files\sensor.c</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\A_generator</v>
@@ -78,6 +80,9 @@
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Clock_2</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Clock_2\Clock_2.c</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Clock_2\Clock_2.h</v>
+<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Clock_3</v>
+<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Clock_3\Clock_3.c</v>
+<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Clock_3\Clock_3.h</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Comp_1</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Comp_1\Comp_1.c</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Comp_1\Comp_1.h</v>
@@ -121,6 +126,9 @@
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\isr_2</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\isr_2\isr_2.c</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\isr_2\isr_2.h</v>
+<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\isr_3</v>
+<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\isr_3\isr_3.c</v>
+<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\isr_3\isr_3.h</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Moment</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Moment\Moment.c</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\Moment\Moment.h</v>
@@ -213,9 +221,11 @@
 <v>Rolling_Goal\RollingGoal\Header Files</v>
 <v>Rolling_Goal\RollingGoal\Header Files\cyapicallbacks.h</v>
 <v>Rolling_Goal\RollingGoal\Header Files\PID.h</v>
+<v>Rolling_Goal\RollingGoal\Header Files\sensor.h</v>
 <v>Rolling_Goal\RollingGoal\Source Files</v>
 <v>Rolling_Goal\RollingGoal\Source Files\main.c</v>
 <v>Rolling_Goal\RollingGoal\Source Files\PID.c</v>
+<v>Rolling_Goal\RollingGoal\Source Files\sensor.c</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\A_generator</v>
@@ -227,11 +237,9 @@
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\A_motor\A_motor.h</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\A_motor\A_motor_aliases.h</v>
 <v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\ADC_SAR_1</v>
-<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\ADC_SAR_1\ADC_SAR_1.c</v>
-<v>Rolling_Goal\RollingGoal\Generated_Source\PSoC5\ADC_SAR_1\ADC_SAR_1.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Rolling_Goal">
 <ExpandedNodeIds>
 <v>Rolling_Goal</v>
 <v>Rolling_Goal\RollingGoal</v>
@@ -275,6 +283,7 @@
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_TempBuf_dma.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_2.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_3.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_1.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_1_PM.lst</v>
@@ -293,6 +302,7 @@
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_1.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_2.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_3.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Moment.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Opamp_1.lst</v>
@@ -302,6 +312,7 @@
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_1_PM.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_belastning.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\RPM.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\sensor.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Status_Reg_1.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Timer_1.lst</v>
 <v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\Timer_1_PM.lst</v>
@@ -333,8 +344,27 @@
 <VisibleNodeIds>
 <v>Rolling_Goal</v>
 <v>Rolling_Goal\RollingGoal</v>
-<v>Rolling_Goal\RollingGoal\RollingGoal.rpt</v>
-<v>Rolling_Goal\RollingGoal\RollingGoal_timing.html</v>
+<v>Rolling_Goal\RollingGoal\CortexM3</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\A_generator.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\A_motor.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_1.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_1_INT.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_1_IRQ.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_1_PM.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_1_theACLK.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_FinalBuf_dma.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_INT.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_IntClock.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_IRQ.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_PM.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_SAR.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_SAR_Bypass.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_SAR_INT.lst</v>
+<v>Rolling_Goal\RollingGoal\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_SAR_Seq_1_SAR_PM.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -342,7 +372,7 @@
 <v>Datasheet</v>
 </TreeKeysV2>
 <TreeStatesV2>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Rolling_Goal">
 <ExpandedNodeIds>
 <v>Rolling_Goal</v>
 <v>Rolling_Goal\RollingGoal</v>
@@ -407,7 +437,9 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\RollingGoal.cydsn\main.c" />
+</OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
