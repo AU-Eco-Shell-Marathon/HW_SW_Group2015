@@ -1,0 +1,26 @@
+\section{Protocol description}
+
+\begin{table}[h!]
+	\centering
+	\label{Protocol:overview}
+	\begin{tabular}{lllll}
+		\# & Description & Commando    & Direction                    & Example       \\
+		1  & Handshake   & RollingRoad & PSoc $\rightarrow$ PC          & 1 RollingRoad \\
+		2  & Stop        & 2           & PC $\rightarrow$ PSoC          & 2        \\
+		3  & Information & X Y Z...    & PSoC $\rightarrow$ PC          & 3 2 3 4...    \\
+		4  & Torque control & 4        & PC $\rightarrow$ PSoC          & 4    \\
+	\end{tabular}
+	\caption{Overview for commands sent between PSoC og PC}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\label{Protocol:example}
+	\begin{tabular}{lll}
+		\# & Description & Example \\
+		0  & Time        & 4       \\
+		1  & Torque      & 4       \\
+		2  & Power       & 4      
+	\end{tabular}
+	\caption{Example of data stream}
+\end{table}
