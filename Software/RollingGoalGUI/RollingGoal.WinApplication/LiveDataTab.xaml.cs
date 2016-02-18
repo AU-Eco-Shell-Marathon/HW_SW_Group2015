@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using Microsoft.Research.DynamicDataDisplay;
@@ -65,7 +66,7 @@ namespace RollingGoal.WinApplication
             LiveDataDisplay lab = new LiveDataDisplay
             {
                 TitleTextBlock = {Text = entry.Title},
-                ValueTextBlock = {Text = entry.Value.ToString()}
+                ValueTextBlock = {Text = entry.Value.ToString(CultureInfo.InvariantCulture)}
             };
 
 
@@ -137,7 +138,7 @@ namespace RollingGoal.WinApplication
                 if(entry.Name != "Time")
                     lineStruct.Value.RawData.AppendAsync(Dispatcher, new Point(time, entry.Value));
 
-                lineStruct.Value.Label.ValueTextBlock.Text = entry.Value.ToString();
+                lineStruct.Value.Label.ValueTextBlock.Text = entry.Value.ToString(CultureInfo.InvariantCulture);
             }
         }
 
@@ -148,9 +149,13 @@ namespace RollingGoal.WinApplication
         /// <param name="e"></param>
         private void BtnFileSaveDataset_Click(object sender, RoutedEventArgs e)
         {
-            SaveCurrentData();
+            HasBeenSaved = SaveCurrentData();
         }
 
+        /// <summary>
+        /// Tries to save current data
+        /// </summary>
+        /// <returns>Whether the data was actually saved</returns>
         private bool SaveCurrentData()
         {
             SaveFileDialog dlg = new SaveFileDialog
@@ -162,8 +167,18 @@ namespace RollingGoal.WinApplication
 
             if (dlg.ShowDialog() == true)
             {
-                //Save file here
-                CsvDataSource.WriteToFile(dlg.FileName, _data.Select(x => x.Value.Data).ToList(), DateTime.Now.ToLongDateString());
+                try
+                {
+                    //Save file here
+                    CsvDataSource.WriteToFile(dlg.FileName, _data.Select(x => x?.Data).ToList(), DateTime.Now.ToLongDateString());
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error saving data!", "Error: " + e.Message, MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
+                return true;
             }
 
             return false;
@@ -184,7 +199,7 @@ namespace RollingGoal.WinApplication
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
-                        SaveCurrentData();
+                        HasBeenSaved = SaveCurrentData();
                         break;
                     case MessageBoxResult.No:
                         ClearChart();

@@ -9,24 +9,28 @@ namespace RollingGoal.Test.Unit
         [Test]
         public void Ctor_NameIsNull_ExceptionThrown()
         {
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataEntry(null, "Test", 0));
         }
 
         [Test]
         public void Ctor_NameIsEmpty_ExceptionThrown()
         {
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataEntry("", "Test", 0));
         }
 
         [Test]
         public void Ctor_UnitIsNull_ExceptionThrown()
         {
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataEntry("Test", null, 0));
         }
 
         [Test]
         public void Ctor_UnitsIsEmpty_ExceptionThrown()
         {
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataEntry("Test", "", 0));
         }
 

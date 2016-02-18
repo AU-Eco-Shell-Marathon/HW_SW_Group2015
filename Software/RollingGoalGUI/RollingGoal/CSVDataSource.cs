@@ -68,8 +68,9 @@ namespace RollingGoal
         /// <summary>
         /// Save datasource to file
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="source"></param>
+        /// <param name="path">What path to save the file to</param>
+        /// <param name="data">Data to be saved</param>
+        /// <param name="description">Description to be saved in file</param>
         public static void WriteToFile(string path, List<DataList> data, string description)
         {
             using (FileStream fileStream = File.Open(path, FileMode.Create, FileAccess.Write))
@@ -80,7 +81,7 @@ namespace RollingGoal
             }
         }
 
-        public static void WriteToStream(StreamWriter writer, List<DataList> data, string description)
+        public static void WriteToStream(TextWriter writer, List<DataList> data, string description)
         {
             string seperator = ";";
             int dataLength = data[0].GetData().Count;
@@ -91,12 +92,8 @@ namespace RollingGoal
             //Data
             for (int i = 0; i < dataLength; i++)
             {
-                string stringout = "";
-
-                foreach (DataList dataList in data)
-                {
-                    stringout += ";" + dataList.GetData()[i];
-                }
+                //LINQ Magic
+                string stringout = data.Aggregate("", (current, dataList) => current + (";" + dataList.GetData()[i]));
 
                 writer.WriteLine(stringout);
             }
@@ -113,6 +110,10 @@ namespace RollingGoal
 
             //Names/types
             var line = reader.ReadLine();
+
+            if(line == null)
+                throw new Exception("First line is empty");
+
             string[] names = line.Split(';');
 
             //We need at least to data lists to make a graph 
@@ -125,6 +126,10 @@ namespace RollingGoal
 
             //Units
             line = reader.ReadLine();
+            
+            if (line == null)
+                throw new Exception("Second line is empty");
+
             string[] units = line.Split(';');
 
             //Make sure our unit length matches our amount of names
@@ -141,12 +146,16 @@ namespace RollingGoal
             }
 
             //We allready read two lines
-            int curLine = 2;
+            int curLine = 3;
 
             //Read all data
             while (!reader.EndOfStream)
             {
                 line = reader.ReadLine();
+                
+                if (line == null)
+                    throw new Exception($"Line {curLine} is empty");
+
                 string[] readData = line.Split(';');
 
                 //No data cell is allowed to be null, so our data must be at least as long as our amount of datatypes

@@ -46,25 +46,49 @@ namespace RollingGoal.Test.Unit
         [Test]
         public void Ctor_NameIsNull_ExceptionThrown()
         {
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataList(null, "Test"));
         }
 
         [Test]
         public void Ctor_NameIsEmpty_ExceptionThrown()
         {
+
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataList("", "Test"));
         }
 
         [Test]
         public void Ctor_UnitIsNull_ExceptionThrown()
         {
+
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataList("Test", null));
         }
 
         [Test]
         public void Ctor_UnitsIsEmpty_ExceptionThrown()
         {
+
+            // ReSharper disable once ObjectCreationAsStatement
             Assert.Throws<ArgumentException>(() => new DataList("Test", ""));
+        }
+
+        [Test]
+        public void Ctor_NameAndUnit_NameWritten()
+        {
+            DataList dataList = new DataList("NameTest", "UnitTest");
+
+            Assert.That(dataList.Name, Is.EqualTo("NameTest"));
+        }
+
+
+        [Test]
+        public void Ctor_NameAndUnit_UnitWritten()
+        {
+            DataList dataList = new DataList("NameTest", "UnitTest");
+
+            Assert.That(dataList.Unit, Is.EqualTo("UnitTest"));
         }
 
         [Test]
