@@ -11,7 +11,7 @@ Overview of packets:
 		0  & Handshake   		& RollingRoad 		& PSoC $\rightarrow$ PC & 0 RollingRoad 	\\
 		1  & Unit description 	& <int> <str> <str> & PSoC $\rightarrow$ PC & 1 0 Time Seconds 	\\
 		2  & Stop        		&            		& PC $\rightarrow$ PSoC	& 2        			\\
-		3  & Information 		& <int> ... <int>	& PSoC $\rightarrow$ PC & 3 2 3 	    	\\
+		3  & Information 		& <double> ... <double>	& PSoC $\rightarrow$ PC & 3 2 3 	    	\\
 		4  & Torque control 	& <int>    			& PC $\rightarrow$ PSoC & 4    				\\
 	\end{tabular}
 	\caption{Overview for commands sent between PSoC og PC}

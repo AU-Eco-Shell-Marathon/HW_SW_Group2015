@@ -15,6 +15,9 @@ namespace RollingRoad
         private readonly Stream _stream;
         private readonly Thread _listenThread;
         
+        private readonly StreamReader _reader;
+        private readonly StreamWriter _writer;
+
         private bool _shouldClose = false;
 
         private readonly Dictionary<int, DataEntry> _typeDictionary = new Dictionary<int, DataEntry>();
@@ -32,82 +35,89 @@ namespace RollingRoad
         {
             _stream = stream;
 
-            _listenThread = new Thread(Listen);
+            _listenThread = new Thread(ListenThread);
             _listenThread.IsBackground = true;
-            _listenThread.Start();
+
+            _reader = new StreamReader(_stream);
+            _writer = new StreamWriter(_stream);
         }
 
-        private void Listen()
+        private void ListenThread()
         {
-            StreamReader reader = new StreamReader(_stream);
-
             while (!_shouldClose)
             {
-                string line = reader.ReadLine();
-                string[] values = line.Split(' ');
+                Listen();
+            }
+        }
 
-                //Read packet id
-                PacketId packetId = (PacketId)int.Parse(values[0]);
+        /// <summary>
+        /// Forces a listen
+        /// </summary>
+        public void Listen()
+        {
+            string line = _reader.ReadLine();
+            string[] values = line.Split(' ');
 
-                switch (packetId)
-                {
-                    case PacketId.UnitDescription:
-                        int typeId = int.Parse(values[1]);
-                        string typeName = values[2];
-                        string typeUnit = values[3];
+            //Read packet id
+            PacketId packetId = (PacketId)int.Parse(values[0]);
 
-                        _typeDictionary.Add(typeId, new DataEntry(typeName, typeUnit, 0));
-                        break;
-                    case PacketId.Information:
-                        //First value is command ID, and each value has an typeId and actual value
-                        int valuesToRead = (values.Length - 1)/2;
-                        List<DataEntry> dataRead = new List<DataEntry>();
+            switch (packetId)
+            {
+                case PacketId.UnitDescription:
+                    int typeId = int.Parse(values[1]);
+                    string typeName = values[2];
+                    string typeUnit = values[3];
 
-                        for (int i = 0; i < valuesToRead; i++)
-                        {
-                            int typeId2 = int.Parse(values[i*2 + 1], CultureInfo.InvariantCulture);
-                            DataEntry type = _typeDictionary[typeId2];
+                    _typeDictionary.Add(typeId, new DataEntry(typeName, typeUnit, 0));
+                    break;
+                case PacketId.Information:
+                    //First value is command ID, and each value has an typeId and actual value
+                    int valuesToRead = values.Length - 1;
+                    List<DataEntry> dataRead = new List<DataEntry>();
 
-                            double value = double.Parse(values[i*2 + 2], CultureInfo.InvariantCulture);
+                    for (int i = 0; i < valuesToRead; i++)
+                    {
+                        double value = double.Parse(values[i + 1], CultureInfo.InvariantCulture);
 
-                            dataRead.Add(new DataEntry(type.Name, type.Unit, value));
-                        }
+                        DataEntry type = _typeDictionary[i];
 
-                        OnNextReadValue?.Invoke(dataRead);
-                        break;
-                }
+                        dataRead.Add(new DataEntry(type.Name, type.Unit, value));
+                    }
+
+                    OnNextReadValue?.Invoke(dataRead);
+                    break;
             }
         }
 
         public void SetTorque(int torque)
         {
             //TODO Check if ready to transmit
+            SendCommand((int)PacketId.TorqueCtrl + " " + torque);
+        }
 
-            StreamWriter writer = new StreamWriter(_stream);
-
-            writer.WriteLine((int)PacketId.TorqueCtrl + " " + torque);
-            writer.Flush();
+        private void SendCommand(string cmd)
+        {
+            _writer.Write(cmd + "\n");
+            _writer.Flush();
         }
 
         public void Stop()
         {
-            StreamWriter writer = new StreamWriter(_stream);
-
-            writer.Write((int)PacketId.Stop);
-            writer.Flush();
-
+            SendCommand(((int)PacketId.Stop).ToString());
             _listenThread.Abort();
         }
 
         public void Start()
         {
-            StreamWriter writer = new StreamWriter(_stream);
+            Start(true);
+        }
 
-            string header = (int)PacketId.HandShake + " RollingRoad";
+        public void Start(bool startThread)
+        {
+            SendCommand((int)PacketId.HandShake + " RollingRoad");
 
-            //Start by sending headers
-            writer.Write(header);
-            writer.Flush();
+            if(startThread)
+                _listenThread.Start();
         }
 
         ~ProtocolInterpreter()
