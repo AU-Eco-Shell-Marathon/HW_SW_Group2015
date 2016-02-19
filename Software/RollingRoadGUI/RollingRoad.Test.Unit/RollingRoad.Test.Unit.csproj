@@ -48,6 +48,7 @@
     <Compile Include="DataEntryTests.cs" />
     <Compile Include="DataListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolInterpreterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RollingRoad\RollingRoad.csproj">
