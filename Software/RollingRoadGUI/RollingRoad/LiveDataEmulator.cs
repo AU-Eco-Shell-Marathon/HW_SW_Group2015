@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 
 namespace RollingRoad
@@ -8,61 +9,76 @@ namespace RollingRoad
         private readonly IDataSource _source;
         private readonly DataList _xAxis;
         private int _index;
-        private Thread _waitThread;
-        private int _lastMs;
+        private double _lastMs;
 
         public event ReadOnlyDataEntryList OnNextReadValue;
+
+        private ITimer _timer;
+        public ITimer Timer
+        {
+            get { return _timer; }
+            set
+            {
+                if (_timer != null)
+                    _timer.Elapsed -= SendNextCallback;
+
+                _timer = value;
+
+
+                if (_timer != null)
+                    _timer.Elapsed += SendNextCallback;
+            }
+        }
 
         public LiveDataEmulator(IDataSource source, string timeAxis = "Time")
         {
             _source = source;
             _xAxis = _source.GetDataList(timeAxis);
-
+            Timer = new SystemTimer();
+            
             Reset();
+        }
+
+        public void Stop()
+        {
+            Timer.Stop();
+        }
+
+        public void Start()
+        {
+            SendNextCallback();
         }
 
         public void Reset()
         {
-            _waitThread?.Abort();
-
             _index = 0;
             _lastMs = 0;
-
-            _waitThread = new Thread(ListenThead);
-            _waitThread.IsBackground = true;
-            _waitThread.Start();
+            _timer.Stop();
         }
 
-        private void ListenThead()
+        private void SendNextCallback()
         {
-            Thread.Sleep(500);
-            while (true)
+            if (_index >= _xAxis.GetData().Count)
             {
-                if (_index >= _xAxis.GetData().Count)
-                    return;
-                
-                double time = _xAxis.GetData()[_index];
-                Thread.Sleep((int) (time*1000)-_lastMs);
-
-                List<DataEntry> entry = new List<DataEntry>();
-
-                for (int i = 0; i < _source.GetAllData().Count; i++)
-                {
-                    DataList data = _source.GetAllData()[i];
-
-                    entry.Add(new DataEntry(data.Name, data.Unit, data.GetData()[_index]));
-                }
-
-                _index++;
-                _lastMs = (int) (time*1000);
-
-                OnNextReadValue?.Invoke(entry);
+                Timer.Stop();
+                return;
             }
-        }
 
-        ~LiveDataEmulator()
-        {
-            _waitThread.Abort();
+            List<DataEntry> entry = new List<DataEntry>();
+            for (int i = 0; i < _source.GetAllData().Count; i++)
+            {
+                DataList data = _source.GetAllData()[i];
+                entry.Add(new DataEntry(data.Name, data.Unit, data.GetData()[_index]));
+            }
+            
+            OnNextReadValue?.Invoke(entry);
+            
+            double time = _xAxis.GetData()[_index];
+            double delta = (time * 1000) - _lastMs;
+            _lastMs = time * 1000;
+
+            _index++;
+            Timer.Start((int)delta);
         }
     }
 }

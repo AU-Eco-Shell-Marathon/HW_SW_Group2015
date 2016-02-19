@@ -12,5 +12,8 @@ namespace RollingRoad
         /// </summary>
 
         event ReadOnlyDataEntryList OnNextReadValue;
+
+        void Start();
+        void Stop();
     }
 }

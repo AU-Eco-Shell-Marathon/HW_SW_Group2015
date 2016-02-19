@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RollingRoad.WinApplication"
         mc:Ignorable="d"
-        Title="Select Source" Height="250" Width="450">
+        Title="Select Source" Height="250" Width="450" ResizeMode="NoResize">
     <Grid>
-        <Button Content="From file" Click="SourceFromFile_Click" />
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Select source" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <Label Grid.Row="1" Content="Simulate from a file:" VerticalAlignment="Center" Margin="20"/>
+        <Button Grid.Row="1" Content="From file" Click="SourceFromFile_Click" Margin="180,25,180,25" />
     </Grid>
 </Window>

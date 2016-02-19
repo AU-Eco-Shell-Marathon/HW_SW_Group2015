@@ -42,12 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvDataSource.cs" />
+    <Compile Include="ITimer.cs" />
     <Compile Include="LiveDataEmulator.cs" />
     <Compile Include="DataList.cs" />
     <Compile Include="DataEntry.cs" />
     <Compile Include="IDataSource.cs" />
     <Compile Include="ILiveDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolStreamLiveData.cs" />
+    <Compile Include="SystemTimer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

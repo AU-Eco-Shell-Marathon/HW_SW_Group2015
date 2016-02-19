@@ -46,12 +46,17 @@ namespace RollingRoad.WinApplication
 
         public void SelectSource(ILiveDataSource source)
         {
-            if(_currentSource != null)
+
+            if (_currentSource != null)
                 _currentSource.OnNextReadValue -= ThreadMover;
 
             _data = new List<LineStructure?>();
             _currentSource = source;
             _currentSource.OnNextReadValue += ThreadMover;
+
+            ClearChart();
+
+            _currentSource.Start();
         }
 
         private LineStructure CreateNewLine(DataEntry entry)
@@ -191,6 +196,8 @@ namespace RollingRoad.WinApplication
             LiveDataChart.Children.RemoveAll(typeof(LineGraph));
             LiveDataStackPanel.Children.Clear();
             _data = new List<LineStructure?>();
+
+            HasBeenSaved = true;
         }
 
         private void LiveDataClearButton_Click(object sender, RoutedEventArgs e)
