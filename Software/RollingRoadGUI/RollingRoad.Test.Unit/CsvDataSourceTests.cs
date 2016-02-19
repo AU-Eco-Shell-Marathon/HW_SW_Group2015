@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
@@ -43,6 +45,64 @@ namespace RollingRoad.Test.Unit
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\n;unit1;unit2");
 
             Assert.That(CsvDataSource.LoadFromStream(reader), Is.Not.Null);
+        }
+
+        [Test]
+        public void LoadFromStream_NoDescriptionInStream_DescriptionIsEmpty()
+        {
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\n;unit1;unit2");
+            CsvDataSource source = CsvDataSource.LoadFromStream(reader);
+
+            Assert.That(source.Description, Is.Empty.Or.Null);
+        }
+
+        [Test]
+        public void LoadFromStream_DescriptionInStream_DescriptionLoaded()
+        {
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
+            CsvDataSource source = CsvDataSource.LoadFromStream(reader);
+
+            Assert.That(source.Description, Is.EqualTo("Test Description"));
+        }
+
+        [Test]
+        public void GetDataList_DataTypeAdded_DatalistWithCorrectNameReturned()
+        {
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
+            CsvDataSource source = CsvDataSource.LoadFromStream(reader);
+
+            Assert.That(source.GetDataList("type1").Name, Is.EqualTo("type1"));
+        }
+
+        [Test]
+        public void GetDataList_DataTypeAdded_DatalistWithCorrectUnitReturned()
+        {
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
+            CsvDataSource source = CsvDataSource.LoadFromStream(reader);
+
+            Assert.That(source.GetDataList("type1").Unit, Is.EqualTo("unit1"));
+        }
+
+        [Test]
+        public void GetDataList_DataTypeNotAdded_ExceptionThrown()
+        {
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
+            CsvDataSource source = CsvDataSource.LoadFromStream(reader);
+
+            Assert.Throws<ArgumentException>(() => source.GetDataList("type3"));
+        }
+        
+        [TestCase(5.0)]
+        [TestCase(-5.0)]
+        [TestCase(0.0)]
+        [TestCase(0.852)]
+        [TestCase(-0.852)]
+        public void GetDataList_DataTypeAddedWithData_DataPresent(double data)
+        {
+            StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;{data.ToString(new CultureInfo("en-US"))};3");
+            CsvDataSource source = CsvDataSource.LoadFromStream(reader);
+            
+            Assert.That(source.GetDataList("type1").GetData().First(), Is.EqualTo(data));
         }
 
         [Test]

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Text;
 using NUnit.Framework;
 
@@ -118,6 +119,86 @@ namespace RollingRoad.Test.Unit
 
             Assert.That(nameRead1, Is.EqualTo("Time"));
             Assert.That(nameRead2, Is.EqualTo("Torque"));
+        }
+
+
+        [TestCase(5.0)]
+        [TestCase(-5.0)]
+        [TestCase(0.0)]
+        [TestCase(0.852)]
+        [TestCase(-0.852)]
+        public void OnNextReadValueEvent_OneUnitAndOneDataPoint_EventCalledWithCorrectData(double value)
+        {
+            MemoryStream ms = new MemoryStream();
+            StreamWriter writer = new StreamWriter(ms);
+            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            double valueRead = 0;
+
+            interpreter.OnNextReadValue += (data) =>
+            {
+                valueRead = data[0].Value;
+            };
+
+            interpreter.Start(false);
+            ms.SetLength(0);
+
+            writer.Write("1 0 Time Seconds\n");
+            writer.Flush();
+            ms.Position = 0;
+            interpreter.Listen();
+            ms.SetLength(0);
+
+            ms.SetLength(0);
+            writer.Write($"3 {value.ToString(new CultureInfo("en-US"))}\n");
+            writer.Flush();
+            ms.Position = 0;
+            interpreter.Listen();
+            ms.SetLength(0);
+
+            Assert.That(valueRead, Is.EqualTo(value));
+        }
+
+        [TestCase(5.0)]
+        [TestCase(-5.0)]
+        [TestCase(0.0)]
+        [TestCase(0.852)]
+        [TestCase(-0.852)]
+        public void OnNextReadValueEvent_OneUnitAndTwoDataPoints_EventCalledWithCorrectDataEndPoints(double value)
+        {
+            MemoryStream ms = new MemoryStream();
+            StreamWriter writer = new StreamWriter(ms);
+            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            double valueRead = 0;
+
+            interpreter.OnNextReadValue += (data) =>
+            {
+                valueRead = data[0].Value;
+            };
+
+            interpreter.Start(false);
+            ms.SetLength(0);
+
+            writer.Write("1 0 Time Seconds\n");
+            writer.Flush();
+            ms.Position = 0;
+            interpreter.Listen();
+            ms.SetLength(0);
+
+            ms.SetLength(0);
+            writer.Write($"3 4.25\n");
+            writer.Flush();
+            ms.Position = 0;
+            interpreter.Listen();
+            ms.SetLength(0);
+            
+            ms.SetLength(0);
+            writer.Write($"3 {value.ToString(new CultureInfo("en-US"))}\n");
+            writer.Flush();
+            ms.Position = 0;
+            interpreter.Listen();
+            ms.SetLength(0);
+
+            Assert.That(valueRead, Is.EqualTo(value));
         }
     }
 }
