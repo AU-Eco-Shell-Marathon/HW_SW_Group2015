@@ -11,8 +11,8 @@ namespace RollingRoad.WinApplication
 {
     public struct LineStructure
     {
-        public ObservableDataSource<Point> RawData;
-        public DataList Data;
+        public readonly ObservableDataSource<Point> RawData;
+        public readonly DataList Data;
         public LiveDataDisplay Label;
 
         public string Name => Data.Name;
@@ -42,11 +42,13 @@ namespace RollingRoad.WinApplication
         {
             InitializeComponent();
             ClearChart();
-            //SelectSource(new LiveDataEmulator(CsvDataSource.LoadFromFile("3TypesOfData17Rows.csv")));
         }
 
         public void SelectSource(ILiveDataSource source)
         {
+            if(_currentSource != null)
+                _currentSource.OnNextReadValue -= ThreadMover;
+
             _data = new List<LineStructure?>();
             _currentSource = source;
             _currentSource.OnNextReadValue += ThreadMover;
@@ -187,6 +189,7 @@ namespace RollingRoad.WinApplication
         private void ClearChart()
         {
             LiveDataChart.Children.RemoveAll(typeof(LineGraph));
+            LiveDataStackPanel.Children.Clear();
             _data = new List<LineStructure?>();
         }
 
@@ -216,6 +219,16 @@ namespace RollingRoad.WinApplication
         private void LiveDataStartStopButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectSourceWindow window = new SelectSourceWindow();
+
+            if (window.ShowDialog() == true)
+            {
+                SelectSource(window.LiveDataSource);
+            }
         }
     }
 }

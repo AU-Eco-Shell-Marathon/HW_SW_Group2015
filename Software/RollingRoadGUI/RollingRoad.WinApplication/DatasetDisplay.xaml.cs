@@ -22,8 +22,8 @@ namespace RollingRoad.WinApplication
             set { SetValue(DatasetNameProperty, value); }
         }
 
-        public static DependencyProperty DescriptionProperty = DependencyProperty.Register("Description", typeof(string), typeof(DatasetDisplay));
-        public static DependencyProperty DatasetNameProperty = DependencyProperty.Register("DatasetName", typeof(string), typeof(DatasetDisplay));
+        public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register("Description", typeof(string), typeof(DatasetDisplay));
+        public static readonly DependencyProperty DatasetNameProperty = DependencyProperty.Register("DatasetName", typeof(string), typeof(DatasetDisplay));
         
         public DatasetDisplay()
         {

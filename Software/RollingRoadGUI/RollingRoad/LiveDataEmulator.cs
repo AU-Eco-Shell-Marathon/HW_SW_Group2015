@@ -33,12 +33,7 @@ namespace RollingRoad
             _waitThread.Start();
         }
 
-        public void Stop()
-        {
-            _waitThread?.Abort();
-        }
-
-        public void ListenThead()
+        private void ListenThead()
         {
             Thread.Sleep(500);
             while (true)

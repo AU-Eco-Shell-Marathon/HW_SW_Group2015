@@ -25,7 +25,6 @@ namespace RollingRoad.WinApplication
         /// Append a datasource to a WPFToolkit chart
         /// </summary>
         /// <param name="source">Data source</param>
-        /// <param name="chart">Chart to append to</param>
         private void AppendDataToChart(IDataSource source)
         {
             //Assume time is used as x-axis

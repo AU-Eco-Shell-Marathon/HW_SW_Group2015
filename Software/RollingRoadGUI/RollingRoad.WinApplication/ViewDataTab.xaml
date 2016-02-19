@@ -15,7 +15,7 @@
 
 
         <!-- Data select -->
-        <Grid x:Name="DataSelectGrid" Grid.Column="0">
+        <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
@@ -29,10 +29,10 @@
             <ListView Grid.Row="1" x:Name="ListViewDataselect" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="5, 0, 5, 0" SelectionChanged="ListViewDataselect_SelectionChanged"/>
 
             <!-- Load button -->
-            <Button x:Name="OpenDataSaveButton" Grid.Row="2" Click="BtnFileLoadDataset_Click" Margin="10, 10, 10, 10">Open</Button>
+            <Button Grid.Row="2" Click="BtnFileLoadDataset_Click" Margin="10, 10, 10, 10">Open</Button>
         </Grid>
 
-        <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch" Name="GridSplitter1"/>
+        <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch"/>
 
         <!-- Chart -->
         <dynamicDataDisplay:ChartPlotter x:Name="ViewDataChart" Grid.Column="2"/>
