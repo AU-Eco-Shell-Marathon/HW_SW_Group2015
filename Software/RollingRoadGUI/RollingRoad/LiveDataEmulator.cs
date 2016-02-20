@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
@@ -7,11 +8,19 @@ namespace RollingRoad
     public class LiveDataEmulator : ILiveDataSource
     {
         private readonly IDataSource _source;
-        private readonly DataList _xAxis;
+        private DataList _xAxis;
         private int _index;
         private double _lastMs;
 
         public event ReadOnlyDataEntryList OnNextReadValue;
+        
+        public string XAxisName
+        {
+            set
+            {
+                _xAxis = _source.GetDataList(value);
+            }
+        }
 
         private ITimer _timer;
         public ITimer Timer
@@ -30,10 +39,19 @@ namespace RollingRoad
             }
         }
 
-        public LiveDataEmulator(IDataSource source, string timeAxis = "Time")
+        public LiveDataEmulator(IDataSource source)
         {
             _source = source;
-            _xAxis = _source.GetDataList(timeAxis);
+
+            try
+            {
+                _xAxis = source.GetDataList("Time");
+            }
+            catch
+            {
+                // ignored
+            }
+
             Timer = new SystemTimer();
             
             Reset();
@@ -58,6 +76,9 @@ namespace RollingRoad
 
         private void SendNextCallback()
         {
+            if(_xAxis == null)
+                return;
+
             if (_index >= _xAxis.GetData().Count)
             {
                 Timer.Stop();

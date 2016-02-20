@@ -10,57 +10,21 @@ namespace RollingRoad
     /// <summary>
     /// 
     /// </summary>
-    public class CsvDataSource : IDataSource
+    public class CsvDataFile
     {
-        private readonly List<DataList> _data = new List<DataList>(); 
 
         /// <summary>
         /// No public ctor, must be created by <see cref="LoadFromFile"/>
         /// </summary>
-        private CsvDataSource()
+        private CsvDataFile()
         {
             
         }
 
         /// <summary>
-        /// Name of the file
-        /// </summary>
-        public string Name { get; private set; } = "Unknown";
-
-        /// <summary>
-        /// Description written in the file
-        /// </summary>
-        public string Description { get; private set; }
-
-        /// <summary>
         /// Path of the file opened
         /// </summary>
         public string FilePath { get; private set; } = "Unknown";
-
-        /// <summary>
-        /// Get datalist by name
-        /// </summary>
-        /// <param name="name">Name of the data (Ex "Time", "Torque")</param>
-        /// <returns></returns>
-        public DataList GetDataList(string name)
-        {
-            foreach (var dataList in _data)
-            {
-                if (dataList.Name == name)
-                    return dataList;
-            }
-
-            throw new ArgumentException("Name not found");
-        }
-
-        /// <summary>
-        /// Returns all data known
-        /// </summary>
-        /// <returns></returns>
-        public IReadOnlyList<DataList> GetAllData()
-        {
-            return _data.AsReadOnly();
-        }
 
 
         private const string HeaderName = "shell eco marathon";
@@ -70,24 +34,24 @@ namespace RollingRoad
         /// </summary>
         /// <param name="path">What path to save the file to</param>
         /// <param name="data">Data to be saved</param>
-        /// <param name="description">Description to be saved in file</param>
-        public static void WriteToFile(string path, List<DataList> data, string description)
+        public static void WriteToFile(string path, IDataSource data)
         {
             using (FileStream fileStream = File.Open(path, FileMode.Create, FileAccess.Write))
             {
                 StreamWriter writer = new StreamWriter(fileStream);
 
-                WriteToStream(writer, data, description);
+                WriteToStream(writer, data);
             }
         }
 
-        public static void WriteToStream(TextWriter writer, List<DataList> data, string description)
+        public static void WriteToStream(TextWriter writer, IDataSource source)
         {
             string seperator = ";";
+            IReadOnlyList<DataList> data = source.GetAllData();
             int dataLength = data[0].GetData().Count;
 
             writer.WriteLine(HeaderName + seperator + string.Join(seperator, data.Select(x => x.Name))); //Names
-            writer.WriteLine(description + seperator + string.Join(seperator, data.Select(x => x.Unit))); //Units
+            writer.WriteLine(source.Description + seperator + string.Join(seperator, data.Select(x => x.Unit))); //Units
 
             //Data
             for (int i = 0; i < dataLength; i++)
@@ -101,7 +65,7 @@ namespace RollingRoad
             writer.Flush();
         }
 
-        public static CsvDataSource LoadFromStream(StreamReader reader)
+        public static MemoryDataSource LoadFromStream(StreamReader reader)
         {
 
             //Make sure stream is not empty
@@ -137,12 +101,12 @@ namespace RollingRoad
                 throw new Exception("Unit lenght does not match names");
 
 
-            CsvDataSource data = new CsvDataSource();
+            MemoryDataSource data = new MemoryDataSource();
 
             //Create a new list for each of the units
             for (int i = 1; i < names.Length; i++)
             {
-                data._data.Add(new DataList(names[i], units[i]));
+                data.Data.Add(new DataList(names[i], units[i]));
             }
 
             //We allready read two lines
@@ -165,7 +129,7 @@ namespace RollingRoad
                 //Parse values
                 for (int i = 1; i < readData.Length; i++)
                 {
-                    data._data[i - 1].AddData(double.Parse(readData[i], CultureInfo.InvariantCulture));
+                    data.Data[i - 1].AddData(double.Parse(readData[i], CultureInfo.InvariantCulture));
                 }
 
                 //Progress one line
@@ -181,9 +145,9 @@ namespace RollingRoad
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         /// <param name="path">Path of the csv file to load</param>
-        public static CsvDataSource LoadFromFile(string path)
+        public static MemoryDataSource LoadFromFile(string path)
         {
-            CsvDataSource data;
+            MemoryDataSource data;
 
             if (!File.Exists(path))
                 throw new FileNotFoundException("File not found", path);
@@ -194,7 +158,6 @@ namespace RollingRoad
 
                 data = LoadFromStream(reader);
                 data.Name = Path.GetFileName(path);
-                data.FilePath = path;
             }
 
             return data;

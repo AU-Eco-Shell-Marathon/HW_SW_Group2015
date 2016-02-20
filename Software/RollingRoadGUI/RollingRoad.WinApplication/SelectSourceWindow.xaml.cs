@@ -32,7 +32,7 @@ namespace RollingRoad.WinApplication
 
                 try
                 {
-                    LiveDataSource = new LiveDataEmulator(CsvDataSource.LoadFromFile(filename));
+                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename));
                     DialogResult = true;
                     Close();
 

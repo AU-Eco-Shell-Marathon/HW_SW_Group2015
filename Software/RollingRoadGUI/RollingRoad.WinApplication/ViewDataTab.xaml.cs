@@ -77,7 +77,7 @@ namespace RollingRoad.WinApplication
 
                 try
                 {
-                    CsvDataSource dataSource = CsvDataSource.LoadFromFile(filename);
+                    MemoryDataSource dataSource = CsvDataFile.LoadFromFile(filename);
 
                     DatasetDisplay display = new DatasetDisplay
                     {
