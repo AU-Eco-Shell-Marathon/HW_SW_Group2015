@@ -21,7 +21,7 @@ namespace RollingRoad
         /// <summary>
         /// Name of the file
         /// </summary>
-        public string Name { get; set; } = "Unknown";
+        public string Name { get; set; }
 
         /// <summary>
         /// Description written in the file

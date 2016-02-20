@@ -104,7 +104,7 @@ namespace RollingRoad
         public void Stop()
         {
             SendCommand(((int)PacketId.Stop).ToString());
-            _listenThread.Abort();
+            _shouldClose = true;
         }
 
         public void Start()

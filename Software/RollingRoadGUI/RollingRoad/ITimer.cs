@@ -5,7 +5,7 @@
     public interface ITimer
     {
         /// <summary>
-        /// Blocking delay call
+        /// Initiate timer to make a call to <see cref="Elapsed"/>
         /// </summary>
         /// <param name="ms">Time to delay in milliseconds</param>
         void Start(int ms);

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvDataFile.cs" />
+    <Compile Include="CsvDataInterpeter.cs" />
     <Compile Include="IRollingRoadControl.cs" />
     <Compile Include="ITimer.cs" />
     <Compile Include="LiveDataEmulator.cs" />

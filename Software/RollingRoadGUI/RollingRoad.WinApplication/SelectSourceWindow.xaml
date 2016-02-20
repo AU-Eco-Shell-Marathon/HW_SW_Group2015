@@ -16,6 +16,10 @@
         <Label Grid.Row="0" Content="Select source" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
         <Label Grid.Row="1" Content="Simulate from a file:" VerticalAlignment="Center" Margin="20"/>
-        <Button Grid.Row="1" Content="From file" Click="SourceFromFile_Click" Margin="180,25,180,25" />
+        <Button Grid.Row="1" Content="Select file" Click="SourceFromFile_Click" Margin="180,25,180,25" />
+
+        <ComboBox x:Name="SelectComPortComboBox" HorizontalAlignment="Left" Margin="180,25,0,0" Grid.Row="2" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Select COM-port:" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Button Content="Test and connect" HorizontalAlignment="Left" Margin="298,25,0,0" Grid.Row="2" VerticalAlignment="Top" Width="104" Height="22" Click="TestAndConnectComPortButton"/>
     </Grid>
 </Window>

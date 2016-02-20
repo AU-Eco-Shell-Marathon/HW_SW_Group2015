@@ -109,5 +109,21 @@ namespace RollingRoad.Test.Unit
             Assert.That(list.GetData().Count, Is.EqualTo(1));
             Assert.That(list.GetData().First(), Is.EqualTo(3));
         }
+
+        [Test]
+        public void Title_NameAndUnitSet_NameContainedInTitle()
+        {
+            DataList list = new DataList("TestName", "TestUnit");
+
+            Assert.That(list.Title, Does.Contain("TestName"));
+        }
+
+        [Test]
+        public void Title_NameAndUnitSet_UnitContainedInTitle()
+        {
+            DataList list = new DataList("TestName", "TestUnit");
+
+            Assert.That(list.Title, Does.Contain("TestUnit"));
+        }
     }
 }
