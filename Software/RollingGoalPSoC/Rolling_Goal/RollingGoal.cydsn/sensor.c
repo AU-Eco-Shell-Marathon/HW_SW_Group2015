@@ -48,12 +48,13 @@ uint16 A_generator_samples = 0;
 
 CY_ISR(SAR_ADC_1)
 {
+    Moment_temp = ADC_SAR_Seq_1_GetResult16(2);
     if(n == N)
         return;
     
     V_motor[n]=ADC_SAR_Seq_1_GetResult16(0);
     A_motor[n]=ADC_SAR_Seq_1_GetResult16(1);
-    Moment_temp = ADC_SAR_Seq_1_GetResult16(2);
+    
     RPM_Moment_temp = RPM_temp;
     
     Moment[n]=Moment_temp;
@@ -108,6 +109,7 @@ void sensor_init()
     ADC_SAR_Seq_1_Start();
     Timer_1_Start();
     Counter_1_Start();
+    Counter_2_Start();
     
     Opamp_1_Start();
     VDAC8_1_Start();
@@ -116,6 +118,7 @@ void sensor_init()
     Clock_1_Start();
     Clock_2_Start();
     Clock_3_Start();
+    Clock_5_Start();
     
     Control_Reg_1_Write(1);
     CyDelayUs(1000);
@@ -124,7 +127,7 @@ void sensor_init()
 
 char getData(struct data * Data)
 {
-    if(n != N)
+    if(n != N - 1)
         return 0;
     
     convertToUnit(V_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,0);
@@ -149,7 +152,9 @@ char getData(struct data * Data)
     calcSamples(P_mekanisk, n, &Data->P_mekanisk);
     
     Data->distance = Counter_1_ReadCounter();
-    
+    Data->time_ms = Counter_2_ReadCounter();
+    Data->stop = Status_Reg_1_Read()&0b1;
+    n=0;
     return 1;
 }
 
@@ -192,7 +197,7 @@ void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Samp
     if(Sample->rms < 0)
         Sample->rms = 0;
     else
-        Sample->rms = sqrt(Sample->rms);
+        Sample->rms = sqrt((double)Sample->rms);
 
 }
 

@@ -12,16 +12,16 @@
 #include "PID.h"
 #include <project.h>
 
-static struct PIDparameter parameter_;
+struct PIDparameter parameter_;
 
-static int PIDval = 0;
-static int dt = dt_def;
-static int iState = 0;
-static int err = 0;
-static int pre_err = 0;
+int PIDval = 0;
+int dt = dt_def;
+int iState = 0;
+int err = 0;
+int pre_err = 0;
 
 
-void init()
+void PID_init()
 {
     parameter_.Kp = Kp_def;
     parameter_.Ki = Ki_def;
@@ -36,7 +36,7 @@ void init()
     
 }
 
-void tick(int sensor, int input)
+void PID_tick(int sensor, int input)
 {
     PIDval = 0;
 	err = input - sensor;
@@ -63,7 +63,7 @@ void tick(int sensor, int input)
 	PWM_1_WriteCompare((unsigned char)PIDval);
 }
 
-void setPID(struct PIDparameter * parameter)
+void setPID(const struct PIDparameter * parameter)
 {
     parameter_ = *parameter;
 }

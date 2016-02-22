@@ -9,7 +9,14 @@
  *
  * ========================================
 */
+#include "PID.h"
+#include "sensor.h"
+
 
 void run();
+void stop();
+void update(const struct PIDparameter *, const double * Moment, char restart);
+void init();
+
 
 /* [] END OF FILE */

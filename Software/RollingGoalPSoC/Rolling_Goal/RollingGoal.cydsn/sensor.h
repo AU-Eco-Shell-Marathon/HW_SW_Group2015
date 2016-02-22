@@ -31,7 +31,8 @@ struct data
     struct sample Moment;
     struct sample P_mekanisk;
     uint32 distance;
-    
+    uint32 time_ms;
+    char stop;
 };
 
 

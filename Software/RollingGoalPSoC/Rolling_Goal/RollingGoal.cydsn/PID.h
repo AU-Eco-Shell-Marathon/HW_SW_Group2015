@@ -29,7 +29,7 @@ struct PIDparameter
     int iMIN;
 };
 
-void init();
-void tick(int sensor, int input);
-void setPID(struct PIDparameter * parameter);
+void PID_init();
+void PID_tick(int sensor, int input);
+void setPID(const struct PIDparameter * parameter);
 /* [] END OF FILE */
