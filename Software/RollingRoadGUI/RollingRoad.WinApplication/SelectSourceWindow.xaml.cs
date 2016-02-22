@@ -58,8 +58,11 @@ namespace RollingRoad.WinApplication
             }
         }
 
-        private void TestAndConnectComPortButton(object sender, RoutedEventArgs e)
+        private void ConnectComPortButton(object sender, RoutedEventArgs e)
         {
+            if (SelectComPortComboBox.SelectedItem == null)
+                return;
+
 
         }
     }
