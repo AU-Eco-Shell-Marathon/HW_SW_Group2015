@@ -183,7 +183,7 @@ namespace RollingRoad.WinApplication
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Error saving data!", "Error: " + e.Message, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error: " + e.Message, "Error saving data!", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
 
@@ -227,16 +227,34 @@ namespace RollingRoad.WinApplication
 
         private void LiveDataStartStopButton_Click(object sender, RoutedEventArgs e)
         {
+            if ((string)LiveDataStartStopButton.Content == "Stop")
+            {
+                _currentSource?.Stop();
 
+                LiveDataStartStopButton.Content = "Start";
+            }
+            else
+            {
+                _currentSource?.Start();
+
+                LiveDataStartStopButton.Content = "Stop";
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SelectSource_Click(object sender, RoutedEventArgs e)
         {
             SelectSourceWindow window = new SelectSourceWindow();
 
-            if (window.ShowDialog() == true)
+            try
             {
-                SelectSource(window.LiveDataSource);
+                if (window.ShowDialog() == true)
+                {
+                    SelectSource(window.LiveDataSource);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error: " + exception.Message, "Error opening source!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -1,0 +1,17 @@
+﻿using System.Windows;
+
+namespace RollingRoad.WinApplication
+{
+    /// <summary>
+    /// Interaction logic for AboutWindow.xaml
+    /// </summary>
+    public partial class AboutWindow : Window
+    {
+        public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+        public AboutWindow()
+        {
+            InitializeComponent();
+        }
+    }
+}

@@ -60,7 +60,7 @@ namespace RollingRoad
 
             //Make sure header name matches (basic check to make not all files are loaded)
             if (names[0].ToLower() != HeaderName)
-                throw new Exception($"Invalid header, should be {HeaderName}: " + names[0].ToLower());
+                throw new Exception($"Invalid header, should be {HeaderName} (Is: " + names[0].ToLower() + ")");
 
             //Units
             line = reader.ReadLine();

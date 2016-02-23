@@ -17,7 +17,7 @@ namespace RollingRoad
                 throw new ArgumentException("Name can't be null or empty");
 
             if (string.IsNullOrEmpty(unit))
-                throw new ArgumentException("Name can't be null or empty");
+                throw new ArgumentException("Unit can't be null or empty");
 
             Name = name;
             Unit = unit;
@@ -37,6 +37,9 @@ namespace RollingRoad
         /// </summary>
         public double Value { get; }
 
+        /// <summary>
+        /// Concat of the name and unit
+        /// </summary>
         public string Title => $"{Name} ({Unit})";
     }
 }

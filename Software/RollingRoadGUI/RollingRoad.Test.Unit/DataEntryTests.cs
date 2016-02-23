@@ -57,5 +57,21 @@ namespace RollingRoad.Test.Unit
 
             Assert.That(entry.Value, Is.EqualTo(0));
         }
+
+        [Test]
+        public void Title_InsertNameAndUnit_NameExists()
+        {
+            DataEntry entry = new DataEntry("TestName", "TestUnit", 0);
+
+            Assert.That(entry.Title, Does.Contain("TestName"));
+        }
+
+        [Test]
+        public void Title_InsertNameAndUnit_UnitExists()
+        {
+            DataEntry entry = new DataEntry("TestName", "TestUnit", 0);
+
+            Assert.That(entry.Title, Does.Contain("TestUnit"));
+        }
     }
 }
