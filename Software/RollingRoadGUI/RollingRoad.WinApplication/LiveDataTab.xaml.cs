@@ -176,8 +176,10 @@ namespace RollingRoad.WinApplication
             {
                 try
                 {
-                    MemoryDataSource source = new MemoryDataSource(_data.Select(x => x?.Data).ToList());
-                    source.Description = DateTime.Now.ToLongDateString();
+                    MemoryDataSource source = new MemoryDataSource(_data.Select(x => x?.Data).ToList())
+                    {
+                        Description = DateTime.Now.ToLongDateString()
+                    };
                     //Save file here
                     CsvDataFile.WriteToFile(dlg.FileName, source);
                 }

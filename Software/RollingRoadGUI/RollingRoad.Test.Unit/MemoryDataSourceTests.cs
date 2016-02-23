@@ -10,8 +10,7 @@ namespace RollingRoad.Test.Unit
         [Test]
         public void Ctor_DataListInterserted_SameListInProperty()
         {
-            List<DataList> data = new List<DataList>();
-            data.Add(new DataList("TestName", "TestUnit"));
+            List<DataList> data = new List<DataList> {new DataList("TestName", "TestUnit")};
 
             MemoryDataSource source = new MemoryDataSource(data);
 
@@ -58,9 +57,8 @@ namespace RollingRoad.Test.Unit
         [TestCase(null)]
         public void Name_SetAndGet_CorrectName(string name)
         {
-            MemoryDataSource source = new MemoryDataSource();
+            MemoryDataSource source = new MemoryDataSource {Name = name};
 
-            source.Name = name;
 
             Assert.That(source.Name, Is.EqualTo(name));
         }

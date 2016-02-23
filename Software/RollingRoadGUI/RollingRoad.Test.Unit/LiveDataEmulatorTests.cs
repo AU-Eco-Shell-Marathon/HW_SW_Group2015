@@ -32,10 +32,7 @@ namespace RollingRoad.Test.Unit
 
             int invokeCount = 0;
 
-            emu.OnNextReadValue += (data) =>
-            {
-                invokeCount++;
-            };
+            emu.OnNextReadValue += (data) =>invokeCount++;
 
             emu.Start();
 
@@ -52,15 +49,11 @@ namespace RollingRoad.Test.Unit
             MemoryDataSource source = new MemoryDataSource();
             source.Data.Add(new DataList("Time", "TestUnit"));
             source.Data[0].AddData(value);
-            LiveDataEmulator emu = new LiveDataEmulator(source);
-            emu.Timer = new MockITimer();
+            LiveDataEmulator emu = new LiveDataEmulator(source) {Timer = new MockITimer()};
 
             double dataRead = 0;
 
-            emu.OnNextReadValue += (data) =>
-            {
-                dataRead = data[0].Value;
-            };
+            emu.OnNextReadValue += (data) => dataRead = data[0].Value;
 
             emu.Start();
 

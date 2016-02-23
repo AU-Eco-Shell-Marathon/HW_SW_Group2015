@@ -5,7 +5,7 @@ namespace RollingRoad.WinApplication
     /// <summary>
     /// Interaction logic for AboutWindow.xaml
     /// </summary>
-    public partial class AboutWindow : Window
+    public partial class AboutWindow
     {
         public string Version => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 

@@ -8,7 +8,7 @@ namespace RollingRoad.WinApplication
     /// <summary>
     /// Interaction logic for SelectSourceWindow.xaml
     /// </summary>
-    public partial class SelectSourceWindow : Window
+    public partial class SelectSourceWindow
     {
         public SelectSourceWindow()
         {
@@ -63,8 +63,7 @@ namespace RollingRoad.WinApplication
             if (SelectComPortComboBox.SelectedItem == null)
                 return;
 
-            SerialPort port = new SerialPort((string)SelectComPortComboBox.SelectedValue);
-            port.BaudRate = 9600;
+            SerialPort port = new SerialPort((string) SelectComPortComboBox.SelectedValue) {BaudRate = 9600};
             port.Open();
            
             LiveDataSource = new SerialConnection(port);

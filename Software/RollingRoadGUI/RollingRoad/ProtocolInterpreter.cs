@@ -36,8 +36,7 @@ namespace RollingRoad
         {
             _stream = stream;
 
-            _listenThread = new Thread(ListenThread);
-            _listenThread.IsBackground = true;
+            _listenThread = new Thread(ListenThread) {IsBackground = true};
 
             _reader = new StreamReader(_stream, Encoding.ASCII);
             _writer = new StreamWriter(_stream, Encoding.ASCII);
