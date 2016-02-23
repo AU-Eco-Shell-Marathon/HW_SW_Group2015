@@ -12,10 +12,6 @@ namespace RollingRoad
     /// </summary>
     public class CsvDataInterpeter
     {
-
-        /// <summary>
-        /// No public ctor, must be created by <see cref="LoadFromFile"/>
-        /// </summary>
         private CsvDataInterpeter(){
         }
 
@@ -64,7 +60,7 @@ namespace RollingRoad
 
             //Make sure header name matches (basic check to make not all files are loaded)
             if (names[0].ToLower() != HeaderName)
-                throw new Exception("Invalid header: " + names[0].ToLower());
+                throw new Exception($"Invalid header, should be {HeaderName}: " + names[0].ToLower());
 
             //Units
             line = reader.ReadLine();
@@ -76,7 +72,7 @@ namespace RollingRoad
 
             //Make sure our unit length matches our amount of names
             if (units.Length != names.Length)
-                throw new Exception("Unit lenght does not match names");
+                throw new Exception("Unit length does not match names length");
 
 
             MemoryDataSource data = new MemoryDataSource();
@@ -102,12 +98,19 @@ namespace RollingRoad
 
                 //No data cell is allowed to be null, so our data must be at least as long as our amount of datatypes
                 if (readData.Length < names.Length)
-                    throw new Exception("Error at line " + curLine);
+                    throw new Exception("Error at line " + curLine + " (Number of cells does not match number of names)");
 
                 //Parse values
                 for (int i = 1; i < readData.Length; i++)
                 {
-                    data.Data[i - 1].AddData(double.Parse(readData[i], CultureInfo.InvariantCulture));
+                    double value;
+
+                    if (!double.TryParse(readData[i], NumberStyles.Number, CultureInfo.CreateSpecificCulture("en-US"), out value))
+                    {
+                        throw new Exception("Error at line " + curLine + " could not parse number");
+                    }
+
+                    data.Data[i - 1].AddData(value);
                 }
 
                 //Progress one line

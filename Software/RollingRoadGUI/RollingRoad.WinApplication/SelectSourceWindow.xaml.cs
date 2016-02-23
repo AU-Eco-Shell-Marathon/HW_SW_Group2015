@@ -63,7 +63,10 @@ namespace RollingRoad.WinApplication
             if (SelectComPortComboBox.SelectedItem == null)
                 return;
 
-
+            SerialPort port = new SerialPort();
+            port.Open();
+           
+            LiveDataSource = new SerialConnection(port);
         }
     }
 }

@@ -19,7 +19,6 @@ namespace RollingRoad
             }
         }
 
-
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         /// <param name="path">Path of the csv file to load</param>
