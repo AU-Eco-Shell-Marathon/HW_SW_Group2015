@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace RollingRoad
@@ -38,8 +39,8 @@ namespace RollingRoad
             _listenThread = new Thread(ListenThread);
             _listenThread.IsBackground = true;
 
-            _reader = new StreamReader(_stream);
-            _writer = new StreamWriter(_stream);
+            _reader = new StreamReader(_stream, Encoding.ASCII);
+            _writer = new StreamWriter(_stream, Encoding.ASCII);
         }
 
         private void ListenThread()

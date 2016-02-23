@@ -63,10 +63,14 @@ namespace RollingRoad.WinApplication
             if (SelectComPortComboBox.SelectedItem == null)
                 return;
 
-            SerialPort port = new SerialPort();
+            SerialPort port = new SerialPort((string)SelectComPortComboBox.SelectedValue);
+            port.BaudRate = 9600;
             port.Open();
            
             LiveDataSource = new SerialConnection(port);
+
+            DialogResult = true;
+            Close();
         }
     }
 }
