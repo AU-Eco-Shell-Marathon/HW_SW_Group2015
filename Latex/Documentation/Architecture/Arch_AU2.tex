@@ -33,12 +33,12 @@ The battery transmits power to the Battery Management System.\\Interface descrip
 		Description: The supplied power from the Battery.
 \end{itemize}
 
-\textbf{Block :Battery management system}\\
+\textbf{Block :Battery Management System}\\
 The power transmitted from the Battery is distributed to Motor Control Unit and DC Motor.\\
 Interface description:
 
 \begin{itemize}
-	\item \textbf{CU :power}\\
+	\item \textbf{CU :Power}\\
 		Direction: [Battery Management System] $\rightarrow$ [Motor Control Unit]\\
 		Description: The distributed power from the Battery Management System to the Motor Control Unit.
 	\item \textbf{DC\_Motor :Power}
@@ -82,7 +82,7 @@ Interface description:
 		Description: A digital signal from the Stop Switch to the Motor Control Unit XXXX\fxnote{uddyb} Voltage. When the digital signal is “high” the car must stop, and when “low” the car must be able to drive.
 \end{itemize}
 
-\textbf{Block :Deadman switch}\\
+\textbf{Block :Deadman Switch}\\
 The Deadman Switch transmits a “high” XXXVoltage to the Motor Control Unit when the Deadman Switch is pressed. A “low” XXXVoltage is transmitted to the Motor Control Unit when the Stop Switch is open, which must stop the car.
 Interface description:
 
@@ -92,7 +92,8 @@ Interface description:
 		Description: A digital signal from the Deadman Switch to the Motor Control Unit XXXXVoltage. When the digital signal is “high” the car must be able to drive, and when “low” the car must stop.
 \end{itemize}
 
-\textbf{Block :Control unit}\\
+\textbf{Block :Motor Control Unit}\\
+The Motor Control Unit controls the DC Motor and the Horn with PWM signals. The Motor Control Unit receives power from the Battery Management System, a digital signal from the Stop Switch and a digital signal from the Deadman Switch.\\
 Interface description:
 
 \begin{itemize}
