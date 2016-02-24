@@ -9,6 +9,6 @@
         /// Sets the torque
         /// </summary>
         /// <param name="torque">Must be higher than zero</param>
-        void SetTorque(int torque);
+        void SetTorque(double torque);
     }
 }

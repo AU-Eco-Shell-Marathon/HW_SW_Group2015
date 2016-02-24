@@ -89,10 +89,9 @@ namespace RollingRoad
             }
         }
 
-        public void SetTorque(int torque)
+        public void SetTorque(double torque)
         {
-            //TODO Check if ready to transmit
-            SendCommand((int)PacketId.TorqueCtrl + " " + torque);
+            SendCommand((int)PacketId.TorqueCtrl + " " + torque.ToString(new CultureInfo("en-US")));
         }
 
         private void SendCommand(string cmd)

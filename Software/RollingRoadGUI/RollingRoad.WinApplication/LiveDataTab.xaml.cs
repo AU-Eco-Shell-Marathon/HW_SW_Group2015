@@ -180,7 +180,8 @@ namespace RollingRoad.WinApplication
                     {
                         Description = DateTime.Now.ToLongDateString()
                     };
-                    //Save file here
+
+                    //Save file
                     CsvDataFile.WriteToFile(dlg.FileName, source);
                 }
                 catch (Exception e)
