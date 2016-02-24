@@ -1,4 +1,4 @@
-/* ========================================
+﻿/* ========================================
  *
  * Copyright YOUR COMPANY, THE YEAR
  * All Rights Reserved
@@ -34,11 +34,13 @@ void ReceiveData(void)
                 buf[buf_n+1]=0;
                 if(strcmp((char*)buf, handshake)==0)
                 {
-                    SendData((uint8*)"0 Time Seconds\n"); // Disse 3 linjer burde ændres
+		    SendData((uint8*)"0 RollingRoad\n"); 
+                    CyDelay(100); 	
+                    SendData((uint8*)"1 0 Time Seconds\n"); // Disse 3 linjer burde ændres
                     CyDelay(100);                         // til at kunne ændres dynamisk
-                    SendData((uint8*)"1 Torque Nm\n");
+                    SendData((uint8*)"1 1 Torque Nm\n");
                     CyDelay(100);
-                    SendData((uint8*)"2 Voltage Volt\n");
+                    SendData((uint8*)"1 2 Voltage Volt\n");
                 }
             }
             else if(buf[0]=='2' && buf_n==sizeof(stop)) // Stop
