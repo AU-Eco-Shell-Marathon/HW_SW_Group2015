@@ -1,8 +1,11 @@
 \section{Rolling Road}
-Text
+The Rolling Road is a dynamometer designed to measure the energy conversion efficiency  between the electric energy from the battery and rotanional energy in the wheel.
 
 \subsection{BDD}
-The Block Definition Diagram in \ref{fig:RR_BDD} gives a general overview of which parts the system is built up by.
+The Block Definition Diagram in \ref{fig:RR_BDD} gives a general overview of the structure of the system.
+
+The system is made up by a Roll which spins the DC Generator in order to create a voltage drop. The Roll is part of a Load System which able to change the rotational resistance in the Roll.
+Sensors in the system gather data about the power and torque delivered to the system. These sensors are able to send the gathered data to a Computer where it is represented graphically through a GUI. The whole system is controlled by a Control Unit.
 
 \begin{figure}[H]
 	\centering
@@ -14,6 +17,8 @@ The Block Definition Diagram in \ref{fig:RR_BDD} gives a general overview of whi
 \subsection{IBD}
 The Internal Block Diagram in \ref{fig:RR_IBD} gives a general overview of the internal and external communication between the blocks in the system.
 
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{Architecture/IBD_RollingRoad}
@@ -21,7 +26,7 @@ The Internal Block Diagram in \ref{fig:RR_IBD} gives a general overview of the i
 	\label{fig:RR_IBD}
 \end{figure}
 
-\subsection{Protocol description}
+\subsection{Signal description}
 The signals and protocols used to communicate between the blocks in Rolling Road are specified in this section.
 
 \textbf{Block :Power Sensor}\\
