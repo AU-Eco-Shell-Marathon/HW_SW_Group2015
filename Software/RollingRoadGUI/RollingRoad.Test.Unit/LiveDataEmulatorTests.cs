@@ -4,18 +4,22 @@ namespace RollingRoad.Test.Unit
 {
     internal class MockITimer : ITimer
     {
+        public int StartCallAmount { get; private set; }
+        public int StopCallAmount { get; private set; }
+
         /// <summary>
         /// Invoke instantly
         /// </summary>
         /// <param name="ms"></param>
         public void Start(int ms)
         {
+            StartCallAmount++;
             Elapsed?.Invoke();
         }
 
         public void Stop()
         {
-            
+            StopCallAmount++;
         }
 
         public event TimerElapsedEvent Elapsed;
@@ -29,9 +33,12 @@ namespace RollingRoad.Test.Unit
         {
             MemoryDataSource source = new MemoryDataSource();
             LiveDataEmulator emu = new LiveDataEmulator(source);
+            MockITimer timer = new MockITimer();
+            emu.Timer = timer;
 
             int invokeCount = 0;
 
+            //Excluded from coverage since invokeCount should not be called
             emu.OnNextReadValue += data =>invokeCount++;
 
             emu.Start();

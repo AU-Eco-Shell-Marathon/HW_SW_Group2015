@@ -7,7 +7,7 @@ namespace RollingRoad
     [ExcludeFromCodeCoverage]
     public class SerialConnection : ProtocolInterpreter, IDisposable
     {
-        public SerialPort Port { get; private set; }
+        public SerialPort Port { get; }
 
         public SerialConnection(SerialPort port) : base(port.BaseStream)
         {

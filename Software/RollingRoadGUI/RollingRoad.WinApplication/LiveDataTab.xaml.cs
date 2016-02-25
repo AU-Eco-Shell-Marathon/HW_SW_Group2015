@@ -33,7 +33,8 @@ namespace RollingRoad.WinApplication
     {
         private ILiveDataSource _currentSource;
         private List<LineStructure?> _data;
-        public bool HasBeenSaved { get; private set; } = true;
+
+        private bool HasBeenSaved { get; set; } = true;
 
 
         private const string XAxisName = "Time";
@@ -44,7 +45,7 @@ namespace RollingRoad.WinApplication
             ClearChart();
         }
 
-        public void SelectSource(ILiveDataSource source)
+        private void SelectSource(ILiveDataSource source)
         {
 
             if (_currentSource != null)

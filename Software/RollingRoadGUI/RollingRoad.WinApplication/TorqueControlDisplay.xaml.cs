@@ -8,9 +8,9 @@ namespace RollingRoad.WinApplication
     /// <summary>
     /// Interaction logic for TorqueControlDisplay.xaml
     /// </summary>
-    public partial class TorqueControlDisplay : UserControl
+    public partial class TorqueControlDisplay
     {
-        private ITorqueControl _control;
+        private readonly ITorqueControl _control;
 
         public TorqueControlDisplay(ITorqueControl control)
         {

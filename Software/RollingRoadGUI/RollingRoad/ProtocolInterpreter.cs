@@ -13,13 +13,12 @@ namespace RollingRoad
         /// </summary>
         public event ReadOnlyDataEntryList OnNextReadValue;
 
-        private readonly Stream _stream;
         private readonly Thread _listenThread;
         
         private readonly StreamReader _reader;
         private readonly StreamWriter _writer;
 
-        private bool _shouldClose = false;
+        private bool _shouldClose;
 
         private readonly Dictionary<int, DataEntry> _typeDictionary = new Dictionary<int, DataEntry>();
 
@@ -34,12 +33,10 @@ namespace RollingRoad
 
         public ProtocolInterpreter(Stream stream)
         {
-            _stream = stream;
-
             _listenThread = new Thread(ListenThread) {IsBackground = true};
 
-            _reader = new StreamReader(_stream, Encoding.ASCII);
-            _writer = new StreamWriter(_stream, Encoding.ASCII);
+            _reader = new StreamReader(stream, Encoding.ASCII);
+            _writer = new StreamWriter(stream, Encoding.ASCII);
         }
 
         private void ListenThread()
@@ -56,6 +53,10 @@ namespace RollingRoad
         public void Listen()
         {
             string line = _reader.ReadLine();
+
+            if (line == null)
+                return;
+
             string[] values = line.Split(' ');
 
             //Read packet id

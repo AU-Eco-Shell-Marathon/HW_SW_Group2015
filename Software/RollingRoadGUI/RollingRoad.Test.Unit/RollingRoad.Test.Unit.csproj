@@ -69,7 +69,6 @@
     <Compile Include="MemoryDataSourceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolInterpreterTests.cs" />
-    <Compile Include="SystemTimerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RollingRoad\RollingRoad.csproj">

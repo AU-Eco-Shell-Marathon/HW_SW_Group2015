@@ -4,7 +4,7 @@ using System.IO;
 namespace RollingRoad
 {
     [ExcludeFromCodeCoverage]
-    public class CsvDataFile
+    public static class CsvDataFile
     {
         /// <summary>
         /// Save datasource to file
