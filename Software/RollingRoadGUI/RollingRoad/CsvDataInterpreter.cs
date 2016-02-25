@@ -10,9 +10,9 @@ namespace RollingRoad
     /// <summary>
     /// 
     /// </summary>
-    public class CsvDataInterpeter
+    public class CsvDataInterpreter
     {
-        private CsvDataInterpeter(){
+        private CsvDataInterpreter(){
         }
 
         private const string HeaderName = "shell eco marathon";

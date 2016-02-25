@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace RollingRoad
 {
-    public class ProtocolInterpreter : ILiveDataSource, IRollingRoadControl
+    public class ProtocolInterpreter : ILiveDataSource, ITorqueControl
     {
         /// <summary>
         /// Updated each time a fullset om data has been recived.
@@ -96,8 +96,8 @@ namespace RollingRoad
 
         private void SendCommand(string cmd)
         {
-            _writer.Write(cmd + "\n");
-            _writer.Flush();
+            _writer?.Write(cmd + "\n");
+            _writer?.Flush();
         }
 
         public void Stop()

@@ -56,6 +56,14 @@ namespace RollingRoad.WinApplication
 
             ClearChart();
 
+            ITorqueControl torqueControl = source as ITorqueControl;
+
+            if (torqueControl != null)
+            {
+                LiveDataStackPanel.Children.Add(new TorqueControlDisplay(torqueControl));
+            }
+
+
             _currentSource.Start();
         }
 

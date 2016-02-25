@@ -60,8 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvDataFile.cs" />
-    <Compile Include="CsvDataInterpeter.cs" />
-    <Compile Include="IRollingRoadControl.cs" />
+    <Compile Include="CsvDataInterpreter.cs" />
+    <Compile Include="ITorqueControl.cs" />
     <Compile Include="ITimer.cs" />
     <Compile Include="LiveDataEmulator.cs" />
     <Compile Include="DataList.cs" />

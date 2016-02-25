@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace RollingRoad
 {
+    [ExcludeFromCodeCoverage]
     public class CsvDataFile
     {
         /// <summary>
@@ -15,7 +17,7 @@ namespace RollingRoad
             {
                 StreamWriter writer = new StreamWriter(fileStream);
 
-                CsvDataInterpeter.WriteToStream(writer, data);
+                CsvDataInterpreter.WriteToStream(writer, data);
             }
         }
 
@@ -33,7 +35,7 @@ namespace RollingRoad
             {
                 StreamReader reader = new StreamReader(fileStream);
 
-                data = CsvDataInterpeter.LoadFromStream(reader);
+                data = CsvDataInterpreter.LoadFromStream(reader);
                 data.Name = Path.GetFileName(path);
             }
 

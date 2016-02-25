@@ -3,7 +3,7 @@
     /// <summary>
     /// Allows the control of Rolling Road
     /// </summary>
-    public interface IRollingRoadControl
+    public interface ITorqueControl
     {
         /// <summary>
         /// Sets the torque

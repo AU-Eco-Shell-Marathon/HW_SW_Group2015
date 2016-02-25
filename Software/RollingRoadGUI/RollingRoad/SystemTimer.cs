@@ -1,7 +1,9 @@
-﻿using System.Timers;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Timers;
 
 namespace RollingRoad
 {
+    [ExcludeFromCodeCoverage]
     public class SystemTimer : ITimer
     {
         public event TimerElapsedEvent Elapsed;

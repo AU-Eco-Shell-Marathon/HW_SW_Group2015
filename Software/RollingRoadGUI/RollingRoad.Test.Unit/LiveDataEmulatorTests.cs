@@ -10,7 +10,7 @@ namespace RollingRoad.Test.Unit
         /// <param name="ms"></param>
         public void Start(int ms)
         {
-            Elapsed.Invoke();
+            Elapsed?.Invoke();
         }
 
         public void Stop()
@@ -32,7 +32,7 @@ namespace RollingRoad.Test.Unit
 
             int invokeCount = 0;
 
-            emu.OnNextReadValue += (data) =>invokeCount++;
+            emu.OnNextReadValue += data =>invokeCount++;
 
             emu.Start();
 
@@ -53,7 +53,7 @@ namespace RollingRoad.Test.Unit
 
             double dataRead = 0;
 
-            emu.OnNextReadValue += (data) => dataRead = data[0].Value;
+            emu.OnNextReadValue += data => dataRead = data[0].Value;
 
             emu.Start();
 
