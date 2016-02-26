@@ -12,6 +12,11 @@
 #include "PID.h"
 #include "sensor.h"
 
+//struct sekvens{
+//    int * seq_moment;
+//    uint32 * seq_distance;
+//    uint16 size;
+//};
 
 void run();
 void stop();

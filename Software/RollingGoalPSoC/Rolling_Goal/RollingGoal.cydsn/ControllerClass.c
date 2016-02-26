@@ -14,10 +14,13 @@
 
 int set_moment=0;
 
+//struct sekvens * seq = NULL;
+
+
 CY_ISR_PROTO(PID_isr);
 
 CY_ISR(PID_isr)
-{
+{  
     PID_tick(getMoment(), set_moment);
 }
 
@@ -42,18 +45,26 @@ void stop()
 
 void update(const struct PIDparameter * parameter, const double * Moment, char restart)
 {
-    setPID(parameter);
-    set_moment=*Moment;
+    if(parameter->valid)
+    {    
+        setPID(parameter);
+    }
+    
+    if(*Moment != -1)
+    {
+        set_moment=*Moment;
+    }
+    
     if(restart)
     {
-        Control_Reg_1_Write(1);
-        CyDelayUs(1000);
-        Control_Reg_1_Write(0);
+        Control_Reg_1_Write(0b1);
+        getDistance(0b1);
     }
 }
 
 void init()
 {
+    
     sensor_init();
     PID_init();
     //UART_init();

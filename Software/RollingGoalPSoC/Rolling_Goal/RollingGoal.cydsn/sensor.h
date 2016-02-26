@@ -38,6 +38,7 @@ struct data
 
 char getData(struct data *);
 int32 getMoment();
+int32 getDistance(char reset);
 void sensor_init();
 
 /* [] END OF FILE */

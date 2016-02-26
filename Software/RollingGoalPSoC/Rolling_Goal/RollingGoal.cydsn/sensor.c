@@ -118,11 +118,9 @@ void sensor_init()
     Clock_1_Start();
     Clock_2_Start();
     Clock_3_Start();
-    Clock_5_Start();
     
-    Control_Reg_1_Write(1);
-    CyDelayUs(1000);
-    Control_Reg_1_Write(0);
+    Control_Reg_1_Write(0b1);
+    
 }
 
 char getData(struct data * Data)
@@ -161,6 +159,15 @@ char getData(struct data * Data)
 int32 getMoment()
 {
     return CountToMoment(ADC_SAR_1_CountsTo_uVolts(Moment_temp)) * RPM_Moment_temp;
+}
+
+int32 getDistance(char reset)
+{
+    if(reset)
+    {
+        Control_Reg_2_Write(0b1);
+    }
+    return Counter_1_ReadCounter();
 }
 
 void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Sample)

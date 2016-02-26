@@ -27,6 +27,7 @@ struct PIDparameter
     int MIN;
     int iMAX;
     int iMIN;
+    char valid;
 };
 
 void PID_init();
