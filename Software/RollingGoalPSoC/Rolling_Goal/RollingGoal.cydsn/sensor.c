@@ -84,20 +84,24 @@ CY_ISR(SAR_ADC_2)
 
 CY_ISR(RPM_isr)
 {
-    uint32 temp = 0;
-    uint8 count = 0;
+//    uint32 temp = ;
+//    uint32 temp2 = ;
+    //uint8 count = 0;
     
-    while(Timer_1_STATUS&(1<<3))
-    {
-        temp += Timer_1_ReadCapture();
-        count++;
-    };
+//    while(Timer_1_STATUS&(1<<3))
+//    {
+//        temp = Timer_1_ReadCapture();
+//        temp = 
+//        count++;
+//    };
+//    
+//    if(count >= 1)
+//        temp = temp/count;
+
+   // RPM_temp = 60000/Timer_1_ReadCounter();
     
-    if(count >= 1)
-        temp = temp/count;
-    
-    RPM_temp = 60000/temp;
-    
+    RPM_temp = Timer_1_ReadCapture() - Timer_1_ReadCapture();
+    Timer_1_ClearFIFO();
 }
 
 void sensor_init()
@@ -107,8 +111,11 @@ void sensor_init()
     isr_3_StartEx(RPM_isr);
     ADC_SAR_1_Start();
     ADC_SAR_Seq_1_Start();
+    ADC_SAR_1_StartConvert();
+    ADC_SAR_Seq_1_StartConvert();
     Timer_1_Start();
     Counter_1_Start();
+    
     Counter_2_Start();
     
     Opamp_1_Start();
@@ -125,7 +132,7 @@ void sensor_init()
 
 char getData(struct data * Data)
 {
-    if(n != N - 1)
+    if(n != N)
         return 0;
     
     convertToUnit(V_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,0);

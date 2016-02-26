@@ -9,6 +9,7 @@
  *
  * ========================================
 */
+#define TEST ON
 #include <project.h>
 #include "ControllerClass.h"
 

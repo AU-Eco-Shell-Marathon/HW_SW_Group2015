@@ -9,6 +9,10 @@
  *
  * ========================================
 */
+#ifndef TEST
+    #define TEST OFF
+#endif
+
 #include "PID.h"
 #include "sensor.h"
 

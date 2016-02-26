@@ -1,0 +1,5 @@
+C:\Users\jonathan\Documents\PRJ4\Software\RollingGoalPSoC\Rolling_Goal\RollingGoal.cydsn\RollingGoal.cyprj|87a2cd44-4e66-4bcb-afc5-ba9e6c993f94
+D:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e8d0e100-6438-46ae-b22e-6ab496149d4c
+D:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3f17e016-bc53-4ba7-a95a-5ad752a9ab4c
+D:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f28a7fe5-7a9f-4a10-a540-51e99796495b
+D:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d52a5e65-b111-4f4f-8b5c-1a47f6637b8d
