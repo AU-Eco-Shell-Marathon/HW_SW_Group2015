@@ -24,5 +24,12 @@ namespace RollingRoad.WinApplication
         {
             Application.Current.Shutdown();
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow window = new AboutWindow();
+
+            window.ShowDialog();
+        }
     }
 }

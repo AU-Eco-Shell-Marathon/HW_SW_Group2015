@@ -5,8 +5,7 @@ namespace RollingRoad
 {
     public class MemoryDataSource : IDataSource
     {
-
-        public List<DataList> Data { get; private set; } = new List<DataList>();
+        public List<DataList> Data { get; } = new List<DataList>();
 
         public MemoryDataSource()
         {

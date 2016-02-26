@@ -4,18 +4,22 @@ namespace RollingRoad.Test.Unit
 {
     internal class MockITimer : ITimer
     {
+        public int StartCallAmount { get; private set; }
+        public int StopCallAmount { get; private set; }
+
         /// <summary>
         /// Invoke instantly
         /// </summary>
         /// <param name="ms"></param>
         public void Start(int ms)
         {
-            Elapsed.Invoke();
+            StartCallAmount++;
+            Elapsed?.Invoke();
         }
 
         public void Stop()
         {
-            
+            StopCallAmount++;
         }
 
         public event TimerElapsedEvent Elapsed;
@@ -29,13 +33,13 @@ namespace RollingRoad.Test.Unit
         {
             MemoryDataSource source = new MemoryDataSource();
             LiveDataEmulator emu = new LiveDataEmulator(source);
+            MockITimer timer = new MockITimer();
+            emu.Timer = timer;
 
             int invokeCount = 0;
 
-            emu.OnNextReadValue += (data) =>
-            {
-                invokeCount++;
-            };
+            //Excluded from coverage since invokeCount should not be called
+            emu.OnNextReadValue += data =>invokeCount++;
 
             emu.Start();
 
@@ -52,15 +56,11 @@ namespace RollingRoad.Test.Unit
             MemoryDataSource source = new MemoryDataSource();
             source.Data.Add(new DataList("Time", "TestUnit"));
             source.Data[0].AddData(value);
-            LiveDataEmulator emu = new LiveDataEmulator(source);
-            emu.Timer = new MockITimer();
+            LiveDataEmulator emu = new LiveDataEmulator(source) {Timer = new MockITimer()};
 
             double dataRead = 0;
 
-            emu.OnNextReadValue += (data) =>
-            {
-                dataRead = data[0].Value;
-            };
+            emu.OnNextReadValue += data => dataRead = data[0].Value;
 
             emu.Start();
 

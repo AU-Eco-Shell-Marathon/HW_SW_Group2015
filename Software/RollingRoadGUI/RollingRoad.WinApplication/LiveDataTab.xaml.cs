@@ -33,7 +33,8 @@ namespace RollingRoad.WinApplication
     {
         private ILiveDataSource _currentSource;
         private List<LineStructure?> _data;
-        public bool HasBeenSaved { get; private set; } = true;
+
+        private bool HasBeenSaved { get; set; } = true;
 
 
         private const string XAxisName = "Time";
@@ -44,7 +45,7 @@ namespace RollingRoad.WinApplication
             ClearChart();
         }
 
-        public void SelectSource(ILiveDataSource source)
+        private void SelectSource(ILiveDataSource source)
         {
 
             if (_currentSource != null)
@@ -55,6 +56,14 @@ namespace RollingRoad.WinApplication
             _currentSource.OnNextReadValue += ThreadMover;
 
             ClearChart();
+
+            ITorqueControl torqueControl = source as ITorqueControl;
+
+            if (torqueControl != null)
+            {
+                LiveDataStackPanel.Children.Add(new TorqueControlDisplay(torqueControl));
+            }
+
 
             _currentSource.Start();
         }
@@ -176,14 +185,17 @@ namespace RollingRoad.WinApplication
             {
                 try
                 {
-                    MemoryDataSource source = new MemoryDataSource(_data.Select(x => x?.Data).ToList());
-                    source.Description = DateTime.Now.ToLongDateString();
-                    //Save file here
+                    MemoryDataSource source = new MemoryDataSource(_data.Select(x => x?.Data).ToList())
+                    {
+                        Description = DateTime.Now.ToLongDateString()
+                    };
+
+                    //Save file
                     CsvDataFile.WriteToFile(dlg.FileName, source);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Error saving data!", "Error: " + e.Message, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error: " + e.Message, "Error saving data!", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
 
@@ -227,16 +239,34 @@ namespace RollingRoad.WinApplication
 
         private void LiveDataStartStopButton_Click(object sender, RoutedEventArgs e)
         {
+            if ((string)LiveDataStartStopButton.Content == "Stop")
+            {
+                _currentSource?.Stop();
 
+                LiveDataStartStopButton.Content = "Start";
+            }
+            else
+            {
+                _currentSource?.Start();
+
+                LiveDataStartStopButton.Content = "Stop";
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SelectSource_Click(object sender, RoutedEventArgs e)
         {
             SelectSourceWindow window = new SelectSourceWindow();
 
-            if (window.ShowDialog() == true)
+            try
             {
-                SelectSource(window.LiveDataSource);
+                if (window.ShowDialog() == true)
+                {
+                    SelectSource(window.LiveDataSource);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error: " + exception.Message, "Error opening source!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

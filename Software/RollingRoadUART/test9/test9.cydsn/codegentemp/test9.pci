@@ -1,0 +1,6 @@
+# test9
+# 2016-02-23 09:46:25Z
+
+set_io "\USBUART_1:Dm(0)\" iocell 15 7
+set_io "\USBUART_1:Dp(0)\" iocell 15 6
+set_location "\USBUART_1:USB\" usbcell -1 -1 0

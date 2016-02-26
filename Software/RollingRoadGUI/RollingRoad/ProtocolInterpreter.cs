@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace RollingRoad
 {
-    public class ProtocolInterpreter : ILiveDataSource, IRollingRoadControl
+    public class ProtocolInterpreter : ILiveDataSource, ITorqueControl
     {
         /// <summary>
         /// Updated each time a fullset om data has been recived.
         /// </summary>
         public event ReadOnlyDataEntryList OnNextReadValue;
 
-        private readonly Stream _stream;
         private readonly Thread _listenThread;
         
         private readonly StreamReader _reader;
         private readonly StreamWriter _writer;
 
-        private bool _shouldClose = false;
+        private bool _shouldClose;
 
         private readonly Dictionary<int, DataEntry> _typeDictionary = new Dictionary<int, DataEntry>();
 
@@ -33,13 +33,10 @@ namespace RollingRoad
 
         public ProtocolInterpreter(Stream stream)
         {
-            _stream = stream;
+            _listenThread = new Thread(ListenThread) {IsBackground = true};
 
-            _listenThread = new Thread(ListenThread);
-            _listenThread.IsBackground = true;
-
-            _reader = new StreamReader(_stream);
-            _writer = new StreamWriter(_stream);
+            _reader = new StreamReader(stream, Encoding.ASCII);
+            _writer = new StreamWriter(stream, Encoding.ASCII);
         }
 
         private void ListenThread()
@@ -56,6 +53,10 @@ namespace RollingRoad
         public void Listen()
         {
             string line = _reader.ReadLine();
+
+            if (line == null)
+                return;
+
             string[] values = line.Split(' ');
 
             //Read packet id
@@ -89,16 +90,15 @@ namespace RollingRoad
             }
         }
 
-        public void SetTorque(int torque)
+        public void SetTorque(double torque)
         {
-            //TODO Check if ready to transmit
-            SendCommand((int)PacketId.TorqueCtrl + " " + torque);
+            SendCommand((int)PacketId.TorqueCtrl + " " + torque.ToString(new CultureInfo("en-US")));
         }
 
         private void SendCommand(string cmd)
         {
-            _writer.Write(cmd + "\n");
-            _writer.Flush();
+            _writer?.Write(cmd + "\n");
+            _writer?.Flush();
         }
 
         public void Stop()

@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace RollingRoad
 {
-    public class CsvDataFile
+    [ExcludeFromCodeCoverage]
+    public static class CsvDataFile
     {
         /// <summary>
         /// Save datasource to file
@@ -15,10 +17,9 @@ namespace RollingRoad
             {
                 StreamWriter writer = new StreamWriter(fileStream);
 
-                CsvDataInterpeter.WriteToStream(writer, data);
+                CsvDataInterpreter.WriteToStream(writer, data);
             }
         }
-
 
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
@@ -34,7 +35,7 @@ namespace RollingRoad
             {
                 StreamReader reader = new StreamReader(fileStream);
 
-                data = CsvDataInterpeter.LoadFromStream(reader);
+                data = CsvDataInterpreter.LoadFromStream(reader);
                 data.Name = Path.GetFileName(path);
             }
 

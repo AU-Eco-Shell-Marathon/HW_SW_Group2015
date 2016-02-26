@@ -1,5 +1,4 @@
-﻿using System.Windows;
-
+﻿
 namespace RollingRoad.WinApplication
 {
     /// <summary>

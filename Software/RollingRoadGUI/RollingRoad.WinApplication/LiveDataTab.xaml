@@ -32,7 +32,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Text="Source:" Margin="5" />
-                <Button Grid.Column="1" Content="Select" Margin="5" Click="Button_Click" />
+                <Button Grid.Column="1" Content="Select" Margin="5" Click="SelectSource_Click" />
             </Grid>
             
             <!-- Live data -->

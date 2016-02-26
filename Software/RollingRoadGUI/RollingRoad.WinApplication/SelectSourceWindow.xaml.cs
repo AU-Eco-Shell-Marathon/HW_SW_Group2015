@@ -8,8 +8,10 @@ namespace RollingRoad.WinApplication
     /// <summary>
     /// Interaction logic for SelectSourceWindow.xaml
     /// </summary>
-    public partial class SelectSourceWindow : Window
+    public partial class SelectSourceWindow
     {
+        public ILiveDataSource LiveDataSource { get; private set; }
+
         public SelectSourceWindow()
         {
             InitializeComponent();
@@ -27,8 +29,6 @@ namespace RollingRoad.WinApplication
             else
                 SelectComPortComboBox.SelectedIndex = -1;
         }
-
-        public ILiveDataSource LiveDataSource { get; private set; } = null;
 
         private void SourceFromFile_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +63,13 @@ namespace RollingRoad.WinApplication
             if (SelectComPortComboBox.SelectedItem == null)
                 return;
 
+            SerialPort port = new SerialPort((string) SelectComPortComboBox.SelectedValue) {BaudRate = 9600};
+            port.Open();
+           
+            LiveDataSource = new SerialConnection(port);
 
+            DialogResult = true;
+            Close();
         }
     }
 }

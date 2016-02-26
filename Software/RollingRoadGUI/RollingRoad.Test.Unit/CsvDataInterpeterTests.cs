@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -28,7 +27,7 @@ namespace RollingRoad.Test.Unit
         {
             StreamReader reader = CreateStreamReaderFromString("");
 
-            Assert.Throws<EndOfStreamException>(() => CsvDataInterpeter.LoadFromStream(reader));
+            Assert.Throws<EndOfStreamException>(() => CsvDataInterpreter.LoadFromStream(reader));
         }
 
         [Test]
@@ -36,7 +35,7 @@ namespace RollingRoad.Test.Unit
         {
             StreamReader reader = CreateStreamReaderFromString("testtest;type1;type2");
 
-            Assert.Throws<Exception>(() => CsvDataInterpeter.LoadFromStream(reader));
+            Assert.Throws<Exception>(() => CsvDataInterpreter.LoadFromStream(reader));
         }
 
         [Test]
@@ -44,14 +43,14 @@ namespace RollingRoad.Test.Unit
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\n;unit1;unit2");
 
-            Assert.That(CsvDataInterpeter.LoadFromStream(reader), Is.Not.Null);
+            Assert.That(CsvDataInterpreter.LoadFromStream(reader), Is.Not.Null);
         }
 
         [Test]
         public void LoadFromStream_NoDescriptionInStream_DescriptionIsEmpty()
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\n;unit1;unit2");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
 
             Assert.That(source.Description, Is.Empty.Or.Null);
         }
@@ -60,7 +59,7 @@ namespace RollingRoad.Test.Unit
         public void LoadFromStream_DescriptionInStream_DescriptionLoaded()
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
 
             Assert.That(source.Description, Is.EqualTo("Test Description"));
         }
@@ -69,7 +68,7 @@ namespace RollingRoad.Test.Unit
         public void LoadFromStream_DataTypeAdded_DatalistWithCorrectNameReturned()
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
 
             Assert.That(source.GetDataList("type1").Name, Is.EqualTo("type1"));
         }
@@ -78,7 +77,7 @@ namespace RollingRoad.Test.Unit
         public void LoadFromStream_DataTypeAdded_DatalistWithCorrectUnitReturned()
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
 
             Assert.That(source.GetDataList("type1").Unit, Is.EqualTo("unit1"));
         }
@@ -87,7 +86,7 @@ namespace RollingRoad.Test.Unit
         public void LoadFromStream_DataTypeNotAdded_ExceptionThrown()
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
 
             Assert.Throws<ArgumentException>(() => source.GetDataList("type3"));
         }
@@ -100,7 +99,7 @@ namespace RollingRoad.Test.Unit
         public void LoadFromStream_DataTypeAddedWithOneDataPoint_FirstDataPointPresent(double data)
         {
             StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;{data.ToString(new CultureInfo("en-US"))};3");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
             
             Assert.That(source.GetDataList("type1").GetData().First(), Is.EqualTo(data));
         }
@@ -113,7 +112,7 @@ namespace RollingRoad.Test.Unit
         public void LoadFromStream_DataTypeAddedWithTWoDataPoints_SecondDataPointPresent(double data)
         {
             StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;1;2\n;{data.ToString(new CultureInfo("en-US"))};3");
-            MemoryDataSource source = CsvDataInterpeter.LoadFromStream(reader);
+            MemoryDataSource source = CsvDataInterpreter.LoadFromStream(reader);
 
             Assert.That(source.GetDataList("type1").GetData()[1], Is.EqualTo(data));
         }
@@ -129,7 +128,7 @@ namespace RollingRoad.Test.Unit
             data.Description = testDescription;
             data.Data.Add(new DataList("Test", "Test2"));
 
-            CsvDataInterpeter.WriteToStream(writer, data);
+            CsvDataInterpreter.WriteToStream(writer, data);
 
             Assert.That(writer.ToString(), Does.Contain(testDescription));
         }
@@ -149,7 +148,7 @@ namespace RollingRoad.Test.Unit
             data.Data.Add(new DataList("Test", "Test2"));
             data.Data[0].AddData(value);
 
-            CsvDataInterpeter.WriteToStream(writer, data);
+            CsvDataInterpreter.WriteToStream(writer, data);
 
             Assert.That(writer.ToString(), Does.Contain(valueString));
         }
