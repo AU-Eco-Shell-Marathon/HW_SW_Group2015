@@ -16,10 +16,10 @@
 
 struct sample
 {
-    int32 avg;
+    float avg;
     float rms;
-    int32 min;
-    int32 max;
+    float min;
+    float max;
 };
 
 struct data

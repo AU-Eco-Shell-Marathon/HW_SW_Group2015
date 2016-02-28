@@ -14,11 +14,11 @@
 
 struct PIDparameter parameter_;
 
-int PIDval = 0;
-int dt = dt_def;
-int iState = 0;
-int err = 0;
-int pre_err = 0;
+float PIDval = 0;
+float dt = dt_def;
+float iState = 0;
+float err = 0;
+float pre_err = 0;
 
 
 void PID_init()
@@ -39,7 +39,7 @@ void PID_init()
 void PID_tick(int sensor, int input)
 {
     PIDval = 0;
-	err = input - sensor;
+	err = ((float)input - (float)sensor)/1000000;
 	
 	PIDval = parameter_.Kp*err; //Proportional calc.
 	

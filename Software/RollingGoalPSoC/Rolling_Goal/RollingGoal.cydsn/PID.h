@@ -9,24 +9,24 @@
  *
  * ========================================
 */
-#define Kp_def 10;
-#define Ki_def 1;
-#define Kd_def 0;
-#define MAX_def 255;
-#define MIN_def 0;
-#define iMAX_def 10;
-#define iMIN_def -10;
+#define Kp_def 1;
+#define Ki_def 0.1;
+#define Kd_def 0.001;
+#define MAX_def 230;
+#define MIN_def 25;
+#define iMAX_def 1000;
+#define iMIN_def -1000;
 #define dt_def 10;
 
 struct PIDparameter
 {
-    int Kp;
-    int Ki;
-    int Kd;
-    int MAX;
-    int MIN;
-    int iMAX;
-    int iMIN;
+    float Kp;
+    float Ki;
+    float Kd;
+    float MAX;
+    float MIN;
+    float iMAX;
+    float iMIN;
     char valid;
 };
 

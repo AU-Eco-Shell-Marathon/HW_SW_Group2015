@@ -16,7 +16,7 @@ CY_ISR_PROTO(SAR_ADC_1);
 CY_ISR_PROTO(SAR_ADC_2);
 CY_ISR_PROTO(RPM_isr);
 
-void calcSamples(const int32 * values, const uint8 N_sample, struct sample * Sample);
+void calcSamples(const int32 * values, const uint8 N_sample, struct sample * Sample, int32 divider);
 void convertToUnit(int32 * value, const uint8 N_sample,int32 (*CountsTo)(int16), const uint8 type);
 int32 CountToAmp(int32);
 int32 CountToMoment(int32);
@@ -82,6 +82,7 @@ CY_ISR(SAR_ADC_2)
     
 }
 
+char RPM_reset=0;
 CY_ISR(RPM_isr)
 {
 //    uint32 temp = ;
@@ -100,7 +101,39 @@ CY_ISR(RPM_isr)
 
    // RPM_temp = 60000/Timer_1_ReadCounter();
     
-    RPM_temp = Timer_1_ReadCapture() - Timer_1_ReadCapture();
+    uint8 STATUS = Timer_1_STATUS;
+    
+    if((STATUS&(1<<1)))//capture
+    {
+        uint32 temp = Timer_1_ReadCapture();
+        uint32 temp2 = 0;
+        if(Timer_1_STATUS&(1<<3))
+            temp2 = Timer_1_ReadCapture();
+            
+        
+        RPM_reset=0;
+        
+        if(temp2 != 0)
+        {
+            RPM_temp = 100000000/(temp - temp2);
+        }
+        else
+        {
+            RPM_temp=0;
+        }
+        
+    }
+    else if((STATUS&(1<<0)))//TC
+    {
+        
+        if(RPM_reset)
+        {
+            RPM_temp=0;
+        }
+        RPM_reset=1;
+        
+    }
+    Timer_1_WriteCounter(200000);
     Timer_1_ClearFIFO();
 }
 
@@ -125,6 +158,7 @@ void sensor_init()
     Clock_1_Start();
     Clock_2_Start();
     Clock_3_Start();
+    Clock_5_Start();
     
     Control_Reg_1_Write(0b1);
     
@@ -146,15 +180,15 @@ char getData(struct data * Data)
     for(i = 0; i < N; i++)
     {
         P_motor[i] = (V_motor[i]/1000)*(A_motor[i]/1000);  
-        P_mekanisk[i] = (Moment[i])*RPM[i];
+        P_mekanisk[i] = (Moment[i]/1000)*(RPM[i]/1000);
     }
 
-    calcSamples(V_motor, n, &Data->V_motor);
-    calcSamples(A_motor, n, &Data->A_motor);
-    calcSamples(Moment, n, &Data->Moment);
-    calcSamples(RPM, n, &Data->RPM);
-    calcSamples(P_motor, n, &Data->P_motor);
-    calcSamples(P_mekanisk, n, &Data->P_mekanisk);
+    calcSamples(V_motor, n, &Data->V_motor, 1000000);
+    calcSamples(A_motor, n, &Data->A_motor, 1000);
+    calcSamples(Moment, n, &Data->Moment, 1000000);
+    calcSamples(RPM, n, &Data->RPM, 1000);
+    calcSamples(P_motor, n, &Data->P_motor, 1000);
+    calcSamples(P_mekanisk, n, &Data->P_mekanisk, 1000);
     
     Data->distance = Counter_1_ReadCounter();
     Data->time_ms = Counter_2_ReadCounter();
@@ -177,8 +211,59 @@ int32 getDistance(char reset)
     return Counter_1_ReadCounter();
 }
 
+void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Sample,int32 divider)
+{
+    int32 AVG = values[0];
+    int32 MAX = values[0];
+    int32 MIN = values[0];
+    
+    
+    
+    Sample->rms = 0;
+    
+    
+    uint8 i;
+    for(i = 1; i < N_sample; i++)
+    {         
+        AVG += values[i];
+        
+        if(values[i] > MAX)
+            MAX = values[i];
+        else if(values[i] < MIN)
+            MIN = values[i];
+
+    }
+    
+    if(N_sample == 128)
+        AVG = AVG>>7;
+    else
+        AVG = AVG/N_sample;
+    
+    for(i = 0; i < N_sample; i++)
+    {
+
+        Sample->rms += (AVG - values[i])^2;
+
+    }
+    Sample->rms = Sample->rms/128;
+    if(Sample->rms < 0)
+        Sample->rms = 0;
+    else
+        Sample->rms = sqrt((double)Sample->rms)/divider;
+    
+    Sample->avg = (float)AVG/divider;
+    Sample->max = (float)MAX/divider;
+    Sample->min = (float)MIN/divider;
+}
+
+/*
 void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Sample)
 {
+    int32 AVG = 0;
+    int32 MAX = 0;
+    int32 MIN = 0;
+    
+    
     Sample->avg = 0;
     Sample->rms = 0;
     Sample->max = 0;
@@ -214,6 +299,8 @@ void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Samp
         Sample->rms = sqrt((double)Sample->rms);
 
 }
+*/
+
 
 void convertToUnit(int32 * value, const uint8 N_sample,int32 (*CountsTo)(int16), const uint8 type)
 {
@@ -237,7 +324,7 @@ int32 CountToMoment(int32 uvolt)
 
 int32 CountToAmp(int32 uvolt)
 {
-    return ((uvolt/416) - (2500000/416))*10000;
+    return ((uvolt/416) - (2500000/416))*10;
 }
 
 /* [] END OF FILE */

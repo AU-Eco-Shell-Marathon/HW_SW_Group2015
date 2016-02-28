@@ -9,6 +9,9 @@
  *
  * ========================================
 */
+
+// Heap size min = 0x0200 !!!
+
 #ifndef TEST
     #define TEST OFF
 #endif

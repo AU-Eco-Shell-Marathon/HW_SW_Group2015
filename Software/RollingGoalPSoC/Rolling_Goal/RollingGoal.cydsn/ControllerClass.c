@@ -56,10 +56,10 @@ void run()
     {
         TX_AND_POWER_Write(0);
         #if TEST == ON
-            char buf[256];
-            sprintf(buf, "V_m: %lduV\n\rA_m: %lduA\n\rP_m: %lduW\n\rRPM: %ld\n\rMoment: %ldNm\n\rP_mek: %ldW\n\rDistance: %lu\n\rtime: %lums\n\rstop: %X\r\n\r\n"
+            char buf[500];
+            sprintf(buf, "V_m: %lfV\n\rA_m: %fA\n\rP_m: %fW\n\rRPM: %f\n\rMoment: %fNm\n\rP_mek: %fW\n\rDistance: %lu\n\rtime: %lums\n\rstop: %X\r\n\r\n"
                 ,Data.V_motor.avg, Data.A_motor.avg, Data.P_motor.avg, Data.RPM.avg, Data.Moment.avg, Data.P_mekanisk.avg, Data.distance, Data.time_ms, Data.stop);
-            USBUART_1_PutString(buf);    
+            USBUART_1_PutString(buf); 
         #endif
         //SendPackage(&Data);
         TX_AND_POWER_Write(1);

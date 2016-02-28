@@ -195,6 +195,8 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_4.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_4.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_4.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_5.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_5.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Counter_2.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Counter_2.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Counter_2_PM.c</File>
