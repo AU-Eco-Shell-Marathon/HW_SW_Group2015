@@ -54,7 +54,7 @@ void run()
     
     if(getData(&Data))
     {
-        TX_AND_POWER_Write(0);
+        TX_AND_POWER_Write(1);
         #if TEST == ON
             char buf[500];
             sprintf(buf, "V_m: %lfV\n\rA_m: %fA\n\rP_m: %fW\n\rRPM: %f\n\rMoment: %fNm\n\rP_mek: %fW\n\rDistance: %lu\n\rtime: %lums\n\rstop: %X\r\n\r\n"
@@ -62,7 +62,7 @@ void run()
             USBUART_1_PutString(buf); 
         #endif
         //SendPackage(&Data);
-        TX_AND_POWER_Write(1);
+        TX_AND_POWER_Write(0);
         
     }
     

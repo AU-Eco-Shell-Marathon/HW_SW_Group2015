@@ -179,7 +179,7 @@ char getData(struct data * Data)
     uint8 i;
     for(i = 0; i < N; i++)
     {
-        P_motor[i] = (V_motor[i]/1000)*(A_motor[i]/1000);  
+        P_motor[i] = (V_motor[i]/1000)*(A_motor[i]/1000);  //Brug af shift istedet vil koste 4.63%
         P_mekanisk[i] = (Moment[i]/1000)*(RPM[i]/1000);
     }
 
