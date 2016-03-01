@@ -13,16 +13,30 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="MotorController\MotorController\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="MotorController\MotorController\Source Files\PID.c">
 <ExpandedNodeIds>
 <v>MotorController</v>
 <v>MotorController\MotorController</v>
 <v>MotorController\MotorController\TopDesign</v>
 <v>MotorController\MotorController\MotorController.cydwr</v>
 <v>MotorController\MotorController\Header Files</v>
+<v>MotorController\MotorController\Header Files\ControllerClass.h</v>
 <v>MotorController\MotorController\Header Files\cyapicallbacks.h</v>
+<v>MotorController\MotorController\Header Files\Debug_OptimizeUART.h</v>
+<v>MotorController\MotorController\Header Files\MotorController.h</v>
+<v>MotorController\MotorController\Header Files\Pedal.h</v>
+<v>MotorController\MotorController\Header Files\PID.h</v>
+<v>MotorController\MotorController\Header Files\Sensor.h</v>
+<v>MotorController\MotorController\Header Files\Speed_O_meter.h</v>
 <v>MotorController\MotorController\Source Files</v>
+<v>MotorController\MotorController\Source Files\ControllerClass.c</v>
+<v>MotorController\MotorController\Source Files\Debug_OptimizeUART.c</v>
 <v>MotorController\MotorController\Source Files\main.c</v>
+<v>MotorController\MotorController\Source Files\MotorController.c</v>
+<v>MotorController\MotorController\Source Files\Pedal.c</v>
+<v>MotorController\MotorController\Source Files\PID.c</v>
+<v>MotorController\MotorController\Source Files\Sensor.c</v>
+<v>MotorController\MotorController\Source Files\Speed_O_meter.c</v>
 <v>MotorController\MotorController\Generated_Source</v>
 <v>MotorController\MotorController\Generated_Source\PSoC5</v>
 <v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1</v>
@@ -173,48 +187,26 @@
 <v>MotorController\MotorController\TopDesign</v>
 <v>MotorController\MotorController\MotorController.cydwr</v>
 <v>MotorController\MotorController\Header Files</v>
+<v>MotorController\MotorController\Header Files\ControllerClass.h</v>
 <v>MotorController\MotorController\Header Files\cyapicallbacks.h</v>
+<v>MotorController\MotorController\Header Files\Debug_OptimizeUART.h</v>
+<v>MotorController\MotorController\Header Files\MotorController.h</v>
+<v>MotorController\MotorController\Header Files\Pedal.h</v>
+<v>MotorController\MotorController\Header Files\PID.h</v>
+<v>MotorController\MotorController\Header Files\Sensor.h</v>
+<v>MotorController\MotorController\Header Files\Speed_O_meter.h</v>
 <v>MotorController\MotorController\Source Files</v>
+<v>MotorController\MotorController\Source Files\ControllerClass.c</v>
+<v>MotorController\MotorController\Source Files\Debug_OptimizeUART.c</v>
 <v>MotorController\MotorController\Source Files\main.c</v>
+<v>MotorController\MotorController\Source Files\MotorController.c</v>
+<v>MotorController\MotorController\Source Files\Pedal.c</v>
+<v>MotorController\MotorController\Source Files\PID.c</v>
+<v>MotorController\MotorController\Source Files\Sensor.c</v>
+<v>MotorController\MotorController\Source Files\Speed_O_meter.c</v>
 <v>MotorController\MotorController\Generated_Source</v>
 <v>MotorController\MotorController\Generated_Source\PSoC5</v>
 <v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1\CAN_1.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1\CAN_1.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1\CAN_1_INT.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1\CAN_1_PM.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\CAN_1\CAN_1_TX_RX_func.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_1</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_2</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_2\Clock_2.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_2\Clock_2.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_motor</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_motor\Clock_motor.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Clock_motor\Clock_motor.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Comp_1</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Comp_1\Comp_1.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Comp_1\Comp_1.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Comp_1\Comp_1_PM.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Control_Reg_motor_reset</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Control_Reg_motor_reset\Control_Reg_motor_reset.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Control_Reg_motor_reset\Control_Reg_motor_reset.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\Control_Reg_motor_reset\Control_Reg_motor_reset_PM.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
-<v>MotorController\MotorController\Generated_Source\PSoC5\cy_boot\CyDmac.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -235,65 +227,6 @@
 <ExpandedNodeIds>
 <v>MotorController</v>
 <v>MotorController\MotorController</v>
-<v>MotorController\MotorController\CortexM3</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1_INT.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1_TX_RX_func.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_2.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_motor.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_1_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_motor_reset.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_motor_reset_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_motor.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_Amp.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_out.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_motor.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_motor_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\RPM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\RPM_isr.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\RX_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Status_Reg_OverCurrent.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Timer_RPM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Timer_RPM_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\TX_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_audio.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_boot.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_cdc.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_cls.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_descr.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_Dm.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_Dp.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_drv.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_episr.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_hid.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_midi.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_msc.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_pm.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_std.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_vnd.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\VDAC8_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\VDAC8_1_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\MotorController.elf</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\MotorController.hex</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\MotorController.map</v>
 <v>MotorController\MotorController\MotorController.gpdsc</v>
 <v>MotorController\MotorController\MotorController.rpt</v>
 <v>MotorController\MotorController\MotorController_timing.html</v>
@@ -301,51 +234,9 @@
 <VisibleNodeIds>
 <v>MotorController</v>
 <v>MotorController\MotorController</v>
-<v>MotorController\MotorController\CortexM3</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1_INT.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CAN_1_TX_RX_func.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_2.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_motor.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Comp_1_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_motor_reset.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_motor_reset_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_motor.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_Amp.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_out.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_motor.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_motor_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\RPM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\RPM_isr.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\RX_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Status_Reg_OverCurrent.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Timer_RPM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\Timer_RPM_PM.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\TX_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_audio.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_boot.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_cdc.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_cls.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_descr.lst</v>
-<v>MotorController\MotorController\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_1_Dm.lst</v>
+<v>MotorController\MotorController\MotorController.gpdsc</v>
+<v>MotorController\MotorController\MotorController.rpt</v>
+<v>MotorController\MotorController\MotorController_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -408,7 +299,6 @@
 <v>MotorController\MotorController\Timer_v2_70.pdf</v>
 <v>MotorController\MotorController\USBFS_v3_0.pdf</v>
 <v>MotorController\MotorController\VDAC8_v1_90.pdf</v>
-<v>MotorController\MotorController\ZeroTerminal.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
