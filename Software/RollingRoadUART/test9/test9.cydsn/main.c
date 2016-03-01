@@ -15,14 +15,30 @@
 
 int main()
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    //CyGlobalIntEnable; /* Enable global interrupts. */
     
-
+    int i = 0;
+    
+    int func = 3;
+    double time = 4;
+    double torque = 2;
+    
+    char string[] = {func, time, torque};
+    
+    InitUart();
+    
+    ReceiveData();
 
     for(;;)
-    {
-
+    { 
+        while(i<15)
+           {
+           SendData(string);
+           i++;
+           }
+        i = 0;
     }
+    
 }
 
 /* [] END OF FILE */

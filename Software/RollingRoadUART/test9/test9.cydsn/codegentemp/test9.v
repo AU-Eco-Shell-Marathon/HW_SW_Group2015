@@ -1,6 +1,6 @@
 // ======================================================================
 // test9.v generated from TopDesign.cysch
-// 02/23/2016 at 10:46
+// 03/01/2016 at 10:49
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -451,11 +451,11 @@ endmodule
 // top
 module top ;
 
-          wire  Net_2;
-          wire  Net_1;
+          wire  Net_5;
+          wire  Net_4;
 
     USBFS_v3_0_0 USBUART_1 (
-        .sof(Net_1),
+        .sof(Net_4),
         .vbusdet(1'b0));
     defparam USBUART_1.epDMAautoOptimization = 0;
 

@@ -27,7 +27,6 @@
 #include "USBUART_1_pvt.h"
 #include "USBUART_1_cydmac.h"
 #include "USBUART_1_msc.h"
-#include "Bootloadable_1.h"
 #include "USBUART_1_Dm_aliases.h"
 #include "USBUART_1_Dm.h"
 #include "USBUART_1_Dp_aliases.h"

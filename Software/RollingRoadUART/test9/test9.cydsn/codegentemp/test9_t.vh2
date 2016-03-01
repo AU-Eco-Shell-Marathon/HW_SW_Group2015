@@ -1,5 +1,5 @@
--- Project:   C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj
--- Generated: 02/23/2016 10:46:28
+-- Project:   C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj
+-- Generated: 03/01/2016 10:49:46
 -- PSoC Creator  3.3 SP1
 
 ENTITY test9 IS
@@ -26,7 +26,7 @@ ARCHITECTURE __DEFAULT__ OF test9 IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
-    SIGNAL Net_1 : bit;
+    SIGNAL Net_4 : bit;
     SIGNAL \\\USBUART_1:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBUART_1:Dp(0)\\__PA\ : bit;
     SIGNAL \USBUART_1:Net_1010\ : bit;
@@ -421,7 +421,7 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            sof_int => Net_1,
+            sof_int => Net_4,
             arb_int => \USBUART_1:Net_1889\,
             usb_int => \USBUART_1:Net_1876\,
             ept_int_8 => \USBUART_1:ep_int_8\,
@@ -490,7 +490,7 @@ BEGIN
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => Net_1,
+            interrupt => Net_4,
             clock => ClockBlock_BUS_CLK);
 
 END __DEFAULT__;

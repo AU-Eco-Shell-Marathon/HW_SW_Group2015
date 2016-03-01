@@ -55,15 +55,6 @@
     #error Unsupported toolchain
 #endif
 
-#if defined(__ARMCC_VERSION)
-    extern unsigned int Load$$LR$$CYCONFIGECC$$Base;
-    #pragma diag_suppress 170,1296
-    #define CYDEV_ECC_VIRT_BASE 0x80000000
-    #define CYAPP_ECC_OFFSET ((uint32)&Load$$LR$$CYCONFIGECC$$Base - CYDEV_ECC_VIRT_BASE)
-#elif defined (__GNUC__) || defined (__ICCARM__)
-    extern int CY_ECC_OFFSET;
-    #define CYAPP_ECC_OFFSET ((uint32)&CY_ECC_OFFSET)
-#endif
 
 CY_CFG_UNUSED
 static void CYMEMZERO(void *s, size_t n);
@@ -140,11 +131,11 @@ CYPACKED typedef struct
 	uint8 value;
 } CYPACKED_ATTR cy_cfg_addrvalue_t;
 
-#define cy_cfg_addr_table ((const uint32 CYFAR *)(0x48000000u + CYAPP_ECC_OFFSET))
-#define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)(0x48000030u + CYAPP_ECC_OFFSET))
+#define cy_cfg_addr_table ((const uint32 CYFAR *)0x48000000u)
+#define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x48000030u)
 
 /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
-#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)(0x4800006Cu + CYAPP_ECC_OFFSET))
+#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x4800006Cu)
 
 
 /*******************************************************************************
@@ -324,6 +315,9 @@ void cyfitter_cfg(void)
 	/* Disable interrupts by default. Let user enable if/when they want. */
 	CYGlobalIntDisable
 #endif
+
+	/* Enable/Disable Debug functionality based on settings from System DWR */
+	CY_SET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG, (CY_GET_XTND_REG8((void CYFAR *)CYREG_MLOGIC_DEBUG) | 0x04u));
 
 	{
 

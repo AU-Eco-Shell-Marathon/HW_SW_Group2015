@@ -1,16 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.231ms
+Loading plugins phase: Elapsed time ==> 0s.224ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -d CY8C5868LTI-LP039 -s C:\Users\Thomas\Desktop\test9\test9.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -d CY8C5868LTI-LP039 -s C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
-ADD: pft.M0111: information: One or more rows of flash have been configured to be protected; however, debugging has been enabled in the System DWR Editor. This means that while write restrictions are honored flash rows can still be read via SWD or JTAG. To prevent any ability to read the flash rows, disable debugging in the System DWR Editor.
- * C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cydwr (Enable Device Protection)
-
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 2s.074ms
+Elaboration phase: Elapsed time ==> 1s.385ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.049ms
+HDL generation phase: Elapsed time ==> 0s.046ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -28,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.049ms
 ======================================================================
 Compiling:  test9.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -dcpsoc3 test9.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -dcpsoc3 test9.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  test9.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -dcpsoc3 test9.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -dcpsoc3 test9.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  test9.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -dcpsoc3 -verilog test9.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -dcpsoc3 -verilog test9.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Feb 23 10:46:23 2016
+Tue Mar 01 10:49:43 2016
 
 
 ======================================================================
@@ -54,7 +51,7 @@ Options  :    -yv2 -q10 test9.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Feb 23 10:46:23 2016
+Tue Mar 01 10:49:43 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -81,11 +78,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  test9.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -dcpsoc3 -verilog test9.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -dcpsoc3 -verilog test9.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Feb 23 10:46:24 2016
+Tue Mar 01 10:49:43 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -96,9 +93,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\Thomas\Desktop\test9\test9.cydsn\codegentemp\test9.ctl'.
+Linking 'C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\codegentemp\test9.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\Thomas\Desktop\test9\test9.cydsn\codegentemp\test9.v'.
+Linking 'C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\codegentemp\test9.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
 
 tovif:  No errors.
@@ -107,11 +104,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  test9.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -dcpsoc3 -verilog test9.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -dcpsoc3 -verilog test9.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Feb 23 10:46:24 2016
+Tue Mar 01 10:49:43 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -122,9 +119,9 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\Thomas\Desktop\test9\test9.cydsn\codegentemp\test9.ctl'.
+Linking 'C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\codegentemp\test9.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
-Linking 'C:\Users\Thomas\Desktop\test9\test9.cydsn\codegentemp\test9.v'.
+Linking 'C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\codegentemp\test9.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\lcpsoc3\stdlogic\cpsoc3.vif'.
 
@@ -184,16 +181,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -dcpsoc3 test9.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -dcpsoc3 test9.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.954ms
+Warp synthesis phase: Elapsed time ==> 0s.283ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Tuesday, 23 February 2016 10:46:24
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Desktop\test9\test9.cydsn\test9.cyprj -d CY8C5868LTI-LP039 test9.v -verilog
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Tuesday, 01 March 2016 10:49:43
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj -d CY8C5868LTI-LP039 test9.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.014ms
+Design parsing phase: Elapsed time ==> 0s.007ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -373,7 +370,7 @@ Design Equations
 
     interrupt: Name =\USBUART_1:sof_int\
         PORT MAP (
-            interrupt => Net_1 );
+            interrupt => Net_4 );
         Properties:
         {
             int_type = "10"
@@ -393,7 +390,7 @@ Analog Clocks                 :    0 :    4 :    4 :  0.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
 Interrupts                    :    8 :   24 :   32 : 25.00 %
-IO                            :    2 :   46 :   48 :  4.17 %
+IO                            :    5 :   43 :   48 : 10.42 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
 I2C                           :    0 :    1 :    1 :  0.00 %
@@ -416,18 +413,18 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.013ms
-Tech mapping phase: Elapsed time ==> 0s.098ms
+Technology Mapping: Elapsed time ==> 0s.006ms
+Tech mapping phase: Elapsed time ==> 0s.090ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART_1:Dm(0)\
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART_1:Dp(0)\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
-Analog Placement phase: Elapsed time ==> 0s.043ms
+Analog Placement phase: Elapsed time ==> 0s.038ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.002ms
+Analog Routing phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -442,12 +439,12 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.417ms
+Analog Code Generation phase: Elapsed time ==> 0s.435ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
 I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
-I2076: Total run-time: 0.6 sec.
+I2076: Total run-time: 0.5 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -461,10 +458,10 @@ PLD Packing: Elapsed time ==> 0s.001ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.017ms
+Partitioning: Elapsed time ==> 0s.012ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.002ms
+Annealing: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
 Inital cost was 151, final cost is 151 (0.00% improvement).</CYPRESSTAG>
@@ -544,7 +541,7 @@ Intr container @ [IntrContainer=(0)]:
   Intr@ [IntrContainer=(0)][IntrId=(21)] 
     interrupt: Name =\USBUART_1:sof_int\
         PORT MAP (
-            interrupt => Net_1 );
+            interrupt => Net_4 );
         Properties:
         {
             int_type = "10"
@@ -768,7 +765,7 @@ USB group 0:
         PORT MAP (
             dp => \USBUART_1:Net_1000\ ,
             dm => \USBUART_1:Net_597\ ,
-            sof_int => Net_1 ,
+            sof_int => Net_4 ,
             arb_int => \USBUART_1:Net_1889\ ,
             usb_int => \USBUART_1:Net_1876\ ,
             ept_int_8 => \USBUART_1:ep_int_8\ ,
@@ -816,31 +813,31 @@ Port | Pin | Fixed |      Type |       Drive Mode |              Name | Connecti
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.000ms
-Digital Placement phase: Elapsed time ==> 1s.020ms
+Digital Placement phase: Elapsed time ==> 0s.799ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.288ms
+Digital Routing phase: Elapsed time ==> 1s.232ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.808ms
+Bitstream and API generation phase: Elapsed time ==> 0s.278ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.108ms
+Bitstream verification phase: Elapsed time ==> 0s.036ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in test9_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.263ms
+Static timing analysis phase: Elapsed time ==> 0s.246ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.160ms
+Design database save phase: Elapsed time ==> 0s.150ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 4s.244ms
+cydsfit: Elapsed time ==> 3s.334ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 4s.290ms
-API generation phase: Elapsed time ==> 3s.303ms
-Dependency generation phase: Elapsed time ==> 0s.023ms
-Cleanup phase: Elapsed time ==> 0s.000ms
+Fitter phase: Elapsed time ==> 3s.381ms
+API generation phase: Elapsed time ==> 1s.810ms
+Dependency generation phase: Elapsed time ==> 0s.015ms
+Cleanup phase: Elapsed time ==> 0s.001ms

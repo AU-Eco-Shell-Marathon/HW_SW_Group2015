@@ -19,13 +19,13 @@ net ClockBlock_BUS_CLK
 	switch ":clockblockcell.clk_bus_glb==>:interrupt_21.clock"
 	term   ":interrupt_21.clock"
 end ClockBlock_BUS_CLK
-net Net_1
+net Net_4
 	term   ":usbcell.sof_int"
 	switch ":usbcell.sof_int==>Stub-:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v6"
 	switch "Stub-:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v6==>:interrupt_idmux_21.in_0"
 	switch ":interrupt_idmux_21.interrupt_idmux_21__out==>:interrupt_21.interrupt"
 	term   ":interrupt_21.interrupt"
-end Net_1
+end Net_4
 net \USBUART_1:Net_1010\
 	term   ":logicalport_15.interrupt"
 	switch ":logicalport_15.interrupt==>Stub-:dsiswitch_bottom@[DSI=(1,2)][side=bottom]:dsihc_bottom:v36+:dsiswitch_bottom@[DSI=(1,2)][side=bottom]:dsihc_bottom:v38"

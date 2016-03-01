@@ -20,15 +20,10 @@ char stop[] = "2\n";
 char torque[20];
 char modtaget[64];
 
-unsigned char *p;
-
-
-
-
 //Functions
 
-void InitUart(void);
-void ReceiveData(void);
-void SendData(uint8 *Pdata);
+void InitUart();
+void ReceiveData();
+void SendData(char *Pdata);
 
 /* [] END OF FILE */
