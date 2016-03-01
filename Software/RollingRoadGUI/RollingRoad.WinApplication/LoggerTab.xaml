@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="RollingRoad.WinApplication.LoggerTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dynamicDataDisplay="http://research.microsoft.com/DynamicDataDisplay/1.0"
+             mc:Ignorable="d" x:Name="LoggerTabName"
+             d:DesignHeight="300" d:DesignWidth="533">
+    <Grid>
+        <ListView x:Name="LogView" Margin="10,10,10,10" ItemsSource="{Binding Log, ElementName=LoggerTabName}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date time" Width="Auto" DisplayMemberBinding="{Binding Item1}"/>
+                    <GridViewColumn Header="Message" Width="Auto" DisplayMemberBinding="{Binding Item2}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</UserControl>

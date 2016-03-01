@@ -33,6 +33,7 @@ namespace RollingRoad.WinApplication
     {
         private ILiveDataSource _currentSource;
         private List<LineStructure?> _data;
+        public ILogger Logger { private get; set; }
 
         private bool HasBeenSaved { get; set; } = true;
 
@@ -53,6 +54,7 @@ namespace RollingRoad.WinApplication
 
             _data = new List<LineStructure?>();
             _currentSource = source;
+            _currentSource.Logger = Logger;
             _currentSource.OnNextReadValue += ThreadMover;
 
             ClearChart();

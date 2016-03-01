@@ -51,8 +51,11 @@ namespace RollingRoad
             Timer.Stop();
         }
 
+        public ILogger Logger { get; set; }
+
         public void Start()
         {
+            Logger?.WriteLine("Starting emulator");
             SendNextCallback();
         }
 
@@ -80,7 +83,8 @@ namespace RollingRoad
                 DataList data = _source.GetAllData()[i];
                 entry.Add(new DataEntry(data.Name, data.Unit, data.GetData()[_index]));
             }
-            
+
+            Logger?.WriteLine("Emulator sending value");
             OnNextReadValue?.Invoke(entry);
             
             double time = _xAxis.GetData()[_index];

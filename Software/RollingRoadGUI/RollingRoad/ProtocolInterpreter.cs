@@ -22,6 +22,8 @@ namespace RollingRoad
 
         private readonly Dictionary<int, DataEntry> _typeDictionary = new Dictionary<int, DataEntry>();
 
+        public ILogger Logger { get; set; }
+
         private enum PacketId
         {
             HandShake = 0,
@@ -56,6 +58,8 @@ namespace RollingRoad
 
             if (line == null)
                 return;
+
+            Logger?.WriteLine("Recieved: " + line);
 
             string[] values = line.Split(' ');
 

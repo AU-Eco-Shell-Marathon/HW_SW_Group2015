@@ -29,7 +29,7 @@
                         </StackPanel>
                     </TabItem.Header>
 
-                    <local:LiveDataTab/>
+                    <local:LiveDataTab x:Name="LiveDataTabName"/>
                 </TabItem>
                 <!-- View data view -->
                 <TabItem>
@@ -40,6 +40,16 @@
                     </TabItem.Header>
 
                     <local:ViewDataTab/>
+                </TabItem>
+                <!-- Log view -->
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>Log</TextBlock>
+                        </StackPanel>
+                    </TabItem.Header>
+
+                    <local:LoggerTab x:Name="LoggerTab"/>
                 </TabItem>
             </TabControl>
         </DockPanel>

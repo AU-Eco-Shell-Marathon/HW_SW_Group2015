@@ -15,5 +15,7 @@ namespace RollingRoad
 
         void Start();
         void Stop();
+
+        ILogger Logger { set; }
     }
 }

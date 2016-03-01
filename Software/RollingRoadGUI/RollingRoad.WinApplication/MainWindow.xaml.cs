@@ -13,7 +13,12 @@ namespace RollingRoad.WinApplication
         public MainWindow()
         {
             InitializeComponent();
+
+            LoggerTab.Logger = _logger;
+            LiveDataTabName.Logger = _logger;
         }
+
+        private readonly ILogger _logger = new EventLogger();
 
         /// <summary>
         /// "File" menu quit
