@@ -1,28 +1,23 @@
-﻿/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
-#include <project.h>
+﻿#include <project.h>
 #include "Uart.h"
 
 uint8_t buf[250] = {0};
 uint8 buf_n = 0;
 
-void InitUART(void)
+char string[] = "dummy\n";
+char handshake[] = "0 RollingRoad\n";
+char stop[] = "2\n";
+char torque[20];
+char modtaget[64];
+
+void InitUart(void)
 {
     USBUART_1_Start(0, USBUART_1_5V_OPERATION);
     while(USBUART_1_GetConfiguration() == 0) {};
     USBUART_1_CDC_Init();
 }
 
-void ReceiveData(void)
+void ReceiveUARTData(void)
 {
     if(USBUART_1_DataIsReady() != 0)
     {
@@ -34,11 +29,11 @@ void ReceiveData(void)
                 buf[buf_n+1]=0;
                 if(strcmp((char*)buf, handshake)==0)
                 {
-		            SendData("0 RollingRoad\n"); 
+		            SendUARTData("0 RollingRoad\n"); 
                     CyDelay(100); 	
-                    SendData("1 0 Time Seconds\n"); // Disse 3 linjer burde ændres
+                    SendUARTData("1 0 Time Seconds\n"); // Disse 3 linjer burde ændres
                     CyDelay(100);                         // til at kunne ændres dynamisk
-                    SendData("1 1 Torque Nm\n");
+                    SendUARTData("1 1 Torque Nm\n");
                    // CyDelay(100);
                    // SendData((uint8*)"1 2 Voltage Volt\n");
                 }
@@ -66,7 +61,7 @@ void ReceiveData(void)
     }
 }
 
-void SendData (char *Pdata)
+void SendUARTData (char *Pdata)
 {
     if(USBUART_1_CDCIsReady())
         USBUART_1_PutString((char*)Pdata);
