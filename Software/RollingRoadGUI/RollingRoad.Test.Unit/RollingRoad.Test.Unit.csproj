@@ -65,6 +65,7 @@
     <Compile Include="CsvDataInterpeterTests.cs" />
     <Compile Include="DataEntryTests.cs" />
     <Compile Include="DataListTests.cs" />
+    <Compile Include="EventLoggerTests.cs" />
     <Compile Include="LiveDataEmulatorTests.cs" />
     <Compile Include="MemoryDataSourceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

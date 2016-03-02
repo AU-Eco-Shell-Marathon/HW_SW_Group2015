@@ -13,7 +13,7 @@ namespace RollingRoad
         /// </summary>
         public event ReadOnlyDataEntryList OnNextReadValue;
 
-        private readonly Thread _listenThread;
+        private Thread _listenThread;
         private readonly StreamReader _reader;
         private readonly StreamWriter _writer;
         private bool _shouldClose;
@@ -43,8 +43,6 @@ namespace RollingRoad
         //Create a new interpreter from stream
         public ProtocolInterpreter(Stream stream)
         {
-            _listenThread = new Thread(ListenThread) {IsBackground = true};
-
             _reader = new StreamReader(stream, Encoding.ASCII);
             _writer = new StreamWriter(stream, Encoding.ASCII);
         }
@@ -117,7 +115,10 @@ namespace RollingRoad
         /// <param name="torque"></param>
         public void SetTorque(double torque)
         {
-            SendCommand((int)PacketId.TorqueCtrl + " " + torque.ToString(CultureInfo));
+            string torqueString = torque.ToString(CultureInfo);
+
+            Logger?.WriteLine("Sending torque " + torqueString);
+            SendCommand((int)PacketId.TorqueCtrl + " " + torqueString);
         }
 
         private void SendCommand(string cmd)
@@ -141,8 +142,21 @@ namespace RollingRoad
         {
             SendCommand((int)PacketId.HandShake + " RollingRoad");
 
-            if(startThread)
-                _listenThread.Start();
+            if (!startThread)
+                return;
+
+            if (_listenThread == null)
+                _listenThread = new Thread(ListenThread) { IsBackground = true };
+
+            if (_listenThread.ThreadState == ThreadState.Suspended)
+                _listenThread = new Thread(ListenThread) { IsBackground = true };
+
+            if (_listenThread.IsAlive)
+                return;
+
+
+            _shouldClose = false;
+            _listenThread.Start();
         }
 
         ~ProtocolInterpreter()
