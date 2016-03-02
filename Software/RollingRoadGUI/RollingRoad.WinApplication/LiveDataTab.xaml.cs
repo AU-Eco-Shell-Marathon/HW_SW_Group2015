@@ -71,7 +71,15 @@ namespace RollingRoad.WinApplication
             }
 
 
-            _currentSource.Start();
+            try
+            {
+                _currentSource?.Start();
+            }
+            catch (Exception exception)
+            {
+                Logger?.WriteLine("Error starting source: " + exception.Message);
+                MessageBox.Show("Error: " + exception.Message, "Error starting source!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private LineStructure CreateNewLine(DataEntry entry)
@@ -246,17 +254,25 @@ namespace RollingRoad.WinApplication
 
         private void LiveDataStartStopButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((string)LiveDataStartStopButton.Content == "Stop")
+            try
             {
-                _currentSource?.Stop();
+                if ((string) LiveDataStartStopButton.Content == "Stop")
+                {
+                    _currentSource?.Stop();
 
-                LiveDataStartStopButton.Content = "Start";
+                    LiveDataStartStopButton.Content = "Start";
+                }
+                else
+                {
+                    _currentSource?.Start();
+
+                    LiveDataStartStopButton.Content = "Stop";
+                }
             }
-            else
+            catch (Exception exception)
             {
-                _currentSource?.Start();
-
-                LiveDataStartStopButton.Content = "Stop";
+                Logger?.WriteLine("Error starting/stopping source: " + exception.Message);
+                MessageBox.Show("Error: " + exception.Message, "Error starting/stopping source!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
