@@ -38,7 +38,7 @@ void ReceiveUARTData(void)
                    // SendData((uint8*)"1 2 Voltage Volt\n");
                 }
             }
-            /*
+            
             else if(buf[0]=='2' && buf_n==sizeof(stop)) // Stop
             {
                 buf[buf_n+1]=0;
@@ -52,7 +52,7 @@ void ReceiveUARTData(void)
                 buf[buf_n+1]=0;
                 //Moment = atoi(buf)            //Fjern udkommentering når det kopieres over
             }
-            */
+            
             else
             {
                 buf_n++;
