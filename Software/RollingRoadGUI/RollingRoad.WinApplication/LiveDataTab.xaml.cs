@@ -55,6 +55,9 @@ namespace RollingRoad.WinApplication
             _data = new List<LineStructure?>();
             _currentSource = source;
             _currentSource.Logger = Logger;
+
+            Logger?.WriteLine("Selected source: " + source);
+
             _currentSource.OnNextReadValue += ThreadMover;
 
             ClearChart();
@@ -63,6 +66,7 @@ namespace RollingRoad.WinApplication
 
             if (torqueControl != null)
             {
+                Logger?.WriteLine("New source has torque control");
                 LiveDataStackPanel.Children.Add(new TorqueControlDisplay(torqueControl));
             }
 
@@ -198,6 +202,7 @@ namespace RollingRoad.WinApplication
                 catch (Exception e)
                 {
                     MessageBox.Show("Error: " + e.Message, "Error saving data!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Logger?.WriteLine("Error saving data: " + e.Message);
                     return false;
                 }
 
@@ -258,6 +263,7 @@ namespace RollingRoad.WinApplication
         private void SelectSource_Click(object sender, RoutedEventArgs e)
         {
             SelectSourceWindow window = new SelectSourceWindow();
+            window.Logger = Logger;
 
             try
             {
@@ -268,6 +274,7 @@ namespace RollingRoad.WinApplication
             }
             catch (Exception exception)
             {
+                Logger?.WriteLine("Error opening source: " + exception.Message);
                 MessageBox.Show("Error: " + exception.Message, "Error opening source!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

@@ -5,13 +5,23 @@ namespace RollingRoad
 {
     public class MemoryDataSource : IDataSource
     {
+        /// <summary>
+        /// Data in the memory data source
+        /// </summary>
         public List<DataList> Data { get; } = new List<DataList>();
 
+        /// <summary>
+        /// Memory data source, initiated with no data
+        /// </summary>
         public MemoryDataSource()
         {
             
         }
 
+        /// <summary>
+        /// Create datasource from list
+        /// </summary>
+        /// <param name="list">List to use in datasource</param>
         public MemoryDataSource(List<DataList> list)
         {
             Data = list;
@@ -50,6 +60,11 @@ namespace RollingRoad
         public IReadOnlyList<DataList> GetAllData()
         {
             return Data.AsReadOnly();
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

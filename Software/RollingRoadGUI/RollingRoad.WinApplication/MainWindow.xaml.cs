@@ -16,6 +16,8 @@ namespace RollingRoad.WinApplication
 
             LoggerTab.Logger = _logger;
             LiveDataTabName.Logger = _logger;
+
+            _logger.WriteLine("Program started");
         }
 
         private readonly ILogger _logger = new EventLogger();

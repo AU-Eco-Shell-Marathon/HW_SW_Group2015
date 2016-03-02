@@ -11,6 +11,7 @@ namespace RollingRoad.WinApplication
     public partial class SelectSourceWindow
     {
         public ILiveDataSource LiveDataSource { get; private set; }
+        public ILogger Logger { get; set; }
 
         public SelectSourceWindow()
         {
@@ -53,6 +54,7 @@ namespace RollingRoad.WinApplication
                 }
                 catch (Exception exception)
                 {
+                    Logger?.WriteLine($"Error opening file {filename}: " + exception.Message);
                     MessageBox.Show(exception.Message, "Error opening file", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }

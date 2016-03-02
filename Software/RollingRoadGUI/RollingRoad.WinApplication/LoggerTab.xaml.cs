@@ -34,8 +34,6 @@ namespace RollingRoad.WinApplication
         public LoggerTab()
         {
             InitializeComponent();
-            
-            WriteLine("Logger started");
         }
         
         public void WriteLine(string line)

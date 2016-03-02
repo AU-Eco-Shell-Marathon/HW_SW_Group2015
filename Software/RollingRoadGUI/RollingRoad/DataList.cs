@@ -26,6 +26,11 @@ namespace RollingRoad
         private readonly List<double> _data = new List<double>();
 
 
+        /// <summary>
+        /// Creates a new data list with the specified name and unit
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="unit"></param>
         /// <exception cref="System.ArgumentException">Thrown when name or unit is empty or null</exception>
         public DataList(string name, string unit)
         {
@@ -33,7 +38,7 @@ namespace RollingRoad
                 throw new ArgumentException("Name can't be null or empty");
 
             if (string.IsNullOrEmpty(unit))
-                throw new ArgumentException("Name can't be null or empty");
+                throw new ArgumentException("Unit can't be null or empty");
 
             Name = name;
             Unit = unit;
@@ -58,7 +63,7 @@ namespace RollingRoad
         }
 
         /// <summary>
-        /// Adds data to the datalist
+        /// Adds data to the datalist, also check if unit and name match current
         /// </summary>
         /// <param name="value">Value to add</param>
         /// <exception cref="System.ArgumentException">Thrown when the name or unit does not match the list</exception>

@@ -13,9 +13,19 @@ namespace RollingRoad
 
         event ReadOnlyDataEntryList OnNextReadValue;
 
+        /// <summary>
+        /// Starts the transmission/recieving of data
+        /// </summary>
         void Start();
+
+        /// <summary>
+        /// Stops the transmission/recieving of data
+        /// </summary>
         void Stop();
 
+        /// <summary>
+        /// Logger used
+        /// </summary>
         ILogger Logger { set; }
     }
 }

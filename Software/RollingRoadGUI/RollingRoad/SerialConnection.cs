@@ -18,5 +18,10 @@ namespace RollingRoad
         {
             Port.Dispose();
         }
+
+        public override string ToString()
+        {
+            return Port.PortName;
+        }
     }
 }

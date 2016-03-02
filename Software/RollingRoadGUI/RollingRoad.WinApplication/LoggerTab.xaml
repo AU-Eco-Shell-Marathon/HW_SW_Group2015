@@ -10,7 +10,7 @@
         <ListView x:Name="LogView" Margin="10,10,10,10" ItemsSource="{Binding Log, ElementName=LoggerTabName}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Date time" Width="Auto" DisplayMemberBinding="{Binding Item1}"/>
+                    <GridViewColumn Header="Time" Width="Auto" DisplayMemberBinding="{Binding Item1}"/>
                     <GridViewColumn Header="Message" Width="Auto" DisplayMemberBinding="{Binding Item2}"/>
                 </GridView>
             </ListView.View>

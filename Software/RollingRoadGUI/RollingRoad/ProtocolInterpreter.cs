@@ -14,16 +14,23 @@ namespace RollingRoad
         public event ReadOnlyDataEntryList OnNextReadValue;
 
         private readonly Thread _listenThread;
-        
         private readonly StreamReader _reader;
         private readonly StreamWriter _writer;
-
         private bool _shouldClose;
-
         private readonly Dictionary<int, DataEntry> _typeDictionary = new Dictionary<int, DataEntry>();
 
+        /// <summary>
+        /// Logger used
+        /// </summary>
         public ILogger Logger { get; set; }
 
+
+        private static readonly CultureInfo CultureInfo = new CultureInfo("en-US");
+        private const string CommandDivider = "\n";
+
+        /// <summary>
+        /// Packet id as specified in the protocol
+        /// </summary>
         private enum PacketId
         {
             HandShake = 0,
@@ -33,6 +40,7 @@ namespace RollingRoad
             TorqueCtrl = 4
         }
 
+        //Create a new interpreter from stream
         public ProtocolInterpreter(Stream stream)
         {
             _listenThread = new Thread(ListenThread) {IsBackground = true};
@@ -41,6 +49,9 @@ namespace RollingRoad
             _writer = new StreamWriter(stream, Encoding.ASCII);
         }
 
+        /// <summary>
+        /// Thread function
+        /// </summary>
         private void ListenThread()
         {
             while (!_shouldClose)
@@ -50,7 +61,7 @@ namespace RollingRoad
         }
 
         /// <summary>
-        /// Forces a listen
+        /// Listens a single time for incomming messages (Is blocking until the line is recieved)
         /// </summary>
         public void Listen()
         {
@@ -73,7 +84,10 @@ namespace RollingRoad
                     string typeName = values[2];
                     string typeUnit = values[3];
 
-                    _typeDictionary.Add(typeId, new DataEntry(typeName, typeUnit, 0));
+                    DataEntry entry = new DataEntry(typeName, typeUnit, 0);
+
+                    Logger?.WriteLine("New type recieved: " + entry);
+                    _typeDictionary.Add(typeId, entry);
                     break;
                 case PacketId.Information:
                     //First value is command ID, and each value has an typeId and actual value
@@ -82,7 +96,7 @@ namespace RollingRoad
 
                     for (int i = 0; i < valuesToRead; i++)
                     {
-                        double value = double.Parse(values[i + 1], CultureInfo.InvariantCulture);
+                        double value = double.Parse(values[i + 1], CultureInfo);
 
                         DataEntry type = _typeDictionary[i];
 
@@ -91,17 +105,24 @@ namespace RollingRoad
 
                     OnNextReadValue?.Invoke(dataRead);
                     break;
+                default:
+                    Logger?.WriteLine("Unknown id recieved: " + (int)packetId);
+                    break;;
             }
         }
 
+        /// <summary>
+        /// Send a new torque to set to the rollingroad
+        /// </summary>
+        /// <param name="torque"></param>
         public void SetTorque(double torque)
         {
-            SendCommand((int)PacketId.TorqueCtrl + " " + torque.ToString(new CultureInfo("en-US")));
+            SendCommand((int)PacketId.TorqueCtrl + " " + torque.ToString(CultureInfo));
         }
 
         private void SendCommand(string cmd)
         {
-            _writer?.Write(cmd + "\n");
+            _writer?.Write(cmd + CommandDivider);
             _writer?.Flush();
         }
 
