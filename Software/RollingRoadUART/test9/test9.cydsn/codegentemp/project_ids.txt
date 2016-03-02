@@ -1,5 +1,0 @@
-C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingRoadUART\test9\test9.cydsn\test9.cyprj|34563756-478d-45e8-bc6b-dbfb9c96a14e
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|81901f24-21ad-47c9-88ff-3861fc180f57
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|baacf28a-590b-419e-bdee-df52312804d2
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|16951ded-f1e3-4064-a6da-ba19cd63b41b
-C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|fe2cb104-954d-42fe-8f28-939f1c55e156
