@@ -16,6 +16,12 @@ namespace RollingRoad
 
         public void Dispose()
         {
+            if (Port == null)
+                return;
+
+            if (!Port.IsOpen)
+                return;
+
             Port.Dispose();
         }
 
