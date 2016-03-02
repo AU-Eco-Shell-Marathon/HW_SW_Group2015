@@ -9,8 +9,13 @@
  *
  * ========================================
 */
+
+#ifndef SENSOR_H
+#define SENSOR_H
+    
 #include <project.h>
 #define N 128
+
 
 // Alt data kommer i micro prefix, undtagen RPM og distance.
 
@@ -41,4 +46,5 @@ int32 getMoment();
 int32 getDistance(char reset);
 void sensor_init();
 
+#endif
 /* [] END OF FILE */

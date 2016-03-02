@@ -18,6 +18,7 @@
 
 #include "PID.h"
 #include "sensor.h"
+#include "Uart.h"
 
 //struct sekvens{
 //    int * seq_moment;

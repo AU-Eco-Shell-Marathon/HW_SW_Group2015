@@ -27,6 +27,7 @@ The unit description command will give the PC, with the 3 kinds of information. 
 
 \subsection{Stop}
 The stop command is used for stopping the data transmission. The stop command is called either by pressing a button on GUI or closing the program on the PC.
+When stop command is issued and data transmission is once again wanted, the protocol will start from the top, by sending the handshake command again. 
 
 \subsection{Information}
 The information command will be the command where the all the information will be send. Thismeaning that this command is going to be send very often and therefore this message should be as short as possible. This is done by sending only the information needed, which is just the values of the information. To ensure that the PC and the PSoC communicates correctly here, the unit description command is used. 

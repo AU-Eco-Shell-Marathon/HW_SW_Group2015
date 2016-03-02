@@ -1,4 +1,4 @@
-Loading plugins phase: Elapsed time ==> 0s.224ms
+Loading plugins phase: Elapsed time ==> 0s.290ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingGoalPSoC\Rolling_Goal\RollingGoal.cydsn\RollingGoal.cyprj -d CY8C5888LTI-LP097 -s C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingGoalPSoC\Rolling_Goal\RollingGoal.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
@@ -9,10 +9,10 @@ ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_0 is u
  * C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_0\PSoC5\ADC_SAR_SEQ_v2_0.cysch (Shape_885)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 2s.863ms
+Elaboration phase: Elapsed time ==> 3s.480ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.118ms
+HDL generation phase: Elapsed time ==> 0s.128ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -46,7 +46,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thoma
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Mar 01 11:13:41 2016
+Wed Mar 02 14:20:50 2016
 
 
 ======================================================================
@@ -56,7 +56,7 @@ Options  :    -yv2 -q10 RollingGoal.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Mar 01 11:13:41 2016
+Wed Mar 02 14:20:50 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -119,7 +119,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thoma
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Mar 01 11:13:42 2016
+Wed Mar 02 14:20:50 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -167,7 +167,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thoma
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Mar 01 11:13:43 2016
+Wed Mar 02 14:20:52 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -919,43 +919,43 @@ Removing Lhs of wire \Counter_2:CounterUDB:cs_addr_0\[1467] = \Counter_2:Counter
 Removing Lhs of wire \Control_Reg_2:clk\[1641] = Net_11096[794]
 Removing Lhs of wire \Control_Reg_2:rst\[1642] = zero[4]
 Removing Lhs of wire tmpOE__TX_AND_POWER_net_0[1668] = one[9]
-Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\\D\[1675] = \ADC_SAR_Seq_1:ch_addr_5\[68]
-Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\\D\[1676] = \ADC_SAR_Seq_1:ch_addr_4\[70]
-Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\\D\[1677] = \ADC_SAR_Seq_1:ch_addr_3\[72]
-Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\\D\[1678] = \ADC_SAR_Seq_1:ch_addr_2\[74]
-Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\\D\[1679] = \ADC_SAR_Seq_1:ch_addr_1\[76]
-Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\\D\[1680] = \ADC_SAR_Seq_1:ch_addr_0\[78]
-Removing Lhs of wire \ADC_SAR_Seq_1:bSAR_SEQ:nrq_edge_detect_reg\\D\[1745] = \ADC_SAR_Seq_1:bSAR_SEQ:nrq_edge_detect\[294]
-Removing Lhs of wire \ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\\D\[1747] = \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\[291]
-Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\D\[1748] = one[9]
-Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1749] = zero[4]
-Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1750] = zero[4]
-Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\D\[1753] = one[9]
-Removing Lhs of wire \PWM_1:PWMUDB:prevCompare1\\D\[1756] = \PWM_1:PWMUDB:cmp1\[518]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\D\[1757] = \PWM_1:PWMUDB:cmp1_status\[519]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\D\[1758] = zero[4]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1760] = \PWM_1:PWMUDB:pwm_i\[570]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1761] = zero[4]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1762] = zero[4]
-Removing Lhs of wire \PWM_1:PWMUDB:tc_i_reg\\D\[1763] = \PWM_1:PWMUDB:status_2\[513]
-Removing Lhs of wire \Timer_1:TimerUDB:capture_last\\D\[1765] = Net_9966[911]
-Removing Lhs of wire \Timer_1:TimerUDB:tc_reg_i\\D\[1766] = \Timer_1:TimerUDB:status_tc\[917]
-Removing Lhs of wire \Timer_1:TimerUDB:hwEnable_reg\\D\[1767] = \Timer_1:TimerUDB:control_7\[894]
-Removing Lhs of wire \Timer_1:TimerUDB:capture_out_reg_i\\D\[1768] = \Timer_1:TimerUDB:capt_fifo_load\[913]
-Removing Lhs of wire \Counter_1:CounterUDB:prevCapture\\D\[1772] = zero[4]
-Removing Lhs of wire \Counter_1:CounterUDB:overflow_reg_i\\D\[1773] = \Counter_1:CounterUDB:overflow\[1183]
-Removing Lhs of wire \Counter_1:CounterUDB:underflow_reg_i\\D\[1774] = \Counter_1:CounterUDB:underflow\[1186]
-Removing Lhs of wire \Counter_1:CounterUDB:tc_reg_i\\D\[1775] = \Counter_1:CounterUDB:tc_i\[1189]
-Removing Lhs of wire \Counter_1:CounterUDB:prevCompare\\D\[1776] = \Counter_1:CounterUDB:cmp_out_i\[1191]
-Removing Lhs of wire \Counter_1:CounterUDB:cmp_out_reg_i\\D\[1777] = \Counter_1:CounterUDB:cmp_out_i\[1191]
-Removing Lhs of wire \Counter_1:CounterUDB:count_stored_i\\D\[1778] = Net_11090[1197]
-Removing Lhs of wire \Counter_2:CounterUDB:prevCapture\\D\[1779] = zero[4]
-Removing Lhs of wire \Counter_2:CounterUDB:overflow_reg_i\\D\[1780] = \Counter_2:CounterUDB:overflow\[1450]
-Removing Lhs of wire \Counter_2:CounterUDB:underflow_reg_i\\D\[1781] = \Counter_2:CounterUDB:underflow\[1453]
-Removing Lhs of wire \Counter_2:CounterUDB:tc_reg_i\\D\[1782] = \Counter_2:CounterUDB:reload_tc\[1433]
-Removing Lhs of wire \Counter_2:CounterUDB:prevCompare\\D\[1783] = \Counter_2:CounterUDB:cmp_out_i\[1458]
-Removing Lhs of wire \Counter_2:CounterUDB:cmp_out_reg_i\\D\[1784] = \Counter_2:CounterUDB:cmp_out_i\[1458]
-Removing Lhs of wire \Counter_2:CounterUDB:count_stored_i\\D\[1785] = Net_11010[1384]
+Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\\D\[1678] = \ADC_SAR_Seq_1:ch_addr_5\[68]
+Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\\D\[1679] = \ADC_SAR_Seq_1:ch_addr_4\[70]
+Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\\D\[1680] = \ADC_SAR_Seq_1:ch_addr_3\[72]
+Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\\D\[1681] = \ADC_SAR_Seq_1:ch_addr_2\[74]
+Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\\D\[1682] = \ADC_SAR_Seq_1:ch_addr_1\[76]
+Removing Lhs of wire \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\\D\[1683] = \ADC_SAR_Seq_1:ch_addr_0\[78]
+Removing Lhs of wire \ADC_SAR_Seq_1:bSAR_SEQ:nrq_edge_detect_reg\\D\[1748] = \ADC_SAR_Seq_1:bSAR_SEQ:nrq_edge_detect\[294]
+Removing Lhs of wire \ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\\D\[1750] = \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\[291]
+Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\D\[1751] = one[9]
+Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1752] = zero[4]
+Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1753] = zero[4]
+Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\D\[1756] = one[9]
+Removing Lhs of wire \PWM_1:PWMUDB:prevCompare1\\D\[1759] = \PWM_1:PWMUDB:cmp1\[518]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\D\[1760] = \PWM_1:PWMUDB:cmp1_status\[519]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\D\[1761] = zero[4]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1763] = \PWM_1:PWMUDB:pwm_i\[570]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1764] = zero[4]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1765] = zero[4]
+Removing Lhs of wire \PWM_1:PWMUDB:tc_i_reg\\D\[1766] = \PWM_1:PWMUDB:status_2\[513]
+Removing Lhs of wire \Timer_1:TimerUDB:capture_last\\D\[1768] = Net_9966[911]
+Removing Lhs of wire \Timer_1:TimerUDB:tc_reg_i\\D\[1769] = \Timer_1:TimerUDB:status_tc\[917]
+Removing Lhs of wire \Timer_1:TimerUDB:hwEnable_reg\\D\[1770] = \Timer_1:TimerUDB:control_7\[894]
+Removing Lhs of wire \Timer_1:TimerUDB:capture_out_reg_i\\D\[1771] = \Timer_1:TimerUDB:capt_fifo_load\[913]
+Removing Lhs of wire \Counter_1:CounterUDB:prevCapture\\D\[1775] = zero[4]
+Removing Lhs of wire \Counter_1:CounterUDB:overflow_reg_i\\D\[1776] = \Counter_1:CounterUDB:overflow\[1183]
+Removing Lhs of wire \Counter_1:CounterUDB:underflow_reg_i\\D\[1777] = \Counter_1:CounterUDB:underflow\[1186]
+Removing Lhs of wire \Counter_1:CounterUDB:tc_reg_i\\D\[1778] = \Counter_1:CounterUDB:tc_i\[1189]
+Removing Lhs of wire \Counter_1:CounterUDB:prevCompare\\D\[1779] = \Counter_1:CounterUDB:cmp_out_i\[1191]
+Removing Lhs of wire \Counter_1:CounterUDB:cmp_out_reg_i\\D\[1780] = \Counter_1:CounterUDB:cmp_out_i\[1191]
+Removing Lhs of wire \Counter_1:CounterUDB:count_stored_i\\D\[1781] = Net_11090[1197]
+Removing Lhs of wire \Counter_2:CounterUDB:prevCapture\\D\[1782] = zero[4]
+Removing Lhs of wire \Counter_2:CounterUDB:overflow_reg_i\\D\[1783] = \Counter_2:CounterUDB:overflow\[1450]
+Removing Lhs of wire \Counter_2:CounterUDB:underflow_reg_i\\D\[1784] = \Counter_2:CounterUDB:underflow\[1453]
+Removing Lhs of wire \Counter_2:CounterUDB:tc_reg_i\\D\[1785] = \Counter_2:CounterUDB:reload_tc\[1433]
+Removing Lhs of wire \Counter_2:CounterUDB:prevCompare\\D\[1786] = \Counter_2:CounterUDB:cmp_out_i\[1458]
+Removing Lhs of wire \Counter_2:CounterUDB:cmp_out_reg_i\\D\[1787] = \Counter_2:CounterUDB:cmp_out_i\[1458]
+Removing Lhs of wire \Counter_2:CounterUDB:count_stored_i\\D\[1788] = Net_11010[1384]
 
 ------------------------------------------------------
 Aliased 0 equations, 326 wires.
@@ -1488,8 +1488,8 @@ Removing Lhs of wire \Counter_1:CounterUDB:tc_i\[1189] = \Counter_1:CounterUDB:p
 Removing Lhs of wire \Counter_2:CounterUDB:hwCapture\[1431] = zero[4]
 Removing Lhs of wire \Counter_2:CounterUDB:status_3\[1442] = zero[4]
 Removing Lhs of wire \Counter_2:CounterUDB:underflow\[1453] = zero[4]
-Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\D\[1751] = \PWM_1:PWMUDB:control_7\[458]
-Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\D\[1759] = zero[4]
+Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\D\[1754] = \PWM_1:PWMUDB:control_7\[458]
+Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\D\[1762] = zero[4]
 
 ------------------------------------------------------
 Aliased 0 equations, 15 wires.
@@ -1522,14 +1522,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingGoalPSoC\Rolling_Goal\RollingGoal.cydsn\RollingGoal.cyprj -dcpsoc3 RollingGoal.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 2s.333ms
+Warp synthesis phase: Elapsed time ==> 2s.602ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Tuesday, 01 March 2016 11:13:44
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Wednesday, 02 March 2016 14:20:52
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Thomas\Documents\GitHub\PRJ4\Software\RollingGoalPSoC\Rolling_Goal\RollingGoal.cydsn\RollingGoal.cyprj -d CY8C5888LTI-LP097 RollingGoal.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.039ms
+Design parsing phase: Elapsed time ==> 0s.040ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -1557,8 +1557,9 @@ Assigning clock ADC_SAR_Seq_1_BusClock to clock BUS_CLK because it is a pass-thr
     Digital Clock 2: Automatic-assigning  clock 'ADC_SAR_Seq_1_IntClock'. Fanout=73, Signal=\ADC_SAR_Seq_1:clock\
     Digital Clock 3: Automatic-assigning  clock 'ADC_SAR_1_theACLK'. Fanout=1, Signal=\ADC_SAR_1:Net_376\
     Digital Clock 4: Automatic-assigning  clock 'Clock_3'. Fanout=5, Signal=Net_11096
-    Digital Clock 5: Automatic-assigning  clock 'Clock_5'. Fanout=1, Signal=Net_11057
-    Digital Clock 6: Automatic-assigning  clock 'Clock_4'. Fanout=1, Signal=Net_10833
+    Digital Clock 5: Automatic-assigning  clock 'Clock_6'. Fanout=1, Signal=Net_11102
+    Digital Clock 6: Automatic-assigning  clock 'Clock_5'. Fanout=1, Signal=Net_11057
+    Digital Clock 7: Automatic-assigning  clock 'Clock_4'. Fanout=1, Signal=Net_10833
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
@@ -4620,6 +4621,14 @@ Design Equations
         {
             int_type = "10"
         }
+
+    interrupt: Name =isr_5
+        PORT MAP (
+            interrupt => Net_11102_local );
+        Properties:
+        {
+            int_type = "10"
+        }
     </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Technology mapping summary" expanded>
@@ -4630,11 +4639,11 @@ Technology mapping summary
 
 Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
-Digital Clocks                :    7 :    1 :    8 : 87.50 %
+Digital Clocks                :    8 :    0 :    8 : 100.00 %
 Analog Clocks                 :    0 :    4 :    4 :  0.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
-Interrupts                    :   14 :   18 :   32 : 43.75 %
+Interrupts                    :   15 :   17 :   32 : 46.88 %
 IO                            :   13 :   35 :   48 : 27.08 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
@@ -4664,8 +4673,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    1 :    3 :    4 : 25.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.130ms
-Tech mapping phase: Elapsed time ==> 0s.226ms
+Technology Mapping: Elapsed time ==> 0s.116ms
+Tech mapping phase: Elapsed time ==> 0s.220ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "Net_10912" is connected to one terminal only. (App=cydsfit)
@@ -4775,7 +4784,7 @@ VIDAC[2]@[FFB(VIDAC,2)] : \VDAC8_1:viDAC8\
 Vref[6]@[FFB(Vref,6)] : vRef_1
 IO_1@[IOP=(0)][IoId=(1)] : Dedicated_Output (OPAMP-GPIO)
 
-Analog Placement phase: Elapsed time ==> 1s.569ms
+Analog Placement phase: Elapsed time ==> 1s.846ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Net "Net_7985" overuses wire "AGL[5]"
@@ -4784,7 +4793,7 @@ Net "Net_11077" overuses wire "AGL[5]"
 Net "Net_7985" overuses wire "AGL[5]"
 Net "Net_11077" overuses wire "AGL[5]"
 Net "Net_11077" overuses wire "AGL[5]"
-Analog Routing phase: Elapsed time ==> 0s.026ms
+Analog Routing phase: Elapsed time ==> 0s.035ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -5533,11 +5542,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = True
-Analog Code Generation phase: Elapsed time ==> 0s.384ms
+Analog Code Generation phase: Elapsed time ==> 0s.444ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 5.2 sec.
+I2076: Total run-time: 5.8 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -5548,33 +5557,33 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   48 :    0 :   48 : 100.00%
+                     PLDs :   47 :    1 :   48 :  97.92%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            7.06
-                   Pterms :            2.56
-               Macrocells :            2.15
+                   Inputs :            6.66
+                   Pterms :            2.62
+               Macrocells :            2.19
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.005ms
+PLD Packing: Elapsed time ==> 0s.003ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.192ms
+Partitioning: Elapsed time ==> 0s.207ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.001ms
+Annealing: Elapsed time ==> 0s.002ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 853, final cost is 853 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 809, final cost is 809 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -5584,7 +5593,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         24 :       8.63 :       4.29
+                 UDB :         24 :       7.42 :       4.29
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -5592,59 +5601,46 @@ Final Placement Summary
 Component Placement Details
 ------------------------------------------------------------
 UDB [UDB=(0,0)] contents:
-LAB@[UDB=(0,0)][LB=0] #macrocells=1, #inputs=7, #pterms=1
+LAB@[UDB=(0,0)][LB=0] #macrocells=1, #inputs=3, #pterms=1
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_17\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=1]
-        Total # of inputs        : 7
+    [McSlotId=0]:     MacroCell: Name=\Counter_1:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=0]
+        Total # of inputs        : 3
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \Counter_1:CounterUDB:control_7\ * 
+              !\Counter_1:CounterUDB:count_stored_i\ * Net_11090
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_17\ (fanout=1)
+        Output = \Counter_1:CounterUDB:count_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,0)][LB=1] #macrocells=1, #inputs=1, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\Counter_1:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_11092) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_11090
+        );
+        Output = \Counter_1:CounterUDB:count_stored_i\ (fanout=1)
         Properties               : 
         {
         }
 
     [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(0,0)][LB=1] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_35\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_35\ (fanout=1)
-        Properties               : 
-        {
-        }
-
     [McSlotId=3]: (empty)
 }
 
@@ -5685,10 +5681,43 @@ datapathcell: Name =\Counter_1:CounterUDB:sC32:counterdp:u2\
     Previous in chain : \Counter_1:CounterUDB:sC32:counterdp:u1\
     Next in chain : \Counter_1:CounterUDB:sC32:counterdp:u3\
 
+controlcell: Name =\Counter_1:CounterUDB:sCTRLReg:ctrlreg\
+    PORT MAP (
+        clock => Net_11092 ,
+        control_7 => \Counter_1:CounterUDB:control_7\ ,
+        control_6 => \Counter_1:CounterUDB:control_6\ ,
+        control_5 => \Counter_1:CounterUDB:control_5\ ,
+        control_4 => \Counter_1:CounterUDB:control_4\ ,
+        control_3 => \Counter_1:CounterUDB:control_3\ ,
+        control_2 => \Counter_1:CounterUDB:control_2\ ,
+        control_1 => \Counter_1:CounterUDB:control_1\ ,
+        control_0 => \Counter_1:CounterUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =\Sync_3:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_11092 ,
+        in => Net_11091 ,
+        out => Net_11090 );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
 UDB [UDB=(0,1)] contents:
 LAB@[UDB=(0,1)][LB=0] #macrocells=1, #inputs=7, #pterms=1
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_5\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_25\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5698,13 +5727,13 @@ LAB@[UDB=(0,1)][LB=0] #macrocells=1, #inputs=7, #pterms=1
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_5\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_25\ (fanout=1)
         Properties               : 
         {
         }
@@ -5716,7 +5745,7 @@ LAB@[UDB=(0,1)][LB=0] #macrocells=1, #inputs=7, #pterms=1
 
 LAB@[UDB=(0,1)][LB=1] #macrocells=1, #inputs=7, #pterms=1
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_13\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_42\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5725,14 +5754,14 @@ LAB@[UDB=(0,1)][LB=1] #macrocells=1, #inputs=7, #pterms=1
         Main Equation            : 1 pterm
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_13\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_42\ (fanout=1)
         Properties               : 
         {
         }
@@ -5780,44 +5809,9 @@ datapathcell: Name =\Counter_1:CounterUDB:sC32:counterdp:u1\
     Next in chain : \Counter_1:CounterUDB:sC32:counterdp:u2\
 
 UDB [UDB=(0,2)] contents:
-LAB@[UDB=(0,2)][LB=0] #macrocells=2, #inputs=3, #pterms=2
+LAB@[UDB=(0,2)][LB=0] #macrocells=2, #inputs=7, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\Counter_2:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_11010 * \Counter_2:CounterUDB:control_7\ * 
-              !\Counter_2:CounterUDB:count_stored_i\
-        );
-        Output = \Counter_2:CounterUDB:count_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Counter_2:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_11010
-        );
-        Output = \Counter_2:CounterUDB:count_stored_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_11\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_10\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5831,35 +5825,14 @@ LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_11\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_22\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_22\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_10\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_49\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_62\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5870,17 +5843,24 @@ LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_49\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_62\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_54\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=3]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,2)][LB=1] #macrocells=1, #inputs=7, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_47\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5890,16 +5870,19 @@ LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_54\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_47\ (fanout=1)
         Properties               : 
         {
         }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
 }
 
 datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u1\
@@ -5939,81 +5922,12 @@ datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u1\
     Previous in chain : \Counter_2:CounterUDB:sC32:counterdp:u0\
     Next in chain : \Counter_2:CounterUDB:sC32:counterdp:u2\
 
-controlcell: Name =\Counter_2:CounterUDB:sCTRLReg:ctrlreg\
-    PORT MAP (
-        clock => Net_11092 ,
-        control_7 => \Counter_2:CounterUDB:control_7\ ,
-        control_6 => \Counter_2:CounterUDB:control_6\ ,
-        control_5 => \Counter_2:CounterUDB:control_5\ ,
-        control_4 => \Counter_2:CounterUDB:control_4\ ,
-        control_3 => \Counter_2:CounterUDB:control_3\ ,
-        control_2 => \Counter_2:CounterUDB:control_2\ ,
-        control_1 => \Counter_2:CounterUDB:control_1\ ,
-        control_0 => \Counter_2:CounterUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\Sync_1:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_11092 ,
-        in => Net_11057_local ,
-        out => Net_11010 );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
 UDB [UDB=(0,3)] contents:
-LAB@[UDB=(0,3)][LB=0] #macrocells=2, #inputs=4, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              Net_1240 * !Net_1241
-            + !Net_1241 * cy_srff_1
-        );
-        Output = cy_srff_1 (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\Counter_2:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_2:CounterUDB:cmp_out_i\
-        );
-        Output = \Counter_2:CounterUDB:prevCompare\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(0,3)][LB=1] #macrocells=3, #inputs=9, #pterms=3
+LAB@[UDB=(0,3)][LB=0] #macrocells=1, #inputs=7, #pterms=1
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_52\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=1]
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_49\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6025,30 +5939,23 @@ LAB@[UDB=(0,3)][LB=1] #macrocells=3, #inputs=9, #pterms=3
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_52\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_49\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\Counter_2:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=1][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_2:CounterUDB:cmp_out_i\ * 
-              !\Counter_2:CounterUDB:prevCompare\
-        );
-        Output = \Counter_2:CounterUDB:status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
+    [McSlotId=3]: (empty)
+}
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_25\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=3]
+LAB@[UDB=(0,3)][LB=1] #macrocells=2, #inputs=7, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_27\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6061,10 +5968,31 @@ LAB@[UDB=(0,3)][LB=1] #macrocells=3, #inputs=9, #pterms=3
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_25\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_27\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_11\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_11\ (fanout=1)
         Properties               : 
         {
         }
@@ -6107,6 +6035,78 @@ datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u2\
     Previous in chain : \Counter_2:CounterUDB:sC32:counterdp:u1\
     Next in chain : \Counter_2:CounterUDB:sC32:counterdp:u3\
 
+synccell: Name =\ADC_SAR_Seq_1:Sync:genblk1[0]:INST\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        in => \ADC_SAR_Seq_1:nrq\ ,
+        out => \ADC_SAR_Seq_1:Net_3935\ );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(0,4)] contents:
+LAB@[UDB=(0,4)][LB=0] #macrocells=1, #inputs=3, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\ * !Net_9122
+            + \ADC_SAR_Seq_1:Net_3935\
+        );
+        Output = \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,4)][LB=1] #macrocells=2, #inputs=2, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=Net_9122, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\ * 
+              !\ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\
+        );
+        Output = Net_9122 (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\
+        );
+        Output = \ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
 statuscell: Name =\Status_Reg_1:sts:sts_reg\
     PORT MAP (
         status_0 => cy_srff_1 );
@@ -6139,10 +6139,318 @@ controlcell: Name =\Control_Reg_1:Sync:ctrl_reg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(0,4)] contents:
-LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=11, #pterms=4
+UDB [UDB=(0,5)] contents:
+LAB@[UDB=(0,5)][LB=0] #macrocells=2, #inputs=7, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_4\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_43\, Mode=(D-Register) @ [UDB=(0,5)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_43\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_0\, Mode=(D-Register) @ [UDB=(0,5)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,5)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_61\, Mode=(D-Register) @ [UDB=(0,5)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_61\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_13\, Mode=(D-Register) @ [UDB=(0,5)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_13\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_60\, Mode=(D-Register) @ [UDB=(0,5)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_60\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+statuscell: Name =\ADC_SAR_Seq_1:bSAR_SEQ:EOCSts\
+    PORT MAP (
+        clock => \ADC_SAR_Seq_1:clock\ ,
+        status_0 => Net_9122 ,
+        clk_en => \ADC_SAR_Seq_1:bSAR_SEQ:enable\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_md_select = "00000001"
+    }
+    Clock Polarity: Active High
+    Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
+
+UDB [UDB=(1,0)] contents:
+LAB@[UDB=(1,0)][LB=0] #macrocells=2, #inputs=4, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\Counter_1:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_1:CounterUDB:cmp_out_i\ * 
+              !\Counter_1:CounterUDB:prevCompare\
+        );
+        Output = \Counter_1:CounterUDB:status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\Counter_1:CounterUDB:status_2\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_1:CounterUDB:per_equal\ * 
+              !\Counter_1:CounterUDB:overflow_reg_i\
+        );
+        Output = \Counter_1:CounterUDB:status_2\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,0)][LB=1] #macrocells=2, #inputs=2, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\Counter_1:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_11092) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_1:CounterUDB:per_equal\
+        );
+        Output = \Counter_1:CounterUDB:overflow_reg_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\Counter_1:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_11092) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_1:CounterUDB:cmp_out_i\
+        );
+        Output = \Counter_1:CounterUDB:prevCompare\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\Counter_1:CounterUDB:sC32:counterdp:u3\
+    PORT MAP (
+        clock => Net_11092 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \Counter_1:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_9943 ,
+        ce0_comb => \Counter_1:CounterUDB:per_equal\ ,
+        z0_comb => \Counter_1:CounterUDB:status_1\ ,
+        ce1_comb => \Counter_1:CounterUDB:cmp_out_i\ ,
+        f0_bus_stat_comb => \Counter_1:CounterUDB:status_6\ ,
+        f0_blk_stat_comb => \Counter_1:CounterUDB:status_5\ ,
+        chain_in => \Counter_1:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Counter_1:CounterUDB:sC32:counterdp:u2\
+
+statusicell: Name =\Counter_1:CounterUDB:sSTSReg:stsreg\
+    PORT MAP (
+        reset => Net_9943 ,
+        clock => Net_11092 ,
+        status_6 => \Counter_1:CounterUDB:status_6\ ,
+        status_5 => \Counter_1:CounterUDB:status_5\ ,
+        status_2 => \Counter_1:CounterUDB:status_2\ ,
+        status_1 => \Counter_1:CounterUDB:status_1\ ,
+        status_0 => \Counter_1:CounterUDB:status_0\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0011111"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,1)] contents:
+LAB@[UDB=(1,1)][LB=0] #macrocells=1, #inputs=7, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_48\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_48\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(1,1)][LB=1] #macrocells=2, #inputs=7, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_15\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_15\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_5\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6156,14 +6464,430 @@ LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=11, #pterms=4
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_4\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_5\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\Counter_1:CounterUDB:sC32:counterdp:u0\
+    PORT MAP (
+        clock => Net_11092 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \Counter_1:CounterUDB:count_enable\ ,
+        cs_addr_0 => Net_9943 ,
+        chain_out => \Counter_1:CounterUDB:sC32:counterdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \Counter_1:CounterUDB:sC32:counterdp:u1\
+
+synccell: Name =\Sync_1:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_11092 ,
+        in => Net_11057_local ,
+        out => Net_11010 );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,2)] contents:
+LAB@[UDB=(1,2)][LB=0] #macrocells=4, #inputs=4, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\Counter_2:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_11092) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_2:CounterUDB:cmp_out_i\
+        );
+        Output = \Counter_2:CounterUDB:prevCompare\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:status_2\, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Counter_2:CounterUDB:status_2\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=0][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_2:CounterUDB:per_equal\ * 
+              !\Counter_2:CounterUDB:overflow_reg_i\
+        );
+        Output = \Counter_2:CounterUDB:status_2\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\Counter_2:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_11092) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_11010
+        );
+        Output = \Counter_2:CounterUDB:count_stored_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\Counter_2:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_11092) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_2:CounterUDB:per_equal\
+        );
+        Output = \Counter_2:CounterUDB:overflow_reg_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,2)][LB=1] #macrocells=4, #inputs=12, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\Counter_2:CounterUDB:reload\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !Net_9943 * !\Counter_2:CounterUDB:per_equal\
+        );
+        Output = \Counter_2:CounterUDB:reload\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_63\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_63\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_29\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_29\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\Counter_2:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_11010 * \Counter_2:CounterUDB:control_7\ * 
+              !\Counter_2:CounterUDB:count_stored_i\
+        );
+        Output = \Counter_2:CounterUDB:count_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u0\
+    PORT MAP (
+        clock => Net_11092 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \Counter_2:CounterUDB:count_enable\ ,
+        cs_addr_0 => \Counter_2:CounterUDB:reload\ ,
+        chain_out => \Counter_2:CounterUDB:sC32:counterdp:carry0\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \Counter_2:CounterUDB:sC32:counterdp:u1\
+
+statusicell: Name =\Counter_2:CounterUDB:sSTSReg:stsreg\
+    PORT MAP (
+        reset => Net_9943 ,
+        clock => Net_11092 ,
+        status_6 => \Counter_2:CounterUDB:status_6\ ,
+        status_5 => \Counter_2:CounterUDB:status_5\ ,
+        status_2 => \Counter_2:CounterUDB:status_2\ ,
+        status_1 => \Counter_2:CounterUDB:status_1\ ,
+        status_0 => \Counter_2:CounterUDB:status_0\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0011111"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+controlcell: Name =\Counter_2:CounterUDB:sCTRLReg:ctrlreg\
+    PORT MAP (
+        clock => Net_11092 ,
+        control_7 => \Counter_2:CounterUDB:control_7\ ,
+        control_6 => \Counter_2:CounterUDB:control_6\ ,
+        control_5 => \Counter_2:CounterUDB:control_5\ ,
+        control_4 => \Counter_2:CounterUDB:control_4\ ,
+        control_3 => \Counter_2:CounterUDB:control_3\ ,
+        control_2 => \Counter_2:CounterUDB:control_2\ ,
+        control_1 => \Counter_2:CounterUDB:control_1\ ,
+        control_0 => \Counter_2:CounterUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,3)] contents:
+LAB@[UDB=(1,3)][LB=0] #macrocells=2, #inputs=7, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_28\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_28\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=3]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = __ONE__ (fanout=8)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,3)][LB=1] #macrocells=2, #inputs=9, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\Counter_2:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Counter_2:CounterUDB:cmp_out_i\ * 
+              !\Counter_2:CounterUDB:prevCompare\
+        );
+        Output = \Counter_2:CounterUDB:status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_9\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_9\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u3\
+    PORT MAP (
+        clock => Net_11092 ,
+        cs_addr_2 => __ONE__ ,
+        cs_addr_1 => \Counter_2:CounterUDB:count_enable\ ,
+        cs_addr_0 => \Counter_2:CounterUDB:reload\ ,
+        ce0_comb => \Counter_2:CounterUDB:per_equal\ ,
+        z0_comb => \Counter_2:CounterUDB:status_1\ ,
+        cl1_comb => \Counter_2:CounterUDB:cmp_out_i\ ,
+        f0_bus_stat_comb => \Counter_2:CounterUDB:status_6\ ,
+        f0_blk_stat_comb => \Counter_2:CounterUDB:status_5\ ,
+        chain_in => \Counter_2:CounterUDB:sC32:counterdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Counter_2:CounterUDB:sC32:counterdp:u2\
+
+controlcell: Name =\Control_Reg_2:Sync:ctrl_reg\
+    PORT MAP (
+        clock => Net_11096 ,
+        control_7 => \Control_Reg_2:control_7\ ,
+        control_6 => \Control_Reg_2:control_6\ ,
+        control_5 => \Control_Reg_2:control_5\ ,
+        control_4 => \Control_Reg_2:control_4\ ,
+        control_3 => \Control_Reg_2:control_3\ ,
+        control_2 => \Control_Reg_2:control_2\ ,
+        control_1 => \Control_Reg_2:control_1\ ,
+        control_0 => Net_9943 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000001"
+        cy_ctrl_mode_1 = "00000001"
+        cy_ext_reset = 1
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,4)] contents:
+LAB@[UDB=(1,4)][LB=0] #macrocells=3, #inputs=6, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=Net_1689, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_1495 * !cy_srff_1
+        );
+        Output = Net_1689 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:status_2\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -6176,44 +6900,28 @@ LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=11, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_59\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
+    [McSlotId=2]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
         List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock  = (Net_11092) => Global
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 2 pterms
         (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              Net_1240 * !Net_1241
+            + !Net_1241 * cy_srff_1
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_59\ (fanout=1)
+        Output = cy_srff_1 (fanout=3)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=Net_1689, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_1495 * !cy_srff_1
-        );
-        Output = Net_1689 (fanout=1)
-        Properties               : 
-        {
-        }
+    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(0,4)][LB=1] #macrocells=4, #inputs=4, #pterms=4
+LAB@[UDB=(1,4)][LB=1] #macrocells=4, #inputs=4, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=Net_1495, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_1495, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -6228,7 +6936,7 @@ LAB@[UDB=(0,4)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:prevCompare1\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:prevCompare1\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6243,7 +6951,7 @@ LAB@[UDB=(0,4)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:status_0\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=2]
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:status_0\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=2]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -6258,7 +6966,7 @@ LAB@[UDB=(0,4)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=3]
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6346,604 +7054,12 @@ controlcell: Name =\PWM_1:PWMUDB:genblk1:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(0,5)] contents:
-LAB@[UDB=(0,5)][LB=0] #macrocells=1, #inputs=7, #pterms=1
+UDB [UDB=(1,5)] contents:
+LAB@[UDB=(1,5)][LB=0] #macrocells=1, #inputs=7, #pterms=1
 {
     [McSlotId=0]: (empty)
     [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_40\, Mode=(D-Register) @ [UDB=(0,5)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_40\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,5)][LB=1] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_0\, Mode=(D-Register) @ [UDB=(0,5)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(1,0)] contents:
-LAB@[UDB=(1,0)][LB=0] #macrocells=4, #inputs=4, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\Counter_1:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_1:CounterUDB:cmp_out_i\
-        );
-        Output = \Counter_1:CounterUDB:prevCompare\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Counter_1:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_1:CounterUDB:cmp_out_i\ * 
-              !\Counter_1:CounterUDB:prevCompare\
-        );
-        Output = \Counter_1:CounterUDB:status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\Counter_1:CounterUDB:status_2\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_1:CounterUDB:per_equal\ * 
-              !\Counter_1:CounterUDB:overflow_reg_i\
-        );
-        Output = \Counter_1:CounterUDB:status_2\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\Counter_1:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_1:CounterUDB:per_equal\
-        );
-        Output = \Counter_1:CounterUDB:overflow_reg_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,0)][LB=1] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_46\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_46\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\Counter_1:CounterUDB:sC32:counterdp:u3\
-    PORT MAP (
-        clock => Net_11092 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \Counter_1:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_9943 ,
-        ce0_comb => \Counter_1:CounterUDB:per_equal\ ,
-        z0_comb => \Counter_1:CounterUDB:status_1\ ,
-        ce1_comb => \Counter_1:CounterUDB:cmp_out_i\ ,
-        f0_bus_stat_comb => \Counter_1:CounterUDB:status_6\ ,
-        f0_blk_stat_comb => \Counter_1:CounterUDB:status_5\ ,
-        chain_in => \Counter_1:CounterUDB:sC32:counterdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Counter_1:CounterUDB:sC32:counterdp:u2\
-
-statusicell: Name =\Counter_1:CounterUDB:sSTSReg:stsreg\
-    PORT MAP (
-        reset => Net_9943 ,
-        clock => Net_11092 ,
-        status_6 => \Counter_1:CounterUDB:status_6\ ,
-        status_5 => \Counter_1:CounterUDB:status_5\ ,
-        status_2 => \Counter_1:CounterUDB:status_2\ ,
-        status_1 => \Counter_1:CounterUDB:status_1\ ,
-        status_0 => \Counter_1:CounterUDB:status_0\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0011111"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,1)] contents:
-LAB@[UDB=(1,1)][LB=0] #macrocells=2, #inputs=7, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_58\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_58\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_51\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_51\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,1)][LB=1] #macrocells=3, #inputs=10, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_26\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_26\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_27\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_27\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\Counter_1:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=1][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_1:CounterUDB:control_7\ * 
-              !\Counter_1:CounterUDB:count_stored_i\ * Net_11090
-        );
-        Output = \Counter_1:CounterUDB:count_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\Counter_1:CounterUDB:sC32:counterdp:u0\
-    PORT MAP (
-        clock => Net_11092 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \Counter_1:CounterUDB:count_enable\ ,
-        cs_addr_0 => Net_9943 ,
-        chain_out => \Counter_1:CounterUDB:sC32:counterdp:carry0\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \Counter_1:CounterUDB:sC32:counterdp:u1\
-
-controlcell: Name =\Counter_1:CounterUDB:sCTRLReg:ctrlreg\
-    PORT MAP (
-        clock => Net_11092 ,
-        control_7 => \Counter_1:CounterUDB:control_7\ ,
-        control_6 => \Counter_1:CounterUDB:control_6\ ,
-        control_5 => \Counter_1:CounterUDB:control_5\ ,
-        control_4 => \Counter_1:CounterUDB:control_4\ ,
-        control_3 => \Counter_1:CounterUDB:control_3\ ,
-        control_2 => \Counter_1:CounterUDB:control_2\ ,
-        control_1 => \Counter_1:CounterUDB:control_1\ ,
-        control_0 => \Counter_1:CounterUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\Sync_3:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_11092 ,
-        in => Net_11091 ,
-        out => Net_11090 );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,2)] contents:
-LAB@[UDB=(1,2)][LB=0] #macrocells=2, #inputs=9, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\Counter_2:CounterUDB:status_2\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_2:CounterUDB:per_equal\ * 
-              !\Counter_2:CounterUDB:overflow_reg_i\
-        );
-        Output = \Counter_2:CounterUDB:status_2\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_48\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_48\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,2)][LB=1] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\Counter_1:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_11090
-        );
-        Output = \Counter_1:CounterUDB:count_stored_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\Counter_2:CounterUDB:reload\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              !Net_9943 * !\Counter_2:CounterUDB:per_equal\
-        );
-        Output = \Counter_2:CounterUDB:reload\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\Counter_2:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11092) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Counter_2:CounterUDB:per_equal\
-        );
-        Output = \Counter_2:CounterUDB:overflow_reg_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u0\
-    PORT MAP (
-        clock => Net_11092 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \Counter_2:CounterUDB:count_enable\ ,
-        cs_addr_0 => \Counter_2:CounterUDB:reload\ ,
-        chain_out => \Counter_2:CounterUDB:sC32:counterdp:carry0\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \Counter_2:CounterUDB:sC32:counterdp:u1\
-
-controlcell: Name =\Control_Reg_2:Sync:ctrl_reg\
-    PORT MAP (
-        clock => Net_11096 ,
-        control_7 => \Control_Reg_2:control_7\ ,
-        control_6 => \Control_Reg_2:control_6\ ,
-        control_5 => \Control_Reg_2:control_5\ ,
-        control_4 => \Control_Reg_2:control_4\ ,
-        control_3 => \Control_Reg_2:control_3\ ,
-        control_2 => \Control_Reg_2:control_2\ ,
-        control_1 => \Control_Reg_2:control_1\ ,
-        control_0 => Net_9943 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000001"
-        cy_ctrl_mode_1 = "00000001"
-        cy_ext_reset = 1
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,3)] contents:
-LAB@[UDB=(1,3)][LB=0] #macrocells=2, #inputs=7, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_31\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_31\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_45\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_45\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_55\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_55\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_20\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=1]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_20\, Mode=(D-Register) @ [UDB=(1,5)][LB=0][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6964,213 +7080,13 @@ LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_34\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_34\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_7\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_7\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-datapathcell: Name =\Counter_2:CounterUDB:sC32:counterdp:u3\
-    PORT MAP (
-        clock => Net_11092 ,
-        cs_addr_2 => __ONE__ ,
-        cs_addr_1 => \Counter_2:CounterUDB:count_enable\ ,
-        cs_addr_0 => \Counter_2:CounterUDB:reload\ ,
-        ce0_comb => \Counter_2:CounterUDB:per_equal\ ,
-        z0_comb => \Counter_2:CounterUDB:status_1\ ,
-        cl1_comb => \Counter_2:CounterUDB:cmp_out_i\ ,
-        f0_bus_stat_comb => \Counter_2:CounterUDB:status_6\ ,
-        f0_blk_stat_comb => \Counter_2:CounterUDB:status_5\ ,
-        chain_in => \Counter_2:CounterUDB:sC32:counterdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101011110000000000000001000001110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Counter_2:CounterUDB:sC32:counterdp:u2\
-
-statusicell: Name =\Counter_2:CounterUDB:sSTSReg:stsreg\
-    PORT MAP (
-        reset => Net_9943 ,
-        clock => Net_11092 ,
-        status_6 => \Counter_2:CounterUDB:status_6\ ,
-        status_5 => \Counter_2:CounterUDB:status_5\ ,
-        status_2 => \Counter_2:CounterUDB:status_2\ ,
-        status_1 => \Counter_2:CounterUDB:status_1\ ,
-        status_0 => \Counter_2:CounterUDB:status_0\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0011111"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,4)] contents:
-LAB@[UDB=(1,4)][LB=0] #macrocells=2, #inputs=2, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=Net_9122, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\ * 
-              !\ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\
-        );
-        Output = Net_9122 (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\
-        );
-        Output = \ADC_SAR_Seq_1:bSAR_SEQ:nrq_reg\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(1,4)][LB=1] #macrocells=1, #inputs=3, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\ * !Net_9122
-            + \ADC_SAR_Seq_1:Net_3935\
-        );
-        Output = \ADC_SAR_Seq_1:bSAR_SEQ:bus_clk_nrq_reg\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-statuscell: Name =\ADC_SAR_Seq_1:bSAR_SEQ:EOCSts\
-    PORT MAP (
-        clock => \ADC_SAR_Seq_1:clock\ ,
-        status_0 => Net_9122 ,
-        clk_en => \ADC_SAR_Seq_1:bSAR_SEQ:enable\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_md_select = "00000001"
-    }
-    Clock Polarity: Active High
-    Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
-
-UDB [UDB=(1,5)] contents:
-LAB@[UDB=(1,5)][LB=0] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_57\, Mode=(D-Register) @ [UDB=(1,5)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_57\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
 LAB@[UDB=(1,5)][LB=1] #macrocells=2, #inputs=7, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_62\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_46\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7180,80 +7096,18 @@ LAB@[UDB=(1,5)][LB=1] #macrocells=2, #inputs=7, #pterms=2
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_62\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_46\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_21\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_21\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-synccell: Name =\ADC_SAR_Seq_1:Sync:genblk1[0]:INST\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        in => \ADC_SAR_Seq_1:nrq\ ,
-        out => \ADC_SAR_Seq_1:Net_3935\ );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,0)] contents:
-LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=7, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_8\, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_8\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_23\, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_23\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7273,33 +7127,44 @@ LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=7, #pterms=2
         Properties               : 
         {
         }
+
+    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(2,0)][LB=1] #macrocells=1, #inputs=7, #pterms=1
+UDB [UDB=(2,0)] contents:
+LAB@[UDB=(2,0)][LB=1] #macrocells=2, #inputs=3, #pterms=2
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_24\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=1]
-        Total # of inputs        : 7
+    [McSlotId=0]:     MacroCell: Name=\Timer_1:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=0]
+        Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock  = (Net_11096) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              Net_9966
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_24\ (fanout=1)
+        Output = \Timer_1:TimerUDB:capture_last\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\Timer_1:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Timer_1:TimerUDB:control_7\ * Net_9966 * 
+              !\Timer_1:TimerUDB:capture_last\
+        );
+        Output = \Timer_1:TimerUDB:capt_fifo_load\ (fanout=6)
+        Properties               : 
+        {
+            soft = 1
+        }
+
     [McSlotId=3]: (empty)
 }
 
@@ -7338,11 +7203,64 @@ datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u0\
     Clock Enable: True
     Next in chain : \Timer_1:TimerUDB:sT24:timerdp:u1\
 
+synccell: Name =\Sync_2:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_11096 ,
+        in => Net_11091 ,
+        out => Net_9966 );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
 UDB [UDB=(2,1)] contents:
 LAB@[UDB=(2,1)][LB=0] #macrocells=3, #inputs=7, #pterms=3
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_12\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=1]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_24\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_24\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_40\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_40\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_6\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7353,38 +7271,20 @@ LAB@[UDB=(2,1)][LB=0] #macrocells=3, #inputs=7, #pterms=3
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_12\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_37\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_37\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_6\ (fanout=1)
         Properties               : 
         {
         }
+}
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_60\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=3]
+LAB@[UDB=(2,1)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_54\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7395,20 +7295,17 @@ LAB@[UDB=(2,1)][LB=0] #macrocells=3, #inputs=7, #pterms=3
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_60\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_54\ (fanout=1)
         Properties               : 
         {
         }
-}
 
-LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=7, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_50\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_50\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7429,7 +7326,124 @@ LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=7, #pterms=2
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_63\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=1]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_14\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_14\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=2, #inputs=7, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_12\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_12\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_1\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,2)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_32\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_32\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_2\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_2\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_52\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7440,26 +7454,36 @@ LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=7, #pterms=2
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_63\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_52\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(2,3)] contents:
+LAB@[UDB=(2,3)][LB=0] #macrocells=4, #inputs=10, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:ch_addr_3\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ (fanout=66)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(2,2)] contents:
-LAB@[UDB=(2,2)][LB=0] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_9\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_37\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7468,14 +7492,105 @@ LAB@[UDB=(2,2)][LB=0] #macrocells=1, #inputs=7, #pterms=1
         Main Equation            : 1 pterm
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_9\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_37\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:ch_addr_5\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ (fanout=66)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:ch_addr_4\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ (fanout=66)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=12, #pterms=7
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=0]
+        Total # of inputs        : 9
+        Total # of product terms : 5
+            Clock Enable: True
+        Main Equation            : 5 pterms
+        !(
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:ch_addr_5\
+            + !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:ch_addr_4\
+            + !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:ch_addr_3\
+            + !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:ch_addr_2\
+            + \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active_split\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ (fanout=64)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_38\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_38\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:ch_addr_2\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ (fanout=66)
         Properties               : 
         {
         }
@@ -7483,91 +7598,10 @@ LAB@[UDB=(2,2)][LB=0] #macrocells=1, #inputs=7, #pterms=1
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(2,2)][LB=1] #macrocells=3, #inputs=9, #pterms=3
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=1, #inputs=12, #pterms=8
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:bSAR_SEQ:cnt_enable\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              !Net_10910 * !\ADC_SAR_Seq_1:bSAR_SEQ:load_period\
-        );
-        Output = \ADC_SAR_Seq_1:bSAR_SEQ:cnt_enable\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_18\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_18\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_15\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_15\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-controlcell: Name =\ADC_SAR_Seq_1:bSAR_SEQ:CtrlReg\
-    PORT MAP (
-        clock => \ADC_SAR_Seq_1:clock\ ,
-        control_7 => \ADC_SAR_Seq_1:bSAR_SEQ:control_7\ ,
-        control_6 => \ADC_SAR_Seq_1:bSAR_SEQ:control_6\ ,
-        control_5 => \ADC_SAR_Seq_1:bSAR_SEQ:control_5\ ,
-        control_4 => \ADC_SAR_Seq_1:bSAR_SEQ:control_4\ ,
-        control_3 => \ADC_SAR_Seq_1:bSAR_SEQ:control_3\ ,
-        control_2 => \ADC_SAR_Seq_1:bSAR_SEQ:control_2\ ,
-        control_1 => \ADC_SAR_Seq_1:bSAR_SEQ:load_period\ ,
-        control_0 => \ADC_SAR_Seq_1:bSAR_SEQ:enable\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000111"
-        cy_ctrl_mode_1 = "00000110"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=1, #inputs=12, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active_split\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active_split\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=0]
         Total # of inputs        : 12
         Total # of product terms : 8
             Clock Enable: True
@@ -7600,9 +7634,30 @@ LAB@[UDB=(2,3)][LB=0] #macrocells=1, #inputs=12, #pterms=8
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=9, #pterms=3
+LAB@[UDB=(2,4)][LB=1] #macrocells=3, #inputs=9, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_44\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_44\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -7617,29 +7672,7 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=9, #pterms=3
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_16\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_16\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -7653,6 +7686,8 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=9, #pterms=3
         Properties               : 
         {
         }
+
+    [McSlotId=3]: (empty)
 }
 
 count7cell: Name =\ADC_SAR_Seq_1:bSAR_SEQ:ChannelCounter\
@@ -7680,10 +7715,11 @@ count7cell: Name =\ADC_SAR_Seq_1:bSAR_SEQ:ChannelCounter\
     Clock Polarity: Active High
     Clock Enable: PosEdge(\ADC_SAR_Seq_1:bSAR_SEQ:enable\)
 
-UDB [UDB=(2,4)] contents:
-LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=10, #pterms=4
+UDB [UDB=(2,5)] contents:
+LAB@[UDB=(2,5)][LB=0] #macrocells=2, #inputs=9, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_33\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_58\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7693,66 +7729,58 @@ LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=10, #pterms=4
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_58\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:bSAR_SEQ:cnt_enable\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !Net_10910 * !\ADC_SAR_Seq_1:bSAR_SEQ:load_period\
+        );
+        Output = \ADC_SAR_Seq_1:bSAR_SEQ:cnt_enable\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,5)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_57\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_33\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_57\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:ch_addr_3\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ (fanout=66)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:ch_addr_2\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ (fanout=66)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:ch_addr_5\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ (fanout=66)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,4)][LB=1] #macrocells=3, #inputs=12, #pterms=7
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_44\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=0]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_41\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7764,129 +7792,16 @@ LAB@[UDB=(2,4)][LB=1] #macrocells=3, #inputs=12, #pterms=7
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_44\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=1]
-        Total # of inputs        : 9
-        Total # of product terms : 5
-            Clock Enable: True
-        Main Equation            : 5 pterms
-        !(
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:ch_addr_5\
-            + !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:ch_addr_4\
-            + !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:ch_addr_3\
-            + !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:ch_addr_2\
-            + \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active_split\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ (fanout=64)
-        Properties               : 
-        {
-            soft = 1
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:ch_addr_4\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ (fanout=66)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(2,5)] contents:
-LAB@[UDB=(2,5)][LB=0] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_2\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_2\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,5)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_1\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_1\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_41\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_3\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_3\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_32\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=2]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_53\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -7896,44 +7811,44 @@ LAB@[UDB=(2,5)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_32\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_6\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_6\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_53\ (fanout=1)
         Properties               : 
         {
         }
 }
 
+controlcell: Name =\ADC_SAR_Seq_1:bSAR_SEQ:CtrlReg\
+    PORT MAP (
+        clock => \ADC_SAR_Seq_1:clock\ ,
+        control_7 => \ADC_SAR_Seq_1:bSAR_SEQ:control_7\ ,
+        control_6 => \ADC_SAR_Seq_1:bSAR_SEQ:control_6\ ,
+        control_5 => \ADC_SAR_Seq_1:bSAR_SEQ:control_5\ ,
+        control_4 => \ADC_SAR_Seq_1:bSAR_SEQ:control_4\ ,
+        control_3 => \ADC_SAR_Seq_1:bSAR_SEQ:control_3\ ,
+        control_2 => \ADC_SAR_Seq_1:bSAR_SEQ:control_2\ ,
+        control_1 => \ADC_SAR_Seq_1:bSAR_SEQ:load_period\ ,
+        control_0 => \ADC_SAR_Seq_1:bSAR_SEQ:enable\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000111"
+        cy_ctrl_mode_1 = "00000110"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
 UDB [UDB=(3,0)] contents:
-LAB@[UDB=(3,0)][LB=0] #macrocells=2, #inputs=9, #pterms=2
+LAB@[UDB=(3,0)][LB=0] #macrocells=2, #inputs=7, #pterms=4
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\Timer_1:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=1]
+    [McSlotId=0]:     MacroCell: Name=\Timer_1:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -7946,94 +7861,90 @@ LAB@[UDB=(3,0)][LB=0] #macrocells=2, #inputs=9, #pterms=2
         {
         }
 
+    [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_28\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
+    [McSlotId=3]:     MacroCell: Name=\Timer_1:TimerUDB:int_capt_count_0\, Mode=(T-Register) @ [UDB=(3,0)][LB=0][MC=3]
+        Total # of inputs        : 5
+        Total # of product terms : 3
         List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock  = (Net_11096) => Global
             Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        Main Equation            : 3 pterms
+        !(
+              !\Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
+              !\Timer_1:TimerUDB:int_capt_count_1\ * 
+              !\Timer_1:TimerUDB:int_capt_count_0\
+            + \Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:int_capt_count_1\ * 
+              !\Timer_1:TimerUDB:int_capt_count_0\
+            + !\Timer_1:TimerUDB:capt_fifo_load\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_28\ (fanout=1)
+        Output = \Timer_1:TimerUDB:int_capt_count_0\ (fanout=3)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(3,0)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+LAB@[UDB=(3,0)][LB=1] #macrocells=2, #inputs=5, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_14\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
+    [McSlotId=0]:     MacroCell: Name=\Timer_1:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(3,0)][LB=1][MC=0]
+        Total # of inputs        : 5
+        Total # of product terms : 4
         List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock  = (Net_11096) => Global
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 4 pterms
         (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              \Timer_1:TimerUDB:int_capt_count_1\
+            + \Timer_1:TimerUDB:control_1\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              \Timer_1:TimerUDB:int_capt_count_0\
+            + !\Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              \Timer_1:TimerUDB:int_capt_count_0\
+            + \Timer_1:TimerUDB:capt_fifo_load\ * 
+              \Timer_1:TimerUDB:int_capt_count_1\ * 
+              \Timer_1:TimerUDB:int_capt_count_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_14\ (fanout=1)
+        Output = \Timer_1:TimerUDB:int_capt_count_1\ (fanout=3)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_30\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
+    [McSlotId=1]:     MacroCell: Name=\Timer_1:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=1]
+        Total # of inputs        : 5
+        Total # of product terms : 4
         List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock  = (Net_11096) => Global
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 4 pterms
         (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              !\Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              !\Timer_1:TimerUDB:int_capt_count_1\ * 
+              !\Timer_1:TimerUDB:int_capt_count_0\
+            + !\Timer_1:TimerUDB:control_1\ * \Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              !\Timer_1:TimerUDB:int_capt_count_1\ * 
+              \Timer_1:TimerUDB:int_capt_count_0\
+            + \Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              \Timer_1:TimerUDB:int_capt_count_1\ * 
+              !\Timer_1:TimerUDB:int_capt_count_0\
+            + \Timer_1:TimerUDB:control_1\ * \Timer_1:TimerUDB:control_0\ * 
+              \Timer_1:TimerUDB:capt_fifo_load\ * 
+              \Timer_1:TimerUDB:int_capt_count_1\ * 
+              \Timer_1:TimerUDB:int_capt_count_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_30\ (fanout=1)
+        Output = \Timer_1:TimerUDB:capt_int_temp\ (fanout=1)
         Properties               : 
         {
         }
 
     [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_42\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_42\ (fanout=1)
-        Properties               : 
-        {
-        }
+    [McSlotId=3]: (empty)
 }
 
 datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u1\
@@ -8072,174 +7983,6 @@ datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u1\
     Clock Enable: True
     Previous in chain : \Timer_1:TimerUDB:sT24:timerdp:u0\
     Next in chain : \Timer_1:TimerUDB:sT24:timerdp:u2\
-
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=8, #pterms=5
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\Timer_1:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Timer_1:TimerUDB:control_7\ * Net_9966 * 
-              !\Timer_1:TimerUDB:capture_last\
-        );
-        Output = \Timer_1:TimerUDB:capt_fifo_load\ (fanout=6)
-        Properties               : 
-        {
-            soft = 1
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\Timer_1:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_11096) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_9966
-        );
-        Output = \Timer_1:TimerUDB:capture_last\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\Timer_1:TimerUDB:int_capt_count_0\, Mode=(T-Register) @ [UDB=(3,1)][LB=0][MC=3]
-        Total # of inputs        : 5
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (Net_11096) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        !(
-              !\Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
-              !\Timer_1:TimerUDB:int_capt_count_1\ * 
-              !\Timer_1:TimerUDB:int_capt_count_0\
-            + \Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:int_capt_count_1\ * 
-              !\Timer_1:TimerUDB:int_capt_count_0\
-            + !\Timer_1:TimerUDB:capt_fifo_load\
-        );
-        Output = \Timer_1:TimerUDB:int_capt_count_0\ (fanout=3)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(3,1)][LB=1] #macrocells=3, #inputs=5, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\Timer_1:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(3,1)][LB=1][MC=0]
-        Total # of inputs        : 5
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (Net_11096) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              \Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              \Timer_1:TimerUDB:int_capt_count_1\
-            + \Timer_1:TimerUDB:control_1\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              \Timer_1:TimerUDB:int_capt_count_0\
-            + !\Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              \Timer_1:TimerUDB:int_capt_count_0\
-            + \Timer_1:TimerUDB:capt_fifo_load\ * 
-              \Timer_1:TimerUDB:int_capt_count_1\ * 
-              \Timer_1:TimerUDB:int_capt_count_0\
-        );
-        Output = \Timer_1:TimerUDB:int_capt_count_1\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Timer_1:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=1]
-        Total # of inputs        : 5
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (Net_11096) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              !\Timer_1:TimerUDB:int_capt_count_1\ * 
-              !\Timer_1:TimerUDB:int_capt_count_0\
-            + !\Timer_1:TimerUDB:control_1\ * \Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              !\Timer_1:TimerUDB:int_capt_count_1\ * 
-              \Timer_1:TimerUDB:int_capt_count_0\
-            + \Timer_1:TimerUDB:control_1\ * !\Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              \Timer_1:TimerUDB:int_capt_count_1\ * 
-              !\Timer_1:TimerUDB:int_capt_count_0\
-            + \Timer_1:TimerUDB:control_1\ * \Timer_1:TimerUDB:control_0\ * 
-              \Timer_1:TimerUDB:capt_fifo_load\ * 
-              \Timer_1:TimerUDB:int_capt_count_1\ * 
-              \Timer_1:TimerUDB:int_capt_count_0\
-        );
-        Output = \Timer_1:TimerUDB:capt_int_temp\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=2]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=8)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u2\
-    PORT MAP (
-        clock => Net_11096 ,
-        cs_addr_1 => \Timer_1:TimerUDB:control_7\ ,
-        cs_addr_0 => \Timer_1:TimerUDB:per_zero\ ,
-        f0_load => \Timer_1:TimerUDB:capt_fifo_load\ ,
-        z0_comb => \Timer_1:TimerUDB:per_zero\ ,
-        f0_bus_stat_comb => \Timer_1:TimerUDB:status_3\ ,
-        f0_blk_stat_comb => \Timer_1:TimerUDB:status_2\ ,
-        chain_in => \Timer_1:TimerUDB:sT24:timerdp:carry1\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Timer_1:TimerUDB:sT24:timerdp:u1\
 
 statusicell: Name =\Timer_1:TimerUDB:rstSts:stsreg\
     PORT MAP (
@@ -8280,13 +8023,11 @@ controlcell: Name =\Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,2)] contents:
-LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=7, #pterms=1
+UDB [UDB=(3,1)] contents:
+LAB@[UDB=(3,1)][LB=0] #macrocells=1, #inputs=7, #pterms=1
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_61\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=3]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_17\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8295,25 +8036,25 @@ LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=7, #pterms=1
         Main Equation            : 1 pterm
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_61\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_17\ (fanout=1)
         Properties               : 
         {
         }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=7, #pterms=1
+LAB@[UDB=(3,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_47\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=3]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_59\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8323,132 +8064,18 @@ LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=7, #pterms=1
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_47\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-synccell: Name =\Sync_2:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_11096 ,
-        in => Net_11091 ,
-        out => Net_9966 );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,3)] contents:
-LAB@[UDB=(3,3)][LB=0] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_19\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_19\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,3)][LB=1] #macrocells=1, #inputs=7, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_43\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_43\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_59\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_38\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_38\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_10\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_10\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_36\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_36\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8469,7 +8096,28 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=7, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_29\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_45\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_45\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_22\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8480,22 +8128,273 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
               !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_29\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_22\ (fanout=1)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(3,4)][LB=1] #macrocells=1, #inputs=7, #pterms=1
+datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u2\
+    PORT MAP (
+        clock => Net_11096 ,
+        cs_addr_1 => \Timer_1:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer_1:TimerUDB:per_zero\ ,
+        f0_load => \Timer_1:TimerUDB:capt_fifo_load\ ,
+        z0_comb => \Timer_1:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \Timer_1:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \Timer_1:TimerUDB:status_2\ ,
+        chain_in => \Timer_1:TimerUDB:sT24:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Timer_1:TimerUDB:sT24:timerdp:u1\
+
+UDB [UDB=(3,2)] contents:
+LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=7, #pterms=1
 {
     [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_16\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_16\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=7, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_8\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_8\ (fanout=1)
+        Properties               : 
+        {
+        }
+
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_56\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=2]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+UDB [UDB=(3,3)] contents:
+LAB@[UDB=(3,3)][LB=0] #macrocells=2, #inputs=7, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_21\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_21\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_51\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_51\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,3)][LB=1] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_3\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_3\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_35\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_35\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_55\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_55\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_33\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_33\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(3,4)] contents:
+LAB@[UDB=(3,4)][LB=0] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_7\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_7\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_56\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8516,13 +8415,147 @@ LAB@[UDB=(3,4)][LB=1] #macrocells=1, #inputs=7, #pterms=1
         {
         }
 
-    [McSlotId=3]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_34\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_34\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,4)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_30\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_30\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_18\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_18\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_19\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_19\ (fanout=1)
+        Properties               : 
+        {
+        }
 }
 
 UDB [UDB=(3,5)] contents:
-LAB@[UDB=(3,5)][LB=0] #macrocells=1, #inputs=7, #pterms=1
+LAB@[UDB=(3,5)][LB=0] #macrocells=2, #inputs=7, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_39\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_26\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_26\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_4\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_4\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,5)][LB=1] #macrocells=2, #inputs=7, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_39\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8543,15 +8576,8 @@ LAB@[UDB=(3,5)][LB=0] #macrocells=1, #inputs=7, #pterms=1
         {
         }
 
-    [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,5)][LB=1] #macrocells=2, #inputs=7, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_41\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=1]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_31\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -8560,40 +8586,17 @@ LAB@[UDB=(3,5)][LB=1] #macrocells=2, #inputs=7, #pterms=2
         Main Equation            : 1 pterm
         (
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_41\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_53\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_1:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_1:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_53\ (fanout=1)
+        Output = \ADC_SAR_Seq_1:AMuxHw_2_Decoder_one_hot_31\ (fanout=1)
         Properties               : 
         {
         }
-
-    [McSlotId=3]: (empty)
 }
 
 Intr container @ [IntrContainer=(0)]: 
@@ -8665,6 +8668,14 @@ Intr container @ [IntrContainer=(0)]:
     interrupt: Name =isr_4
         PORT MAP (
             interrupt => Net_10833_local );
+        Properties:
+        {
+            int_type = "10"
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(9)] 
+    interrupt: Name =isr_5
+        PORT MAP (
+            interrupt => Net_11102_local );
         Properties:
         {
             int_type = "10"
@@ -9285,10 +9296,12 @@ Clock group 0:
             dclk_3 => \ADC_SAR_1:Net_376_local\ ,
             dclk_glb_4 => Net_11096 ,
             dclk_4 => Net_11096_local ,
-            dclk_glb_5 => Net_11057 ,
-            dclk_5 => Net_11057_local ,
-            dclk_glb_6 => Net_10833 ,
-            dclk_6 => Net_10833_local );
+            dclk_glb_5 => Net_11102 ,
+            dclk_5 => Net_11102_local ,
+            dclk_glb_6 => Net_11057 ,
+            dclk_6 => Net_11057_local ,
+            dclk_glb_7 => Net_10833 ,
+            dclk_7 => Net_10833_local );
         Properties:
         {
         }
@@ -9631,32 +9644,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |                          Nam
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.010ms
-Digital Placement phase: Elapsed time ==> 5s.699ms
+Digital component placer commit/Report: Elapsed time ==> 0s.006ms
+Digital Placement phase: Elapsed time ==> 6s.352ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 5s.485ms
+Digital Routing phase: Elapsed time ==> 5s.552ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.298ms
+Bitstream and API generation phase: Elapsed time ==> 0s.338ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.056ms
+Bitstream verification phase: Elapsed time ==> 0s.069ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in RollingGoal_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.800ms
+Static timing analysis phase: Elapsed time ==> 0s.805ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.378ms
+Design database save phase: Elapsed time ==> 0s.367ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 14s.988ms
+cydsfit: Elapsed time ==> 16s.091ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 15s.033ms
-API generation phase: Elapsed time ==> 3s.258ms
-Dependency generation phase: Elapsed time ==> 0s.026ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 16s.141ms
+API generation phase: Elapsed time ==> 3s.362ms
+Dependency generation phase: Elapsed time ==> 0s.028ms
+Cleanup phase: Elapsed time ==> 0s.004ms

@@ -13,7 +13,6 @@
 #include <project.h>
 #include "ControllerClass.h"
 
-
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
