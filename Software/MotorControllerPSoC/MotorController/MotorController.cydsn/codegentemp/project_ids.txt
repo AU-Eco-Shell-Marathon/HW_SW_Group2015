@@ -1,0 +1,5 @@
+C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj|1295fbd8-aca8-4330-9639-84635d7bf9fc
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|df7480b3-ba9e-4d38-932a-03daaf5f0760
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|4f8148b0-08e9-4d12-b47e-6062a862cd41
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|b4b53744-32bb-4ce2-a0ed-e3a6d64fdc6c
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a959cd7a-2016-4a1e-8ec2-5822eff196f6

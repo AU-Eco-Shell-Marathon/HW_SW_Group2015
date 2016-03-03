@@ -10,6 +10,8 @@
  * ========================================
 */
 #include <project.h>
+#include "MotorController.h"
+
 
 void init();
 void run();

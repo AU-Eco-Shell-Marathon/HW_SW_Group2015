@@ -10,12 +10,11 @@
  * ========================================
 */
 #include <project.h>
-
-struct PIDval;
+#include "PID.h"
 
 void MC_stop();
 void MC_start();
-void MC_init(const uint8 * speed, const uint32 * rpm);
-void MC_ChangePID(const struct PIDval * pidval);
+void MC_init(const int16 * speed, const int16 * rpm);
+void MC_ChangePID(const struct PIDparameter * pidval);
 
 /* [] END OF FILE */

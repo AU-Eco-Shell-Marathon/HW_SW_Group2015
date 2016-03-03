@@ -9,5 +9,19 @@
  *
  * ========================================
 */
+#include "Pedal.h"
+
+int16 set_ = 0;
+
+const int16 *Pedal_init()
+{
+    return &set_;
+}
+
+void update()
+{
+    //ukendt?
+    
+}
 
 /* [] END OF FILE */

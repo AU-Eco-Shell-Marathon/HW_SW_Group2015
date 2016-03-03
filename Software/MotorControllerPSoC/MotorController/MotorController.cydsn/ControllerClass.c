@@ -9,5 +9,17 @@
  *
  * ========================================
 */
+#include "ControllerClass.h"
+
+
+void init()
+{
+    MC_init(NULL, NULL);
+}
+
+void run()
+{
+    
+}
 
 /* [] END OF FILE */
