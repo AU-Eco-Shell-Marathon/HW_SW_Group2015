@@ -11,7 +11,7 @@
 void InitUart();
 void CheckConnection(void);
 void ReceiveUARTData();
-void SendUARTData(char *Pdata);
+void SendUART(char *Pdata);
 void SendData(struct data* Data);
 
 #endif

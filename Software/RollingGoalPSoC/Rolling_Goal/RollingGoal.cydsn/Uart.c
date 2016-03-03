@@ -43,11 +43,11 @@ void ReceiveUARTData(void)
         { 
             if(strncmp((char*)buf, handshake, sizeof(handshake))==0)
             {
-	            SendUARTData(handshake);
+	            SendUART(handshake);
                 CyDelay(1);
-                SendUARTData("1 0 Time ms\n");
+                SendUART("1 0 Time ms\n");
                 CyDelay(1);
-                SendUARTData("1 1 Torque Nm\n");
+                SendUART("1 1 Torque Nm\n");
                 isReadyToSend = 1;
                // CyDelay(100);
                // SendData((uint8*)"1 2 Voltage Volt\n");
@@ -65,14 +65,22 @@ void ReceiveUARTData(void)
         }
         else if(buf[0]=='4') //modtag moment fra PC
         {
+            
+            int moment = 0;
             buf[buf_n+1]=0;
-            //Moment = atoi(buf)            //Fjern udkommentering når det kopieres over
+            moment = atoi((char*)buf);            //Fjern udkommentering når det kopieres over
+            if (moment < 0)
+            {
+                TX_AND_POWER_Write(1);
+                CyDelay(100);
+                TX_AND_POWER_Write(0);
+            }
         }
         
     }
 }
 
-void SendUARTData (char *Pdata)
+void SendUART (char *Pdata)
 {
     while(USBUART_1_CDCIsReady() == 0);
     USBUART_1_PutString((char*)Pdata);
@@ -84,7 +92,7 @@ void SendData (struct data* Data)
         return;
     char buf[500];
     sprintf(buf, "3 %lu %f\n", Data->time_ms, Data->Moment.avg);
-    SendUARTData(buf);
+    SendUART(buf);
 }
 
 /* [] END OF FILE */

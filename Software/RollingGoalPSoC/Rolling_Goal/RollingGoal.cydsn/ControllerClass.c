@@ -25,7 +25,7 @@ CY_ISR(PID_isr)
     PID_tick(getMoment(), set_moment);
 }
 
-CY_ISR(Send_ISR)
+CY_ISR(SendData_ISR)
 {
     struct data Data;
     if(getData(&Data))
@@ -57,9 +57,9 @@ struct data
 
 void run()
 {
-        TX_AND_POWER_Write(1);
+        //TX_AND_POWER_Write(1);
         ReceiveUARTData();
-        TX_AND_POWER_Write(0);    
+        //TX_AND_POWER_Write(0);    
 }
 
 void stop()
@@ -97,7 +97,7 @@ void init()
     Clock_4_Start();
     InitUart();
     Clock_5_Start();
-    isr_5_StartEx(Send_ISR);
+    isr_5_StartEx(SendData_ISR);
 }
 
 /* [] END OF FILE */
