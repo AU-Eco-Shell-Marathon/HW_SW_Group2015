@@ -11,6 +11,7 @@
 */
 #include <project.h>
 #include "PID.h"
+#include "Sensor.h"
 
 void MC_stop();
 void MC_start();

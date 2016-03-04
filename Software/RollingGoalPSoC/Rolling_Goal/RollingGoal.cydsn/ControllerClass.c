@@ -71,12 +71,12 @@ void stop()
 
 void update(const struct PIDparameter * parameter, const double * Moment, char restart)
 {
-    if(parameter->valid)
+    if(parameter != NULL)
     {    
         setPID(parameter);
     }
     
-    if(*Moment != -1)
+    if(Moment != NULL)
     {
         set_moment=*Moment;
     }

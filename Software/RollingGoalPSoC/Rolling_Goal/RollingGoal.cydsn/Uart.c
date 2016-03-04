@@ -66,15 +66,11 @@ void ReceiveUARTData(void)
         else if(buf[0]=='4') //modtag moment fra PC
         {
             
-            int moment = 0;
+            double moment = 0;
             buf[buf_n+1]=0;
-            moment = atoi((char*)buf);            //Fjern udkommentering når det kopieres over
-            if (moment < 0)
-            {
-                TX_AND_POWER_Write(1);
-                CyDelay(100);
-                TX_AND_POWER_Write(0);
-            }
+            moment = (double)atoi((char*)buf);            //Fjern udkommentering når det kopieres over
+			update(NULL, &moment, 0)
+
         }
         
     }

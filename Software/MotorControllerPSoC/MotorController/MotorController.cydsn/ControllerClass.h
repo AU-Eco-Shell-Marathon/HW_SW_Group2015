@@ -11,7 +11,7 @@
 */
 #include <project.h>
 #include "MotorController.h"
-
+#include "Pedal.h"
 
 void init();
 void run();

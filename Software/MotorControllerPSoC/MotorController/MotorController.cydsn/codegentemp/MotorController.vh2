@@ -2,7 +2,7 @@
 --	Conversion of MotorController.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Mar 03 23:29:54 2016
+--	Fri Mar 04 09:04:52 2016
 --
 
 USE cypress.cypress.all;

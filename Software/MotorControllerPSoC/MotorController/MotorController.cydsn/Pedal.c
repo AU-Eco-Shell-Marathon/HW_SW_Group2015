@@ -18,7 +18,7 @@ const int16 *Pedal_init()
     return &set_;
 }
 
-void update()
+void Pedal_update()
 {
     //ukendt?
     

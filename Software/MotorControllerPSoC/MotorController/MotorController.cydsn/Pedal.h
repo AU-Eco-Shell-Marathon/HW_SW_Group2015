@@ -13,6 +13,6 @@
 
 const int16 *Pedal_init();
 
-void update();
+void Pedal_update();
 
 /* [] END OF FILE */

@@ -14,12 +14,14 @@
 
 void init()
 {
-    MC_init(NULL, NULL);
+    S_init();
+    
+    MC_init(Pedal_init(), S_RPM_ptr());
 }
 
 void run()
 {
-    
+    Pedal_update();
 }
 
 /* [] END OF FILE */

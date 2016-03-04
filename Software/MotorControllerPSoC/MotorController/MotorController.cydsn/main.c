@@ -10,16 +10,18 @@
  * ========================================
 */
 #include <project.h>
+#include "ControllerClass.h"
+
 
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    
+    init();            /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     for(;;)
     {
-        /* Place your application code here. */
+        run();         /* Place your application code here. */
     }
 }
 
