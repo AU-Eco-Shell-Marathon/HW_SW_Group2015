@@ -92,9 +92,6 @@ namespace RollingRoad.WinApplication
             if (entry.Name != XAxisName)
             {
                 lineStuct.RawData.SetXYMapping(p => p);
-                string colorStr = ConfigurationManager.AppSettings.Get("TorqueColor");
-                Properties.Settings.Default.get
-
                 LiveDataChart.AddLineGraph(lineStuct.RawData, System.Windows.Media.Color.FromRgb(255, 0, 0), 2, entry.Title);
             }
 
