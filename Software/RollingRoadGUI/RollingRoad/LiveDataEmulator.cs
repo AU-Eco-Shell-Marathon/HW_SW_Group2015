@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RollingRoad
 {
@@ -47,15 +48,8 @@ namespace RollingRoad
         public LiveDataEmulator(IDataSource source)
         {
             _source = source;
-
-            try
-            {
-                _xAxis = source.GetDataList("Time");
-            }
-            catch
-            {
-                // ignored
-            }
+            
+            _xAxis = source.GetDataList("Time");
 
             Timer = new SystemTimer();
             
@@ -83,8 +77,25 @@ namespace RollingRoad
         private void Reset()
         {
             _index = 0;
-            _lastMs = 0;
+
+            if(_xAxis != null && _xAxis.GetData().Count > 0)
+                _lastMs = GetMs(_xAxis.GetData()[0], _xAxis.Unit);
+
             Timer.Stop();
+        }
+
+        private double GetMs(double value, string unit)
+        {
+            switch (unit)
+            {
+                case "Seconds":
+                    return value*1000;
+                case "ms":
+                    return value;
+                default:
+                    Logger?.WriteLine("Unknown time unit: " + unit);
+                    return 0;
+            }
         }
         
         /// <summary>
@@ -112,17 +123,19 @@ namespace RollingRoad
             }
             
             OnNextReadValue?.Invoke(entry); //Send value
-            
+
             //Calculate time to wait
-            double time = _xAxis.GetData()[_index];
-            double delta = (time * 1000) - _lastMs;
-            _lastMs = time * 1000;
+            double time = GetMs(_xAxis.GetData()[_index], _xAxis.Unit);
+            double delta = time - _lastMs;
+            _lastMs = time;
 
             //Move data index
             _index++;
 
-            //Restart timer
-            Timer.Start((int)delta);
+            if (delta == 0)
+                delta = 1;
+
+            Timer.Start((int) delta);
         }
 
         public override string ToString()

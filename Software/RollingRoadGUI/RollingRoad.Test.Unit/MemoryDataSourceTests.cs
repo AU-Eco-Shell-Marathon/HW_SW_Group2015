@@ -58,8 +58,7 @@ namespace RollingRoad.Test.Unit
         public void Name_SetAndGet_CorrectName(string name)
         {
             MemoryDataSource source = new MemoryDataSource {Name = name};
-
-
+            
             Assert.That(source.Name, Is.EqualTo(name));
         }
     }

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Win32;
+using Point = System.Windows.Point;
 
 namespace RollingRoad.WinApplication
 {
@@ -89,7 +92,10 @@ namespace RollingRoad.WinApplication
             if (entry.Name != XAxisName)
             {
                 lineStuct.RawData.SetXYMapping(p => p);
-                LiveDataChart.AddLineGraph(lineStuct.RawData, 2, entry.Title);
+                string colorStr = ConfigurationManager.AppSettings.Get("TorqueColor");
+                Properties.Settings.Default.get
+
+                LiveDataChart.AddLineGraph(lineStuct.RawData, System.Windows.Media.Color.FromRgb(255, 0, 0), 2, entry.Title);
             }
 
             //Live values

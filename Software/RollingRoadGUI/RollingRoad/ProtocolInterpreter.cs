@@ -148,12 +148,8 @@ namespace RollingRoad
             if (_listenThread == null)
                 _listenThread = new Thread(ListenThread) { IsBackground = true };
 
-            if (_listenThread.ThreadState == ThreadState.Suspended)
+            if (_listenThread.ThreadState != ThreadState.Unstarted && _listenThread.ThreadState != ThreadState.Running)
                 _listenThread = new Thread(ListenThread) { IsBackground = true };
-
-            if (_listenThread.IsAlive)
-                return;
-
 
             _shouldClose = false;
             _listenThread.Start();

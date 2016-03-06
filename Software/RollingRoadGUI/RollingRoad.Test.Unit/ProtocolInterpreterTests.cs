@@ -8,38 +8,42 @@ namespace RollingRoad.Test.Unit
     [TestFixture]
     public class ProtocolInterpreterTests
     {
-        private void WriteToMemoryStream(MemoryStream ms, StreamWriter writer, string value)
+        private MemoryStream _ms;
+        private ProtocolInterpreter _interpreter;
+
+        [SetUp]
+        public void SetUp()
         {
-            ms.SetLength(0);
+            _ms = new MemoryStream();
+            _interpreter = new ProtocolInterpreter(_ms);
+        }
+
+        private void WriteToMemoryStream(StreamWriter writer, string value)
+        {
+            _ms.SetLength(0);
             writer.Write(value);
             writer.Flush();
-            ms.Position = 0;
+            _ms.Position = 0;
         }
 
         [Test]
         public void Start_FirstStart_HandShakeSent()
         {
-            MemoryStream ms = new MemoryStream();
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            _interpreter.Start();
 
-            interpreter.Start();
-
-            Assert.That(Encoding.ASCII.GetString(ms.ToArray()), Is.EqualTo("0 RollingRoad\n"));
+            Assert.That(Encoding.ASCII.GetString(_ms.ToArray()), Is.EqualTo("0 RollingRoad\n"));
         }
 
         [Test]
         public void Stop_StartedAndStopped_StopSent()
         {
-            MemoryStream ms = new MemoryStream();
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
-
-            interpreter.Start();
+            _interpreter.Start();
             //Reset memory stream
-            ms.SetLength(0);
+            _ms.SetLength(0);
 
-            interpreter.Stop();
+            _interpreter.Stop();
 
-            Assert.That(Encoding.ASCII.GetString(ms.ToArray()), Is.EqualTo("2\n"));
+            Assert.That(Encoding.ASCII.GetString(_ms.ToArray()), Is.EqualTo("2\n"));
         }
 
 
@@ -50,35 +54,30 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void SetTorque_StartedAndTorqueSet_TorqueSent(double value)
         {
-            MemoryStream ms = new MemoryStream();
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
-
-            interpreter.Start();
+            _interpreter.Start();
             //Reset memory stream
-            ms.SetLength(0);
+            _ms.SetLength(0);
 
-            interpreter.SetTorque(value);
+            _interpreter.SetTorque(value);
 
-            Assert.That(Encoding.UTF8.GetString(ms.ToArray()), Is.EqualTo("4 " + value.ToString(new CultureInfo("en-US")) + "\n"));
+            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("4 " + value.ToString(new CultureInfo("en-US")) + "\n"));
         }
 
         [Test]
         public void OnNextReadValueEvent_OneUnitAndOneDataPoint_EventCalledWithCorrectTypename()
         {
-            MemoryStream ms = new MemoryStream();
-            StreamWriter writer = new StreamWriter(ms);
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            StreamWriter writer = new StreamWriter(_ms);
             string nameRead = "";
 
-            interpreter.OnNextReadValue += data => nameRead = data[0].Name;
+            _interpreter.OnNextReadValue += data => nameRead = data[0].Name;
             
-            interpreter.Start(false);
+            _interpreter.Start(false);
 
-            WriteToMemoryStream(ms, writer, "1 0 Time Seconds\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "1 0 Time Seconds\n");
+            _interpreter.Listen();
             
-            WriteToMemoryStream(ms, writer, "3 2.3\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "3 2.3\n");
+            _interpreter.Listen();
 
             Assert.That(nameRead, Is.EqualTo("Time"));
         }
@@ -86,27 +85,25 @@ namespace RollingRoad.Test.Unit
         [Test]
         public void OnNextReadValueEvent_TwoUnitsAndOneDataPoint_EventCalledWithCorrectTypenames()
         {
-            MemoryStream ms = new MemoryStream();
-            StreamWriter writer = new StreamWriter(ms);
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            StreamWriter writer = new StreamWriter(_ms);
             string nameRead1 = "", nameRead2 = "";
 
-            interpreter.OnNextReadValue += data =>
+            _interpreter.OnNextReadValue += data =>
             {
                 nameRead1 = data[0].Name;
                 nameRead2 = data[1].Name;
             };
 
-            interpreter.Start(false);
+            _interpreter.Start(false);
             
-            WriteToMemoryStream(ms, writer, "1 0 Time Seconds\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "1 0 Time Seconds\n");
+            _interpreter.Listen();
 
-            WriteToMemoryStream(ms, writer, "1 1 Torque Nm\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "1 1 Torque Nm\n");
+            _interpreter.Listen();
 
-            WriteToMemoryStream(ms, writer, "3 2.3 5\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "3 2.3 5\n");
+            _interpreter.Listen();
 
             Assert.That(nameRead1, Is.EqualTo("Time"));
             Assert.That(nameRead2, Is.EqualTo("Torque"));
@@ -120,20 +117,18 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void OnNextReadValueEvent_OneUnitAndOneDataPoint_EventCalledWithCorrectData(double value)
         {
-            MemoryStream ms = new MemoryStream();
-            StreamWriter writer = new StreamWriter(ms);
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            StreamWriter writer = new StreamWriter(_ms);
             double valueRead = 0;
 
-            interpreter.OnNextReadValue += data => valueRead = data[0].Value;
+            _interpreter.OnNextReadValue += data => valueRead = data[0].Value;
 
-            interpreter.Start(false);
+            _interpreter.Start(false);
 
-            WriteToMemoryStream(ms, writer, "1 0 Time Seconds\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "1 0 Time Seconds\n");
+            _interpreter.Listen();
             
-            WriteToMemoryStream(ms, writer, $"3 {value.ToString(new CultureInfo("en-US"))}\n");
-            interpreter.Listen();
+            WriteToMemoryStream( writer, $"3 {value.ToString(new CultureInfo("en-US"))}\n");
+            _interpreter.Listen();
 
             Assert.That(valueRead, Is.EqualTo(value));
         }
@@ -145,25 +140,35 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void OnNextReadValueEvent_OneUnitAndTwoDataPoints_EventCalledWithCorrectDataEndPoints(double value)
         {
-            MemoryStream ms = new MemoryStream();
-            StreamWriter writer = new StreamWriter(ms);
-            ProtocolInterpreter interpreter = new ProtocolInterpreter(ms);
+            StreamWriter writer = new StreamWriter(_ms);
             double valueRead = 0;
 
-            interpreter.OnNextReadValue += data => valueRead = data[0].Value;
+            _interpreter.OnNextReadValue += data => valueRead = data[0].Value;
 
-            interpreter.Start(false);
+            _interpreter.Start(false);
 
-            WriteToMemoryStream(ms, writer, "1 0 Time Seconds\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "1 0 Time Seconds\n");
+            _interpreter.Listen();
 
-            WriteToMemoryStream(ms, writer, "3 4.25\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, "3 4.25\n");
+            _interpreter.Listen();
 
-            WriteToMemoryStream(ms, writer, $"3 {value.ToString(new CultureInfo("en-US"))}\n");
-            interpreter.Listen();
+            WriteToMemoryStream(writer, $"3 {value.ToString(new CultureInfo("en-US"))}\n");
+            _interpreter.Listen();
 
             Assert.That(valueRead, Is.EqualTo(value));
+        }
+
+        [Test]
+        public void Start_StartStopStart_StartSent()
+        {
+            _interpreter.Start(true);
+            _interpreter.Stop();
+
+            _ms.SetLength(0);
+            _interpreter.Start(true);
+
+            Assert.That(Encoding.ASCII.GetString(_ms.ToArray()), Is.EqualTo("0 RollingRoad\n"));
         }
     }
 }

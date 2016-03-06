@@ -1,8 +1,11 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace RollingRoad.Test.Unit
 {
-    internal class MockITimer : ITimer
+    /*internal class MockITimer : ITimer
     {
         public int StartCallAmount { get; private set; }
         public int StopCallAmount { get; private set; }
@@ -23,25 +26,39 @@ namespace RollingRoad.Test.Unit
         }
 
         public event TimerElapsedEvent Elapsed;
-    }
+    }*/
 
     [TestFixture]
     public class LiveDataEmulatorTests
     {
+        private IDataSource _dataSource;
+        private ITimer _timer;
+        private LiveDataEmulator _emulator;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _dataSource = Substitute.For<IDataSource>();
+            _timer = Substitute.For<ITimer>();
+            
+            List<DataList> data = new List<DataList>();
+            data.Add(new DataList("Time", "TestUnit"));
+
+            _dataSource.GetAllData().Returns(data);
+            _dataSource.GetDataList("Time").Returns(data[0]);
+
+            _emulator = new LiveDataEmulator(_dataSource) {Timer = _timer};
+        }
+
         [Test]
         public void OnNextReadValueEvent_NoDataGiven_NoInvokes()
         {
-            MemoryDataSource source = new MemoryDataSource();
-            LiveDataEmulator emu = new LiveDataEmulator(source);
-            MockITimer timer = new MockITimer();
-            emu.Timer = timer;
-
             int invokeCount = 0;
 
             //Excluded from coverage since invokeCount should not be called
-            emu.OnNextReadValue += data =>invokeCount++;
+            _emulator.OnNextReadValue += data =>invokeCount++;
 
-            emu.Start();
+            _emulator.Start();
 
             Assert.That(invokeCount, Is.EqualTo(0));
         }
@@ -53,16 +70,13 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void OnNextReadValueEvent_OneDataPointGiven_CorrectData(double value)
         {
-            MemoryDataSource source = new MemoryDataSource();
-            source.Data.Add(new DataList("Time", "TestUnit"));
-            source.Data[0].AddData(value);
-            LiveDataEmulator emu = new LiveDataEmulator(source) {Timer = new MockITimer()};
+            _dataSource.GetAllData()[0].AddData(value);
+            _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<TimerElapsedEvent>());
+            
+            double dataRead = -1000;
+            _emulator.OnNextReadValue += incommingData => dataRead = incommingData[0].Value;
 
-            double dataRead = 0;
-
-            emu.OnNextReadValue += data => dataRead = data[0].Value;
-
-            emu.Start();
+            _emulator.Start();
 
             Assert.That(dataRead, Is.EqualTo(value));
         }
