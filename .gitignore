@@ -216,3 +216,4 @@ pip-log.txt
 .mr.developer.cfg
 *.lox
 Software/RollingGoalPSoC/Rolling_Goal/Rolling_Goal.cywrk.Jonas
+Software/MotorControllerPSoC/MotorController/MotorController.cydsn/MotorController.cyprj.Jonas
