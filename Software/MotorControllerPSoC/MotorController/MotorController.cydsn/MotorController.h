@@ -15,7 +15,7 @@
 
 void MC_stop();
 void MC_start();
-void MC_init(const int16 * speed, const int16 * rpm);
+void MC_init(const uint16 * speed, const uint16 * rpm, const struct PIDparameter * pidval);
 void MC_ChangePID(const struct PIDparameter * pidval);
 
 /* [] END OF FILE */

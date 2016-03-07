@@ -26,6 +26,7 @@ struct PIDparameter
     int32 Kp;
     int32 Ki;
     int32 Kd;
+    int32 KShift;
     int32 MAX;
     int32 MIN;
     int32 iMAX;
@@ -35,6 +36,6 @@ struct PIDparameter
 };
 
 void PID_init();
-void PID(const int16 * input, const int16 * plant, int16 * output);
+void PID(const uint16 * input, const uint16 * plant, uint16 * output);
 void setPID(const struct PIDparameter * parameter);
 /* [] END OF FILE */

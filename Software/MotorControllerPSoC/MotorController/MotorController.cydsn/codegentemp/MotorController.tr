@@ -22,17 +22,23 @@
 ##################################################################### 
                     1::Clock Frequency Summary
 ===================================================================== 
-Number of clocks: 10
-Clock: Clock_1                    | Frequency: 94.03 MHz   | Target: 12.00 MHz  | 
-Clock: Clock_2                    | Frequency: 113.16 MHz  | Target: 12.00 MHz  | 
-Clock: Clock_motor                | N/A                    | Target: 0.00 MHz   | 
-Clock: Clock_motor(routed)        | N/A                    | Target: 0.00 MHz   | 
-Clock: CyBUS_CLK                  | Frequency: 39.11 MHz   | Target: 24.00 MHz  | 
-Clock: CyBUS_CLK(fixed-function)  | N/A                    | Target: 24.00 MHz  | 
-Clock: CyILO                      | N/A                    | Target: 0.10 MHz   | 
-Clock: CyIMO                      | N/A                    | Target: 24.00 MHz  | 
-Clock: CyMASTER_CLK               | N/A                    | Target: 24.00 MHz  | 
-Clock: CyPLL_OUT                  | N/A                    | Target: 24.00 MHz  | 
+Number of clocks: 16
+Clock: Clock_1                                     | Frequency: 94.03 MHz   | Target: 12.00 MHz   | 
+Clock: Clock_2                                     | Frequency: 110.95 MHz  | Target: 12.00 MHz   | 
+Clock: Clock_motor                                 | N/A                    | Target: 0.00 MHz    | 
+Clock: Clock_motor(routed)                         | N/A                    | Target: 0.00 MHz    | 
+Clock: CyBUS_CLK                                   | Frequency: 39.11 MHz   | Target: 24.00 MHz   | 
+Clock: CyBUS_CLK(fixed-function)                   | N/A                    | Target: 24.00 MHz   | 
+Clock: CyILO                                       | N/A                    | Target: 0.10 MHz    | 
+Clock: CyIMO                                       | N/A                    | Target: 24.00 MHz   | 
+Clock: CyMASTER_CLK                                | N/A                    | Target: 24.00 MHz   | 
+Clock: CyPLL_OUT                                   | N/A                    | Target: 24.00 MHz   | 
+Clock: PowerMonitor_1_ADC_Ext_CP_Clk               | N/A                    | Target: 4.80 MHz    | 
+Clock: PowerMonitor_1_ADC_Ext_CP_Clk(routed)       | N/A                    | Target: 4.80 MHz    | 
+Clock: PowerMonitor_1_ADC_theACLK                  | N/A                    | Target: 1.33 MHz    | 
+Clock: PowerMonitor_1_ADC_theACLK(fixed-function)  | N/A                    | Target: 1.33 MHz    | 
+Clock: \PowerMonitor_1:ADC:DSM4\/dec_clock         | N/A                    | Target: 100.00 MHz  | 
+Clock: pmon_clock                                  | N/A                    | Target: 1.00 MHz    | 
 
  =====================================================================
                     End of Clock Frequency Summary
@@ -46,7 +52,7 @@ Clock: CyPLL_OUT                  | N/A                    | Target: 24.00 MHz  
 Launch Clock  Capture Clock  Constraint(R-R)  Slack(R-R)  Constraint(R-F)  Slack(R-F)  Constraint(F-F)  Slack(F-F)  Constraint(F-R)  Slack(F-R)  
 ------------  -------------  ---------------  ----------  ---------------  ----------  ---------------  ----------  ---------------  ----------  
 Clock_1       Clock_1        83333.3          72699       N/A              N/A         N/A              N/A         N/A              N/A         
-Clock_2       Clock_2        83333.3          74496       N/A              N/A         N/A              N/A         N/A              N/A         
+Clock_2       Clock_2        83333.3          74321       N/A              N/A         N/A              N/A         N/A              N/A         
 CyBUS_CLK     CyBUS_CLK      41666.7          16098       N/A              N/A         N/A              N/A         N/A              N/A         
 
  =====================================================================
@@ -65,7 +71,7 @@ All values are in Picoseconds
 
 Port Name   Setup to Clk  Clock Name:Phase  
 ----------  ------------  ----------------  
-RPM(0)_PAD  26906         CyBUS_CLK:R       
+RPM(0)_PAD  26497         CyBUS_CLK:R       
 
 
                        3.2::Clock to Out
@@ -73,8 +79,10 @@ RPM(0)_PAD  26906         CyBUS_CLK:R
 
 Port Name         Clock to Out  Clock Name:Phase  
 ----------------  ------------  ----------------  
-Motor_out(0)_PAD  31397         Clock_2:R         
-Motor_out(0)_PAD  28695         Clock_1:R         
+Motor_out(0)_PAD  31206         Clock_2:R         
+Motor_out(0)_PAD  29221         Clock_1:R         
+fault(0)_PAD      23315         pmon_clock:R      
+pgood(0)_PAD      23857         pmon_clock:R      
 
 
                          3.3::Pad to Pad
@@ -137,14 +145,14 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 4.2::Critical Path Report for Clock_2
 *************************************
 Clock: Clock_2
-Frequency: 113.16 MHz | Target: 12.00 MHz
+Frequency: 110.95 MHz | Target: 12.00 MHz
 
 ++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
 Path Begin     : cy_srff_1/q
 Path End       : cy_srff_1/main_1
 Capture Clock  : cy_srff_1/clock_0
-Path slack     : 74496p
+Path slack     : 74321p
 
 Capture Clock Arrival Time                         0
 + Clock path delay                                 0
@@ -155,27 +163,27 @@ End-of-path required time (ps)                 79823
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       5327
++ Data path delay                       5503
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           5327
+End-of-path arrival time (ps)           5503
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 Data path
 pin name          model name   delay     AT  slack  edge  Fanout
 ----------------  -----------  -----  -----  -----  ----  ------
-cy_srff_1/q       macrocell10   1250   1250  74496  RISE       1
-cy_srff_1/main_1  macrocell10   4077   5327  74496  RISE       1
+cy_srff_1/q       macrocell11   1250   1250  74321  RISE       1
+cy_srff_1/main_1  macrocell11   4253   5503  74321  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 
 ===================================================================== 
@@ -307,7 +315,7 @@ ClockBlock/clk_bus_glb                                      clockblockcell      
 Path Begin     : cy_srff_1/q
 Path End       : cy_srff_1/main_1
 Capture Clock  : cy_srff_1/clock_0
-Path slack     : 74496p
+Path slack     : 74321p
 
 Capture Clock Arrival Time                         0
 + Clock path delay                                 0
@@ -318,27 +326,27 @@ End-of-path required time (ps)                 79823
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       5327
++ Data path delay                       5503
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           5327
+End-of-path arrival time (ps)           5503
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 Data path
 pin name          model name   delay     AT  slack  edge  Fanout
 ----------------  -----------  -----  -----  -----  ----  ------
-cy_srff_1/q       macrocell10   1250   1250  74496  RISE       1
-cy_srff_1/main_1  macrocell10   4077   5327  74496  RISE       1
+cy_srff_1/q       macrocell11   1250   1250  74321  RISE       1
+cy_srff_1/main_1  macrocell11   4253   5503  74321  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 
 5.3::Critical Path Report for (Clock_1:R vs. Clock_1:R)
@@ -748,13 +756,13 @@ pin name                                                 model name    delay    
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell3   1210   1210  21361  RISE       1
 \Timer_RPM:TimerUDB:capt_fifo_load\/main_0               macrocell2     3154   4364  24657  RISE       1
 \Timer_RPM:TimerUDB:capt_fifo_load\/q                    macrocell2     3350   7714  24657  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/main_2             macrocell7     4637  12351  25806  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/main_2             macrocell8     4637  12351  25806  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 
 
@@ -790,13 +798,13 @@ pin name                                                 model name    delay    
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell3   1210   1210  21361  RISE       1
 \Timer_RPM:TimerUDB:capt_fifo_load\/main_0               macrocell2     3154   4364  24657  RISE       1
 \Timer_RPM:TimerUDB:capt_fifo_load\/q                    macrocell2     3350   7714  24657  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/main_2                macrocell9     4637  12351  25806  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/main_2                macrocell10    4637  12351  25806  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell9          0      0  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell10         0      0  RISE       1
 
 
 
@@ -924,13 +932,13 @@ pin name                                                 model name    delay    
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_7  controlcell3   1210   1210  21361  RISE       1
 \Timer_RPM:TimerUDB:capt_fifo_load\/main_0               macrocell2     3154   4364  24657  RISE       1
 \Timer_RPM:TimerUDB:capt_fifo_load\/q                    macrocell2     3350   7714  24657  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/main_2             macrocell8     3807  11521  26636  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/main_2             macrocell9     3807  11521  26636  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 
 
@@ -1252,19 +1260,19 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 Data path
 pin name                                      model name   delay     AT  slack  edge  Fanout
 --------------------------------------------  -----------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:int_capt_count_0\/q       macrocell8    1250   1250  34098  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/main_4  macrocell7    2809   4059  34098  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/q       macrocell9    1250   1250  34098  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/main_4  macrocell8    2809   4059  34098  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 
 
@@ -1292,19 +1300,19 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 Data path
 pin name                                   model name   delay     AT  slack  edge  Fanout
 -----------------------------------------  -----------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:int_capt_count_0\/q    macrocell8    1250   1250  34098  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/main_4  macrocell9    2809   4059  34098  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/q    macrocell9    1250   1250  34098  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/main_4  macrocell10   2809   4059  34098  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell9          0      0  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell10         0      0  RISE       1
 
 
 
@@ -1332,19 +1340,19 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 Data path
 pin name                                      model name   delay     AT  slack  edge  Fanout
 --------------------------------------------  -----------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:int_capt_count_0\/q       macrocell8    1250   1250  34098  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/main_4  macrocell8    2794   4044  34113  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/q       macrocell9    1250   1250  34098  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/main_4  macrocell9    2794   4044  34113  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 
 
@@ -1378,13 +1386,13 @@ Data path
 pin name                                                 model name    delay     AT  slack  edge  Fanout
 -------------------------------------------------------  ------------  -----  -----  -----  ----  ------
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_0  controlcell3   1210   1210  34122  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/main_1             macrocell8     2824   4034  34122  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/main_1             macrocell9     2824   4034  34122  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 
 
@@ -1418,13 +1426,13 @@ Data path
 pin name                                                 model name    delay     AT  slack  edge  Fanout
 -------------------------------------------------------  ------------  -----  -----  -----  ----  ------
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_0  controlcell3   1210   1210  34122  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/main_1             macrocell7     2800   4010  34146  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/main_1             macrocell8     2800   4010  34146  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 
 
@@ -1458,13 +1466,13 @@ Data path
 pin name                                                 model name    delay     AT  slack  edge  Fanout
 -------------------------------------------------------  ------------  -----  -----  -----  ----  ------
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_0  controlcell3   1210   1210  34122  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/main_1                macrocell9     2800   4010  34146  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/main_1                macrocell10    2800   4010  34146  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell9          0      0  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell10         0      0  RISE       1
 
 
 
@@ -1498,13 +1506,13 @@ Data path
 pin name                                                 model name    delay     AT  slack  edge  Fanout
 -------------------------------------------------------  ------------  -----  -----  -----  ----  ------
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_1  controlcell3   1210   1210  34156  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/main_0             macrocell8     2791   4001  34156  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/main_0             macrocell9     2791   4001  34156  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 
 
@@ -1538,13 +1546,13 @@ Data path
 pin name                                                 model name    delay     AT  slack  edge  Fanout
 -------------------------------------------------------  ------------  -----  -----  -----  ----  ------
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_1  controlcell3   1210   1210  34156  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/main_0             macrocell7     2789   3999  34157  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/main_0             macrocell8     2789   3999  34157  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 
 
@@ -1578,13 +1586,13 @@ Data path
 pin name                                                 model name    delay     AT  slack  edge  Fanout
 -------------------------------------------------------  ------------  -----  -----  -----  ----  ------
 \Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\/control_1  controlcell3   1210   1210  34156  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/main_0                macrocell9     2789   3999  34157  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/main_0                macrocell10    2789   3999  34157  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell9          0      0  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell10         0      0  RISE       1
 
 
 
@@ -1612,19 +1620,19 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 Data path
 pin name                                      model name   delay     AT  slack  edge  Fanout
 --------------------------------------------  -----------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:int_capt_count_1\/q       macrocell7    1250   1250  34313  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/main_3  macrocell8    2593   3843  34313  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/q       macrocell8    1250   1250  34313  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/main_3  macrocell9    2593   3843  34313  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell8          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_0\/clock_0               macrocell9          0      0  RISE       1
 
 
 
@@ -1652,19 +1660,19 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 Data path
 pin name                                      model name   delay     AT  slack  edge  Fanout
 --------------------------------------------  -----------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:int_capt_count_1\/q       macrocell7    1250   1250  34313  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/main_3  macrocell7    2593   3843  34314  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/q       macrocell8    1250   1250  34313  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/main_3  macrocell8    2593   3843  34314  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 
 
@@ -1692,19 +1700,19 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell7          0      0  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/clock_0               macrocell8          0      0  RISE       1
 
 Data path
 pin name                                   model name   delay     AT  slack  edge  Fanout
 -----------------------------------------  -----------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:int_capt_count_1\/q    macrocell7    1250   1250  34313  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/main_3  macrocell9    2593   3843  34314  RISE       1
+\Timer_RPM:TimerUDB:int_capt_count_1\/q    macrocell8    1250   1250  34313  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/main_3  macrocell10   2593   3843  34314  RISE       1
 
 Capture Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell9          0      0  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell10         0      0  RISE       1
 
 
 
@@ -1732,12 +1740,12 @@ Launch Clock Path
 pin name                                                    model name      delay     AT  edge  Fanout
 ----------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/clk_bus_glb                                      clockblockcell      0      0  RISE       1
-\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell9          0      0  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/clock_0                  macrocell10         0      0  RISE       1
 
 Data path
 pin name                                     model name    delay     AT  slack  edge  Fanout
 -------------------------------------------  ------------  -----  -----  -----  ----  ------
-\Timer_RPM:TimerUDB:capt_int_temp\/q         macrocell9     1250   1250  37596  RISE       1
+\Timer_RPM:TimerUDB:capt_int_temp\/q         macrocell10    1250   1250  37596  RISE       1
 \Timer_RPM:TimerUDB:rstSts:stsreg\/status_1  statusicell1   2321   3571  37596  RISE       1
 
 Capture Clock Path
@@ -1812,12 +1820,12 @@ Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_1                                      clockblockcell      0      0  RISE       1
-\PWM_motor:PWMUDB:runmode_enable\/clock_0                  macrocell4          0      0  RISE       1
+\PWM_motor:PWMUDB:runmode_enable\/clock_0                  macrocell5          0      0  RISE       1
 
 Data path
 pin name                                   model name     delay     AT  slack  edge  Fanout
 -----------------------------------------  -------------  -----  -----  -----  ----  ------
-\PWM_motor:PWMUDB:runmode_enable\/q        macrocell4      1250   1250  73436  RISE       1
+\PWM_motor:PWMUDB:runmode_enable\/q        macrocell5      1250   1250  73436  RISE       1
 \PWM_motor:PWMUDB:sP8:pwmdp:u0\/cs_addr_1  datapathcell1   2587   3837  73436  RISE       1
 
 Capture Clock Path
@@ -1833,7 +1841,7 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 Path Begin     : cy_srff_1/q
 Path End       : cy_srff_1/main_1
 Capture Clock  : cy_srff_1/clock_0
-Path slack     : 74496p
+Path slack     : 74321p
 
 Capture Clock Arrival Time                         0
 + Clock path delay                                 0
@@ -1844,27 +1852,27 @@ End-of-path required time (ps)                 79823
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       5327
++ Data path delay                       5503
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           5327
+End-of-path arrival time (ps)           5503
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 Data path
 pin name          model name   delay     AT  slack  edge  Fanout
 ----------------  -----------  -----  -----  -----  ----  ------
-cy_srff_1/q       macrocell10   1250   1250  74496  RISE       1
-cy_srff_1/main_1  macrocell10   4077   5327  74496  RISE       1
+cy_srff_1/q       macrocell11   1250   1250  74321  RISE       1
+cy_srff_1/main_1  macrocell11   4253   5503  74321  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 
 
@@ -1898,13 +1906,13 @@ Data path
 pin name                                  model name     delay     AT  slack  edge  Fanout
 ----------------------------------------  -------------  -----  -----  -----  ----  ------
 \PWM_motor:PWMUDB:sP8:pwmdp:u0\/cl0_comb  datapathcell1   2510   2510  75024  RISE       1
-Net_289/main_1                            macrocell5      2289   4799  75024  RISE       1
+Net_289/main_1                            macrocell6      2289   4799  75024  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_1                                      clockblockcell      0      0  RISE       1
-Net_289/clock_0                                            macrocell5          0      0  RISE       1
+Net_289/clock_0                                            macrocell6          0      0  RISE       1
 
 
 
@@ -1932,19 +1940,19 @@ Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_1                                      clockblockcell      0      0  RISE       1
-\PWM_motor:PWMUDB:runmode_enable\/clock_0                  macrocell4          0      0  RISE       1
+\PWM_motor:PWMUDB:runmode_enable\/clock_0                  macrocell5          0      0  RISE       1
 
 Data path
 pin name                             model name   delay     AT  slack  edge  Fanout
 -----------------------------------  -----------  -----  -----  -----  ----  ------
-\PWM_motor:PWMUDB:runmode_enable\/q  macrocell4    1250   1250  73436  RISE       1
-Net_289/main_0                       macrocell5    2582   3832  75992  RISE       1
+\PWM_motor:PWMUDB:runmode_enable\/q  macrocell5    1250   1250  73436  RISE       1
+Net_289/main_0                       macrocell6    2582   3832  75992  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_1                                      clockblockcell      0      0  RISE       1
-Net_289/clock_0                                            macrocell5          0      0  RISE       1
+Net_289/clock_0                                            macrocell6          0      0  RISE       1
 
 
 
@@ -1978,13 +1986,13 @@ Data path
 pin name                                      model name    delay     AT  slack  edge  Fanout
 --------------------------------------------  ------------  -----  -----  -----  ----  ------
 \PWM_motor:PWMUDB:genblk1:ctrlreg\/control_7  controlcell1   1210   1210  76278  RISE       1
-\PWM_motor:PWMUDB:runmode_enable\/main_0      macrocell4     2336   3546  76278  RISE       1
+\PWM_motor:PWMUDB:runmode_enable\/main_0      macrocell5     2336   3546  76278  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_1                                      clockblockcell      0      0  RISE       1
-\PWM_motor:PWMUDB:runmode_enable\/clock_0                  macrocell4          0      0  RISE       1
+\PWM_motor:PWMUDB:runmode_enable\/clock_0                  macrocell5          0      0  RISE       1
 
 
 
@@ -1993,7 +2001,7 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 Path Begin     : \Sync_1:genblk1[0]:INST\/out
 Path End       : cy_srff_1/main_2
 Capture Clock  : cy_srff_1/clock_0
-Path slack     : 76504p
+Path slack     : 76513p
 
 Capture Clock Arrival Time                         0
 + Clock path delay                                 0
@@ -2004,9 +2012,9 @@ End-of-path required time (ps)                 79823
 
 Launch Clock Arrival Time                      0
 + Clock path delay                         0
-+ Data path delay                       3320
++ Data path delay                       3310
 -------------------------------------   ---- 
-End-of-path arrival time (ps)           3320
+End-of-path arrival time (ps)           3310
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -2017,14 +2025,14 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 Data path
 pin name                      model name   delay     AT  slack  edge  Fanout
 ----------------------------  -----------  -----  -----  -----  ----  ------
-\Sync_1:genblk1[0]:INST\/out  synccell      1020   1020  76504  RISE       1
-cy_srff_1/main_2              macrocell10   2300   3320  76504  RISE       1
+\Sync_1:genblk1[0]:INST\/out  synccell      1020   1020  76513  RISE       1
+cy_srff_1/main_2              macrocell11   2290   3310  76513  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-cy_srff_1/clock_0                                          macrocell10         0      0  RISE       1
+cy_srff_1/clock_0                                          macrocell11         0      0  RISE       1
 
 
 ===================================================================== 

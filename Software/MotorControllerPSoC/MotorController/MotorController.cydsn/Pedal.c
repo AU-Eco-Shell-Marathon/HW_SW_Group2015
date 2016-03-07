@@ -11,9 +11,9 @@
 */
 #include "Pedal.h"
 
-int16 set_ = 0;
+uint16 set_ = 0;
 
-const int16 *Pedal_init()
+const uint16 *Pedal_init()
 {
     return &set_;
 }

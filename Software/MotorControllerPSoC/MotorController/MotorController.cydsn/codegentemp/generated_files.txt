@@ -92,12 +92,49 @@
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_msc.h" value="NONE;USBUART_1" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\isr_overCurrent.c" value="ARM_C_FILE;isr_overCurrent" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\isr_overCurrent.h" value="NONE;isr_overCurrent" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\EEPROM_1.c" value="ARM_C_FILE;EEPROM_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\EEPROM_1.h" value="NONE;EEPROM_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\DieTemp_1.c" value="ARM_C_FILE;DieTemp_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\DieTemp_1.h" value="NONE;DieTemp_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\pmon_clock.c" value="ARM_C_FILE;pmon_clock" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\pmon_clock.h" value="NONE;pmon_clock" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\v_1_aliases.h" value="NONE;v_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\v_1.c" value="ARM_C_FILE;v_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\v_1.h" value="NONE;v_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\i_1_aliases.h" value="NONE;i_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\i_1.c" value="ARM_C_FILE;i_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\i_1.h" value="NONE;i_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\pgood_aliases.h" value="NONE;pgood" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\pgood.c" value="ARM_C_FILE;pgood" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\pgood.h" value="NONE;pgood" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\fault_aliases.h" value="NONE;fault" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\fault.c" value="ARM_C_FILE;fault" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\fault.h" value="NONE;fault" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1.c" value="ARM_C_FILE;PowerMonitor_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1.h" value="NONE;PowerMonitor_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_INT.c" value="ARM_C_FILE;PowerMonitor_1" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_Calibration.c" value="ARM_C_FILE;PowerMonitor_1" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_Dm_aliases.h" value="NONE;USBUART_1_Dm" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_Dm.c" value="ARM_C_FILE;USBUART_1_Dm" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_Dm.h" value="NONE;USBUART_1_Dm" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_Dp_aliases.h" value="NONE;USBUART_1_Dp" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_Dp.c" value="ARM_C_FILE;USBUART_1_Dp" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\USBUART_1_Dp.h" value="NONE;USBUART_1_Dp" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC.c" value="ARM_C_FILE;PowerMonitor_1_ADC" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC.h" value="NONE;PowerMonitor_1_ADC" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC_PM.c" value="ARM_C_FILE;PowerMonitor_1_ADC" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC_INT.c" value="ARM_C_FILE;PowerMonitor_1_ADC" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PM_AMux_Current.c" value="ARM_C_FILE;PowerMonitor_1_PM_AMux_Current" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PM_AMux_Current.h" value="NONE;PowerMonitor_1_PM_AMux_Current" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PGA.c" value="ARM_C_FILE;PowerMonitor_1_PGA" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PGA.h" value="NONE;PowerMonitor_1_PGA" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PGA_PM.c" value="ARM_C_FILE;PowerMonitor_1_PGA" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PM_AMux_Voltage.c" value="ARM_C_FILE;PowerMonitor_1_PM_AMux_Voltage" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_PM_AMux_Voltage.h" value="NONE;PowerMonitor_1_PM_AMux_Voltage" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC_theACLK.c" value="ARM_C_FILE;PowerMonitor_1_ADC_theACLK" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC_theACLK.h" value="NONE;PowerMonitor_1_ADC_theACLK" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC_Ext_CP_Clk.c" value="ARM_C_FILE;PowerMonitor_1_ADC_Ext_CP_Clk" />
+  <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\PowerMonitor_1_ADC_Ext_CP_Clk.h" value="NONE;PowerMonitor_1_ADC_Ext_CP_Clk" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\cycodeshareimport.ld" value="NONE;" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\cycodeshareexport.ld" value="NONE;" />
   <file name="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\codegentemp\cycodeshareimport.scat" value="NONE;" />

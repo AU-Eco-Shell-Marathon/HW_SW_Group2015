@@ -22,7 +22,7 @@ int32 pre_err = 0;
 
 int32 Ki_dt = 0;
 int32 Kd_dt = 0;
-
+int32 Kp = 0;
 
 void PID_init()
 {
@@ -36,16 +36,20 @@ void PID_init()
     parameter_.preShift = preShift_def;
 }
 
-void PID(const int16 * input, const int16 * plant, int16 * output)
+
+
+void PID(const uint16 * input, const uint16 * plant, uint16 * output)
 {
     PIDval = 0;
+
+    //uint8 MSB_temp = ((*plant>>15)<<1)||((*input>>15)<<0);
     
-    uint8 MSB_temp = ((*plant>>15)<<1)||((*input>>15)<<0);
-    
-	err = ((((int32)*input)<<parameter_.preShift)||(((int32)MSB_temp)<<31)) 
-        - ((((int32)*plant)<<parameter_.preShift)||(((int32)MSB_temp&0b10)<<30));
+	//err = ((((int32)*input)<<parameter_.preShift)||(((int32)MSB_temp)<<31)) 
+    //    - ((((int32)*plant)<<parameter_.preShift)||(((int32)MSB_temp&0b10)<<30));
 	
-	PIDval = parameter_.Kp*err; //Proportional calc.
+    err = (((int32)*input)<<parameter_.preShift) - (((int32)*plant)<<parameter_.preShift);
+    
+	PIDval = Kp*err; //Proportional calc.
 	
 	iState += err;
 	if(iState > parameter_.iMAX)
@@ -64,20 +68,23 @@ void PID(const int16 * input, const int16 * plant, int16 * output)
     else if(PIDval < parameter_.MIN)
         PIDval = parameter_.MIN;
 	
-    MSB_temp = (PIDval>>31);
+    //MSB_temp = (PIDval>>31);
     
-    *output = (int16)((PIDval&0xEFFF)>>parameter_.preShift)||(((int16)MSB_temp)<<15);
+    //*output = (int16)((PIDval&0xEFFF)>>parameter_.preShift)||(((int16)MSB_temp)<<15);
+    *output = ((uint16)(PIDval>>parameter_.preShift));
 }
 
 void setPID(const struct PIDparameter * parameter)
 {
     parameter_ = *parameter;
     
-    uint8 MSB_temp = (parameter_.Ki>>31);
+    uint32 MSB_temp = (parameter_.Ki>>31);
     
-    Ki_dt = ((parameter_.Ki<<parameter_.preShift)||(MSB_temp<<31))*dt;
+    Ki_dt = ((parameter_.Ki<<(parameter_.preShift-parameter_.KShift))||(MSB_temp<<31))*dt;
     MSB_temp = (parameter_.Kd>>31);
-    Kd_dt = ((parameter_.Kd<<parameter_.preShift)||(MSB_temp<<31))/dt;
+    Kd_dt = ((parameter_.Kd<<(parameter_.preShift-parameter_.KShift))||(MSB_temp<<31))/dt;
+    MSB_temp = (parameter_.Kp>>31);
+    Kp = (parameter_.Kp<<(parameter_.preShift-parameter_.KShift))||(MSB_temp<<31);
 }
 
 /* [] END OF FILE */

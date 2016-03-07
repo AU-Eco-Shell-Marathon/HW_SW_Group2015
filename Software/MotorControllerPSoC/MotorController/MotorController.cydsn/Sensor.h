@@ -11,6 +11,6 @@
 */
 #include <project.h>
 
-const int16 * S_RPM_ptr();
+const uint16 * S_RPM_ptr();
 void S_init();
 /* [] END OF FILE */

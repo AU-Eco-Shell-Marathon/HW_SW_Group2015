@@ -177,6 +177,43 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\project.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_overCurrent.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_overCurrent.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\EEPROM_1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\EEPROM_1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\DieTemp_1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\DieTemp_1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\pmon_clock.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\pmon_clock.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\v_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\v_1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\v_1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\i_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\i_1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\i_1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\pgood_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\pgood.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\pgood.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\fault_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\fault.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\fault.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_Calibration.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PM_AMux_Current.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PM_AMux_Current.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PGA.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PGA.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PGA_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PM_AMux_Voltage.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_PM_AMux_Voltage.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC_theACLK.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC_theACLK.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC_Ext_CP_Clk.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\PowerMonitor_1_ADC_Ext_CP_Clk.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\Export\ARM_GCC_Generic">

@@ -10,7 +10,7 @@
  * ========================================
 */
 #include "Sensor.h"
-int16 RPM_temp = 0;
+uint16 RPM_temp = 0;
 
 
 CY_ISR_PROTO(RPM);
@@ -32,7 +32,7 @@ CY_ISR(RPM)
         
         if(temp2 != 0)
         {
-            RPM_temp = ((int16)(24000000/(temp - temp2)))&0xEFFF;
+            RPM_temp = ((uint16)(24000000/(temp - temp2)));
         }
         else
         {
@@ -60,7 +60,7 @@ void S_init()
     Timer_RPM_Start();
 }
 
-const int16 * S_RPM_ptr()
+const uint16 * S_RPM_ptr()
 {
     return &RPM_temp;
     

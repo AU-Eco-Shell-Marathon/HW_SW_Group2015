@@ -11,7 +11,7 @@
 */
 #include <project.h>
 
-const int16 *Pedal_init();
+const uint16 *Pedal_init();
 
 void Pedal_update();
 

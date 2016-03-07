@@ -11,8 +11,8 @@
 */
 #include "MotorController.h"
 
-const int16 * speed_ = NULL;
-const int16 * rpm_ = NULL;
+const uint16 * speed_ = NULL;
+const uint16 * rpm_ = NULL;
 
 char running = 0;
 
@@ -23,7 +23,7 @@ CY_ISR(MOTOR_tick)
 {
     if(running && speed_ != NULL && rpm_ != NULL)
     {
-        int16 output;
+        uint16 output;
         PID(speed_, rpm_, &output);
         PWM_motor_WriteCompare((uint8)output);
     }
@@ -46,11 +46,13 @@ void MC_start()
 
 void MC_stop()
 {
-    running = 0;   
+    running = 0;
 }
 
-void MC_init(const int16 * speed, const int16 * rpm)
+void MC_init(const uint16 * speed, const uint16 * rpm, const struct PIDparameter * pidval)
 {
+    PID_init();
+    setPID(pidval);
     VDAC8_1_Start();
     Comp_1_Start();
     isr_overCurrent_StartEx(OVERCURRENT);
@@ -59,6 +61,7 @@ void MC_init(const int16 * speed, const int16 * rpm)
     isr_motor_StartEx(MOTOR_tick);
     Clock_motor_Start();
     PWM_motor_Start();
+    
 }
 
 void MC_ChangePID(const struct PIDparameter * pidval)

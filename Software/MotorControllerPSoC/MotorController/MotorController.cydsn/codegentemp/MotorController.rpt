@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 1s.245ms
+Loading plugins phase: Elapsed time ==> 0s.871ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj -d CY8C5888LTI-LP097 -s C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 10s.058ms
+Elaboration phase: Elapsed time ==> 8s.156ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.294ms
+HDL generation phase: Elapsed time ==> 0s.204ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonat
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Fri Mar 04 09:04:48 2016
+Mon Mar 07 10:16:57 2016
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 MotorController.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Fri Mar 04 09:04:48 2016
+Mon Mar 07 10:16:57 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
@@ -72,6 +72,12 @@ Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90\CyStatusReg_v1_90.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PowerMonitor_v1_50\B_PowerMonitor_v1_50.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\PM_AMux_v1_50\PM_AMux_v1_50.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
 
 vpp:  No errors.
 
@@ -105,7 +111,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonat
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Fri Mar 04 09:04:49 2016
+Mon Mar 07 10:16:58 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -133,6 +139,10 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90\CyStatusReg_v1_90.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PowerMonitor_v1_50\B_PowerMonitor_v1_50.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\PM_AMux_v1_50\PM_AMux_v1_50.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\lcpsoc3\stdlogic\mod_cnst.vif'.
@@ -148,7 +158,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonat
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Fri Mar 04 09:04:51 2016
+Mon Mar 07 10:16:59 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -176,6 +186,10 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90\CyStatusReg_v1_90.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PowerMonitor_v1_50\B_PowerMonitor_v1_50.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\PM_AMux_v1_50\PM_AMux_v1_50.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\lcpsoc3\stdlogic\mod_cnst.vif'.
@@ -378,6 +392,73 @@ Detecting unused logic.
 	\USBUART_1:Net_1916\
 	\USBUART_1:dma_complete_7\
 	\USBUART_1:Net_1915\
+	Net_2440
+	Net_2438
+	\PowerMonitor_1:pgoodbus_32\
+	\PowerMonitor_1:pgoodbus_31\
+	\PowerMonitor_1:pgoodbus_30\
+	\PowerMonitor_1:pgoodbus_29\
+	\PowerMonitor_1:pgoodbus_28\
+	\PowerMonitor_1:pgoodbus_27\
+	\PowerMonitor_1:pgoodbus_26\
+	\PowerMonitor_1:pgoodbus_25\
+	\PowerMonitor_1:pgoodbus_24\
+	\PowerMonitor_1:pgoodbus_23\
+	\PowerMonitor_1:pgoodbus_22\
+	\PowerMonitor_1:pgoodbus_21\
+	\PowerMonitor_1:pgoodbus_20\
+	\PowerMonitor_1:pgoodbus_19\
+	\PowerMonitor_1:pgoodbus_18\
+	\PowerMonitor_1:pgoodbus_17\
+	\PowerMonitor_1:pgoodbus_16\
+	\PowerMonitor_1:pgoodbus_15\
+	\PowerMonitor_1:pgoodbus_14\
+	\PowerMonitor_1:pgoodbus_13\
+	\PowerMonitor_1:pgoodbus_12\
+	\PowerMonitor_1:pgoodbus_11\
+	\PowerMonitor_1:pgoodbus_10\
+	\PowerMonitor_1:pgoodbus_9\
+	\PowerMonitor_1:pgoodbus_8\
+	\PowerMonitor_1:pgoodbus_7\
+	\PowerMonitor_1:pgoodbus_6\
+	\PowerMonitor_1:pgoodbus_5\
+	\PowerMonitor_1:pgoodbus_4\
+	\PowerMonitor_1:pgoodbus_3\
+	\PowerMonitor_1:pgoodbus_2\
+	\PowerMonitor_1:ADC:Net_481\
+	\PowerMonitor_1:ADC:Net_482\
+	Net_2439_31
+	Net_2439_30
+	Net_2439_29
+	Net_2439_28
+	Net_2439_27
+	Net_2439_26
+	Net_2439_25
+	Net_2439_24
+	Net_2439_23
+	Net_2439_22
+	Net_2439_21
+	Net_2439_20
+	Net_2439_19
+	Net_2439_18
+	Net_2439_17
+	Net_2439_16
+	Net_2439_15
+	Net_2439_14
+	Net_2439_13
+	Net_2439_12
+	Net_2439_11
+	Net_2439_10
+	Net_2439_9
+	Net_2439_8
+	Net_2439_7
+	Net_2439_6
+	Net_2439_5
+	Net_2439_4
+	Net_2439_3
+	Net_2439_2
+	Net_2439_1
+	Net_2439_0
 
     Synthesized names
 	\PWM_motor:PWMUDB:add_vi_vv_MODGEN_1_31\
@@ -411,7 +492,7 @@ Detecting unused logic.
 	\PWM_motor:PWMUDB:add_vi_vv_MODGEN_1_3\
 	\PWM_motor:PWMUDB:add_vi_vv_MODGEN_1_2\
 
-Deleted 192 User equations/components.
+Deleted 259 User equations/components.
 Deleted 30 Synthesized equations/components.
 
 ------------------------------------------------------
@@ -487,6 +568,17 @@ Aliasing tmpOE__RX_1_net_0 to one
 Aliasing tmpOE__TX_1_net_0 to one
 Aliasing \USBUART_1:tmpOE__Dm_net_0\ to one
 Aliasing \USBUART_1:tmpOE__Dp_net_0\ to one
+Aliasing tmpOE__v_1_net_0 to one
+Aliasing tmpOE__i_1_net_0 to one
+Aliasing tmpOE__pgood_net_0 to one
+Aliasing tmpOE__fault_net_0 to one
+Aliasing \PowerMonitor_1:ADC:soc\ to one
+Aliasing \PowerMonitor_1:ADC:Net_7\ to zero
+Aliasing \PowerMonitor_1:ADC:Net_8\ to zero
+Aliasing \PowerMonitor_1:PGA:Net_37\ to zero
+Aliasing \PowerMonitor_1:PGA:Net_40\ to zero
+Aliasing \PowerMonitor_1:PGA:Net_38\ to zero
+Aliasing \PowerMonitor_1:PGA:Net_39\ to zero
 Aliasing \PWM_motor:PWMUDB:min_kill_reg\\D\ to one
 Aliasing \PWM_motor:PWMUDB:prevCapture\\D\ to zero
 Aliasing \PWM_motor:PWMUDB:trig_last\\D\ to zero
@@ -625,20 +717,42 @@ Removing Lhs of wire tmpOE__RX_1_net_0[693] = one[4]
 Removing Lhs of wire tmpOE__TX_1_net_0[699] = one[4]
 Removing Lhs of wire \USBUART_1:tmpOE__Dm_net_0\[716] = one[4]
 Removing Lhs of wire \USBUART_1:tmpOE__Dp_net_0\[723] = one[4]
-Removing Lhs of wire \PWM_motor:PWMUDB:min_kill_reg\\D\[775] = one[4]
-Removing Lhs of wire \PWM_motor:PWMUDB:prevCapture\\D\[776] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:trig_last\\D\[777] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:ltch_kill_reg\\D\[780] = one[4]
-Removing Lhs of wire \PWM_motor:PWMUDB:pwm_i_reg\\D\[783] = \PWM_motor:PWMUDB:pwm_i\[97]
-Removing Lhs of wire \PWM_motor:PWMUDB:pwm1_i_reg\\D\[784] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:pwm2_i_reg\\D\[785] = zero[7]
-Removing Lhs of wire \Timer_RPM:TimerUDB:capture_last\\D\[787] = Net_701[383]
-Removing Lhs of wire \Timer_RPM:TimerUDB:tc_reg_i\\D\[788] = \Timer_RPM:TimerUDB:status_tc\[389]
-Removing Lhs of wire \Timer_RPM:TimerUDB:hwEnable_reg\\D\[789] = \Timer_RPM:TimerUDB:control_7\[366]
-Removing Lhs of wire \Timer_RPM:TimerUDB:capture_out_reg_i\\D\[790] = \Timer_RPM:TimerUDB:capt_fifo_load\[385]
+Removing Lhs of wire tmpOE__v_1_net_0[778] = one[4]
+Removing Lhs of wire tmpOE__i_1_net_0[785] = one[4]
+Removing Lhs of wire tmpOE__pgood_net_0[792] = one[4]
+Removing Rhs of wire Net_2413[793] = \PowerMonitor_1:pgoodbus_1\[834]
+Removing Rhs of wire Net_2413[793] = \PowerMonitor_1:B_PowerMonitor:pgood_reg_0\[833]
+Removing Lhs of wire tmpOE__fault_net_0[799] = one[4]
+Removing Rhs of wire Net_2414[800] = \PowerMonitor_1:B_PowerMonitor:control1_1\[816]
+Removing Rhs of wire \PowerMonitor_1:ADC:aclock\[867] = \PowerMonitor_1:ADC:Net_478\[903]
+Removing Rhs of wire \PowerMonitor_1:ADC:mod_dat_3\[868] = \PowerMonitor_1:ADC:Net_471_3\[904]
+Removing Rhs of wire \PowerMonitor_1:ADC:mod_dat_2\[869] = \PowerMonitor_1:ADC:Net_471_2\[905]
+Removing Rhs of wire \PowerMonitor_1:ADC:mod_dat_1\[870] = \PowerMonitor_1:ADC:Net_471_1\[906]
+Removing Rhs of wire \PowerMonitor_1:ADC:mod_dat_0\[871] = \PowerMonitor_1:ADC:Net_471_0\[907]
+Removing Lhs of wire \PowerMonitor_1:ADC:soc\[872] = one[4]
+Removing Lhs of wire \PowerMonitor_1:ADC:Net_488\[879] = \PowerMonitor_1:ADC:Net_40\[878]
+Removing Lhs of wire \PowerMonitor_1:ADC:Net_7\[900] = zero[7]
+Removing Lhs of wire \PowerMonitor_1:ADC:Net_8\[901] = zero[7]
+Removing Lhs of wire \PowerMonitor_1:PGA:Net_37\[964] = zero[7]
+Removing Lhs of wire \PowerMonitor_1:PGA:Net_40\[965] = zero[7]
+Removing Lhs of wire \PowerMonitor_1:PGA:Net_38\[966] = zero[7]
+Removing Lhs of wire \PowerMonitor_1:PGA:Net_39\[967] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:min_kill_reg\\D\[1252] = one[4]
+Removing Lhs of wire \PWM_motor:PWMUDB:prevCapture\\D\[1253] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:trig_last\\D\[1254] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:ltch_kill_reg\\D\[1257] = one[4]
+Removing Lhs of wire \PWM_motor:PWMUDB:pwm_i_reg\\D\[1260] = \PWM_motor:PWMUDB:pwm_i\[97]
+Removing Lhs of wire \PWM_motor:PWMUDB:pwm1_i_reg\\D\[1261] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:pwm2_i_reg\\D\[1262] = zero[7]
+Removing Lhs of wire \Timer_RPM:TimerUDB:capture_last\\D\[1264] = Net_701[383]
+Removing Lhs of wire \Timer_RPM:TimerUDB:tc_reg_i\\D\[1265] = \Timer_RPM:TimerUDB:status_tc\[389]
+Removing Lhs of wire \Timer_RPM:TimerUDB:hwEnable_reg\\D\[1266] = \Timer_RPM:TimerUDB:control_7\[366]
+Removing Lhs of wire \Timer_RPM:TimerUDB:capture_out_reg_i\\D\[1267] = \Timer_RPM:TimerUDB:capt_fifo_load\[385]
+Removing Lhs of wire \PowerMonitor_1:B_PowerMonitor:control1_reg_2\\D\[1272] = \PowerMonitor_1:B_PowerMonitor:control1_2\[815]
+Removing Lhs of wire \PowerMonitor_1:B_PowerMonitor:eocReg\\D\[1273] = \PowerMonitor_1:B_PowerMonitor:eocSig\[820]
 
 ------------------------------------------------------
-Aliased 0 equations, 144 wires.
+Aliased 0 equations, 166 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -810,7 +924,7 @@ Removing Lhs of wire \PWM_motor:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[278] 
 Removing Lhs of wire \PWM_motor:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[288] = zero[7]
 Removing Lhs of wire \PWM_motor:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[298] = zero[7]
 Removing Lhs of wire \Timer_RPM:TimerUDB:trig_reg\[460] = \Timer_RPM:TimerUDB:control_7\[366]
-Removing Lhs of wire \PWM_motor:PWMUDB:runmode_enable\\D\[778] = \PWM_motor:PWMUDB:control_7\[8]
+Removing Lhs of wire \PWM_motor:PWMUDB:runmode_enable\\D\[1255] = \PWM_motor:PWMUDB:control_7\[8]
 
 ------------------------------------------------------
 Aliased 0 equations, 6 wires.
@@ -843,14 +957,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj -dcpsoc3 MotorController.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 5s.311ms
+Warp synthesis phase: Elapsed time ==> 3s.563ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Friday, 04 March 2016 09:04:52
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Monday, 07 March 2016 10:17:01
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj -d CY8C5888LTI-LP097 MotorController.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.072ms
+Design parsing phase: Elapsed time ==> 0s.092ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -866,7 +980,10 @@ Assigning clock CAN_1_Clock to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Digital Clock 0: Automatic-assigning  clock 'Clock_2'. Fanout=3, Signal=Net_1334
     Digital Clock 1: Automatic-assigning  clock 'Clock_1'. Fanout=1, Signal=Net_174
-    Digital Clock 2: Automatic-assigning  clock 'Clock_motor'. Fanout=1, Signal=Net_1844
+    Digital Clock 2: Automatic-assigning  clock 'PowerMonitor_1_ADC_Ext_CP_Clk'. Fanout=1, Signal=\PowerMonitor_1:ADC:Net_487\
+    Analog  Clock 0: Automatic-assigning  clock 'PowerMonitor_1_ADC_theACLK'. Fanout=1, Signal=\PowerMonitor_1:ADC:Net_40\
+    Digital Clock 3: Automatic-assigning  clock 'pmon_clock'. Fanout=3, Signal=Net_2401
+    Digital Clock 4: Automatic-assigning  clock 'Clock_motor'. Fanout=1, Signal=Net_1844
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
@@ -884,8 +1001,20 @@ Done removing unused cells.
         ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
         ClockOut: BUS_CLK, EnableOut: Constant 1
+    UDB Clk/Enable \PowerMonitor_1:B_PowerMonitor:clock_enable_block\: with output requested to be synchronous
+        ClockIn: pmon_clock was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: pmon_clock, EnableOut: Constant 1
+    UDB Clk/Enable \PowerMonitor_1:B_PowerMonitor:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\: with output requested to be synchronous
+        ClockIn: pmon_clock was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: pmon_clock, EnableOut: Constant 1
+    UDB Clk/Enable \PowerMonitor_1:B_PowerMonitor:Sync:cy_psoc3_udb_Ctl_Clk_Sync\: with output requested to be synchronous
+        ClockIn: pmon_clock was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: pmon_clock, EnableOut: Constant 1
 </CYPRESSTAG>
-ADD: pft.M0040: information: The following 7 pin(s) will be assigned a location by the fitter: \USBUART_1:Dm(0)\, \USBUART_1:Dp(0)\, Motor_Amp(0), Motor_out(0), RPM(0), RX_1(0), TX_1(0)
+ADD: pft.M0040: information: The following 11 pin(s) will be assigned a location by the fitter: \USBUART_1:Dm(0)\, \USBUART_1:Dp(0)\, fault(0), i_1(0), Motor_Amp(0), Motor_out(0), pgood(0), RPM(0), RX_1(0), TX_1(0), v_1(0)
 
 
 Removing unused cells resulting from optimization
@@ -1167,6 +1296,154 @@ Design Equations
             pa_out => \USBUART_1:Dp(0)\__PA ,
             analog_term => \USBUART_1:Net_1000\ ,
             pad => \USBUART_1:Dp(0)_PAD\ );
+
+    Pin : Name = v_1(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_ANALOG
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: True
+            Can contain Digital: False
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: ANALOG
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => v_1(0)__PA ,
+            analog_term => Net_2403 ,
+            pad => v_1(0)_PAD );
+
+    Pin : Name = i_1(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_ANALOG
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: True
+            Can contain Digital: False
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: ANALOG
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => i_1(0)__PA ,
+            analog_term => Net_2408 ,
+            pad => i_1(0)_PAD );
+
+    Pin : Name = pgood(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: NOSYNC
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: CMOS_OUT
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => pgood(0)__PA ,
+            input => Net_2413 ,
+            pad => pgood(0)_PAD );
+
+    Pin : Name = fault(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: NOSYNC
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: CMOS_OUT
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => fault(0)__PA ,
+            input => Net_2414 ,
+            pad => fault(0)_PAD );
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
 
@@ -1208,6 +1485,16 @@ Design Equations
               \Timer_RPM:TimerUDB:control_7\ * \Timer_RPM:TimerUDB:per_zero\
         );
         Output = \Timer_RPM:TimerUDB:status_tc\ (fanout=1)
+
+    MacroCell: Name=__ONE__, Mode=(Combinatorial)
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = __ONE__ (fanout=1)
 
     MacroCell: Name=\PWM_motor:PWMUDB:runmode_enable\, Mode=(D-Register)
         Total # of inputs        : 1
@@ -1644,6 +1931,50 @@ Design Equations
         }
         Clock Polarity: Active High
         Clock Enable: True
+
+    controlcell: Name =\PowerMonitor_1:B_PowerMonitor:SyncCtl:ctrlreg1\
+        PORT MAP (
+            clock => Net_2401 ,
+            control_7 => \PowerMonitor_1:B_PowerMonitor:control1_7\ ,
+            control_6 => \PowerMonitor_1:B_PowerMonitor:control1_6\ ,
+            control_5 => \PowerMonitor_1:B_PowerMonitor:control1_5\ ,
+            control_4 => \PowerMonitor_1:B_PowerMonitor:control1_4\ ,
+            control_3 => \PowerMonitor_1:B_PowerMonitor:control1_3\ ,
+            control_2 => \PowerMonitor_1:B_PowerMonitor:control1_2\ ,
+            control_1 => Net_2414 ,
+            control_0 => \PowerMonitor_1:B_PowerMonitor:control1_0\ );
+        Properties:
+        {
+            cy_ctrl_mode_0 = "11111011"
+            cy_ctrl_mode_1 = "00000000"
+            cy_ext_reset = 0
+            cy_force_order = 1
+            cy_init_value = "00000000"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
+
+    controlcell: Name =\PowerMonitor_1:B_PowerMonitor:Sync:PM_1_8_Ctrl1\
+        PORT MAP (
+            clock => Net_2401 ,
+            control_7 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_7\ ,
+            control_6 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_6\ ,
+            control_5 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_5\ ,
+            control_4 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_4\ ,
+            control_3 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_3\ ,
+            control_2 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_2\ ,
+            control_1 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_1\ ,
+            control_0 => Net_2413 );
+        Properties:
+        {
+            cy_ctrl_mode_0 = "11111111"
+            cy_ctrl_mode_1 = "00000000"
+            cy_ext_reset = 0
+            cy_force_order = 1
+            cy_init_value = "00000000"
+        }
+        Clock Polarity: Active High
+        Clock Enable: True
     </CYPRESSTAG>
     <CYPRESSTAG name="Count7 listing">
     </CYPRESSTAG>
@@ -1750,6 +2081,14 @@ Design Equations
         {
             int_type = "00"
         }
+
+    interrupt: Name =\PowerMonitor_1:ADC:IRQ\
+        PORT MAP (
+            interrupt => \PowerMonitor_1:Net_2323\ );
+        Properties:
+        {
+            int_type = "10"
+        }
     </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Technology mapping summary" expanded>
@@ -1760,12 +2099,12 @@ Technology mapping summary
 
 Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
-Digital Clocks                :    3 :    5 :    8 : 37.50 %
-Analog Clocks                 :    0 :    4 :    4 :  0.00 %
+Digital Clocks                :    5 :    3 :    8 : 62.50 %
+Analog Clocks                 :    1 :    3 :    4 : 25.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
-Interrupts                    :   12 :   20 :   32 : 37.50 %
-IO                            :   10 :   38 :   48 : 20.83 %
+Interrupts                    :   13 :   19 :   32 : 40.63 %
+IO                            :   14 :   34 :   48 : 29.17 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    1 :    0 :    1 : 100.00 %
 I2C                           :    0 :    1 :    1 :  0.00 %
@@ -1773,7 +2112,7 @@ USB                           :    1 :    0 :    1 : 100.00 %
 DMA Channels                  :    0 :   24 :   24 :  0.00 %
 Timer                         :    0 :    4 :    4 :  0.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :   10 :  182 :  192 :  5.21 %
+  Macrocells                  :   11 :  181 :  192 :  5.73 %
   Unique P-terms              :   19 :  365 :  384 :  4.95 %
   Total P-terms               :   19 :      :      :        
   Datapath Cells              :    5 :   19 :   24 : 20.83 %
@@ -1781,87 +2120,1269 @@ UDB                           :      :      :      :
     Status Registers          :    1 :      :      :        
     StatusI Registers         :    1 :      :      :        
     Sync Cells (x1)           :    1 :      :      :        
-  Control Cells               :    3 :   21 :   24 : 12.50 %
-    Control Registers         :    3 :      :      :        
+  Control Cells               :    5 :   19 :   24 : 20.83 %
+    Control Registers         :    5 :      :      :        
 Opamp                         :    0 :    4 :    4 :  0.00 %
 Comparator                    :    1 :    3 :    4 : 25.00 %
-Delta-Sigma ADC               :    0 :    1 :    1 :  0.00 %
+Delta-Sigma ADC               :    1 :    0 :    1 : 100.00 %
 LPF                           :    0 :    2 :    2 :  0.00 %
 SAR ADC                       :    0 :    2 :    2 :  0.00 %
-Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
+Analog (SC/CT) Blocks         :    1 :    3 :    4 : 25.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    1 :    3 :    4 : 25.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.187ms
-Tech mapping phase: Elapsed time ==> 0s.450ms
+Technology Mapping: Elapsed time ==> 0s.212ms
+Tech mapping phase: Elapsed time ==> 0s.597ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
+Info: apr.M0055: The signal \PowerMonitor_1:PGA_REF\ is constrained to switch via Location abusl1 in Amux::\PowerMonitor_1:PM_AMux_Current\. (App=cydsfit)
 Initial Analog Placement Results:
-IO_2@[IOP=(15)][IoId=(2)] : Motor_Amp(0)
-Comparator[3]@[FFB(Comparator,3)] : \Comp_1:ctComp\
+SC[0]@[FFB(SC,0)] : \PowerMonitor_1:PGA:SC\ (fixed)
+DSM[0]@[FFB(DSM,0)] : \PowerMonitor_1:ADC:DSM4\ (fixed)
+IO_7@[IOP=(0)][IoId=(7)] : Motor_Amp(0)
+Comparator[2]@[FFB(Comparator,2)] : \Comp_1:ctComp\
+Vref[6]@[FFB(Vref,6)] : \PowerMonitor_1:ADC_Vssa_1:vRef_1\
+Vref[3]@[FFB(Vref,3)] : \PowerMonitor_1:vRef_1\
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART_1:Dm(0)\
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART_1:Dp(0)\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
-VIDAC[2]@[FFB(VIDAC,2)] : \VDAC8_1:viDAC8\
-Log: apr.M0058: The analog placement iterative improvement is 38% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 80% done. (App=cydsfit)
+VIDAC[3]@[FFB(VIDAC,3)] : \VDAC8_1:viDAC8\
+IO_3@[IOP=(3)][IoId=(3)] : i_1(0)
+IO_4@[IOP=(3)][IoId=(4)] : v_1(0)
+Log: apr.M0058: The analog placement iterative improvement is 48% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 70% done. (App=cydsfit)
 Analog Placement Results:
-IO_1@[IOP=(0)][IoId=(1)] : Motor_Amp(0)
-Comparator[0]@[FFB(Comparator,0)] : \Comp_1:ctComp\
+SC[0]@[FFB(SC,0)] : \PowerMonitor_1:PGA:SC\ (fixed)
+DSM[0]@[FFB(DSM,0)] : \PowerMonitor_1:ADC:DSM4\ (fixed)
+IO_6@[IOP=(3)][IoId=(6)] : Motor_Amp(0)
+Comparator[3]@[FFB(Comparator,3)] : \Comp_1:ctComp\
+Vref[6]@[FFB(Vref,6)] : \PowerMonitor_1:ADC_Vssa_1:vRef_1\
+Vref[3]@[FFB(Vref,3)] : \PowerMonitor_1:vRef_1\
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART_1:Dm(0)\
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART_1:Dp(0)\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
-VIDAC[2]@[FFB(VIDAC,2)] : \VDAC8_1:viDAC8\
+VIDAC[3]@[FFB(VIDAC,3)] : \VDAC8_1:viDAC8\
+IO_1@[IOP=(0)][IoId=(1)] : i_1(0)
+IO_2@[IOP=(0)][IoId=(2)] : v_1(0)
 
-Analog Placement phase: Elapsed time ==> 2s.447ms
+Analog Placement phase: Elapsed time ==> 13s.710ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.010ms
+Analog Routing phase: Elapsed time ==> 0s.030ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
 Dump of CyAnalogRoutingResultsDB
 Map of net to items {
+  Net: \PowerMonitor_1:negSignal\ {
+    dsm_0_vminus
+  }
+  Net: Net_2408 {
+    p0_3
+  }
+  Net: \PowerMonitor_1:CSA1\ {
+    common_vssa
+  }
+  Net: \PowerMonitor_1:PGA_REF\ {
+    sc_0_vout
+  }
+  Net: \PowerMonitor_1:posSignal\ {
+    dsm_0_vplus
+  }
+  Net: Net_2403 {
+    p0_4
+  }
   Net: Net_1076 {
-    comp_0_vplus
-    agl5_x_comp_0_vplus
-    agl5
-    agl5_x_p0_1
-    p0_1
+    comp_3_vplus
+    agr7_x_comp_3_vplus
+    agr7
+    agr7_x_p3_3
+    p3_3
   }
   Net: Net_1078 {
-    vidac_2_vout
-    agl4_x_vidac_2_vout
-    agl4
-    agl4_x_comp_0_vminus
-    comp_0_vminus
+    vidac_3_vout
+    agr5_x_vidac_3_vout
+    agr5
+    agr5_x_comp_3_vminus
+    comp_3_vminus
+  }
+  Net: \PowerMonitor_1:ADC:Net_349\ {
+  }
+  Net: \PowerMonitor_1:ADC:Net_257\ {
+  }
+  Net: \PowerMonitor_1:ADC:Net_352\ {
+  }
+  Net: \PowerMonitor_1:ADC:Net_12\ {
+  }
+  Net: \PowerMonitor_1:PGA:Net_17\ {
+  }
+  Net: \PowerMonitor_1:Net_2299\ {
+    common_vref_1024
+    sc_0_bgref
+    sc_0_bgref_x_sc_0_vin
+    sc_0_vin
   }
   Net: \VDAC8_1:Net_77\ {
   }
+  Net: AmuxNet::\PowerMonitor_1:PM_AMux_Current\ {
+    dsm_0_vminus
+    abusl1_x_dsm_0_vminus
+    abusl1
+    abusl1_x_sc_0_vout
+    agl7_x_dsm_0_vminus
+    agl7
+    agl7_x_p0_3
+    dsm_0_vminus_x_dsm_0_vminus_vssa
+    sc_0_vout
+    p0_3
+    dsm_0_vminus_vssa
+  }
+  Net: AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\ {
+    dsm_0_vplus
+    agl4_x_dsm_0_vplus
+    agl4
+    agl4_x_p0_4
+    dsm_0_vplus_x_dsm_0_vplus_vssa
+    p0_4
+    dsm_0_vplus_vssa
+  }
 }
 Map of item to net {
-  comp_0_vplus                                     -> Net_1076
-  agl5_x_comp_0_vplus                              -> Net_1076
-  agl5                                             -> Net_1076
-  agl5_x_p0_1                                      -> Net_1076
-  p0_1                                             -> Net_1076
-  vidac_2_vout                                     -> Net_1078
-  agl4_x_vidac_2_vout                              -> Net_1078
-  agl4                                             -> Net_1078
-  agl4_x_comp_0_vminus                             -> Net_1078
-  comp_0_vminus                                    -> Net_1078
+  common_vssa                                      -> \PowerMonitor_1:CSA1\
+  comp_3_vplus                                     -> Net_1076
+  agr7_x_comp_3_vplus                              -> Net_1076
+  agr7                                             -> Net_1076
+  agr7_x_p3_3                                      -> Net_1076
+  p3_3                                             -> Net_1076
+  vidac_3_vout                                     -> Net_1078
+  agr5_x_vidac_3_vout                              -> Net_1078
+  agr5                                             -> Net_1078
+  agr5_x_comp_3_vminus                             -> Net_1078
+  comp_3_vminus                                    -> Net_1078
+  common_vref_1024                                 -> \PowerMonitor_1:Net_2299\
+  sc_0_bgref                                       -> \PowerMonitor_1:Net_2299\
+  sc_0_bgref_x_sc_0_vin                            -> \PowerMonitor_1:Net_2299\
+  sc_0_vin                                         -> \PowerMonitor_1:Net_2299\
+  dsm_0_vminus                                     -> \PowerMonitor_1:negSignal\
+  p0_3                                             -> Net_2408
+  sc_0_vout                                        -> \PowerMonitor_1:PGA_REF\
+  dsm_0_vplus                                      -> \PowerMonitor_1:posSignal\
+  p0_4                                             -> Net_2403
+  abusl1_x_dsm_0_vminus                            -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  abusl1                                           -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  abusl1_x_sc_0_vout                               -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  agl7_x_dsm_0_vminus                              -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  agl7                                             -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  agl7_x_p0_3                                      -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  dsm_0_vminus_x_dsm_0_vminus_vssa                 -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  dsm_0_vminus_vssa                                -> AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+  agl4_x_dsm_0_vplus                               -> AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\
+  agl4                                             -> AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\
+  agl4_x_p0_4                                      -> AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\
+  dsm_0_vplus_x_dsm_0_vplus_vssa                   -> AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\
+  dsm_0_vplus_vssa                                 -> AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\
 }
 Mux Info {
+  Mux: \PowerMonitor_1:PM_AMux_Current\ {
+     Mouth: \PowerMonitor_1:negSignal\
+     Guts:  AmuxNet::\PowerMonitor_1:PM_AMux_Current\
+     IsSingleSwitching: False
+     IsStaticSwitching: True
+     IsAtMostOneSwitch: False
+    Arm: 0 {
+      Net:   Net_2408
+      Outer: agl7_x_p0_3
+      Inner: agl7_x_dsm_0_vminus
+      Path {
+        p0_3
+        agl7_x_p0_3
+        agl7
+        agl7_x_dsm_0_vminus
+        dsm_0_vminus
+      }
+    }
+    Arm: 1 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 2 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 3 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 4 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 5 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 6 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 7 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 8 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 9 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 10 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 11 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 12 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 13 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 14 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 15 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 16 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 17 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 18 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 19 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 20 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 21 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 22 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 23 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 24 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 25 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 26 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 27 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 28 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 29 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 30 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 31 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 32 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 33 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 34 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 35 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 36 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vminus_vssa
+        dsm_0_vminus_x_dsm_0_vminus_vssa
+        dsm_0_vminus
+      }
+    }
+    Arm: 37 {
+      Net:   \PowerMonitor_1:PGA_REF\
+      Outer: abusl1_x_sc_0_vout
+      Inner: abusl1_x_dsm_0_vminus
+      Path {
+        sc_0_vout
+        abusl1_x_sc_0_vout
+        abusl1
+        abusl1_x_dsm_0_vminus
+        dsm_0_vminus
+      }
+    }
+  }
+  Mux: \PowerMonitor_1:PM_AMux_Voltage\ {
+     Mouth: \PowerMonitor_1:posSignal\
+     Guts:  AmuxNet::\PowerMonitor_1:PM_AMux_Voltage\
+     IsSingleSwitching: False
+     IsStaticSwitching: True
+     IsAtMostOneSwitch: False
+    Arm: 0 {
+      Net:   Net_2403
+      Outer: agl4_x_p0_4
+      Inner: agl4_x_dsm_0_vplus
+      Path {
+        p0_4
+        agl4_x_p0_4
+        agl4
+        agl4_x_dsm_0_vplus
+        dsm_0_vplus
+      }
+    }
+    Arm: 1 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 2 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 3 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 4 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 5 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 6 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 7 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 8 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 9 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 10 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 11 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 12 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 13 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 14 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 15 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 16 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 17 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 18 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 19 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 20 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 21 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 22 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 23 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 24 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 25 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 26 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 27 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 28 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 29 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 30 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 31 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 32 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 33 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 34 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 35 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 36 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 37 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 38 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 39 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 40 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 41 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 42 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 43 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 44 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 45 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 46 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 47 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 48 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 49 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 50 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 51 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 52 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 53 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 54 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 55 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 56 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 57 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 58 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 59 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 60 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 61 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 62 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 63 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 64 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 65 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 66 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 67 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+    Arm: 68 {
+      Net:   \PowerMonitor_1:CSA1\
+      Outer: dsm_0_vplus_x_dsm_0_vplus_vssa
+      Inner: __open__
+      Path {
+        dsm_0_vplus_vssa
+        dsm_0_vplus_x_dsm_0_vplus_vssa
+        dsm_0_vplus
+      }
+    }
+  }
 }
 Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 1s.351ms
+Analog Code Generation phase: Elapsed time ==> 0s.863ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 3.2 sec.
+I2076: Total run-time: 1.9 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -1872,33 +3393,33 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :    5 :   43 :   48 :  10.42%
+                     PLDs :    6 :   42 :   48 :  12.50%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            4.40
-                   Pterms :            3.80
-               Macrocells :            2.00
+                   Inputs :            3.67
+                   Pterms :            3.17
+               Macrocells :            1.83
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.003ms
+PLD Packing: Elapsed time ==> 0s.002ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.125ms
+Partitioning: Elapsed time ==> 0s.107ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.003ms
+Annealing: Elapsed time ==> 0s.002ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 310, final cost is 310 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 323, final cost is 323 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -1908,7 +3429,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :          5 :       3.40 :       2.00
+                 UDB :          7 :       2.43 :       1.57
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -1929,8 +3450,83 @@ UDB [UDB=(1,4)] is empty.
 UDB [UDB=(1,5)] is empty.
 UDB [UDB=(2,0)] is empty.
 UDB [UDB=(2,1)] is empty.
-UDB [UDB=(2,2)] is empty.
-UDB [UDB=(2,3)] is empty.
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=1] #macrocells=1, #inputs=0, #pterms=0
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=3]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = __ONE__ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(2,3)] contents:
+LAB@[UDB=(2,3)][LB=1] #macrocells=1, #inputs=3, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (Net_1334) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_1396 * !Net_1488
+            + cy_srff_1 * !Net_1488
+        );
+        Output = cy_srff_1 (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+controlcell: Name =\Control_Reg_motor_reset:Sync:ctrl_reg\
+    PORT MAP (
+        clock => Net_1334 ,
+        control_7 => \Control_Reg_motor_reset:control_7\ ,
+        control_6 => \Control_Reg_motor_reset:control_6\ ,
+        control_5 => \Control_Reg_motor_reset:control_5\ ,
+        control_4 => \Control_Reg_motor_reset:control_4\ ,
+        control_3 => \Control_Reg_motor_reset:control_3\ ,
+        control_2 => \Control_Reg_motor_reset:control_2\ ,
+        control_1 => \Control_Reg_motor_reset:control_1\ ,
+        control_0 => Net_1473 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000001"
+        cy_ctrl_mode_1 = "00000001"
+        cy_ext_reset = 1
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =\Sync_1:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_1334 ,
+        in => Net_1473 ,
+        out => Net_1488 );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
 UDB [UDB=(2,4)] contents:
 datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u3\
     PORT MAP (
@@ -1969,6 +3565,28 @@ datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u3\
     Clock Polarity: Active High
     Clock Enable: True
     Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u2\
+
+controlcell: Name =\PowerMonitor_1:B_PowerMonitor:SyncCtl:ctrlreg1\
+    PORT MAP (
+        clock => Net_2401 ,
+        control_7 => \PowerMonitor_1:B_PowerMonitor:control1_7\ ,
+        control_6 => \PowerMonitor_1:B_PowerMonitor:control1_6\ ,
+        control_5 => \PowerMonitor_1:B_PowerMonitor:control1_5\ ,
+        control_4 => \PowerMonitor_1:B_PowerMonitor:control1_4\ ,
+        control_3 => \PowerMonitor_1:B_PowerMonitor:control1_3\ ,
+        control_2 => \PowerMonitor_1:B_PowerMonitor:control1_2\ ,
+        control_1 => Net_2414 ,
+        control_0 => \PowerMonitor_1:B_PowerMonitor:control1_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111011"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
 
 UDB [UDB=(2,5)] contents:
 LAB@[UDB=(2,5)][LB=0] #macrocells=4, #inputs=9, #pterms=6
@@ -2308,29 +3926,6 @@ controlcell: Name =\PWM_motor:PWMUDB:genblk1:ctrlreg\
     Clock Enable: True
 
 UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=1] #macrocells=1, #inputs=3, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (Net_1334) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              Net_1396 * !Net_1488
-            + cy_srff_1 * !Net_1488
-        );
-        Output = cy_srff_1 (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
 datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u2\
     PORT MAP (
         clock => ClockBlock_BUS_CLK ,
@@ -2368,35 +3963,24 @@ datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u2\
     Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u1\
     Next in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u3\
 
-controlcell: Name =\Control_Reg_motor_reset:Sync:ctrl_reg\
+controlcell: Name =\PowerMonitor_1:B_PowerMonitor:Sync:PM_1_8_Ctrl1\
     PORT MAP (
-        clock => Net_1334 ,
-        control_7 => \Control_Reg_motor_reset:control_7\ ,
-        control_6 => \Control_Reg_motor_reset:control_6\ ,
-        control_5 => \Control_Reg_motor_reset:control_5\ ,
-        control_4 => \Control_Reg_motor_reset:control_4\ ,
-        control_3 => \Control_Reg_motor_reset:control_3\ ,
-        control_2 => \Control_Reg_motor_reset:control_2\ ,
-        control_1 => \Control_Reg_motor_reset:control_1\ ,
-        control_0 => Net_1473 );
+        clock => Net_2401 ,
+        control_7 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_7\ ,
+        control_6 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_6\ ,
+        control_5 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_5\ ,
+        control_4 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_4\ ,
+        control_3 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_3\ ,
+        control_2 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_2\ ,
+        control_1 => \PowerMonitor_1:B_PowerMonitor:pgood_reg_1\ ,
+        control_0 => Net_2413 );
     Properties:
     {
-        cy_ctrl_mode_0 = "00000001"
-        cy_ctrl_mode_1 = "00000001"
-        cy_ext_reset = 1
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
         cy_force_order = 1
         cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\Sync_1:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_1334 ,
-        in => Net_1473 ,
-        out => Net_1488 );
-    Properties:
-    {
     }
     Clock Polarity: Active High
     Clock Enable: True
@@ -2536,6 +4120,14 @@ Intr container @ [IntrContainer=(0)]:
         {
             int_type = "10"
         }
+  Intr@ [IntrContainer=(0)][IntrId=(29)] 
+    interrupt: Name =\PowerMonitor_1:ADC:IRQ\
+        PORT MAP (
+            interrupt => \PowerMonitor_1:Net_2323\ );
+        Properties:
+        {
+            int_type = "10"
+        }
 Drq container @ [DrqContainer=(0)]: empty
 Port 0 contains the following IO cells:
 [IoId=0]: 
@@ -2579,48 +4171,7 @@ Pin : Name = RX_1(0)
     {
     }
 
-[IoId=1]: 
-Pin : Name = Motor_Amp(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: AUTO
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_ANALOG
-        VTrip: EITHER
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: True
-        Can contain Digital: False
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: ANALOG
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => Motor_Amp(0)__PA ,
-        analog_term => Net_1076 ,
-        pad => Motor_Amp(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=3]: 
+[IoId=2]: 
 Pin : Name = RPM(0)
     Attributes:
         In Group/Port: True
@@ -2661,7 +4212,171 @@ Pin : Name = RPM(0)
     {
     }
 
+[IoId=3]: 
+Pin : Name = i_1(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => i_1(0)__PA ,
+        analog_term => Net_2408 ,
+        pad => i_1(0)_PAD );
+    Properties:
+    {
+    }
+
 [IoId=4]: 
+Pin : Name = v_1(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => v_1(0)__PA ,
+        analog_term => Net_2403 ,
+        pad => v_1(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=5]: 
+Pin : Name = fault(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: NOSYNC
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: CMOS_OUT
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => fault(0)__PA ,
+        input => Net_2414 ,
+        pad => fault(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=6]: 
+Pin : Name = pgood(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: NOSYNC
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: CMOS_OUT
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => pgood(0)__PA ,
+        input => Net_2413 ,
+        pad => pgood(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=7]: 
 Pin : Name = TX_1(0)
     Attributes:
         In Group/Port: True
@@ -2704,9 +4419,50 @@ Pin : Name = TX_1(0)
 
 Port 1 is empty
 Port 2 is empty
-Port 3 is empty
+Port 3 contains the following IO cells:
+[IoId=3]: 
+Pin : Name = Motor_Amp(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => Motor_Amp(0)__PA ,
+        analog_term => Net_1076 ,
+        pad => Motor_Amp(0)_PAD );
+    Properties:
+    {
+    }
+
 Port 12 contains the following IO cells:
-[IoId=2]: 
+[IoId=3]: 
 Pin : Name = Motor_out(0)
     Attributes:
         In Group/Port: True
@@ -2931,13 +4687,21 @@ Clock group 0:
             dclk_0 => Net_1334_local ,
             dclk_glb_1 => Net_174 ,
             dclk_1 => Net_174_local ,
-            dclk_glb_2 => Net_1844 ,
-            dclk_2 => Net_1844_local );
+            dclk_glb_2 => \PowerMonitor_1:ADC:Net_487\ ,
+            dclk_2 => \PowerMonitor_1:ADC:Net_487_local\ ,
+            aclk_glb_0 => \PowerMonitor_1:ADC:Net_40\ ,
+            aclk_0 => \PowerMonitor_1:ADC:Net_40_local\ ,
+            clk_a_dig_glb_0 => \PowerMonitor_1:ADC:Net_40_adig\ ,
+            clk_a_dig_0 => \PowerMonitor_1:ADC:Net_40_adig_local\ ,
+            dclk_glb_3 => Net_2401 ,
+            dclk_3 => Net_2401_local ,
+            dclk_glb_4 => Net_1844 ,
+            dclk_4 => Net_1844_local );
         Properties:
         {
         }
 Comparator group 0: 
-    Comparator Block @ F(Comparator,0): 
+    Comparator Block @ F(Comparator,3): 
     comparatorcell: Name =\Comp_1:ctComp\
         PORT MAP (
             vplus => Net_1076 ,
@@ -2948,14 +4712,70 @@ Comparator group 0:
             cy_registers = ""
         }
 Digital Filter Block group 0: empty
-Delta-Sigma ADC group 0: empty
-Decimator group 0: empty
+Delta-Sigma ADC group 0: 
+    DS Modulator @ F(DSM,0): 
+    dsmodcell: Name =\PowerMonitor_1:ADC:DSM4\
+        PORT MAP (
+            aclock => \PowerMonitor_1:ADC:Net_40\ ,
+            vplus => \PowerMonitor_1:posSignal\ ,
+            vminus => \PowerMonitor_1:negSignal\ ,
+            reset_dec => \PowerMonitor_1:ADC:mod_reset\ ,
+            extclk_cp_udb => \PowerMonitor_1:ADC:Net_487_local\ ,
+            ext_pin_1 => \PowerMonitor_1:ADC:Net_349\ ,
+            ext_pin_2 => \PowerMonitor_1:ADC:Net_257\ ,
+            ext_vssa => \PowerMonitor_1:ADC:Net_352\ ,
+            qtz_ref => \PowerMonitor_1:ADC:Net_12\ ,
+            dec_clock => \PowerMonitor_1:ADC:aclock\ ,
+            mod_dat_3 => \PowerMonitor_1:ADC:mod_dat_3\ ,
+            mod_dat_2 => \PowerMonitor_1:ADC:mod_dat_2\ ,
+            mod_dat_1 => \PowerMonitor_1:ADC:mod_dat_1\ ,
+            mod_dat_0 => \PowerMonitor_1:ADC:mod_dat_0\ ,
+            dout_udb_7 => \PowerMonitor_1:ADC:Net_9_7\ ,
+            dout_udb_6 => \PowerMonitor_1:ADC:Net_9_6\ ,
+            dout_udb_5 => \PowerMonitor_1:ADC:Net_9_5\ ,
+            dout_udb_4 => \PowerMonitor_1:ADC:Net_9_4\ ,
+            dout_udb_3 => \PowerMonitor_1:ADC:Net_9_3\ ,
+            dout_udb_2 => \PowerMonitor_1:ADC:Net_9_2\ ,
+            dout_udb_1 => \PowerMonitor_1:ADC:Net_9_1\ ,
+            dout_udb_0 => \PowerMonitor_1:ADC:Net_9_0\ );
+        Properties:
+        {
+            cy_registers = ""
+            resolution = 12
+        }
+Decimator group 0: 
+    Decimator Block @ F(Decimator,0): 
+    decimatorcell: Name =\PowerMonitor_1:ADC:DEC\
+        PORT MAP (
+            aclock => \PowerMonitor_1:ADC:aclock\ ,
+            mod_dat_3 => \PowerMonitor_1:ADC:mod_dat_3\ ,
+            mod_dat_2 => \PowerMonitor_1:ADC:mod_dat_2\ ,
+            mod_dat_1 => \PowerMonitor_1:ADC:mod_dat_1\ ,
+            mod_dat_0 => \PowerMonitor_1:ADC:mod_dat_0\ ,
+            ext_start => __ONE__ ,
+            modrst => \PowerMonitor_1:ADC:mod_reset\ ,
+            interrupt => \PowerMonitor_1:Net_2323\ );
+        Properties:
+        {
+            cy_registers = ""
+        }
 EMIF group 0: empty
 I2C group 0: empty
 Segment LCD group 0: empty
 LVD group 0: empty
 PM group 0: empty
-Analog (SC/CT) Blocks group 0: empty
+Analog (SC/CT) Blocks group 0: 
+    SC Block @ F(SC,0): 
+    sccell: Name =\PowerMonitor_1:PGA:SC\
+        PORT MAP (
+            vref => \PowerMonitor_1:PGA:Net_17\ ,
+            vin => \PowerMonitor_1:Net_2299\ ,
+            modout => \PowerMonitor_1:PGA:Net_41\ ,
+            vout => \PowerMonitor_1:PGA_REF\ );
+        Properties:
+        {
+            cy_registers = ""
+        }
 SPC group 0: empty
 Timer group 0: empty
 USB group 0: 
@@ -2991,7 +4811,7 @@ USB group 0:
             cy_registers = ""
         }
 VIDAC group 0: 
-    VIDAC Block @ F(VIDAC,2): 
+    VIDAC Block @ F(VIDAC,3): 
     vidaccell: Name =\VDAC8_1:viDAC8\
         PORT MAP (
             vout => Net_1078 ,
@@ -3004,9 +4824,168 @@ VIDAC group 0:
         }
 Opamp group 0: empty
 CapSense Buffers group 0: empty
-Vref group 0: empty
+Vref group 0: 
+    Vref Block @ F(Vref,3): 
+    vrefcell: Name =\PowerMonitor_1:vRef_1\
+        PORT MAP (
+            vout => \PowerMonitor_1:Net_2299\ );
+        Properties:
+        {
+            autoenable = 1
+            guid = "89B398AD-36A8-4627-9212-707F2986319E"
+            ignoresleep = 0
+            name = "1.024V"
+        }
+    Vref Block @ F(Vref,6): 
+    vrefcell: Name =\PowerMonitor_1:ADC_Vssa_1:vRef_1\
+        PORT MAP (
+            vout => \PowerMonitor_1:CSA1\ );
+        Properties:
+        {
+            autoenable = 1
+            guid = "15B3DB15-B7B3-4d62-A2DF-25EA392A7161"
+            ignoresleep = 0
+            name = "Vssa (GND)"
+        }
 LPF group 0: empty
 SAR ADC group 0: empty
+
+Blocks not positioned by the digital component placer:
+    Amux Block @ <No Location>: 
+    amuxcell: Name =\PowerMonitor_1:PM_AMux_Current\
+        PORT MAP (
+            muxin_37 => \PowerMonitor_1:PGA_REF\ ,
+            muxin_36 => \PowerMonitor_1:CSA1\ ,
+            muxin_35 => \PowerMonitor_1:CSA1\ ,
+            muxin_34 => \PowerMonitor_1:CSA1\ ,
+            muxin_33 => \PowerMonitor_1:CSA1\ ,
+            muxin_32 => \PowerMonitor_1:CSA1\ ,
+            muxin_31 => \PowerMonitor_1:CSA1\ ,
+            muxin_30 => \PowerMonitor_1:CSA1\ ,
+            muxin_29 => \PowerMonitor_1:CSA1\ ,
+            muxin_28 => \PowerMonitor_1:CSA1\ ,
+            muxin_27 => \PowerMonitor_1:CSA1\ ,
+            muxin_26 => \PowerMonitor_1:CSA1\ ,
+            muxin_25 => \PowerMonitor_1:CSA1\ ,
+            muxin_24 => \PowerMonitor_1:CSA1\ ,
+            muxin_23 => \PowerMonitor_1:CSA1\ ,
+            muxin_22 => \PowerMonitor_1:CSA1\ ,
+            muxin_21 => \PowerMonitor_1:CSA1\ ,
+            muxin_20 => \PowerMonitor_1:CSA1\ ,
+            muxin_19 => \PowerMonitor_1:CSA1\ ,
+            muxin_18 => \PowerMonitor_1:CSA1\ ,
+            muxin_17 => \PowerMonitor_1:CSA1\ ,
+            muxin_16 => \PowerMonitor_1:CSA1\ ,
+            muxin_15 => \PowerMonitor_1:CSA1\ ,
+            muxin_14 => \PowerMonitor_1:CSA1\ ,
+            muxin_13 => \PowerMonitor_1:CSA1\ ,
+            muxin_12 => \PowerMonitor_1:CSA1\ ,
+            muxin_11 => \PowerMonitor_1:CSA1\ ,
+            muxin_10 => \PowerMonitor_1:CSA1\ ,
+            muxin_9 => \PowerMonitor_1:CSA1\ ,
+            muxin_8 => \PowerMonitor_1:CSA1\ ,
+            muxin_7 => \PowerMonitor_1:CSA1\ ,
+            muxin_6 => \PowerMonitor_1:CSA1\ ,
+            muxin_5 => \PowerMonitor_1:CSA1\ ,
+            muxin_4 => \PowerMonitor_1:CSA1\ ,
+            muxin_3 => \PowerMonitor_1:CSA1\ ,
+            muxin_2 => \PowerMonitor_1:CSA1\ ,
+            muxin_1 => \PowerMonitor_1:CSA1\ ,
+            muxin_0 => Net_2408 ,
+            vout => \PowerMonitor_1:negSignal\ );
+        Properties:
+        {
+            api_type = 0
+            connect_mode = 1
+            cy_registers = ""
+            hw_control = 0
+            init_mux_sel = "00000000000000000000000000000000000000"
+            muxin_width = 38
+            one_active = 0
+        }
+    Amux Block @ <No Location>: 
+    amuxcell: Name =\PowerMonitor_1:PM_AMux_Voltage\
+        PORT MAP (
+            muxin_68 => \PowerMonitor_1:CSA1\ ,
+            muxin_67 => \PowerMonitor_1:CSA1\ ,
+            muxin_66 => \PowerMonitor_1:CSA1\ ,
+            muxin_65 => \PowerMonitor_1:CSA1\ ,
+            muxin_64 => \PowerMonitor_1:CSA1\ ,
+            muxin_63 => \PowerMonitor_1:CSA1\ ,
+            muxin_62 => \PowerMonitor_1:CSA1\ ,
+            muxin_61 => \PowerMonitor_1:CSA1\ ,
+            muxin_60 => \PowerMonitor_1:CSA1\ ,
+            muxin_59 => \PowerMonitor_1:CSA1\ ,
+            muxin_58 => \PowerMonitor_1:CSA1\ ,
+            muxin_57 => \PowerMonitor_1:CSA1\ ,
+            muxin_56 => \PowerMonitor_1:CSA1\ ,
+            muxin_55 => \PowerMonitor_1:CSA1\ ,
+            muxin_54 => \PowerMonitor_1:CSA1\ ,
+            muxin_53 => \PowerMonitor_1:CSA1\ ,
+            muxin_52 => \PowerMonitor_1:CSA1\ ,
+            muxin_51 => \PowerMonitor_1:CSA1\ ,
+            muxin_50 => \PowerMonitor_1:CSA1\ ,
+            muxin_49 => \PowerMonitor_1:CSA1\ ,
+            muxin_48 => \PowerMonitor_1:CSA1\ ,
+            muxin_47 => \PowerMonitor_1:CSA1\ ,
+            muxin_46 => \PowerMonitor_1:CSA1\ ,
+            muxin_45 => \PowerMonitor_1:CSA1\ ,
+            muxin_44 => \PowerMonitor_1:CSA1\ ,
+            muxin_43 => \PowerMonitor_1:CSA1\ ,
+            muxin_42 => \PowerMonitor_1:CSA1\ ,
+            muxin_41 => \PowerMonitor_1:CSA1\ ,
+            muxin_40 => \PowerMonitor_1:CSA1\ ,
+            muxin_39 => \PowerMonitor_1:CSA1\ ,
+            muxin_38 => \PowerMonitor_1:CSA1\ ,
+            muxin_37 => \PowerMonitor_1:CSA1\ ,
+            muxin_36 => \PowerMonitor_1:CSA1\ ,
+            muxin_35 => \PowerMonitor_1:CSA1\ ,
+            muxin_34 => \PowerMonitor_1:CSA1\ ,
+            muxin_33 => \PowerMonitor_1:CSA1\ ,
+            muxin_32 => \PowerMonitor_1:CSA1\ ,
+            muxin_31 => \PowerMonitor_1:CSA1\ ,
+            muxin_30 => \PowerMonitor_1:CSA1\ ,
+            muxin_29 => \PowerMonitor_1:CSA1\ ,
+            muxin_28 => \PowerMonitor_1:CSA1\ ,
+            muxin_27 => \PowerMonitor_1:CSA1\ ,
+            muxin_26 => \PowerMonitor_1:CSA1\ ,
+            muxin_25 => \PowerMonitor_1:CSA1\ ,
+            muxin_24 => \PowerMonitor_1:CSA1\ ,
+            muxin_23 => \PowerMonitor_1:CSA1\ ,
+            muxin_22 => \PowerMonitor_1:CSA1\ ,
+            muxin_21 => \PowerMonitor_1:CSA1\ ,
+            muxin_20 => \PowerMonitor_1:CSA1\ ,
+            muxin_19 => \PowerMonitor_1:CSA1\ ,
+            muxin_18 => \PowerMonitor_1:CSA1\ ,
+            muxin_17 => \PowerMonitor_1:CSA1\ ,
+            muxin_16 => \PowerMonitor_1:CSA1\ ,
+            muxin_15 => \PowerMonitor_1:CSA1\ ,
+            muxin_14 => \PowerMonitor_1:CSA1\ ,
+            muxin_13 => \PowerMonitor_1:CSA1\ ,
+            muxin_12 => \PowerMonitor_1:CSA1\ ,
+            muxin_11 => \PowerMonitor_1:CSA1\ ,
+            muxin_10 => \PowerMonitor_1:CSA1\ ,
+            muxin_9 => \PowerMonitor_1:CSA1\ ,
+            muxin_8 => \PowerMonitor_1:CSA1\ ,
+            muxin_7 => \PowerMonitor_1:CSA1\ ,
+            muxin_6 => \PowerMonitor_1:CSA1\ ,
+            muxin_5 => \PowerMonitor_1:CSA1\ ,
+            muxin_4 => \PowerMonitor_1:CSA1\ ,
+            muxin_3 => \PowerMonitor_1:CSA1\ ,
+            muxin_2 => \PowerMonitor_1:CSA1\ ,
+            muxin_1 => \PowerMonitor_1:CSA1\ ,
+            muxin_0 => Net_2403 ,
+            vout => \PowerMonitor_1:posSignal\ );
+        Properties:
+        {
+            api_type = 0
+            connect_mode = 1
+            cy_registers = ""
+            hw_control = 0
+            init_mux_sel = "000000000000000000000000000000000000000000000000000000000000000000000"
+            muxin_width = 69
+            one_active = 0
+        }
 </CYPRESSTAG>
 <CYPRESSTAG name="Port Configuration Details">
 
@@ -3017,11 +4996,16 @@ Port Configuration report
 Port | Pin | Fixed |      Type |       Drive Mode |              Name | Connections
 -----+-----+-------+-----------+------------------+-------------------+-----------------------------
    0 |   0 |       |      NONE |     HI_Z_DIGITAL |           RX_1(0) | FB(Net_11)
-     |   1 |       |      NONE |      HI_Z_ANALOG |      Motor_Amp(0) | Analog(Net_1076)
-     |   3 |       |      NONE |     HI_Z_DIGITAL |            RPM(0) | FB(Net_701)
-     |   4 |       |      NONE |         CMOS_OUT |           TX_1(0) | In(Net_2248)
+     |   2 |       |      NONE |     HI_Z_DIGITAL |            RPM(0) | FB(Net_701)
+     |   3 |       |      NONE |      HI_Z_ANALOG |            i_1(0) | Analog(Net_2408)
+     |   4 |       |      NONE |      HI_Z_ANALOG |            v_1(0) | Analog(Net_2403)
+     |   5 |       |      NONE |         CMOS_OUT |          fault(0) | In(Net_2414)
+     |   6 |       |      NONE |         CMOS_OUT |          pgood(0) | In(Net_2413)
+     |   7 |       |      NONE |         CMOS_OUT |           TX_1(0) | In(Net_2248)
 -----+-----+-------+-----------+------------------+-------------------+-----------------------------
-  12 |   2 |       |      NONE |         CMOS_OUT |      Motor_out(0) | In(Net_276)
+   3 |   3 |       |      NONE |      HI_Z_ANALOG |      Motor_Amp(0) | Analog(Net_1076)
+-----+-----+-------+-----------+------------------+-------------------+-----------------------------
+  12 |   3 |       |      NONE |         CMOS_OUT |      Motor_out(0) | In(Net_276)
 -----+-----+-------+-----------+------------------+-------------------+-----------------------------
   15 |   6 |       |   FALLING |      HI_Z_ANALOG | \USBUART_1:Dp(0)\ | Analog(\USBUART_1:Net_1000\)
      |   7 |       |      NONE |      HI_Z_ANALOG | \USBUART_1:Dm(0)\ | Analog(\USBUART_1:Net_597\)
@@ -3029,32 +5013,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |              Name | Connecti
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.005ms
-Digital Placement phase: Elapsed time ==> 4s.677ms
+Digital component placer commit/Report: Elapsed time ==> 0s.003ms
+Digital Placement phase: Elapsed time ==> 2s.879ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 5s.796ms
+Digital Routing phase: Elapsed time ==> 2s.957ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.819ms
+Bitstream and API generation phase: Elapsed time ==> 0s.437ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.116ms
+Bitstream verification phase: Elapsed time ==> 0s.076ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in MotorController_timing.html.
-Static timing analysis phase: Elapsed time ==> 1s.461ms
+Static timing analysis phase: Elapsed time ==> 0s.637ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.000ms
+Data reporting phase: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.710ms
+Design database save phase: Elapsed time ==> 0s.450ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 17s.976ms
+cydsfit: Elapsed time ==> 22s.775ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 18s.132ms
-API generation phase: Elapsed time ==> 7s.615ms
-Dependency generation phase: Elapsed time ==> 0s.058ms
+Fitter phase: Elapsed time ==> 22s.895ms
+API generation phase: Elapsed time ==> 4s.876ms
+Dependency generation phase: Elapsed time ==> 0s.067ms
 Cleanup phase: Elapsed time ==> 0s.002ms
