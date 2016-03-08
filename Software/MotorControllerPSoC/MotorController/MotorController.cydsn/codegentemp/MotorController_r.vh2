@@ -1,5 +1,5 @@
 -- Project:   MotorController
--- Generated: 03/07/2016 10:17:19
+-- Generated: 03/08/2016 18:36:39
 -- PSoC Creator  3.3 SP1
 
 ENTITY MotorController IS

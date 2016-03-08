@@ -1,5 +1,5 @@
--- Project:   C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj
--- Generated: 03/07/2016 10:17:22
+-- Project:   C:\Users\Jonas\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj
+-- Generated: 03/08/2016 18:36:41
 -- PSoC Creator  3.3 SP1
 
 ENTITY MotorController IS

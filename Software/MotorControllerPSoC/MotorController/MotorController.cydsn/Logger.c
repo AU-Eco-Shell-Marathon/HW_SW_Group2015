@@ -3,8 +3,8 @@
 char cellSeparator_ = ';';
 char lineSepartor_ = '\n';
 
-char logFileName_[] = "log.txt";
-char dataFileName_[] = "data.csv";
+char logFileName_[] = "log%d.txt";
+char dataFileName_[] = "data%d.csv";
 
 FS_FILE* logFile_;
 FS_FILE* dataFile_;
@@ -13,63 +13,36 @@ void Logger_Init(void)
 {
     FS_Init();
     
-    char sdVolName[10];
-    
-    /* Get volume name of SD card #0 */
-    if(0 != FS_GetVolumeName(0u, &sdVolName[0], 9u))
-    {
-        /* Getting volume name succeeded so prompt it on the LCD */
+    char buffer[100];
         
-    }
-    else
-    {
-        /* Operation Failed - indicate this */
-        
-    }
-    
-    
-    //Not sure if we want to format the card
-    if(0 == FS_FormatSD(sdVolName))
-    {
-        
-    }
-    else
-    {
-        
-    }
-    
-    
-    //Check the behavior if file allready existss
-    if(0 == FS_MkDir("Dir"))
-    {
-        
-    }
-    else
-    {
-        
-    }
-    
-    //TODO Check if file exists allready and then open another file
     //Open files
-    logFile_ = FS_FOpen(logFileName_, "w");
+    for(int i = 0; i < 10; i++)
+    {
+        sprintf(buffer, logFileName_, i);
+        
+        if(FS_GetFileAttributes(buffer) != 0xFF) //Check if file exists
+        {
+            logFile_ = FS_FOpen(buffer, "w");
+        }
+    }
     
-    dataFile_ = FS_FOpen(dataFileName_, "w");
-    //TODO Write headers
+    
+    for(int i = 0; i < 10; i++)
+    {
+        sprintf(buffer, dataFileName_, i);
+        
+        if(FS_GetFileAttributes(buffer) != 0xFF) //Check if file exists
+        {
+            dataFile_ = FS_FOpen(buffer, "w");
+        }
+    }
 }
 
 void Logger_Write(char* str)
 {
     if(logFile_)
     {
-        if(0 != FS_Write(logFile_, str, strlen(str))) 
-        {
-            /* Inditate that data was written to a file */
-        }
-        else
-        {
-            
-        }
-        
+        FS_Write(logFile_, str, strlen(str)); //Hope for the best, in case of any errors ignore it
     }
 }
 
@@ -86,7 +59,6 @@ void Logger_LogData(int argc,...)
         
         for(i = 0; i < argc; i++)
         {
-            //TODO Check for errors
             FS_Write(dataFile_, &cellSeparator_, 1);
             count = sprintf(buff, "%d", va_arg(valist, int));
             FS_Write(dataFile_, buff, count);
@@ -99,25 +71,11 @@ void Logger_Exit(void)
 {
     if(dataFile_)
     {
-        if(0 == FS_FClose(dataFile_))
-        {
-            
-        }
-        else
-        {
-            
-        }
+        FS_FClose(dataFile_);
     }
     
     if(logFile_)
     {
-        if(0 == FS_FClose(logFile_))
-        {
-            
-        }
-        else
-        {
-            
-        }
+        FS_FClose(dataFile_);
     }
 }
