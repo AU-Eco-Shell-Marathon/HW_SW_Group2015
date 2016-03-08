@@ -1,2 +1,116 @@
 \section{AU2}
 Text
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		\textbf{Req. \#} & \textbf{Description} & \textbf{Test procedure} & 
+		\textbf{Expected result} & \textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		AU2\_F1 
+			& The car must have one electric storage device, one motor and one control unit.
+			& The car is inspected to determine whether or not it contains the specified parts.
+			& The car contains the specified parts.
+			& 
+			& \\ \hline
+		AU2\_F2 
+			& The car must be equipped with a built-in horn mounted towards the front of the vehicle, which can be activated by the driver in the cockpit.
+			& The car is inspected to determine if it contains the horn and the horn-button is pressed in order to check for functionality.
+			& The car contains a horn which is activated when the button is pressed.
+			& 
+			& \\ \hline
+		AU2\_F3 
+			& The car must be equipped with an emergency shutdown mechanism, which must isolate the battery from the propulsion system when the button is pressed.
+			& The button is pressed.
+			& The car turns off.
+			& 
+			& \\ \hline
+		AU2\_F4 
+			& The car must include a "dead man's safety swith which must be activated at all time in order for the car to drive.
+			& The safety switches are released.
+			& The car turns off.
+			& 
+			& \\ \hline
+		AU2\_F5 
+			& The battery must be placed on a metal tray in order to prevent an eventual battery-fire damaging the system.
+			& The car is inspected in order to determine the location of the battery.
+			& The battery is located at the specified location.
+			& 
+			& \\ \hline
+		AU2\_F6 
+			& The positive and negative circuits of the propulsion battery and super capacitors must be electrically isolated from the vehicle frame.
+			& The car is inspected in order to determine if the systems are isolated from the frame.
+			& The systems are isolated from the frame.
+			& 
+			& \\ \hline
+		AU2\_F7 
+			& The battery, all electrical circuits and the super capacitors must be protected agains electrical overload.
+			& 
+			& 
+			& 
+			& \\ \hline
+		AU2\_F8 
+			& The battery must be installed outside the cockpit behind the bulk head.
+			& The car is inspected in order to determine the location of the battery.
+			& The battery is located at the specified location.
+			& 
+			& \\ \hline
+		AU2\_F9 
+			& The car should be equipped with a data-log, which is able to collect data concerning the power from the battery and the wheel's angular velocity.
+			& 
+			& 
+			& 
+			& \\ \hline
+		AU2\_F10 
+			& The car should be equipped with a speedometer with a display, which is readable from inside the cockpit.
+			& 
+			& 
+			& 
+			& \\ \hline				
+	\end{tabular}
+	\caption{Test of the functional requirements for AU2}
+\end{table}
+
+text
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		\textbf{Req. \#} & \textbf{Description} & \textbf{Test procedure} & 
+		\textbf{Expected result} & \textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		AU2\_NF1 
+			& The horn must emit a sound equal or louder than 85 dBa when measured 4 meters horizontally from the vehicle.
+			& The horn button is pressed and the sound pressure level is measured using a decibel-meter.
+			& The decibel-meter shows a value above 85 dBa.
+			& 
+			& \\ \hline
+		AU2\_NF2
+			& The tone emitted by the horn must have a pitch greater than 420 Hz.
+			& The horn-button is pressed and the frequency is measured using an electronic tuner.
+			& The frequency is greater than 420 Hz.
+			& 
+			& \\ \hline
+		AU2\_NF3
+			& The voltage in the vehicle must not exceed 48 V nominal and 60 V maximum.
+			& An oscilloscope is used to measure the voltage-levels around the circuit.
+			& None of the measured voltages are above 48 V nominal or 60 V maximum.
+			& 
+			& \\ \hline
+		AU2\_NF4
+			& The capacity of the battery must not exceed 1,000 Wh.
+			& The capacity of the battery is measured with a power analyzer.
+			& The power analyzer shows a value below 1,000 Wh.
+			& 
+			& \\ \hline
+		AU2\_NF5
+			& The Motor Control Unit must be able to measure the vehicle's velocity with a precision of $\pm$2 km/h.
+			& The vehicle is accelerated up to a series of constant speeds. The measurements, which are stored on an internal SD-card, are compared to the input.
+			& The measured speed is identical to the vehicles speed.
+			& 
+			& \\ \hline			
+	\end{tabular}
+	\caption{Test of the non-functional requirements for AU2}
+\end{table}
