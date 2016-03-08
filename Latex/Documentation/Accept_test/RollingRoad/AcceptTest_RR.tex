@@ -1,0 +1,33 @@
+\section{Rolling Road}
+Text
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		\textbf{Req. \#} & \textbf{Description}                                                                                & \textbf{Test procedure}                                         & \textbf{Expected result}                                   & \textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		RR\_F1  & Must be able to measure torque, current and voltage for both the engine and the generator. &                                               &                                                   &               &                \\ \hline
+		RR\_F2  & Must be able to have a variable torque-resistance of the generator.                        & Apply the chosen size of torque to the wheel. & The generator delivers a voltage on the output.   &               &                \\ \hline
+		RR\_F3  & Must be able to communicate with a PC.                                                     & The Control Unit is connected to a PC.        & The GUI shows validation of the connection.       &               &                \\ \hline
+		RR\_F4  & Must be able to display the results of the motor on a GUI.                                 & The Wheel is spun in order to create torque.  & The results are displayed on the GUI with graphs. &               &                \\ \hline
+	\end{tabular}
+	\caption{Test of the functional requirements of Rolling Road}
+\end{table}
+
+text
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		Req. \# & Description                                                              & Test                                                                                    & Expected result                                          & Actual result & Accept/ Comment \\ \hline
+		RR\_NF1 & Must be able to measure current up to a maximum of 21 A.                 &                                                                                         &                                                          &               &                \\ \hline
+		RR\_NF2 & The generator must have a maximum power dissipation of 200 W.            & The voltage and current are measured with a multimeter and used to calculate the power. & The maximum power is measured to be less than 200 W.     &               &                \\ \hline
+		RR\_NF3 & Must be able to measure torque up  to a maximum of 60,000 rpm.           & The Roll is applied a series of constant torques with known size up till the limit.     & The output on the GUI is compared to the input torque.   &               &                \\ \hline
+		RR\_NF4 & Must be able to measure the velocity the velocity of the wheel $\pm$1 km/h. & The Roll is applied a series of constant velocities with known size.                    & The output on the GUI is compared to the input velocity. &               &                \\ \hline
+		RR\_NF5 &                                                                          &                                                                                         &                                                          &               &                \\ \hline
+	\end{tabular}
+	\caption{Test of the non-functional requirements of Rolling Road}
+\end{table}

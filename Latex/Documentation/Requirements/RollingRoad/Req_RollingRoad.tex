@@ -1,5 +1,5 @@
 \section{Rolling Road}
-This section gives an overview over the requirements for the Rolling Road. The description Rolling Road covers both the mechanically build system and the implemented hardware. 
+This section gives an overview over the requirements for the Rolling Road. The description Rolling Road covers both the mechanically build system and the implemented hardware.
 
 \subsection{Functional requirements}
 Table \ref{Functional:Rolling Road} will provide the functional requirements for the Rolling Road.
@@ -10,9 +10,10 @@ Table \ref{Functional:Rolling Road} will provide the functional requirements for
 	\hline
 	\textbf{(Req. \#)} & \textbf{Description} & \textbf{Comments} \\\hline
 	RR\_F1	& Must be able to measure the power from the battery and the torque given to the generator. &   \\\hline
-	RR\_F2	& Must be able to regulate the torque of the generator &   \\\hline
-	RR\_F3	& Must be able to communicate with a PC &   \\\hline
+	RR\_F2	& Must be able to communicate with a PC and an associated GUI. &   \\\hline
+	RR\_F3	& The user must be able to regulate the load in the system via the GUI. &   \\\hline
 	RR\_F4	& Must be able to display the results collected on a GUI & For more info, see \ref{sec:rollingroadgui}  \\\hline
+	RR\_F5	& Must be able to perform an automatic shutdown when a current of 21 A is measured in the system. &   \\\hline
 	\end{tabular}
 	\label{Functional:Rolling Road}
 	\caption{Functional requirements for Rolling Road}
@@ -26,12 +27,11 @@ Here, the presented information is the non-functional requirements for the Rolli
 	\begin{tabular}{|p{2 cm}|p{7 cm}|p{4 cm}|}
 		\hline
 		\textbf{(Req. \#)} & \textbf{Description} & \textbf{Comments} \\\hline
-		RR\_NF1	& Must be able to measure the current in the Load System up to a maximum of 21 A  &   \\\hline
-		RR\_NF2	& The generator must have a maximum power dissipation of 200w &   \\\hline
-		RR\_NF3	& Must be able to measure Torque up to a maximum of 6000 RPM &   \\\hline
-		RR\_NF4	& Must be able to perform an automatic shutdown when the current limit is reached &   \\\hline
+		RR\_NF1	& Must be able to measure the current in the Load System up to a maximum of 21 A with a precision of $\pm$ 100 mA. &   \\\hline
+		RR\_NF2	& The generator must have a maximum power dissipation of 200 W &   \\\hline
+		RR\_NF3	& Must be able to measure torque up to a maximum of 6000 rpm with a precision of $\pm$100 mN$\cdot$m  &   \\\hline
+		RR\_NF4	& Must be able to measure the velocity of the roll with a precision of $\pm$2 km/h. &   \\\hline
 		RR\_NF5	& The regulation must have a bandwidth of xxx\fxnote(Husk at ændre) &   \\\hline
-		RR\_NF5	& Must be able to measure the velocity of the roll with a precision of $\pm$2 km/h. &   \\\hline
 	\end{tabular}
 	\label{Nonfunctional:RollingRoad}
 	\caption{Non-functional requirements for Rolling Road}
