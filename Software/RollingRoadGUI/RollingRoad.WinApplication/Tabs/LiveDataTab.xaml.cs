@@ -8,6 +8,7 @@ using System.Windows;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Win32;
+using RollingRoad.WinApplication.Displays;
 using Point = System.Windows.Point;
 
 namespace RollingRoad.WinApplication
@@ -74,6 +75,14 @@ namespace RollingRoad.WinApplication
             }
 
 
+            IPidControl pidControl = source as IPidControl;
+
+            if (pidControl != null)
+            {
+                Logger?.WriteLine("New source has pid control");
+                LiveDataStackPanel.Children.Add(new PidControlDisplay(pidControl));
+            }
+
             try
             {
                 _currentSource?.Start();
@@ -92,7 +101,17 @@ namespace RollingRoad.WinApplication
             if (entry.Name != XAxisName)
             {
                 lineStuct.RawData.SetXYMapping(p => p);
-                LiveDataChart.AddLineGraph(lineStuct.RawData, System.Windows.Media.Color.FromRgb(255, 0, 0), 2, entry.Title);
+
+                try
+                {
+                    object colorObj = Properties.Settings.Default[entry.Name + "LineColor"];
+                    LiveDataChart.AddLineGraph(lineStuct.RawData, (System.Windows.Media.Color)colorObj, 2, entry.Title);
+                }
+                catch (Exception)
+                {
+                    LiveDataChart.AddLineGraph(lineStuct.RawData, 2, entry.Title);
+                }
+
             }
 
             //Live values

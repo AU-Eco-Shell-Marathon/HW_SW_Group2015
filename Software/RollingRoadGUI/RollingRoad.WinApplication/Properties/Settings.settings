@@ -9,7 +9,10 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="TorqueLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FF000000</Value>
+      <Value Profile="(Default)">#FFFF0000</Value>
+    </Setting>
+    <Setting Name="PowerLineColor" Type="System.Windows.Media.Color" Scope="User">
+      <Value Profile="(Default)">#FF00FF00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

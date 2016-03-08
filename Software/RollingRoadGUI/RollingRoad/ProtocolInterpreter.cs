@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace RollingRoad
 {
-    public class ProtocolInterpreter : ILiveDataSource, ITorqueControl
+    public class ProtocolInterpreter : ILiveDataSource, ITorqueControl, IPidControl
     {
         /// <summary>
         /// Updated each time a fullset om data has been recived.
@@ -18,12 +18,44 @@ namespace RollingRoad
         private readonly StreamWriter _writer;
         private bool _shouldClose;
         private readonly Dictionary<int, DataEntry> _typeDictionary = new Dictionary<int, DataEntry>();
+        private double _kp;
+        private double _ki;
+        private double _kd;
 
         /// <summary>
         /// Logger used
         /// </summary>
         public ILogger Logger { get; set; }
 
+        public double Kp
+        {
+            get { return _kp; }
+            set
+            {
+                _kp = value;
+                ResendPid();
+            }
+        }
+
+        public double Ki
+        {
+            get { return _ki; }
+            set
+            {
+                _ki = value;
+                ResendPid();
+            }
+        }
+
+        public double Kd
+        {
+            get { return _kd; }
+            set
+            {
+                _kd = value;
+                ResendPid();
+            }
+        }
 
         private static readonly CultureInfo CultureInfo = new CultureInfo("en-US");
         private const string CommandDivider = "\n";
@@ -37,7 +69,8 @@ namespace RollingRoad
             UnitDescription = 1,
             Stop = 2,
             Information = 3,
-            TorqueCtrl = 4
+            TorqueCtrl = 4,
+            PidCtrl = 5
         }
 
         //Create a new interpreter from stream
@@ -103,6 +136,19 @@ namespace RollingRoad
 
                     OnNextReadValue?.Invoke(dataRead);
                     break;
+                case PacketId.PidCtrl:
+
+                    //Start id + 3 doubles
+                    if (values.Length != 4)
+                    {
+                        Logger?.WriteLine("Packet not matching protocol (5): " + line + ". Should be 5 <double> <double> <double>");
+                    }
+
+                    _kp = int.Parse(values[1]);
+                    _ki = int.Parse(values[2]);
+                    _kd = int.Parse(values[3]);
+
+                    break;
                 default:
                     Logger?.WriteLine("Unknown id recieved: " + (int)packetId);
                     break;;
@@ -119,6 +165,14 @@ namespace RollingRoad
 
             Logger?.WriteLine("Sending torque " + torqueString);
             SendCommand((int)PacketId.TorqueCtrl + " " + torqueString);
+        }
+
+        private void ResendPid()
+        {
+            string pidString = Kp + " " + Ki + " " + Kd;
+            Logger?.WriteLine("Sending PID " + pidString);
+
+            SendCommand((int)PacketId.PidCtrl + " " + pidString);
         }
 
         private void SendCommand(string cmd)

@@ -63,6 +63,7 @@
     <Compile Include="CsvDataInterpreter.cs" />
     <Compile Include="EventLogger.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IPidControl.cs" />
     <Compile Include="ITorqueControl.cs" />
     <Compile Include="ITimer.cs" />
     <Compile Include="LiveDataEmulator.cs" />

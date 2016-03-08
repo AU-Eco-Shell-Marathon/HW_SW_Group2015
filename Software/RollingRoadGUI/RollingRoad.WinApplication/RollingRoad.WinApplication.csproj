@@ -85,23 +85,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AboutWindow.xaml">
+    <Page Include="Displays\PidControlDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DatasetDisplay.xaml">
+    <Page Include="Windows\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Displays\DatasetDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LiveDataDisplay.xaml">
+    <Page Include="Displays\LiveDataDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LoggerTab.xaml">
+    <Page Include="Tabs\LoggerTab.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="LiveDataTab.xaml">
+    <Page Include="Tabs\LiveDataTab.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -109,35 +113,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AboutWindow.xaml.cs">
+    <Compile Include="Displays\PidControlDisplay.xaml.cs">
+      <DependentUpon>PidControlDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoggerTab.xaml.cs">
+    <Compile Include="Tabs\LoggerTab.xaml.cs">
       <DependentUpon>LoggerTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectSourceWindow.xaml.cs">
+    <Compile Include="Windows\SelectSourceWindow.xaml.cs">
       <DependentUpon>SelectSourceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TorqueControlDisplay.xaml.cs">
+    <Compile Include="Displays\TorqueControlDisplay.xaml.cs">
       <DependentUpon>TorqueControlDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewDataTab.xaml.cs">
+    <Compile Include="Tabs\ViewDataTab.xaml.cs">
       <DependentUpon>ViewDataTab.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DatasetDisplay.xaml.cs">
+    <Compile Include="Displays\DatasetDisplay.xaml.cs">
       <DependentUpon>DatasetDisplay.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LiveDataDisplay.xaml.cs">
+    <Compile Include="Displays\LiveDataDisplay.xaml.cs">
       <DependentUpon>LiveDataDisplay.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LiveDataTab.xaml.cs">
+    <Compile Include="Tabs\LiveDataTab.xaml.cs">
       <DependentUpon>LiveDataTab.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -145,15 +152,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SelectSourceWindow.xaml">
+    <Page Include="Windows\SelectSourceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TorqueControlDisplay.xaml">
+    <Page Include="Displays\TorqueControlDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewDataTab.xaml">
+    <Page Include="Tabs\ViewDataTab.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

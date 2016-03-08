@@ -49,13 +49,25 @@ namespace RollingRoad.WinApplication.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FF000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FFFF0000")]
         public global::System.Windows.Media.Color TorqueLineColor {
             get {
                 return ((global::System.Windows.Media.Color)(this["TorqueLineColor"]));
             }
             set {
                 this["TorqueLineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF00FF00")]
+        public global::System.Windows.Media.Color PowerLineColor {
+            get {
+                return ((global::System.Windows.Media.Color)(this["PowerLineColor"]));
+            }
+            set {
+                this["PowerLineColor"] = value;
             }
         }
     }
