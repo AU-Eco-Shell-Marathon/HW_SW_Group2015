@@ -29,6 +29,7 @@ Overview of packets:
 		2  & Stop        		&            		& PC $\rightarrow$ PSoC	& 2        			\\
 		3  & Information 		& <double> ... <double>	& PSoC $\rightarrow$ PC & 3 2 3 	    	\\
 		4  & Torque control 	& <double>    			& PC $\rightarrow$ PSoC & 4 2.5  				\\
+		5  & PID control        & <double(P)> <double(I)> <double(D)> & PC $\leftrightarrow$ PSoC & 5 2.3 3.4 4.5 \\
 	\end{tabular}
 	\caption{Overview for commands sent between PSoC og PC}
 \end{table}
@@ -74,6 +75,9 @@ The information command will be the command where the all the information will b
 
 \subsection{Torque control}
 The torque control command  can change the input to the regulator. This is to change how much the generator is loaded and thereby how much the engine is strained. This parameter can be changed on the GUI. 
+
+\subsection{PID control}
+PID control is used to control the P, I and D parameters of the regulator. These parameters are so that it is possible to adjust the parameters during runtime. Furthermore the latest regulator parameters will be saved on an EEPROM on the PSoC, which will be send to the PC on startup. This is done to ensure the PC have updated numbers to start with.
           
 
 In figure \ref{fig:TimingDiagram}, the flow of communication can be seen.

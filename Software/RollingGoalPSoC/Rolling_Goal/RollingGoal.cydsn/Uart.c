@@ -37,7 +37,7 @@ void ReceiveUARTData(void)
         return;
     
     USBUART_1_GetAll(buf);
-    if(buf_n==0 && ( buf[0]>='0' && buf[0] <='4'))
+    if(buf_n==0 && ( buf[0]>='0' && buf[0] <='5'))
     {
         if(buf[0]=='0') // Handshake
         { 
@@ -49,7 +49,7 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 1 Torque Nm\n");
                 isReadyToSend = 1;
-               // CyDelay(100);
+               // CyDelay(100);    HUSK AF OPDATER MED SENESTE PROTOKOL
                // SendData((uint8*)"1 2 Voltage Volt\n");
             }
         }
@@ -68,9 +68,20 @@ void ReceiveUARTData(void)
             
             double moment = 0;
             buf[buf_n+1]=0;
-            moment = (double)atoi((char*)buf);            //Fjern udkommentering når det kopieres over
-			update(NULL, &moment, 0)
-
+            moment = atof((char*)buf);            //Fjern udkommentering når det kopieres over
+			//update(NULL, &moment, 0)
+        }
+        else if(buf[0]=='5') // PID regulations
+        {
+            int i = 0;
+            uint8 temp = 0;
+            double PID[3];
+            buf[buf_n+1] = 0;
+            temp = atoi(strtok((char *)buf," "));
+            for(i = 0; i<3 ;i++)
+            {
+                PID[i] = atof(strtok((char *)buf, " "));
+            }
         }
         
     }
