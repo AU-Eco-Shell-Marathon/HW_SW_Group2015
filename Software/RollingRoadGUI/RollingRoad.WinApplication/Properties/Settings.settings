@@ -8,5 +8,8 @@
     <Setting Name="TorqueControlMax" Type="System.Double" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="TorqueLineColor" Type="System.Windows.Media.Color" Scope="User">
+      <Value Profile="(Default)">#FF000000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
