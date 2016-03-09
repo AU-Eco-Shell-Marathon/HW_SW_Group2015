@@ -1,6 +1,22 @@
-\section{Protocol}
+\chapter{Protocols}
 
+
+
+\section{SP4RR - Serial Protocol for Rolling Road}
 Each command is termintad by a newline character, and each value in a command is separated by a whitespace.
+
+Overview of types:
+\begin{table}[h!]
+	\centering
+	\label{Protocol:typeoverview}
+	\begin{tabularx}{\linewidth}{p{1.5cm}Xp{3.5cm}}
+		Type 	& Description 									& Example(s)    				\\\hline
+		int  	& Signed integer that encoded in ASCII			& 0, 100 						\\
+		string  & ASCII-encoded zero-terminated string 			& "RollingRoad \textbackslash0" \\
+		float  	& Signed floating point number encoded in ASCII, where the decimals is seperated by ".". Int's is also a legal float      		& 100, 400.34 \\
+	\end{tabularx}
+	\caption{Overview for commands sent between PSoC og PC}
+\end{table}
 
 Overview of packets:
 \begin{table}[h!]
@@ -9,7 +25,7 @@ Overview of packets:
 	\begin{tabular}{l|llll}
 		\# & Description 		& Command    		& Direction             & Example     		\\\hline
 		0  & Handshake   		& RollingRoad 		& PC $\rightarrow$ PSoC & 0 RollingRoad 	\\
-		1  & Unit description 	& <int> <str> <str> & PSoC $\rightarrow$ PC & 1 0 Time Seconds 	\\
+		1  & Type description 	& <int> <str> <str> & PSoC $\rightarrow$ PC & 1 0 Time Seconds 	\\
 		2  & Stop        		&            		& PC $\rightarrow$ PSoC	& 2        			\\
 		3  & Information 		& <double> ... <double>	& PSoC $\rightarrow$ PC & 3 2 3 	    	\\
 		4  & Torque control 	& <double>    			& PC $\rightarrow$ PSoC & 4 2.5  				\\
@@ -22,12 +38,36 @@ The table \ref{Protocol:overview} will give an on overview regardring the protoc
 \subsection{Handshake}
 The handshake command is used to establish that the connection between the PC and the embedded platform is correct. This is to ensure that it will not register an arbitrary unit and for that unit to send values to the PC.  
 
-\subsection{Unit description}
-The unit description command will give the PC, with the 3 kinds of information. The first character in the transmitted message will be the command number, here 1. The first real information sent here, relates to the information command. The integer here sent, will define the place of the information in the "array" that is sent. The next thing that will send is the measurement the PC can expect, fx. time, torque etc. The final thing that will be send is the unit for this particular information. This is implementet so that the information message is as short as possible.  
+\textbf{Command layout:}
+
+"0\textvisiblespace RollingRoad"
+
+\subsection{Type description}
+The type description command will give the PC, with the 3 kinds of information. The first character in the transmitted message will be the command number, here 1. The first real information sent here, relates to the information command. The integer here sent, will define the place of the information in the "array" that is sent. The next thing that will send is the measurement the PC can expect, fx. time, torque etc. The final thing that will be send is the unit for this particular information. This is implementet so that the information message is as short as possible.
+
+\textbf{Command layout:}
+
+"1\textvisiblespace <Index>\textvisiblespace <Type-name>\textvisiblespace <Type-unit>"
+
+\begin{table}[h!]
+	\centering
+	\label{Protocol:SP4RR_TypeDescVars}
+	\begin{tabular}{llll}
+		Value name 	& Type 		& Description 					& Contraints  					\\\hline
+		Index  		& int   	& Index used when sending data 	& Equal or greather than zero	\\
+		Type-Name  	& string 	& Name of index 				& No spaces						\\
+		Type-Unit  	& string	& Unit of index					& No spaces 					\\
+	\end{tabular}
+	\caption{Overview of type description variables}
+\end{table}
 
 \subsection{Stop}
 The stop command is used for stopping the data transmission. The stop command is called either by pressing a button on GUI or closing the program on the PC.
 When stop command is issued and data transmission is once again wanted, the protocol will start from the top, by sending the handshake command again. 
+
+\textbf{Command layout:}
+
+"2"
 
 \subsection{Information}
 The information command will be the command where the all the information will be send. Thismeaning that this command is going to be send very often and therefore this message should be as short as possible. This is done by sending only the information needed, which is just the values of the information. To ensure that the PC and the PSoC communicates correctly here, the unit description command is used. 
