@@ -13,6 +13,10 @@
 
 const uint16 * speed_ = NULL;
 const uint16 * rpm_ = NULL;
+uint16 Threadshold = 1000; // i mRPM
+enum STATES {TEST, ACC, CAB, STOP}; //CAB = cost and burn
+
+enum STATES state = STOP;
 
 char running = 0;
 
@@ -24,8 +28,28 @@ CY_ISR(MOTOR_tick)
     if(running && speed_ != NULL && rpm_ != NULL)
     {
         uint16 output;
-        PID(speed_, rpm_, &output);
-        PWM_motor_WriteCompare((uint8)output);
+        
+
+        switch(state){
+        case TEST:
+            //til test og andet.
+            break;
+        case ACC:
+            PID(speed_, rpm_, &output);
+            PWM_motor_WriteCompare((uint8)output);
+            if(rpm_ >= speed_) state = CAB;
+            break;
+        case CAB:
+            PWM_motor_WriteCompare(0x00);
+            if(rpm_ <= speed_ - Threadshold) state = ACC;
+            break;
+        case STOP:
+            PWM_motor_WriteCompare(0x00);
+            break;
+        default:
+            PWM_motor_WriteCompare(0x00);
+            break;
+        }
     }
     else
     {
@@ -41,11 +65,13 @@ CY_ISR(OVERCURRENT)
 
 void MC_start()
 {
+    state = ACC;
     running = 1;   
 }
 
 void MC_stop()
 {
+    state = STOP;
     running = 0;
 }
 
@@ -61,7 +87,7 @@ void MC_init(const uint16 * speed, const uint16 * rpm, const struct PIDparameter
     isr_motor_StartEx(MOTOR_tick);
     Clock_motor_Start();
     PWM_motor_Start();
-    
+    state = ACC;
 }
 
 void MC_ChangePID(const struct PIDparameter * pidval)

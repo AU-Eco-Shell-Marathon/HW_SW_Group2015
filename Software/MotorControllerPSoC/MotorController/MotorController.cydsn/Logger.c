@@ -11,12 +11,13 @@ FS_FILE* dataFile_;
 
 void Logger_Init(void)
 {
+    int i;
     FS_Init();
     
     char buffer[100];
         
     //Open files
-    for(int i = 0; i < 10; i++)
+    for(i = 0; i < 10; i++)
     {
         sprintf(buffer, logFileName_, i);
         
@@ -27,7 +28,7 @@ void Logger_Init(void)
     }
     
     
-    for(int i = 0; i < 10; i++)
+    for(i = 0; i < 10; i++)
     {
         sprintf(buffer, dataFileName_, i);
         
