@@ -20,6 +20,10 @@ float iState = 0;
 float err = 0;
 float pre_err = 0;
 
+struct PIDparameter *getPID_ptr()
+{
+    return &parameter_;
+}
 
 void PID_init()
 {

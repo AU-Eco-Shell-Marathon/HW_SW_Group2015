@@ -33,4 +33,5 @@ struct PIDparameter
 void PID_init();
 void PID_tick(int sensor, int input);
 void setPID(const struct PIDparameter * parameter);
+struct PIDparameter *getPID_ptr();
 /* [] END OF FILE */

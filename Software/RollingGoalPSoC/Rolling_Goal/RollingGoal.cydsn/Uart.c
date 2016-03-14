@@ -1,5 +1,6 @@
 ﻿#include <project.h>
 #include "Uart.h"
+#include "ControllerClass.h"
 
 uint8_t buf[250] = {0};
 uint8 buf_n = 0;
@@ -66,10 +67,10 @@ void ReceiveUARTData(void)
         else if(buf[0]=='4') //modtag moment fra PC
         {
             
-            double moment = 0;
+            float moment = 0;
             buf[buf_n+1]=0;
             moment = atof((char*)buf);            //Fjern udkommentering når det kopieres over
-			//update(NULL, &moment, 0)
+			update(NULL, &moment, 0);
         }
         else if(buf[0]=='5') // PID regulations
         {
@@ -80,7 +81,7 @@ void ReceiveUARTData(void)
             temp = atoi(strtok((char *)buf," "));
             for(i = 0; i<3 ;i++)
             {
-                PID[i] = atof(strtok((char *)buf, " "));
+                PID[i] = atof(strtok((char *)buf, " "));//eventuelt bare NULL istedet for (char *)buf
             }
         }
         

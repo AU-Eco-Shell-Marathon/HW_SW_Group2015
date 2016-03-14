@@ -12,9 +12,6 @@
 
 // Heap size min = 0x0200 !!!
 
-#ifndef TEST
-    #define TEST OFF
-#endif
 
 #include "PID.h"
 #include "sensor.h"
@@ -28,7 +25,7 @@
 
 void run();
 void stop();
-void update(const struct PIDparameter *, const double * Moment, char restart);
+void update(const struct PIDparameter *, const float * Moment, char restart);
 void init();
 
 
