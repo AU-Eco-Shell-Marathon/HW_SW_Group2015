@@ -1,0 +1,36 @@
+
+
+\section{SP4MC - Serial Protocol for MotorControler}
+Each command is termintad by a newline character, and each value in a command is separated by a whitespace.
+
+The following table assumes that the controller is using Coast-n-Burn.
+
+Overview of packets:
+\begin{table}[h!]
+	\centering
+	\label{Protocol:overviewMC}
+	\begin{tabular}{l|llll}
+		\# & Description 		& Command         & Direction             & Example     		\\\hline
+		0  & Handshake   		& MotorController & PC $\rightarrow$ PSoC & 0 MotorController 	\\
+		1  & Set max speed 	    & <int>           & PC $\rightarrow$ PSoC & 1 30 				\\
+		2  & Set cruise speed	& <int>           & PC $\rightarrow$ PSoC & 2 25       			\\
+	\end{tabular}
+	\caption{Overview for commands sent between PSoC og PC}
+\end{table}
+
+As with the protocol used for RollingRoad, this protocol will have a similar structure. Where the first number send, tells the PSoC, what kind of informations is expected here. Then the actual information is send. 
+
+\subsection{Handshake}
+The Handshake is used to ensure that the PC is connected correctly to the PSoC. The PSoC must respond with same command in order for the connection to be opened.
+
+\subsection{Max speed}
+The set max speed command is used to set the maximum allowed speed for the motor to be driven with. 
+
+The maximum allowed value is 35. The unit here being km/h.
+
+\subsection{Cruise speed}
+The set cruise speed command sets the value at which the vehicle will cruise with. Under the assumption that Coast-n-Burn is used, this will be average speed of the vehicle. This means that vehicle will fluctuate around this value.
+
+The maximum value here is defined by previously set Max speed. The cruise speed must be at least 3 smaller than what the Max speed is set at. The unit here being km/h.
+
+
