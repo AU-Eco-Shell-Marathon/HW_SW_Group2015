@@ -49,6 +49,18 @@ void ReceiveUARTData(void)
                 SendUART("1 0 Time ms\n");
                 CyDelay(1);
                 SendUART("1 1 Torque Nm\n");
+                CyDelay(1);
+                SendUART("1 2 Voltage V\n");
+                CyDelay(1);
+                SendUART("1 3 Ampere A\n");
+                CyDelay(1);
+                SendUART("1 4 Effect J\n");
+                CyDelay(1);
+                SendUART("1 5 Distance m\n");
+                CyDelay(1);
+                SendUART("1 6 RPM m/s\n");
+                CyDelay(1);
+                SendUART("1 7 Effect(M)  J\n");
                 isReadyToSend = 1;
                // CyDelay(100);    HUSK AF OPDATER MED SENESTE PROTOKOL
                // SendData((uint8*)"1 2 Voltage Volt\n");
@@ -99,7 +111,8 @@ void SendData (struct data* Data)
     if(isReadyToSend == 0)
         return;
     char buf[500];
-    sprintf(buf, "3 %lu %f\n", Data->time_ms, Data->Moment.avg);
+    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f\n", Data->time_ms, Data->Moment.avg, Data->V_motor.avg, Data->A_motor.avg, Data->P_motor.avg,
+    Data->distance, Data->RPM.avg, Data->P_motor.avg);
     SendUART(buf);
 }
 
