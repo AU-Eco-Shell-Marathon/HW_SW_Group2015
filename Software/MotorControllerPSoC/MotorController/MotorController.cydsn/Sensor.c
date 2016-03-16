@@ -11,9 +11,11 @@
 */
 #include "Sensor.h"
 uint16 RPM_temp = 0;
-
+uint16 Current_temp = 0;
+uint16 Volt_temp = 0;
 
 CY_ISR_PROTO(RPM);
+CY_ISR_PROTO(POWERMONITOR);
 char RPM_reset=0;
 CY_ISR(RPM)
 {
@@ -54,9 +56,18 @@ CY_ISR(RPM)
     Timer_RPM_ClearFIFO();
 }
 
+CY_ISR(POWERMONITOR)
+{
+    Volt_temp = PowerMonitor_1_GetConverterVoltage(0);
+    Current_temp = PowerMonitor_1_GetConverterCurrent(0);
+    
+}
+
 void S_init()
 {
     RPM_isr_StartEx(RPM);
+    isr_powermonitor_StartEx(POWERMONITOR);
+    PowerMonitor_1_Init();
     Timer_RPM_Start();
 }
 

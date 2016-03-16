@@ -13,6 +13,8 @@
 #include "MotorController.h"
 #include "Pedal.h"
 #include "Logger.h"
+#include "EEPROM.h"
+
 
 void init();
 void run();

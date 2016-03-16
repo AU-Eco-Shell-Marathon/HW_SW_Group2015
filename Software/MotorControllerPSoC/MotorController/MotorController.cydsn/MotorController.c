@@ -13,19 +13,17 @@
 
 const uint16 * speed_ = NULL;
 const uint16 * rpm_ = NULL;
-uint16 Threadshold = 1000; // i mRPM
+uint16 Threshold_ = 1000; // i mRPM
 enum STATES {TEST, ACC, CAB, STOP}; //CAB = cost and burn
 
 enum STATES state = STOP;
-
-char running = 0;
 
 CY_ISR_PROTO(MOTOR_tick);
 CY_ISR_PROTO(OVERCURRENT);
 
 CY_ISR(MOTOR_tick)
 {
-    if(running && speed_ != NULL && rpm_ != NULL)
+    if(speed_ != NULL && rpm_ != NULL)
     {
         uint16 output;
         
@@ -41,7 +39,7 @@ CY_ISR(MOTOR_tick)
             break;
         case CAB:
             PWM_motor_WriteCompare(0x00);
-            if(rpm_ <= speed_ - Threadshold) state = ACC;
+            if(rpm_ <= speed_ - Threshold_) state = ACC;
             break;
         case STOP:
             PWM_motor_WriteCompare(0x00);
@@ -66,13 +64,11 @@ CY_ISR(OVERCURRENT)
 void MC_start()
 {
     state = ACC;
-    running = 1;   
 }
 
 void MC_stop()
 {
     state = STOP;
-    running = 0;
 }
 
 void MC_init(const uint16 * speed, const uint16 * rpm, const struct PIDparameter * pidval)
@@ -87,12 +83,17 @@ void MC_init(const uint16 * speed, const uint16 * rpm, const struct PIDparameter
     isr_motor_StartEx(MOTOR_tick);
     Clock_motor_Start();
     PWM_motor_Start();
-    state = ACC;
+    MC_start();
 }
 
 void MC_ChangePID(const struct PIDparameter * pidval)
 {
     setPID(pidval);
+}
+
+void MC_setThreshold(uint16 Threshold)
+{
+       Threshold_ = Threshold;
 }
 
 

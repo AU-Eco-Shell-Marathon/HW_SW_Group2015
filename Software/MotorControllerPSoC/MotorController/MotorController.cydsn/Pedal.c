@@ -20,8 +20,7 @@ const uint16 *Pedal_init()
 
 void Pedal_update()
 {
-    //ukendt?
-    
+    set_ = 15u * Status_Reg_1_Read()&0b1;
 }
 
 /* [] END OF FILE */
