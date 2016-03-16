@@ -1,5 +1,4 @@
 
-
 \section{SP4MC - Serial Protocol for MotorControler}
 Each command is termintad by a newline character, and each value in a command is separated by a whitespace.
 
@@ -26,11 +25,11 @@ The Handshake is used to ensure that the PC is connected correctly to the PSoC. 
 \subsection{Max speed}
 The set max speed command is used to set the maximum allowed speed for the motor to be driven with. 
 
-The maximum allowed value is 35. The unit here being km/h.
+The maximum allowed value is 35. The minimum value must be 20. The unit here being km/h.
 
 \subsection{Cruise speed}
 The set cruise speed command sets the value at which the vehicle will cruise with. Under the assumption that Coast-n-Burn is used, this will be average speed of the vehicle. This means that vehicle will fluctuate around this value.
 
-The maximum value here is defined by previously set Max speed. The cruise speed must be at least 3 smaller than what the Max speed is set at. The unit here being km/h.
+The maximum value here is defined by previously set Max speed. The cruise speed must be at least 3 km/h smaller than what the Max speed is set at. The minimum value must be 10. The unit here being km/h.
 
 
