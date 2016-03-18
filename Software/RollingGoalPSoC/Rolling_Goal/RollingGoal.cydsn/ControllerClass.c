@@ -13,15 +13,16 @@
 #include <project.h>
 #include <stdio.h>
 
-#define START_EEPROM_SECTOR  (1u)
+#define START_EEPROM_SECTOR  (1u) // vil tro at man godt kan bruge helt fra SECTOR 0, hvis man skal bruge mere plads.
 #define PID_BYTES         ((START_EEPROM_SECTOR * EEPROM_SIZEOF_SECTOR) + 0x00)
 
 
 float set_moment=10;
 
+/*
 char save(const struct PIDparameter * PID,const float * moment);
 char load(struct PIDparameter * PID, float * moment);
-
+*/
 //struct sekvens * seq = NULL;
 
 
@@ -32,11 +33,11 @@ CY_ISR(PID_isr)
     PID_tick(getMoment(), set_moment);
 }
 
+char busy = 0;
 CY_ISR(SendData_ISR)
 {
-    struct data Data;
-    if(getData(&Data))
-        SendData(&Data);
+
+    busy = 0;
 }
 
 /* 
@@ -65,18 +66,30 @@ struct data
 void run()
 {
     
-
-
     ReceiveUARTData(); 
-
-        //TX_AND_POWER_Write(1);
-        
-        //TX_AND_POWER_Write(0);    
+    
+    struct data Data;
+    if(getData(&Data) && !busy)
+    {
+        SendData(&Data);
+        busy = 1;
+    }
 }
 
 void stop()
 {
     
+    
+}
+
+void calibrate()
+{
+    
+    int16 Offset[4];
+
+    sensor_calibrate(&Offset[0], &Offset[1], &Offset[2], &Offset[3]);
+    
+    EEPROM_write(2, (uint8*)Offset);
     
 }
 
@@ -86,11 +99,13 @@ void update(const struct PIDparameter * parameter, const float * Moment, char re
     if(parameter != NULL)
     {    
         setPID(parameter);
+        EEPROM_write(0, (uint8*)parameter);
     }
     
     if(Moment != NULL)
     {
         set_moment=*Moment;
+        EEPROM_write(1, (uint8*)Moment);
     }
     
     
@@ -99,46 +114,42 @@ void update(const struct PIDparameter * parameter, const float * Moment, char re
         Control_Reg_1_Write(0b1);
         getDistance(0b1);
     }
-
-    save(parameter, Moment);
-
     
 }
 
 void init()
 {
+    TX_AND_POWER_Write(0);
+    CyGlobalIntEnable; /* Enable global interrupts. */
+    InitUart();
     
-
-    EEPROM_1_Start();
-    sensor_init();
+    size_t sizes[] = {sizeof(struct PIDparameter), sizeof(float), sizeof(int16[4])};
+   
+    EEPROM_init(sizes, 3);
     
+    int16 Offset[4];
+    
+    if(EEPROM_read(2, (uint8*)Offset))
+        sensor_init(Offset[0],Offset[1],Offset[2],Offset[3]);
+    else
+        sensor_init(0,0,0,0);
+    
+    //sensor_init(0,0,0,0);
     PID_init();
-    if(load(getPID_ptr(), &set_moment) == 0)
-    {
-        save(getPID_ptr(), &set_moment);
-    }
+    
+    EEPROM_read(0,(uint8*)getPID_ptr());
+    EEPROM_read(1,(uint8*)&set_moment);
+    
     isr_4_StartEx(PID_isr);
     Clock_4_Start();
-    InitUart();
+    
     Clock_5_Start();
     isr_5_StartEx(SendData_ISR);
     
-//    uint8 test = EEPROM_1_ReadByte(PID_BYTES);
-//    if(test == 1u)
-//    {
-//        EEPROM_1_WriteByte(0u, PID_BYTES); 
-//        TX_AND_POWER_Write(1);
-//    }
-//    else
-//    {
-//        EEPROM_1_WriteByte(1u, PID_BYTES); 
-//        TX_AND_POWER_Write(0);
-//    }
-    
-    
-
+    TX_AND_POWER_Write(1);
 }
 
+/*
 char save(const struct PIDparameter * PID, const float * moment)
 {
     EEPROM_1_WriteByte(0x00, PID_BYTES);
@@ -210,5 +221,6 @@ char load(struct PIDparameter * PID, float * moment)
     
     return 1;
 }
+*/
 
 /* [] END OF FILE */

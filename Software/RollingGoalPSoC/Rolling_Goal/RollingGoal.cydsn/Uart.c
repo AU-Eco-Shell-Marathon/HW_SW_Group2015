@@ -1,11 +1,12 @@
 ﻿#include <project.h>
 #include "Uart.h"
 #include "ControllerClass.h"
+#include "PID.h"
 
 uint8_t buf[250] = {0};
 uint8 buf_n = 0;
 
-char isReadyToSend = 0;
+char isReadyToSend = 0;//skal være 0 
 
 char string[] = "dummy\n";
 char handshake[] = "0 RollingRoad\n";
@@ -15,16 +16,21 @@ char modtaget[64];
 void InitUart(void)
 {
     USBUART_1_Start(0, USBUART_1_5V_OPERATION);
-    CheckConnection();
+    
+    while(CheckConnection()==0u);
+    //while(USBUART_1_DataIsReady() == 0);
+    //while(USBUART_1_CDCIsReady() == 0u);
+
 }
 
-void CheckConnection(void)
+char CheckConnection(void)
 {
     if(USBUART_1_IsConfigurationChanged() == 0)
-        return;
+        return 0;
     if(USBUART_1_GetConfiguration() == 0)
-        return;
+        return 0;
     USBUART_1_CDC_Init();  
+    return 1;
 }
 
 void ReceiveUARTData(void)
@@ -38,7 +44,7 @@ void ReceiveUARTData(void)
         return;
     
     USBUART_1_GetAll(buf);
-    if(buf_n==0 && ( buf[0]>='0' && buf[0] <='5'))
+    if(buf_n==0 && ( buf[0]>='0' && buf[0] <='7'))
     {
         if(buf[0]=='0') // Handshake
         { 
@@ -60,7 +66,7 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 6 RPM m/s\n");
                 CyDelay(1);
-                SendUART("1 7 Effect(M)  J\n");
+                SendUART("1 7 Effect(M) J\n");
                 isReadyToSend = 1;
                // CyDelay(100);    HUSK AF OPDATER MED SENESTE PROTOKOL
                // SendData((uint8*)"1 2 Voltage Volt\n");
@@ -88,12 +94,37 @@ void ReceiveUARTData(void)
         {
             int i = 0;
             uint8 temp = 0;
-            double PID[3];
+            float PID[3];
             buf[buf_n+1] = 0;
             temp = atoi(strtok((char *)buf," "));
             for(i = 0; i<3 ;i++)
             {
                 PID[i] = atof(strtok((char *)buf, " "));//eventuelt bare NULL istedet for (char *)buf
+            }
+            struct PIDparameter PIDval = *getPID_ptr();
+            
+            PIDval.Kp = PID[0]; PIDval.Ki = PID[1]; PIDval.Kd = PID[2]; PIDval.valid = 1;
+            
+            update(&PIDval, NULL, 0);
+            
+        }
+        else if(buf[0]=='6') // calibrate
+        {
+            //calibrate();//skal fjernes
+            buf[buf_n+1]=0;
+            
+            if(strcmp((char*)buf, "6\n")==0)
+            {
+               calibrate();
+            }
+        }
+        else if(buf[0]=='7') // reset
+        {
+            buf[buf_n+1]=0;
+            
+            if(strcmp((char*)buf, "7\n")==0)
+            {
+               update(NULL,NULL,1);
             }
         }
         
@@ -102,18 +133,33 @@ void ReceiveUARTData(void)
 
 void SendUART (char *Pdata)
 {
-    while(USBUART_1_CDCIsReady() == 0);
+
+    while(USBUART_1_CDCIsReady() == 0u);
     USBUART_1_PutString((char*)Pdata);
+    return;
 }
 
 void SendData (struct data* Data)
 {
     if(isReadyToSend == 0)
         return;
-    char buf[500];
+    
+    CheckConnection();
+    
+    if (USBUART_1_GetConfiguration() == 0u)
+        return;
+    
+    if( USBUART_1_DataIsReady() != 0)
+        return;
+
+    
+    char buf[100];
+
     sprintf(buf, "3 %lu %f %f %f %f %lu %f %f\n", Data->time_ms, Data->Moment.avg, Data->V_motor.avg, Data->A_motor.avg, Data->P_motor.avg,
-    Data->distance, Data->RPM.avg, Data->P_motor.avg);
+    Data->distance, Data->RPM.avg, Data->P_motor.avg);// fjern \r
     SendUART(buf);
+
+
 }
 
 /* [] END OF FILE */

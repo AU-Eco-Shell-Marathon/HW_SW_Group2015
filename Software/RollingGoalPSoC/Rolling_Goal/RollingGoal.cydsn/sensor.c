@@ -12,21 +12,25 @@
 #include "sensor.h"
 #include <Math.h>
 
+#define N 128u
+
 CY_ISR_PROTO(SAR_ADC_1);
 CY_ISR_PROTO(SAR_ADC_2);
 CY_ISR_PROTO(RPM_isr);
 
-void calcSamples(const int32 * values, const uint8 N_sample, struct sample * Sample, int32 divider);
-void convertToUnit(int32 * value, const uint8 N_sample,int32 (*CountsTo)(int16), const uint8 type);
+void calcSamples(const int32 * values, const uint16 N_sample, struct sample * Sample, int32 divider);
+void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16), const uint8 type);
 int32 CountToAmp(int32);
 int32 CountToMoment(int32);
 
+static char calibrate_ = 0;
+
 // Mållinger.
-int32 V_motor[N];
-int32 A_motor[N];
-int32 Moment[N];
+int32 V_motor[N];   int16 V_motor_offset = 0;
+int32 A_motor[N];   int16 A_motor_offset = 0;
+int32 Moment[N];    int16 Moment_offset  = 0;
 int32 RPM[N];
-uint8 n = 0;
+volatile uint16 n = 0;
 
 int32 Moment_temp = 0;
 uint32 RPM_Moment_temp = 0;
@@ -45,15 +49,16 @@ int32 A_generator_sum = 0;
 int16 A_generator_min = 0xEFFF;
 uint16 A_generator_samples = 0;
 
+int16 A_generator_offset = 0;
 
 CY_ISR(SAR_ADC_1)
 {
-    Moment_temp = ADC_SAR_Seq_1_GetResult16(2);
+    Moment_temp = ADC_SAR_Seq_1_GetResult16(2) - Moment_offset;
     if(n == N)
         return;
     
-    V_motor[n]=ADC_SAR_Seq_1_GetResult16(0);
-    A_motor[n]=ADC_SAR_Seq_1_GetResult16(1);
+    V_motor[n]=ADC_SAR_Seq_1_GetResult16(0) - V_motor_offset;
+    A_motor[n]=ADC_SAR_Seq_1_GetResult16(1) - A_motor_offset;
     
     RPM_Moment_temp = RPM_temp;
     
@@ -69,14 +74,14 @@ CY_ISR(SAR_ADC_2)
         return;
     
     
-    uint16 A_temp = ADC_SAR_1_GetResult16();
+    int16 A_temp = ADC_SAR_1_GetResult16() - A_generator_offset;
     
     if(A_temp > A_generator_max)
         A_generator_max = A_temp;
     else if(A_temp < A_generator_min)
         A_generator_min = A_temp;
     
-    A_generator_sum += (uint32)A_temp;
+    A_generator_sum += A_temp;
     
     A_generator_samples++;
     
@@ -85,21 +90,6 @@ CY_ISR(SAR_ADC_2)
 char RPM_reset=0;
 CY_ISR(RPM_isr)
 {
-//    uint32 temp = ;
-//    uint32 temp2 = ;
-    //uint8 count = 0;
-    
-//    while(Timer_1_STATUS&(1<<3))
-//    {
-//        temp = Timer_1_ReadCapture();
-//        temp = 
-//        count++;
-//    };
-//    
-//    if(count >= 1)
-//        temp = temp/count;
-
-   // RPM_temp = 60000/Timer_1_ReadCounter();
     
     uint8 STATUS = Timer_1_STATUS;
     
@@ -115,7 +105,8 @@ CY_ISR(RPM_isr)
         
         if(temp2 != 0)
         {
-            RPM_temp = 100000000/(temp - temp2);
+            //RPM_temp = 100000000/(temp - temp2);
+            RPM_temp = (277778*60)/(temp - temp2);
         }
         else
         {
@@ -137,8 +128,13 @@ CY_ISR(RPM_isr)
     Timer_1_ClearFIFO();
 }
 
-void sensor_init()
+void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG)
 {
+    V_motor_offset = VM;
+    A_motor_offset = AM;
+    Moment_offset = moment;
+    A_generator_offset = AG;
+    
     isr_1_StartEx(SAR_ADC_1);
     isr_2_StartEx(SAR_ADC_2);
     isr_3_StartEx(RPM_isr);
@@ -164,9 +160,58 @@ void sensor_init()
     
 }
 
+
+
+void sensor_calibrate(int16* VM, int16* AM, int16* moment, int16* AG)
+{
+    calibrate_ = 1;
+    V_motor_offset = 0;
+    A_motor_offset = 0;
+    Moment_offset = 0;
+    A_generator_offset = 0;
+    n = 0;
+    
+    
+    //n = 0;
+    while(n != N);
+//        __asm__ __volatile__("nop;"); // for tvinge den til at blive ved med at tjekke om n != N! fejlen kommer nok af at før while bliver n sat til 0.
+    
+    uint16 i;
+    
+    int32 AVG[4] = {V_motor[0],A_motor[0],Moment[0], A_generator_sum/A_generator_samples};
+    //int32 MAX[3] = {V_Motor[0],A_motor[0],Moment[0]};
+    //int32 MIN[3] = {V_Motor[0],A_motor[0],Moment[0]};
+    
+    for(i = 1; i<N; i++)
+    {
+        AVG[0] += V_motor[i];
+        AVG[1] += A_motor[i];
+        AVG[2] += Moment[i];
+    }
+    
+    AVG[0] = AVG[0]/N;
+    AVG[1] = AVG[1]/N;
+    AVG[2] = AVG[2]/N;
+    
+    V_motor_offset = AVG[0];
+    A_motor_offset = AVG[1];
+    Moment_offset = AVG[2];
+    A_generator_offset = AVG[3];
+    
+    *VM = AVG[0];
+    *AM = AVG[1];
+    *moment = AVG[2];
+    *AG = AVG[3];
+    
+    n = 0;
+    calibrate_ = 0;
+}
+
+
 char getData(struct data * Data)
 {
-    if(n != N)
+
+    if(n != N || calibrate_)
         return 0;
     
     convertToUnit(V_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,0);
@@ -176,7 +221,7 @@ char getData(struct data * Data)
     
     int32 P_motor[N];
     int32 P_mekanisk[N];
-    uint8 i;
+    uint16 i;
     for(i = 0; i < N; i++)
     {
         P_motor[i] = (V_motor[i]/1000)*(A_motor[i]/1000);  //Brug af shift istedet vil koste 4.63%
@@ -190,7 +235,8 @@ char getData(struct data * Data)
     calcSamples(P_motor, n, &Data->P_motor, 1000);
     calcSamples(P_mekanisk, n, &Data->P_mekanisk, 1000);
     
-    Data->distance = Counter_1_ReadCounter();
+    Data->distance = (2*3.14*10*Counter_1_ReadCounter())/360;
+    Data->distance = 0;
     Data->time_ms = Counter_2_ReadCounter();
     Data->stop = Status_Reg_1_Read()&0b1;
     n=0;
@@ -211,7 +257,7 @@ int32 getDistance(char reset)
     return Counter_1_ReadCounter();
 }
 
-void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Sample,int32 divider)
+void calcSamples(const int32 * values,const uint16 N_sample, struct sample * Sample,int32 divider)
 {
     int32 AVG = values[0];
     int32 MAX = values[0];
@@ -222,7 +268,7 @@ void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Samp
     Sample->rms = 0;
     
     
-    uint8 i;
+    uint16 i;
     for(i = 1; i < N_sample; i++)
     {         
         AVG += values[i];
@@ -236,6 +282,8 @@ void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Samp
     
     if(N_sample == 128)
         AVG = AVG>>7;
+    else if(N_sample == 512)
+        AVG = AVG>>9;
     else
         AVG = AVG/N_sample;
     
@@ -302,7 +350,7 @@ void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Samp
 */
 
 
-void convertToUnit(int32 * value, const uint8 N_sample,int32 (*CountsTo)(int16), const uint8 type)
+void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16), const uint8 type)
 {
     uint8 i;
     for(i = 0; i < N_sample; i++)
@@ -319,12 +367,15 @@ void convertToUnit(int32 * value, const uint8 N_sample,int32 (*CountsTo)(int16),
 
 int32 CountToMoment(int32 uvolt)
 {
-    return (uvolt - 2500000);
+    //return (uvolt - 2500000);
+    return uvolt;
 }
 
 int32 CountToAmp(int32 uvolt)
 {
-    return ((uvolt/416) - (2500000/416))*10;
+    
+    //return ((uvolt/416) - (2500000/416))*10;
+    return ((uvolt/416))*10;
 }
 
 /* [] END OF FILE */

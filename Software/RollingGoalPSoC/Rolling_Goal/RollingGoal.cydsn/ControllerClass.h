@@ -9,13 +9,15 @@
  *
  * ========================================
 */
-
+#ifndef CONTROLLERCLASS_H
+#define CONTROLLERCLASS_H
 // Heap size min = 0x0200 !!!
 
 
 #include "PID.h"
 #include "sensor.h"
 #include "Uart.h"
+#include "EEPROM.h"
 
 //struct sekvens{
 //    int * seq_moment;
@@ -27,6 +29,7 @@ void run();
 void stop();
 void update(const struct PIDparameter *, const float * Moment, char restart);
 void init();
+void calibrate();
 
-
+#endif
 /* [] END OF FILE */

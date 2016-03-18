@@ -9,7 +9,7 @@
 
 //Functions
 void InitUart();
-void CheckConnection(void);
+char CheckConnection(void);
 void ReceiveUARTData();
 void SendUART(char *Pdata);
 void SendData(struct data* Data);

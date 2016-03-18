@@ -12,7 +12,7 @@
 #include "PID.h"
 #include <project.h>
 
-struct PIDparameter parameter_;
+static struct PIDparameter parameter_;
 
 float PIDval = 0;
 float dt = dt_def;

@@ -14,7 +14,7 @@
 #define SENSOR_H
     
 #include <project.h>
-#define N 128
+
 
 
 // Alt data kommer i micro prefix, undtagen RPM og distance.
@@ -44,7 +44,8 @@ struct data
 char getData(struct data *);
 int32 getMoment();
 int32 getDistance(char reset);
-void sensor_init();
+void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG);
+void sensor_calibrate(int16* VM, int16* AM, int16* moment, int16* AG);
 
 #endif
 /* [] END OF FILE */

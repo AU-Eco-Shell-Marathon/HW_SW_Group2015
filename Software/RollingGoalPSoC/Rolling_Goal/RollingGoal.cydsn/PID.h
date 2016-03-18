@@ -9,6 +9,9 @@
  *
  * ========================================
 */
+#ifndef PID_H
+    #define PID_H
+
 #define Kp_def 1;
 #define Ki_def 0.1;
 #define Kd_def 0.001;
@@ -34,4 +37,5 @@ void PID_init();
 void PID_tick(int sensor, int input);
 void setPID(const struct PIDparameter * parameter);
 struct PIDparameter *getPID_ptr();
+#endif
 /* [] END OF FILE */

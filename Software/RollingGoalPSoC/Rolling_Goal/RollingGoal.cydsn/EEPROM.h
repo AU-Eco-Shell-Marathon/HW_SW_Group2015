@@ -9,21 +9,13 @@
  *
  * ========================================
 */
-#define TEST ON
+#ifndef EEPROM_H
+    #define EEPROM_H
 #include <project.h>
-#include "ControllerClass.h"
 
-int main()
-{
-    
+char EEPROM_read(uint8 id, uint8 * data);
+char EEPROM_write(uint8 id, const uint8 * data);
+char EEPROM_init(const size_t * types, uint8 count);
 
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-    init();
-    
-    for(;;)
-    {
-        run();
-    }
-}
-
+#endif
 /* [] END OF FILE */
