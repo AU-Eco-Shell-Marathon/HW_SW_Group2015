@@ -5,6 +5,7 @@ using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Win32;
+using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication
 {
@@ -25,7 +26,7 @@ namespace RollingRoad.WinApplication
         /// Append a datasource to a WPFToolkit chart
         /// </summary>
         /// <param name="source">Data source</param>
-        private void AppendDataToChart(IDataSource source)
+        private void AppendDataToChart(IDataset source)
         {
             //Assume time is used as x-axis
             const string xAxisname = "Time";
@@ -33,14 +34,14 @@ namespace RollingRoad.WinApplication
             DataList xDataList = source.GetDataList(xAxisname);
 
             //Loop through all
-            for (int i = 0; i < source.GetAllData().Count; i++)
+            for (int i = 0; i < source.Collection.Count; i++)
             {
                 //Make sure we dont plot our x-axis data
-                if (source.GetAllData()[i].Name != xAxisname)
+                if (source.Collection[i].Type.Name != xAxisname)
                 {
                     //Parse our source format to the format the chart requires
                     ObservableDataSource<Point> valueList = new ObservableDataSource<Point>();
-                    DataList active = source.GetAllData()[i];
+                    DataList active = source.Collection[i];
 
                     int z = 0;
                     foreach (double data in active.GetData())
@@ -51,7 +52,7 @@ namespace RollingRoad.WinApplication
 
                     valueList.SetXYMapping(p => p);
 
-                    ViewDataChart.AddLineGraph(valueList, 2, active.Title);
+                    ViewDataChart.AddLineGraph(valueList, 2, active.ToString());
                 }
             }
         }
@@ -77,13 +78,13 @@ namespace RollingRoad.WinApplication
 
                 try
                 {
-                    MemoryDataSource dataSource = CsvDataFile.LoadFromFile(filename);
+                    MemoryDataset dataset = CsvDataFile.LoadFromFile(filename);
 
                     DatasetDisplay display = new DatasetDisplay
                     {
-                        DatasetName = dataSource.Name,
-                        Description = dataSource.Description,
-                        DataSource = dataSource
+                        DatasetName = dataset.Name,
+                        Description = dataset.Description,
+                        Dataset = dataset
                     };
                     
                     ListViewDataselect.Items.Add(display);
@@ -104,7 +105,7 @@ namespace RollingRoad.WinApplication
 
             if (view.SelectedItem != null)
             {
-                IDataSource source = ((DatasetDisplay)view.SelectedItem).DataSource;
+                IDataset source = ((DatasetDisplay)view.SelectedItem).Dataset;
 
                 AppendDataToChart(source);
             }

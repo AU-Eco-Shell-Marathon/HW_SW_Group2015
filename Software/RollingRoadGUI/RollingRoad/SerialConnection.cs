@@ -5,7 +5,7 @@ using System.IO.Ports;
 namespace RollingRoad
 {
     [ExcludeFromCodeCoverage]
-    public class SerialConnection : ProtocolInterpreter, IDisposable
+    public class SerialConnection : SP4RR, IDisposable
     {
         public SerialPort Port { get; }
 

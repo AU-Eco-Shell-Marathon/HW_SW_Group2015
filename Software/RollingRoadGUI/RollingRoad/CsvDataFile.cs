@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using RollingRoad.Data;
 
 namespace RollingRoad
 {
@@ -11,7 +12,7 @@ namespace RollingRoad
         /// </summary>
         /// <param name="path">What path to save the file to</param>
         /// <param name="data">Data to be saved</param>
-        public static void WriteToFile(string path, IDataSource data)
+        public static void WriteToFile(string path, IDataset data)
         {
             //Overwrite file if exists or create new
             using (FileStream fileStream = File.Open(path, FileMode.Create, FileAccess.Write))
@@ -24,10 +25,10 @@ namespace RollingRoad
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         /// <param name="path">Path of the csv file to load</param>
-        public static MemoryDataSource LoadFromFile(string path)
+        public static MemoryDataset LoadFromFile(string path)
         {
             //Source the data will be loaded into
-            MemoryDataSource data;
+            MemoryDataset data;
 
             //Check if file exists
             if (!File.Exists(path))

@@ -8,6 +8,7 @@ using System.Windows;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using Microsoft.Win32;
+using RollingRoad.Data;
 using RollingRoad.WinApplication.Displays;
 using Point = System.Windows.Point;
 
@@ -19,13 +20,13 @@ namespace RollingRoad.WinApplication
         public readonly DataList Data;
         public LiveDataDisplay Label;
 
-        public string Name => Data.Name;
-        public string Unit => Data.Unit;
+        public string Name => Data.Type.Name;
+        public string Unit => Data.Type.Unit;
 
         public LineStructure(string name, string unit)
         {
             RawData = new ObservableDataSource<Point>();
-            Data = new DataList(name, unit);
+            Data = new DataList(new DataType(name, unit));
             Label = null;
         }
     }
@@ -94,22 +95,22 @@ namespace RollingRoad.WinApplication
             }
         }
 
-        private LineStructure CreateNewLine(DataEntry entry)
+        private LineStructure CreateNewLine(Datapoint entry)
         {
-            LineStructure lineStuct = new LineStructure(entry.Name, entry.Unit);
+            LineStructure lineStuct = new LineStructure(entry.Type.Name, entry.Type.Unit);
 
-            if (entry.Name != XAxisName)
+            if (entry.Type.Name != XAxisName)
             {
                 lineStuct.RawData.SetXYMapping(p => p);
 
                 try
                 {
-                    object colorObj = Properties.Settings.Default[entry.Name + "LineColor"];
-                    LiveDataChart.AddLineGraph(lineStuct.RawData, (System.Windows.Media.Color)colorObj, 2, entry.Title);
+                    object colorObj = Properties.Settings.Default[entry.Type.Name + "LineColor"];
+                    LiveDataChart.AddLineGraph(lineStuct.RawData, (System.Windows.Media.Color)colorObj, 2, entry.Type.ToString());
                 }
                 catch (Exception)
                 {
-                    LiveDataChart.AddLineGraph(lineStuct.RawData, 2, entry.Title);
+                    LiveDataChart.AddLineGraph(lineStuct.RawData, 2, entry.Type.ToString());
                 }
 
             }
@@ -117,7 +118,7 @@ namespace RollingRoad.WinApplication
             //Live values
             LiveDataDisplay lab = new LiveDataDisplay
             {
-                TitleTextBlock = {Text = entry.Title},
+                TitleTextBlock = {Text = entry.Type.ToString()},
                 ValueTextBlock = {Text = entry.Value.ToString(CultureInfo.InvariantCulture)}
             };
 
@@ -129,7 +130,7 @@ namespace RollingRoad.WinApplication
             return lineStuct;
         }
 
-        private bool TryGetLineStructure(DataEntry entry, out LineStructure? value)
+        private bool TryGetLineStructure(DataType entry, out LineStructure? value)
         {
             try
             {
@@ -148,7 +149,7 @@ namespace RollingRoad.WinApplication
         /// The <see cref="IncommingData"/> method need to be run from the main/gui-thread, therefor we create a translator
         /// </summary>
         /// <param name="entries"></param>
-        private void ThreadMover(IReadOnlyList<DataEntry> entries)
+        private void ThreadMover(IReadOnlyList<Datapoint> entries)
         {
             try
             {
@@ -164,20 +165,20 @@ namespace RollingRoad.WinApplication
         /// Handles incomming data and creates new lines if no line for the data type is present
         /// </summary>
         /// <param name="entries"></param>
-        private void IncommingData(IReadOnlyList<DataEntry> entries)
+        private void IncommingData(IReadOnlyList<Datapoint> entries)
         {
             //New data, so it's no longer saved
             HasBeenSaved = false;
 
             //Find the time value from incomming data
-            double time = entries.First(x => x.Name == XAxisName).Value;
+            double time = entries.First(x => x.Type.Name == XAxisName).Value;
 
-            foreach (DataEntry entry in entries)
+            foreach (Datapoint entry in entries)
             {
                 LineStructure? lineStruct;
 
                 //Try to get structure if exists, else create new
-                if (!TryGetLineStructure(entry, out lineStruct))
+                if (!TryGetLineStructure(entry.Type, out lineStruct))
                 {
                     lineStruct = CreateNewLine(entry);
                     _data.Add(lineStruct);
@@ -187,7 +188,7 @@ namespace RollingRoad.WinApplication
                 // ReSharper disable once PossibleInvalidOperationException
                 lineStruct.Value.Data.AddData(entry.Value);
 
-                if(entry.Name != "Time")
+                if(entry.Type.Name != "Time")
                     lineStruct.Value.RawData.AppendAsync(Dispatcher, new Point(time, entry.Value));
 
                 lineStruct.Value.Label.ValueTextBlock.Text = entry.Value.ToString(CultureInfo.InvariantCulture);
@@ -221,13 +222,13 @@ namespace RollingRoad.WinApplication
             {
                 try
                 {
-                    MemoryDataSource source = new MemoryDataSource(_data.Select(x => x?.Data).ToList())
+                    /*MemoryDataset source = new MemoryDataset(new DataCollection(_data.Select(x => x.Data).ToList()))
                     {
                         Description = DateTime.Now.ToLongDateString()
-                    };
+                    };*/
 
                     //Save file
-                    CsvDataFile.WriteToFile(dlg.FileName, source);
+                    //CsvDataFile.WriteToFile(dlg.FileName, source);
                 }
                 catch (Exception e)
                 {

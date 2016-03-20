@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication
 {
@@ -8,7 +9,7 @@ namespace RollingRoad.WinApplication
     /// </summary>
     public partial class DatasetDisplay
     {
-        public IDataSource DataSource { get; set; }
+        public IDataset Dataset { get; set; }
 
         public string Description
         {
