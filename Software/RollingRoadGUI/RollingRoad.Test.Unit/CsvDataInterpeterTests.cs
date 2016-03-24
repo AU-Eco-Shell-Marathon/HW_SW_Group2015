@@ -102,7 +102,7 @@ namespace RollingRoad.Test.Unit
             StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;{data.ToString(new CultureInfo("en-US"))};3");
             MemoryDataset source = CsvDataInterpreter.LoadFromStream(reader);
             
-            Assert.That(source.GetDataList("type1").GetData().First(), Is.EqualTo(data));
+            Assert.That(source.GetDataList("type1").Data.First(), Is.EqualTo(data));
         }
 
         [TestCase(5.0)]
@@ -115,7 +115,7 @@ namespace RollingRoad.Test.Unit
             StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;1;2\n;{data.ToString(new CultureInfo("en-US"))};3");
             MemoryDataset source = CsvDataInterpreter.LoadFromStream(reader);
 
-            Assert.That(source.GetDataList("type1").GetData()[1], Is.EqualTo(data));
+            Assert.That(source.GetDataList("type1").Data.ElementAt(1), Is.EqualTo(data));
         }
 
         [Test]
@@ -147,7 +147,7 @@ namespace RollingRoad.Test.Unit
             MemoryDataset dataset = new MemoryDataset();
             
             dataset.Collection.Add(new DataList(new DataType("Test", "Test2")));
-            dataset.Collection[0].AddData(value);
+            dataset.Collection[0].Data.Add(value);
 
             CsvDataInterpreter.WriteToStream(writer, dataset);
 

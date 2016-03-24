@@ -71,7 +71,7 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void OnNextReadValueEvent_OneDataPointGiven_CorrectData(double value)
         {
-            _dataset.Collection[0].AddData(value);
+            _dataset.Collection[0].Data.Add(value);
             _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<TimerElapsedEvent>());
             
             double dataRead = -1000;

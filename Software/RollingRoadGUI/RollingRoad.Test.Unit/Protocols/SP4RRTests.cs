@@ -10,6 +10,7 @@ namespace RollingRoad.Test.Unit.Protocols
     {
         private MemoryStream _ms;
         private SP4RR _interpreter;
+        private CultureInfo _cultureTarget = new CultureInfo("en-US");
 
         [SetUp]
         public void SetUp()
@@ -60,7 +61,7 @@ namespace RollingRoad.Test.Unit.Protocols
 
             _interpreter.SetTorque(value);
 
-            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("4 " + value.ToString(new CultureInfo("en-US")) + "\n"));
+            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("4 " + value.ToString(_cultureTarget) + "\n"));
         }
 
         [TestCase(5.0)]
@@ -76,7 +77,7 @@ namespace RollingRoad.Test.Unit.Protocols
 
             _interpreter.Kp = value;
 
-            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 " + value.ToString(new CultureInfo("en-US")) + " 0 0\n"));
+            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 " + value.ToString(_cultureTarget) + " 0 0\n"));
         }
 
         [TestCase(5.0)]
@@ -92,7 +93,7 @@ namespace RollingRoad.Test.Unit.Protocols
 
             _interpreter.Ki = value;
 
-            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 0 " + value.ToString(new CultureInfo("en-US")) + " 0\n"));
+            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 0 " + value.ToString(_cultureTarget) + " 0\n"));
         }
 
         [TestCase(5.0)]
@@ -108,7 +109,7 @@ namespace RollingRoad.Test.Unit.Protocols
 
             _interpreter.Kd = value;
 
-            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 0 0 " + value.ToString(new CultureInfo("en-US")) + "\n"));
+            Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 0 0 " + value.ToString(_cultureTarget) + "\n"));
         }
 
         [Test]
@@ -175,7 +176,7 @@ namespace RollingRoad.Test.Unit.Protocols
             WriteToMemoryStream(writer, "1 0 Time Seconds\n");
             _interpreter.Listen();
             
-            WriteToMemoryStream( writer, $"3 {value.ToString(new CultureInfo("en-US"))}\n");
+            WriteToMemoryStream( writer, $"3 {value.ToString(_cultureTarget)}\n");
             _interpreter.Listen();
 
             Assert.That(valueRead, Is.EqualTo(value));
@@ -201,7 +202,7 @@ namespace RollingRoad.Test.Unit.Protocols
             WriteToMemoryStream(writer, "3 4.25\n");
             _interpreter.Listen();
 
-            WriteToMemoryStream(writer, $"3 {value.ToString(new CultureInfo("en-US"))}\n");
+            WriteToMemoryStream(writer, $"3 {value.ToString(_cultureTarget)}\n");
             _interpreter.Listen();
 
             Assert.That(valueRead, Is.EqualTo(value));

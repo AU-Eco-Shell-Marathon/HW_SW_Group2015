@@ -30,7 +30,7 @@ namespace RollingRoad
         public static void WriteToStream(TextWriter writer, IDataset source)
         {
             DataCollection dataCollection = source.Collection;
-            int dataLength = dataCollection[0].GetData().Count;
+            int dataLength = dataCollection[0].Data.Count;
 
             //Write header and all type names
             writer.WriteLine(HeaderName + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Name)));
@@ -42,7 +42,7 @@ namespace RollingRoad
             for (int i = 0; i < dataLength; i++)
             {
                 //LINQ Magic
-                string stringout = dataCollection.Aggregate("", (current, dataList) => current + (Seperator + dataList.GetData()[i].ToString(CultureInfo)));
+                string stringout = dataCollection.Aggregate("", (current, dataList) => current + (Seperator + dataList.Data.ElementAt(i).ToString(CultureInfo)));
 
                 writer.WriteLine(stringout);
             }
@@ -127,7 +127,7 @@ namespace RollingRoad
                         throw new Exception("Error at line " + currentLine + " could not parse number");
                     }
 
-                    data.Collection[i - 1].AddData(value);
+                    data.Collection[i - 1].Data.Add(value);
                 }
 
                 //Progress one line

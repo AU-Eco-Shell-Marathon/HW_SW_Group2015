@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -14,86 +12,13 @@ using Point = System.Windows.Point;
 
 namespace RollingRoad.WinApplication
 {
-    public struct LineStructure
-    {
-        public readonly ObservableDataSource<Point> RawData;
-        public readonly DataList Data;
-        public LiveDataDisplay Label;
-
-        public string Name => Data.Type.Name;
-        public string Unit => Data.Type.Unit;
-
-        public LineStructure(string name, string unit)
-        {
-            RawData = new ObservableDataSource<Point>();
-            Data = new DataList(new DataType(name, unit));
-            Label = null;
-        }
-    }
 
     /// <summary>
     /// Interaction logic for LiveDataTab.xaml
     /// </summary>
     public partial class LiveDataTab
     {
-        private ILiveDataSource _currentSource;
-        private List<LineStructure?> _data;
-        public ILogger Logger { private get; set; }
-
-        private bool HasBeenSaved { get; set; } = true;
-
-
-        private const string XAxisName = "Time";
-
-        public LiveDataTab()
-        {
-            InitializeComponent();
-            ClearChart();
-        }
-
-        private void SelectSource(ILiveDataSource source)
-        {
-
-            if (_currentSource != null)
-                _currentSource.OnNextReadValue -= ThreadMover;
-
-            _data = new List<LineStructure?>();
-            _currentSource = source;
-            _currentSource.Logger = Logger;
-
-            Logger?.WriteLine("Selected source: " + source);
-
-            _currentSource.OnNextReadValue += ThreadMover;
-
-            ClearChart();
-
-            ITorqueControl torqueControl = source as ITorqueControl;
-
-            if (torqueControl != null)
-            {
-                Logger?.WriteLine("New source has torque control");
-                LiveDataStackPanel.Children.Add(new TorqueControlDisplay(torqueControl));
-            }
-
-
-            IPidControl pidControl = source as IPidControl;
-
-            if (pidControl != null)
-            {
-                Logger?.WriteLine("New source has pid control");
-                LiveDataStackPanel.Children.Add(new PidControlDisplay(pidControl));
-            }
-
-            try
-            {
-                _currentSource?.Start();
-            }
-            catch (Exception exception)
-            {
-                Logger?.WriteLine("Error starting source: " + exception.Message);
-                MessageBox.Show("Error: " + exception.Message, "Error starting source!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        /*
 
         private LineStructure CreateNewLine(Datapoint entry)
         {
@@ -160,40 +85,7 @@ namespace RollingRoad.WinApplication
                 // ignored
             }
         }
-
-        /// <summary>
-        /// Handles incomming data and creates new lines if no line for the data type is present
-        /// </summary>
-        /// <param name="entries"></param>
-        private void IncommingData(IReadOnlyList<Datapoint> entries)
-        {
-            //New data, so it's no longer saved
-            HasBeenSaved = false;
-
-            //Find the time value from incomming data
-            double time = entries.First(x => x.Type.Name == XAxisName).Value;
-
-            foreach (Datapoint entry in entries)
-            {
-                LineStructure? lineStruct;
-
-                //Try to get structure if exists, else create new
-                if (!TryGetLineStructure(entry.Type, out lineStruct))
-                {
-                    lineStruct = CreateNewLine(entry);
-                    _data.Add(lineStruct);
-                }
-
-                //The above code ensures that linestruct is not null
-                // ReSharper disable once PossibleInvalidOperationException
-                lineStruct.Value.Data.AddData(entry.Value);
-
-                if(entry.Type.Name != "Time")
-                    lineStruct.Value.RawData.AppendAsync(Dispatcher, new Point(time, entry.Value));
-
-                lineStruct.Value.Label.ValueTextBlock.Text = entry.Value.ToString(CultureInfo.InvariantCulture);
-            }
-        }
+        
 
         /// <summary>
         /// When the user request a save
@@ -225,7 +117,7 @@ namespace RollingRoad.WinApplication
                     /*MemoryDataset source = new MemoryDataset(new DataCollection(_data.Select(x => x.Data).ToList()))
                     {
                         Description = DateTime.Now.ToLongDateString()
-                    };*/
+                    };
 
                     //Save file
                     //CsvDataFile.WriteToFile(dlg.FileName, source);
@@ -298,24 +190,6 @@ namespace RollingRoad.WinApplication
                 MessageBox.Show("Error: " + exception.Message, "Error starting/stopping source!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        private void SelectSource_Click(object sender, RoutedEventArgs e)
-        {
-            SelectSourceWindow window = new SelectSourceWindow();
-            window.Logger = Logger;
-
-            try
-            {
-                if (window.ShowDialog() == true)
-                {
-                    SelectSource(window.LiveDataSource);
-                }
-            }
-            catch (Exception exception)
-            {
-                Logger?.WriteLine("Error opening source: " + exception.Message);
-                MessageBox.Show("Error: " + exception.Message, "Error opening source!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+*/
     }
 }

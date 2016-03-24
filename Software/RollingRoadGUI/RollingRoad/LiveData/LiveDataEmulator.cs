@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RollingRoad.Data;
 
 namespace RollingRoad
@@ -79,8 +80,8 @@ namespace RollingRoad
         {
             _index = 0;
 
-            if(_xAxis != null && _xAxis.GetData().Count > 0)
-                _lastMs = GetMs(_xAxis.GetData()[0], _xAxis.Type.Unit);
+            if(_xAxis != null && _xAxis.Data.Count > 0)
+                _lastMs = GetMs(_xAxis.Data.First(), _xAxis.Type.Unit);
 
             Timer.Stop();
         }
@@ -108,7 +109,7 @@ namespace RollingRoad
                 return;
 
             //If there's not more available data, stop. 
-            if (_index >= _xAxis.GetData().Count)
+            if (_index >= _xAxis.Data.Count)
             {
                 Logger?.WriteLine("Emulator: stopping");
                 Timer.Stop();
@@ -120,13 +121,13 @@ namespace RollingRoad
             for (int i = 0; i < _source.Collection.Count; i++)
             {
                 DataList data = _source.Collection[i];
-                entry.Add(new Datapoint(data.Type, data.GetData()[_index]));
+                entry.Add(new Datapoint(data.Type, data.Data.ElementAt(_index)));
             }
             
             OnNextReadValue?.Invoke(entry); //Send value
 
             //Calculate time to wait
-            double time = GetMs(_xAxis.GetData()[_index], _xAxis.Type.Unit);
+            double time = GetMs(_xAxis.Data.ElementAt(_index), _xAxis.Type.Unit);
             double delta = time - _lastMs;
             _lastMs = time;
 

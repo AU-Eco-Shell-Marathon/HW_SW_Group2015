@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -44,9 +45,9 @@ namespace RollingRoad.WinApplication
                     DataList active = source.Collection[i];
 
                     int z = 0;
-                    foreach (double data in active.GetData())
+                    foreach (double data in active.Data)
                     {
-                        valueList.AppendAsync(Dispatcher.CurrentDispatcher, new Point(xDataList.GetData()[z], data));
+                        valueList.AppendAsync(Dispatcher.CurrentDispatcher, new Point(xDataList.Data.ElementAt(z), data));
                         z++;
                     }
 
