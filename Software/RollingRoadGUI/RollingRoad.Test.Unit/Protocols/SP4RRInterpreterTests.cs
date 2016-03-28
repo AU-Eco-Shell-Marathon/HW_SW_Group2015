@@ -2,21 +2,28 @@
 using System.IO;
 using System.Text;
 using NUnit.Framework;
+using RollingRoad.Protocols;
 
 namespace RollingRoad.Test.Unit.Protocols
 {
     [TestFixture]
-    public class SP4RRTests
+    public class SP4RRInterpreterTests
     {
         private MemoryStream _ms;
-        private SP4RR _interpreter;
+        private SP4RRInterpreter _interpreter;
         private CultureInfo _cultureTarget = new CultureInfo("en-US");
 
         [SetUp]
         public void SetUp()
         {
             _ms = new MemoryStream();
-            _interpreter = new SP4RR(_ms);
+            _interpreter = new SP4RRInterpreter(_ms);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _ms.Dispose();
         }
 
         private void WriteToMemoryStream(StreamWriter writer, string value)

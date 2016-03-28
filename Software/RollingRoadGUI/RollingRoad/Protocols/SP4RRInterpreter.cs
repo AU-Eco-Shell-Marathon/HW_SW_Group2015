@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading;
 using RollingRoad.Data;
 
-namespace RollingRoad
+namespace RollingRoad.Protocols
 {
-    public class SP4RR : ILiveDataSource, ITorqueControl, IPidControl
+    public class SP4RRInterpreter : ILiveDataSource, ITorqueControl, IPidControl
     {
         /// <summary>
         /// Updated each time a fullset om data has been recived.
@@ -75,7 +75,7 @@ namespace RollingRoad
         }
 
         //Create a new interpreter from stream
-        public SP4RR(Stream stream)
+        public SP4RRInterpreter(Stream stream)
         {
             _reader = new StreamReader(stream, Encoding.ASCII);
             _writer = new StreamWriter(stream, Encoding.ASCII);
@@ -211,7 +211,7 @@ namespace RollingRoad
             _listenThread.Start();
         }
 
-        ~SP4RR()
+        ~SP4RRInterpreter()
         {
             Stop();
         }

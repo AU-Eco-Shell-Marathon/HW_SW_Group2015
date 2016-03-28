@@ -117,10 +117,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="DataTemplates\TabDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Displays\PidControlDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,18 +137,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="DataSetsViewModel.cs" />
-    <Compile Include="DataSetViewModel.cs" />
+    <Compile Include="ViewModels\DataSetsViewModel.cs" />
+    <Compile Include="ViewModels\DataSetViewModel.cs" />
     <Compile Include="LineChart.xaml.cs">
       <DependentUpon>LineChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LiveDataSourceViewModel.cs" />
+    <Compile Include="ViewModels\LiveDataSourceViewModel.cs" />
     <Compile Include="Displays\PidControlDisplay.xaml.cs">
       <DependentUpon>PidControlDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoggerViewModel.cs" />
-    <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="TabItemTemplateSelector.cs" />
+    <Compile Include="ViewModels\LoggerViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="TemplateSelectors\TabItemTemplateSelector.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -165,10 +161,6 @@
     </Compile>
     <Compile Include="Displays\TorqueControlDisplay.xaml.cs">
       <DependentUpon>TorqueControlDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Tabs\ViewDataTab.xaml.cs">
-      <DependentUpon>ViewDataTab.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tabs\LiveDataTab.xaml.cs">
       <DependentUpon>LiveDataTab.xaml</DependentUpon>
@@ -185,10 +177,6 @@
     <Page Include="Displays\TorqueControlDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Tabs\ViewDataTab.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

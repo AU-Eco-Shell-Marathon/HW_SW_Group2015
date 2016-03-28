@@ -37,14 +37,19 @@ namespace RollingRoad.WinApplication
             LineChart control = sender as LineChart;
             ObservableCollection<DataSetViewModel> list = e.NewValue as ObservableCollection<DataSetViewModel>;
 
-            if (list != null && control != null)
-            {
-                list.CollectionChanged += control.OnCollectionChange;
+            if (control == null)
+                return;
+            
+            control.Refresh();
 
-                foreach (DataSetViewModel datalist in list)
-                {
-                    datalist.CollectionChanged += control.OnItemsSourceChange;
-                }
+            if (list == null)
+                return;
+
+            list.CollectionChanged += control.OnCollectionChange;
+
+            foreach (DataSetViewModel datalist in list)
+            {
+                datalist.CollectionChanged += control.OnItemsSourceChange;
             }
         }
 
@@ -56,6 +61,8 @@ namespace RollingRoad.WinApplication
             {
                 list.CollectionChanged += OnItemsSourceChange;
             }
+
+            Refresh();
         }
 
         private void OnItemsSourceChange(object sender, NotifyCollectionChangedEventArgs e)
@@ -71,27 +78,32 @@ namespace RollingRoad.WinApplication
         public void Refresh()
         {
             Clear();
-            
+
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
 
             foreach (DataSetViewModel dataset in ItemsSource)
             {
-                EnumerableDataSource<double> xData = new EnumerableDataSource<double>(dataset.Collection.First(x => x.Type.Name == XAxis).Data);
+                DataList xAxis = dataset.Collection.FirstOrDefault(x => x.Type.Name == XAxis);
+
+                if (xAxis == null)
+                    continue;
+
+                EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis.Data);
                 xData.SetXMapping(x => x);
 
                 foreach (DataList dataList in dataset.Collection)
                 {
-                    if (dataList.Type.Name != XAxis)
-                    {
-                        EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList.Data);
-                        yData.SetYMapping(x => x);
+                    if (dataList.Type.Name == XAxis)
+                        continue;
 
-                        CompositeDataSource source = new CompositeDataSource(xData, yData);
+                    EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList.Data);
+                    yData.SetYMapping(x => x);
 
-                        object colorObj = Properties.Settings.Default[dataList.Type.Name + "LineColor"];
-                        Chart.AddLineGraph(source, (System.Windows.Media.Color)colorObj, 2, dataList.Type.ToString());
-                    }
+                    CompositeDataSource source = new CompositeDataSource(xData, yData);
+
+                    object colorObj = Properties.Settings.Default[dataList.Type.Name + "LineColor"];
+                    Chart.AddLineGraph(source, (System.Windows.Media.Color)colorObj, 2, dataList.Type.ToString());
                 }
             }
 

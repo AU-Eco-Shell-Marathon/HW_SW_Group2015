@@ -10,10 +10,8 @@ using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication
 {
-    public class DataSetsViewModel : INotifyPropertyChanged
+    public class DataSetsViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ObservableCollection<DataSetViewModel> DataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
         public ObservableCollection<DataSetViewModel> SelectedDataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
 

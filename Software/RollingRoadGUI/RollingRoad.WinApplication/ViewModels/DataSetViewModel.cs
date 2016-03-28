@@ -43,8 +43,6 @@ namespace RollingRoad.WinApplication
             set { DataSet.Collection = value; }
         }
 
-
-
         public event NotifyCollectionChangedEventHandler CollectionChanged;
     }
 }
