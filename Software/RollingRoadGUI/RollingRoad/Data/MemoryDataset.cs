@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace RollingRoad.Data
@@ -8,7 +9,7 @@ namespace RollingRoad.Data
         /// <summary>
         /// Data in the memory data source
         /// </summary>
-        public DataCollection Collection { get; } = new DataCollection();
+        public IList<DataList> Collection { get; set; } = new List<DataList>();
 
         /// <summary>
         /// Memory data source, initiated with no data
@@ -22,7 +23,7 @@ namespace RollingRoad.Data
         /// Create datasource from list
         /// </summary>
         /// <param name="dataCollection">dataCollection to use in datasource</param>
-        public MemoryDataset(DataCollection dataCollection)
+        public MemoryDataset(IList<DataList> dataCollection)
         {
             Collection = dataCollection;
         }

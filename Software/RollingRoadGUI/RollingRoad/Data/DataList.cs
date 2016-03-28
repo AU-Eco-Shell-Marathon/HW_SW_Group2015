@@ -11,7 +11,7 @@ namespace RollingRoad.Data
         /// <summary>
         /// All data collected
         /// </summary>
-        public ICollection<double> Data { get; protected set; } = new List<double>();
+        public ICollection<double> Data { get; set; } = new List<double>();
         
         /// <summary>
         /// Creates a new data list with the specified name and unit

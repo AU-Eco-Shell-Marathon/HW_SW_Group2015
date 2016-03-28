@@ -6,35 +6,5 @@
              xmlns:dynamicDataDisplay="http://research.microsoft.com/DynamicDataDisplay/1.0"
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="400">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" MinWidth="160"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-
-
-        <!-- Data select -->
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <!-- Title -->
-            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Select dataset:</TextBlock>
-
-            <!-- Loaded datasets -->
-            <ListView Grid.Row="1" x:Name="ListViewDataselect" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="5, 0, 5, 0" SelectionChanged="ListViewDataselect_SelectionChanged"/>
-
-            <!-- Load button -->
-            <Button Grid.Row="2" Click="BtnFileLoadDataset_Click" Margin="10, 10, 10, 10">Open</Button>
-        </Grid>
-
-        <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch"/>
-
-        <!-- Chart -->
-        <dynamicDataDisplay:ChartPlotter x:Name="ViewDataChart" Grid.Column="2"/>
-    </Grid>
+    
 </UserControl>

@@ -1,4 +1,6 @@
-﻿namespace RollingRoad.Data
+﻿using System.Collections.Generic;
+
+namespace RollingRoad.Data
 {
     public interface IDataset
     {
@@ -24,6 +26,6 @@
         /// All datalists currently available by this dataset.
         /// </summary>
         /// <returns>All datalist collected by this source, may be NULL</returns>
-        DataCollection Collection { get; }
+        IList<DataList> Collection { get; set; }
     }
 }

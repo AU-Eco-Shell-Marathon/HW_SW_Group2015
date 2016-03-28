@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using RollingRoad.Data;
 
@@ -10,7 +11,7 @@ namespace RollingRoad.Test.Unit.Data
         [Test]
         public void Ctor_DataListInterserted_SameListInProperty()
         {
-            DataCollection dataCollection = new DataCollection();
+            IList<DataList> dataCollection = new List<DataList>();
 
             dataCollection.Add(new DataList(new DataType("TestName", "TestUnit")));
 

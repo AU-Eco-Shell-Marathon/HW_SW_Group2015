@@ -63,7 +63,6 @@
     <Compile Include="CsvDataFile.cs" />
     <Compile Include="Data\Datapoint.cs" />
     <Compile Include="Protocols\CsvDataInterpreter.cs" />
-    <Compile Include="Data\DataCollection.cs" />
     <Compile Include="Loggers\EventLogger.cs" />
     <Compile Include="Loggers\ILogger.cs" />
     <Compile Include="Control\IPidControl.cs" />

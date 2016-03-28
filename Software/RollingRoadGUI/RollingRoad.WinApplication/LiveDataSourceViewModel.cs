@@ -18,7 +18,9 @@ namespace RollingRoad.WinApplication
     public class LiveDataSourceViewModel : INotifyPropertyChanged
     {
         private ILiveDataSource _source;
-        public ObservableCollection<ObservableDataList> DataCollection { get; set; } = new ObservableCollection<ObservableDataList>();
+        public ObservableCollection<DataSetViewModel> DataCollection { get; set; } = new ObservableCollection<DataSetViewModel>();
+
+        public IList<DataList> Collection => DataCollection.First().Collection;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -31,6 +33,7 @@ namespace RollingRoad.WinApplication
             SelectSourceCommand = new DelegateCommand(SelectSource);
 
             _dispatcher = Dispatcher.CurrentDispatcher;
+            DataCollection.Add(new DataSetViewModel(new MemoryDataset()));
         }
 
         public ILiveDataSource Source
@@ -87,12 +90,12 @@ namespace RollingRoad.WinApplication
         {
             foreach (Datapoint datapoint in datapoints)
             {
-                ObservableDataList list = DataCollection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataList list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
                 {
-                    list = new ObservableDataList(datapoint.Type);
-                    DataCollection.Add(list);
+                    list = new DataList(datapoint.Type);
+                    Collection.Add(list);
                 }
                 double value = datapoint.Value;
 

@@ -29,7 +29,7 @@ namespace RollingRoad
         /// <param name="source">Source to write to stream</param>
         public static void WriteToStream(TextWriter writer, IDataset source)
         {
-            DataCollection dataCollection = source.Collection;
+            IList<DataList> dataCollection = source.Collection;
             int dataLength = dataCollection[0].Data.Count;
 
             //Write header and all type names

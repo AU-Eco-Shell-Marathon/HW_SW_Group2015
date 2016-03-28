@@ -19,6 +19,9 @@ namespace RollingRoad.WinApplication
 
                 if (item is LoggerViewModel)
                     return element.FindResource("LoggerTemplate") as DataTemplate;
+
+                if(item is DataSetsViewModel)
+                    return element.FindResource("ViewTemplate") as DataTemplate;
             }
 
             return null;

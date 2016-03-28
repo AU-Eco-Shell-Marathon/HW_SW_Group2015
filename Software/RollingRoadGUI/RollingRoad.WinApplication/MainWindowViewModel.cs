@@ -28,6 +28,7 @@ namespace RollingRoad.WinApplication
             Tabs = new ObservableCollection<object>
             {
                 new LiveDataSourceViewModel(),
+                new DataSetsViewModel(),
                 new LoggerViewModel()
             };
         }

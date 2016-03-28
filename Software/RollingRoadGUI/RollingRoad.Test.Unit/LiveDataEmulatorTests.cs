@@ -41,8 +41,8 @@ namespace RollingRoad.Test.Unit
         {
             _dataset = Substitute.For<IDataset>();
             _timer = Substitute.For<ITimer>();
-            
-            DataCollection dataCollection = new DataCollection();
+
+            IList<DataList> dataCollection = new List<DataList>();
             dataCollection.Add(new DataList(new DataType("Time", "TestUnit")));
 
             _dataset.Collection.Returns(dataCollection);

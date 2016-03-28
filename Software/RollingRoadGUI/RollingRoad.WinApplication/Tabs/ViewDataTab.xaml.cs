@@ -18,7 +18,7 @@ namespace RollingRoad.WinApplication
         /// <summary>
         /// Constructor
         /// </summary>
-        public ViewDataTab()
+        /*public ViewDataTab()
         {
             InitializeComponent();
         }
@@ -60,42 +60,6 @@ namespace RollingRoad.WinApplication
 
         private void BtnFileLoadDataset_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog
-            {
-                DefaultExt = ".csv",
-                Filter = "CSV Files (*.csv)|*.csv"
-            };
-
-            // Set filter for file extension and default file extension 
-
-
-            // Display OpenFileDialog by calling ShowDialog method 
-            bool? result = dlg.ShowDialog();
-
-            if (result == true)
-            {
-                // Open document 
-                string filename = dlg.FileName;
-
-                try
-                {
-                    MemoryDataset dataset = CsvDataFile.LoadFromFile(filename);
-
-                    DatasetDisplay display = new DatasetDisplay
-                    {
-                        DatasetName = dataset.Name,
-                        Description = dataset.Description,
-                        Dataset = dataset
-                    };
-                    
-                    ListViewDataselect.Items.Add(display);
-
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message, "Error opening file", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
         }
 
         private void ListViewDataselect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -110,6 +74,6 @@ namespace RollingRoad.WinApplication
 
                 AppendDataToChart(source);
             }
-        }
+        }*/
     }
 }
