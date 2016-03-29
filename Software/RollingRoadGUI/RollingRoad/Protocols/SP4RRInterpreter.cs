@@ -3,11 +3,12 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
+using RollingRoad.Control;
 using RollingRoad.Data;
 
 namespace RollingRoad.Protocols
 {
-    public class SP4RRInterpreter : ILiveDataSource, ITorqueControl, IPidControl
+    public class SP4RRInterpreter : ILiveDataSource, ITorqueControl, IPidControl, ICalibrateControl
     {
         /// <summary>
         /// Updated each time a fullset om data has been recived.
@@ -71,7 +72,8 @@ namespace RollingRoad.Protocols
             Stop = 2,
             Information = 3,
             TorqueCtrl = 4,
-            PidCtrl = 5
+            PidCtrl = 5,
+            Calibrate = 6
         }
 
         //Create a new interpreter from stream
@@ -214,6 +216,11 @@ namespace RollingRoad.Protocols
         ~SP4RRInterpreter()
         {
             Stop();
+        }
+
+        public void Calibrate()
+        {
+            SendCommand(((int)PacketId.Calibrate).ToString());
         }
     }
 }

@@ -60,6 +60,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\ICalibrateControl.cs" />
     <Compile Include="Control\IMotorControl.cs" />
     <Compile Include="CsvDataFile.cs" />
     <Compile Include="Data\Datapoint.cs" />

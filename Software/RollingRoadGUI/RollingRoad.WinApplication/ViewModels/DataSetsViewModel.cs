@@ -22,7 +22,6 @@ namespace RollingRoad.WinApplication
         }
 
         public ICommand OpenSelectWindow { get; }
-
         public ICommand SelectedChanged { get; }
 
         private void OnSelectedChanged()

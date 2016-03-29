@@ -14,8 +14,8 @@ namespace RollingRoad.WinApplication
         public DataSetViewModel(IDataset dataset)
         {
             DataSet = dataset;
-            DataSet.Collection = new ObservableCollection<DataList>(DataSet.Collection);
-            ((ObservableCollection<DataList>) DataSet.Collection).CollectionChanged += OnListUpdate;
+            //DataSet.Collection = new ObservableCollection<DataList>(DataSet.Collection);
+            //((ObservableCollection<DataList>) DataSet.Collection).CollectionChanged += OnListUpdate;
         }
 
         private void OnListUpdate(object sender, NotifyCollectionChangedEventArgs args)

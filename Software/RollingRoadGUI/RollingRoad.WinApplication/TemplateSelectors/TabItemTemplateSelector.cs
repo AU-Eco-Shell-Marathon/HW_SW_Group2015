@@ -5,9 +5,6 @@ namespace RollingRoad.WinApplication
 {
     public class TabItemTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate LiveDataTab { get; set; }
-        public DataTemplate ShowDataTab { get; set; }
-
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             FrameworkElement element = container as FrameworkElement;

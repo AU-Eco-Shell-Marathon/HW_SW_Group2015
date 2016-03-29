@@ -3,11 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:RollingRoad.WinApplication"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:templateSelectors="clr-namespace:RollingRoad.WinApplication.TemplateSelectors"
         Title="Rolling Road" Height="450" Width="800" MinWidth="525" MinHeight="350">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <local:TabItemTemplateSelector x:Key="TabSelector"/>
+        <templateSelectors:LiveDataControlTemplateSelector x:Key="LiveDataControlTemplateSelector"/>
+        
         <DataTemplate x:Key="LiveDataTemplate" DataType="local:LiveDataSourceViewModel">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -21,6 +25,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="22"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
@@ -34,12 +39,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Text="Source:" Margin="5" />
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Text="{Binding SelectedSourceText}" Margin="5" />
                         <Button Grid.Column="1" Content="Select" Margin="5" Command="{Binding SelectSourceCommand}"/>
                     </Grid>
 
                     <!-- Live data -->
-                    <ListView x:Name="LiveDataStackPanel" Grid.Row="2" ItemsSource="{Binding Collection}">
+                    <ListView Grid.Row="2" ItemsSource="{Binding LiveControlCollection}" ItemTemplateSelector="{StaticResource LiveDataControlTemplateSelector}"/>
+
+                    <ListView x:Name="LiveDataStackPanel" Grid.Row="3" ItemsSource="{Binding Collection}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -47,7 +54,7 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <TextBlock Grid.Row="0" Text="{Binding Type.Name}"/>
                                     <TextBlock Grid.Row="1" Text="{Binding NewestValue}"/>
                                 </Grid>
@@ -56,7 +63,7 @@
                     </ListView>
 
                     <!-- Save Clear Stop Buttons -->
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -153,7 +160,9 @@
                 <local:LineChart ItemsSource="{Binding SelectedDataSets}" x:Name="ViewDataChart" Grid.Column="2"/>
             </Grid>
         </DataTemplate>
-        <local:TabItemTemplateSelector x:Key="TabSelector"/>
+        <DataTemplate x:Key="CalibrateControlTemplate" DataType="local:CalibrateControlViewModel">
+            <Button Command="{Binding CalibrateCommand}">Calibrate</Button>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <!-- Menu -->

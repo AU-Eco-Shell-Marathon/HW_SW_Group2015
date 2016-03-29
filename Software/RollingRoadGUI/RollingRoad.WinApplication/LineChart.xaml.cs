@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using RollingRoad.Data;
@@ -51,6 +49,8 @@ namespace RollingRoad.WinApplication
             {
                 datalist.CollectionChanged += control.OnItemsSourceChange;
             }
+
+            control._newData = true;
         }
 
         private void OnCollectionChange(object sender, NotifyCollectionChangedEventArgs e)
@@ -62,21 +62,30 @@ namespace RollingRoad.WinApplication
                 list.CollectionChanged += OnItemsSourceChange;
             }
 
-            Refresh();
+            _newData = true;
         }
 
         private void OnItemsSourceChange(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Refresh();
+            _newData = true;
         }
+
+        private bool _newData = false;
 
         public LineChart()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += (sender, e) => Refresh();
+            timer.Interval = TimeSpan.FromSeconds(0.5);
+            timer.Start();
         }
 
         public void Refresh()
         {
+            if (!_newData)
+                return;
+            
             Clear();
 
             if (ItemsSource == null || ItemsSource.Count == 0)
@@ -102,11 +111,12 @@ namespace RollingRoad.WinApplication
 
                     CompositeDataSource source = new CompositeDataSource(xData, yData);
 
-                    object colorObj = Properties.Settings.Default[dataList.Type.Name + "LineColor"];
-                    Chart.AddLineGraph(source, (System.Windows.Media.Color)colorObj, 2, dataList.Type.ToString());
+                    //object colorObj = Properties.Settings.Default[dataList.Type.Name + "LineColor"];
+                    Chart.AddLineGraph(source, 2, dataList.Type.ToString());
                 }
             }
 
+            _newData = false;
         }
 
         public void Clear()

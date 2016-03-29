@@ -128,6 +128,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="TemplateSelectors\LiveDataControlTemplateSelector.cs" />
+    <Compile Include="ViewModels\CalibrateControlViewModel.cs" />
+    <Compile Include="ViewModels\DataListViewModel.cs" />
     <Compile Include="ViewModels\DataSetsViewModel.cs" />
     <Compile Include="ViewModels\DataSetViewModel.cs" />
     <Compile Include="LineChart.xaml.cs">
@@ -140,6 +143,7 @@
     <Compile Include="ViewModels\LoggerViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="TemplateSelectors\TabItemTemplateSelector.cs" />
+    <Compile Include="ViewModels\PidControlViewModel.cs" />
     <Compile Include="Views\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>

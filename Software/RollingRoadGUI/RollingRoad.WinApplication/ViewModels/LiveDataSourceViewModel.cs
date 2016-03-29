@@ -7,6 +7,7 @@ using System.Windows.Threading;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
+using RollingRoad.Control;
 using RollingRoad.Data;
 using MessageBox = System.Windows.MessageBox;
 
@@ -14,16 +15,19 @@ namespace RollingRoad.WinApplication
 {
     public class LiveDataSourceViewModel : BindableBase
     {
-        public IList<DataList> Collection => DataCollection.First().Collection;
-
         public DelegateCommand ClearCommand { get; }
         public DelegateCommand StartStopCommand { get; }
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
+        public IList<DataList> Collection => DataCollection.First().Collection;
         public ILogger Logger { get; set; }
 
+        public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
+
         public string StartStopButtonText => IsStarted ? "Stop" : "Start";
+
+        public string SelectedSourceText => "Source: " + Source;
 
         public bool HasBeenSaved { get; private set; } = true;
 
@@ -70,7 +74,13 @@ namespace RollingRoad.WinApplication
                 _source = value;
                 StartStopCommand.RaiseCanExecuteChanged();
 
+                ICalibrateControl ctrl = _source as ICalibrateControl;
+
+                if(ctrl != null)
+                    LiveControlCollection.Add(new CalibrateControlViewModel(ctrl));
+
                 Start();
+                OnPropertyChanged(nameof(SelectedSourceText));
 
                 if (_source != null)
                     _source.OnNextReadValue += ThreadMover;
@@ -176,7 +186,7 @@ namespace RollingRoad.WinApplication
             if (!CheckAndAskAboutChanges())
                 return;
 
-            Clear();
+            Collection.Clear();
 
             try
             {
