@@ -1,16 +1,28 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
-    public class DataListViewModel
+    public class DataListViewModel : BindableBase
     {
-        private DataList _list;
+        public DataList List { get; private set; }
 
         public DataListViewModel(DataList list)
         {
-            _list = list;
-            _list.Data = new ObservableCollection<double>(_list.Data);
+            List = list;
+            //List.Data = new ObservableCollection<double>(List.Data);
         }
+
+        public DataType Type => List.Type;
+
+        public void AddData(double value)
+        {
+            List.Data.Add(value);
+            OnPropertyChanged(nameof(NewestValue));
+        }
+        
+        public double NewestValue => List.Data.Last();
     }
 }

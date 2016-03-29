@@ -85,8 +85,9 @@
                 <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch"/>
 
                 <!-- Chart -->
-                <local:LineChart ItemsSource="{Binding DataCollection}" x:Name="LiveDataChart" Grid.Column="2"/>
+                <local:LineChart ItemsSource="{Binding DataCollection}" RefreshRate="{Binding GraphRefreshRate}" x:Name="LiveDataChart" Grid.Column="2"/>
 
+                <ComboBox VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="20" ItemsSource="{Binding GraphUpdateRates}" SelectedIndex="{Binding GraphRefreshRateSelectedIndex}" Grid.Column="2" ItemStringFormat="{}{0} ms"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="LoggerTemplate" DataType="local:LoggerViewModel">

@@ -70,5 +70,65 @@ namespace RollingRoad.WinApplication.Properties {
                 this["PowerLineColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF0000FF")]
+        public global::System.Windows.Media.Color VoltageLineColor {
+            get {
+                return ((global::System.Windows.Media.Color)(this["VoltageLineColor"]));
+            }
+            set {
+                this["VoltageLineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FFFFFF00")]
+        public global::System.Windows.Media.Color AmpereLineColor {
+            get {
+                return ((global::System.Windows.Media.Color)(this["AmpereLineColor"]));
+            }
+            set {
+                this["AmpereLineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF00FFFF")]
+        public global::System.Windows.Media.Color EffectLineColor {
+            get {
+                return ((global::System.Windows.Media.Color)(this["EffectLineColor"]));
+            }
+            set {
+                this["EffectLineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FFF00000")]
+        public global::System.Windows.Media.Color DistanceLineColor {
+            get {
+                return ((global::System.Windows.Media.Color)(this["DistanceLineColor"]));
+            }
+            set {
+                this["DistanceLineColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#FF00F000")]
+        public global::System.Windows.Media.Color RPMLineColor {
+            get {
+                return ((global::System.Windows.Media.Color)(this["RPMLineColor"]));
+            }
+            set {
+                this["RPMLineColor"] = value;
+            }
+        }
     }
 }

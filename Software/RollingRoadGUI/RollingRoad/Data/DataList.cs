@@ -30,7 +30,5 @@ namespace RollingRoad.Data
         {
             return $"{Type} + ({Data.Count} datapoints)";
         }
-
-        public double NewestValue => Data.Last();
     }
 }

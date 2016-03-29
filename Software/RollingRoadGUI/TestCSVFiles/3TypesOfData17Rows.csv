@@ -1,5 +1,6 @@
 SHELL ECO MARATHON;Time;Torque;Power
 Test file 2;Seconds;Nm;Watt
+;0.0;0;0
 ;0.1;0;0
 ;0.2;0;20
 ;0.3;2;50

@@ -9,6 +9,7 @@ using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
 using RollingRoad.Control;
 using RollingRoad.Data;
+using RollingRoad.WinApplication.ViewModels;
 using MessageBox = System.Windows.MessageBox;
 
 namespace RollingRoad.WinApplication
@@ -20,7 +21,7 @@ namespace RollingRoad.WinApplication
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
-        public IList<DataList> Collection => DataCollection.First().Collection;
+        public IList<DataListViewModel> Collection => DataCollection.First().Collection;
         public ILogger Logger { get; set; }
 
         public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
@@ -30,6 +31,25 @@ namespace RollingRoad.WinApplication
         public string SelectedSourceText => "Source: " + Source;
 
         public bool HasBeenSaved { get; private set; } = true;
+
+        private double _refreshRate = 500;
+        public double GraphRefreshRate
+        {
+            get{ return _refreshRate; }
+            set { SetProperty(ref _refreshRate, value); }
+        }
+
+        public int GraphRefreshRateSelectedIndex
+        {
+            get { return _graphRefreshRateSelectedIndex; }
+            set
+            {
+                _graphRefreshRateSelectedIndex = value;
+                GraphRefreshRate = GraphUpdateRates[_graphRefreshRateSelectedIndex];
+            }
+        }
+
+        public List<double> GraphUpdateRates { get; private set; } = new List<double>() {500, 1000, 2000, 5000, 10000}; 
 
         private bool _isStarted;
         public bool IsStarted
@@ -46,6 +66,7 @@ namespace RollingRoad.WinApplication
         private readonly Dispatcher _dispatcher;
 
         private ILiveDataSource _source;
+        private int _graphRefreshRateSelectedIndex = 0;
 
         public ObservableCollection<DataSetViewModel> DataCollection { get; set; } = new ObservableCollection<DataSetViewModel>();
 
@@ -92,6 +113,7 @@ namespace RollingRoad.WinApplication
             if(CheckAndAskAboutChanges())
             {
                 Collection.Clear();
+                HasBeenSaved = true;
             }
         }
 
@@ -136,16 +158,17 @@ namespace RollingRoad.WinApplication
             HasBeenSaved = false;
             foreach (Datapoint datapoint in datapoints)
             {
-                DataList list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataListViewModel list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
                 {
-                    list = new DataList(datapoint.Type);
+                    list = new DataListViewModel(new DataList(datapoint.Type));
                     Collection.Add(list);
+                    ClearCommand.RaiseCanExecuteChanged();
                 }
                 double value = datapoint.Value;
 
-                list?.Data.Add(value);
+                list?.AddData(value);
             }
         }
 
@@ -216,7 +239,7 @@ namespace RollingRoad.WinApplication
 
             try
             {
-                MemoryDataset source = new MemoryDataset(Collection)
+                MemoryDataset source = new MemoryDataset(new List<DataList>(Collection.Select(x => x.List)))
                 {
                     Description = DateTime.Now.ToLongDateString()
                 };
