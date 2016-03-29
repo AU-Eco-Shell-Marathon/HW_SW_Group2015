@@ -19,56 +19,7 @@ namespace RollingRoad.WinApplication
     public partial class LiveDataTab
     {
         /*
-
-        /// <summary>
-        /// When the user request a save
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnFileSaveDataset_Click(object sender, RoutedEventArgs e)
-        {
-            HasBeenSaved = SaveCurrentData();
-        }
-
-        /// <summary>
-        /// Tries to save current data
-        /// </summary>
-        /// <returns>Whether the data was actually saved</returns>
-        private bool SaveCurrentData()
-        {
-        }
-
-        private void ClearChart()
-        {
-            LiveDataChart.Children.RemoveAll(typeof(LineGraph));
-            LiveDataStackPanel.Children.Clear();
-            _data = new List<LineStructure?>();
-
-            HasBeenSaved = true;
-        }
-
-        private void LiveDataClearButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!HasBeenSaved)
-            {
-                MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Unsaved changes",
-                    MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-                switch (result)
-                {
-                    case MessageBoxResult.Yes:
-                        HasBeenSaved = SaveCurrentData();
-                        break;
-                    case MessageBoxResult.No:
-                        ClearChart();
-                        break;
-                }
-            }
-            else
-            {
-                ClearChart();
-            }
-        }
+        
 
         private void LiveDataStartStopButton_Click(object sender, RoutedEventArgs e)
         {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Threading;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
@@ -15,7 +14,6 @@ namespace RollingRoad.WinApplication
 {
     public class LiveDataSourceViewModel : BindableBase
     {
-
         public IList<DataList> Collection => DataCollection.First().Collection;
 
         public DelegateCommand ClearCommand { get; }
@@ -27,6 +25,9 @@ namespace RollingRoad.WinApplication
 
         public string StartStopButtonText => IsStarted ? "Stop" : "Start";
 
+        public bool HasBeenSaved { get; private set; } = true;
+
+        private bool _isStarted;
         public bool IsStarted
         {
             get { return _isStarted; }
@@ -39,16 +40,17 @@ namespace RollingRoad.WinApplication
 
         //TODO Make to an interface
         private readonly Dispatcher _dispatcher;
+
         private ILiveDataSource _source;
-        private bool _isStarted = false;
+
         public ObservableCollection<DataSetViewModel> DataCollection { get; set; } = new ObservableCollection<DataSetViewModel>();
 
         public LiveDataSourceViewModel()
         {
-            StartStopCommand        = new DelegateCommand(StartStop, CanStartStop);
-            ClearCommand            = new DelegateCommand(Clear, CanClear);
+            StartStopCommand        = new DelegateCommand(StartStop     , CanStartStop);
+            ClearCommand            = new DelegateCommand(Clear         , CanClear);
+            SaveCommand             = new DelegateCommand(() => Save()  , CanSave);
             SelectSourceCommand     = new DelegateCommand(SelectSource);
-            SaveCommand             = new DelegateCommand(Save, CanSave);
 
             _dispatcher = Dispatcher.CurrentDispatcher;
             DataCollection.Add(new DataSetViewModel(new MemoryDataset()));
@@ -68,6 +70,8 @@ namespace RollingRoad.WinApplication
                 _source = value;
                 StartStopCommand.RaiseCanExecuteChanged();
 
+                Start();
+
                 if (_source != null)
                     _source.OnNextReadValue += ThreadMover;
             }
@@ -75,13 +79,15 @@ namespace RollingRoad.WinApplication
 
         private void Clear()
         {
-            //TODO Confirm with user
-            Collection.Clear();
+            if(CheckAndAskAboutChanges())
+            {
+                Collection.Clear();
+            }
         }
 
         private bool CanClear()
         {
-            return true;
+            return Collection.Count > 0;
         }
 
         private void Start()
@@ -117,6 +123,7 @@ namespace RollingRoad.WinApplication
 
         private void IncommingData(IReadOnlyList<Datapoint> datapoints)
         {
+            HasBeenSaved = false;
             foreach (Datapoint datapoint in datapoints)
             {
                 DataList list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
@@ -145,17 +152,39 @@ namespace RollingRoad.WinApplication
             }
         }
 
+        private bool CheckAndAskAboutChanges()
+        {
+            if (HasBeenSaved)
+                return true;
+            
+            MessageBoxResult result = MessageBox.Show("Do you want to save changes?", "Unsaved changes",
+                MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    return Save();
+                case MessageBoxResult.No:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
         private void SelectSource()
         {
-            SelectSourceWindow window = new SelectSourceWindow();
+            if (!CheckAndAskAboutChanges())
+                return;
+
             Clear();
 
             try
             {
+                SelectSourceWindow window = new SelectSourceWindow();
+
                 if (window.ShowDialog() == true)
                 {
                     Source = window.LiveDataSource;
-                    Start();
                 }
             }
             catch (Exception exception)
@@ -164,32 +193,35 @@ namespace RollingRoad.WinApplication
             }
         }
 
-        private void Save()
+        private bool Save()
         {
             SaveFileDialog dlg = new SaveFileDialog
             {
                 DefaultExt = ".csv",
                 Filter = "CSV Files (*.csv)|*.csv"
             };
-            
-            if (dlg.ShowDialog() == true)
-            {
-                try
-                {
-                    MemoryDataset source = new MemoryDataset(Collection)
-                    {
-                        Description = DateTime.Now.ToLongDateString()
-                    };
 
-                    //Save file
-                    CsvDataFile.WriteToFile(dlg.FileName, source);
-                }
-                catch (Exception e)
+            if (dlg.ShowDialog() != true)
+                return false;
+
+            try
+            {
+                MemoryDataset source = new MemoryDataset(Collection)
                 {
-                    MessageBox.Show("Error: " + e.Message, "Error saving data!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Logger?.WriteLine("Error saving data: " + e.Message);
-                }
+                    Description = DateTime.Now.ToLongDateString()
+                };
+
+                //Save file
+                CsvDataFile.WriteToFile(dlg.FileName, source);
+                return true;
             }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.Message, "Error saving data!", MessageBoxButton.OK, MessageBoxImage.Error);
+                Logger?.WriteLine("Error saving data: " + e.Message);
+            }
+
+            return false;
         }
 
         private bool CanSave()
