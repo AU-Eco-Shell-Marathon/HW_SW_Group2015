@@ -8,10 +8,10 @@
 \usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
 \usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
-\setaftersubsubsecskip{15pt}	
-\setaftersubsecskip{20pt}
+\setaftersubsubsecskip{10pt}	
+\setaftersubsecskip{10pt}
 \setbeforesubsecskip{-\baselineskip}
-\setaftersecskip{25pt}
+\setaftersecskip{15pt}
 \setbeforesecskip{1ex}
 \setaftersecskip{1ex}
 																		
@@ -27,6 +27,8 @@
 \usepackage{wrapfig}						% Indsaettelse af figurer omsvoebt af tekst. \begin{wrapfigure}{Placering}{Stoerrelse}
 %\usepackage{multicol}         	        	% Muliggoer tekst i spalter
 %\usepackage{rotating}						% Rotation af tekst med \begin{sideways}...\end{sideways}
+\usepackage{longtable}						%Muliggør at lange tabeller deler sig over flere sider (Det gør de ikke med table eller tabular)
+\usepackage{hhline}							%Dobbeltlinjer både vertikalt og horisontalt i tabeller.
 
 % ¤¤ Matematik mm. ¤¤
 \usepackage{amsmath,amssymb,stmaryrd} 		% Avancerede matematik-udvidelser
@@ -42,6 +44,10 @@
 % ¤¤ Referencer og kilder ¤¤ %
 \usepackage[danish]{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
 \usepackage{natbib}							% Udvidelse med naturvidenskabelige citationsmodeller
+%\bibliographystyle{plain}					% Referencestilen. kan bruges: abbrvnat, ksfh_nat, plain
+%\usepackage{cite}
+%\usepackage{citeall}
+%\setcitestyle{longnamefirst,open={((},close={))}}
 %\usepackage{xr}							% Referencer til eksternt dokument med \externaldocument{<NAVN>}
 %\usepackage{glossaries}					% Terminologi- eller symbolliste (se mere i Daleifs Latex-bog)
 
@@ -70,13 +76,13 @@
 \linespread{1,1}							% Linie afstand
 
 % ¤¤ Litteraturlisten ¤¤ %
-\bibpunct[,]{[}{]}{;}{a}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning (bl.a. parantestype og seperatortegn)
-\bibliographystyle{bibtex/harvard}			% Udseende af litteraturlisten.
+\bibpunct[,]{[}{]}{;}{n}{,}{,} 				% Definerer de 6 parametre ved Harvard henvisning (bl.a. parantestype og seperatortegn)
+\bibliographystyle{unsrtnat}			% Udseende af litteraturlisten. bibtex/harvard, unsrt, unsrtnat, agsm
 
 % ¤¤ Indholdsfortegnelse ¤¤ %
 \setsecnumdepth{subsection}		 			% Dybden af nummerede overkrifter (part/chapter/section/subsection)
 \maxsecnumdepth{subsection}					% Dokumentklassens graense for nummereringsdybde
-\settocdepth{subsection} 					% Dybden af indholdsfortegnelsen
+\settocdepth{subsubsection} 					% Dybden af indholdsfortegnelsen
 
 % ¤¤ Lister ¤¤ %
 \setlist{
@@ -174,9 +180,9 @@
 \nouppercaseheads											% Ingen Caps oenskes
 
 \makeevenhead{Uni}{}{}{\leftmark}				% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
-\makeoddhead{Uni}{\rightmark}{}{Ingeniørhøjskolen Aarhus Universitet}			% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
-\makeevenfoot{Uni}{}{}{Side \thepage{} af \thelastpage}							% Definerer lige siders sidefod (\makeevenfoot{Navn}{Venstre}{Center}{Hoejre})
-\makeoddfoot{Uni}{}{}{Side \thepage{} af \thelastpage}								% Definerer ulige siders sidefod (\makeoddfoot{Navn}{Venstre}{Center}{Hoejre})
+\makeoddhead{Uni}{\rightmark}{}{Aarhus School of Engineering}			% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
+\makeevenfoot{Uni}{}{}{Page \thepage{} of \thelastpage}							% Definerer lige siders sidefod (\makeevenfoot{Navn}{Venstre}{Center}{Hoejre})
+\makeoddfoot{Uni}{}{}{Page \thepage{} of \thelastpage}								% Definerer ulige siders sidefod (\makeoddfoot{Navn}{Venstre}{Center}{Hoejre})
 \makeheadrule{Uni}{\textwidth}{0.5pt}						% Tilfoejer en streg under sidehovedets indhold
 \makefootrule{Uni}{\textwidth}{0.5pt}{1mm}					% Tilfoejer en streg under sidefodens indhold
 

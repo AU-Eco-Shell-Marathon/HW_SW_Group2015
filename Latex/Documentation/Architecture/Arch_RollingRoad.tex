@@ -4,8 +4,8 @@ The Rolling Road is a dynamometer designed to measure the energy conversion effi
 \subsection{BDD}
 The Block Definition Diagram in \ref{fig:RR_BDD} gives a general overview of the structure of the system.
 
-The system is made up by a Roll which spins the DC Generator in order to create a voltage drop. The Roll is part of a Load System which able to change the rotational resistance in the Roll.
-Sensors in the system gather data about the power and torque delivered to the system. These sensors are able to send the gathered data to a Computer where it is represented graphically through a GUI. The communication between the system and the Computer is done by a Control Unit.
+%The system is made up by a Roll which spins the DC Generator in order to create a voltage drop. The Roll is part of a Load System which able to change the rotational resistance in the Roll.
+%Sensors in the system gather data about the power and torque delivered to the system. These sensors are able to send the gathered data to a Computer where it is represented graphically through a GUI. The communication between the system and the Computer is done by a Control Unit.
 
 \begin{figure}[H]
 	\centering
@@ -14,11 +14,47 @@ Sensors in the system gather data about the power and torque delivered to the sy
 	\label{fig:RR_BDD}
 \end{figure}
 
-\subsection{IBD}
-The Internal Block Diagram in \ref{fig:RR_IBD} gives a general overview of the internal and external communication between the blocks in the system.
+\subsection{Block Description}
+The blocks in the BDD are described as follows:
 
-The Roll rotates as the wheels from the AU2 delivers torque to the system. The torque from the spinning wheel is fed to a Torque Sensor and the Load System through a drive shaft which spins the DC Generator and generates a voltage in the Power Circuit. The voltage is measured by the Control Unit which is also able to control the Load System with a PWM-signal.\\
-Furthermore, the Control System measures the power from AU2's battery and the power delivered to Rolling Road through the Power Sensor and Torque Sensor. The communication with the Computer is done by UART.
+\begin{itemize}
+	\item \textbf{Voltage Adaptor}\\
+	Description: This block converts 230 VAC to 12 VDC in order to control the system. This allows the system to be directly powered by the mains electricity.
+	\item \textbf{Roll Stand}\\
+	Description: This block contains the various mechanical subsystems.
+	\begin{itemize}
+	   	\item \textbf{Roll}\\
+	   	Description: The cylinder which is rotated by the vehicle.
+	   	\item \textbf{Generator}\\
+	   	Description: A DC-generator which generates a voltage proportional to the angular velocity.
+	   	\item \textbf{Torque Sensor}\\
+	   	Description: Converts the angular velocity and torque to electrical signals.
+	\end{itemize}
+	\item \textbf{Computer}\\
+	Description: Reads values from the Control Unit and displays the data on a GUI.
+	\item \textbf{Control Unit}\\
+	Description: Reads the Roll's angular velocity, torque, electrical power in the battery and mechanical power given to the Roll. Furthermore it controls the resistance in the Load System and sends the collected data to the Computer.
+	\item \textbf{Electrical Circuit}\\
+	Description: This block contains the various electrical subsystems.
+	\begin{itemize}
+		\item \textbf{Signal Converter}\\
+		Description: Converts the generated signals from the Torque Sensor to signals which are readable for the Control Unit.
+		\item \textbf{Level Converter}\\
+		Description: Converts the 12 VDC voltage to 5 VDC in order to power the control unit.
+		\item \textbf{Power Sensor}\\
+		Description: Converts electrical power from the vehicle's battery to signals which are readable for the Control Unit.
+	\end{itemize}
+	\item \textbf{Load System}\\
+	Description: A seperate electrical circuit which serves as a mechanical resistance in the generator.
+\end{itemize}
+
+\subsection{IBD}
+The Internal Block Diagram in \ref{fig:RR_IBD} gives a general overview of the system's external connections as well as the internal communication between the blocks in the system.
+
+The system has three external connections: A voltage supplied by the 230 VAC mains, the mechanical power delivered by the vehicle's wheel and the electrical power delivered by the vehicle's battery.
+
+%The Roll rotates as the wheels from the AU2 delivers torque to the system. The torque from the spinning wheel is fed to a Torque Sensor and the Load System through a drive shaft which spins the DC Generator and generates a voltage in the Power Circuit. The voltage is measured by the Control Unit which is also able to control the Load System with a PWM-signal.\\
+%Furthermore, the Control System measures the power from AU2's battery and the power delivered to Rolling Road through the Power Sensor and Torque Sensor. The communication with the Computer is done by UART.
 
 \begin{figure}[H]
 	\centering
@@ -30,98 +66,91 @@ Furthermore, the Control System measures the power from AU2's battery and the po
 \subsection{Signal description}
 The signals and protocols used to communicate between the blocks in Rolling Road are specified in this section.
 
-\textbf{Block :Power Sensor}\\
-The Power sensor receives power from the external power source (battery). Signals representing the voltage and current emit from the Power sensor as voltage 0-5V.\\
+\textbf{Block :Rolling Road}\\
 Block interface description:
-
 \begin{itemize}
-	\item \textbf{:Power}\\
-		Direction: [External power source] $\rightarrow$ [Power sensor]\\
-		Description: The power received from the external power source.
-	\item \textbf{Power\_V :Power}\\
-		Direction: [Power Sensor] $\rightarrow$ [Control unit]\\
-		Description: An analog signal in the interval 0-5V, which represents the voltage of the power received from the external power source.
-	\item \textbf{Power\_I: Voltage}\\
-		Direction: [Power Sensor] $\rightarrow$ [Control Unit]\\
-		Description: An XXX\fxnote{uddyb signalbeskrivelse} signal in the interval 0-5V, which represents the current of the power received from the external power source.
+	\item \textbf{Supply230:Voltage}\\
+	Direction: [External] $\rightarrow$ [Voltage Adaptor]\\
+	Description: Voltage from the 230 VAC electrical mains.
+	\item \textbf{ExternalMec:Power}\\
+	Direction: [External] $\rightarrow$ [Roll]\\
+	Description: Mechanical power from the vehicle's wheel.
+	\item \textbf{ExternalEl:Power}\\
+	Direction: [External] $\rightarrow$ [Power Sensor]\\
+	Description: Electrical power from the vehicle's battery.
 \end{itemize}
+
+\textbf{Block :Voltage Adaptor}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{Supply230:Voltage}\\
+	Direction: [External] $\rightarrow$ [Voltage Adaptor]\\
+	Description: Voltage from the 230 VAC electrical mains.
+	\item \textbf{Supply12:Voltage}\\
+	Direction: [Voltage Adaptor] $\rightarrow$ [Level Converter] \& [Torque Sensor]\\
+	Description: Converted supply voltage of 12 VDC.
+\end{itemize}
+
+\textbf{Block :Level Converter}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{Supply12:Voltage}\\
+	Direction: [Voltage Adaptor] $\rightarrow$ [Level Converter]\\
+	Description: Converted supply voltage of 12 VDC.
+	\item \textbf{Supply5:Voltage}\\
+	Direction: [Level Converter] $\rightarrow$ [Load System] \& [Control Unit]\\
+	Description: Converted supply voltage of 5 VDC.
+\end{itemize}
+
+\textbf{Block :Torque Sensor}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{Supply12:Voltage}\\
+	Direction: [Voltage Adaptor] $\rightarrow$ [Torque Sensor]\\
+	Description: Converted supply voltage of 12 VDC.
+	\item \textbf{InternalMec:Power}\\
+	Direction: [Roll] $\rightarrow$ [Torque Sensor]\\
+	Description: Mechanical power given by the rotation of the Roll.
+	\item \textbf{Torque:Voltage}\\
+	Direction: [Torque Sensor] $\rightarrow$ [Signal Converter]\\
+	Description: An analog signal (-5 V to 5 V) which is proportional to the torque measured by the sensor (-5 Nm to 5 Nm).
+	\item \textbf{Angle:Frequency}\\
+	Direction: [Torque Sensor] $\rightarrow$ [Signal Converter]\\
+	Description: A square-wave signal with a frequency which is proportional to the angular velocity measured by the sensor.
+\end{itemize}
+
 
 \textbf{Block :Roll}\\
-The Roll converts torque from AU2's wheel (Torque\_In) to torque which is fed into the Torque Sensor and Load System (Torque\_Out).\\ 
+Block interface description:
+\begin{itemize}
+	\item \textbf{ExternalMec:Power}\\
+	Direction: [External] $\rightarrow$ [Roll]\\
+	Description: Mechanical power from the vehicle's wheel.
+	\item \textbf{InternalMec:Power}\\
+	Direction: [Roll] $\rightarrow$ [Torque Sensor] \& [Generator]\\
+	Description: Mechanical power given by the rotation of the Roll.
+\end{itemize}
+
+\textbf{Block :Generator}\\
 Block interface description:
 
-\begin{itemize}
-	\item \textbf{Torque\_In :Torque}\\
-		Direction: [External car wheel] $\rightarrow$ [Wheel]\\
-		Description: Torque from the car's wheel is transmitted into the system.
-	\item \textbf{Torque\_Out :Torque}\\
-		Direction: [Wheel] $\rightarrow$ [Torque sensor]\\
-		Description: The torque from the system's Wheel goes through a drive-shaft to the Torque sensor.
-\end{itemize}
 
-\textbf{Block :Torque sensor}\\
-Torque from the Roll goes into the Torque sensor and the Torque sensor transmits two analog Voltage signals that represents the Torque and the Velocity.
-\\Block interface description:
-
-\begin{itemize}
-	\item \textbf{Velocity :Voltage}\\
-		Direction: [Torque sensor] $\rightarrow$ [Control Unit]\\
-		Description:An analog signal in the interval 0-5V, which represents the angular velocity of the Wheel.
-	\item \textbf{Torque :Voltage}\\
-		Direction: [Torque sensor] $\rightarrow$ [Control Unit]\\
-		Description: An analog signal in the interval 0-5V, which represents the torque from the car through the Wheel.
-\end{itemize}
+\textbf{Block :Signal Converter}\\
+Block interface description:
 
 \textbf{Block :Load System}\\
-Torque from the Roll goes into the Load system. The Load system receives, from the Control unit, a digital signal, which controls the Load system, and the Load system transmits a Voltage, which represents the current in the Load system to the Control unit.\\
 Block interface description:
 
-\begin{itemize}
-	\item \textbf{:Torque}\\
-		Direction: [Wheel] $\rightarrow$ [Load system]\\
-		Description: The Torque of Wheel goes into the Load system.
-	\item \textbf{:PWM}\\
-		Direction: [Control unit] $\rightarrow$ [Load system]\\
-		Description: A digital signal 0V/5V, which controls the Load system.
-	\item \textbf{:Voltage}\\
-		Direction: [Load System] $\rightarrow$ [Control unit]\\
-		Description: An analog signal in the interval 0-5V, which represents the current in the Load system.
-\end{itemize}
+\textbf{Block :Control Unit}\\
+Block interface description:
+
+\textbf{Block :Power Sensor}\\
+Block interface description:
 
 \textbf{Block :Computer}\\
-The Computer receives data from the Control unit via an UART connection.\\
 Block interface description:
-
 \begin{itemize}
-	\item \textbf{:UART}\\
-		Direction: [Control Unit] $\rightarrow$ [Computer]\\
-		Description: UART connection to transmit data from Control unit to Computer.
-\end{itemize}
-
-\textbf{Block :Control unit}\\
-The Control Unit receives analog voltage signals from the Power Sensor that represents the voltage and current of the power from the external power source. The Control Unit also receives analog voltage signals from the Torque Sensor that represents the torque and angular velocity of the torque of the Wheel. The Control Unit controls the Load System with a digital signal and receives an analog signal that represents the current through the Load System. The Control Unit transmits data to the Computer via an UART connection.\\
-Block interface description:
-
-\begin{itemize}
-	\item \textbf{Power\_V :Voltage}\\
-		Direction: [Power Sensor] $\rightarrow$ [Control Unit]\\
-		Description: An analog signal in the interval 0-5V, which represents the voltage of the power received from the external power source.
-	\item \textbf{Power\_I :Voltage}\\
-		Direction: [Power Sensor] $\rightarrow$ [Control Unit]\\
-		Description: An XXX \fxnote{uddyb signalbeskrivelse} signal in the interval 0-5V, which represents the current of the power received from the external power source.
-	\item \textbf{Velocity :Voltage}\\
-		Direction: [Torque Sensor] $\rightarrow$ [Control Unit]\\
-		Description: An analog signal in the interval 0-5V, which represents the rotational velocity of the Wheel.
-	\item \textbf{Torque :Voltage}\\
-		Direction: [Torque Sensor] $\rightarrow$ [Control uUit]\\
-		Description: An analog signal in the interval 0-5V, which represents the torque from the car through the Wheel.
-	\item \textbf{:PWM}\\
-		Direction: [Control Unit] $\rightarrow$ [Load System]\\
-		Description: A digital signal 0V/5V, which controls the Load system.
-	\item \textbf{:Voltage}\\
-		Direction: [Load System] $\rightarrow$ [Control Unit]\\
-		Description: An analog signal in the interval 0-5V, which represents the current in the Load system.
-	\item \textbf{:UART}\\
-		Direction: [Control Unit] $\rightarrow$ [Computer]\\
-		Description: UART connection to transmit data from Control unit to Computer.
+	\item \textbf{Name:Type}\\
+	Direction: [X] $\rightarrow$ [Y]\\
+	Description:
 \end{itemize}

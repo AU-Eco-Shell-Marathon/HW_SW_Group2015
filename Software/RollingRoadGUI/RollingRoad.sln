@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.Test.Unit", "Ro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.WinApplication", "RollingRoad.WinApplication\RollingRoad.WinApplication.csproj", "{3D13FD8D-C5C1-4057-8E76-6AFA5E81FBD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.WinApplication.Test.Unit", "RollingRoad.WinApplication.Test.Unit\RollingRoad.WinApplication.Test.Unit.csproj", "{C38FBAF3-9830-4E91-950D-2EBD12149FB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{3D13FD8D-C5C1-4057-8E76-6AFA5E81FBD5}.Release|Any CPU.Build.0 = Release|x64
 		{3D13FD8D-C5C1-4057-8E76-6AFA5E81FBD5}.Release|x64.ActiveCfg = Release|x64
 		{3D13FD8D-C5C1-4057-8E76-6AFA5E81FBD5}.Release|x64.Build.0 = Release|x64
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Debug|x64.Build.0 = Debug|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Release|x64.ActiveCfg = Release|Any CPU
+		{C38FBAF3-9830-4E91-950D-2EBD12149FB6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

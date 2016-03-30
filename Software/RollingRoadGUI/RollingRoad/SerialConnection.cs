@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Ports;
+using RollingRoad.Protocols;
 
 namespace RollingRoad
 {
     [ExcludeFromCodeCoverage]
-    public class SerialConnection : ProtocolInterpreter, IDisposable
+    public class SerialConnection : SP4RRInterpreter, IDisposable
     {
         public SerialPort Port { get; }
 
