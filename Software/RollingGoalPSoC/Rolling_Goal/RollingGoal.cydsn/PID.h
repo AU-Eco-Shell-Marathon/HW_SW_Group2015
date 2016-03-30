@@ -12,14 +12,14 @@
 #ifndef PID_H
     #define PID_H
 
-#define Kp_def 1;
-#define Ki_def 0.1;
-#define Kd_def 0.001;
-#define MAX_def 230;
-#define MIN_def 25;
+#define Kp_def 1.34;
+#define Ki_def 253.96;
+#define Kd_def 0;
+#define MAX_def 254;
+#define MIN_def 2;
 #define iMAX_def 1000;
 #define iMIN_def -1000;
-#define dt_def 10;
+#define dt_def 0.005;
 
 struct PIDparameter
 {
@@ -34,7 +34,7 @@ struct PIDparameter
 };
 
 void PID_init();
-void PID_tick(int sensor, int input);
+void PID_tick(float sensor, float input);
 void setPID(const struct PIDparameter * parameter);
 struct PIDparameter *getPID_ptr();
 #endif

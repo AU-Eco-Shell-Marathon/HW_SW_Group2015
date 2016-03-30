@@ -14,7 +14,7 @@
 
 static struct PIDparameter parameter_;
 
-float PIDval = 0;
+//float PIDval = 0;
 float dt = dt_def;
 float iState = 0;
 float err = 0;
@@ -40,10 +40,12 @@ void PID_init()
     
 }
 
-void PID_tick(int sensor, int input)
+void PID_tick(float sensor, float input)
 {
-    PIDval = 0;
-	err = ((float)input - (float)sensor)/1000000;
+    float PIDval = 0;
+    
+	//err = ((float)input - (float)sensor)/1000000;
+    err = (input - sensor);
 	
 	PIDval = parameter_.Kp*err; //Proportional calc.
 	
@@ -64,7 +66,7 @@ void PID_tick(int sensor, int input)
     else if(PIDval < parameter_.MIN)
         PIDval = parameter_.MIN;
 	
-	PWM_1_WriteCompare((unsigned char)PIDval);
+	PWM_1_WriteCompare((uint8)PIDval);
 }
 
 void setPID(const struct PIDparameter * parameter)

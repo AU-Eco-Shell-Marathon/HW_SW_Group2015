@@ -17,7 +17,7 @@
 #define PID_BYTES         ((START_EEPROM_SECTOR * EEPROM_SIZEOF_SECTOR) + 0x00)
 
 
-float set_moment=10;
+float set_moment=1.6*0.10;
 
 /*
 char save(const struct PIDparameter * PID,const float * moment);

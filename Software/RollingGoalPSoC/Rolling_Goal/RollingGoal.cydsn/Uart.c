@@ -110,22 +110,23 @@ void ReceiveUARTData(void)
         }
         else if(buf[0]=='6') // calibrate
         {
-            //calibrate();//skal fjernes
+            calibrate();//skal fjernes
             buf[buf_n+1]=0;
             
-            if(strcmp((char*)buf, "6\n")==0)
-            {
-               calibrate();
-            }
+//            if(strcmp((char*)buf, "6\n")==0)
+//            {
+//               calibrate();
+//            }
         }
         else if(buf[0]=='7') // reset
         {
+            update(NULL,NULL,1);
             buf[buf_n+1]=0;
             
-            if(strcmp((char*)buf, "7\n")==0)
-            {
-               update(NULL,NULL,1);
-            }
+//            if(strcmp((char*)buf, "7\n")==0)
+//            {
+//               update(NULL,NULL,1);
+//            }
         }
         
     }

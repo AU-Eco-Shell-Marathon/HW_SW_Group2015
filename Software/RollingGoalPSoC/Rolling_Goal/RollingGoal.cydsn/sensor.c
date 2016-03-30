@@ -53,7 +53,7 @@ int16 A_generator_offset = 0;
 
 CY_ISR(SAR_ADC_1)
 {
-    Moment_temp = ADC_SAR_Seq_1_GetResult16(2) - Moment_offset;
+    Moment_temp =  ADC_SAR_Seq_1_GetResult16(2) - Moment_offset;
     if(n == N)
         return;
     
@@ -106,7 +106,8 @@ CY_ISR(RPM_isr)
         if(temp2 != 0)
         {
             //RPM_temp = 100000000/(temp - temp2);
-            RPM_temp = (277778*60)/(temp - temp2);
+            RPM_temp = (100000000*2*3.14*0.1)/(temp - temp2);
+            //(277778*60)/(temp - temp2);
         }
         else
         {
@@ -243,9 +244,13 @@ char getData(struct data * Data)
     return 1;
 }
 
-int32 getMoment()
+float getForce()
 {
-    return CountToMoment(ADC_SAR_1_CountsTo_uVolts(Moment_temp)) * RPM_Moment_temp;
+    float temp = ADC_SAR_1_CountsTo_Volts(Moment_temp)*2*10;//10 = moment til kraft (1/0.10)
+    if(temp<0)
+        return -temp;
+    else
+        return temp;
 }
 
 int32 getDistance(char reset)
@@ -254,7 +259,7 @@ int32 getDistance(char reset)
     {
         Control_Reg_2_Write(0b1);
     }
-    return Counter_1_ReadCounter();
+    return (Counter_1_ReadCounter()*2*0.1*3.14)/360;
 }
 
 void calcSamples(const int32 * values,const uint16 N_sample, struct sample * Sample,int32 divider)
@@ -365,10 +370,13 @@ void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16)
     
 }
 
-int32 CountToMoment(int32 uvolt)
+int32 CountToForce(int32 uvolt)
 {
     //return (uvolt - 2500000);
-    return uvolt;
+    if(uvolt < 0)
+        return -uvolt*2*10;
+    else
+        return uvolt*2*10;
 }
 
 int32 CountToAmp(int32 uvolt)
