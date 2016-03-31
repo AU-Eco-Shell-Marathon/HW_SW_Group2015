@@ -77,10 +77,10 @@ namespace RollingRoad.Protocols
         }
 
         //Create a new interpreter from stream
-        public SP4RRInterpreter(Stream stream)
+        public SP4RRInterpreter(StreamReader reader, StreamWriter writer)
         {
-            _reader = new StreamReader(stream, Encoding.ASCII);
-            _writer = new StreamWriter(stream, Encoding.ASCII);
+            _reader = reader;
+            _writer = writer;
         }
 
         /// <summary>

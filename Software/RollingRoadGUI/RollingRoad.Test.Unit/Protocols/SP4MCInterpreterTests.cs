@@ -24,7 +24,7 @@ namespace RollingRoad.Test.Unit.Protocols
         [TearDown]
         public void TearDown()
         {
-            //_ms.Dispose();
+            _ms.Dispose();
         }
 
 
