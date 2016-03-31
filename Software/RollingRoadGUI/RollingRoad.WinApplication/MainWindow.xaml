@@ -4,15 +4,16 @@
         xmlns:local="clr-namespace:RollingRoad.WinApplication"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:templateSelectors="clr-namespace:RollingRoad.WinApplication.TemplateSelectors"
+        xmlns:viewModels="clr-namespace:RollingRoad.WinApplication.ViewModels"
         Title="Rolling Road" Height="450" Width="800" MinWidth="525" MinHeight="350">
     <Window.DataContext>
-        <local:MainWindowViewModel/>
+        <viewModels:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
         <local:TabItemTemplateSelector x:Key="TabSelector"/>
         <templateSelectors:LiveDataControlTemplateSelector x:Key="LiveDataControlTemplateSelector"/>
         
-        <DataTemplate x:Key="LiveDataTemplate" DataType="local:LiveDataSourceViewModel">
+        <DataTemplate x:Key="LiveDataTemplate" DataType="viewModels:LiveDataSourceViewModel">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MinWidth="160"/>
@@ -90,7 +91,7 @@
                 <ComboBox VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="20" ItemsSource="{Binding GraphUpdateRates}" SelectedIndex="{Binding GraphRefreshRateSelectedIndex}" Grid.Column="2" ItemStringFormat="{}{0} ms"/>
             </Grid>
         </DataTemplate>
-        <DataTemplate x:Key="LoggerTemplate" DataType="local:LoggerViewModel">
+        <DataTemplate x:Key="LoggerTemplate" DataType="viewModels:LoggerViewModel">
             <ListView x:Name="LogView" Margin="10,10,10,10" ItemsSource="{Binding Log}">
                 <ListView.View>
                     <GridView>
@@ -100,7 +101,7 @@
                 </ListView.View>
             </ListView>
         </DataTemplate>
-        <DataTemplate x:Key="ViewTemplate" DataType="local:DataSetsViewModel">
+        <DataTemplate x:Key="ViewTemplate" DataType="viewModels:DataSetsViewModel">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" MinWidth="160"/>
@@ -161,7 +162,7 @@
                 <local:LineChart ItemsSource="{Binding SelectedDataSets}" x:Name="ViewDataChart" Grid.Column="2"/>
             </Grid>
         </DataTemplate>
-        <DataTemplate x:Key="CalibrateControlTemplate" DataType="local:CalibrateControlViewModel">
+        <DataTemplate x:Key="CalibrateControlTemplate" DataType="viewModels:CalibrateControlViewModel">
             <Button Command="{Binding CalibrateCommand}">Calibrate</Button>
         </DataTemplate>
     </Window.Resources>

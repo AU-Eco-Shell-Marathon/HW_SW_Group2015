@@ -47,7 +47,7 @@ namespace RollingRoad.WinApplication
 
                 try
                 {
-                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename));
+                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename, "shell eco marathon"));
                     DialogResult = true;
                     Close();
 

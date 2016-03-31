@@ -67,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvDataInterpeterTests.cs" />
+    <Compile Include="Protocols\CsvDataInterpeterTests.cs" />
     <Compile Include="Data\DatapointTests.cs" />
     <Compile Include="Data\DataListTests.cs" />
     <Compile Include="Data\DataTypeTests.cs" />

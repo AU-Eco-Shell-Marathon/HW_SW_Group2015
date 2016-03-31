@@ -11,6 +11,7 @@ namespace RollingRoad
         private readonly DataList _xAxis;
         private int _index;
         private double _lastMs;
+        private bool _shouldRun = false;
 
         /// <summary>
         /// Event when at new value is sent
@@ -61,6 +62,7 @@ namespace RollingRoad
         //Stop the transmission of values
         public void Stop()
         {
+            _shouldRun = false;
             Timer.Stop();
         }
 
@@ -69,6 +71,7 @@ namespace RollingRoad
         /// </summary>
         public void Start()
         {
+            _shouldRun = true;
             Logger?.WriteLine("Emulator: starting");
             SendNextValue();
         }
@@ -78,12 +81,11 @@ namespace RollingRoad
         /// </summary>
         private void Reset()
         {
+            Stop();
             _index = 0;
 
             if(_xAxis != null && _xAxis.Data.Count > 0)
                 _lastMs = GetMs(_xAxis.Data.First(), _xAxis.Type.Unit);
-
-            Timer.Stop();
         }
 
         private double GetMs(double value, string unit)
@@ -137,7 +139,8 @@ namespace RollingRoad
             if (delta == 0)
                 delta = 1;
 
-            Timer.Start((int) delta);
+            if(_shouldRun)
+                Timer.Start((int) delta);
         }
 
         public override string ToString()

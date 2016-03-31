@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using Microsoft.Practices.Prism.Mvvm;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
     public class LoggerViewModel : BindableBase
     {

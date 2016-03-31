@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
-using RollingRoad.WinApplication.ViewModels;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataSetViewModel : BindableBase
     {

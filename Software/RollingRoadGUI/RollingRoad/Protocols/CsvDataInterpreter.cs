@@ -13,9 +13,6 @@ namespace RollingRoad
     /// </summary>
     public static class CsvDataInterpreter
     {
-        //Header that must be at the start of every AU2 csv datafile
-        private const string HeaderName = "shell eco marathon";
-
         //Seperator to use to split cells
         private const char Seperator = ';';
 
@@ -27,13 +24,13 @@ namespace RollingRoad
         /// </summary>
         /// <param name="writer">Stream to write to</param>
         /// <param name="source">Source to write to stream</param>
-        public static void WriteToStream(TextWriter writer, IDataset source)
+        public static void WriteToStream(TextWriter writer, IDataset source, string headername)
         {
             IList<DataList> dataCollection = source.Collection;
             int dataLength = dataCollection[0].Data.Count;
 
             //Write header and all type names
-            writer.WriteLine(HeaderName + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Name)));
+            writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Name)));
 
             //Writer description and all type units
             writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Unit)));
@@ -56,7 +53,7 @@ namespace RollingRoad
         /// </summary>
         /// <param name="reader">Stream reader pointing to a CSV-source</param>
         /// <returns>The MemoryDataset loaded with the data</returns>
-        public static MemoryDataset LoadFromStream(StreamReader reader)
+        public static MemoryDataset LoadFromStream(StreamReader reader, string expectedHeader)
         {
             //Used to keep track of the current line. Used for exceptions to display at what line something went wrong
             int currentLine = 1;
@@ -81,8 +78,8 @@ namespace RollingRoad
                 throw new Exception("Header is to short");
 
             //Make sure header name matches (basic check to make not all files are loaded)
-            if (names[0].ToLower() != HeaderName)
-                throw new Exception($"Invalid header, should be {HeaderName} (Is: " + names[0].ToLower() + ")");
+            if (names[0].ToLower() != expectedHeader)
+                throw new Exception($"Invalid header, should be {expectedHeader} (Is: " + names[0].ToLower() + ")");
 
             //Units
             line = reader.ReadLine();
@@ -122,7 +119,7 @@ namespace RollingRoad
                 {
                     double value;
 
-                    if (!double.TryParse(readData[i], NumberStyles.Number, CultureInfo, out value))
+                    if (!double.TryParse(readData[i], NumberStyles.Any, CultureInfo, out value))
                     {
                         throw new Exception("Error at line " + currentLine + " could not parse number");
                     }

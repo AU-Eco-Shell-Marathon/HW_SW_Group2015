@@ -9,10 +9,9 @@ using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
 using RollingRoad.Control;
 using RollingRoad.Data;
-using RollingRoad.WinApplication.ViewModels;
 using MessageBox = System.Windows.MessageBox;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
     public class LiveDataSourceViewModel : BindableBase
     {
@@ -49,7 +48,7 @@ namespace RollingRoad.WinApplication
             }
         }
 
-        public List<double> GraphUpdateRates { get; private set; } = new List<double>() {500, 1000, 2000, 5000, 10000}; 
+        public List<double> GraphUpdateRates { get; } = new List<double>() {500, 1000, 2000, 5000, 10000}; 
 
         private bool _isStarted;
         public bool IsStarted
@@ -66,7 +65,7 @@ namespace RollingRoad.WinApplication
         private readonly Dispatcher _dispatcher;
 
         private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex = 0;
+        private int _graphRefreshRateSelectedIndex;
 
         public ObservableCollection<DataSetViewModel> DataCollection { get; set; } = new ObservableCollection<DataSetViewModel>();
 
@@ -245,7 +244,7 @@ namespace RollingRoad.WinApplication
                 };
 
                 //Save file
-                CsvDataFile.WriteToFile(dlg.FileName, source);
+                CsvDataFile.WriteToFile(dlg.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)
