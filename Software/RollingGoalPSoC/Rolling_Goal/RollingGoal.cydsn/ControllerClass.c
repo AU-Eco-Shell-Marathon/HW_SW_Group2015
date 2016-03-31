@@ -12,12 +12,12 @@
 #include "ControllerClass.h"
 #include <project.h>
 #include <stdio.h>
-
+/*
 #define START_EEPROM_SECTOR  (1u) // vil tro at man godt kan bruge helt fra SECTOR 0, hvis man skal bruge mere plads.
 #define PID_BYTES         ((START_EEPROM_SECTOR * EEPROM_SIZEOF_SECTOR) + 0x00)
+*/
 
-
-float set_moment=1.6*0.10;
+float set_force=21.76f;
 
 /*
 char save(const struct PIDparameter * PID,const float * moment);
@@ -30,7 +30,7 @@ CY_ISR_PROTO(PID_isr);
 
 CY_ISR(PID_isr)
 {  
-    PID_tick(getMoment(), set_moment);
+    PID_tick(getMoment(), ForceToMoment(set_force));
 }
 
 char busy = 0;
@@ -94,7 +94,7 @@ void calibrate()
 }
 
 
-void update(const struct PIDparameter * parameter, const float * Moment, char restart)
+void update(const struct PIDparameter * parameter, const float * Force, char restart)
 {
     if(parameter != NULL)
     {    
@@ -102,10 +102,10 @@ void update(const struct PIDparameter * parameter, const float * Moment, char re
         EEPROM_write(0, (uint8*)parameter);
     }
     
-    if(Moment != NULL)
+    if(Force != NULL)
     {
-        set_moment=*Moment;
-        EEPROM_write(1, (uint8*)Moment);
+        set_force=*Force;
+        EEPROM_write(1, (uint8*)Force);
     }
     
     
@@ -138,7 +138,7 @@ void init()
     PID_init();
     
     EEPROM_read(0,(uint8*)getPID_ptr());
-    EEPROM_read(1,(uint8*)&set_moment);
+    EEPROM_read(1,(uint8*)&set_force);
     
     isr_4_StartEx(PID_isr);
     Clock_4_Start();

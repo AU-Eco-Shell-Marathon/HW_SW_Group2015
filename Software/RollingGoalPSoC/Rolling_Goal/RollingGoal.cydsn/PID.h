@@ -12,14 +12,14 @@
 #ifndef PID_H
     #define PID_H
 
-#define Kp_def 1.34;
-#define Ki_def 253.96;
+#define Kp_def 0;
+#define Ki_def 1146.2f;
 #define Kd_def 0;
 #define MAX_def 254;
 #define MIN_def 2;
 #define iMAX_def 1000;
 #define iMIN_def -1000;
-#define dt_def 0.005;
+#define dt_def 0.0042f;
 
 struct PIDparameter
 {

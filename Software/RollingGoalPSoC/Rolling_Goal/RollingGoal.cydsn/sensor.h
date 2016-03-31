@@ -32,9 +32,10 @@ struct data
     struct sample V_motor;
     struct sample A_motor;
     struct sample P_motor;
-    struct sample Speed;
-    struct sample Force;
+    struct sample RPM;
+    struct sample Moment;
     struct sample P_mekanisk;
+    struct sample efficiency;
     uint32 distance;
     uint32 time_ms;
     char stop;
@@ -46,6 +47,10 @@ float getMoment();
 int32 getDistance(char reset);
 void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG);
 void sensor_calibrate(int16* VM, int16* AM, int16* moment, int16* AG);
+float MomentToForce(float Moment_value);
+float ForceToMoment(float Force_value);
+float RPMToSpeed(float RPM_value);
+
 
 #endif
 /* [] END OF FILE */

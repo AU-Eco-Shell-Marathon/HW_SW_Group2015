@@ -27,7 +27,7 @@
 
 void run();
 void stop();
-void update(const struct PIDparameter *, const float * Moment, char restart);
+void update(const struct PIDparameter *, const float * Force, char restart);
 void init();
 void calibrate();
 

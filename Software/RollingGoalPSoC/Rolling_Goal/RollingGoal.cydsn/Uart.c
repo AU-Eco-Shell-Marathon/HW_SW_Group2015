@@ -2,6 +2,7 @@
 #include "Uart.h"
 #include "ControllerClass.h"
 #include "PID.h"
+#include "sensor.h"
 
 uint8_t buf[250] = {0};
 uint8 buf_n = 0;
@@ -54,19 +55,23 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 0 Time ms\n");
                 CyDelay(1);
-                SendUART("1 1 Torque Nm\n");
+                SendUART("1 1 Force N\n");
                 CyDelay(1);
                 SendUART("1 2 Voltage V\n");
                 CyDelay(1);
                 SendUART("1 3 Ampere A\n");
                 CyDelay(1);
-                SendUART("1 4 Effect J\n");
+                SendUART("1 4 Effect(Mek) W\n");
                 CyDelay(1);
                 SendUART("1 5 Distance m\n");
                 CyDelay(1);
-                SendUART("1 6 RPM m/s\n");
+                SendUART("1 6 Speed m/s\n");
                 CyDelay(1);
-                SendUART("1 7 Effect(M) J\n");
+                SendUART("1 7 Effect(EL) W\n");
+                CyDelay(1);
+                SendUART("1 8 efficiency procent\n");
+                CyDelay(1);
+                SendUART("1 9 Overcurrent\n");
                 isReadyToSend = 1;
                // CyDelay(100);    HUSK AF OPDATER MED SENESTE PROTOKOL
                // SendData((uint8*)"1 2 Voltage Volt\n");
@@ -148,16 +153,30 @@ void SendData (struct data* Data)
     CheckConnection();
     
     if (USBUART_1_GetConfiguration() == 0u)
+    {
+        isReadyToSend = 0;
         return;
+    }
+        
     
     if( USBUART_1_DataIsReady() != 0)
         return;
 
     
     char buf[100];
-
-    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f\n", Data->time_ms, Data->Moment.avg, Data->V_motor.avg, Data->A_motor.avg, Data->P_motor.avg,
-    Data->distance, Data->RPM.avg, Data->P_motor.avg);// fjern \r
+       
+    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d\n", 
+        Data->time_ms, 
+        MomentToForce(Data->Moment.avg), 
+        Data->V_motor.avg, 
+        Data->A_motor.avg, 
+        Data->P_motor.avg,
+        Data->distance, 
+        RPMToSpeed(Data->RPM.avg), 
+        Data->P_motor.avg, 
+        Data->efficiency.avg,
+        Data->stop
+    );
     SendUART(buf);
 
 

@@ -11,6 +11,7 @@
 */
 #include "sensor.h"
 #include <Math.h>
+#include "Constants.h"
 
 #define N 128u
 
@@ -106,7 +107,7 @@ CY_ISR(RPM_isr)
         if(temp2 != 0)
         {
             //RPM_temp = 100000000/(temp - temp2);
-            RPM_temp = (100000000*2*3.14*0.1)/(temp - temp2);
+            RPM_temp = (16666667)/(temp - temp2); // 100000000*60/360=16666667
             //(277778*60)/(temp - temp2);
         }
         else
@@ -217,36 +218,40 @@ char getData(struct data * Data)
     
     convertToUnit(V_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,0);
     convertToUnit(A_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,1);
-    
     convertToUnit(Moment, n, &ADC_SAR_Seq_1_CountsTo_uVolts,2);
     
     int32 P_motor[N];
     int32 P_mekanisk[N];
+    int32 efficiency[N];
     uint16 i;
     for(i = 0; i < N; i++)
     {
-        P_motor[i] = (V_motor[i]/1000)*(A_motor[i]/1000);  //Brug af shift istedet vil koste 4.63%
-        P_mekanisk[i] = (Moment[i]/1000)*(RPM[i]/1000);
+        P_motor[i] = (V_motor[i]/1000)*(CountToAmp(A_motor[i])/1000);  //Brug af shift istedet vil koste 4.63% // uWatt
+        P_mekanisk[i] = ((Moment[i]/1000)*((RPM[i]*RPM_Nm_To_uW)/1000))/1000; //uWatt
+        efficiency[i] = (P_mekanisk[i]*1000)/P_motor[i] ; //promille
     }
 
     calcSamples(V_motor, n, &Data->V_motor, 1000000);
-    calcSamples(A_motor, n, &Data->A_motor, 1000);
+    calcSamples(A_motor, n, &Data->A_motor, 1000000);
     calcSamples(Moment, n, &Data->Moment, 1000000);
     calcSamples(RPM, n, &Data->RPM, 1000);
-    calcSamples(P_motor, n, &Data->P_motor, 1000);
-    calcSamples(P_mekanisk, n, &Data->P_mekanisk, 1000);
     
-    Data->distance = (2*3.14*10*Counter_1_ReadCounter())/360;
-    Data->distance = 0;
+    calcSamples(P_motor, n, &Data->P_motor, 1000000);
+    calcSamples(P_mekanisk, n, &Data->P_mekanisk, 1000000);
+    
+    calcSamples(efficiency, n, &Data->efficiency, 10); // udprinter i procent.
+    
+    Data->distance = (uint32)((2.0f*PI*RR_radius*(float)Counter_1_ReadCounter())/360.0f);
+    Data->distance = 0; //!!!!!!!!!!!!!!!!!!!!!!! fjern denne linje. !!!!!!!!!!!!!!!!!!!! --------------------------------
     Data->time_ms = Counter_2_ReadCounter();
     Data->stop = Status_Reg_1_Read()&0b1;
     n=0;
     return 1;
 }
 
-float getForce()
+float getMoment()
 {
-    float temp = ADC_SAR_1_CountsTo_Volts(Moment_temp)*2*10;//10 = moment til kraft (1/0.10)
+    float temp = ADC_SAR_1_CountsTo_Volts(Moment_temp)*2;
     if(temp<0)
         return -temp;
     else
@@ -259,7 +264,7 @@ int32 getDistance(char reset)
     {
         Control_Reg_2_Write(0b1);
     }
-    return (Counter_1_ReadCounter()*2*0.1*3.14)/360;
+    return Counter_1_ReadCounter()*((2.0f*RR_radius*PI)/360.0f);
 }
 
 void calcSamples(const int32 * values,const uint16 N_sample, struct sample * Sample,int32 divider)
@@ -267,12 +272,9 @@ void calcSamples(const int32 * values,const uint16 N_sample, struct sample * Sam
     int32 AVG = values[0];
     int32 MAX = values[0];
     int32 MIN = values[0];
-    
-    
-    
+
     Sample->rms = 0;
-    
-    
+
     uint16 i;
     for(i = 1; i < N_sample; i++)
     {         
@@ -309,52 +311,6 @@ void calcSamples(const int32 * values,const uint16 N_sample, struct sample * Sam
     Sample->min = (float)MIN/divider;
 }
 
-/*
-void calcSamples(const int32 * values,const uint8 N_sample, struct sample * Sample)
-{
-    int32 AVG = 0;
-    int32 MAX = 0;
-    int32 MIN = 0;
-    
-    
-    Sample->avg = 0;
-    Sample->rms = 0;
-    Sample->max = 0;
-    Sample->min = 0xFFFF;
-    
-    uint8 i;
-    for(i = 0; i < N_sample; i++)
-    {         
-        Sample->avg += values[i];
-        
-        if(values[i] > Sample->max)
-            Sample->max = values[i];
-        else if(values[i] < Sample->min)
-            Sample->min = values[i];
-
-    }
-    
-    if(N_sample == 128)
-        Sample->avg = Sample->avg>>7;
-    else
-        Sample->avg = Sample->avg/N_sample;
-    
-    for(i = 0; i < N_sample; i++)
-    {
-
-        Sample->rms += (Sample->avg - values[i])^2;
-
-    }
-    Sample->rms = Sample->rms/128;
-    if(Sample->rms < 0)
-        Sample->rms = 0;
-    else
-        Sample->rms = sqrt((double)Sample->rms);
-
-}
-*/
-
-
 void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16), const uint8 type)
 {
     uint8 i;
@@ -370,20 +326,33 @@ void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16)
     
 }
 
-int32 CountToForce(int32 uvolt)
+int32 CountToMoment(int32 uvolt)
 {
     //return (uvolt - 2500000);
     if(uvolt < 0)
-        return -uvolt*2*10;
+        return -uvolt*2;
     else
-        return uvolt*2*10;
+        return uvolt*2;
 }
 
 int32 CountToAmp(int32 uvolt)
 {
-    
-    //return ((uvolt/416) - (2500000/416))*10;
-    return ((uvolt/416))*10;
+    return uvolt*24;
+}
+
+float MomentToForce(float Moment_value)
+{
+    return Moment_value * RR_radius_reciprocal;
+}
+
+float ForceToMoment(float Force_value)
+{
+    return Force_value * RR_radius;
+}
+
+float RPMToSpeed(float RPM_value)
+{
+    return RPM_value * RPM_To_Speed;
 }
 
 /* [] END OF FILE */
