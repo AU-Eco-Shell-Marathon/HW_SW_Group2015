@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
 
@@ -7,7 +6,7 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataListViewModel : BindableBase
     {
-        public DataList List { get; private set; }
+        public DataList List { get; }
 
         public DataListViewModel(DataList list)
         {
@@ -19,10 +18,10 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public void AddData(double value)
         {
-            List.Data.Add(value);
+            List.Add(value);
             OnPropertyChanged(nameof(NewestValue));
         }
         
-        public double NewestValue => List.Data.Last();
+        public double NewestValue => List.Last();
     }
 }

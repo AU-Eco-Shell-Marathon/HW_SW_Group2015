@@ -1,6 +1,4 @@
-﻿
-using System.Globalization;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using NUnit.Framework;
 using RollingRoad.Protocols;
@@ -8,11 +6,11 @@ using RollingRoad.Protocols;
 namespace RollingRoad.Test.Unit.Protocols
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public class SP4MCInterpreterTests
     {
         private MemoryStream _ms;
         private SP4MCInterpreter _interpreter;
-        private CultureInfo _cultureTarget = new CultureInfo("en-US");
 
         [SetUp]
         public void SetUp()

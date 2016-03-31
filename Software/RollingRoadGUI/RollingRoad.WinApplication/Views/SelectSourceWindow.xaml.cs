@@ -2,6 +2,8 @@
 using System.IO.Ports;
 using System.Windows;
 using Microsoft.Win32;
+using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication
 {
@@ -47,7 +49,7 @@ namespace RollingRoad.WinApplication
 
                 try
                 {
-                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename));
+                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename, "shell eco marathon"));
                     DialogResult = true;
                     Close();
 

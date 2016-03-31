@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Threading;
 using RollingRoad.Control;
 using RollingRoad.Data;
+using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.Protocols
 {
+    // ReSharper disable once InconsistentNaming
     public class SP4RRInterpreter : ILiveDataSource, ITorqueControl, IPidControl, ICalibrateControl
     {
         /// <summary>
@@ -77,10 +79,10 @@ namespace RollingRoad.Protocols
         }
 
         //Create a new interpreter from stream
-        public SP4RRInterpreter(Stream stream)
+        public SP4RRInterpreter(StreamReader reader, StreamWriter writer)
         {
-            _reader = new StreamReader(stream, Encoding.ASCII);
-            _writer = new StreamWriter(stream, Encoding.ASCII);
+            _reader = reader;
+            _writer = writer;
         }
 
         /// <summary>
@@ -122,7 +124,15 @@ namespace RollingRoad.Protocols
                     Datapoint entry = new Datapoint(type, 0);
 
                     Logger?.WriteLine("New type recieved: " + entry);
-                    _typeDictionary.Add(typeId, type);
+
+                    if (_typeDictionary.ContainsKey(typeId))
+                    {
+                        _typeDictionary[typeId] = type;
+                    }
+                    else
+                    {
+                        _typeDictionary.Add(typeId, type);
+                    }
                     break;
                 case PacketId.Information:
 
@@ -133,6 +143,16 @@ namespace RollingRoad.Protocols
                     for (int i = 0; i < valuesToRead; i++)
                     {
                         double value = double.Parse(values[i + 1], CultureInfo);
+
+                        if (!_typeDictionary.ContainsKey(i))
+                        {
+                            Logger?.WriteLine("Unknown datatype recieved, sending handshake");
+                            SendHandshake();
+                            if(i == 0)
+                                _typeDictionary.Add(i, new DataType("Time", "Unknown"));
+                            else
+                                _typeDictionary.Add(i, new DataType("Unknown", "Unknown"));
+                        }
 
                         DataType dataType = _typeDictionary[i];
                         dataRead.Add(new Datapoint(dataType, value));
@@ -155,7 +175,7 @@ namespace RollingRoad.Protocols
                     break;
                 default:
                     Logger?.WriteLine("Unknown id recieved: " + (int)packetId);
-                    break;;
+                    break;
             }
         }
 
@@ -191,6 +211,11 @@ namespace RollingRoad.Protocols
             _shouldClose = true;
         }
 
+        public void SendHandshake()
+        {
+            SendCommand((int)PacketId.HandShake + " RollingRoad");
+        }
+
         public void Start()
         {
             Start(true);
@@ -198,7 +223,7 @@ namespace RollingRoad.Protocols
 
         public void Start(bool startThread)
         {
-            SendCommand((int)PacketId.HandShake + " RollingRoad");
+            SendHandshake();
 
             if (!startThread)
                 return;

@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace RollingRoad.Data
 {
-    public class DataList
+    public class DataList : List<double>, INotifyPropertyChanged
     {
         public DataType Type { get; }
-        
-        /// <summary>
-        /// All data collected
-        /// </summary>
-        public ICollection<double> Data { get; set; } = new List<double>();
+
+        public double LastestValue
+        {
+            get
+            {
+                double value = this.LastOrDefault();
+                return value;
+            }
+        }
+
+        public new void Add(double value)
+        {
+            base.Add(value);
+            OnPropertyChanged(nameof(LastestValue));
+        }
         
         /// <summary>
         /// Creates a new data list with the specified name and unit
@@ -22,13 +34,20 @@ namespace RollingRoad.Data
         {
             if(type == null)
                 throw new Exception("Type cant be null");
-
+            
             Type = type;
         }
 
         public override string ToString()
         {
-            return $"{Type} + ({Data.Count} datapoints)";
+            return $"{Type} + ({Count} datapoints)";
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -9,10 +9,11 @@ using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
 using RollingRoad.Control;
 using RollingRoad.Data;
-using RollingRoad.WinApplication.ViewModels;
+using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 using MessageBox = System.Windows.MessageBox;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
     public class LiveDataSourceViewModel : BindableBase
     {
@@ -21,7 +22,7 @@ namespace RollingRoad.WinApplication
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
-        public IList<DataListViewModel> Collection => DataCollection.First().Collection;
+        public IList<DataList> Collection => DataCollection.First();
         public ILogger Logger { get; set; }
 
         public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
@@ -49,7 +50,7 @@ namespace RollingRoad.WinApplication
             }
         }
 
-        public List<double> GraphUpdateRates { get; private set; } = new List<double>() {500, 1000, 2000, 5000, 10000}; 
+        public List<double> GraphUpdateRates { get; } = new List<double>() {500, 1000, 2000, 5000, 100000}; 
 
         private bool _isStarted;
         public bool IsStarted
@@ -66,9 +67,9 @@ namespace RollingRoad.WinApplication
         private readonly Dispatcher _dispatcher;
 
         private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex = 0;
+        private int _graphRefreshRateSelectedIndex;
 
-        public ObservableCollection<DataSetViewModel> DataCollection { get; set; } = new ObservableCollection<DataSetViewModel>();
+        public ObservableCollection<Dataset> DataCollection { get; set; } = new ObservableCollection<Dataset>();
 
         public LiveDataSourceViewModel()
         {
@@ -78,7 +79,7 @@ namespace RollingRoad.WinApplication
             SelectSourceCommand     = new DelegateCommand(SelectSource);
 
             _dispatcher = Dispatcher.CurrentDispatcher;
-            DataCollection.Add(new DataSetViewModel(new MemoryDataset()));
+            DataCollection.Add(new Dataset());
         }
 
         public ILiveDataSource Source
@@ -95,13 +96,21 @@ namespace RollingRoad.WinApplication
                 _source = value;
                 StartStopCommand.RaiseCanExecuteChanged();
 
-                ICalibrateControl ctrl = _source as ICalibrateControl;
+                ICalibrateControl cctrl = _source as ICalibrateControl;
+                if(cctrl != null)
+                    LiveControlCollection.Add(new CalibrateControlViewModel(cctrl));
 
-                if(ctrl != null)
-                    LiveControlCollection.Add(new CalibrateControlViewModel(ctrl));
+                ITorqueControl tctrl = _source as ITorqueControl;
+                if(tctrl != null)
+                    LiveControlCollection.Add(new TorqueControlViewModel(tctrl));
+
+                IPidControl pctrl = _source as IPidControl;
+                if (pctrl != null)
+                    LiveControlCollection.Add(new PidControlViewModel(pctrl));
 
                 Start();
                 OnPropertyChanged(nameof(SelectedSourceText));
+                OnPropertyChanged(nameof(LiveControlCollection));
 
                 if (_source != null)
                     _source.OnNextReadValue += ThreadMover;
@@ -158,17 +167,17 @@ namespace RollingRoad.WinApplication
             HasBeenSaved = false;
             foreach (Datapoint datapoint in datapoints)
             {
-                DataListViewModel list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataList list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
                 {
-                    list = new DataListViewModel(new DataList(datapoint.Type));
+                    list = new DataList(datapoint.Type);
                     Collection.Add(list);
                     ClearCommand.RaiseCanExecuteChanged();
                 }
                 double value = datapoint.Value;
 
-                list?.AddData(value);
+                list?.Add(value);
             }
         }
 
@@ -239,13 +248,13 @@ namespace RollingRoad.WinApplication
 
             try
             {
-                MemoryDataset source = new MemoryDataset(new List<DataList>(Collection.Select(x => x.List)))
+                Dataset source = new Dataset(new List<DataList>(Collection))
                 {
                     Description = DateTime.Now.ToLongDateString()
                 };
 
                 //Save file
-                CsvDataFile.WriteToFile(dlg.FileName, source);
+                CsvDataFile.WriteToFile(dlg.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)

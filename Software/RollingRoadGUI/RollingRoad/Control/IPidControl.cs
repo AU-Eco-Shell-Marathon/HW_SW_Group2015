@@ -1,4 +1,4 @@
-﻿namespace RollingRoad
+﻿namespace RollingRoad.Control
 {
     public interface IPidControl
     {

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication
 {
@@ -9,17 +10,17 @@ namespace RollingRoad.WinApplication
         {
             FrameworkElement element = container as FrameworkElement;
 
-            if (element != null && item != null)
-            {
-                if (item is LiveDataSourceViewModel)
-                    return element.FindResource("LiveDataTemplate") as DataTemplate;
+            if (element == null || item == null)
+                return null;
 
-                if (item is LoggerViewModel)
-                    return element.FindResource("LoggerTemplate") as DataTemplate;
+            if (item is LiveDataSourceViewModel)
+                return element.FindResource("LiveDataTemplate") as DataTemplate;
 
-                if(item is DataSetsViewModel)
-                    return element.FindResource("ViewTemplate") as DataTemplate;
-            }
+            if (item is LoggerViewModel)
+                return element.FindResource("LoggerTemplate") as DataTemplate;
+
+            if(item is DataSetsViewModel)
+                return element.FindResource("ViewTemplate") as DataTemplate;
 
             return null;
         }

@@ -2,8 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using Microsoft.Practices.Prism.Mvvm;
+using RollingRoad.Loggers;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
     public class LoggerViewModel : BindableBase
     {

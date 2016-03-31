@@ -1,28 +1,31 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
-using RollingRoad.WinApplication.ViewModels;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataSetViewModel : BindableBase
     {
-        private IDataset DataSet { get; set; }
+        private bool _isSelected;
+        private Dataset DataSet { get; }
 
-        public DataSetViewModel(IDataset dataset)
+        public DataSetViewModel(Dataset dataset)
         {
             DataSet = dataset;
-            DataSet.Collection = new ObservableCollection<DataList>(DataSet.Collection);
-            Collection = new ObservableCollection<DataListViewModel>(DataSet.Collection.Select(x => new DataListViewModel(x)));
         }
 
         public string Name => DataSet.Name;
         public string Description => DataSet.Description;
 
-        public bool IsSelected { get; set; }
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+                OnPropertyChanged(nameof(IsSelected));
+            }
+        }
 
         public IList<DataListViewModel> Collection { get; set; }
     }

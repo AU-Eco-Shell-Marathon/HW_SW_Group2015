@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication.TemplateSelectors
 {
@@ -9,11 +10,17 @@ namespace RollingRoad.WinApplication.TemplateSelectors
         {
             FrameworkElement element = container as FrameworkElement;
 
-            if (element != null && item != null)
-            {
-                if (item is CalibrateControlViewModel)
-                    return element.FindResource("CalibrateControlTemplate") as DataTemplate;
-            }
+            if (element == null || item == null)
+                return null;
+
+            if (item is CalibrateControlViewModel)
+                return element.FindResource("CalibrateControlTemplate") as DataTemplate;
+
+            if(item is TorqueControlViewModel)
+                return element.FindResource("TorqueControlTemplate") as DataTemplate;
+
+            if(item is PidControlViewModel)
+                return element.FindResource("PidControlTemplate") as DataTemplate;
 
             return null;
         }

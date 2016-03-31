@@ -1,5 +1,5 @@
-﻿
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.Test.Unit
 {
@@ -12,7 +12,7 @@ namespace RollingRoad.Test.Unit
             EventLogger eventLogger = new EventLogger();
             int eventCallCount = 0;
 
-            eventLogger.OnLog += (text) => eventCallCount++;
+            eventLogger.OnLog += text => eventCallCount++;
 
             eventLogger.WriteLine("Test line");
 
@@ -26,7 +26,7 @@ namespace RollingRoad.Test.Unit
             EventLogger eventLogger = new EventLogger();
             string eventCallValue = "";
 
-            eventLogger.OnLog += (text) => eventCallValue = text;
+            eventLogger.OnLog += text => eventCallValue = text;
 
             eventLogger.WriteLine(str);
 
@@ -40,7 +40,7 @@ namespace RollingRoad.Test.Unit
             EventLogger eventLogger = new EventLogger();
             string eventCallValue = "";
 
-            eventLogger.OnLog += (text) => eventCallValue = text;
+            eventLogger.OnLog += text => eventCallValue = text;
             
             int i;
             for (i = 0; i < number; i++)

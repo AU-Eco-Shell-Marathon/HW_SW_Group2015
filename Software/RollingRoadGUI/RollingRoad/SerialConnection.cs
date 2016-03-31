@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.IO.Ports;
 using RollingRoad.Protocols;
 
@@ -10,7 +11,7 @@ namespace RollingRoad
     {
         public SerialPort Port { get; }
 
-        public SerialConnection(SerialPort port) : base(port.BaseStream)
+        public SerialConnection(SerialPort port) : base(new StreamReader(port.BaseStream), new StreamWriter(port.BaseStream))
         {
             Port = port;
         }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RollingRoad
+﻿namespace RollingRoad.Loggers
 {
     /// <summary>
     /// Invokes OnLog every time there's a log message, does not store log.

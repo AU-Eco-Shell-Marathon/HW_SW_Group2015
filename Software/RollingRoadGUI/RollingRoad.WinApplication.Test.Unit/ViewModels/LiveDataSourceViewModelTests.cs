@@ -1,8 +1,11 @@
 ﻿
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.Data;
+using RollingRoad.LiveData;
+using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication.Test.Unit.ViewModels
 {
@@ -41,6 +44,41 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
             _vm.Source = source;
 
             Assert.That(_vm.StartStopCommand.CanExecute, Is.True);
+        }
+
+        [Test]
+        public async Task StartStopCommand_SourceSetAndCommandExecuted_StopCalledOnceOnSource()
+        {
+            ILiveDataSource source = Substitute.For<ILiveDataSource>();
+
+            _vm.Source = source;
+            await _vm.StartStopCommand.Execute();
+
+            source.Received(1).Stop();
+        }
+
+        [Test]
+        public async Task StartStopCommand_SourceSetAndCommandExecutedTwice_StopCalledOnceOnSource()
+        {
+            ILiveDataSource source = Substitute.For<ILiveDataSource>();
+
+            _vm.Source = source;
+            await _vm.StartStopCommand.Execute();
+            await _vm.StartStopCommand.Execute();
+
+            source.Received(1).Stop();
+        }
+
+        [Test]
+        public async Task StartStopCommand_SourceSetAndCommandExecutedTwice_StartCalledTwiceOnSource()
+        {
+            ILiveDataSource source = Substitute.For<ILiveDataSource>();
+
+            _vm.Source = source;
+            await _vm.StartStopCommand.Execute();
+            await _vm.StartStopCommand.Execute();
+
+            source.Received(2).Start();
         }
 
         [Test]

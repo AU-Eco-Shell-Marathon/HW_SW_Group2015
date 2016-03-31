@@ -7,17 +7,22 @@ using RollingRoad.Protocols;
 namespace RollingRoad.Test.Unit.Protocols
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public class SP4RRInterpreterTests
     {
         private MemoryStream _ms;
+        private StreamWriter _writer;
+        private StreamReader _reader;
         private SP4RRInterpreter _interpreter;
-        private CultureInfo _cultureTarget = new CultureInfo("en-US");
+        private readonly CultureInfo _cultureTarget = new CultureInfo("en-US");
 
         [SetUp]
         public void SetUp()
         {
             _ms = new MemoryStream();
-            _interpreter = new SP4RRInterpreter(_ms);
+            _reader = new StreamReader(_ms);
+            _writer = new StreamWriter(_ms);
+            _interpreter = new SP4RRInterpreter(_reader, _writer);
         }
 
         [TearDown]
@@ -32,6 +37,7 @@ namespace RollingRoad.Test.Unit.Protocols
             writer.Write(value);
             writer.Flush();
             _ms.Position = 0;
+            writer.Flush();
         }
 
         [Test]

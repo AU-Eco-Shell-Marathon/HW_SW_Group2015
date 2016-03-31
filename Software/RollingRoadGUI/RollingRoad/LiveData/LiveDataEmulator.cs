@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using RollingRoad.Data;
+using RollingRoad.Loggers;
+using RollingRoad.Timers;
 
-namespace RollingRoad
+namespace RollingRoad.LiveData
 {
     public class LiveDataEmulator : ILiveDataSource
     {
-        private readonly IDataset _source;
+        private readonly Dataset _source;
         private readonly DataList _xAxis;
         private int _index;
         private double _lastMs;
+        private bool _shouldRun = false;
 
         /// <summary>
         /// Event when at new value is sent
@@ -47,11 +50,11 @@ namespace RollingRoad
         /// Ctor, before the timer starts sending values, start must be called
         /// </summary>
         /// <param name="source">Source to emulate</param>
-        public LiveDataEmulator(IDataset source)
+        public LiveDataEmulator(Dataset source)
         {
             _source = source;
             
-            _xAxis = source.GetDataList("Time");
+            _xAxis = source.FirstOrDefault(x => x.Type.Name == "Time");
 
             Timer = new SystemTimer();
             
@@ -61,6 +64,7 @@ namespace RollingRoad
         //Stop the transmission of values
         public void Stop()
         {
+            _shouldRun = false;
             Timer.Stop();
         }
 
@@ -69,6 +73,7 @@ namespace RollingRoad
         /// </summary>
         public void Start()
         {
+            _shouldRun = true;
             Logger?.WriteLine("Emulator: starting");
             SendNextValue();
         }
@@ -78,12 +83,11 @@ namespace RollingRoad
         /// </summary>
         private void Reset()
         {
+            Stop();
             _index = 0;
 
-            if(_xAxis != null && _xAxis.Data.Count > 0)
-                _lastMs = GetMs(_xAxis.Data.First(), _xAxis.Type.Unit);
-
-            Timer.Stop();
+            if(_xAxis != null && _xAxis.Count > 0)
+                _lastMs = GetMs(_xAxis.First(), _xAxis.Type.Unit);
         }
 
         private double GetMs(double value, string unit)
@@ -109,7 +113,7 @@ namespace RollingRoad
                 return;
 
             //If there's not more available data, stop. 
-            if (_index >= _xAxis.Data.Count)
+            if (_index >= _xAxis.Count)
             {
                 Logger?.WriteLine("Emulator: stopping");
                 Timer.Stop();
@@ -118,26 +122,27 @@ namespace RollingRoad
 
             //Setup data to transmit
             List<Datapoint> entry = new List<Datapoint>();
-            for (int i = 0; i < _source.Collection.Count; i++)
+            for (int i = 0; i < _source.Count; i++)
             {
-                DataList data = _source.Collection[i];
-                entry.Add(new Datapoint(data.Type, data.Data.ElementAt(_index)));
+                DataList data = _source[i];
+                entry.Add(new Datapoint(data.Type, data.ElementAt(_index)));
             }
             
             OnNextReadValue?.Invoke(entry); //Send value
 
             //Calculate time to wait
-            double time = GetMs(_xAxis.Data.ElementAt(_index), _xAxis.Type.Unit);
+            double time = GetMs(_xAxis.ElementAt(_index), _xAxis.Type.Unit);
             double delta = time - _lastMs;
             _lastMs = time;
 
             //Move data index
             _index++;
 
-            if (delta == 0)
+            if (Math.Abs(delta) < double.Epsilon)
                 delta = 1;
 
-            Timer.Start((int) delta);
+            if(_shouldRun)
+                Timer.Start((int) delta);
         }
 
         public override string ToString()

@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
 using RollingRoad.Data;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.ViewModels
 {
-    public class DataSetsViewModel
+    public class DataSetsViewModel : BindableBase
     {
         public ObservableCollection<DataSetViewModel> DataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
         public ObservableCollection<DataSetViewModel> SelectedDataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
@@ -54,7 +53,7 @@ namespace RollingRoad.WinApplication
 
                 try
                 {
-                    MemoryDataset dataset = CsvDataFile.LoadFromFile(filename);
+                    Dataset dataset = CsvDataFile.LoadFromFile(filename, "shell eco marathon");
 
                     DataSets.Add(new DataSetViewModel(dataset));
                 }

@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using RollingRoad.Data;
 
-
-namespace RollingRoad
+namespace RollingRoad.Protocols
 {
     /// <summary>
     /// 
     /// </summary>
     public static class CsvDataInterpreter
     {
-        //Header that must be at the start of every AU2 csv datafile
-        private const string HeaderName = "shell eco marathon";
-
         //Seperator to use to split cells
         private const char Seperator = ';';
 
@@ -27,22 +22,24 @@ namespace RollingRoad
         /// </summary>
         /// <param name="writer">Stream to write to</param>
         /// <param name="source">Source to write to stream</param>
-        public static void WriteToStream(TextWriter writer, IDataset source)
+        public static void WriteToStream(TextWriter writer, Dataset source, string headername)
         {
-            IList<DataList> dataCollection = source.Collection;
-            int dataLength = dataCollection[0].Data.Count;
+            if (source.Count == 0)
+                return;
+
+            int dataLength = source.First().Count;
 
             //Write header and all type names
-            writer.WriteLine(HeaderName + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Name)));
+            writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), source.Select(x => x.Type.Name)));
 
             //Writer description and all type units
-            writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Unit)));
+            writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), source.Select(x => x.Type.Unit)));
 
             //Data
             for (int i = 0; i < dataLength; i++)
             {
                 //LINQ Magic
-                string stringout = dataCollection.Aggregate("", (current, dataList) => current + (Seperator + dataList.Data.ElementAt(i).ToString(CultureInfo)));
+                string stringout = source.Aggregate("", (current, dataList) => current + (Seperator + dataList.ElementAt(i).ToString(CultureInfo)));
 
                 writer.WriteLine(stringout);
             }
@@ -56,19 +53,18 @@ namespace RollingRoad
         /// </summary>
         /// <param name="reader">Stream reader pointing to a CSV-source</param>
         /// <returns>The MemoryDataset loaded with the data</returns>
-        public static MemoryDataset LoadFromStream(StreamReader reader)
+        public static Dataset LoadFromStream(StreamReader reader, string expectedHeader)
         {
             //Used to keep track of the current line. Used for exceptions to display at what line something went wrong
             int currentLine = 1;
-            MemoryDataset data = new MemoryDataset();//Datasource we will load into
-            string line; //Used to store read lines
+            Dataset data = new Dataset();//Datasource we will load into
 
             //Make sure stream is not empty
             if (reader.EndOfStream)
                 throw new EndOfStreamException("File is empty");
 
             //Read Names/types
-            line = reader.ReadLine();
+            string line = reader.ReadLine();
             currentLine++;
 
             if (line == null)
@@ -81,8 +77,8 @@ namespace RollingRoad
                 throw new Exception("Header is to short");
 
             //Make sure header name matches (basic check to make not all files are loaded)
-            if (names[0].ToLower() != HeaderName)
-                throw new Exception($"Invalid header, should be {HeaderName} (Is: " + names[0].ToLower() + ")");
+            if (names[0].ToLower() != expectedHeader)
+                throw new Exception($"Invalid header, should be {expectedHeader} (Is: " + names[0].ToLower() + ")");
 
             //Units
             line = reader.ReadLine();
@@ -100,7 +96,7 @@ namespace RollingRoad
             //Create a new list for each of the units
             for (int i = 1; i < names.Length; i++)
             {
-                data.Collection.Add(new DataList(new DataType(names[i], units[i])));
+                data.Add(new DataList(new DataType(names[i], units[i])));
             }
 
             //Read all data
@@ -122,12 +118,12 @@ namespace RollingRoad
                 {
                     double value;
 
-                    if (!double.TryParse(readData[i], NumberStyles.Number, CultureInfo, out value))
+                    if (!double.TryParse(readData[i], NumberStyles.Any, CultureInfo, out value))
                     {
                         throw new Exception("Error at line " + currentLine + " could not parse number");
                     }
 
-                    data.Collection[i - 1].Data.Add(value);
+                    data[i - 1].Add(value);
                 }
 
                 //Progress one line
