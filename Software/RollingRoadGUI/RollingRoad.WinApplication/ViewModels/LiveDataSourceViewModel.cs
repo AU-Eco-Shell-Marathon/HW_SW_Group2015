@@ -20,7 +20,7 @@ namespace RollingRoad.WinApplication.ViewModels
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
-        public IList<DataListViewModel> Collection => DataCollection.First().Collection;
+        public IList<DataList> Collection => DataCollection.First();
         public ILogger Logger { get; set; }
 
         public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
@@ -48,7 +48,7 @@ namespace RollingRoad.WinApplication.ViewModels
             }
         }
 
-        public List<double> GraphUpdateRates { get; } = new List<double>() {500, 1000, 2000, 5000, 10000}; 
+        public List<double> GraphUpdateRates { get; } = new List<double>() {500, 1000, 2000, 5000, 100000}; 
 
         private bool _isStarted;
         public bool IsStarted
@@ -67,7 +67,7 @@ namespace RollingRoad.WinApplication.ViewModels
         private ILiveDataSource _source;
         private int _graphRefreshRateSelectedIndex;
 
-        public ObservableCollection<DataSetViewModel> DataCollection { get; set; } = new ObservableCollection<DataSetViewModel>();
+        public ObservableCollection<Dataset> DataCollection { get; set; } = new ObservableCollection<Dataset>();
 
         public LiveDataSourceViewModel()
         {
@@ -77,7 +77,7 @@ namespace RollingRoad.WinApplication.ViewModels
             SelectSourceCommand     = new DelegateCommand(SelectSource);
 
             _dispatcher = Dispatcher.CurrentDispatcher;
-            DataCollection.Add(new DataSetViewModel(new MemoryDataset()));
+            DataCollection.Add(new Dataset());
         }
 
         public ILiveDataSource Source
@@ -94,13 +94,21 @@ namespace RollingRoad.WinApplication.ViewModels
                 _source = value;
                 StartStopCommand.RaiseCanExecuteChanged();
 
-                ICalibrateControl ctrl = _source as ICalibrateControl;
+                ICalibrateControl cctrl = _source as ICalibrateControl;
+                if(cctrl != null)
+                    LiveControlCollection.Add(new CalibrateControlViewModel(cctrl));
 
-                if(ctrl != null)
-                    LiveControlCollection.Add(new CalibrateControlViewModel(ctrl));
+                ITorqueControl tctrl = _source as ITorqueControl;
+                if(tctrl != null)
+                    LiveControlCollection.Add(new TorqueControlViewModel(tctrl));
+
+                IPidControl pctrl = _source as IPidControl;
+                if (pctrl != null)
+                    LiveControlCollection.Add(new PidControlViewModel(pctrl));
 
                 Start();
                 OnPropertyChanged(nameof(SelectedSourceText));
+                OnPropertyChanged(nameof(LiveControlCollection));
 
                 if (_source != null)
                     _source.OnNextReadValue += ThreadMover;
@@ -157,17 +165,17 @@ namespace RollingRoad.WinApplication.ViewModels
             HasBeenSaved = false;
             foreach (Datapoint datapoint in datapoints)
             {
-                DataListViewModel list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataList list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
                 {
-                    list = new DataListViewModel(new DataList(datapoint.Type));
+                    list = new DataList(datapoint.Type);
                     Collection.Add(list);
                     ClearCommand.RaiseCanExecuteChanged();
                 }
                 double value = datapoint.Value;
 
-                list?.AddData(value);
+                list?.Add(value);
             }
         }
 
@@ -238,7 +246,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                MemoryDataset source = new MemoryDataset(new List<DataList>(Collection.Select(x => x.List)))
+                Dataset source = new Dataset(new List<DataList>(Collection))
                 {
                     Description = DateTime.Now.ToLongDateString()
                 };

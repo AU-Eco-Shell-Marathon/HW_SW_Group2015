@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
+using RollingRoad.Data;
 using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication
@@ -15,9 +16,9 @@ namespace RollingRoad.WinApplication
     /// </summary>
     public partial class LineChart : UserControl
     {
-        public ICollection<DataSetViewModel> ItemsSource
+        public ICollection<Dataset> ItemsSource
         {
-            get { return (ICollection<DataSetViewModel>)GetValue(ItemsSourceProperty); }
+            get { return (ICollection<Dataset>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
@@ -34,9 +35,17 @@ namespace RollingRoad.WinApplication
 
         public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
                                                                             "ItemsSource",
-                                                                            typeof(ICollection<DataSetViewModel>),
+                                                                            typeof(ICollection<Dataset>),
                                                                             typeof(LineChart),
-                                                                            new FrameworkPropertyMetadata(null, null));
+                                                                            new FrameworkPropertyMetadata(ItemsSourceChange, null));
+
+        private static void ItemsSourceChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            LineChart control = d as LineChart;
+
+            control?.Refresh();
+        }
+
 
         public static readonly DependencyProperty RefreshRateProperty = DependencyProperty.Register(
                                                                             "RefreshRate",
@@ -73,22 +82,22 @@ namespace RollingRoad.WinApplication
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
 
-            foreach (DataSetViewModel dataset in ItemsSource)
+            foreach (Dataset dataset in ItemsSource)
             {
-                DataListViewModel xAxis = dataset.Collection.FirstOrDefault(x => x.Type.Name == XAxis);
+                DataList xAxis = dataset.FirstOrDefault(x => x.Type.Name == XAxis);
 
                 if (xAxis == null)
                     continue;
 
-                EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis.List.Data);
+                EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis);
                 xData.SetXMapping(x => x);
 
-                foreach (DataListViewModel dataList in dataset.Collection)
+                foreach (DataList dataList in dataset)
                 {
                     if (dataList.Type.Name == XAxis)
                         continue;
 
-                    EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList.List.Data);
+                    EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList);
                     yData.SetYMapping(x => x);
 
                     CompositeDataSource source = new CompositeDataSource(xData, yData);

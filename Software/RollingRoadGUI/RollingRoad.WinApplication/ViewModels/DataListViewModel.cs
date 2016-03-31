@@ -18,10 +18,10 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public void AddData(double value)
         {
-            List.Data.Add(value);
+            List.Add(value);
             OnPropertyChanged(nameof(NewestValue));
         }
         
-        public double NewestValue => List.Data.Last();
+        public double NewestValue => List.Last();
     }
 }

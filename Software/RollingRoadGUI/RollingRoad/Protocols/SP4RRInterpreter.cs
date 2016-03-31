@@ -122,7 +122,15 @@ namespace RollingRoad.Protocols
                     Datapoint entry = new Datapoint(type, 0);
 
                     Logger?.WriteLine("New type recieved: " + entry);
-                    _typeDictionary.Add(typeId, type);
+
+                    if (_typeDictionary.ContainsKey(typeId))
+                    {
+                        _typeDictionary[typeId] = type;
+                    }
+                    else
+                    {
+                        _typeDictionary.Add(typeId, type);
+                    }
                     break;
                 case PacketId.Information:
 
@@ -133,6 +141,16 @@ namespace RollingRoad.Protocols
                     for (int i = 0; i < valuesToRead; i++)
                     {
                         double value = double.Parse(values[i + 1], CultureInfo);
+
+                        if (!_typeDictionary.ContainsKey(i))
+                        {
+                            Logger?.WriteLine("Unknown datatype recieved, sending handshake");
+                            SendHandshake();
+                            if(i == 0)
+                                _typeDictionary.Add(i, new DataType("Time", "Unknown"));
+                            else
+                                _typeDictionary.Add(i, new DataType("Unknown", "Unknown"));
+                        }
 
                         DataType dataType = _typeDictionary[i];
                         dataRead.Add(new Datapoint(dataType, value));
@@ -191,6 +209,11 @@ namespace RollingRoad.Protocols
             _shouldClose = true;
         }
 
+        public void SendHandshake()
+        {
+            SendCommand((int)PacketId.HandShake + " RollingRoad");
+        }
+
         public void Start()
         {
             Start(true);
@@ -198,7 +221,7 @@ namespace RollingRoad.Protocols
 
         public void Start(bool startThread)
         {
-            SendCommand((int)PacketId.HandShake + " RollingRoad");
+            SendHandshake();
 
             if (!startThread)
                 return;

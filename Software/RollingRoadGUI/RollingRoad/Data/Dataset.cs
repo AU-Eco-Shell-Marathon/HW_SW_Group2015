@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace RollingRoad.Data
 {
-    public class MemoryDataset : IDataset
+    public class Dataset : List<DataList>
     {
-        /// <summary>
-        /// Data in the memory data source
-        /// </summary>
-        public IList<DataList> Collection { get; set; } = new List<DataList>();
-
         /// <summary>
         /// Memory data source, initiated with no data
         /// </summary>
-        public MemoryDataset()
+        public Dataset()
         {
             
         }
@@ -23,9 +19,8 @@ namespace RollingRoad.Data
         /// Create datasource from list
         /// </summary>
         /// <param name="dataCollection">dataCollection to use in datasource</param>
-        public MemoryDataset(IList<DataList> dataCollection)
+        public Dataset(IList<DataList> dataCollection) : base(dataCollection)
         {
-            Collection = dataCollection;
         }
         
         /// <summary>
@@ -38,19 +33,9 @@ namespace RollingRoad.Data
         /// </summary>
         public string Description { get; set; }
 
-        /// <summary>
-        /// Get datalist by name
-        /// </summary>
-        /// <param name="name">Name of the data (Ex "Time", "Torque")</param>
-        /// <returns></returns>
-        public DataList GetDataList(string name)
+        public DataList TryGetByName(string name)
         {
-            DataList result = Collection.FirstOrDefault(x => x.Type.Name == name);
-            
-            if(result == null)
-                throw new ArgumentException("List does not exist");
-
-            return result;
+            return this.FirstOrDefault(datalist => datalist.Type.Name == Name);
         }
 
         public override string ToString()

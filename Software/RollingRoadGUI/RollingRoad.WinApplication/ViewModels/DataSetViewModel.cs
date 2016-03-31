@@ -8,13 +8,11 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataSetViewModel : BindableBase
     {
-        private IDataset DataSet { get; set; }
+        private Dataset DataSet { get; set; }
 
-        public DataSetViewModel(IDataset dataset)
+        public DataSetViewModel(Dataset dataset)
         {
             DataSet = dataset;
-            DataSet.Collection = new ObservableCollection<DataList>(DataSet.Collection);
-            Collection = new ObservableCollection<DataListViewModel>(DataSet.Collection.Select(x => new DataListViewModel(x)));
         }
 
         public string Name => DataSet.Name;

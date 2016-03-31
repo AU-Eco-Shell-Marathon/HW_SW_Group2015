@@ -12,9 +12,9 @@ namespace RollingRoad.Test.Unit.Data
         {
             DataList datalist = new DataList(new DataType("TestName", "TestUnit"));
 
-            datalist.Data.Add(123);
+            datalist.Add(123);
 
-            Assert.That(datalist.Data.First(), Is.EqualTo(123));
+            Assert.That(datalist.First(), Is.EqualTo(123));
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace RollingRoad.Test.Unit.Data
         {
             DataList list = new DataList(new DataType("TestName", "TestUnit"));
 
-            Assert.That(list.Data.Count, Is.EqualTo(0));
+            Assert.That(list.Count, Is.EqualTo(0));
         }
 
         [Test]
@@ -30,10 +30,10 @@ namespace RollingRoad.Test.Unit.Data
         {
             DataList list = new DataList(new DataType("TestName", "TestUnit"));
 
-            list.Data.Add(3);
+            list.Add(3);
 
-            Assert.That(list.Data.Count, Is.EqualTo(1));
-            Assert.That(list.Data.First(), Is.EqualTo(3));
+            Assert.That(list.Count, Is.EqualTo(1));
+            Assert.That(list.First(), Is.EqualTo(3));
         }
 
         [Test]

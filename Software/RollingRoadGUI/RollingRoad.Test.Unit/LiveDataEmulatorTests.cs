@@ -32,21 +32,17 @@ namespace RollingRoad.Test.Unit
     [TestFixture]
     public class LiveDataEmulatorTests
     {
-        private IDataset _dataset;
+        private Dataset _dataset;
         private ITimer _timer;
         private LiveDataEmulator _emulator;
 
         [SetUp]
         public void SetUp()
         {
-            _dataset = Substitute.For<IDataset>();
+            _dataset = new Dataset();
             _timer = Substitute.For<ITimer>();
-
-            IList<DataList> dataCollection = new List<DataList>();
-            dataCollection.Add(new DataList(new DataType("Time", "TestUnit")));
-
-            _dataset.Collection.Returns(dataCollection);
-            _dataset.GetDataList("Time").Returns(dataCollection[0]);
+            
+            _dataset.Add(new DataList(new DataType("Time", "TestUnit")));
 
             _emulator = new LiveDataEmulator(_dataset) {Timer = _timer};
         }
@@ -71,7 +67,7 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void OnNextReadValueEvent_OneDataPointGiven_CorrectData(double value)
         {
-            _dataset.Collection[0].Data.Add(value);
+            _dataset[0].Add(value);
             _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<TimerElapsedEvent>());
             
             double dataRead = -1000;

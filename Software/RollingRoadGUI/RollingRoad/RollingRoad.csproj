@@ -74,9 +74,8 @@
     <Compile Include="LiveData\LiveDataEmulator.cs" />
     <Compile Include="Data\DataList.cs" />
     <Compile Include="Data\DataType.cs" />
-    <Compile Include="Data\IDataset.cs" />
     <Compile Include="LiveData\ILiveDataSource.cs" />
-    <Compile Include="Data\MemoryDataset.cs" />
+    <Compile Include="Data\Dataset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocols\SP4RRInterpreter.cs" />
     <Compile Include="SerialConnection.cs" />

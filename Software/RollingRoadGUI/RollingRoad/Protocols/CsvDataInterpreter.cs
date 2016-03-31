@@ -24,22 +24,24 @@ namespace RollingRoad
         /// </summary>
         /// <param name="writer">Stream to write to</param>
         /// <param name="source">Source to write to stream</param>
-        public static void WriteToStream(TextWriter writer, IDataset source, string headername)
+        public static void WriteToStream(TextWriter writer, Dataset source, string headername)
         {
-            IList<DataList> dataCollection = source.Collection;
-            int dataLength = dataCollection[0].Data.Count;
+            if (source.Count > 0)
+                return;
+
+            int dataLength = source.Count;
 
             //Write header and all type names
-            writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Name)));
+            writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), source.Select(x => x.Type.Name)));
 
             //Writer description and all type units
-            writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), dataCollection.Select(x => x.Type.Unit)));
+            writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), source.Select(x => x.Type.Unit)));
 
             //Data
             for (int i = 0; i < dataLength; i++)
             {
                 //LINQ Magic
-                string stringout = dataCollection.Aggregate("", (current, dataList) => current + (Seperator + dataList.Data.ElementAt(i).ToString(CultureInfo)));
+                string stringout = source.Aggregate("", (current, dataList) => current + (Seperator + dataList.ElementAt(i).ToString(CultureInfo)));
 
                 writer.WriteLine(stringout);
             }
@@ -53,11 +55,11 @@ namespace RollingRoad
         /// </summary>
         /// <param name="reader">Stream reader pointing to a CSV-source</param>
         /// <returns>The MemoryDataset loaded with the data</returns>
-        public static MemoryDataset LoadFromStream(StreamReader reader, string expectedHeader)
+        public static Dataset LoadFromStream(StreamReader reader, string expectedHeader)
         {
             //Used to keep track of the current line. Used for exceptions to display at what line something went wrong
             int currentLine = 1;
-            MemoryDataset data = new MemoryDataset();//Datasource we will load into
+            Dataset data = new Dataset();//Datasource we will load into
             string line; //Used to store read lines
 
             //Make sure stream is not empty
@@ -97,7 +99,7 @@ namespace RollingRoad
             //Create a new list for each of the units
             for (int i = 1; i < names.Length; i++)
             {
-                data.Collection.Add(new DataList(new DataType(names[i], units[i])));
+                data.Add(new DataList(new DataType(names[i], units[i])));
             }
 
             //Read all data
@@ -124,7 +126,7 @@ namespace RollingRoad
                         throw new Exception("Error at line " + currentLine + " could not parse number");
                     }
 
-                    data.Collection[i - 1].Data.Add(value);
+                    data[i - 1].Add(value);
                 }
 
                 //Progress one line

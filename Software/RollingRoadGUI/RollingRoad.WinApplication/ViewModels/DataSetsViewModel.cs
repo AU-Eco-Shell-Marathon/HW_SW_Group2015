@@ -52,7 +52,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
                 try
                 {
-                    MemoryDataset dataset = CsvDataFile.LoadFromFile(filename, "shell eco marathon");
+                    Dataset dataset = CsvDataFile.LoadFromFile(filename, "shell eco marathon");
 
                     DataSets.Add(new DataSetViewModel(dataset));
                 }

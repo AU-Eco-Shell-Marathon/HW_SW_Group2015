@@ -15,44 +15,9 @@ namespace RollingRoad.Test.Unit.Data
 
             dataCollection.Add(new DataList(new DataType("TestName", "TestUnit")));
 
-            MemoryDataset source = new MemoryDataset(dataCollection);
+            Dataset source = new Dataset(dataCollection);
 
-            Assert.That(dataCollection == source.Collection);
-        }
-
-        [Test]
-        public void GetDataList_NoListAdded_ExceptionThrown()
-        {
-            MemoryDataset source = new MemoryDataset();
-
-            Assert.Throws<ArgumentException>(() => source.GetDataList("Does not exist"));
-        }
-
-        [Test]
-        public void GetDataList_OneListAddedAndRequested_ListWithCorrectNameReturned()
-        {
-            MemoryDataset dataset = new MemoryDataset();
-            dataset.Collection.Add(new DataList(new DataType("TestName", "TestUnit")));
-
-            Assert.That(dataset.GetDataList("TestName").Type.Name, Is.EqualTo("TestName"));
-        }
-
-        [Test]
-        public void GetDataList_OneListAddedAndRequested_ListWithCorrectUnitReturned()
-        {
-            MemoryDataset source = new MemoryDataset();
-            source.Collection.Add(new DataList(new DataType("TestName", "TestUnit")));
-
-            Assert.That(source.GetDataList("TestName").Type.Unit, Is.EqualTo("TestUnit"));
-        }
-
-        [Test]
-        public void GetDataList_OneListAddedOtherListRequested_ExceptionThrown()
-        {
-            MemoryDataset source = new MemoryDataset();
-            source.Collection.Add(new DataList(new DataType("TestName", "TestUnit")));
-
-            Assert.Throws<ArgumentException>(() => source.GetDataList("TestName2"));
+            Assert.That(dataCollection == source);
         }
 
         [TestCase("Test1234")]
@@ -60,7 +25,7 @@ namespace RollingRoad.Test.Unit.Data
         [TestCase(null)]
         public void Name_SetAndGet_CorrectName(string name)
         {
-            MemoryDataset source = new MemoryDataset {Name = name};
+            Dataset source = new Dataset {Name = name};
             
             Assert.That(source.Name, Is.EqualTo(name));
         }
