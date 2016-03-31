@@ -1,9 +1,10 @@
 ﻿using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Control;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
-    public class CalibrateControlViewModel
+    public class CalibrateControlViewModel : BindableBase
     {
         public DelegateCommand CalibrateCommand { get; }
 

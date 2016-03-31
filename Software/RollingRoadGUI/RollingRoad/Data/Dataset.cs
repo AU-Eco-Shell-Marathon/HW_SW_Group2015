@@ -33,9 +33,9 @@ namespace RollingRoad.Data
         /// </summary>
         public string Description { get; set; }
 
-        public DataList TryGetByName(string name)
+        public DataList TryGetByName(string listname)
         {
-            return this.FirstOrDefault(datalist => datalist.Type.Name == Name);
+            return this.FirstOrDefault(datalist => datalist.Type.Name == listname);
         }
 
         public override string ToString()

@@ -36,6 +36,7 @@ namespace RollingRoad.Test.Unit.Protocols
             writer.Write(value);
             writer.Flush();
             _ms.Position = 0;
+            writer.Flush();
         }
 
         [Test]

@@ -84,12 +84,12 @@ namespace RollingRoad.Test.Unit.Protocols
         }
 
         [Test]
-        public void LoadFromStream_DataTypeNotAdded_ExceptionThrown()
+        public void LoadFromStream_DataTypeNotAdded_DatalistNotFound()
         {
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
             Dataset source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.Throws<ArgumentException>(() => source.TryGetByName("type3"));
+            Assert.That(source.TryGetByName("type3"), Is.EqualTo(null));
         }
         
         [TestCase(5.0)]
@@ -158,14 +158,15 @@ namespace RollingRoad.Test.Unit.Protocols
         [TestCase(0.0, "0")]
         [TestCase(0.852, "0.852")]
         [TestCase(-0.852, "-0.852")]
-        public void WriteToStream_TypePresentButOneDataPoint_DataPresent(double value, string valueString)
+        public void WriteToStream_TypePresentAndOneDataPoint_DataPresent(double value, string valueString)
         {
             StringBuilder builder = new StringBuilder();
             TextWriter writer = new StringWriter(builder);
             Dataset dataset = new Dataset();
-            
-            dataset.Add(new DataList(new DataType("Test", "Test2")));
-            dataset[0].Add(value);
+            DataList list = new DataList(new DataType("Test", "Test2"));
+            list.Add(value);
+
+            dataset.Add(list);
 
             CsvDataInterpreter.WriteToStream(writer, dataset, "");
 

@@ -26,10 +26,10 @@ namespace RollingRoad
         /// <param name="source">Source to write to stream</param>
         public static void WriteToStream(TextWriter writer, Dataset source, string headername)
         {
-            if (source.Count > 0)
+            if (source.Count == 0)
                 return;
 
-            int dataLength = source.Count;
+            int dataLength = source.First().Count;
 
             //Write header and all type names
             writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), source.Select(x => x.Type.Name)));

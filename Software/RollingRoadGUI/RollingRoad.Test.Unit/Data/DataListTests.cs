@@ -7,49 +7,50 @@ namespace RollingRoad.Test.Unit.Data
     [TestFixture]
     public class DataListTests
     {
+        private DataList _list;
+        private readonly string _name = "TestName";
+        private readonly string _unit = "TestUnit";
+
+        [SetUp]
+        public void SetUp()
+        {
+            _list = new DataList(new DataType(_name, _unit));
+        }
+
+
         [Test]
         public void AddData_DoubleAsData_DataAdded()
         {
-            DataList datalist = new DataList(new DataType("TestName", "TestUnit"));
+            _list.Add(123);
 
-            datalist.Add(123);
-
-            Assert.That(datalist.First(), Is.EqualTo(123));
+            Assert.That(_list.First(), Is.EqualTo(123));
         }
 
         [Test]
         public void GetData_NoDataAdded_NoDataPresent()
         {
-            DataList list = new DataList(new DataType("TestName", "TestUnit"));
-
-            Assert.That(list.Count, Is.EqualTo(0));
+            Assert.That(_list.Count, Is.EqualTo(0));
         }
 
         [Test]
         public void GetData_OneDataAdded_DataPresent()
         {
-            DataList list = new DataList(new DataType("TestName", "TestUnit"));
+            _list.Add(3);
 
-            list.Add(3);
-
-            Assert.That(list.Count, Is.EqualTo(1));
-            Assert.That(list.First(), Is.EqualTo(3));
+            Assert.That(_list.Count, Is.EqualTo(1));
+            Assert.That(_list.First(), Is.EqualTo(3));
         }
 
         [Test]
         public void Title_NameAndUnitSet_NameContainedInTitle()
         {
-            DataList list = new DataList(new DataType("TestName", "TestUnit"));
-
-            Assert.That(list.ToString(), Does.Contain("TestName"));
+            Assert.That(_list.ToString(), Does.Contain("TestName"));
         }
 
         [Test]
         public void Title_NameAndUnitSet_UnitContainedInTitle()
         {
-            DataList list = new DataList(new DataType("TestName", "TestUnit"));
-
-            Assert.That(list.ToString(), Does.Contain("TestUnit"));
+            Assert.That(_list.ToString(), Does.Contain("TestUnit"));
         }
     }
 }
