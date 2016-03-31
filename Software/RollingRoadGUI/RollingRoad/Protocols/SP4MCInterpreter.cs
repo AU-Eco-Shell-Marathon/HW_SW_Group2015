@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using RollingRoad.Control;
 
 namespace RollingRoad.Protocols
 {
+    // ReSharper disable once InconsistentNaming
     public class SP4MCInterpreter : IMotorControl
     {
         public int CruiseSpeed

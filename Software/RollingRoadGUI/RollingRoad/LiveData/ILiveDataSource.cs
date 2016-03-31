@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RollingRoad.Data;
 
-namespace RollingRoad
+namespace RollingRoad.LiveData
 {
 
     public delegate void ReadOnlyDataEntryList(IReadOnlyList<Datapoint> values);

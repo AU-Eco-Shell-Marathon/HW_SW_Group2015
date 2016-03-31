@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RollingRoad.Data;
 
-namespace RollingRoad
+namespace RollingRoad.LiveData
 {
     public class LiveDataEmulator : ILiveDataSource
     {
@@ -136,7 +136,7 @@ namespace RollingRoad
             //Move data index
             _index++;
 
-            if (delta == 0)
+            if (Math.Abs(delta) < double.Epsilon)
                 delta = 1;
 
             if(_shouldRun)

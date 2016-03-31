@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
 
@@ -8,7 +6,7 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataSetViewModel : BindableBase
     {
-        private Dataset DataSet { get; set; }
+        private Dataset DataSet { get; }
 
         public DataSetViewModel(Dataset dataset)
         {

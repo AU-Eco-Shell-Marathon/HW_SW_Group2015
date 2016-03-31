@@ -6,7 +6,7 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataListViewModel : BindableBase
     {
-        public DataList List { get; private set; }
+        public DataList List { get; }
 
         public DataListViewModel(DataList list)
         {

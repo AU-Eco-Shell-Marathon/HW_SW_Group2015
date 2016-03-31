@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -60,14 +59,13 @@ namespace RollingRoad
             //Used to keep track of the current line. Used for exceptions to display at what line something went wrong
             int currentLine = 1;
             Dataset data = new Dataset();//Datasource we will load into
-            string line; //Used to store read lines
 
             //Make sure stream is not empty
             if (reader.EndOfStream)
                 throw new EndOfStreamException("File is empty");
 
             //Read Names/types
-            line = reader.ReadLine();
+            string line = reader.ReadLine();
             currentLine++;
 
             if (line == null)

@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Threading;
 using RollingRoad.Control;
 using RollingRoad.Data;
+using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.Protocols
 {
+    // ReSharper disable once InconsistentNaming
     public class SP4RRInterpreter : ILiveDataSource, ITorqueControl, IPidControl, ICalibrateControl
     {
         /// <summary>
@@ -173,7 +175,7 @@ namespace RollingRoad.Protocols
                     break;
                 default:
                     Logger?.WriteLine("Unknown id recieved: " + (int)packetId);
-                    break;;
+                    break;
             }
         }
 

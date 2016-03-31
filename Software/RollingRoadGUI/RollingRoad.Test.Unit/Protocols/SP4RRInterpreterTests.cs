@@ -7,13 +7,14 @@ using RollingRoad.Protocols;
 namespace RollingRoad.Test.Unit.Protocols
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public class SP4RRInterpreterTests
     {
         private MemoryStream _ms;
         private StreamWriter _writer;
         private StreamReader _reader;
         private SP4RRInterpreter _interpreter;
-        private CultureInfo _cultureTarget = new CultureInfo("en-US");
+        private readonly CultureInfo _cultureTarget = new CultureInfo("en-US");
 
         [SetUp]
         public void SetUp()
