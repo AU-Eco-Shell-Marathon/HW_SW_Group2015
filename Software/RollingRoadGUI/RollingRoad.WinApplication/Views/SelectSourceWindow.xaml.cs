@@ -2,6 +2,8 @@
 using System.IO.Ports;
 using System.Windows;
 using Microsoft.Win32;
+using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication
 {

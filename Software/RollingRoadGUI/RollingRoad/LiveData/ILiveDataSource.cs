@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using RollingRoad.Data;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.LiveData
 {

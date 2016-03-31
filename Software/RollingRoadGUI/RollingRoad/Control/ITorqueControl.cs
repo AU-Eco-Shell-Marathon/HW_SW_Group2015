@@ -1,4 +1,4 @@
-﻿namespace RollingRoad
+﻿namespace RollingRoad.Control
 {
     /// <summary>
     /// Allows the control of Rolling Road

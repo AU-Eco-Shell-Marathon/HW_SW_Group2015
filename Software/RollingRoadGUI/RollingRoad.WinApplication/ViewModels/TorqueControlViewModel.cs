@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Prism.Mvvm;
+using RollingRoad.Control;
 
 namespace RollingRoad.WinApplication.ViewModels
 {

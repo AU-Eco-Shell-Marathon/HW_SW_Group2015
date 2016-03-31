@@ -4,8 +4,7 @@ using System.IO;
 using System.Linq;
 using RollingRoad.Data;
 
-
-namespace RollingRoad
+namespace RollingRoad.Protocols
 {
     /// <summary>
     /// 

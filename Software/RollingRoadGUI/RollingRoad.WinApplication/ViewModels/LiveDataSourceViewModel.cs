@@ -9,6 +9,8 @@ using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
 using RollingRoad.Control;
 using RollingRoad.Data;
+using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 using MessageBox = System.Windows.MessageBox;
 
 namespace RollingRoad.WinApplication.ViewModels

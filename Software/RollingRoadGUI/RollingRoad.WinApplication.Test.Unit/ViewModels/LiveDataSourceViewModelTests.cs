@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.Data;
+using RollingRoad.LiveData;
 using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication.Test.Unit.ViewModels

@@ -1,4 +1,4 @@
-﻿namespace RollingRoad
+﻿namespace RollingRoad.Timers
 {
     public delegate void TimerElapsedEvent();
 
