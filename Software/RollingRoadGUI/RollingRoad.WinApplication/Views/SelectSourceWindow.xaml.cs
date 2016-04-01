@@ -1,78 +1,29 @@
-﻿using System;
-using System.IO.Ports;
-using System.Windows;
-using Microsoft.Win32;
-using RollingRoad.LiveData;
-using RollingRoad.Loggers;
+﻿using System.Windows;
+using System.Windows.Input;
+using RollingRoad.WinApplication.Dialogs;
 
 namespace RollingRoad.WinApplication
 {
     /// <summary>
     /// Interaction logic for SelectSourceWindow.xaml
     /// </summary>
-    public partial class SelectSourceWindow
+    public partial class SelectSourceWindow : Window
     {
-        public ILiveDataSource LiveDataSource { get; private set; }
-        public ILogger Logger { get; set; }
+        private ISelectSourceDialog _vm;
 
-        public SelectSourceWindow()
+        public SelectSourceWindow(ISelectSourceDialog vm)
         {
+            _vm = vm;
+            _vm.OnClose += OnClose;
+
+            DataContext = _vm;
             InitializeComponent();
-            Loaded += LoadComPorts;
         }
 
-        private void LoadComPorts(object sender, RoutedEventArgs a)
+        private void OnClose(bool success)
         {
-            string[] ports = SerialPort.GetPortNames();
-
-            SelectComPortComboBox.ItemsSource = ports;
-
-            if(ports.Length > 0)
-                SelectComPortComboBox.SelectedIndex = 0;
-            else
-                SelectComPortComboBox.SelectedIndex = -1;
-        }
-
-        private void SourceFromFile_Click(object sender, RoutedEventArgs e)
-        {
-
-            OpenFileDialog dlg = new OpenFileDialog
-            {
-                DefaultExt = ".csv",
-                Filter = "CSV Files (*.csv)|*.csv"
-            };
-            
-            if (dlg.ShowDialog() == true)
-            {
-                // Open document 
-                string filename = dlg.FileName;
-
-                try
-                {
-                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename, "shell eco marathon"));
-                    DialogResult = true;
-                    Close();
-
-                }
-                catch (Exception exception)
-                {
-                    Logger?.WriteLine($"Error opening file {filename}: " + exception.Message);
-                    MessageBox.Show(exception.Message, "Error opening file", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
-
-        private void ConnectComPortButton(object sender, RoutedEventArgs e)
-        {
-            if (SelectComPortComboBox.SelectedItem == null)
-                return;
-
-            SerialPort port = new SerialPort((string) SelectComPortComboBox.SelectedValue) {BaudRate = 9600};
-            port.Open();
-           
-            LiveDataSource = new SerialConnection(port);
-
-            DialogResult = true;
+            _vm.OnClose -= OnClose;
+            DialogResult = success;
             Close();
         }
     }

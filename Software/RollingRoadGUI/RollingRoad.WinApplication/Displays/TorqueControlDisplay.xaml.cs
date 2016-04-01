@@ -11,6 +11,7 @@ namespace RollingRoad.WinApplication
     /// </summary>
     public partial class TorqueControlDisplay
     {
+        /*
         private readonly ITorqueControl _control;
 
         public TorqueControlDisplay(ITorqueControl control)
@@ -54,6 +55,6 @@ namespace RollingRoad.WinApplication
             {
                 TrySetTorque(TorqueControlTextBox.Text);
             }
-        }
+        }*/
     }
 }

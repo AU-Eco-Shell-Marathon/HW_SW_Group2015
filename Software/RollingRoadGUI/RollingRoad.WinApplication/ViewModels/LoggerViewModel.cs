@@ -17,15 +17,7 @@ namespace RollingRoad.WinApplication.ViewModels
             Logger = new EventLogger();
             Logger.OnLog += WriteLine;
 
-            Logger.WriteLine("Program started");
-        }
-
-        public LoggerViewModel(ILogger logger)
-        {
-            Logger = logger;
-            Logger.OnLog += WriteLine;
-
-            Logger.WriteLine("Program started");
+            Logger.WriteLine("Logger started");
         }
 
         public void WriteLine(string line)

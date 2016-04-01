@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using RollingRoad.Control;
 using RollingRoad.Data;
 using RollingRoad.Loggers;
 using RollingRoad.Timers;
@@ -25,6 +26,7 @@ namespace RollingRoad.LiveData
         public ILogger Logger { get; set; }
 
         private ITimer _timer;
+        private double _kp;
 
         /// <summary>
         /// Timer used for timing when to send new values

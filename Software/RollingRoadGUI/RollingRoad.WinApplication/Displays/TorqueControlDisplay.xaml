@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="Torque Control" TextWrapping="Wrap" Grid.Row="0" Margin="10, 5, 10, 5" FontSize="15" />
-        <TextBox x:Name="TorqueControlTextBox" Grid.Row="1" Margin="5,5,41,5" Text="0" TextAlignment="Right" FontSize="18" KeyDown="TorqueControlTextBox_KeyDown"/>
+        <TextBox x:Name="TorqueControlTextBox" Grid.Row="1" Margin="5,5,41,5" Text="0" TextAlignment="Right" FontSize="18"/>
         <Label Content="Nm" Grid.Row="1" Margin="0,5,5,5" HorizontalAlignment="Right" Width="31" />
     </Grid>
 </UserControl>

@@ -1,4 +1,6 @@
-﻿using NSubstitute;
+﻿using System.Linq;
+using NSubstitute;
+using NSubstitute.Core.Arguments;
 using NUnit.Framework;
 using RollingRoad.Loggers;
 using RollingRoad.WinApplication.ViewModels;
@@ -8,16 +10,41 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
     [TestFixture]
     public class LoggerViewModelTests
     {
-        private ILogger _logger;
         private LoggerViewModel _vm;
 
         [SetUp]
         public void SetUp()
         {
-            _logger = Substitute.For<ILogger>();
-            _vm = new LoggerViewModel(_logger);
+            _vm = new LoggerViewModel();
         }
-        
 
+        [Test]
+        public void Log_Nothing_HasOneEntry() //"Logger Started"
+        {
+            Assert.That(_vm.Log.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void Log_Nothing_LoggerStartedWrittenToLog()
+        {
+            Assert.That(_vm.Log.First().Item2, Is.EqualTo("Logger started"));
+        }
+
+        [Test]
+        public void Logger_WriteToLog_LogCountOne()
+        {
+            _vm.Logger.WriteLine("Test");
+
+            Assert.That(_vm.Log.Count, Is.EqualTo(2));
+        }
+
+        [TestCase("Test")]
+        [TestCase("TestTwo")]
+        public void Logger_WriteToLog_CorrectLogAdded(string value)
+        {
+            _vm.Logger.WriteLine(value);
+            
+            Assert.That(_vm.Log[1].Item2, Is.EqualTo(value));
+        }
     }
 }

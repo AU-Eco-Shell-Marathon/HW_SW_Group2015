@@ -6,11 +6,11 @@ using System.Windows;
 using System.Windows.Threading;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
-using Microsoft.Win32;
 using RollingRoad.Control;
 using RollingRoad.Data;
 using RollingRoad.LiveData;
 using RollingRoad.Loggers;
+using RollingRoad.WinApplication.Dialogs;
 using MessageBox = System.Windows.MessageBox;
 
 namespace RollingRoad.WinApplication.ViewModels
@@ -24,6 +24,13 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public IList<DataList> Collection => DataCollection.First();
         public ILogger Logger { get; set; }
+
+        public ISelectSourceDialog SelectSourceWindow { get; set; } = new SelectSourceDialog();
+        public ISaveFileDialog SaveFileDialog { get; set; } = new SaveFileDialog()
+        {
+            DefaultExt = ".csv",
+            Filter = "CSV Files (*.csv)|*.csv"
+        };
 
         public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
 
@@ -216,11 +223,9 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                SelectSourceWindow window = new SelectSourceWindow();
-
-                if (window.ShowDialog() == true)
+                if (SelectSourceWindow.ShowDialog())
                 {
-                    Source = window.LiveDataSource;
+                    Source = SelectSourceWindow.LiveDataSource;
                 }
             }
             catch (Exception exception)
@@ -231,13 +236,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private bool Save()
         {
-            SaveFileDialog dlg = new SaveFileDialog
-            {
-                DefaultExt = ".csv",
-                Filter = "CSV Files (*.csv)|*.csv"
-            };
-
-            if (dlg.ShowDialog() != true)
+            if (SaveFileDialog.ShowDialog() != true)
                 return false;
 
             try
@@ -248,7 +247,7 @@ namespace RollingRoad.WinApplication.ViewModels
                 };
 
                 //Save file
-                CsvDataFile.WriteToFile(dlg.FileName, source, "shell eco marathon");
+                CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)
