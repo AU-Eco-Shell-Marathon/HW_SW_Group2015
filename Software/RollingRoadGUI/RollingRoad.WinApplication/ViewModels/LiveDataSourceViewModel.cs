@@ -156,12 +156,6 @@ namespace RollingRoad.WinApplication.ViewModels
             return Source != null;
         }
 
-        public override string ToString()
-        {
-            return "Live data";
-        }
-
-
         private void IncommingData(IReadOnlyList<Datapoint> datapoints)
         {
             HasBeenSaved = false;

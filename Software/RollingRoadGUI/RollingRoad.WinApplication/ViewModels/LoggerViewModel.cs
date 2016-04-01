@@ -20,14 +20,17 @@ namespace RollingRoad.WinApplication.ViewModels
             Logger.WriteLine("Program started");
         }
 
+        public LoggerViewModel(ILogger logger)
+        {
+            Logger = logger;
+            Logger.OnLog += WriteLine;
+
+            Logger.WriteLine("Program started");
+        }
+
         public void WriteLine(string line)
         {
             Log.Add(new Tuple<string, string>(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture), line));
-        }
-
-        public override string ToString()
-        {
-            return "Log";
         }
     }
 }

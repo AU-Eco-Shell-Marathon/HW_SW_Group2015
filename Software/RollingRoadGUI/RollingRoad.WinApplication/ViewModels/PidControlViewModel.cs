@@ -26,7 +26,7 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Ki; }
             set
             {
-                _control.Kp = value;
+                _control.Ki = value;
                 OnPropertyChanged(nameof(Ki));
             }
         }
@@ -35,7 +35,7 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Kp; }
             set
             {
-                _control.Kd = value;
+                _control.Kp = value;
                 OnPropertyChanged(nameof(Kd));
             }
         }
