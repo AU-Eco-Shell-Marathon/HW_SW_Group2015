@@ -151,18 +151,11 @@
     <Compile Include="Views\SelectSourceWindow.xaml.cs">
       <DependentUpon>SelectSourceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Displays\TorqueControlDisplay.xaml.cs">
-      <DependentUpon>TorqueControlDisplay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\SelectSourceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Displays\TorqueControlDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

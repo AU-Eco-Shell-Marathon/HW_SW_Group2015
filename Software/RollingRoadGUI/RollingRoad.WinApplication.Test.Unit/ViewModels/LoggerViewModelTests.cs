@@ -1,8 +1,5 @@
 ﻿using System.Linq;
-using NSubstitute;
-using NSubstitute.Core.Arguments;
 using NUnit.Framework;
-using RollingRoad.Loggers;
 using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication.Test.Unit.ViewModels

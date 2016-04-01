@@ -122,7 +122,7 @@ namespace RollingRoad.WinApplication
             }
             catch (Exception)
             {
-                
+                // ignored
             }
         }
     }

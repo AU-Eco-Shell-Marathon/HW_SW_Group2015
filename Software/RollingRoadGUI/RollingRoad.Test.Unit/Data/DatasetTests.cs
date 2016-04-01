@@ -17,9 +17,8 @@ namespace RollingRoad.Test.Unit.Data
         [Test]
         public void TryGetByName_NameNotInSet_NullReturned()
         {
-            Dataset set = new Dataset();
+            Dataset set = new Dataset {new DataList(new DataType("TestName", "TestUnit"))};
 
-            set.Add(new DataList(new DataType("TestName", "TestUnit")));
 
             Assert.That(set.TryGetByName("noname"), Is.Null);
         }

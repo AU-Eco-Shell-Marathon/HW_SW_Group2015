@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RollingRoad.Control;
 using RollingRoad.Data;
 using RollingRoad.Loggers;
 using RollingRoad.Timers;
@@ -14,7 +13,7 @@ namespace RollingRoad.LiveData
         private readonly DataList _xAxis;
         private int _index;
         private double _lastMs;
-        private bool _shouldRun = false;
+        private bool _shouldRun;
 
         /// <summary>
         /// Event when at new value is sent
@@ -26,7 +25,6 @@ namespace RollingRoad.LiveData
         public ILogger Logger { get; set; }
 
         private ITimer _timer;
-        private double _kp;
 
         /// <summary>
         /// Timer used for timing when to send new values
@@ -123,13 +121,8 @@ namespace RollingRoad.LiveData
             }
 
             //Setup data to transmit
-            List<Datapoint> entry = new List<Datapoint>();
-            for (int i = 0; i < _source.Count; i++)
-            {
-                DataList data = _source[i];
-                entry.Add(new Datapoint(data.Type, data.ElementAt(_index)));
-            }
-            
+            List<Datapoint> entry = _source.Select(data => new Datapoint(data.Type, data.ElementAt(_index))).ToList();
+
             OnNextReadValue?.Invoke(entry); //Send value
 
             //Calculate time to wait

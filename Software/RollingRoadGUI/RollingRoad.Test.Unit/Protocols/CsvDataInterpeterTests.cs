@@ -109,7 +109,7 @@ namespace RollingRoad.Test.Unit.Protocols
         [Test]
         public void LoadFromStream_DataTypeAddedWithOneScientificDatapointLargeE_FirstDataPointPresent()
         {
-            StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;3.0E2;3");
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;3.0E2;3");
             Dataset source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
             Assert.That(source.TryGetByName("type1").First(), Is.EqualTo(300));
@@ -118,7 +118,7 @@ namespace RollingRoad.Test.Unit.Protocols
         [Test]
         public void LoadFromStream_DataTypeAddedWithOneScientificDatapointSmallE_FirstDataPointPresent()
         {
-            StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;3.0e2;3");
+            StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;3.0e2;3");
             Dataset source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
             Assert.That(source.TryGetByName("type1").First(), Is.EqualTo(300));
@@ -164,8 +164,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StringBuilder builder = new StringBuilder();
             TextWriter writer = new StringWriter(builder);
             Dataset dataset = new Dataset();
-            DataList list = new DataList(new DataType("Test", "Test2"));
-            list.Add(value);
+            DataList list = new DataList(new DataType("Test", "Test2")) {value};
 
             dataset.Add(list);
 

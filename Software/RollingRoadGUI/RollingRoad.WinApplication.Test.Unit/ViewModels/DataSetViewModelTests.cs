@@ -51,9 +51,8 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         public void IsSelected_SetValue_ValueSet(bool values)
         {
             Dataset set = new Dataset() { };
-            DataSetViewModel vm = new DataSetViewModel(set);
+            DataSetViewModel vm = new DataSetViewModel(set) {IsSelected = values};
 
-            vm.IsSelected = values;
 
             Assert.That(vm.IsSelected, Is.EqualTo(values));
         }

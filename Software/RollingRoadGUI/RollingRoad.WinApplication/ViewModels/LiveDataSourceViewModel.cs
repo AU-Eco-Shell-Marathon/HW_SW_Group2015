@@ -178,7 +178,7 @@ namespace RollingRoad.WinApplication.ViewModels
                 }
                 double value = datapoint.Value;
 
-                list?.Add(value);
+                list.Add(value);
             }
         }
 

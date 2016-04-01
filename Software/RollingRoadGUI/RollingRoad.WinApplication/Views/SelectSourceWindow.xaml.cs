@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Input;
 using RollingRoad.WinApplication.Dialogs;
 
 namespace RollingRoad.WinApplication
