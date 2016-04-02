@@ -72,6 +72,10 @@ void ReceiveUARTData(void)
                 SendUART("1 8 efficiency procent\n");
                 CyDelay(1);
                 SendUART("1 9 Overcurrent\n");
+                CyDelay(1);
+                SendUART("1 10 PIDval\n");
+                CyDelay(1);
+                SendUART("1 11 Force set (N)\n");
                 isReadyToSend = 1;
                // CyDelay(100);    HUSK AF OPDATER MED SENESTE PROTOKOL
                // SendData((uint8*)"1 2 Voltage Volt\n");
@@ -87,7 +91,7 @@ void ReceiveUARTData(void)
                 return;
             }
         }
-        else if(buf[0]=='4') //modtag moment fra PC
+        else if(buf[0]=='4') //modtag Force fra PC
         {
             
             float moment = 0;
@@ -127,11 +131,6 @@ void ReceiveUARTData(void)
         {
             update(NULL,NULL,1);
             buf[buf_n+1]=0;
-            
-//            if(strcmp((char*)buf, "7\n")==0)
-//            {
-//               update(NULL,NULL,1);
-//            }
         }
         
     }
@@ -145,7 +144,7 @@ void SendUART (char *Pdata)
     return;
 }
 
-void SendData (struct data* Data)
+void SendData (struct data* Data, float PIDval,  float setForce)
 {
     if(isReadyToSend == 0)
         return;
@@ -153,10 +152,7 @@ void SendData (struct data* Data)
     CheckConnection();
     
     if (USBUART_1_GetConfiguration() == 0u)
-    {
-        isReadyToSend = 0;
         return;
-    }
         
     
     if( USBUART_1_DataIsReady() != 0)
@@ -165,7 +161,7 @@ void SendData (struct data* Data)
     
     char buf[100];
        
-    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d\n", 
+    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d %f %f\n\r", 
         Data->time_ms, 
         MomentToForce(Data->Moment.avg), 
         Data->V_motor.avg, 
@@ -175,11 +171,12 @@ void SendData (struct data* Data)
         RPMToSpeed(Data->RPM.avg), 
         Data->P_motor.avg, 
         Data->efficiency.avg,
-        Data->stop
+        Data->stop,
+        PIDval,
+        setForce
     );
     SendUART(buf);
-
-
+    
 }
 
 /* [] END OF FILE */

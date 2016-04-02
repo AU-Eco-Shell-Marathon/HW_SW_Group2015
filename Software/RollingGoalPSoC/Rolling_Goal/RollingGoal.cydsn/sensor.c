@@ -328,7 +328,6 @@ void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16)
 
 int32 CountToMoment(int32 uvolt)
 {
-    //return (uvolt - 2500000);
     if(uvolt < 0)
         return -uvolt*2;
     else

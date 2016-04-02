@@ -40,7 +40,7 @@ void PID_init()
     
 }
 
-void PID_tick(float sensor, float input)
+float PID_tick(float sensor, float input)
 {
     float PIDval = 0;
     
@@ -50,6 +50,7 @@ void PID_tick(float sensor, float input)
 	PIDval = parameter_.Kp*err; //Proportional calc.
 	
 	iState += err*dt;
+    
 	if(iState > parameter_.iMAX)
 		iState = parameter_.iMAX;
 	else if(iState < parameter_.iMIN)
@@ -67,6 +68,7 @@ void PID_tick(float sensor, float input)
         PIDval = parameter_.MIN;
 	
 	PWM_1_WriteCompare((uint8)PIDval);
+    return PIDval;
 }
 
 void setPID(const struct PIDparameter * parameter)

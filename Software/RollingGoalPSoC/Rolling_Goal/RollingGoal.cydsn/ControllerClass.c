@@ -17,7 +17,8 @@
 #define PID_BYTES         ((START_EEPROM_SECTOR * EEPROM_SIZEOF_SECTOR) + 0x00)
 */
 
-float set_force=21.76f;
+//float set_force=21.76f;
+float set_force=5.5f;
 
 /*
 char save(const struct PIDparameter * PID,const float * moment);
@@ -28,9 +29,11 @@ char load(struct PIDparameter * PID, float * moment);
 
 CY_ISR_PROTO(PID_isr);
 
+float PID_debug = 0;
+
 CY_ISR(PID_isr)
 {  
-    PID_tick(getMoment(), ForceToMoment(set_force));
+    PID_debug = PID_tick(getMoment(), ForceToMoment(set_force));
 }
 
 char busy = 0;
@@ -71,7 +74,7 @@ void run()
     struct data Data;
     if(getData(&Data) && !busy)
     {
-        SendData(&Data);
+        SendData(&Data, PID_debug);
         busy = 1;
     }
 }
