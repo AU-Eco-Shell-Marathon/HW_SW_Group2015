@@ -115,12 +115,12 @@ namespace RollingRoad.WinApplication.ViewModels
                 if (pctrl != null)
                     LiveControlCollection.Add(new PidControlViewModel(pctrl));
 
+                if (_source != null)
+                    _source.OnNextReadValue += ThreadMover;
+
                 Start();
                 OnPropertyChanged(nameof(SelectedSourceText));
                 OnPropertyChanged(nameof(LiveControlCollection));
-
-                if (_source != null)
-                    _source.OnNextReadValue += ThreadMover;
             }
         }
 
