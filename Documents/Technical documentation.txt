@@ -1,0 +1,7 @@
+The competitors must have a printed version of the latest 
+technical documentation at the event. The documentation 
+for the Battery Electric energy category must contain:
+- Energy Supply Diagram (Electrical Schematic)
+- Propulsion System Diagram
+- Battery/BMS
+- Motor/Motor Controller
