@@ -93,7 +93,7 @@ namespace RollingRoad.WinApplication
 
                 foreach (DataList dataList in dataset)
                 {
-                    if (dataList.Type.Name == XAxis)
+                    if (dataList.Type.Name == XAxis || !dataList.Selected)
                         continue;
 
                     EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList);
