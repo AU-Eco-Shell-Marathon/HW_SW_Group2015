@@ -101,7 +101,8 @@ namespace RollingRoad.WinApplication.ViewModels
                     _source.OnNextReadValue -= ThreadMover;
 
                 _source = value;
-                StartStopCommand.RaiseCanExecuteChanged();
+
+                LiveControlCollection.Clear();
 
                 ICalibrateControl cctrl = _source as ICalibrateControl;
                 if(cctrl != null)
@@ -119,6 +120,7 @@ namespace RollingRoad.WinApplication.ViewModels
                     _source.OnNextReadValue += ThreadMover;
 
                 Start();
+                StartStopCommand.RaiseCanExecuteChanged();
                 OnPropertyChanged(nameof(SelectedSourceText));
                 OnPropertyChanged(nameof(LiveControlCollection));
             }

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace RollingRoad.Data
 {
-    public class Dataset : List<DataList>
+    public class Dataset : ObservableCollection<DataList>
     {
         /// <summary>
         /// Memory data source, initiated with no data
