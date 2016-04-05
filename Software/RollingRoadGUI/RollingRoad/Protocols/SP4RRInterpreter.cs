@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Threading;
@@ -101,81 +102,98 @@ namespace RollingRoad.Protocols
         /// </summary>
         public void Listen()
         {
-            string line = _reader.ReadLine();
-
-            if (line == null)
-                return;
-
-            Logger?.WriteLine("Recieved: " + line);
-
-            string[] values = line.Split(' ');
-
-            //Read packet id
-            PacketId packetId = (PacketId)int.Parse(values[0]);
-
-            switch (packetId)
+            try
             {
-                case PacketId.UnitDescription:
-                    int typeId = int.Parse(values[1]);
-                    string typeName = values[2];
-                    string typeUnit = values[3];
+                string line = _reader.ReadLine();
 
-                    DataType type = new DataType(typeName, typeUnit);
-                    Datapoint entry = new Datapoint(type, 0);
+                if (string.IsNullOrEmpty(line))
+                    return;
 
-                    Logger?.WriteLine("New type recieved: " + entry);
+                string[] values = line.Split(' ');
 
-                    if (_typeDictionary.ContainsKey(typeId))
-                    {
-                        _typeDictionary[typeId] = type;
-                    }
-                    else
-                    {
-                        _typeDictionary.Add(typeId, type);
-                    }
-                    break;
-                case PacketId.Information:
+                //Read packet id
+                PacketId packetId = (PacketId) int.Parse(values[0]);
 
-                    //First value is command ID, and each value has an typeId and actual value
-                    int valuesToRead = values.Length - 1;
-                    List<Datapoint> dataRead = new List<Datapoint>();
+                switch (packetId)
+                {
+                    case PacketId.UnitDescription:
 
-                    for (int i = 0; i < valuesToRead; i++)
-                    {
-                        double value = double.Parse(values[i + 1], CultureInfo);
-
-                        if (!_typeDictionary.ContainsKey(i))
+                        if (values.Length > 4)
                         {
-                            Logger?.WriteLine("Unknown datatype recieved, sending handshake");
-                            SendHandshake();
-                            if(i == 0)
-                                _typeDictionary.Add(i, new DataType("Time", "Unknown"));
-                            else
-                                _typeDictionary.Add(i, new DataType("Unknown", "Unknown"));
+                            throw new Exception("Invalid unit description length: " + line);
                         }
 
-                        DataType dataType = _typeDictionary[i];
-                        dataRead.Add(new Datapoint(dataType, value));
-                    }
+                        int typeId = int.Parse(values[1]);
+                        string typeName = values[2];
+                        string typeUnit = "Unknown";
 
-                    OnNextReadValue?.Invoke(dataRead);
-                    break;
-                case PacketId.PidCtrl:
+                        if (values.Length == 4)
+                            typeUnit = values[3];
 
-                    //Start id + 3 doubles
-                    if (values.Length != 4)
-                    {
-                        Logger?.WriteLine("Packet not matching protocol (5): " + line + ". Should be 5 <double> <double> <double>");
-                    }
+                        DataType type = new DataType(typeName, typeUnit);
 
-                    _kp = int.Parse(values[1]);
-                    _ki = int.Parse(values[2]);
-                    _kd = int.Parse(values[3]);
+                        Logger?.WriteLine("New type recieved: " + type);
 
-                    break;
-                default:
-                    Logger?.WriteLine("Unknown id recieved: " + (int)packetId);
-                    break;
+                        if (_typeDictionary.ContainsKey(typeId))
+                        {
+                            _typeDictionary[typeId] = type;
+                        }
+                        else
+                        {
+                            _typeDictionary.Add(typeId, type);
+                        }
+                        break;
+                    case PacketId.Information:
+
+                        //First value is command ID, and each value has an typeId and actual value
+                        int valuesToRead = values.Length - 1;
+                        List<Datapoint> dataRead = new List<Datapoint>();
+
+                        for (int i = 0; i < valuesToRead; i++)
+                        {
+                            double value = double.Parse(values[i + 1], CultureInfo);
+
+                            if (!_typeDictionary.ContainsKey(i))
+                            {
+                                Logger?.WriteLine("Unknown datatype recieved, sending handshake");
+                                SendHandshake();
+                                if (i == 0)
+                                    _typeDictionary.Add(i, new DataType("Time", "Unknown"));
+                                else
+                                    _typeDictionary.Add(i, new DataType("Unknown", "Unknown"));
+                            }
+
+                            DataType dataType = _typeDictionary[i];
+                            dataRead.Add(new Datapoint(dataType, value));
+                        }
+
+                        OnNextReadValue?.Invoke(dataRead);
+                        break;
+                    case PacketId.PidCtrl:
+
+                        //Start id + 3 doubles
+                        if (values.Length != 4)
+                        {
+                            Logger?.WriteLine("Packet not matching protocol (5): " + line +
+                                              ". Should be 5 <double> <double> <double>");
+                        }
+
+                        _kp = double.Parse(values[1], CultureInfo);
+                        _ki = double.Parse(values[2], CultureInfo);
+                        _kd = double.Parse(values[3], CultureInfo);
+
+                        Logger?.WriteLine($"PID Values recieved: {_kp} {_ki} {_kd}");
+
+                        break;
+                    default:
+                        Logger?.WriteLine("Unknown id recieved: " + (int) packetId);
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                _shouldClose = true;
+                Logger?.WriteLine(e.Message);
             }
         }
 

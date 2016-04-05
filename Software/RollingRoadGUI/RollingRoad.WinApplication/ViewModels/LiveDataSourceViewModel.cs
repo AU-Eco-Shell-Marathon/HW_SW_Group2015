@@ -83,7 +83,7 @@ namespace RollingRoad.WinApplication.ViewModels
         private readonly Dispatcher _dispatcher;
 
         private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex;
+        private int _graphRefreshRateSelectedIndex = 4;
         private ILogger _logger;
 
         public ObservableCollection<Dataset> DataCollection { get; set; } = new ObservableCollection<Dataset>();

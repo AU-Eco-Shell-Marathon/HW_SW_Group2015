@@ -1,4 +1,6 @@
-﻿using Microsoft.Practices.Prism.Mvvm;
+﻿using System;
+using System.Windows.Threading;
+using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Control;
 
 namespace RollingRoad.WinApplication.ViewModels
@@ -17,8 +19,11 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Kp; }
             set
             {
-                _control.Kp = value;
-                OnPropertyChanged(nameof(Kp));
+                Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                {
+                    _control.Kp = value;
+                    OnPropertyChanged(nameof(Kp));
+                }));
             }
         }
         public double Ki
@@ -26,17 +31,23 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Ki; }
             set
             {
-                _control.Ki = value;
-                OnPropertyChanged(nameof(Ki));
+                Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                {
+                    _control.Ki = value;
+                    OnPropertyChanged(nameof(Ki));
+                }));
             }
         }
         public double Kd
         {
-            get { return _control.Kp; }
+            get { return _control.Kd; }
             set
             {
-                _control.Kp = value;
-                OnPropertyChanged(nameof(Kd));
+                Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                {
+                    _control.Kd = value;
+                    OnPropertyChanged(nameof(Kd));
+                }));
             }
         }
     }

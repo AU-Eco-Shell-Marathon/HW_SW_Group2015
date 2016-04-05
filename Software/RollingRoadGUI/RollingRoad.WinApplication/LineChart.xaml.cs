@@ -87,6 +87,12 @@ namespace RollingRoad.WinApplication
 
                 if (xAxis == null)
                     continue;
+                    
+                foreach (DataList dataList in dataset)
+                {
+                    if(xAxis.Count != dataList.Count)
+                        throw new ArgumentException("Datalist count does not match");
+                }
 
                 EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis);
                 xData.SetXMapping(x => x);
@@ -104,7 +110,8 @@ namespace RollingRoad.WinApplication
                     try
                     {
                         object colorObj = Properties.Settings.Default[dataList.Type.Name + "LineColor"];
-                        Chart.AddLineGraph(source, (System.Windows.Media.Color)colorObj, 2, dataList.Type.ToString());
+                        Chart.AddLineGraph(source, (System.Windows.Media.Color) colorObj, 2,
+                            dataList.Type.ToString());
                     }
                     catch (Exception)
                     {

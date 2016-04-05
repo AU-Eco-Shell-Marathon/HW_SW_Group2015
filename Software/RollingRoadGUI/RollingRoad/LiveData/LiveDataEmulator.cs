@@ -66,6 +66,7 @@ namespace RollingRoad.LiveData
         {
             _shouldRun = false;
             Timer.Stop();
+            Logger?.WriteLine("Emulator: stopping");
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace RollingRoad.LiveData
             //If there's not more available data, stop. 
             if (_index >= _xAxis.Count)
             {
-                Logger?.WriteLine("Emulator: stopping");
+                Logger?.WriteLine("Emulator: done");
                 Timer.Stop();
                 return;
             }
