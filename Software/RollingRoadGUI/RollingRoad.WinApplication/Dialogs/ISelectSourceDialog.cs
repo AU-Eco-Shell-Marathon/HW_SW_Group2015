@@ -1,5 +1,6 @@
 ﻿using System;
 using RollingRoad.LiveData;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication.Dialogs
 {
@@ -11,5 +12,6 @@ namespace RollingRoad.WinApplication.Dialogs
         event RequestDialogCloseEvent OnClose;
         ILiveDataSource LiveDataSource { get;}
         IDisposable DisposableSource { get;}
+        ILogger Logger { get; set; }
     }
 }

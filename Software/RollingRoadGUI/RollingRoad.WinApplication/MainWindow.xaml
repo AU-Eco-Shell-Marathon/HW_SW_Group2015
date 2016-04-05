@@ -214,17 +214,8 @@
                 </MenuItem>
             </Menu>
 
-            <TabControl ContentTemplateSelector="{StaticResource TabSelector}">
-                <TabItem Header="Live data">
-                    <vm:LiveDataSourceViewModel/>
-                </TabItem>
-                <TabItem Header="View &amp; Compare">
-                    <vm:DataSetsViewModel/>
-                </TabItem>
-                <TabItem Header="Log">
-                    <vm:LoggerViewModel/>
-                </TabItem>
-            </TabControl>
+            <TabControl ContentTemplateSelector="{StaticResource TabSelector}" ItemsSource="{Binding Tabs}"/>
+
         </DockPanel>
     </Grid>
 </Window>

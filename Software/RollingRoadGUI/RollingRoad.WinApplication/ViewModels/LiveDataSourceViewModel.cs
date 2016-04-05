@@ -23,9 +23,18 @@ namespace RollingRoad.WinApplication.ViewModels
         public DelegateCommand SaveCommand { get; }
 
         public IList<DataList> Collection => DataCollection.First();
-        public ILogger Logger { get; set; }
 
-        public ISelectSourceDialog SelectSourceWindow { get; set; } = new SelectSourceDialog();
+        public ILogger Logger
+        {
+            get { return _logger; }
+            set
+            {
+                _logger = value;
+                SelectSourceDialog.Logger = value;
+            }
+        }
+
+        public ISelectSourceDialog SelectSourceDialog { get; set; } = new SelectSourceDialog();
         public ISaveFileDialog SaveFileDialog { get; set; } = new SaveFileDialog()
         {
             DefaultExt = ".csv",
@@ -75,6 +84,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private ILiveDataSource _source;
         private int _graphRefreshRateSelectedIndex;
+        private ILogger _logger;
 
         public ObservableCollection<Dataset> DataCollection { get; set; } = new ObservableCollection<Dataset>();
 
@@ -117,7 +127,10 @@ namespace RollingRoad.WinApplication.ViewModels
                     LiveControlCollection.Add(new PidControlViewModel(pctrl));
 
                 if (_source != null)
+                {
                     _source.OnNextReadValue += ThreadMover;
+                    _source.Logger = Logger;
+                }
 
                 Start();
                 StartStopCommand.RaiseCanExecuteChanged();
@@ -225,9 +238,9 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                if (SelectSourceWindow.ShowDialog())
+                if (SelectSourceDialog.ShowDialog())
                 {
-                    Source = SelectSourceWindow.LiveDataSource;
+                    Source = SelectSourceDialog.LiveDataSource;
                 }
             }
             catch (Exception exception)
@@ -264,6 +277,11 @@ namespace RollingRoad.WinApplication.ViewModels
         private bool CanSave()
         {
             return DataCollection.Count > 0;
+        }
+
+        public override string ToString()
+        {
+            return "Live data";
         }
     }
 }

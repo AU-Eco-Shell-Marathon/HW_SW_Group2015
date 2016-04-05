@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Windows;
+using System.Windows.Threading;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Loggers;
 
@@ -22,7 +24,12 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public void WriteLine(string line)
         {
-            Log.Add(new Tuple<string, string>(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture), line));
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() => Log.Add(new Tuple<string, string>(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture), line))));
+        }
+
+        public override string ToString()
+        {
+            return "Log";
         }
     }
 }

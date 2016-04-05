@@ -4,7 +4,7 @@ using RollingRoad.WinApplication.Dialogs;
 namespace RollingRoad.WinApplication
 {
     /// <summary>
-    /// Interaction logic for SelectSourceWindow.xaml
+    /// Interaction logic for SelectSourceDialog.xaml
     /// </summary>
     public partial class SelectSourceWindow : Window
     {

@@ -63,5 +63,10 @@ namespace RollingRoad.WinApplication.ViewModels
                 }
             }
         }
+
+        public override string ToString()
+        {
+            return "View & Compare";
+        }
     }
 }
