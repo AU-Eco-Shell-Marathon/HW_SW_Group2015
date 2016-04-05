@@ -149,6 +149,7 @@ void init()
     Clock_5_Start();
     isr_5_StartEx(SendData_ISR);
     
+    
     TX_AND_POWER_Write(1);
 }
 

@@ -53,4 +53,30 @@ float RPMToSpeed(float RPM_value);
 
 
 #endif
+
+/* DMA kode
+// Defines for DMA_DelSig_eoc
+#define DMA_DelSig_eoc_BYTES_PER_BURST 2
+#define DMA_DelSig_eoc_REQUEST_PER_BURST 1
+#define DMA_DelSig_eoc_SRC_BASE (CYDEV_PERIPH_BASE)
+#define DMA_DelSig_eoc_DST_BASE (CYDEV_PERIPH_BASE)
+
+//Variable declarations for DMA_DelSig_eoc 
+//Move these variable declarations to the top of the function
+uint8 DMA_DelSig_eoc_Chan;
+uint8 DMA_DelSig_eoc_TD[1];
+
+// DMA Configuration for DMA_DelSig_eoc
+DMA_DelSig_eoc_Chan = DMA_DelSig_eoc_DmaInitialize(DMA_DelSig_eoc_BYTES_PER_BURST, DMA_DelSig_eoc_REQUEST_PER_BURST, 
+    HI16(DMA_DelSig_eoc_SRC_BASE), HI16(DMA_DelSig_eoc_DST_BASE));
+DMA_DelSig_eoc_TD[0] = CyDmaTdAllocate();
+CyDmaTdSetConfiguration(DMA_DelSig_eoc_TD[0], 2, CY_DMA_DISABLE_TD, 0);
+CyDmaTdSetAddress(DMA_DelSig_eoc_TD[0], LO16((uint32)ADC_DelSig_1_DEC_SAMP_PTR), LO16((uint32)Filter_1_STAGEAH_PTR));
+CyDmaChSetInitialTd(DMA_DelSig_eoc_Chan, DMA_DelSig_eoc_TD[0]);
+CyDmaChEnable(DMA_DelSig_eoc_Chan, 1);
+
+*/
+
+
 /* [] END OF FILE */
+

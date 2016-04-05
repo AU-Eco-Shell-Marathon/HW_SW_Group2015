@@ -13,6 +13,9 @@
 #include <Math.h>
 #include "Constants.h"
 
+
+
+
 #define N 128u
 
 CY_ISR_PROTO(SAR_ADC_1);
@@ -23,6 +26,7 @@ void calcSamples(const int32 * values, const uint16 N_sample, struct sample * Sa
 void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16), const uint8 type);
 int32 CountToAmp(int32);
 int32 CountToMoment(int32);
+void DMA_setup_DelSig();
 
 static char calibrate_ = 0;
 
@@ -52,9 +56,53 @@ uint16 A_generator_samples = 0;
 
 int16 A_generator_offset = 0;
 
+// DMA setup ----------
+// DelSig
+#define DMA_DelSig_eoc_BYTES_PER_BURST 2
+#define DMA_DelSig_eoc_REQUEST_PER_BURST 1
+#define DMA_DelSig_eoc_SRC_BASE (CYDEV_PERIPH_BASE)
+#define DMA_DelSig_eoc_DST_BASE (CYDEV_PERIPH_BASE)
+
+uint8 DMA_DelSig_eoc_Chan;
+uint8 DMA_DelSig_eoc_TD[1];
+//DFB
+#define DMA_Filter_BYTES_PER_BURST 4
+#define DMA_Filter_REQUEST_PER_BURST 1
+#define DMA_Filter_SRC_BASE (CYDEV_PERIPH_BASE)
+#define DMA_Filter_DST_BASE (CYDEV_SRAM_BASE)
+
+uint8 DMA_Filter_Chan;
+uint8 DMA_Filter_TD[1];
+
+void DMA_setup_DelSig()
+{
+    
+    //DelSig
+    
+    DMA_DelSig_eoc_Chan = DMA_DelSig_eoc_DmaInitialize(DMA_DelSig_eoc_BYTES_PER_BURST, DMA_DelSig_eoc_REQUEST_PER_BURST, 
+    HI16(DMA_DelSig_eoc_SRC_BASE), HI16(DMA_DelSig_eoc_DST_BASE));
+    DMA_DelSig_eoc_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(DMA_DelSig_eoc_TD[0], 2, CY_DMA_DISABLE_TD, 0);
+    CyDmaTdSetAddress(DMA_DelSig_eoc_TD[0], LO16((uint32)ADC_DelSig_1_DEC_SAMP_PTR), LO16((uint32)Filter_1_STAGEAM_PTR));
+    CyDmaChSetInitialTd(DMA_DelSig_eoc_Chan, DMA_DelSig_eoc_TD[0]);
+    CyDmaChEnable(DMA_DelSig_eoc_Chan, 1);
+    
+    //DFB
+    
+    DMA_Filter_Chan = DMA_Filter_DmaInitialize(DMA_Filter_BYTES_PER_BURST, DMA_Filter_REQUEST_PER_BURST, 
+        HI16(DMA_Filter_SRC_BASE), HI16(DMA_Filter_DST_BASE));
+    DMA_Filter_TD[0] = CyDmaTdAllocate();
+    CyDmaTdSetConfiguration(DMA_Filter_TD[0], 2, CY_DMA_DISABLE_TD, TD_INC_DST_ADR);
+    CyDmaTdSetAddress(DMA_Filter_TD[0], LO16((uint32)Filter_1_HOLDAM_PTR), LO16((uint32)&Moment_temp));
+    CyDmaChSetInitialTd(DMA_Filter_Chan, DMA_Filter_TD[0]);
+    CyDmaChEnable(DMA_Filter_Chan, 1);
+
+    
+}
+
+
 CY_ISR(SAR_ADC_1)
 {
-    Moment_temp =  ADC_SAR_Seq_1_GetResult16(2) - Moment_offset;
     if(n == N)
         return;
     
@@ -63,7 +111,7 @@ CY_ISR(SAR_ADC_1)
     
     RPM_Moment_temp = RPM_temp;
     
-    Moment[n]=Moment_temp;
+    Moment[n]=Moment_temp  - Moment_offset;
     RPM[n]=RPM_Moment_temp;
     
     n++;
@@ -132,6 +180,8 @@ CY_ISR(RPM_isr)
 
 void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG)
 {
+    DMA_setup_DelSig();
+    
     V_motor_offset = VM;
     A_motor_offset = AM;
     Moment_offset = moment;
@@ -140,10 +190,14 @@ void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG)
     isr_1_StartEx(SAR_ADC_1);
     isr_2_StartEx(SAR_ADC_2);
     isr_3_StartEx(RPM_isr);
+    Filter_1_Start();
     ADC_SAR_1_Start();
     ADC_SAR_Seq_1_Start();
+    ADC_DelSig_1_Start();
     ADC_SAR_1_StartConvert();
     ADC_SAR_Seq_1_StartConvert();
+    ADC_DelSig_1_StartConvert();
+    
     Timer_1_Start();
     Counter_1_Start();
     
@@ -250,7 +304,7 @@ char getData(struct data * Data)
 
 float getMoment()
 {
-    float temp = ADC_SAR_1_CountsTo_Volts(Moment_temp)*2;
+    float temp = ADC_SAR_1_CountsTo_Volts(Moment_temp - Moment_offset)*2;
     if(temp<0)
         return -temp;
     else
@@ -268,7 +322,7 @@ int32 getDistance(char reset)
 
 void calcSamples(const int32 * values,const uint16 N_sample, struct sample * Sample,int32 divider)
 {
-    int32 AVG = values[0];
+    int64 AVG = values[0];
     int32 MAX = values[0];
     int32 MIN = values[0];
 
