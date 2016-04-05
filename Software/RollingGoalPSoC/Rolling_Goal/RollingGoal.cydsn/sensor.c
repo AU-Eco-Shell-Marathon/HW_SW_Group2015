@@ -242,7 +242,6 @@ char getData(struct data * Data)
     calcSamples(efficiency, n, &Data->efficiency, 10); // udprinter i procent.
     
     Data->distance = (uint32)((2.0f*PI*RR_radius*(float)Counter_1_ReadCounter())/360.0f);
-    Data->distance = 0; //!!!!!!!!!!!!!!!!!!!!!!! fjern denne linje. !!!!!!!!!!!!!!!!!!!! --------------------------------
     Data->time_ms = Counter_2_ReadCounter();
     Data->stop = Status_Reg_1_Read()&0b1;
     n=0;
@@ -317,7 +316,7 @@ void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16)
     for(i = 0; i < N_sample; i++)
     {
         if(type == 0)
-            value[i] = CountsTo(value[i]);
+            value[i] = CountsTo(value[i])*11;
         else if(type == 1)
             value[i] = CountToAmp(CountsTo(value[i]));
         else if(type == 2)

@@ -3,6 +3,7 @@
 #include "ControllerClass.h"
 #include "PID.h"
 #include "sensor.h"
+#include "EEPROM.h"
 
 uint8_t buf[250] = {0};
 uint8 buf_n = 0;
@@ -51,6 +52,9 @@ void ReceiveUARTData(void)
         { 
             if(strncmp((char*)buf, handshake, sizeof(handshake))==0)
             {
+                
+                struct PIDparameter PIDval = *getPID_ptr();
+                
 	            SendUART(handshake);
                 CyDelay(1);
                 SendUART("1 0 Time ms\n");
@@ -75,7 +79,16 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 10 PIDval\n");
                 CyDelay(1);
-                SendUART("1 11 Force set (N)\n");
+                SendUART("1 11 Force_set (N)\n");
+                CyDelay(1);
+                char buf[50];
+                sprintf(buf, "5 %f %f %f\n",
+                    PIDval.Kp,
+                    PIDval.Ki,
+                    PIDval.Kd
+                );
+                SendUART(buf);
+                
                 isReadyToSend = 1;
                // CyDelay(100);    HUSK AF OPDATER MED SENESTE PROTOKOL
                // SendData((uint8*)"1 2 Voltage Volt\n");
@@ -95,8 +108,22 @@ void ReceiveUARTData(void)
         {
             
             float moment = 0;
-            buf[buf_n+1]=0;
-            moment = atof((char*)buf);            //Fjern udkommentering når det kopieres over
+            uint8 i;
+            
+            
+            
+            for(i = 0; i< 250; i++)
+            {
+                if(buf[i] == '\n' || buf[i] == '\r' || buf[i] == 0)
+                {
+                    buf[i] = 0;
+                    break;
+                }
+            }
+            
+            //strtok((char*)buf, " ");
+            
+            moment = atof((char*)buf+2);            //Fjern udkommentering når det kopieres over
 			update(NULL, &moment, 0);
         }
         else if(buf[0]=='5') // PID regulations
@@ -104,11 +131,11 @@ void ReceiveUARTData(void)
             int i = 0;
             uint8 temp = 0;
             float PID[3];
-            buf[buf_n+1] = 0;
+            //buf[buf_n+1] = 0;
             temp = atoi(strtok((char *)buf," "));
             for(i = 0; i<3 ;i++)
             {
-                PID[i] = atof(strtok((char *)buf, " "));//eventuelt bare NULL istedet for (char *)buf
+                PID[i] = atof(strtok(NULL, " "));//eventuelt bare NULL istedet for (char *)buf
             }
             struct PIDparameter PIDval = *getPID_ptr();
             

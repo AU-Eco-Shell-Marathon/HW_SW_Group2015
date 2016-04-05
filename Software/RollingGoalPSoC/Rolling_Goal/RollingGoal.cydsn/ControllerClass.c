@@ -74,7 +74,7 @@ void run()
     struct data Data;
     if(getData(&Data) && !busy)
     {
-        SendData(&Data, PID_debug);
+        SendData(&Data, PID_debug, set_force);
         busy = 1;
     }
 }
