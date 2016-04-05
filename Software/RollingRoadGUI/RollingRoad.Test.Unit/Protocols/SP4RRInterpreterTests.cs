@@ -135,6 +135,9 @@ namespace RollingRoad.Test.Unit.Protocols
             
             _interpreter.Start(false);
 
+            WriteToMemoryStream(writer, "0 RollingRoad\n");
+            _interpreter.Listen();
+
             WriteToMemoryStream(writer, "1 0 Time Seconds\n");
             _interpreter.Listen();
             

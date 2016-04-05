@@ -1,4 +1,6 @@
-﻿using NSubstitute;
+﻿using System;
+using System.Windows.Threading;
+using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.Control;
 using RollingRoad.WinApplication.ViewModels;
@@ -10,12 +12,18 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
     {
         private PidControlViewModel _vm;
         private IPidControl _control;
+        private IDispatcher _dispatcher;
 
         [SetUp]
         public void SetUp()
         {
             _control = Substitute.For<IPidControl>();
+
+            _dispatcher = Substitute.For<IDispatcher>();
+            _dispatcher.BeginInvoke(Arg.Any<DispatcherPriority>(), Arg.Do<Delegate>(x => x.Method.Invoke(x.Target, null)));
+
             _vm = new PidControlViewModel(_control);
+            _vm.Dispatcher = _dispatcher;
         }
 
         [TestCase(10.0)]

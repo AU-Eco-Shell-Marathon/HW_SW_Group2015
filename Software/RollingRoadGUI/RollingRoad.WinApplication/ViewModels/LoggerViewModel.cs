@@ -11,11 +11,18 @@ namespace RollingRoad.WinApplication.ViewModels
     public class LoggerViewModel : BindableBase
     {
         public ObservableCollection<Tuple<string, string>> Log { get; } = new ObservableCollection<Tuple<string, string>>();
+
+        public IDispatcher Dispatcher { get; set; }
         
         public ILogger Logger { get; }
 
-        public LoggerViewModel()
+        public LoggerViewModel(IDispatcher dispatcher = null)
         {
+            Dispatcher = dispatcher;
+
+            if (Dispatcher == null)
+                Dispatcher = new SystemDispatcher(Application.Current.Dispatcher);
+
             Logger = new EventLogger();
             Logger.OnLog += WriteLine;
 
@@ -24,7 +31,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public void WriteLine(string line)
         {
-            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() => Log.Add(new Tuple<string, string>(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture), line))));
+            Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() => Log.Add(new Tuple<string, string>(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture), line))));
         }
 
         public override string ToString()

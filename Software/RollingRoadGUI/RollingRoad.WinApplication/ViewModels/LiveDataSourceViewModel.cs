@@ -23,6 +23,11 @@ namespace RollingRoad.WinApplication.ViewModels
         public DelegateCommand SaveCommand { get; }
 
         public IList<DataList> Collection => DataCollection.First();
+        public IDispatcher Dispatcher { get; set; }
+        private ILiveDataSource _source;
+        private int _graphRefreshRateSelectedIndex = 4;
+        private ILogger _logger;
+
 
         public ILogger Logger
         {
@@ -80,12 +85,6 @@ namespace RollingRoad.WinApplication.ViewModels
         }
 
         //TODO Make to an interface
-        private readonly Dispatcher _dispatcher;
-
-        private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex = 4;
-        private ILogger _logger;
-
         public ObservableCollection<Dataset> DataCollection { get; set; } = new ObservableCollection<Dataset>();
 
         public LiveDataSourceViewModel()
@@ -95,7 +94,7 @@ namespace RollingRoad.WinApplication.ViewModels
             SaveCommand             = new DelegateCommand(() => Save()  , CanSave);
             SelectSourceCommand     = new DelegateCommand(SelectSource);
 
-            _dispatcher = Dispatcher.CurrentDispatcher;
+            Dispatcher = new SystemDispatcher(System.Windows.Threading.Dispatcher.CurrentDispatcher);
             DataCollection.Add(new Dataset());
         }
 
@@ -202,7 +201,7 @@ namespace RollingRoad.WinApplication.ViewModels
         {
             try
             {
-                _dispatcher?.Invoke(() => IncommingData(entries));
+                Dispatcher?.BeginInvoke(DispatcherPriority.Input, new Action(() => IncommingData(entries)));
             }
             catch (Exception)
             {

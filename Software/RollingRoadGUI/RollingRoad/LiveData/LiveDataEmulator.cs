@@ -13,7 +13,8 @@ namespace RollingRoad.LiveData
         private readonly DataList _xAxis;
         private int _index;
         private double _lastMs;
-        private bool _shouldRun;
+
+        public bool Started { get; private set; }
 
         /// <summary>
         /// Event when at new value is sent
@@ -64,7 +65,7 @@ namespace RollingRoad.LiveData
         //Stop the transmission of values
         public void Stop()
         {
-            _shouldRun = false;
+            Started = false;
             Timer.Stop();
             Logger?.WriteLine("Emulator: stopping");
         }
@@ -74,7 +75,7 @@ namespace RollingRoad.LiveData
         /// </summary>
         public void Start()
         {
-            _shouldRun = true;
+            Started = true;
             Logger?.WriteLine("Emulator: starting");
             SendNextValue();
         }
@@ -137,7 +138,7 @@ namespace RollingRoad.LiveData
             if (Math.Abs(delta) < double.Epsilon)
                 delta = 1;
 
-            if(_shouldRun)
+            if(Started)
                 Timer.Start((int) delta);
         }
 

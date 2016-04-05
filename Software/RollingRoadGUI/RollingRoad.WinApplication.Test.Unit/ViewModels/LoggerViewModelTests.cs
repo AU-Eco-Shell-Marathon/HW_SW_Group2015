@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Windows.Threading;
+using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.WinApplication.ViewModels;
 
@@ -8,11 +11,15 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
     public class LoggerViewModelTests
     {
         private LoggerViewModel _vm;
+        private IDispatcher _dispatcher;
 
         [SetUp]
         public void SetUp()
         {
-            _vm = new LoggerViewModel();
+            _dispatcher = Substitute.For<IDispatcher>();
+            _dispatcher.BeginInvoke(Arg.Any<DispatcherPriority>(), Arg.Do<Delegate>(x => x.Method.Invoke(x.Target, null)));
+
+            _vm = new LoggerViewModel(_dispatcher);
         }
 
         [Test]

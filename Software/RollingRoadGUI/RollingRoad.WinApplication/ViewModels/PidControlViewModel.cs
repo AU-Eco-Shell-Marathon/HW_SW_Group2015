@@ -9,9 +9,12 @@ namespace RollingRoad.WinApplication.ViewModels
     {
         private readonly IPidControl _control;
 
+        public IDispatcher Dispatcher { get; set; }
+
         public PidControlViewModel(IPidControl control)
         {
             _control = control;
+            Dispatcher = new SystemDispatcher(System.Windows.Threading.Dispatcher.CurrentDispatcher);
         }
 
         public double Kp
@@ -19,7 +22,7 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Kp; }
             set
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
                 {
                     _control.Kp = value;
                     OnPropertyChanged(nameof(Kp));
@@ -31,7 +34,7 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Ki; }
             set
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
                 {
                     _control.Ki = value;
                     OnPropertyChanged(nameof(Ki));
@@ -43,7 +46,7 @@ namespace RollingRoad.WinApplication.ViewModels
             get { return _control.Kd; }
             set
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+                Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
                 {
                     _control.Kd = value;
                     OnPropertyChanged(nameof(Kd));

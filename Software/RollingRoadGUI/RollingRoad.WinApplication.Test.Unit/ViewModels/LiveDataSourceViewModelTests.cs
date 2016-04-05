@@ -1,6 +1,8 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.Data;
@@ -13,11 +15,16 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
     public class LiveDataSourceViewModelTests
     {
         private LiveDataSourceViewModel _vm;
+        private IDispatcher _dispatcher;
 
         [SetUp]
         public void SetUp()
         {
+            _dispatcher = Substitute.For<IDispatcher>();
+            _dispatcher.BeginInvoke(Arg.Any<DispatcherPriority>(), Arg.Do<Delegate>(x => x.Method.Invoke(x.Target, null)));
+
             _vm = new LiveDataSourceViewModel();
+            _vm.Dispatcher = _dispatcher;
         }
 
         [Test]

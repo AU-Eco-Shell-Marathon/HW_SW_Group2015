@@ -21,11 +21,12 @@ namespace RollingRoad.Protocols
         private Thread _listenThread;
         private readonly StreamReader _reader;
         private readonly StreamWriter _writer;
-        private bool _shouldClose;
         private readonly Dictionary<int, DataType> _typeDictionary = new Dictionary<int, DataType>();
         private double _kp;
         private double _ki;
         private double _kd;
+
+        public bool Started { get; private set; }
 
         /// <summary>
         /// Logger used
@@ -91,7 +92,7 @@ namespace RollingRoad.Protocols
         /// </summary>
         private void ListenThread()
         {
-            while (!_shouldClose)
+            while (Started)
             {
                 Listen();
             }
@@ -113,6 +114,9 @@ namespace RollingRoad.Protocols
 
                 //Read packet id
                 PacketId packetId = (PacketId) int.Parse(values[0]);
+
+                if (!Started && packetId != PacketId.HandShake)
+                    return;
 
                 switch (packetId)
                 {
@@ -192,7 +196,7 @@ namespace RollingRoad.Protocols
             }
             catch (Exception e)
             {
-                _shouldClose = true;
+                Started = false;
                 Logger?.WriteLine(e.Message);
             }
         }
@@ -226,7 +230,7 @@ namespace RollingRoad.Protocols
         public void Stop()
         {
             SendCommand(((int)PacketId.Stop).ToString());
-            _shouldClose = true;
+            Started = false;
         }
 
         public void SendHandshake()
@@ -242,7 +246,8 @@ namespace RollingRoad.Protocols
         public void Start(bool startThread)
         {
             SendHandshake();
-
+            
+            Started = true;
             if (!startThread)
                 return;
 
@@ -252,7 +257,6 @@ namespace RollingRoad.Protocols
             if (_listenThread.ThreadState != ThreadState.Unstarted && _listenThread.ThreadState != ThreadState.Running)
                 _listenThread = new Thread(ListenThread) { IsBackground = true };
 
-            _shouldClose = false;
             _listenThread.Start();
         }
 

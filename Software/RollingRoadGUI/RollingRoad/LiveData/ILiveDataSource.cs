@@ -25,6 +25,8 @@ namespace RollingRoad.LiveData
         /// </summary>
         void Stop();
 
+        bool Started { get; }
+
         /// <summary>
         /// Logger used
         /// </summary>
