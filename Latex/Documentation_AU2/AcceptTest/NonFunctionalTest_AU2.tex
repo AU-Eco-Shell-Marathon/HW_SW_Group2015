@@ -1,2 +1,43 @@
 \section{Test of Non-functional requirements}
 Text
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|p{1.6 cm}|p{2.9 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{1.9 cm}|}
+		\hline
+		\textbf{Req. \#} & \textbf{Description} & \textbf{Test procedure} & 
+		\textbf{Expected result} & \textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		AU2\_NF1 
+		& The horn must emit a sound equal or louder than 85 dBa when measured 4 meters horizontally from the vehicle.
+		& The horn button is pressed and the sound pressure level is measured using a decibel-meter.
+		& The decibel-meter shows a value above 85 dBa.
+		& 
+		& \\ \hline
+		AU2\_NF2
+		& The tone emitted by the horn must have a pitch greater than 420 Hz.
+		& The horn-button is pressed and the frequency is measured using an electronic tuner.
+		& The frequency is greater than 420 Hz.
+		& 
+		& \\ \hline
+		AU2\_NF3
+		& The voltage in the vehicle must not exceed 48 V nominal and 60 V maximum.
+		& An oscilloscope is used to measure the voltage-levels around the circuit.
+		& None of the measured voltages are above 48 V nominal or 60 V maximum.
+		& 
+		& \\ \hline
+		AU2\_NF4
+		& The capacity of the battery must not exceed 1,000 Wh.
+		& The capacity of the battery is measured with a power analyzer.
+		& The power analyzer shows a value below 1,000 Wh.
+		& 
+		& \\ \hline
+		AU2\_NF5
+		& The Motor Control Unit must be able to measure the vehicle's velocity with a precision of $\pm$2 km/h.
+		& The vehicle is accelerated up to a series of constant speeds. The measurements, which are stored on an internal SD-card, are compared to the input.
+		& The measured speed is identical to the vehicles speed.
+		& 
+		& \\ \hline			
+	\end{tabular}
+	\caption{Test of the non-functional requirements for AU2}
+\end{table}
