@@ -4,14 +4,14 @@
 
 % ¤¤ Oversaettelse og tegnsaetning ¤¤ %
 \usepackage[utf8]{inputenc}					% Input-indkodning af tegnsaet (UTF8)
-\usepackage[danish]{babel}					% Dokumentets sprog
+\usepackage[english]{babel}					% Dokumentets sprog
 \usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
 \usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
-\setaftersubsubsecskip{10pt}	
-\setaftersubsecskip{10pt}
+\setaftersubsubsecskip{15pt}	
+\setaftersubsecskip{20pt}
 \setbeforesubsecskip{-\baselineskip}
-\setaftersecskip{15pt}
+\setaftersecskip{25pt}
 \setbeforesecskip{1ex}
 \setaftersecskip{1ex}
 																		
@@ -42,7 +42,7 @@
 \usepackage{tabularx}
 
 % ¤¤ Referencer og kilder ¤¤ %
-\usepackage[danish]{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
+\usepackage[english]{varioref}				% Muliggoer bl.a. krydshenvisninger med sidetal (\vref)
 \usepackage{natbib}							% Udvidelse med naturvidenskabelige citationsmodeller
 %\bibliographystyle{plain}					% Referencestilen. kan bruges: abbrvnat, ksfh_nat, plain
 %\usepackage{cite}
@@ -80,7 +80,7 @@
 \bibliographystyle{unsrtnat}			% Udseende af litteraturlisten. bibtex/harvard, unsrt, unsrtnat, agsm
 
 % ¤¤ Indholdsfortegnelse ¤¤ %
-\setsecnumdepth{subsection}		 			% Dybden af nummerede overkrifter (part/chapter/section/subsection)
+\setsecnumdepth{subsection}		 			% Dybden af nummerede overkrifter (part//section/subsection)
 \maxsecnumdepth{subsection}					% Dokumentklassens graense for nummereringsdybde
 \settocdepth{subsubsection} 					% Dybden af indholdsfortegnelsen
 
@@ -136,7 +136,7 @@
 }
 
 % ¤¤ Kapiteludssende ¤¤ %
-\definecolor{numbercolor}{gray}{0.7}		% Definerer en farve til brug til kapiteludseende
+\definecolor{numbercolor}{gray}{0.1}		% Definerer en farve til brug til kapiteludseende
 \newif\ifchapternonum
 
 \makechapterstyle{jenor}{					% Definerer kapiteludseende frem til ...
@@ -180,9 +180,9 @@
 \nouppercaseheads											% Ingen Caps oenskes
 
 \makeevenhead{Uni}{}{}{\leftmark}				% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
-\makeoddhead{Uni}{\rightmark}{}{Aarhus School of Engineering}			% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
-\makeevenfoot{Uni}{}{}{Page \thepage{} of \thelastpage}							% Definerer lige siders sidefod (\makeevenfoot{Navn}{Venstre}{Center}{Hoejre})
-\makeoddfoot{Uni}{}{}{Page \thepage{} of \thelastpage}								% Definerer ulige siders sidefod (\makeoddfoot{Navn}{Venstre}{Center}{Hoejre})
+\makeoddhead{Uni}{\rightmark}{}{Aarhus University School of Engineering}			% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
+\makeevenfoot{Uni}{}{}{Side \thepage{} af \thelastpage}							% Definerer lige siders sidefod (\makeevenfoot{Navn}{Venstre}{Center}{Hoejre})
+\makeoddfoot{Uni}{}{}{Side \thepage{} af \thelastpage}								% Definerer ulige siders sidefod (\makeoddfoot{Navn}{Venstre}{Center}{Hoejre})
 \makeheadrule{Uni}{\textwidth}{0.5pt}						% Tilfoejer en streg under sidehovedets indhold
 \makefootrule{Uni}{\textwidth}{0.5pt}{1mm}					% Tilfoejer en streg under sidefodens indhold
 

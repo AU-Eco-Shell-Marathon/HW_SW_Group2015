@@ -1,13 +1,22 @@
-Feature: Some terse yet descriptive text of what is desired
-	Textual description of the business value of this feature
-	Business rules that govern the scope of the feature
-	Any additional information that will make the feature easier to understand
+Feature: Collection of data
+	As a user, I want to start and stop the collection of data
+	so that I can control the flow of data.
 
-	Scenario: Some determinable business situation
-		Given some precondition
-			And some other precondition
-		When some action by the actor
-			And some other action
-			And yet another action
-		Then some testable outcome is achieved
-			And something else we can check happens too
+	Scenario: Select data source (COM-Port)
+		Given a program with no data source selected
+		When I press "Select source"
+			And select a COM-Port
+			And press the select button
+		Then a datasource will be selected and started
+		
+	Scenario: Start collection of data
+		Given a data source is connected to the computer
+			And the collection of data is stopped
+		When I press the Start button
+		Then the collection of data started
+		
+	Scenario: Start collection of data
+		Given a data source is connected to the computer
+			And the collection of data is started
+		When I press the Stop button
+		Then the collection of data stopped
