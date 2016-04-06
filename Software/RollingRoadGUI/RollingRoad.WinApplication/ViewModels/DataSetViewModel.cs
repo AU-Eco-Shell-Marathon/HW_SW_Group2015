@@ -7,7 +7,7 @@ namespace RollingRoad.WinApplication.ViewModels
     public class DataSetViewModel : BindableBase
     {
         private bool _isSelected;
-        private Dataset DataSet { get; }
+        public Dataset DataSet { get; }
 
         public DataSetViewModel(Dataset dataset)
         {

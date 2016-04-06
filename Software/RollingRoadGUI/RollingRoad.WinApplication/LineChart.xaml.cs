@@ -66,7 +66,7 @@ namespace RollingRoad.WinApplication
             control._timer.Interval = TimeSpan.FromMilliseconds(newtime);
         }
 
-        private Dictionary<string, Color> _colorDictionary = new Dictionary<string, Color>(); 
+        private readonly Dictionary<string, Color> _colorDictionary = new Dictionary<string, Color>(); 
 
         public LineChart()
         {
