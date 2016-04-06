@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace RollingRoad.WinApplication
 {
-
+    /// <summary>
+    /// Settings file originally used in the game "Norse"
+    /// </summary>
     public class SettingsFile
     {
-        //File struture used in the game Norse
-        //The first line of every file defines the count of stats
-        //Every line below will be in this format:
-        //<Name>: <Value> ETC:
-        //Total Damage: 2000
-
+        /// <summary>
+        /// Structure used to store stats
+        /// </summary>
         struct Stat
         {
             public string Name;
@@ -29,6 +29,10 @@ namespace RollingRoad.WinApplication
         private readonly string _statsFile;
         private readonly List<Stat> _listOfStats = new List<Stat>();
 
+        /// <summary>
+        /// Try to load or create a new settings file
+        /// </summary>
+        /// <param name="path">The path of the file to open/create</param>
         public SettingsFile(string path)
         {
             if(string.IsNullOrEmpty(path))
@@ -39,6 +43,9 @@ namespace RollingRoad.WinApplication
             LoadStats();
         }
 
+        /// <summary>
+        /// Load stats from file
+        /// </summary>
         private void LoadStats()
         {
             if (!File.Exists(_statsFile))
@@ -76,6 +83,9 @@ namespace RollingRoad.WinApplication
             sr.Close();
         }
 
+        /// <summary>
+        /// Save stats to file
+        /// </summary>
         public void SaveStats()
         {
             StreamWriter sw = new StreamWriter(_statsFile);
@@ -98,6 +108,11 @@ namespace RollingRoad.WinApplication
             sw.Close();
         }
 
+        /// <summary>
+        /// Read int stats
+        /// </summary>
+        /// <param name="stat">The stat to retrieve</param>
+        /// <returns>Value of the stat, if unable to load or parse 0 will be returned</returns>
         public int GetIntStat(string stat)
         {
             try
@@ -112,16 +127,26 @@ namespace RollingRoad.WinApplication
             return 0;
         }
 
+        /// <summary>
+        /// Write float stat to file
+        /// </summary>
+        /// <param name="stat">Stat key</param>
+        /// <param name="value">Value to write</param>
         public void SetFloatStat(string stat, float value)
         {
             SetStat(stat, value.ToString());
         }
 
-        public float GetFloatStat(string i_stat)
+        /// <summary>
+        /// Get float stat from file or cache
+        /// </summary>
+        /// <param name="stat">The stat to retrieve</param>
+        /// <returns>Value of the stat, if unable to load or parse 0 will be returned</returns>
+        public float GetFloatStat(string stat)
         {
             try
             {
-                return float.Parse(GetStat(i_stat));
+                return float.Parse(GetStat(stat));
             }
             catch (Exception)
             {
@@ -131,37 +156,60 @@ namespace RollingRoad.WinApplication
             return 0;
         }
 
+        /// <summary>
+        /// Set int stat
+        /// </summary>
+        /// <param name="stat">Stat key</param>
+        /// <param name="value">Stat value</param>
         public void SetIntStat(string stat, int value)
         {
             SetStat(stat, value.ToString());
         }
 
+
+        /// <summary>
+        /// Add to int stat
+        /// </summary>
+        /// <param name="stat">Stat key</param>
+        /// <param name="value">How much to add to key</param>
         public void AddToIntStat(string stat, int value)
         {
             SetIntStat(stat, GetIntStat(stat) + value);
         }
 
+        /// <summary>
+        /// Add to float stat
+        /// </summary>
+        /// <param name="stat">Stat key</param>
+        /// <param name="value">How much to add to key</param>
         public void AddToFloatStat(string stat, float value)
         {
             SetFloatStat(stat, GetFloatStat(stat) + value);
         }
 
+        /// <summary>
+        /// Get stat
+        /// </summary>
+        /// <param name="stat">Stat key</param>
+        /// <returns>Returns empty string if not found, else it return the string value of the key</returns>
         public string GetStat(string stat)
         {
-            if (_listOfStats != null)
+            if (_listOfStats == null)
+                return "";
+
+            foreach (Stat tempStat in _listOfStats.Where(tempStat => tempStat.Name == stat))
             {
-                foreach (Stat tempStat in _listOfStats)
-                {
-                    if (tempStat.Name == stat)
-                    {
-                        return tempStat.Value;
-                    }
-                }
+                return tempStat.Value;
             }
 
             return "";
         }
 
+        /// <summary>
+        /// Set stat, auto saves to file
+        /// </summary>
+        /// <param name="stat">Stat key</param>
+        /// <param name="value">Stat value</param>
         public void SetStat(string stat, string value)
         {
             int i = 0;
@@ -183,6 +231,10 @@ namespace RollingRoad.WinApplication
             SaveStats();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="count"></param>
         private void CheckIfBigEnough(int count)
         {
             for (int i = _listOfStats.Count; i < count + 1; i++)

@@ -1,0 +1,33 @@
+\section{DF4RR - Data File for RollingRoad}
+
+\subsection{Introduction}
+
+\fxnote{Sæt ref https://tools.ietf.org/html/rfc4180} \fxnote{Fml, oversæt to english }
+
+DF4RR er en datafil brugt til at opbevare det indsamlede data fra RollingRoad. Fileformatet er baseret på CSV(Comma-Separated Values), dog med den undtagelse at der bliver brugt semicolon i stedet for komma.  Filen selv skal være encoded i UTF8 \fxnote{Sæt ref}.
+
+Ved alle komma-tal skal punktum bruges som separator af decimal- og hel-tal.
+
+\subsection{Header}
+
+First row, first coloum must be a cell\footnote{A cell is the values between two separators} containing the case-insensitive string "shell eco marathon".
+
+The following coloums in the first row must be filled with the datatype-names saved in the file.
+
+Second row, first coloum can contain a description about the datafile. The following coloums must be filled with the datatype-units for the datatype-name above. 
+
+Examples of the first and seconds row can be seen section \vref{DF4RR-Example}
+
+\subsection{Data}
+
+\subsection{Example}
+\label{DF4RR-Example}
+
+SHELL ECO MARATHON;Time;Torque;Power\\
+Test file 2;Seconds;Nm;Watt\\
+;0.1;0;0\\
+;0.2;0;20\\
+;0.3;2;50\\
+;0.4;5;80\\
+;0.5;8;90\\
+;0.6;11;100\\
