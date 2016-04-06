@@ -127,6 +127,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="IDispatcher.cs" />
+    <Compile Include="SettingsFile.cs" />
     <Compile Include="SystemDispatcher.cs" />
     <Compile Include="TemplateSelectors\LiveDataControlTemplateSelector.cs" />
     <Compile Include="ViewModels\CalibrateControlViewModel.cs" />

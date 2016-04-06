@@ -8,26 +8,5 @@
     <Setting Name="TorqueControlMax" Type="System.Double" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
-    <Setting Name="TorqueLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FFFF0000</Value>
-    </Setting>
-    <Setting Name="PowerLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FF00FF00</Value>
-    </Setting>
-    <Setting Name="VoltageLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FF0000FF</Value>
-    </Setting>
-    <Setting Name="AmpereLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FFFFFF00</Value>
-    </Setting>
-    <Setting Name="EffectLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FF00FFFF</Value>
-    </Setting>
-    <Setting Name="DistanceLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FFF00000</Value>
-    </Setting>
-    <Setting Name="RPMLineColor" Type="System.Windows.Media.Color" Scope="User">
-      <Value Profile="(Default)">#FF00F000</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

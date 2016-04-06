@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,6 +8,8 @@ using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using RollingRoad.Data;
+using Color = System.Windows.Media.Color;
+using ColorConverter = System.Windows.Media.ColorConverter;
 
 namespace RollingRoad.WinApplication
 {
@@ -63,6 +66,8 @@ namespace RollingRoad.WinApplication
             control._timer.Interval = TimeSpan.FromMilliseconds(newtime);
         }
 
+        private Dictionary<string, Color> _colorDictionary = new Dictionary<string, Color>(); 
+
         public LineChart()
         {
             InitializeComponent();
@@ -107,18 +112,43 @@ namespace RollingRoad.WinApplication
 
                     CompositeDataSource source = new CompositeDataSource(xData, yData);
 
-                    try
-                    {
-                        object colorObj = Properties.Settings.Default[dataList.Type.Name + "LineColor"];
-                        Chart.AddLineGraph(source, (System.Windows.Media.Color) colorObj, 2,
-                            dataList.Type.ToString());
-                    }
-                    catch (Exception)
-                    {
-                        Chart.AddLineGraph(source, 2, dataList.Type.ToString());
-                    }
+                    Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, dataList.Type.ToString());
                 }
             }
+        }
+
+        private Color GetLineColor(string key)
+        {
+            Color color;
+
+            if (!_colorDictionary.TryGetValue(key, out color))
+            {
+                App app = ((App) Application.Current);
+                string colorStr = app.Settings.GetStat(key);
+
+                if (string.IsNullOrEmpty(colorStr))
+                {
+                    color = GenerateRandom();
+                    app.Settings.SetStat(key, $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}");
+                    _colorDictionary.Add(key, color);
+                }
+                else
+                {
+                    object colorObj = ColorConverter.ConvertFromString(colorStr);
+                    color = (Color) colorObj;
+                    _colorDictionary.Add(key, color);
+                }
+            }
+
+            return color;
+        }
+
+        private Color GenerateRandom()
+        {
+            Random rnd = new Random();
+            byte[] b = new byte[3];
+            rnd.NextBytes(b);
+            return Color.FromRgb(b[0], b[1], b[2]);
         }
 
         public void Clear()
