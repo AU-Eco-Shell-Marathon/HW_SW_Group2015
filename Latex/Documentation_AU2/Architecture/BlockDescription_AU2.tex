@@ -3,14 +3,37 @@ The blocks in the BDD are described as follows:
 
 \begin{itemize}
 	\item \textbf{Horn}\\
-	A sound-making device which emits tone when the driver activates it.
+	A sound-making device which emits a tone when the driver activates it.
 	\item \textbf{Battery Management System}\\
-	The system manages the rechargable battery and protects the circuits and batteries from shorting.
+	The system manages the rechargable battery and protects the circuits and batteries from shorting. This is done by constantly surveying the current and temperature from the battery. If any parameter exceeds an allowable treshold, the system will block the current from the battery.
 	\begin{itemize}
 		\item \textbf{Battery}\\
 		The battery cells which supply the various systems with power and propulses the car.
+		\item \textbf{Analog Unit}\\
+		Performs measurements and analog to digital conversion of cell voltages, battery temperatures and signal from current sensor. Furthermore, it handles cell balancing on requests from the Digital Unit, and redudant battery protection independent of the Digital Unit.
+		\item \textbf{Digital Unit}\\
+		Collects measured values from the Analog Unit, performs calculations gives estimations of the cell lifetime and battery parameters. Furthermore, it handles communication with external units.
+		\item \textbf{Current Sensor}\\
+		Senses value and direction of battery current, and presents this information to the Analog Unit.
 	\end{itemize}
 	\item \textbf{Emergency System}\\
+	A system  consisting of two mechanical switches  which must be activated, in order for the system to be turned on.
 	\item \textbf{Motor Control Unit}\\
+	The system controls the driving-algorithm which the car operates by. Furthermore, it logs various parameters about the car's current run (velocity and power-consumption) on to a removable SD-card.
+	\begin{itemize}
+		\item \textbf{SD-logger}\\
+		Logs various parameters about the current run to a removable SD-card which may be examined to optimize the driving algorithm.
+		\item \textbf{Joulemeter}\\
+		Measures the energy-consumption as electrical energy is turned into mechanical energy.
+		\item \textbf{Speedometer}\\
+		Constantly measures the car's current speed in order to let the car follow the implemented driving-algorithm.
+		\item \textbf{Propulsion Motor}\\
+		The electrical motor which propels the car forwards.
+		\item \textbf{Motor Controller}\\
+		Controls the power consumption of the Propulsion Motor in order to let the car follow the implemented driving-algorithm.
+	\end{itemize}
 	\item \textbf{Distribution Block}\\
+	Converts the 48 V from the battery to recommended levels in order to power various systems in the car.
+	\item \textbf{Computer}\\
+	An optional block which can be connected in order to measure various parameters or calibrate the system.
 \end{itemize}
