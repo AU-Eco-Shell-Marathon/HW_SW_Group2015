@@ -118,8 +118,11 @@ namespace RollingRoad.WinApplication.ViewModels
                     LiveControlCollection.Add(new CalibrateControlViewModel(cctrl));
 
                 ITorqueControl tctrl = _source as ITorqueControl;
-                if(tctrl != null)
+                if (tctrl != null)
+                {
                     LiveControlCollection.Add(new TorqueControlViewModel(tctrl));
+                    LiveControlCollection.Add(new TestSessionViewModel(tctrl));
+                }
 
                 IPidControl pctrl = _source as IPidControl;
                 if (pctrl != null)

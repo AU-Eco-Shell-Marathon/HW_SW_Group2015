@@ -4,6 +4,6 @@ namespace RollingRoad.Core.ApplicationServices
 {
     public interface ICsvService
     {
-        Stream G
+
     }
 }

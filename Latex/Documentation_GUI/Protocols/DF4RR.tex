@@ -2,11 +2,9 @@
 
 \subsection{Introduction}
 
-\fxnote{Sæt ref https://tools.ietf.org/html/rfc4180} \fxnote{Fml, oversæt to english }
+DF4RR is a dataformat used to store collected data from rollingroad, the file format is based om CSV\footnote{Comma Seperated Values}\cite{CSVFileDescription}. But instead of ',' as a seperator, ';' is used. The files encoding must be UTF8\cite{UTF8Description}.
 
-DF4RR er en datafil brugt til at opbevare det indsamlede data fra RollingRoad. Fileformatet er baseret på CSV(Comma-Separated Values), dog med den undtagelse at der bliver brugt semicolon i stedet for komma.  Filen selv skal være encoded i UTF8 \fxnote{Sæt ref}.
-
-Ved alle komma-tal skal punktum bruges som separator af decimal- og hel-tal.
+Note, the decimal mark used must be dots.
 
 \subsection{Header}
 
@@ -19,6 +17,8 @@ Second row, first coloum can contain a description about the datafile. The follo
 Examples of the first and seconds row can be seen section \vref{DF4RR-Example}
 
 \subsection{Data}
+
+Then follows the data. Each row will start with an empty cell that can be used for anything. The following cells must contain data, and the number of cells filled with data must match the number of datatypes described in the header. 
 
 \subsection{Example}
 \label{DF4RR-Example}
