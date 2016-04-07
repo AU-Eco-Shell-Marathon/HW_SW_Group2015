@@ -25,7 +25,7 @@ namespace RollingRoad.WinApplication.ViewModels
         public IList<DataList> Collection => DataCollection.First();
         public IDispatcher Dispatcher { get; set; }
         private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex = 4;
+        private int _graphRefreshRateSelectedIndex;
         private ILogger _logger;
 
 
