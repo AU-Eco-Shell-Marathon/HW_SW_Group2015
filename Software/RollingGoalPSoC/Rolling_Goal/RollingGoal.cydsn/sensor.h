@@ -45,8 +45,8 @@ struct data
 char getData(struct data *);
 float getMoment();
 int32 getDistance(char reset);
-void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG);
-void sensor_calibrate(int16* VM, int16* AM, int16* moment, int16* AG);
+void sensor_init(int32 VM, int32 AM, int32 moment, int32 AG);
+void sensor_calibrate(int32* VM, int32* AM, int32* moment, int32* AG);
 float MomentToForce(float Moment_value);
 float ForceToMoment(float Force_value);
 float RPMToSpeed(float RPM_value);

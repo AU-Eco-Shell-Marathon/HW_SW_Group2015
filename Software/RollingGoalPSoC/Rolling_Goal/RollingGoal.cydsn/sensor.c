@@ -31,9 +31,9 @@ void DMA_setup_DelSig();
 static char calibrate_ = 0;
 
 // Mållinger.
-int32 V_motor[N];   int16 V_motor_offset = 0;
-int32 A_motor[N];   int16 A_motor_offset = 0;
-int32 Moment[N];    int16 Moment_offset  = 0;
+int32 V_motor[N];   int32 V_motor_offset = 0;
+int32 A_motor[N];   int32 A_motor_offset = 0;
+int32 Moment[N];    int32 Moment_offset  = 0;
 int32 RPM[N];
 volatile uint16 n = 0;
 
@@ -54,7 +54,7 @@ int32 A_generator_sum = 0;
 int16 A_generator_min = 0xEFFF;
 uint16 A_generator_samples = 0;
 
-int16 A_generator_offset = 0;
+int32 A_generator_offset = 0;
 
 // DMA setup ----------
 // DelSig
@@ -78,25 +78,30 @@ void DMA_setup_DelSig()
 {
     
     //DelSig
+    ADC_DelSig_1_Start();
+    ADC_DelSig_1_SetCoherency(ADC_DelSig_1_COHER_MID);
+    ADC_DelSig_1_StartConvert();
+
     
     DMA_DelSig_eoc_Chan = DMA_DelSig_eoc_DmaInitialize(DMA_DelSig_eoc_BYTES_PER_BURST, DMA_DelSig_eoc_REQUEST_PER_BURST, 
     HI16(DMA_DelSig_eoc_SRC_BASE), HI16(DMA_DelSig_eoc_DST_BASE));
     DMA_DelSig_eoc_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(DMA_DelSig_eoc_TD[0], 2, CY_DMA_DISABLE_TD, 0);
+    CyDmaTdSetConfiguration(DMA_DelSig_eoc_TD[0], 2, DMA_INVALID_TD, TD_INC_DST_ADR);
     CyDmaTdSetAddress(DMA_DelSig_eoc_TD[0], LO16((uint32)ADC_DelSig_1_DEC_SAMP_PTR), LO16((uint32)Filter_1_STAGEAM_PTR));
     CyDmaChSetInitialTd(DMA_DelSig_eoc_Chan, DMA_DelSig_eoc_TD[0]);
     CyDmaChEnable(DMA_DelSig_eoc_Chan, 1);
     
     //DFB
+    Filter_1_Start();
+    Filter_1_SetCoherency(Filter_1_CHANNEL_A, Filter_1_KEY_HIGH);
     
     DMA_Filter_Chan = DMA_Filter_DmaInitialize(DMA_Filter_BYTES_PER_BURST, DMA_Filter_REQUEST_PER_BURST, 
         HI16(DMA_Filter_SRC_BASE), HI16(DMA_Filter_DST_BASE));
     DMA_Filter_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(DMA_Filter_TD[0], 2, CY_DMA_DISABLE_TD, TD_INC_DST_ADR);
+    CyDmaTdSetConfiguration(DMA_Filter_TD[0], 2, DMA_INVALID_TD, DMA_Filter__TD_TERMOUT_EN | TD_INC_SRC_ADR);
     CyDmaTdSetAddress(DMA_Filter_TD[0], LO16((uint32)Filter_1_HOLDAM_PTR), LO16((uint32)&Moment_temp));
     CyDmaChSetInitialTd(DMA_Filter_Chan, DMA_Filter_TD[0]);
     CyDmaChEnable(DMA_Filter_Chan, 1);
-
     
 }
 
@@ -111,7 +116,7 @@ CY_ISR(SAR_ADC_1)
     
     RPM_Moment_temp = RPM_temp;
     
-    Moment[n]=Moment_temp  - Moment_offset;
+    Moment[n]=Moment_temp - Moment_offset;
     RPM[n]=RPM_Moment_temp;
     
     n++;
@@ -178,7 +183,7 @@ CY_ISR(RPM_isr)
     Timer_1_ClearFIFO();
 }
 
-void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG)
+void sensor_init(int32 VM, int32 AM, int32 moment, int32 AG)
 {
     DMA_setup_DelSig();
     
@@ -190,13 +195,14 @@ void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG)
     isr_1_StartEx(SAR_ADC_1);
     isr_2_StartEx(SAR_ADC_2);
     isr_3_StartEx(RPM_isr);
-    Filter_1_Start();
+    
     ADC_SAR_1_Start();
     ADC_SAR_Seq_1_Start();
-    ADC_DelSig_1_Start();
+    
     ADC_SAR_1_StartConvert();
     ADC_SAR_Seq_1_StartConvert();
-    ADC_DelSig_1_StartConvert();
+   
+    
     
     Timer_1_Start();
     Counter_1_Start();
@@ -218,7 +224,7 @@ void sensor_init(int16 VM, int16 AM, int16 moment, int16 AG)
 
 
 
-void sensor_calibrate(int16* VM, int16* AM, int16* moment, int16* AG)
+void sensor_calibrate(int32* VM, int32* AM, int32* moment, int32* AG)
 {
     calibrate_ = 1;
     V_motor_offset = 0;
@@ -272,7 +278,7 @@ char getData(struct data * Data)
     
     convertToUnit(V_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,0);
     convertToUnit(A_motor, n, &ADC_SAR_Seq_1_CountsTo_uVolts,1);
-    convertToUnit(Moment, n, &ADC_SAR_Seq_1_CountsTo_uVolts,2);
+    convertToUnit(Moment, n, NULL,3);
     
     int32 P_motor[N];
     int32 P_mekanisk[N];
@@ -304,7 +310,9 @@ char getData(struct data * Data)
 
 float getMoment()
 {
-    float temp = ADC_SAR_1_CountsTo_Volts(Moment_temp - Moment_offset)*2;
+    //CountToMoment(ADC_DelSig_1_CountsTo_uVolts(value[i]))
+    
+    float temp = ADC_DelSig_1_CountsTo_Volts(Moment_temp - Moment_offset)*2;
     if(temp<0)
         return -temp;
     else
@@ -375,6 +383,8 @@ void convertToUnit(int32 * value, const uint16 N_sample,int32 (*CountsTo)(int16)
             value[i] = CountToAmp(CountsTo(value[i]));
         else if(type == 2)
             value[i] = CountToMoment(CountsTo(value[i]));
+        else if(type == 3)
+            value[i] = CountToMoment(ADC_DelSig_1_CountsTo_uVolts(value[i]));
     }
     
 }

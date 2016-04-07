@@ -77,9 +77,17 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 9 Overcurrent\n");
                 CyDelay(1);
-                SendUART("1 10 PIDval\n");
+                SendUART("1 10 Force_set (N)\n");
                 CyDelay(1);
-                SendUART("1 11 Force_set (N)\n");
+                SendUART("1 11 PIDval\n");
+                CyDelay(1);
+                SendUART("1 12 PIDerr\n");
+                CyDelay(1);
+                SendUART("1 13 PIDanti_windup\n");
+                CyDelay(1);
+                SendUART("1 14 PIDinput\n");
+                CyDelay(1);
+                SendUART("1 15 PIDsensor\n");
                 CyDelay(1);
                 char buf[50];
                 sprintf(buf, "5 %f %f %f\n",
@@ -171,7 +179,7 @@ void SendUART (char *Pdata)
     return;
 }
 
-void SendData (struct data* Data, float PIDval,  float setForce)
+void SendData (struct data* Data,  float setForce, float PIDinput, float PIDsensor, float *PIDdebug)
 {
     if(isReadyToSend == 0)
         return;
@@ -188,7 +196,7 @@ void SendData (struct data* Data, float PIDval,  float setForce)
     
     char buf[100];
        
-    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d %f %f\n\r", 
+    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d %f %f %f %f %f %f\n\r", 
         Data->time_ms, 
         MomentToForce(Data->Moment.avg), 
         Data->V_motor.avg, 
@@ -199,11 +207,28 @@ void SendData (struct data* Data, float PIDval,  float setForce)
         Data->P_motor.avg, 
         Data->efficiency.avg,
         Data->stop,
-        PIDval,
-        setForce
+        setForce,
+        PIDdebug[0],//pidval
+        PIDdebug[1], //err
+        PIDdebug[2],//antiwindup
+        PIDinput, //input
+        PIDsensor //sensor
     );
     SendUART(buf);
-    
+    /*
+     SendUART("1 10 Force_set (N)\n");
+                CyDelay(1);
+                SendUART("1 11 PIDval\n");
+                CyDelay(1);
+                SendUART("1 12 PIDerr\n");
+                CyDelay(1);
+                SendUART("1 13 PIDanti_windup\n");
+                CyDelay(1);
+                SendUART("1 14 PIDinput\n");
+                CyDelay(1);
+                SendUART("1 15 PIDsensor\n");
+                CyDelay(1);
+    */
 }
 
 /* [] END OF FILE */

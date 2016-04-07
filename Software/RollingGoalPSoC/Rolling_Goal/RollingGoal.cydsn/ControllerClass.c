@@ -29,11 +29,16 @@ char load(struct PIDparameter * PID, float * moment);
 
 CY_ISR_PROTO(PID_isr);
 
-float PID_debug = 0;
+
+float *PIDdebug;
+
+float Moment_debug;
+
 
 CY_ISR(PID_isr)
 {  
-    PID_debug = PID_tick(getMoment(), ForceToMoment(set_force));
+    Moment_debug = getMoment();
+    PIDdebug = PID_tick(Moment_debug, ForceToMoment(set_force));
 }
 
 char busy = 0;
@@ -74,7 +79,7 @@ void run()
     struct data Data;
     if(getData(&Data) && !busy)
     {
-        SendData(&Data, PID_debug, set_force);
+        SendData(&Data, set_force, ForceToMoment(set_force), Moment_debug, PIDdebug);
         busy = 1;
     }
 }
@@ -88,7 +93,7 @@ void stop()
 void calibrate()
 {
     
-    int16 Offset[4];
+    int32 Offset[4];
 
     sensor_calibrate(&Offset[0], &Offset[1], &Offset[2], &Offset[3]);
     
@@ -126,11 +131,11 @@ void init()
     CyGlobalIntEnable; /* Enable global interrupts. */
     InitUart();
     
-    size_t sizes[] = {sizeof(struct PIDparameter), sizeof(float), sizeof(int16[4])};
+    size_t sizes[] = {sizeof(struct PIDparameter), sizeof(float), sizeof(int32[4])};
    
     EEPROM_init(sizes, 3);
     
-    int16 Offset[4];
+    int32 Offset[4];
     
     if(EEPROM_read(2, (uint8*)Offset))
         sensor_init(Offset[0],Offset[1],Offset[2],Offset[3]);
