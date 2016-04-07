@@ -1,2 +1,114 @@
 \section{Signal description - AU2}
-Text
+The signals and protocols used to communicate between the blocks in AU2 are specified in this section. These are only descriptions for the signals contained in the IBD for AU2.
+
+\textbf{Block :AU2}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{HornOn:Force}\\
+	Direction: [External] $\rightarrow$ [Horn]\\
+	Description: The driver activates the system by pressing the corrosponding button inside the vehicle's cockpit.
+	\item \textbf{ShutDown:Force}\\
+	Direction: [External] $\rightarrow$ [Emergency System]\\
+	Description: Can be triggered by pressing a button on the vehicle's frame or by depressing the Deadmans Switch inside the cockpit.
+	\item \textbf{PowerMeas:Power}\\
+	Direction: [Motor Control System] $\rightarrow$ [External]\\
+	Description: Power consumed by the motor. This connection is only relevant when AU2 is connected to Rolling Road.
+\end{itemize}
+
+\textbf{Block :Emergency System}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{ShutDown:Force}\\
+	Direction: [External] $\rightarrow$ [Emergency System]\\
+	Description: Can be triggered by pressing a button on the vehicle's frame or by depressing the Deadmans Switch inside the cockpit.
+	\item \textbf{ShutDown:Voltage}\\
+	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
+	Description: The button-press triggers a short-circuit which corrosponds to a change in the voltage-level, which can be detected by the BMS.
+\end{itemize}
+
+\textbf{Block :Horn}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{HornOn:Force}\\
+	Direction: [External] $\rightarrow$ [Horn]\\
+	Description: The driver activates the system by pressing the corrosponding button inside the vehicle's cockpit.
+	\item \textbf{SupplyHorn:Voltage}\\
+	Direction: [Distribution Block] $\rightarrow$ [Horn]\\
+	Description: Power supply for the vehicle's horn.
+	\item \textbf{HornPWM:PWM}\\
+	Direction: [Motor Control System] $\rightarrow$ [Horn]\\
+	Description: A PWM-signal with a frequency corrosponding to the tone emitted by the horn.
+\end{itemize}
+
+\textbf{Block :Battery Management System}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{ShutDown:Voltage}\\
+	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
+	Description: The button-press triggers a short-circuit which corrosponds to a change in the voltage-level, which can be detected by the BMS.
+	\item \textbf{MainSupply:Power}\\
+	Direction: [Battery Management System] $\rightarrow$ [Distribution Block]\\
+	Description: Power delivered by the battery in order to supply the electrical systems and propel the car.
+	\item \textbf{BMSC:CAN}\\
+	Direction: [Battery Management System] $\rightarrow$ [Computer]\\
+	Description: CAN-communication with a computer in order to gain information about various variables.
+\end{itemize}
+
+\textbf{Block :Distribution Block}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{MainSupply:Power}\\
+	Direction: [Battery Management System] $\rightarrow$ [Distribution Block]\\
+	Description: Power delivered by the battery in order to supply the electrical systems and propel the car.
+	\item \textbf{SupplyHorn:Voltage}\\
+	Direction: [Distribution Block] $\rightarrow$ [Horn]\\
+	Description: Power supply for the vehicle's horn.
+	\item \textbf{SupplyMCS:Voltage}\\
+	Direction: [Distribution Block] $\rightarrow$ [Motor Control System]\\
+	Description: Power supply for the various electrical systems in the Motor Control Systems.
+	\item \textbf{PowerIn:Power}\\
+	Direction: [Distribution Block] $\rightarrow$ [Motor Control System]\\
+	Description: Power delivered from the battery to propel the car.
+\end{itemize}
+
+\textbf{Block :Motor Control System}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{SupplyMCS:Voltage}\\
+	Direction: [Distribution Block] $\rightarrow$ [Motor Control System]\\
+	Description: Power supply for the various electrical systems in the Motor Control Systems.
+	\item \textbf{PowerIn:Power}\\
+	Direction: [Distribution Block] $\rightarrow$ [Motor Control System]\\
+	Description: Power delivered from the battery to propel the car.
+	\item \textbf{HornPWM:PWM}\\
+	Direction: [Motor Control System] $\rightarrow$ [Horn]\\
+	Description: A PWM-signal with a frequency corrosponding to the tone emitted by the horn.
+	\item \textbf{PowerOut:Power}\\
+	Direction: [Motor Control System] $\rightarrow$ [Propulsion Motor]\\
+	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the driving-algorithm.
+	\item \textbf{MCSC:CAN}\\
+	Direction: [Motor Control System] $\rightarrow$ [Computer]\\
+	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
+	\item \textbf{PowerMeas:Power}\\
+	Direction: [Motor Control System] $\rightarrow$ [External]\\
+	Description: Power consumed by the motor. This connection is only relevant when AU2 is connected to Rolling Road.
+\end{itemize}
+
+\textbf{Block :Propulsion Motor}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{PowerOut:Power}\\
+	Direction: [Motor Control System] $\rightarrow$ [Propulsion Motor]\\
+	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the driving-algorithm.
+\end{itemize}
+
+\textbf{Block :Computer}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{BMSC:CAN}\\
+	Direction: [Battery Management System] $\rightarrow$ [Computer]\\
+	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
+	\item \textbf{MCSC:CAN}\\
+	Direction: [Motor Control System] $\rightarrow$ [Computer]\\
+	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
+\end{itemize}
