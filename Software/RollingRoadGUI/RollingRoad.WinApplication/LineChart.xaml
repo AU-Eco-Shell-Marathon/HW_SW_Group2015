@@ -10,7 +10,7 @@
     <Grid>
 
         <d3:ChartPlotter x:Name="Chart">
-            <d3:HorizontalAxisTitle Content="Time"/>
+            <d3:HorizontalAxisTitle x:Name="HorizontalAxisTitle"  Content="Time"/>
         </d3:ChartPlotter>
     </Grid>
 </UserControl>

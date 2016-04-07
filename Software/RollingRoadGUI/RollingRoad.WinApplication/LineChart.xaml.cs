@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using RollingRoad.Data;
+using RollingRoad.WinApplication.Annotations;
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
 
@@ -54,6 +57,7 @@ namespace RollingRoad.WinApplication
                                                                             typeof (double),
                                                                             typeof (LineChart),
                                                                             new FrameworkPropertyMetadata(500.0, RefreshRateChange, null));
+        
 
         private static void RefreshRateChange(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -78,14 +82,28 @@ namespace RollingRoad.WinApplication
         }
 
         private readonly DispatcherTimer _timer;
+        private int lastLength = 0;
+
+        private bool ShouldUpdate()
+        {
+            if (ItemsSource == null && lastLength != 0)
+                return true;
+
+            return false;
+        }
 
         public void Refresh()
         {
+            if (!ShouldUpdate())
+                return;
+
             Clear();
 
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
 
+
+            int i = 1;
             foreach (Dataset dataset in ItemsSource)
             {
                 DataList xAxis = dataset.FirstOrDefault(x => x.Type.Name == XAxis);
@@ -93,13 +111,14 @@ namespace RollingRoad.WinApplication
                 if (xAxis == null)
                     continue;
                     
-                foreach (DataList dataList in dataset)
+                if (dataset.Any(dataList => xAxis.Count != dataList.Count))
                 {
-                    if(xAxis.Count != dataList.Count)
-                        throw new ArgumentException("Datalist count does not match");
+                    throw new ArgumentException("Datalist count does not match");
                 }
 
                 EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis);
+                HorizontalAxisTitle.Content = xAxis.Type.Name + "(" + xAxis.Type.Unit + ")";
+
                 xData.SetXMapping(x => x);
 
                 foreach (DataList dataList in dataset)
@@ -112,8 +131,10 @@ namespace RollingRoad.WinApplication
 
                     CompositeDataSource source = new CompositeDataSource(xData, yData);
 
-                    Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, dataList.Type.ToString());
+                    Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, "D" + i + ":" + dataList.Type.ToString());
                 }
+
+                i++;
             }
         }
 
