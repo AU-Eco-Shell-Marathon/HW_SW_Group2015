@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
@@ -87,9 +84,30 @@ namespace RollingRoad.WinApplication
         private bool ShouldUpdate()
         {
             if (ItemsSource == null && lastLength != 0)
-                return true;
+            {
+                lastLength = 0;
+                return false;
+            }
 
-            return false;
+            if (ItemsSource == null)
+            {
+                return false;
+            }
+
+            Dataset set = ItemsSource.FirstOrDefault();
+
+            if (set == null && lastLength != 0)
+            {
+                lastLength = 0;
+                return true;
+            }
+
+            if (set == null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public void Refresh()
@@ -101,7 +119,6 @@ namespace RollingRoad.WinApplication
 
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
-
 
             int i = 1;
             foreach (Dataset dataset in ItemsSource)
