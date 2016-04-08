@@ -93,11 +93,11 @@ Block interface description:
 	Description: A square-wave signal with an identical frequency as the input signal (Angle:Frequency); but without overshoots. This signal can be read by the control unit.
 \end{itemize}
 							
-\textbf{Block :Load System}\\
+\textbf{Block :Load System}\\ 
 Block interface description:
 \begin{itemize}
 	\item \textbf{Supply5:Voltage}\\
-	Direction: [X] $\rightarrow$ [Y]\\
+	Direction: [X] $\rightarrow$ [Y]\\ \fxnote{fix me - tdogg}
 	Description: Converted supply voltage of 5 VDC.
 	\item \textbf{CEMF:Voltage}\\
 	Direction: [Generator] $\rightarrow$ [Load System]\\
@@ -128,7 +128,7 @@ Block interface description:
 Block interface description:
 \begin{itemize}
 	\item \textbf{Supply5:Voltage}\\
-	Direction: [X] $\rightarrow$ [Y]\\
+	Direction: [X] $\rightarrow$ [Y]\\ \fxnote{fix me - tdogg}
 	Description: Converted supply voltage of 5 VDC.
 	\item \textbf{TorqueC:Voltage}\\
 	Direction: [Signal Converter] $\rightarrow$ [Control Unit]\\
@@ -156,7 +156,7 @@ Block interface description:
 \textbf{Block :Computer}\\
 Block interface description:
 \begin{itemize}
-	\item \textbf{:UART}\\
+	\item \textbf{:UART}\\ \fxnote{opdater -tdogg}
 	Direction: [Control Unit] $\rightarrow$ [Computer]\\
 	Description: A signal which transmits data to the computer using the UART-protocol.
 \end{itemize}
