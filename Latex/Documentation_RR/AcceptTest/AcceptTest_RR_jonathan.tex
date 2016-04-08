@@ -3,48 +3,48 @@
 \begin{table}[h!]
 	\centering
 	\label{my-label}	
-	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+	\begin{tabular}{|p{1.5 cm}|p{4.2 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
 		\hline
 		Test of requirements: 
-		& \multicolumn{4}{l|}{Connect to Rolling Road. Calibrate all sensor. Test EEPROM.} \\ \hline
+		& \multicolumn{4}{l|}{RR\_F7 RR\_F10 RR\_F11} \\ \hline
 		Setup 
-		& \multicolumn{4}{l|}{Rolling Road is turn on and connected to a PC with the GUI application.} \\ \hline
+		& \multicolumn{4}{l|}{Rolling Road is turn on and connected to a PC with the AU GUI application.} \\ \hline
 		Test NR:
 		& \multicolumn{4}{l|}{1} \\ \hline
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& Click “select” and chose the right com port. 
-		& Allot of live data, of all the sensor on the Rolling Road
+		& (AU GUI) Click “select” and chose the right com port. 
+		& lot of data should be seeing on the GUI from all the sensor on Rolling Road.
 		&
 		& \\ \hline
 		2
-		& Click Calibrate.
-		& All sensor value reset to zero.
+		& (AU GUI) Click Calibrate.
+		& All sensor value on the GUI reset to zero.
 		&
 		& \\ \hline
 		3
-		& Change PID values and Force.
-		& The live data of setforce change. Maybe PIDval also change.
+		& (AU GUI) Change PID values and Force.
+		& Setforce change on the GUI. Maybe PIDval also change.
 		&
 		& \\ \hline
 		4
-		& Restart Rolling Road, and reconnect (use step 1)
-		& Live data is still calibrate.
+		& (Rolling Road) Rolling Road power off and on again, and reconnect (use step 1)
+		& All sensor values is still calibrate on the GUI.
 		&
 		& \\ \hline
 	\end{tabular}
-	\caption{Something}
+	\caption{}
 \end{table}
 
 
 \begin{table}[h!]
 	\centering
 	\label{my-label}	
-	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+	\begin{tabular}{|p{1.5 cm}|p{4.2 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
 		\hline
 		Test of requirements: 
-		& \multicolumn{4}{l|}{Test PID regulator. Test sensors.} \\ \hline
+		& \multicolumn{4}{l|}{RR\_F4 RR\_F5 RR\_F8 RR\_NF6 Test PID regulator. Test sensors.} \\ \hline
 		Setup 
 		& \multicolumn{4}{l|}{Is connect to a GUI and test subject is on the Rolling Road.} \\ \hline
 		Test NR:
@@ -52,31 +52,26 @@
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& Change PID values to 0 2 0. 
+		& (AU GUI) Change PID values to 0 2 0. 
 		& Nothing of interest.
 		&
 		& \\ \hline
 		2
-		& Set force after table XX and regulate the speed on the subject also after table XX (Read the next step before start)
-		& The live data of the force should change to the right value.
-		&
-		& \\ \hline
-		2.1
-		& Every step in step 2. Note all values and calculate manual effect and efficiency. $ U*I=E_el $;$ V*F=E_mek $; $ Efficiency=(E_el/E_mek)*100 $
-		& The calculated values should be the same as the live data.  And the efficiency should follow the efficiency diagram XX
+		& (AU GUI) Set force after table in RR\_NF6 and regulate the speed on the subject also after the table. for every test note all values from the GUI and calculate manual effect and efficiency. $ U*I=E_el $;$ V*F=E_mek $; $ Efficiency=(E_el/E_mek)*100 $
+		& The force should change to the right value. The calculated values should be the same as on the GUI and efficiency should be the same diagram XX.
 		&
 		& \\ \hline
 	\end{tabular}
-	\caption{Something}
+	\caption{}
 \end{table}
 
 \begin{table}[h!]
 	\centering
 	\label{my-label}	
-	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+	\begin{tabular}{|p{1.5 cm}|p{4.2 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
 		\hline
 		Test of requirements: 
-		& \multicolumn{4}{l|}{Test sensor precision} \\ \hline
+		& \multicolumn{4}{l|}{RR\_NF11 RR\_NF12 RR\_NF13} \\ \hline
 		Setup 
 		& \multicolumn{4}{l|}{Connect to GUI and power on. No subject! PID is working} \\ \hline
 		Test NR:
@@ -84,13 +79,13 @@
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& The terminal to the el motor set a 10-Ohm resistor on. Now on the power terminal to the el motor, supply it with 10V.  
-		& Seeing 10V +/-50mV and seeing 1A +/-50mA. 
+		& (Rolling Road) Terminal motor\_out\_+ and motor\_out\_gnd set a 10-Ohm resistor on. Now on the power terminal motor\_in\_+ and motor\_in\_gnd to a 10 V power supply.  
+		& Seeing 10 V $\pm$50 mV and seeing 1A $\pm$100 mA on the GUI. 
 		&
 		& \\ \hline
 		2
-		& Change the supply to 20V.
-		& Seeing 20V +/-50mV and seeing 2A +/-50mA.
+		& Change the supply to 20 V.
+		& Seeing 20 V $\pm$50 mV and seeing 2 A $\pm$100 mA on the GUI.
 		&
 		& \\ \hline
 		3
@@ -100,31 +95,31 @@
 		& \\ \hline
 		4
 		& Place the subject on the Rolling Road. Start the subject. Use a external RPM counter, and calculate the speed. 
-		& The calculate speed should be the same as in the GUI.
+		& The calculate speed is the same as in the GUI.
 		&
 		& \\ \hline
 		5
-		& Lock the axle before between the generator and moment transducer. On the Road (rolling road) mount a newton meter. Pull parallel to it shows 5 newton.  
-		& Force in the GUI should be 5 newton +/- XX.
+		& Lock the axle between the generator and torque sensor. On the Road (rolling road) mount a newton meter. Pull parallel to it shows 5 N.  
+		& Force in the GUI should be 5 N $\pm$100 Nmm.
 		&
 		& \\ \hline
 		6
-		& Do step 5 again just with 2.5 newton 
-		& Force in the GUI should be 2.5 newton +/- XX.
+		& Do step 5 again just with 2.5 N 
+		& Force in the GUI should be 2.5 N $\pm$100 Nmm.
 		&
 		& \\ \hline
 	\end{tabular}
-	\caption{Something}
+	\caption{}
 \end{table}
 
 
 \begin{table}[h!]
 	\centering
 	\label{my-label}	
-	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+	\begin{tabular}{|p{1.5 cm}|p{4.2 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
 		\hline
 		Test of requirements: 
-		& \multicolumn{4}{l|}{Test max effect on the generator.	PID regulator.} \\ \hline
+		& \multicolumn{4}{l|}{RR\_NF3 RR\_NF5  Test max effect on the generator.	PID regulator.} \\ \hline
 		Setup 
 		& \multicolumn{4}{l|}{Is connect to a GUI and test subject is on the Rolling Road. PID is working.} \\ \hline
 		Test NR:
@@ -132,26 +127,26 @@
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& Set Force to 5N and start the subject with a speed of 5m/s  
-		& The force should settle in after max 100ms and max peak 5.5N.  
+		& (AU GUI) Set force to 5 N and start the subject with a speed of 5 m/s  
+		& The force should settle in after max 100 ms and max peak 5.25 N on the GUI.  
 		&
 		& \\ \hline
 		2
-		& Set Force to 25N and change the speed slowly(be carefully) to 8m/s
-		& Everything still work. Effect on the GUI should be around 200W.
+		& (AU GUI) Set force to 25 N and change the speed slowly (be carefully) to 8 m/s.
+		& Everything stills work on Rolling Road. Effect on the GUI is around 200W.
 		&
 		& \\ \hline
 	\end{tabular}
-	\caption{Something}
+	\caption{}
 \end{table}
 
 \begin{table}[h!]
 	\centering
 	\label{my-label}	
-	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+	\begin{tabular}{|p{1.5 cm}|p{4.2 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
 		\hline
 		Test of requirements: 
-		& \multicolumn{4}{l|}{Dimension.} \\ \hline
+		& \multicolumn{4}{l|}{RR\_NF1 RR\_NF2 RR\_NF4} \\ \hline
 		Setup 
 		& \multicolumn{4}{l|}{} \\ \hline
 		Test NR:
@@ -159,11 +154,11 @@
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& Use a ruler to check dimension.
-		& Everything is OK.  
+		& Use a ruler to check dimension, and check it is inside of a XX. Load-circuit is on a plate.
+		& Everything is OK.
 		&
 		& \\ \hline
 	\end{tabular}
-	\caption{Something}
+	\caption{}
 \end{table}
 

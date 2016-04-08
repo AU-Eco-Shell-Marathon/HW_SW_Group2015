@@ -1,41 +1,70 @@
 \section{Non-Functional Requirement Rolling Road}
 
-\begin{enumerate}
-	\item Print.
-	\begin{enumerate}
-		\item Dimensions length max 15cm, width max 15cm and high max 5cm.
-		\item Max 15 Amps in the power circuit.
-		\item fit in a "box" -CHANGE ME-.
-	\end{enumerate}
-	\item power circuit. 
-	\begin{enumerate}
-		\item Be mounted on a plate.
-		\item Max effect on 200 watt.
-		\item No dimension demands.
-		\item Requirement for speed and force. see table.\\\\
-		$\begin{array}{cc}
+\begin{table}[h!]
+	\label{FREQ_AU2}
+	\centering
+	\begin{tabular}{|p{2 cm}|p{10 cm}|p{2 cm}|}
+		\hline
+		\textbf{Req. \#} & \textbf{Description} & \textbf{Comments} \\\hline
+		RR\_NF1
+		& PCB layout Max dimension: Length 15 cm width 15 cm high 5 cm. 
+		&  \\ \hline
+		RR\_NF2
+		& PCB must fit inside of a XX 
+		& \\ \hline
+		RR\_NF3
+		& max 15 A load to the load-circuit.
+		& \\ \hline
+		RR\_NF4
+		& Load-circuit must be mounted to plate. 
+		& \\ \hline
+		RR\_NF5
+		& Load-circuit max power 200 watt.
+		& \\ \hline
+		RR\_NF6 
+		& Load system must be able to deliver these forces at a certain speed. See table: 
+		& \\ &
+		$\begin{array}{c|c}
 			Speed (km/h) & Max force (N) \\ 
 			18 & 19.25+2 \\ 
 			24.8 & 21.76+2 \\ 
 			30 & 22.59+2
-		\end{array} $\\\\
-		\item Reguirement for simulate run.\\\\
-		$\begin{array}{ccc}
+		\end{array} $
+		& \\ \hline
+		RR\_NF7
+		& Load system must be able to deliver these forces in simulate run at a certain speed. See table:
+		& \\ &
+		$\begin{array}{c|c|c}
 			Speed (km/h) & Min force (N) & Max Force (N) \\ 
 			18 & 0 to (19.25+2) & 41.00 \\ 
 			24.8 & 0 to (21.76+2) & 49.37 \\ 
 			30 & 0 to (22.59+2) & 65.27
-		\end{array}$\\\\ 
-		\item Max RMS value of the force with a constant speed 0.4N.
-		\item Settling time max 100ms. OS max 10%.
-	\end{enumerate}
-	\item Measurements
-	\begin{enumerate}
-		\item Voltage sensor precision on max +/-50mV and a range from 0V to 50V.
-		\item Current sensor precision on max +/-100mA and a range from 0A to 21A.
-		\item Moment transducer precision +/-100Nmm and range from +/- 5Nm
-		\item Lowest sample rate 2000S/s on all sensor.
-		\item Measurement of the efficiency precision max +/-0.5%
-	\end{enumerate} 
-\end{enumerate}
+		\end{array}$
+		& \\ \hline
+		RR\_NF8
+		& Load system must deliver a constant force with max 0.4 N AC-RMS. 
+		& \\ \hline
+		RR\_NF9
+		& PID settling time 100 ms. 
+		&  \\ \hline
+		RR\_NF10
+		& PID max OS 5\%. 
+		&  \\ \hline
+		RR\_NF11
+		& Voltage sensor precision max $\pm$ 50 mV and range 0 V to 50 V. 
+		&  \\ \hline
+		RR\_NF12
+		& Current sensor precision max $\pm$ 100 mA and range 0 A to 16 A. 
+		&  \\ \hline
+		RR\_NF13
+		& Torque sensor precision max $\pm$ 100 Nmm and range $\pm$ 5 Nm. 
+		&  \\ \hline
+		RR\_NF14
+		& Minimum sample frequency on all sensors 2000 S/s.  
+		&  \\ \hline
+	\end{tabular}
+	\caption{Non-functional requirements concerning Rolling Road}
+\end{table}
+
+\fxnote{Find navnet på boksen den skal ned i!}
 
