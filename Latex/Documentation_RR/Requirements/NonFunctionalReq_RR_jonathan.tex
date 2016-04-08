@@ -1,0 +1,41 @@
+\section{Non-Functional Requirement Rolling Road}
+
+\begin{enumerate}
+	\item Print.
+	\begin{enumerate}
+		\item Dimensions length max 15cm, width max 15cm and high max 5cm.
+		\item Max 15 Amps in the power circuit.
+		\item fit in a "box" -CHANGE ME-.
+	\end{enumerate}
+	\item power circuit. 
+	\begin{enumerate}
+		\item Be mounted on a plate.
+		\item Max effect on 200 watt.
+		\item No dimension demands.
+		\item Requirement for speed and force. see table.\\\\
+		$\begin{array}{cc}
+			Speed (km/h) & Max force (N) \\ 
+			18 & 19.25+2 \\ 
+			24.8 & 21.76+2 \\ 
+			30 & 22.59+2
+		\end{array} $\\\\
+		\item Reguirement for simulate run.\\\\
+		$\begin{array}{ccc}
+			Speed (km/h) & Min force (N) & Max Force (N) \\ 
+			18 & 0 to (19.25+2) & 41.00 \\ 
+			24.8 & 0 to (21.76+2) & 49.37 \\ 
+			30 & 0 to (22.59+2) & 65.27
+		\end{array}$\\\\ 
+		\item Max RMS value of the force with a constant speed 0.4N.
+		\item Settling time max 100ms. OS max 10%.
+	\end{enumerate}
+	\item Measurements
+	\begin{enumerate}
+		\item Voltage sensor precision on max +/-50mV and a range from 0V to 50V.
+		\item Current sensor precision on max +/-100mA and a range from 0A to 21A.
+		\item Moment transducer precision +/-100Nmm and range from +/- 5Nm
+		\item Lowest sample rate 2000S/s on all sensor.
+		\item Measurement of the efficiency precision max +/-0.5%
+	\end{enumerate} 
+\end{enumerate}
+

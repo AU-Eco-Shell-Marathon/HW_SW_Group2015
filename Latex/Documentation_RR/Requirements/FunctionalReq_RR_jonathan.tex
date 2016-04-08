@@ -1,0 +1,76 @@
+\section{Functional Requirement Rolling Road}
+
+\begin{enumerate}
+	\item Rolling Road.
+	\begin{enumerate}
+		\item force application.
+		\begin{enumerate}
+			\item Rolling Road must be able to hold a constant force on the subject.
+		\end{enumerate}
+		\item changing force on the subject.
+		\begin{enumerate}
+			\item Control-panel can change the force that is delivered to the subject.
+			\item PID control force application though power circuit.
+			\begin{enumerate}
+				\item PID constants can be change from the Control-panel.
+				\item Anti windup.
+			\end{enumerate}
+		\end{enumerate}
+		\item safety.
+		\begin{enumerate}
+			\item Rolling Road must turn off if the "load circuit" exceed 16 Amps.
+		\end{enumerate}
+		\item Measurement.
+		\begin{enumerate}
+			\item Current monitoring of the generator.
+			\item Power measurement on the engine in the Subject.
+			\item Force and Speed measurement of the Subject to calculate the power.
+			\item Time.
+			\item Calculate the power.
+		\end{enumerate}
+		\item Calibrate
+		\begin{enumerate}
+			\item Control-panel can adjust the Rolling Roads sensor, set them all to zero.
+		\end{enumerate}
+		\item Communication
+		\begin{enumerate}
+			\item Serial UART connection between the Control-panel and the Rolling Road. See the protocol. 
+		\end{enumerate}
+	\end{enumerate}
+	\item Sensors
+	\begin{enumerate}
+		\item HAL sensor.
+		\begin{enumerate}
+			\item To measure the current thought the generator and electric motor in the subject.
+		\end{enumerate}
+		\item Voltage sensor.
+		\begin{enumerate}
+			\item To measure the potential over the electric motor in the subject.    
+		\end{enumerate}
+		\item Moment transducer.
+		\begin{enumerate}
+			\item to measure the moment from the force application.
+			\item Can also measure speed.
+		\end{enumerate}
+	\end{enumerate}
+	\item Actuator
+	\begin{enumerate}
+		\item Power Circuit.
+		\begin{enumerate}
+			\item Can be control with a PWM signal from the micro processor.
+			\begin{enumerate}
+				\item Micro processor use a PID regulator to control the PWM signal.
+			\end{enumerate}
+			\item It is use to control the force application.
+		\end{enumerate}
+	\end{enumerate}
+	\item Memory
+	\begin{enumerate}
+		\item Use an EEPROM to save all impotent data.
+		\begin{enumerate}
+			\item Offset values to all sensors.
+			\item PID constants.
+			\item Wanted force effects on the subject.
+		\end{enumerate}
+	\end{enumerate} 
+\end{enumerate}

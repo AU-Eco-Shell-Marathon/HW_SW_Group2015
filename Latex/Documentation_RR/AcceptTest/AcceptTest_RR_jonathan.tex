@@ -1,0 +1,169 @@
+\chapter{Accept test}
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}	
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		Test of requirements: 
+		& \multicolumn{4}{l|}{Connect to Rolling Road. Calibrate all sensor. Test EEPROM.} \\ \hline
+		Setup 
+		& \multicolumn{4}{l|}{Rolling Road is turn on and connected to a PC with the GUI application.} \\ \hline
+		Test NR:
+		& \multicolumn{4}{l|}{1} \\ \hline
+		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
+		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		1 
+		& Click “select” and chose the right com port. 
+		& Allot of live data, of all the sensor on the Rolling Road
+		&
+		& \\ \hline
+		2
+		& Click Calibrate.
+		& All sensor value reset to zero.
+		&
+		& \\ \hline
+		3
+		& Change PID values and Force.
+		& The live data of setforce change. Maybe PIDval also change.
+		&
+		& \\ \hline
+		4
+		& Restart Rolling Road, and reconnect (use step 1)
+		& Live data is still calibrate.
+		&
+		& \\ \hline
+	\end{tabular}
+	\caption{Something}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}	
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		Test of requirements: 
+		& \multicolumn{4}{l|}{Test PID regulator. Test sensors.} \\ \hline
+		Setup 
+		& \multicolumn{4}{l|}{Is connect to a GUI and test subject is on the Rolling Road.} \\ \hline
+		Test NR:
+		& \multicolumn{4}{l|}{2} \\ \hline
+		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
+		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		1 
+		& Change PID values to 0 2 0. 
+		& Nothing of interest.
+		&
+		& \\ \hline
+		2
+		& Set force after table XX and regulate the speed on the subject also after table XX (Read the next step before start)
+		& The live data of the force should change to the right value.
+		&
+		& \\ \hline
+		2.1
+		& Every step in step 2. Note all values and calculate manual effect and efficiency. $ U*I=E_el $;$ V*F=E_mek $; $ Efficiency=(E_el/E_mek)*100 $
+		& The calculated values should be the same as the live data.  And the efficiency should follow the efficiency diagram XX
+		&
+		& \\ \hline
+	\end{tabular}
+	\caption{Something}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}	
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		Test of requirements: 
+		& \multicolumn{4}{l|}{Test sensor precision} \\ \hline
+		Setup 
+		& \multicolumn{4}{l|}{Connect to GUI and power on. No subject! PID is working} \\ \hline
+		Test NR:
+		& \multicolumn{4}{l|}{3} \\ \hline
+		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
+		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		1 
+		& The terminal to the el motor set a 10-Ohm resistor on. Now on the power terminal to the el motor, supply it with 10V.  
+		& Seeing 10V +/-50mV and seeing 1A +/-50mA. 
+		&
+		& \\ \hline
+		2
+		& Change the supply to 20V.
+		& Seeing 20V +/-50mV and seeing 2A +/-50mA.
+		&
+		& \\ \hline
+		3
+		& Turn off supply
+		& 
+		&
+		& \\ \hline
+		4
+		& Place the subject on the Rolling Road. Start the subject. Use a external RPM counter, and calculate the speed. 
+		& The calculate speed should be the same as in the GUI.
+		&
+		& \\ \hline
+		5
+		& Lock the axle before between the generator and moment transducer. On the Road (rolling road) mount a newton meter. Pull parallel to it shows 5 newton.  
+		& Force in the GUI should be 5 newton +/- XX.
+		&
+		& \\ \hline
+		6
+		& Do step 5 again just with 2.5 newton 
+		& Force in the GUI should be 2.5 newton +/- XX.
+		&
+		& \\ \hline
+	\end{tabular}
+	\caption{Something}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}	
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		Test of requirements: 
+		& \multicolumn{4}{l|}{Test max effect on the generator.	PID regulator.} \\ \hline
+		Setup 
+		& \multicolumn{4}{l|}{Is connect to a GUI and test subject is on the Rolling Road. PID is working.} \\ \hline
+		Test NR:
+		& \multicolumn{4}{l|}{4} \\ \hline
+		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
+		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		1 
+		& Set Force to 5N and start the subject with a speed of 5m/s  
+		& The force should settle in after max 100ms and max peak 5.5N.  
+		&
+		& \\ \hline
+		2
+		& Set Force to 25N and change the speed slowly(be carefully) to 8m/s
+		& Everything still work. Effect on the GUI should be around 200W.
+		&
+		& \\ \hline
+	\end{tabular}
+	\caption{Something}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\label{my-label}	
+	\begin{tabular}{|p{1.5 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|p{2.1 cm}|}
+		\hline
+		Test of requirements: 
+		& \multicolumn{4}{l|}{Dimension.} \\ \hline
+		Setup 
+		& \multicolumn{4}{l|}{} \\ \hline
+		Test NR:
+		& \multicolumn{4}{l|}{5} \\ \hline
+		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
+		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
+		1 
+		& Use a ruler to check dimension.
+		& Everything is OK.  
+		&
+		& \\ \hline
+	\end{tabular}
+	\caption{Something}
+\end{table}
+
