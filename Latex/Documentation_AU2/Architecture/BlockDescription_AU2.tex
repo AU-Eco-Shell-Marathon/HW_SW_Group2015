@@ -1,9 +1,9 @@
 \section{Block description}
 The blocks in the BDD are described as follows:
-
+\fxnote{ret i battery - JOnathan}
 \begin{itemize}
 	\item \textbf{Rolling Road}\\
-	Description: A secondary system which has been designed to test the effenciency of the driving algorithm.
+	Description: A secondary system which has been designed to test the efficiency of the driving algorithm.
 	\item \textbf{Propulsion Motor}\\
 	Description: The electrical motor which propels the car forwards.
 	\item \textbf{Horn}\\
@@ -15,12 +15,12 @@ The blocks in the BDD are described as follows:
 		Description: The battery cells which supply the various systems with power and propulses the car.
 		\item \textbf{Current Sensor}\\
 		Description: Senses value and direction of battery current, and presents this information to the Analog Unit.
-		\item \textbf{Analog Unit}\\
+		\item \textbf{Analog frontend}\\
 		Description: Performs measurements and analog to digital conversion of cell voltages, battery temperatures and signal from current sensor. Furthermore, it handles cell balancing on requests from the Digital Unit, and redudant battery protection independent of the Digital Unit.
 		\item \textbf{Digital Unit}\\
 		Description: Collects measured values from the Analog Unit, performs calculations gives estimations of the cell lifetime and battery parameters. Furthermore, it handles communication with external units.
 	\end{itemize}
-	\item \textbf{Distribution Block}\\ \fxnote{Eventuel omdøbning til switch mode power supply}
+	\item \textbf{Distribution Block}\\ \fxnote{Eventuel omdøbning til switch mode power supply - JOnathan}
 	Description: Converts the 48 V from the battery to recommended levels in order to power various systems in the car.
 	\item \textbf{Motor Control Unit}\\
 	Description: The system controls the driving-algorithm which the car operates by. Furthermore, it logs various parameters about the car's current run (velocity and power-consumption) on to a removable SD-card.
@@ -35,7 +35,7 @@ The blocks in the BDD are described as follows:
 		Description: Controls the amount of current delivered to the motor.
 		\item \textbf{CAN Tranceiver}\\
 		Description: Allows connection between the Motor Controller and a computer using the CAN-protocol.
-		\item \textbf{Joulemeter}\\ \fxnote{evt. omformulering}
+		\item \textbf{Joulemeter}\\ \fxnote{evt. omformulering - JOnathan}
 		Description: Measures the energy-consumption as electrical energy is turned into mechanical energy.
 	\end{itemize}
 	\item \textbf{Emergency System}\\
