@@ -27,11 +27,12 @@ namespace RollingRoad.WinApplication.ViewModels
         private void OnSelectedChanged()
         {
             SelectedDatalists.Clear();
-
+            
             foreach (DataSetViewModel dataSetViewModel in DataSets.Where(x => x.IsSelected))
             {
                 foreach (DataListViewModel dataListViewModel in dataSetViewModel.Collection.Where(x => x.Selected))
                 {
+                    dataListViewModel.DataSetIndex = dataSetViewModel.DatasetIndex;
                     SelectedDatalists.Add(dataListViewModel);
                 }
             }
@@ -57,6 +58,13 @@ namespace RollingRoad.WinApplication.ViewModels
                     Dataset dataset = CsvDataFile.LoadFromFile(filename, "shell eco marathon");
 
                     DataSets.Add(new DataSetViewModel(dataset));
+
+                    int i = 0;
+                    foreach (DataSetViewModel dataSetViewModel in DataSets)
+                    {
+                        dataSetViewModel.DatasetIndex = i;
+                        i++;
+                    }
                 }
                 catch (Exception exception)
                 {

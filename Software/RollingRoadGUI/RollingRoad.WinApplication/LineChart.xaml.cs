@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
@@ -132,6 +133,8 @@ namespace RollingRoad.WinApplication
             SelectedRefreshRate = _app.Settings.GetIntStat("SelectedRefreshRate");
             SelectedBufferType = _app.Settings.GetIntStat("SelectedBufferType");
             SelectedBufferSize = _app.Settings.GetIntStat("SelectedBufferSize");
+
+            Chart.LegendVisible = false;
         }
 
         private readonly DispatcherTimer _timer;
@@ -139,6 +142,7 @@ namespace RollingRoad.WinApplication
         private int _selectedBufferType;
         private int _selectedBufferSize;
         private bool _bufferSizeEnabled;
+        private ICollection<DataListViewModel> _dataLists;
 
         private bool ShouldUpdate()
         {
@@ -161,7 +165,7 @@ namespace RollingRoad.WinApplication
                 return;
 
             EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis.Data);
-            HorizontalAxisTitle.Content = xAxis.Type.Name + "(" + xAxis.Type.Unit + ")";
+            HorizontalAxisTitle.Content = xAxis.Type.ToString();
 
             xData.SetXMapping(x => x);
 
@@ -174,8 +178,10 @@ namespace RollingRoad.WinApplication
                 yData.SetYMapping(x => x);
 
                 CompositeDataSource source = new CompositeDataSource(xData, yData);
+                Color color = GetLineColor(dataList.Type.Name + dataList.DataSetIndex + "LineColor");
+                dataList.Fill = new SolidColorBrush(color);
 
-                Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, dataList.Type.ToString());
+                Chart.AddLineGraph(source, color, 2, dataList.ToString());
             }
         }
 

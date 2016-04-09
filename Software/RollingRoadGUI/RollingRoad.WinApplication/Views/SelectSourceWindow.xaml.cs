@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using RollingRoad.WinApplication.Dialogs;
 
 namespace RollingRoad.WinApplication
@@ -14,6 +15,8 @@ namespace RollingRoad.WinApplication
         {
             _vm = vm;
             _vm.OnClose += OnClose;
+
+            PreviewKeyDown += (sender, args) => { if (args.Key == Key.Escape) Close(); };
 
             DataContext = _vm;
             InitializeComponent();

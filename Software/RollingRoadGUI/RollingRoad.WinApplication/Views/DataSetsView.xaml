@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:RollingRoad.WinApplication.Views"
              xmlns:winApplication="clr-namespace:RollingRoad.WinApplication"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewModels="clr-namespace:RollingRoad.WinApplication.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -40,14 +41,14 @@
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate DataType="viewModels:DataSetViewModel">
                         <Grid  VerticalAlignment="Top">
                             <!-- Close button -->
                             <!-- <Button Content="X" Margin="0,10,10,0" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding ElementName=ListViewDataselect,Path=RemoveSubjectCommand}"/> -->
 
                             <StackPanel>
                                 <!-- Name -->
-                                <TextBlock FontSize="15" TextWrapping="Wrap" Text="{Binding Name}" Margin="10,10,40,0" VerticalAlignment="Top" />
+                                <TextBlock FontSize="15" TextWrapping="Wrap" Text="{Binding}" Margin="10,10,40,0" VerticalAlignment="Top" />
 
                                 <!-- Description -->
                                 <TextBlock TextWrapping="Wrap" Margin="10,10,10,10" Text="{Binding Description}"/>

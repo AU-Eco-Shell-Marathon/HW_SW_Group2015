@@ -23,7 +23,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="22"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
@@ -50,25 +49,8 @@
                 </ListView.ItemContainerStyle>
             </ListView>
 
-            <ListView x:Name="LiveDataStackPanel" Grid.Row="3" ItemsSource="{Binding DataSet.Collection}">
-                <ListView.ItemTemplate>
-                    <DataTemplate DataType="viewModels:DataListViewModel">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-
-                            <CheckBox Grid.Row="0" IsChecked="{Binding Selected}"/>
-                            <TextBlock Margin="20, 0, 0, 0" Grid.Row="0" Text="{Binding Type.Name}"/>
-                            <TextBlock Grid.Row="1" Text="{Binding NewestValue}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
             <!-- Save Clear Stop Buttons -->
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
