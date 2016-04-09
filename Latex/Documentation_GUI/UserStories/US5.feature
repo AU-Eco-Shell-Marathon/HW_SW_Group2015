@@ -13,4 +13,4 @@ Feature: Load and display saved data
 		Given that one or more dataset(s) has been loaded
 		When I select a dataset
 		Then a graph will be viewable
-			And combined with other selected dataset
+			And combined with other selected datasets

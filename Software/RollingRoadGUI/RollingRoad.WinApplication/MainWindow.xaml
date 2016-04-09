@@ -53,7 +53,7 @@
                         </ListView.ItemContainerStyle>
                     </ListView>
 
-                    <ListView x:Name="LiveDataStackPanel" Grid.Row="3" ItemsSource="{Binding Collection}">
+                    <ListView x:Name="LiveDataStackPanel" Grid.Row="3" ItemsSource="{Binding DataSetViewModel.Collection}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -64,7 +64,7 @@
 
                                     <CheckBox Grid.Row="0" IsChecked="{Binding Selected}"/>
                                     <TextBlock Margin="20, 0, 0, 0" Grid.Row="0" Text="{Binding Type.Name}"/>
-                                    <TextBlock Grid.Row="1" Text="{Binding LastestValue}"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding NewestValue}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -93,7 +93,7 @@
                 <GridSplitter Grid.Column="1" ResizeDirection="Columns" HorizontalAlignment="Stretch"/>
 
                 <!-- Chart -->
-                <local:LineChart ItemsSource="{Binding DataCollection}" RefreshRate="{Binding GraphRefreshRate}" x:Name="LiveDataChart" Grid.Column="2"/>
+                <local:LineChart ItemsSource="{Binding DataSetViewModel.Collection}" RefreshRate="{Binding GraphRefreshRate}" x:Name="LiveDataChart" Grid.Column="2"/>
 
                 <ComboBox VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="20" ItemsSource="{Binding GraphUpdateRates}" SelectedIndex="{Binding GraphRefreshRateSelectedIndex}" Grid.Column="2" ItemStringFormat="{}{0} ms"/>
             </Grid>
@@ -198,6 +198,17 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Torque:"/>
                 <TextBox Grid.Row="1" Text="{Binding Torque}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="TestSessionTemplate" DataType="vm:TestSessionViewModel">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <ComboBox Grid.Row="0" ItemsSource="{Binding TestSessionList}" Selected="{Binding SelectedTestSession}"/>
+                <Button Grid.Row="1" Content="Start/Stop" Command="{Binding StartStopCommand}"></Button>
             </Grid>
         </DataTemplate>
     </Window.Resources>

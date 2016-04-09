@@ -22,13 +22,8 @@ namespace RollingRoad.WinApplication.ViewModels
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
-        public IList<DataList> Collection => DataCollection.First();
+        public DataSetViewModel DataSetViewModel { get; private set; } = new DataSetViewModel(new Dataset());
         public IDispatcher Dispatcher { get; set; }
-        private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex;
-        private ILogger _logger;
-
-
         public ILogger Logger
         {
             get { return _logger; }
@@ -38,13 +33,22 @@ namespace RollingRoad.WinApplication.ViewModels
                 SelectSourceDialog.Logger = value;
             }
         }
-
         public ISelectSourceDialog SelectSourceDialog { get; set; } = new SelectSourceDialog();
         public ISaveFileDialog SaveFileDialog { get; set; } = new SaveFileDialog()
         {
             DefaultExt = ".csv",
             Filter = "CSV Files (*.csv)|*.csv"
         };
+        public double GraphRefreshRate
+        {
+            get { return _refreshRate; }
+            set { SetProperty(ref _refreshRate, value); }
+        }
+
+        private ILiveDataSource _source;
+        private int _graphRefreshRateSelectedIndex;
+        private ILogger _logger;
+
 
         public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
 
@@ -55,11 +59,6 @@ namespace RollingRoad.WinApplication.ViewModels
         public bool HasBeenSaved { get; private set; } = true;
 
         private double _refreshRate = 500;
-        public double GraphRefreshRate
-        {
-            get{ return _refreshRate; }
-            set { SetProperty(ref _refreshRate, value); }
-        }
 
         public int GraphRefreshRateSelectedIndex
         {
@@ -84,9 +83,6 @@ namespace RollingRoad.WinApplication.ViewModels
             }
         }
 
-        //TODO Make to an interface
-        public ObservableCollection<Dataset> DataCollection { get; set; } = new ObservableCollection<Dataset>();
-
         public LiveDataSourceViewModel()
         {
             StartStopCommand        = new DelegateCommand(StartStop     , CanStartStop);
@@ -95,7 +91,11 @@ namespace RollingRoad.WinApplication.ViewModels
             SelectSourceCommand     = new DelegateCommand(SelectSource);
 
             Dispatcher = new SystemDispatcher(System.Windows.Threading.Dispatcher.CurrentDispatcher);
-            DataCollection.Add(new Dataset());
+        }
+
+        public LiveDataSourceViewModel(ILiveDataSource initialSource) : base()
+        {
+            Source = initialSource;
         }
 
         public ILiveDataSource Source
@@ -104,7 +104,7 @@ namespace RollingRoad.WinApplication.ViewModels
             {
                 return _source;
             }
-            set
+            private set
             {
                 if (_source != null)
                     _source.OnNextReadValue -= ThreadMover;
@@ -145,14 +145,14 @@ namespace RollingRoad.WinApplication.ViewModels
         {
             if(CheckAndAskAboutChanges())
             {
-                Collection.Clear();
+                DataSetViewModel.Clear();
                 HasBeenSaved = true;
             }
         }
 
         private bool CanClear()
         {
-            return Collection.Count > 0;
+            return DataSetViewModel.Count > 0;
         }
 
         private void Start()
@@ -185,17 +185,17 @@ namespace RollingRoad.WinApplication.ViewModels
             HasBeenSaved = false;
             foreach (Datapoint datapoint in datapoints)
             {
-                DataList list = Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataListViewModel list = DataSetViewModel.Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
                 {
-                    list = new DataList(datapoint.Type);
-                    Collection.Add(list);
+                    list = new DataListViewModel(new DataList(datapoint.Type));
+                    DataSetViewModel.Collection.Add(list);
                     ClearCommand.RaiseCanExecuteChanged();
                 }
                 double value = datapoint.Value;
 
-                list.Add(value);
+                list.Data.Add(value);
             }
         }
 
@@ -236,7 +236,8 @@ namespace RollingRoad.WinApplication.ViewModels
             if (!CheckAndAskAboutChanges())
                 return;
 
-            Collection.Clear();
+            Source?.Stop();
+            DataSetViewModel.Collection.Clear();
 
             try
             {
@@ -258,13 +259,13 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                Dataset source = new Dataset(new List<DataList>(Collection))
+                /*Dataset source = new Dataset(new List<DataList>(DataSetViewModel.Collection))
                 {
                     Description = DateTime.Now.ToLongDateString()
-                };
+                };*/
 
                 //Save file
-                CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
+                //CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)
@@ -278,7 +279,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private bool CanSave()
         {
-            return DataCollection.Count > 0;
+            return DataSetViewModel.Count > 0;
         }
 
         public override string ToString()

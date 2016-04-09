@@ -16,6 +16,7 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
     {
         private LiveDataSourceViewModel _vm;
         private IDispatcher _dispatcher;
+        private ILiveDataSource _source;
 
         [SetUp]
         public void SetUp()
@@ -23,18 +24,16 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
             _dispatcher = Substitute.For<IDispatcher>();
             _dispatcher.BeginInvoke(Arg.Any<DispatcherPriority>(), Arg.Do<Delegate>(x => x.Method.Invoke(x.Target, null)));
 
-            _vm = new LiveDataSourceViewModel();
+            _source = Substitute.For<ILiveDataSource>();
+
+            _vm = new LiveDataSourceViewModel(_source);
             _vm.Dispatcher = _dispatcher;
         }
 
         [Test]
         public void Source_SetSource_StartCalledOnSource()
         {
-            ILiveDataSource source = Substitute.For<ILiveDataSource>();
-
-            _vm.Source = source;
-
-            source.Received(1).Start();
+            _source.Received(1).Start();
         }
 
         [Test]
@@ -46,65 +45,48 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         [Test]
         public void StartStopCommand_SourceSet_CanExecuteTrue()
         {
-            ILiveDataSource source = Substitute.For<ILiveDataSource>();
-
-            _vm.Source = source;
-
             Assert.That(_vm.StartStopCommand.CanExecute, Is.True);
         }
 
         [Test]
         public async Task StartStopCommand_SourceSetAndCommandExecuted_StopCalledOnceOnSource()
         {
-            ILiveDataSource source = Substitute.For<ILiveDataSource>();
-
-            _vm.Source = source;
             await _vm.StartStopCommand.Execute();
 
-            source.Received(1).Stop();
+            _source.Received(1).Stop();
         }
 
         [Test]
         public async Task StartStopCommand_SourceSetAndCommandExecutedTwice_StopCalledOnceOnSource()
         {
-            ILiveDataSource source = Substitute.For<ILiveDataSource>();
-
-            _vm.Source = source;
             await _vm.StartStopCommand.Execute();
             await _vm.StartStopCommand.Execute();
 
-            source.Received(1).Stop();
+            _source.Received(1).Stop();
         }
 
         [Test]
         public async Task StartStopCommand_SourceSetAndCommandExecutedTwice_StartCalledTwiceOnSource()
         {
-            ILiveDataSource source = Substitute.For<ILiveDataSource>();
-
-            _vm.Source = source;
             await _vm.StartStopCommand.Execute();
             await _vm.StartStopCommand.Execute();
 
-            source.Received(2).Start();
+            _source.Received(2).Start();
         }
 
         [Test]
         public void Collection_Nothing_IsEmpty()
         {
-            Assert.That(_vm.Collection, Is.Empty);
+            Assert.That(_vm.DataSetViewModel, Is.Empty);
         }
 
         [Test]
         public void Collection_SourceSend1Datapoint_NewListAdded()
         {
-            ILiveDataSource source = Substitute.For<ILiveDataSource>();
-
-            _vm.Source = source;
-
-            source.OnNextReadValue +=
+            _source.OnNextReadValue +=
                 Raise.Event<ReadOnlyDataEntryList>(new List<Datapoint>(){new Datapoint(new DataType("TestName", "TestUnit"), 0)});
 
-            Assert.That(_vm.Collection.Count, Is.EqualTo(1));
+            Assert.That(_vm.DataSetViewModel.Count, Is.EqualTo(1));
         }
     }
 }

@@ -19,9 +19,12 @@ namespace RollingRoad.WinApplication.TemplateSelectors
             if(item is TorqueControlViewModel)
                 return element.FindResource("TorqueControlTemplate") as DataTemplate;
 
-            if(item is PidControlViewModel)
-                return element.FindResource("PidControlTemplate") as DataTemplate;
+            if (item is TestSessionViewModel)
+                return element.FindResource("TestSessionTemplate") as DataTemplate;
 
+            if (item is PidControlViewModel)
+                return element.FindResource("PidControlTemplate") as DataTemplate;
+            
             return null;
         }
     }

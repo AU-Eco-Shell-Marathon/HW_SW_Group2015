@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using RollingRoad.Core.DomainModel;
 
 namespace RollingRoad.Data
@@ -11,7 +8,7 @@ namespace RollingRoad.Data
     {
         public DataType Type { get; }
         
-        public ICollection<double> Data { get; set; } 
+        public virtual ICollection<double> Data { get; set; } 
         
         /// <summary>
         /// Creates a new data list with the specified name and unit

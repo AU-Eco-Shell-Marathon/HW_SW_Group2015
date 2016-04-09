@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DA0DFD3F-8F85-480A-A559-9BC1D088373A}</ProjectGuid>
+    <ProjectGuid>{05872CA6-BE23-47A2-8D4F-499DBE6C7634}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RollingRoad.Core.DomainServices</RootNamespace>
-    <AssemblyName>RollingRoad.Core.DomainServices</AssemblyName>
+    <RootNamespace>RollingRoad.Infrastructure.DataAccess</RootNamespace>
+    <AssemblyName>RollingRoad.Infrastructure.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IReadOnlyGenericRepository.cs" />
-    <Compile Include="IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RollingRoad.Core.ApplicationServices\RollingRoad.Core.ApplicationServices.csproj">
+      <Project>{dc2f6792-31d7-4b3a-80e5-9a648e70e7d3}</Project>
+      <Name>RollingRoad.Core.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RollingRoad.Core.DomainModel\RollingRoad.Core.DomainModel.csproj">
       <Project>{5355aac5-cb40-485e-9200-f01b280355b7}</Project>
       <Name>RollingRoad.Core.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Core.DomainServices\RollingRoad.Core.DomainServices.csproj">
+      <Project>{da0dfd3f-8f85-480a-a559-9bc1d088373a}</Project>
+      <Name>RollingRoad.Core.DomainServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
