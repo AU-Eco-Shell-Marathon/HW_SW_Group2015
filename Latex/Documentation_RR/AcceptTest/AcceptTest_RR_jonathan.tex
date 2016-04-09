@@ -13,20 +13,25 @@
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
 		& (AU GUI) Click “select” and choose the right com port. 
-		& A lot of data should be seen on the GUI from all the sensor on Rolling Road.
+		& The GUI will show the information that is being received from Rolling Road.
 		&
 		& \\ \hline
 		2
 		& (AU GUI) Click Calibrate.
-		& All sensor values on the GUI reset to zero.
+		& All sensor values on the GUI resets to zero.
 		&
 		& \\ \hline
 		3
-		& (AU GUI) Change PID values and Force.
-		& Setforce changes on the GUI. Maybe PIDval also changes.
+		& (AU GUI) Change Force.
+		& The SetForce column changes on the GUI.
 		&
 		& \\ \hline
 		4
+		& (AU GUI) Change PID values
+		& The PID value column changes on the GUI.
+		&
+		& \\ \hline
+		5
 		& (Rolling Road) Rolling Road power off and on again, and reconnect (use step 1)
 		& All sensor values are still calibrated on the GUI.
 		&
@@ -44,7 +49,7 @@
 		Test of requirements: 
 		& \multicolumn{4}{l|}{RR\_F4 RR\_F5 RR\_F8 RR\_NF6 Test PID regulator. Test sensors.} \\ \hline
 		Setup 
-		& \multicolumn{4}{l|}{Is connected to a GUI and the test subject is on the Rolling Road.} \\ \hline
+		& \multicolumn{4}{l|}{Is connected to AU GUI and the test subject is on the Rolling Road.} \\ \hline
 		Test NR:
 		& \multicolumn{4}{l|}{2} \\ \hline
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
@@ -55,8 +60,8 @@
 		&
 		& \\ \hline
 		2
-		& (AU GUI) Set force after table in RR\_NF6 and regulate the speed on the subject also after the table. for every test note all values from the GUI and calculate manual effect and efficiency. $ U*I=E_el $;$ V*F=E_mek $; $ Efficiency=(E_el/E_mek)*100 $
-		& The force should change to the right value. The calculated values should be the same as on the GUI and efficiency should be the same diagram XX.
+		& (AU GUI) Set force after table in RR\_NF6 and regulate the speed on the subject also after the table. For every test, take note of all values from the GUI and calculate manual effect and efficiency. $ U*I=E_el $;$ V*F=E_mek $; $ Efficiency=(E_el/E_mek)*100 $
+		& The force should change to the right value. The calculated values should be the same as on the GUI and efficiency should be the same as diagram XX(XX since we dont yet know the diagram).
 		&
 		& \\ \hline
 	\end{tabular}
@@ -77,13 +82,13 @@
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& (Rolling Road) Connect terminal motor\_out\_+ and motor\_out\_gnd to a 10-Ohm resistor. On the power and connect terminal motor\_in\_+ and motor\_in\_gnd to a 10 V power supply.  
-		& Seeing 10 V $\pm$50 mV and seeing 1 A $\pm$100 mA on the GUI. 
+		& (Rolling Road) Connect terminal motor\_out\_+ and motor\_out\_gnd to a 10-Ohm resistor. Connect terminal motor\_in\_+ and motor\_in\_gnd to a 10 V power supply and turn on the power .  
+		& 10 V $\pm$50 mV and 1 A $\pm$100 mA is seen on the GUI. 
 		&
 		& \\ \hline
 		2
 		& Change the supply to 20 V.
-		& Seeing 20 V $\pm$50 mV and seeing 2 A $\pm$100 mA on the GUI.
+		& 20 V $\pm$50 mV and 2 A $\pm$100 mA is seen on the GUI.
 		&
 		& \\ \hline
 		3
@@ -97,7 +102,7 @@
 		&
 		& \\ \hline
 		5
-		& Lock the axle between the generator and torque sensor. On the Road of Rolling Road mount a newton meter. Pull parallel to it shows 5 N.  
+		& Lock the axle between the generator and torque sensor. On the Road of Rolling Road mount a newton meter. Pull parallel till it shows 5 N.  
 		& Force in the GUI should be 5 N $\pm$100 Nmm.
 		&
 		& \\ \hline
@@ -126,7 +131,7 @@
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
 		& (AU GUI) Set force to 5 N and start the subject with a speed of 5 m/s  
-		& The force should settle in after max 100 ms and max peak 5.25 N on the GUI.  
+		& The force should settle after maximum 100 ms and a maximum peak 5.25 N on the GUI.  
 		&
 		& \\ \hline
 		2
@@ -152,12 +157,12 @@
 		\textbf{Steps} & \textbf{action} & \textbf{Expected result} & 
 		\textbf{Actual result} & \textbf{Accept/ Comment} \\ \hline
 		1 
-		& Use a ruler to check the dimensions of the PCB layout and confirm it is inside of a XX. Check if the Load-circuit is mounted onto a plate.
-		& The dimensions of the PCB is less than: Length 15 cm, width 15 cm and height 5 cm. The PCB is inside of a XX, and the Load-circuit is mounted onto a plate.
+		& Use a ruler to check the dimensions of the PCB layout and confirm it is placed inside of a XX. Check if the Load system is mounted onto a plate.
+		& The dimensions of the PCB is less than: Length 15 cm, width 15 cm and height 5 cm. The PCB is inside of a XX, and the Load system is mounted onto a plate.
 		&
 		& \\ \hline
 	\end{tabular}
 	\caption{}
 \end{table}
 
-\fxnote{replace XX}
+\fxnote{replace XX with name of the box}
