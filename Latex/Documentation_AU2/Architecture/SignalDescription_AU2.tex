@@ -26,16 +26,16 @@ Block interface description:
 	Direction: [External] $\rightarrow$ [Propulsion Motor]\\
 	Description: The force the outside world effects the Propulsion Motor.
 	\item \textbf{CANAU2:CAN}\\
-	Direction: [Battery Management System] and [Motor Control System] $\leftarrow$ $\rightarrow$ [Computer]\\
+	Direction: [Battery Management System] and [Motor Control System] $\leftrightarrow$ [Computer]\\
 	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
 	\item \textbf{SpeedButton:Force}\\
 	Direction: [External] $\rightarrow$ [Motor Control System]\\
-	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast and burn driving-algorithm.
+	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast-and-burn driving algorithm.
 	\item \textbf{DataLog:SDcard}\\
-	Direction: [External] $\leftarrow$ $\rightarrow$ [Motor Control System]\\
+	Direction: [External] $\leftrightarrow$ [Motor Control System]\\
 	Description: SDcard can be inserted to record data.
 	\item \textbf{Battery:Battery}\\
-	Direction: [Battery Holder] $\leftarrow$  $\rightarrow$ [External]\\
+	Direction: [Battery Holder] $\leftrightarrow$ [External]\\
 	Description: The two batteries that is connect in series and thereby understood as one battery, supplying everything in the AU2 system with power.
 	\item \textbf{PowerOut:Power}\\
 	Direction: [Battery Holder] $\rightarrow$ [External]\\
@@ -83,14 +83,14 @@ Block interface description:
 	Direction: [Battery Management System] $\rightarrow$ [Distribution Block]\\
 	Description: Power delivered by the battery in order to supply the electrical systems and propel the car.
 	\item \textbf{BMSC:CAN}\\
-	Direction: [Battery Management System] $\leftarrow$ $\rightarrow$ [Computer]\\
+	Direction: [Battery Management System] $\leftrightarrow$ [Computer]\\
 	Description: CAN-communication with a computer in order to gain information about various variables.
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltage indicating the temperature of the battery.
 	\item \textbf{AnSupply:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
-	Description: Voltage indicating the battery's different cells status and output.
+	Description: Voltage indicating the battery's different cells's statuses and outputs.
 	\item \textbf{BatterySupply:Power}\\
 	Direction: [External] $\rightarrow$ [Battery Management System]\\
 	Description: Power running through the external Joulemeter connectors, which originally came from the battery, which is going straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
@@ -129,13 +129,13 @@ Block interface description:
 	Direction: [Motor Control System] $\rightarrow$ [Propulsion Motor]\\
 	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the driving-algorithm.
 	\item \textbf{MCSC:CAN}\\
-	Direction: [Motor Control System] $\leftarrow$ $\rightarrow$ [Computer]\\
+	Direction: [Motor Control System] $\leftrightarrow$ [Computer]\\
 	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
 	\item \textbf{SpeedButton:Force}\\
 	Direction: [External] $\rightarrow$ [Motor Control System]\\
-	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast and burn driving-algorithm.
+	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast-and-burn driving algorithm.
 	\item \textbf{DataLog:SDcard}\\
-	Direction: [External] $\leftarrow$ $\rightarrow$ [Motor Control System]\\
+	Direction: [External] $\leftrightarrow$ [Motor Control System]\\
 	Description: SDcard can be inserted to record data.
 \end{itemize}
 
@@ -144,7 +144,7 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{Power:Power}\\
 	Direction: [Motor Control System] $\rightarrow$ [Propulsion Motor]\\
-	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the coast and burn driving-algorithm.
+	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the coast-and-burn driving algorithm.
 	\item \textbf{MotorPower:PowerMeas}\\
 	Direction: [Propulsion Motor] $\rightarrow$ [External]\\
 	Description: Power consumed by the motor. This connection is only relevant when AU2 is connected to Rolling Road.
@@ -167,12 +167,12 @@ Block interface description:
 	Description: Voltage indicating the temperature of the battery.
 	\item \textbf{AnSupply:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
-	Description: Voltage indicating the battery's different cells statuses and output.
+	Description: Voltage indicating the battery's different cell's statuses and outputs.
 	\item \textbf{BatterySupply:Power}\\
 	Direction: [Battery Holder] $\rightarrow$ [External]\\
 	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is of course going back into the AU2 system, so that the power can be put to use.
 	\item \textbf{Battery:Battery}\\
-	Direction: [Battery Holder] $\leftarrow$  $\rightarrow$ [External]\\
+	Direction: [Battery Holder] $\leftrightarrow$ [External]\\
 	Description: The two batteries that is connect in series and thereby understood as one battery, supplying everything in the AU2 system with power.
 \end{itemize}
 
