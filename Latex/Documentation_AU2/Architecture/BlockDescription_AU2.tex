@@ -4,22 +4,22 @@ The blocks in the BDD are described as follows:
 \begin{itemize}
 	\item \textbf{Rolling Road}\\
 	Description: A secondary system which has been designed to test the efficiency of the driving algorithm.
-	\item \textbf{Propulsion Motor}\\
-	Description: The electrical motor which propels the car forwards.
-	\item \textbf{Horn}\\
-	Description: A sound-making device which emits a tone when the driver activates it.
+	\item \textbf{Joulemeter}\\
+	Description: A joulementer that can measure the amount of energy used.
+	\item \textbf{Battery Holder}\\
+	Description: A battery holder for the two batteries, which will be implemented in a serial connection and thereby understood as one battery. The battery implemented is a 2 times 6 celled battery with a nominal voltage on 3.7 V per cell. The battery is used as the power source.
 	\item \textbf{Battery Management System}\\
 	Description: The system manages the rechargable battery and protects the circuits and batteries from shorting. This is done by constantly surveying the current and temperature from the battery. If any parameter exceeds an allowable treshold, the system will block the current from the battery.
 	\begin{itemize}
-		\item \textbf{Battery}\\
-		Description: The battery cells which supply the various systems with power and propulses the car.
 		\item \textbf{Current Sensor}\\
-		Description: Senses value and direction of battery current, and presents this information to the Analog Unit.
-		\item \textbf{Analog frontend}\\
+		Description: Senses value and direction of battery current, and presents this information to the Analog Front End.
+		\item \textbf{Analog Front End}\\
 		Description: Performs measurements and analog to digital conversion of cell voltages, battery temperatures and signal from current sensor. Furthermore, it handles cell balancing on requests from the Digital Unit, and redudant battery protection independent of the Digital Unit.
 		\item \textbf{Digital Unit}\\
 		Description: Collects measured values from the Analog Unit, performs calculations gives estimations of the cell lifetime and battery parameters. Furthermore, it handles communication with external units.
 	\end{itemize}
+	\item \textbf{Horn}\\
+	Description: A sound-making device which emits a tone when the driver activates it.
 	\item \textbf{Distribution Block}\\ \fxnote{Eventuel omdøbning til switch mode power supply - JOnathan}
 	Description: Converts the 48 V from the battery to recommended levels in order to power various systems in the car.
 	\item \textbf{Motor Control Unit}\\
@@ -29,15 +29,15 @@ The blocks in the BDD are described as follows:
 		Description: Controls the power consumption of the Propulsion Motor in order to let the car follow the implemented driving-algorithm. 
 		\item \textbf{Speedometer}\\
 		Description: Constantly measures the car's current speed in order to let the car follow the implemented driving-algorithm.
-		\item \textbf{SD-logger}\\
+		\item \textbf{SD-Logger}\\
 		Description: Logs various parameters about the current run to a removable SD-card which may be examined to optimize the driving algorithm.
 		\item \textbf{Power Control}\\
 		Description: Controls the amount of current delivered to the motor.
 		\item \textbf{CAN Tranceiver}\\
 		Description: Allows connection between the Motor Controller and a computer using the CAN-protocol.
-		\item \textbf{Joulemeter}\\ \fxnote{evt. omformulering - JOnathan}
-		Description: Measures the energy-consumption as electrical energy is turned into mechanical energy.
 	\end{itemize}
+	\item \textbf{Propulsion Motor}\\
+	Description: The electrical motor which propels the car forwards.
 	\item \textbf{Emergency System}\\
 	Description: A system  consisting of two mechanical switches  which must be activated, in order for the system to be turned on.
 	\item \textbf{Computer}\\
