@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
 
@@ -23,5 +25,9 @@ namespace RollingRoad.WinApplication.ViewModels
         }
         
         public double NewestValue => List.Last();
+
+        public int Count => List.Count;
+        public bool Selected { get; set; } = true;
+        public ICollection<double> Data => List;
     }
 }

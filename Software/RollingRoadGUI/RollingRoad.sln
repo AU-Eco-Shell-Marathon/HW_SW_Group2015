@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.Core.DomainServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.Core.ApplicationServices", "RollingRoad.Core.ApplicationServices\RollingRoad.Core.ApplicationServices.csproj", "{DC2F6792-31D7-4B3A-80E5-9A648E70E7D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.Infrastructure.DataAccess", "RollingRoad.Infrastructure.DataAccess\RollingRoad.Infrastructure.DataAccess.csproj", "{05872CA6-BE23-47A2-8D4F-499DBE6C7634}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,14 @@ Global
 		{DC2F6792-31D7-4B3A-80E5-9A648E70E7D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC2F6792-31D7-4B3A-80E5-9A648E70E7D3}.Release|x64.ActiveCfg = Release|Any CPU
 		{DC2F6792-31D7-4B3A-80E5-9A648E70E7D3}.Release|x64.Build.0 = Release|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Debug|x64.Build.0 = Debug|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Release|x64.ActiveCfg = Release|Any CPU
+		{05872CA6-BE23-47A2-8D4F-499DBE6C7634}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

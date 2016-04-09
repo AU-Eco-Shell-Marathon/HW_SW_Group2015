@@ -7,7 +7,7 @@ namespace RollingRoad.WinApplication.ViewModels
     public class DataSetViewModel : BindableBase
     {
         private bool _isSelected;
-        public Dataset DataSet { get; }
+        private Dataset DataSet { get; }
 
         public DataSetViewModel(Dataset dataset)
         {
@@ -27,6 +27,13 @@ namespace RollingRoad.WinApplication.ViewModels
             }
         }
 
-        public IList<DataListViewModel> Collection { get; set; }
+        public void Clear()
+        {
+            DataSet.Clear();
+        }
+
+        public int Count => DataSet.Count;
+
+        public IList<DataListViewModel> Collection { get; set; } = new List<DataListViewModel>();
     }
 }

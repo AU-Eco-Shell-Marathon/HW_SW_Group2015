@@ -8,6 +8,7 @@ using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 using RollingRoad.Data;
 using RollingRoad.WinApplication.Annotations;
+using RollingRoad.WinApplication.ViewModels;
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
 
@@ -18,9 +19,9 @@ namespace RollingRoad.WinApplication
     /// </summary>
     public partial class LineChart : UserControl
     {
-        public ICollection<Dataset> ItemsSource
+        public ICollection<DataListViewModel> ItemsSource
         {
-            get { return (ICollection<Dataset>)GetValue(ItemsSourceProperty); }
+            get { return (ICollection<DataListViewModel>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
@@ -37,7 +38,7 @@ namespace RollingRoad.WinApplication
 
         public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
                                                                             "ItemsSource",
-                                                                            typeof(ICollection<Dataset>),
+                                                                            typeof(ICollection<DataListViewModel>),
                                                                             typeof(LineChart),
                                                                             new FrameworkPropertyMetadata(ItemsSourceChange, null));
 
@@ -79,34 +80,9 @@ namespace RollingRoad.WinApplication
         }
 
         private readonly DispatcherTimer _timer;
-        private int lastLength = 0;
 
         private bool ShouldUpdate()
         {
-            if (ItemsSource == null && lastLength != 0)
-            {
-                lastLength = 0;
-                return false;
-            }
-
-            if (ItemsSource == null)
-            {
-                return false;
-            }
-
-            Dataset set = ItemsSource.FirstOrDefault();
-
-            if (set == null && lastLength != 0)
-            {
-                lastLength = 0;
-                return true;
-            }
-
-            if (set == null)
-            {
-                return false;
-            }
-
             return true;
         }
 
@@ -121,38 +97,31 @@ namespace RollingRoad.WinApplication
                 return;
 
             int i = 1;
-            foreach (Dataset dataset in ItemsSource)
+
+            DataListViewModel xAxis = ItemsSource.FirstOrDefault(x => x.Type.Name == XAxis);
+
+            if (xAxis == null)
+                return;
+
+            EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis.Data);
+            HorizontalAxisTitle.Content = xAxis.Type.Name + "(" + xAxis.Type.Unit + ")";
+
+            xData.SetXMapping(x => x);
+
+            foreach (DataListViewModel dataList in ItemsSource)
             {
-                DataList xAxis = dataset.FirstOrDefault(x => x.Type.Name == XAxis);
-
-                if (xAxis == null)
+                if (dataList.Type.Name == XAxis || !dataList.Selected)
                     continue;
-                    
-                if (dataset.Any(dataList => xAxis.Count != dataList.Count))
-                {
-                    throw new ArgumentException("Datalist count does not match");
-                }
 
-                EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis);
-                HorizontalAxisTitle.Content = xAxis.Type.Name + "(" + xAxis.Type.Unit + ")";
+                EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList.Data);
+                yData.SetYMapping(x => x);
 
-                xData.SetXMapping(x => x);
+                CompositeDataSource source = new CompositeDataSource(xData, yData);
 
-                foreach (DataList dataList in dataset)
-                {
-                    if (dataList.Type.Name == XAxis || !dataList.Selected)
-                        continue;
-
-                    EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList);
-                    yData.SetYMapping(x => x);
-
-                    CompositeDataSource source = new CompositeDataSource(xData, yData);
-
-                    Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, "D" + i + ":" + dataList.Type.ToString());
-                }
-
-                i++;
+                Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, "D" + i + ":" + dataList.Type);
             }
+
+            i++;
         }
 
         private Color GetLineColor(string key)
@@ -161,7 +130,7 @@ namespace RollingRoad.WinApplication
 
             if (!_colorDictionary.TryGetValue(key, out color))
             {
-                App app = ((App) Application.Current);
+                App app = (App) Application.Current;
                 string colorStr = app.Settings.GetStat(key);
 
                 if (string.IsNullOrEmpty(colorStr))

@@ -1,5 +1,5 @@
 Feature: Graph display
-	As a user, I want to view graphs containing colledted data 
+	As a user, I want to view graphs containing collected data 
 	so that I quickly can create an overview.
 	
 	Scenario: View data in a graph
@@ -8,7 +8,7 @@ Feature: Graph display
 		Then I am able to see a graph with time as x-axis
 		
 	Scenario: Clear graph 
-		Given some that has been colleded
+		Given some that has been collected
 		When I press the "Clear" button
 			And I don't want to save current data
 		Then I am asked if I want to save data or not

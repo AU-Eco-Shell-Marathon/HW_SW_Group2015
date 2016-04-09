@@ -10,8 +10,6 @@ namespace RollingRoad.Data
     {
         public DataType Type { get; }
 
-        public bool Selected { get; set; } = true;
-
         public double LastestValue
         {
             get

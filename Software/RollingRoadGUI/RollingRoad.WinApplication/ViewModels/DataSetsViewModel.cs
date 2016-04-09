@@ -12,7 +12,7 @@ namespace RollingRoad.WinApplication.ViewModels
     public class DataSetsViewModel : BindableBase
     {
         public ObservableCollection<DataSetViewModel> DataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
-        public ObservableCollection<Dataset> SelectedDataSets { get; set; } = new ObservableCollection<Dataset>();
+        public ObservableCollection<DataSetViewModel> SelectedDataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
 
         public DataSetsViewModel()
         {
@@ -31,7 +31,7 @@ namespace RollingRoad.WinApplication.ViewModels
             {
                 if (dataSetViewModel.IsSelected)
                 {
-                    SelectedDataSets.Add(dataSetViewModel.DataSet);
+                    SelectedDataSets.Add(dataSetViewModel);
                 }
             }
         }
