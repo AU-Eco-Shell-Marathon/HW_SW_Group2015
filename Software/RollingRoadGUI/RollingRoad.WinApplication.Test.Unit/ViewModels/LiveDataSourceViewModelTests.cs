@@ -37,12 +37,6 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         }
 
         [Test]
-        public void StartStopCommand_Nothing_CanExecuteFalse()
-        {
-            Assert.That(_vm.StartStopCommand.CanExecute, Is.False);
-        }
-
-        [Test]
         public void StartStopCommand_SourceSet_CanExecuteTrue()
         {
             Assert.That(_vm.StartStopCommand.CanExecute, Is.True);
@@ -77,7 +71,7 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         [Test]
         public void Collection_Nothing_IsEmpty()
         {
-            Assert.That(_vm.DataSetViewModel, Is.Empty);
+            Assert.That(_vm.DataSet.Collection, Is.Empty);
         }
 
         [Test]
@@ -86,7 +80,7 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
             _source.OnNextReadValue +=
                 Raise.Event<ReadOnlyDataEntryList>(new List<Datapoint>(){new Datapoint(new DataType("TestName", "TestUnit"), 0)});
 
-            Assert.That(_vm.DataSetViewModel.Count, Is.EqualTo(1));
+            Assert.That(_vm.DataSet.Count, Is.EqualTo(1));
         }
     }
 }

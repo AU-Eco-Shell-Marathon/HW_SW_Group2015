@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
@@ -12,7 +13,7 @@ namespace RollingRoad.WinApplication.ViewModels
     public class DataSetsViewModel : BindableBase
     {
         public ObservableCollection<DataSetViewModel> DataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
-        public ObservableCollection<DataSetViewModel> SelectedDataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
+        public ObservableCollection<DataListViewModel> SelectedDatalists { get; set; } = new ObservableCollection<DataListViewModel>();
 
         public DataSetsViewModel()
         {
@@ -25,13 +26,13 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private void OnSelectedChanged()
         {
-            SelectedDataSets.Clear();
+            SelectedDatalists.Clear();
 
-            foreach (DataSetViewModel dataSetViewModel in DataSets)
+            foreach (DataSetViewModel dataSetViewModel in DataSets.Where(x => x.IsSelected))
             {
-                if (dataSetViewModel.IsSelected)
+                foreach (DataListViewModel dataListViewModel in dataSetViewModel.Collection.Where(x => x.Selected))
                 {
-                    SelectedDataSets.Add(dataSetViewModel);
+                    SelectedDatalists.Add(dataListViewModel);
                 }
             }
         }

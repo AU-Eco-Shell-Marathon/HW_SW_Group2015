@@ -22,7 +22,8 @@ namespace RollingRoad.WinApplication.ViewModels
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
-        public DataSetViewModel DataSetViewModel { get; private set; } = new DataSetViewModel(new Dataset());
+        public DataSetViewModel DataSet { get; } = new DataSetViewModel(new Dataset());
+        public ICollection<DataListViewModel> DataLists => DataSet.Collection; 
         public IDispatcher Dispatcher { get; set; }
         public ILogger Logger
         {
@@ -39,14 +40,9 @@ namespace RollingRoad.WinApplication.ViewModels
             DefaultExt = ".csv",
             Filter = "CSV Files (*.csv)|*.csv"
         };
-        public double GraphRefreshRate
-        {
-            get { return _refreshRate; }
-            set { SetProperty(ref _refreshRate, value); }
-        }
+
 
         private ILiveDataSource _source;
-        private int _graphRefreshRateSelectedIndex;
         private ILogger _logger;
 
 
@@ -57,21 +53,7 @@ namespace RollingRoad.WinApplication.ViewModels
         public string SelectedSourceText => "Source: " + Source;
 
         public bool HasBeenSaved { get; private set; } = true;
-
-        private double _refreshRate = 500;
-
-        public int GraphRefreshRateSelectedIndex
-        {
-            get { return _graphRefreshRateSelectedIndex; }
-            set
-            {
-                _graphRefreshRateSelectedIndex = value;
-                GraphRefreshRate = GraphUpdateRates[_graphRefreshRateSelectedIndex];
-            }
-        }
-
-        public List<double> GraphUpdateRates { get; } = new List<double>() {500, 1000, 2000, 5000, 100000}; 
-
+        
         private bool _isStarted;
         public bool IsStarted
         {
@@ -93,7 +75,7 @@ namespace RollingRoad.WinApplication.ViewModels
             Dispatcher = new SystemDispatcher(System.Windows.Threading.Dispatcher.CurrentDispatcher);
         }
 
-        public LiveDataSourceViewModel(ILiveDataSource initialSource) : base()
+        public LiveDataSourceViewModel(ILiveDataSource initialSource) : this()
         {
             Source = initialSource;
         }
@@ -145,14 +127,14 @@ namespace RollingRoad.WinApplication.ViewModels
         {
             if(CheckAndAskAboutChanges())
             {
-                DataSetViewModel.Clear();
+                DataSet.Clear();
                 HasBeenSaved = true;
             }
         }
 
         private bool CanClear()
         {
-            return DataSetViewModel.Count > 0;
+            return DataSet.Count > 0;
         }
 
         private void Start()
@@ -185,17 +167,17 @@ namespace RollingRoad.WinApplication.ViewModels
             HasBeenSaved = false;
             foreach (Datapoint datapoint in datapoints)
             {
-                DataListViewModel list = DataSetViewModel.Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataListViewModel list = DataSet.Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
                 {
                     list = new DataListViewModel(new DataList(datapoint.Type));
-                    DataSetViewModel.Collection.Add(list);
+                    DataSet.Collection.Add(list);
                     ClearCommand.RaiseCanExecuteChanged();
                 }
                 double value = datapoint.Value;
 
-                list.Data.Add(value);
+                list.Add(value);
             }
         }
 
@@ -237,7 +219,7 @@ namespace RollingRoad.WinApplication.ViewModels
                 return;
 
             Source?.Stop();
-            DataSetViewModel.Collection.Clear();
+            DataSet.Collection.Clear();
 
             try
             {
@@ -259,7 +241,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                /*Dataset source = new Dataset(new List<DataList>(DataSetViewModel.Collection))
+                /*Dataset source = new Dataset(new List<DataList>(DataSet.Collection))
                 {
                     Description = DateTime.Now.ToLongDateString()
                 };*/
@@ -279,7 +261,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private bool CanSave()
         {
-            return DataSetViewModel.Count > 0;
+            return DataSet.Count > 0;
         }
 
         public override string ToString()

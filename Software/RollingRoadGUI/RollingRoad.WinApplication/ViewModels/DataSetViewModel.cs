@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Data;
 
@@ -12,6 +13,11 @@ namespace RollingRoad.WinApplication.ViewModels
         public DataSetViewModel(Dataset dataset)
         {
             DataSet = dataset;
+
+            foreach (DataList dataList in dataset)
+            {
+                Collection.Add(new DataListViewModel(dataList));
+            }
         }
 
         public string Name => DataSet.Name;
@@ -32,8 +38,8 @@ namespace RollingRoad.WinApplication.ViewModels
             DataSet.Clear();
         }
 
-        public int Count => DataSet.Count;
+        public int Count => Collection.Count;
 
-        public IList<DataListViewModel> Collection { get; set; } = new List<DataListViewModel>();
+        public ObservableCollection<DataListViewModel> Collection { get; } = new ObservableCollection<DataListViewModel>();
     }
 }

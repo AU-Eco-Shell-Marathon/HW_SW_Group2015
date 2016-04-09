@@ -18,7 +18,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public DataType Type => List.Type;
 
-        public void AddData(double value)
+        public void Add(double value)
         {
             List.Add(value);
             OnPropertyChanged(nameof(NewestValue));
@@ -28,6 +28,6 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public int Count => List.Count;
         public bool Selected { get; set; } = true;
-        public ICollection<double> Data => List;
+        public IReadOnlyCollection<double> Data => List;
     }
 }

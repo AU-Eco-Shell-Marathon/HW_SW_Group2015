@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
-using RollingRoad.Data;
 using RollingRoad.WinApplication.Annotations;
 using RollingRoad.WinApplication.ViewModels;
 using Color = System.Windows.Media.Color;
@@ -17,30 +19,96 @@ namespace RollingRoad.WinApplication
     /// <summary>
     /// Interaction logic for LineChart.xaml
     /// </summary>
-    public partial class LineChart : UserControl
+    public partial class LineChart : UserControl, INotifyPropertyChanged
     {
+        public string XAxis { get; } = "Time";
+
         public ICollection<DataListViewModel> ItemsSource
         {
             get { return (ICollection<DataListViewModel>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
-        /// <summary>
-        /// Miliseconds
-        /// </summary>
-        public double RefreshRate
-        {
-            get { return (double) GetValue(RefreshRateProperty); }
-            set { SetValue(RefreshRateProperty, value); }
-        }
-
-        public string XAxis = "Time";
-
         public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
                                                                             "ItemsSource",
                                                                             typeof(ICollection<DataListViewModel>),
                                                                             typeof(LineChart),
                                                                             new FrameworkPropertyMetadata(ItemsSourceChange, null));
+
+        public ICollection<string> RefreshRateOptions { get; } = new List<string>() {"Off", "500 ms", "1000 ms", "5000 ms", "10000 ms"};
+        public ICollection<string> BufferTypeOptions { get; } = new List<string>() {"Circular", "List"}; 
+        public ICollection<int> BufferSizeOptions { get; } = new List<int>() {500, 1000};
+
+        public int SelectedRefreshRate
+        {
+            get { return _selectedRefreshRate; }
+            set
+            {
+                if (_selectedRefreshRate == value)
+                    return;
+
+                if (RefreshRateOptions.ElementAt(value) == "Off")
+                {
+                    if (_timer.IsEnabled)
+                        _timer.Stop();
+                }
+                else
+                {
+                    int timeInMs = int.Parse(RefreshRateOptions.ElementAt(value).Split(' ')[0]);
+
+                    _timer.Interval = TimeSpan.FromMilliseconds(timeInMs);
+
+                    if(!_timer.IsEnabled)
+                        _timer.Start();
+                }
+                _selectedRefreshRate = value;
+                _app.Settings.SetIntStat("SelectedRefreshRate", value);
+                OnPropertyChanged();
+
+            }
+        }
+
+        public int SelectedBufferType
+        {
+            get { return _selectedBufferType; }
+            set
+            {
+                if (_selectedBufferType == value)
+                    return;
+
+                string bufferType = BufferTypeOptions.ElementAt(value);
+
+                BufferSizeEnabled = bufferType == "Circular";
+
+                _selectedBufferType = value;
+                _app.Settings.SetIntStat("SelectedBufferType", value);
+                OnPropertyChanged();
+            }
+        }
+
+        public int SelectedBufferSize
+        {
+            get { return _selectedBufferSize; }
+            set
+            {
+                if (_selectedBufferSize == value)
+                    return;
+
+                _selectedBufferSize = value;
+                _app.Settings.SetIntStat("SelectedBufferSize", value);
+                OnPropertyChanged();
+            }
+        }
+
+        public bool BufferSizeEnabled
+        {
+            get { return _bufferSizeEnabled; }
+            private set
+            {
+                _bufferSizeEnabled = value;
+                OnPropertyChanged();
+            }
+        }
 
         private static void ItemsSourceChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -49,37 +117,28 @@ namespace RollingRoad.WinApplication
             control?.Refresh();
         }
 
-
-        public static readonly DependencyProperty RefreshRateProperty = DependencyProperty.Register(
-                                                                            "RefreshRate",
-                                                                            typeof (double),
-                                                                            typeof (LineChart),
-                                                                            new FrameworkPropertyMetadata(500.0, RefreshRateChange, null));
-        
-
-        private static void RefreshRateChange(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            LineChart control = sender as LineChart;
-            double newtime = (double) e.NewValue;
-
-            if (control == null)
-                return;
-
-            control._timer.Interval = TimeSpan.FromMilliseconds(newtime);
-        }
-
-        private readonly Dictionary<string, Color> _colorDictionary = new Dictionary<string, Color>(); 
+        private readonly Dictionary<string, Color> _colorDictionary = new Dictionary<string, Color>();
+        private App _app;
 
         public LineChart()
         {
             InitializeComponent();
             _timer = new DispatcherTimer();
             _timer.Tick += (sender, e) => Refresh();
-            _timer.Interval = TimeSpan.FromMilliseconds(RefreshRate);
-            _timer.Start();
+
+
+            _app = (App)Application.Current;
+
+            SelectedRefreshRate = _app.Settings.GetIntStat("SelectedRefreshRate");
+            SelectedBufferType = _app.Settings.GetIntStat("SelectedBufferType");
+            SelectedBufferSize = _app.Settings.GetIntStat("SelectedBufferSize");
         }
 
         private readonly DispatcherTimer _timer;
+        private int _selectedRefreshRate;
+        private int _selectedBufferType;
+        private int _selectedBufferSize;
+        private bool _bufferSizeEnabled;
 
         private bool ShouldUpdate()
         {
@@ -95,9 +154,7 @@ namespace RollingRoad.WinApplication
 
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
-
-            int i = 1;
-
+            
             DataListViewModel xAxis = ItemsSource.FirstOrDefault(x => x.Type.Name == XAxis);
 
             if (xAxis == null)
@@ -118,10 +175,8 @@ namespace RollingRoad.WinApplication
 
                 CompositeDataSource source = new CompositeDataSource(xData, yData);
 
-                Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, "D" + i + ":" + dataList.Type);
+                Chart.AddLineGraph(source, GetLineColor(dataList.Type.Name + "LineColor"), 2, dataList.Type.ToString());
             }
-
-            i++;
         }
 
         private Color GetLineColor(string key)
@@ -130,13 +185,12 @@ namespace RollingRoad.WinApplication
 
             if (!_colorDictionary.TryGetValue(key, out color))
             {
-                App app = (App) Application.Current;
-                string colorStr = app.Settings.GetStat(key);
+                string colorStr = _app.Settings.GetStat(key);
 
                 if (string.IsNullOrEmpty(colorStr))
                 {
                     color = GenerateRandom();
-                    app.Settings.SetStat(key, $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}");
+                    _app.Settings.SetStat(key, $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}");
                     _colorDictionary.Add(key, color);
                 }
                 else
@@ -168,6 +222,14 @@ namespace RollingRoad.WinApplication
             {
                 // ignored
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

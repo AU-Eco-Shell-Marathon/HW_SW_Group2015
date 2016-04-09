@@ -153,6 +153,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\DataSetsView.xaml.cs">
+      <DependentUpon>DataSetsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LiveDataSourceView.xaml.cs">
+      <DependentUpon>LiveDataSourceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoggerView.xaml.cs">
+      <DependentUpon>LoggerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectSourceWindow.xaml.cs">
       <DependentUpon>SelectSourceWindow.xaml</DependentUpon>
     </Compile>
@@ -160,6 +169,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DataSetsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LiveDataSourceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoggerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SelectSourceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

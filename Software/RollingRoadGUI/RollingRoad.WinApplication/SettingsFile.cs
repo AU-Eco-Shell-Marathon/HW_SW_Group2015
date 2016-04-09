@@ -115,16 +115,9 @@ namespace RollingRoad.WinApplication
         /// <returns>Value of the stat, if unable to load or parse 0 will be returned</returns>
         public int GetIntStat(string stat)
         {
-            try
-            {
-                return int.Parse(GetStat(stat));
-            }
-            catch (Exception)
-            {
+            int value;
 
-            }
-
-            return 0;
+            return int.TryParse(GetStat(stat), out value) ? value : 0;
         }
 
         /// <summary>
@@ -163,6 +156,9 @@ namespace RollingRoad.WinApplication
         /// <param name="value">Stat value</param>
         public void SetIntStat(string stat, int value)
         {
+            if (GetIntStat(stat) == value)
+                return;
+
             SetStat(stat, value.ToString());
         }
 
