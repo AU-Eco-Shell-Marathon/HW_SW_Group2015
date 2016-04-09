@@ -23,19 +23,14 @@ Block interface description:
 	\item \textbf{BMSC:CAN}\\
 	Direction: [External] $\leftrightarrow$ [Digital Unit]\\
 	Description: CAN-communication with a computer in order to gain information about various variables.
-\end{itemize}
-
-\textbf{Block :Battery}\\
-Block interface description:
-\begin{itemize}
 	\item \textbf{BatterySupplyA:Power}\\
-	Direction: [Battery] $\rightarrow$ [Current Sensor]\\
+	Direction: [External] $\rightarrow$ [Current Sensor]\\
 	Description: Power directly from the battery before being measured by the current sensor.
 	\item \textbf{AnSupply:Voltage}\\
-	Direction: [Battery] $\rightarrow$ [Analog Unit]\\
+	Direction: [External] $\rightarrow$ [Analog Unit]\\
 	Description: Power supply for the analog part of the system.
 	\item \textbf{TempSense:Voltage}\\
-	Direction: [Battery] $\rightarrow$ [Analog Unit]\\
+	Direction: [External] $\rightarrow$ [Analog Unit]\\
 	Description: A voltage which is proportional to the battery's temperature.
 \end{itemize}
 
