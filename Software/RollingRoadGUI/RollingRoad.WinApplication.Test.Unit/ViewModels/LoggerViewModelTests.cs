@@ -50,5 +50,11 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
             
             Assert.That(_vm.Log[1].Item2, Is.EqualTo(value));
         }
+
+        [Test]
+        public void ToString_Nothing_ReturnLog()
+        {
+            Assert.That(_vm.ToString(), Is.EqualTo("Log"));
+        }
     }
 }

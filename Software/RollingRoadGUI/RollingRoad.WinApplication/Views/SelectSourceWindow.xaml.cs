@@ -2,14 +2,14 @@
 using System.Windows.Input;
 using RollingRoad.WinApplication.Dialogs;
 
-namespace RollingRoad.WinApplication
+namespace RollingRoad.WinApplication.Views
 {
     /// <summary>
     /// Interaction logic for SelectSourceDialog.xaml
     /// </summary>
     public partial class SelectSourceWindow : Window
     {
-        private ISelectSourceDialog _vm;
+        private readonly ISelectSourceDialog _vm;
 
         public SelectSourceWindow(ISelectSourceDialog vm)
         {

@@ -1,11 +1,9 @@
-﻿using System.Windows.Controls;
-
-namespace RollingRoad.WinApplication.Views
+﻿namespace RollingRoad.WinApplication.Views
 {
     /// <summary>
     /// Interaction logic for LiveDataSourceView.xaml
     /// </summary>
-    public partial class LiveDataSourceView : UserControl
+    public partial class LiveDataSourceView
     {
         public LiveDataSourceView()
         {

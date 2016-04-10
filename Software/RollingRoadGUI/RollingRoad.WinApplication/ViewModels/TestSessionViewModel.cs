@@ -50,7 +50,7 @@ namespace RollingRoad.WinApplication.ViewModels
             }
         }
 
-        private bool _started = false;
+        private bool _started;
         private ITorqueControl _control;
 
         public TestSessionViewModel(ITorqueControl control = null)

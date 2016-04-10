@@ -15,7 +15,7 @@ namespace RollingRoad.WinApplication.Dialogs
     {
         public bool ShowDialog()
         {
-            Window win = new SelectSourceWindow(this);
+            Window win = new Views.SelectSourceWindow(this);
 
             bool? success = win.ShowDialog();
 

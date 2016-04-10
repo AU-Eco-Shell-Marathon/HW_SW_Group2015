@@ -41,7 +41,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private void OpenAboutWindow()
         {
-            AboutWindow window = new AboutWindow();
+            Views.AboutWindow window = new Views.AboutWindow();
 
             window.ShowDialog();
         }

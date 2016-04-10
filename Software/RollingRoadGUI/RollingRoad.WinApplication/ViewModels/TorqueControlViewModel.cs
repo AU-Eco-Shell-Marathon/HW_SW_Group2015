@@ -11,10 +11,6 @@ namespace RollingRoad.WinApplication.ViewModels
         public TorqueControlViewModel(ITorqueControl control)
         {
             _control = control;
-            /*
-            
-            double min = Properties.Settings.Default.TorqueControlMin;
-            double max = Properties.Settings.Default.TorqueControlMax;*/
         }
 
         public double Torque

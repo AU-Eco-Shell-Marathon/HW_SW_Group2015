@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
@@ -223,6 +222,7 @@ namespace RollingRoad.WinApplication.ViewModels
                     list = new DataListViewModel(new DataList(datapoint.Type));
                     DataSet.Collection.Add(list);
                     ClearCommand.RaiseCanExecuteChanged();
+                    SaveCommand.RaiseCanExecuteChanged();
                 }
                 double value = datapoint.Value;
 
@@ -290,13 +290,13 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                /*Dataset source = new Dataset(new List<DataList>(DataSet.Collection))
+                Dataset source = new Dataset(new List<DataList>(DataSet.Collection.Select(x => x.List)))
                 {
                     Description = DateTime.Now.ToLongDateString()
-                };*/
+                };
 
                 //Save file
-                //CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
+                CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)

@@ -1,4 +1,4 @@
-﻿namespace RollingRoad.WinApplication
+﻿namespace RollingRoad.WinApplication.Views
 {
     /// <summary>
     /// Interaction logic for AboutWindow.xaml
