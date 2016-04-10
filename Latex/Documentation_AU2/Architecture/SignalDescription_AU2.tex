@@ -6,10 +6,10 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Force}\\
 	Direction: [External] $\rightarrow$ [Emergency System]\\
-	Description: Can be triggered by pressing a button on the vehicle's frame or by depressing the Deadmans Switch inside the cockpit.	
+	Description: Can be triggered by pressing a button on the vehicle's frame or by releasing the Deadmans Switch inside the cockpit.	
 	\item \textbf{HornOn:Force}\\
 	Direction: [External] $\rightarrow$ [Horn]\\
-	Description: The driver activates the system by pressing the corrosponding button inside the vehicle's cockpit.
+	Description: The driver activates the system by pressing the corresponding button inside the vehicle's cockpit.
 	\item \textbf{HornSound:Sound}\\
 	Direction: [Horn] $\rightarrow$ [External]\\
 	Description: The sound emitted by the Horn.
@@ -39,7 +39,7 @@ Block interface description:
 	Description: The two batteries that is connect in series and thereby understood as one battery, supplying everything in the AU2 system with power.
 	\item \textbf{PowerOut:Power}\\
 	Direction: [Battery Holder] $\rightarrow$ [External]\\
-	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is of course going back into the AU2 system, so that the power can be put to use.
+	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is going back into the AU2 system, so that the power can be put to use.
 	\item \textbf{PowerIn:Power}\\
 	Direction: [External] $\rightarrow$ [Battery Management System]\\
 	Description: Power running through the external Joulemeter connectors, which originally came from the battery, is then going straight through a fuse before and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
@@ -51,7 +51,7 @@ Block interface description:
 	\item \textbf{Button:Force}\\
 	Direction: [External] $\rightarrow$ [Emergency System]\\
 	Description: Can be triggered by pressing a button on the vehicle's frame or by depressing the Deadmans Switch inside the cockpit.
-	\item \textbf{OUT:ESignal}\\
+	\item \textbf{OUT:ESignal}\\  \fxnote{Enten ESignal eller ESsignal}
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
 	Description: The button-press triggers a short-circuit which corrosponds to a change in the voltage-level, which can be detected by the BMS.
 \end{itemize}
@@ -67,10 +67,10 @@ Block interface description:
 	Description: Power supply for the vehicle's horn.
 	\item \textbf{HornPWM:PWM}\\
 	Direction: [Motor Control System] $\rightarrow$ [Horn]\\
-	Description: A PWM-signal with a frequency corrosponding to the tone emitted by the horn.
+	Description: A PWM-signal with a frequency corresponding to the tone emitted by the horn.
 	\item \textbf{HornSound:Sound}\\
 	Direction: [Horn] $\rightarrow$ [External]\\
-	Description: Sound emits from Horn.
+	Description: Sound emitted from Horn.
 \end{itemize}
 
 \textbf{Block :Battery Management System}\\
@@ -124,7 +124,7 @@ Block interface description:
 	Description: Power delivered from the battery to propel the car.
 	\item \textbf{HornPWM:PWM}\\
 	Direction: [Motor Control System] $\rightarrow$ [Horn]\\
-	Description: A PWM-signal with a frequency corrosponding to the tone emitted by the horn.
+	Description: A PWM-signal with a frequency corresponding to the tone emitted by the horn.
 	\item \textbf{PowerOut:Power}\\
 	Direction: [Motor Control System] $\rightarrow$ [Propulsion Motor]\\
 	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the driving-algorithm.
@@ -156,7 +156,7 @@ Block interface description:
 	Description: The force the Propulsion Motor has.
 	\item \textbf{ForceResistance:Force}\\
 	Direction: [External] $\rightarrow$ [Propulsion Motor]\\
-	Description: The force the outside world effects the Propulsion Motor.
+	Description: The force with which the outside world effects the Propulsion Motor.
 \end{itemize}
 
 \textbf{Block :Battery Holder}\\
@@ -173,7 +173,7 @@ Block interface description:
 	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is of course going back into the AU2 system, so that the power can be put to use.
 	\item \textbf{Battery:Battery}\\
 	Direction: [Battery Holder] $\leftrightarrow$ [External]\\
-	Description: The two batteries that is connect in series and thereby understood as one battery, supplying everything in the AU2 system with power.
+	Description: The two batteries is connected in series and thereby understood as one battery, supplying everything in the AU2 system with power.
 \end{itemize}
 
 \textbf{Block :Computer}\\
@@ -181,5 +181,5 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{CANAU2:CAN}\\
 	Direction: [Motor Control System] and [Battery Management System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
+	Description: CAN-communication with a computer in order to gain information about various variables and to calibrate the system.
 \end{itemize}
