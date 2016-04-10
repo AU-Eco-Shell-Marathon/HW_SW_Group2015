@@ -9,7 +9,7 @@ namespace RollingRoad.Test.Unit
         [Test]
         public void WriteLine_SendString_EventCalled()
         {
-            EventLogger eventLogger = new EventLogger();
+            Logger eventLogger = new Logger();
             int eventCallCount = 0;
 
             eventLogger.OnLog += text => eventCallCount++;
@@ -23,7 +23,7 @@ namespace RollingRoad.Test.Unit
         [TestCase("Two tests")]
         public void WriteLine_SendSingleString_CorrectStringInEvent(string str)
         {
-            EventLogger eventLogger = new EventLogger();
+            Logger eventLogger = new Logger();
             string eventCallValue = "";
 
             eventLogger.OnLog += text => eventCallValue = text;
@@ -37,7 +37,7 @@ namespace RollingRoad.Test.Unit
         [TestCase("All the strings", 10)]
         public void WriteLine_SendMultipleStrings_CorrectStringAtEnd(string prefix, int number)
         {
-            EventLogger eventLogger = new EventLogger();
+            Logger eventLogger = new Logger();
             string eventCallValue = "";
 
             eventLogger.OnLog += text => eventCallValue = text;

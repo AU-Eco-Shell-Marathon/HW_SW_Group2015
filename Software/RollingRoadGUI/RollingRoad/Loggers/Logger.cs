@@ -3,13 +3,13 @@
     /// <summary>
     /// Invokes OnLog every time there's a log message, does not store log.
     /// </summary>
-    public class EventLogger : ILogger
+    public class Logger : ILogger
     {
         /// <summary>
         /// Write to log
         /// </summary>
         /// <param name="line">Line to write</param>
-        public void WriteLine(string line)
+        public virtual void WriteLine(string line)
         {
             OnLog?.Invoke(line);
         }

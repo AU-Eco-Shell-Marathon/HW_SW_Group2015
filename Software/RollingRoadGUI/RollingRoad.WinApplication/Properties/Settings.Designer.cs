@@ -22,29 +22,5 @@ namespace RollingRoad.WinApplication.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double TorqueControlMin {
-            get {
-                return ((double)(this["TorqueControlMin"]));
-            }
-            set {
-                this["TorqueControlMin"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public double TorqueControlMax {
-            get {
-                return ((double)(this["TorqueControlMax"]));
-            }
-            set {
-                this["TorqueControlMax"] = value;
-            }
-        }
     }
 }

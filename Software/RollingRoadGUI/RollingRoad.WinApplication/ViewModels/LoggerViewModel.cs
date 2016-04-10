@@ -16,14 +16,17 @@ namespace RollingRoad.WinApplication.ViewModels
         
         public ILogger Logger { get; }
 
-        public LoggerViewModel(IDispatcher dispatcher = null)
+        public LoggerViewModel(IDispatcher dispatcher = null, ILogger logger = null)
         {
             Dispatcher = dispatcher;
+            Logger = logger;
 
             if (Dispatcher == null)
                 Dispatcher = new SystemDispatcher(Application.Current.Dispatcher);
 
-            Logger = new EventLogger();
+            if(Logger == null)
+                Logger = new Logger();
+
             Logger.OnLog += WriteLine;
 
             Logger.WriteLine("Logger started");

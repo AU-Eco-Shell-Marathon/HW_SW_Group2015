@@ -64,8 +64,9 @@
     <Compile Include="Control\IMotorControl.cs" />
     <Compile Include="CsvDataFile.cs" />
     <Compile Include="Data\Datapoint.cs" />
+    <Compile Include="Loggers\FileLogger.cs" />
     <Compile Include="Protocols\CsvDataInterpreter.cs" />
-    <Compile Include="Loggers\EventLogger.cs" />
+    <Compile Include="Loggers\Logger.cs" />
     <Compile Include="Loggers\ILogger.cs" />
     <Compile Include="Control\IPidControl.cs" />
     <Compile Include="Control\ITorqueControl.cs" />

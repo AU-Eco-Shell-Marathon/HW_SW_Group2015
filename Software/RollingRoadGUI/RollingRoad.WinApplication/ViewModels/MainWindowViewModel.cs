@@ -18,7 +18,16 @@ namespace RollingRoad.WinApplication.ViewModels
             QuitCommand = new DelegateCommand(Quit);
             OpenAboutWindowCommand = new DelegateCommand(OpenAboutWindow);
 
-            LoggerViewModel vm = new LoggerViewModel();
+            LoggerViewModel vm;
+
+            if (Application.Current is App)
+            {
+                vm = new LoggerViewModel(null, ((App) Application.Current).Logger);
+            }
+            else
+            {
+                vm = new LoggerViewModel();
+            }
 
             Tabs.Add(new LiveDataSourceViewModel() {Logger = vm.Logger});
             Tabs.Add(new DataSetsViewModel());
