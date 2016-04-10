@@ -9,7 +9,6 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataListViewModel : BindableBase
     {
-        private Color _color;
         public DataList List { get; }
 
         public DataListViewModel(DataList list)

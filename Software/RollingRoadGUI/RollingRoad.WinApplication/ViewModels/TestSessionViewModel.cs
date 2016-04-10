@@ -13,8 +13,25 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class TestSessionViewModel : BindableBase
     {
+        public enum TestSessionStatus
+        {
+            Stopped,
+            Running
+        }
+
         public DelegateCommand StartStopCommand { get; }
         public ICollection<string> TestSessionList { get; }
+        public TestSessionStatus Status { get; }
+        public double CurrentTorque { get; private set; }
+
+        public bool IsEnabled { get; }
+
+        public ITorqueControl Control
+        {
+            get { return _control; }
+            set { _control = value; }
+        }
+
         public int SelectedTestSession { get; set; }
         private Dataset TorqueDataset { get; set; }
 
@@ -34,13 +51,18 @@ namespace RollingRoad.WinApplication.ViewModels
         }
 
         private bool _started = false;
-        private readonly ITorqueControl _control;
+        private ITorqueControl _control;
 
-        public TestSessionViewModel(ITorqueControl control)
+        public TestSessionViewModel(ITorqueControl control = null)
         {
-            TestSessionList = Directory.GetFiles("TestSessions").ToList();
+            string folder = "TestSessions";
+
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+
+            TestSessionList = Directory.GetFiles(folder).Select(x => x.Substring(folder.Length + 1)).ToList();
             StartStopCommand = new DelegateCommand(StartStop);
-            _control = control;
+            Control = control;
         }
 
         public void StartStop()

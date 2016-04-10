@@ -88,6 +88,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -114,6 +115,12 @@
     <Compile Include="Dialogs\OpenFileDialog.cs" />
     <Compile Include="Dialogs\SaveFileDialog.cs" />
     <Compile Include="Dialogs\SelectSourceDialog.cs" />
+    <Compile Include="Views\PidControlView.xaml.cs">
+      <DependentUpon>PidControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestSessionView.xaml.cs">
+      <DependentUpon>TestSessionView.xaml</DependentUpon>
+    </Compile>
     <Page Include="LineChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,7 +137,6 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SettingsFile.cs" />
     <Compile Include="SystemDispatcher.cs" />
-    <Compile Include="TemplateSelectors\LiveDataControlTemplateSelector.cs" />
     <Compile Include="ViewModels\CalibrateControlViewModel.cs" />
     <Compile Include="ViewModels\DataListViewModel.cs" />
     <Compile Include="ViewModels\DataSetsViewModel.cs" />
@@ -181,7 +187,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PidControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SelectSourceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestSessionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

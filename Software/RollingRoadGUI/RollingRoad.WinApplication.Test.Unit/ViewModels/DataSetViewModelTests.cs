@@ -31,14 +31,14 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         [Test]
         public void IsSelected_SetValue_PropertyChangedCalled()
         {
-            Dataset set = new Dataset() {};
+            Dataset set = new Dataset();
             DataSetViewModel vm = new DataSetViewModel(set);
             bool propertyChangedCalled = false;
 
             vm.PropertyChanged += (sender, args) =>
             {
-                Assert.That(args.PropertyName, Is.EqualTo(nameof(vm.IsSelected)));
-                propertyChangedCalled = true;
+                if(args.PropertyName == nameof(vm.IsSelected))
+                    propertyChangedCalled = true;
             };
 
             vm.IsSelected = true;
@@ -50,7 +50,7 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         [TestCase(false)]
         public void IsSelected_SetValue_ValueSet(bool values)
         {
-            Dataset set = new Dataset() { };
+            Dataset set = new Dataset();
             DataSetViewModel vm = new DataSetViewModel(set) {IsSelected = values};
 
 

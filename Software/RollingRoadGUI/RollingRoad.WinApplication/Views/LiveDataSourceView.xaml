@@ -4,13 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:winApplication="clr-namespace:RollingRoad.WinApplication"
-             xmlns:templateSelectors="clr-namespace:RollingRoad.WinApplication.TemplateSelectors"
-             xmlns:viewModels="clr-namespace:RollingRoad.WinApplication.ViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="600" d:DataContext="{d:DesignData LiveDateSourceViewModel}">
-    <UserControl.Resources>
-        <templateSelectors:LiveDataControlTemplateSelector x:Key="LiveDataControlTemplateSelector"/>
-    </UserControl.Resources>
+             xmlns:views="clr-namespace:RollingRoad.WinApplication.Views"
+             mc:Ignorable="d" x:Name="LiveDataSourceUC"
+             d:DesignHeight="300" d:DesignWidth="600" d:DataContext="{d:DesignData Type=LiveDateSourceViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="160"/>
@@ -21,51 +17,79 @@
         <!-- Live data -->
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="22"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- Title -->
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Live Data</TextBlock>
 
+            <!-- Source control -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="12" Text="{Binding SelectedSourceText}" Margin="5" />
-                <Button Grid.Column="1" Content="Select" Margin="5" Command="{Binding SelectSourceCommand}"/>
+                <TextBlock Grid.Row="0" 
+                           Grid.Column="0" 
+                           Grid.ColumnSpan="2" 
+                           TextWrapping="Wrap" 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center" 
+                           FontSize="12" Margin="5"
+                           Text="{Binding SelectedSourceText}"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="Select" Margin="5" Command="{Binding SelectSourceCommand}"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Margin="5,10" Command="{Binding SaveCommand}">Save</Button>
+                <Button Grid.Row="1" Grid.Column="1" Margin="5,10" Command="{Binding ClearCommand}">Clear</Button>
+                <Button Grid.Row="1" Grid.Column="2" Margin="5,10" Content="{Binding StartStopButtonText}" Command="{Binding StartStopCommand}"/>
             </Grid>
+            
+            <!-- General control -->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <!-- Live data -->
-            <ListView Grid.Row="2" ItemsSource="{Binding LiveControlCollection}" ItemTemplateSelector="{StaticResource LiveDataControlTemplateSelector}">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="Focusable" Value="false"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
-
-            <!-- Save Clear Stop Buttons -->
-            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Text="Control"/>
 
-                <!-- Save button -->
-                <Button Grid.Column="0" Margin="10, 10, 10, 10" Command="{Binding SaveCommand}">Save</Button>
+                <Label Grid.Row="1" Grid.Column="0" Content="Torque" IsEnabled="{Binding TorqueControlEnabled}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="2"
+                         DataContext="{Binding TorqueControl}" 
+                         Text="{Binding Torque}"
+                         IsEnabled="{Binding DataContext.TorqueControlEnabled, ElementName=LiveDataSourceUC}"/>
 
-                <!-- Clear button -->
-                <Button Grid.Column="1" Margin="10, 10, 10, 10" Command="{Binding ClearCommand}">Clear</Button>
-
-                <!-- Start/Stop button -->
-                <Button x:Name="LiveDataStartStopButton" Grid.Column="2" Margin="10, 10, 10, 10" Content="{Binding StartStopButtonText}" Command="{Binding StartStopCommand}"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="Calibrate" Margin="2"
+                        DataContext="{Binding CalibrateControl}" 
+                        Command="{Binding CalibrateCommand}"
+                        IsEnabled="{Binding DataContext.CalibrateControlEnabled, ElementName=LiveDataSourceUC}"/>
             </Grid>
+
+            <!-- Pid Control -->
+            <views:PidControlView Grid.Row="3" 
+                                  DataContext="{Binding PidControl}" 
+                                  IsEnabled="{Binding DataContext.PidControlEnabled, ElementName=LiveDataSourceUC}"/>
+            
+            <!-- Test Session -->
+            <views:TestSessionView Grid.Row="4" 
+                                   DataContext="{Binding TestSession}" 
+                                    IsEnabled="{Binding DataContext.TestSessionEnabled, ElementName=LiveDataSourceUC}"/>
         </Grid>
 
         <!-- Makes the areas resizeable -->

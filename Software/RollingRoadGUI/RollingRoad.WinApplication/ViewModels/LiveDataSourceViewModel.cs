@@ -41,12 +41,55 @@ namespace RollingRoad.WinApplication.ViewModels
             Filter = "CSV Files (*.csv)|*.csv"
         };
 
+        public TestSessionViewModel TestSession
+        {
+            get { return _testSession; }
+            private set
+            {
+                _testSession = value;
+                OnPropertyChanged(nameof(TestSession));
+                OnPropertyChanged(nameof(TestSessionEnabled));
+            }
+        }
+        public PidControlViewModel PidControl
+        {
+            get { return _pidControl; }
+            private set
+            {
+                _pidControl = value;
+                OnPropertyChanged(nameof(PidControl));
+                OnPropertyChanged(nameof(PidControlEnabled));
+            }
+        }
+        public CalibrateControlViewModel CalibrateControl
+        {
+            get { return _calibrateControl; }
+            private set
+            {
+                _calibrateControl = value;
+                OnPropertyChanged(nameof(CalibrateControl));
+                OnPropertyChanged(nameof(CalibrateControlEnabled));
+            }
+        }
+        public TorqueControlViewModel TorqueControl
+        {
+            get { return _torqueControl; }
+            private set
+            {
+                _torqueControl = value;
+                OnPropertyChanged(nameof(TorqueControl));
+                OnPropertyChanged(nameof(TorqueControlEnabled));
+            }
+        }
+
+        public bool TestSessionEnabled => TestSession != null;
+        public bool PidControlEnabled => PidControl != null;
+        public bool CalibrateControlEnabled => CalibrateControl != null;
+        public bool TorqueControlEnabled => TorqueControl != null;
+
 
         private ILiveDataSource _source;
         private ILogger _logger;
-
-
-        public ObservableCollection<object> LiveControlCollection { get; } = new ObservableCollection<object>(); 
 
         public string StartStopButtonText => IsStarted ? "Stop" : "Start";
 
@@ -55,6 +98,11 @@ namespace RollingRoad.WinApplication.ViewModels
         public bool HasBeenSaved { get; private set; } = true;
         
         private bool _isStarted;
+        private TestSessionViewModel _testSession;
+        private PidControlViewModel _pidControl;
+        private CalibrateControlViewModel _calibrateControl;
+        private TorqueControlViewModel _torqueControl;
+
         public bool IsStarted
         {
             get { return _isStarted; }
@@ -73,6 +121,7 @@ namespace RollingRoad.WinApplication.ViewModels
             SelectSourceCommand     = new DelegateCommand(SelectSource);
 
             Dispatcher = new SystemDispatcher(System.Windows.Threading.Dispatcher.CurrentDispatcher);
+            Source = null;
         }
 
         public LiveDataSourceViewModel(ILiveDataSource initialSource) : this()
@@ -93,22 +142,23 @@ namespace RollingRoad.WinApplication.ViewModels
 
                 _source = value;
 
-                LiveControlCollection.Clear();
-
                 ICalibrateControl cctrl = _source as ICalibrateControl;
-                if(cctrl != null)
-                    LiveControlCollection.Add(new CalibrateControlViewModel(cctrl));
+                CalibrateControl = cctrl != null ? new CalibrateControlViewModel(cctrl) : null;
 
                 ITorqueControl tctrl = _source as ITorqueControl;
                 if (tctrl != null)
                 {
-                    LiveControlCollection.Add(new TorqueControlViewModel(tctrl));
-                    LiveControlCollection.Add(new TestSessionViewModel(tctrl));
+                    TestSession = new TestSessionViewModel(tctrl);
+                    TorqueControl = new TorqueControlViewModel(tctrl);
+                }
+                else
+                {
+                    TestSession = null;
+                    TorqueControl = null;
                 }
 
                 IPidControl pctrl = _source as IPidControl;
-                if (pctrl != null)
-                    LiveControlCollection.Add(new PidControlViewModel(pctrl));
+                PidControl = pctrl != null ? new PidControlViewModel(pctrl) : null;
 
                 if (_source != null)
                 {
@@ -119,7 +169,6 @@ namespace RollingRoad.WinApplication.ViewModels
                 Start();
                 StartStopCommand.RaiseCanExecuteChanged();
                 OnPropertyChanged(nameof(SelectedSourceText));
-                OnPropertyChanged(nameof(LiveControlCollection));
             }
         }
 
