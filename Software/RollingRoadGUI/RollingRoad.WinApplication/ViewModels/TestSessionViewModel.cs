@@ -5,9 +5,8 @@ using System.IO;
 using System.Linq;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
-using RollingRoad.Control;
 using RollingRoad.Data;
-using RollingRoad.Protocols;
+using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
@@ -21,39 +20,62 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public DelegateCommand StartStopCommand { get; }
         public ICollection<string> TestSessionList { get; }
-        public TestSessionStatus Status { get; }
-        public double CurrentTorque { get; private set; }
 
-        public bool IsEnabled { get; }
+        public TestSessionStatus Status
+        {
+            get { return _status; }
+            private set
+            {
+                _status = value;
+                OnPropertyChanged(nameof(Status));
+            }
+        }
 
-        public ITorqueControl Control
+        public ILogger Logger { get; set; }
+        public TorqueControlViewModel Control
         {
             get { return _control; }
             set { _control = value; }
         }
 
-        public int SelectedTestSession { get; set; }
-        private Dataset TorqueDataset { get; set; }
+        public double CurrentTorque
+        {
+            get { return _currentTorque; }
+            private set
+            {
+                if (Math.Abs(value - _currentTorque) < double.Epsilon)
+                    return;
 
+                _currentTorque = value;
+                _control.Torque = value;
+                OnPropertyChanged(nameof(CurrentTorque));
+            }
+        }
+
+
+        public int SelectedTestSession { get; set; }
+        public double DistanceOffset { get; set; }
         public double LastestDistance
         {
             set
             {
-                if (!_started)
+                if (Status != TestSessionStatus.Running)
                     return;
 
                 DataList distanceDataList = TorqueDataset.First(x => x.Type.Name == "Distance");
 
-                int index = distanceDataList.IndexOf(distanceDataList.Min(x => Math.Abs(x - value)));
-
-                _control.SetTorque(TorqueDataset.First(x => x.Type.Name == "Torque").ElementAt(index));
+                double closest = distanceDataList.OrderBy(x => Math.Abs(x - value + DistanceOffset)).First();
+                int index = distanceDataList.IndexOf(closest);
+                CurrentTorque = TorqueDataset.First(x => x.Type.Name == "Torque").ElementAt(index);
             }
         }
+        
+        private TorqueControlViewModel _control;
+        private double _currentTorque;
+        private TestSessionStatus _status;
+        private Dataset TorqueDataset { get; set; }
 
-        private bool _started;
-        private ITorqueControl _control;
-
-        public TestSessionViewModel(ITorqueControl control = null)
+        public TestSessionViewModel(TorqueControlViewModel control = null)
         {
             string folder = "TestSessions";
 
@@ -61,15 +83,17 @@ namespace RollingRoad.WinApplication.ViewModels
                 Directory.CreateDirectory(folder);
 
             TestSessionList = Directory.GetFiles(folder).Select(x => x.Substring(folder.Length + 1)).ToList();
+            SelectedTestSession = 0;
+
             StartStopCommand = new DelegateCommand(StartStop);
             Control = control;
         }
 
         public void StartStop()
         {
-            if (_started)
+            if (Status == TestSessionStatus.Running)
             {
-                _started = false;
+                Status = TestSessionStatus.Stopped;
             }
             else
             {
@@ -81,10 +105,12 @@ namespace RollingRoad.WinApplication.ViewModels
                 if (TorqueDataset.FirstOrDefault(x => x.Type.Name == "Torque") == null ||
                     TorqueDataset.FirstOrDefault(x => x.Type.Name == "Distance") == null)
                 {
+                    Logger?.WriteLine("Torque track does not contain torque and distance");
                     return;
                 }
 
-                _started = true;
+                Status = TestSessionStatus.Running;
+                LastestDistance = DistanceOffset;
             }
         }
     }

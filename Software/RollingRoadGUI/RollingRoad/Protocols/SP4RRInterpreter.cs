@@ -155,7 +155,13 @@ namespace RollingRoad.Protocols
 
                         for (int i = 0; i < valuesToRead; i++)
                         {
-                            double value = double.Parse(values[i + 1], CultureInfo);
+                            string inputStr = values[i + 1];
+                            double value;
+
+                            if(!double.TryParse(inputStr, NumberStyles.Any, CultureInfo, out value))
+                            {
+                                value = 0;
+                            }
 
                             if (!_typeDictionary.ContainsKey(i))
                             {

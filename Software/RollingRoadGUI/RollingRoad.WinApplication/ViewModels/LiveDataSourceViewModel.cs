@@ -85,22 +85,17 @@ namespace RollingRoad.WinApplication.ViewModels
         public bool PidControlEnabled => PidControl != null;
         public bool CalibrateControlEnabled => CalibrateControl != null;
         public bool TorqueControlEnabled => TorqueControl != null;
-
-
-        private ILiveDataSource _source;
-        private ILogger _logger;
-
-        public string StartStopButtonText => IsStarted ? "Stop" : "Start";
-
-        public string SelectedSourceText => "Source: " + Source;
-
         public bool HasBeenSaved { get; private set; } = true;
+        public string StartStopButtonText => IsStarted ? "Stop" : "Start";
+        public string SelectedSourceText => "Source: " + Source;
         
         private bool _isStarted;
         private TestSessionViewModel _testSession;
         private PidControlViewModel _pidControl;
         private CalibrateControlViewModel _calibrateControl;
         private TorqueControlViewModel _torqueControl;
+        private ILiveDataSource _source;
+        private ILogger _logger;
 
         public bool IsStarted
         {
@@ -147,8 +142,8 @@ namespace RollingRoad.WinApplication.ViewModels
                 ITorqueControl tctrl = _source as ITorqueControl;
                 if (tctrl != null)
                 {
-                    TestSession = new TestSessionViewModel(tctrl);
                     TorqueControl = new TorqueControlViewModel(tctrl);
+                    TestSession = new TestSessionViewModel(TorqueControl);
                 }
                 else
                 {
@@ -226,6 +221,11 @@ namespace RollingRoad.WinApplication.ViewModels
                 }
                 double value = datapoint.Value;
 
+                if (list.Type.Name == "Distance" && TestSession != null)
+                {
+                    TestSession.LastestDistance = value;
+                }
+
                 list.Add(value);
             }
         }
@@ -294,6 +294,17 @@ namespace RollingRoad.WinApplication.ViewModels
                 {
                     Description = DateTime.Now.ToLongDateString()
                 };
+
+                //Offset time to start from 0
+                DataList list = source.FirstOrDefault(x => x.Type.Name == "Time");
+
+                if (list != null)
+                {
+                    double offset = list.First();
+                    
+                    list.ForEach(x => x = x - offset);
+                }
+
 
                 //Save file
                 CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");

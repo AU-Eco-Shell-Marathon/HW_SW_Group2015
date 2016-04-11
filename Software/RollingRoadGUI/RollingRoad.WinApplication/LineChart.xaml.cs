@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -22,7 +21,7 @@ namespace RollingRoad.WinApplication
     /// </summary>
     public partial class LineChart : UserControl, INotifyPropertyChanged
     {
-        public string XAxis { get; } = "Time";
+        public string XAxisName { get; } = "Time";
 
         public ICollection<DataListViewModel> ItemsSource
         {
@@ -159,19 +158,25 @@ namespace RollingRoad.WinApplication
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
             
-            DataListViewModel xAxis = ItemsSource.FirstOrDefault(x => x.Type.Name == XAxis);
-
-            if (xAxis == null)
-                return;
-
-            EnumerableDataSource<double> xData = new EnumerableDataSource<double>(xAxis.Data);
-            HorizontalAxisTitle.Content = xAxis.Type.ToString();
-
-            xData.SetXMapping(x => x);
+            DataListViewModel xAxis = null;
+            EnumerableDataSource<double> xData = null;
+            
 
             foreach (DataListViewModel dataList in ItemsSource)
             {
-                if (dataList.Type.Name == XAxis || !dataList.Selected)
+                if (dataList.Type.Name == XAxisName)
+                {
+                    xAxis = dataList;
+                    xData = new EnumerableDataSource<double>(xAxis.Data);
+                    xData.SetXMapping(x => x);
+                    HorizontalAxisTitle.Content = xAxis.Type.ToString();
+                    continue;
+                }
+
+                if (xAxis == null)
+                    continue;
+
+                if(!dataList.Selected)
                     continue;
 
                 EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList.Data);
@@ -210,11 +215,11 @@ namespace RollingRoad.WinApplication
             return color;
         }
 
+        private Random _rand = new Random();
         private Color GenerateRandom()
         {
-            Random rnd = new Random();
             byte[] b = new byte[3];
-            rnd.NextBytes(b);
+            _rand.NextBytes(b);
             return Color.FromRgb(b[0], b[1], b[2]);
         }
 

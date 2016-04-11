@@ -24,12 +24,12 @@
         <Label Grid.Row="1" Grid.Column="0" Content="Track: "/>
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding TestSessionList}" Margin="2"/>
 
-        <Label Grid.Row="2" Grid.Column="0" Content="Torque Target: "/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Force Target: "/>
         <Label Grid.Row="2" Grid.Column="1" Content="{Binding CurrentTorque}"/>
 
         <Label Grid.Row="3" Grid.Column="0" Content="Status: "/>
         <Label Grid.Row="3" Grid.Column="1" Content="{Binding Status}"/>
 
-        <Button Grid.Row="4" Grid.Column="1" Command="{Binding StartStopCommand}" Content="Start" Margin="2"/>
+        <Button Grid.Row="4" Grid.Column="1" Command="{Binding StartStopCommand}" Content="{Binding Status}" Margin="2"/>
     </Grid>
 </UserControl>

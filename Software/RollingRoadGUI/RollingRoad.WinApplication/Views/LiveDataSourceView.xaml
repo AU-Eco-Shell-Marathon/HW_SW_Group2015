@@ -69,7 +69,7 @@
                 
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Text="Control"/>
 
-                <Label Grid.Row="1" Grid.Column="0" Content="Torque" IsEnabled="{Binding TorqueControlEnabled}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Force" IsEnabled="{Binding TorqueControlEnabled}"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="2"
                          DataContext="{Binding TorqueControl}" 
                          Text="{Binding Torque}"
