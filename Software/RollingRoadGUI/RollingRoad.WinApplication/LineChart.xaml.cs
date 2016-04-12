@@ -62,7 +62,7 @@ namespace RollingRoad.WinApplication
                         _timer.Start();
                 }
                 _selectedRefreshRate = value;
-                _app.Settings.SetIntStat("SelectedRefreshRate", value);
+                _settings.SetIntStat("SelectedRefreshRate", value);
                 OnPropertyChanged();
 
             }
@@ -81,7 +81,7 @@ namespace RollingRoad.WinApplication
                 BufferSizeEnabled = bufferType == "Circular";
 
                 _selectedBufferType = value;
-                _app.Settings.SetIntStat("SelectedBufferType", value);
+                _settings.SetIntStat("SelectedBufferType", value);
                 OnPropertyChanged();
             }
         }
@@ -95,7 +95,7 @@ namespace RollingRoad.WinApplication
                     return;
 
                 _selectedBufferSize = value;
-                _app.Settings.SetIntStat("SelectedBufferSize", value);
+                _settings.SetIntStat("SelectedBufferSize", value);
                 OnPropertyChanged();
             }
         }
@@ -118,7 +118,7 @@ namespace RollingRoad.WinApplication
         }
 
         private readonly Dictionary<string, Color> _colorDictionary = new Dictionary<string, Color>();
-        private App _app;
+        private ISettingsProvider _settings => Settings.DefaultSettings;
 
         public LineChart()
         {
@@ -126,12 +126,9 @@ namespace RollingRoad.WinApplication
             _timer = new DispatcherTimer();
             _timer.Tick += (sender, e) => Refresh();
 
-
-            _app = (App)Application.Current;
-
-            SelectedRefreshRate = _app.Settings.GetIntStat("SelectedRefreshRate");
-            SelectedBufferType = _app.Settings.GetIntStat("SelectedBufferType");
-            SelectedBufferSize = _app.Settings.GetIntStat("SelectedBufferSize");
+            _settings.GetIntStat("SelectedRefreshRate");
+            _settings.GetIntStat("SelectedBufferType");
+            _settings.GetIntStat("SelectedBufferSize");
 
             Chart.LegendVisible = false;
         }
@@ -141,7 +138,6 @@ namespace RollingRoad.WinApplication
         private int _selectedBufferType;
         private int _selectedBufferSize;
         private bool _bufferSizeEnabled;
-        private ICollection<DataListViewModel> _dataLists;
 
         private bool ShouldUpdate()
         {
@@ -196,12 +192,12 @@ namespace RollingRoad.WinApplication
 
             if (!_colorDictionary.TryGetValue(key, out color))
             {
-                string colorStr = _app.Settings.GetStat(key);
+                string colorStr = _settings.GetStat(key);
 
                 if (string.IsNullOrEmpty(colorStr))
                 {
                     color = GenerateRandom();
-                    _app.Settings.SetStat(key, $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}");
+                    _settings.SetStat(key, $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}");
                     _colorDictionary.Add(key, color);
                 }
                 else

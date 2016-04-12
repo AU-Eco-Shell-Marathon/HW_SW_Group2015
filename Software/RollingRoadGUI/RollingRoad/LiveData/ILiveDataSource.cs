@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using RollingRoad.Data;
 using RollingRoad.Loggers;
 
@@ -7,12 +8,21 @@ namespace RollingRoad.LiveData
 
     public delegate void ReadOnlyDataEntryList(IReadOnlyList<Datapoint> values);
 
+    public delegate void OnStatusUpdate(object sender, LiveDataSourceStatus status);
+
+    public enum LiveDataSourceStatus
+    {
+        Stopped,
+        Running,
+        Disconnected
+    }
+
     public interface ILiveDataSource
     {
+
         /// <summary>
         /// Updated each time a fullset om data has been recived.
         /// </summary>
-
         event ReadOnlyDataEntryList OnNextReadValue;
 
         /// <summary>
@@ -25,7 +35,9 @@ namespace RollingRoad.LiveData
         /// </summary>
         void Stop();
 
-        bool Started { get; }
+        LiveDataSourceStatus Status { get; }
+
+        event OnStatusUpdate OnStatusChange;
 
         /// <summary>
         /// Logger used

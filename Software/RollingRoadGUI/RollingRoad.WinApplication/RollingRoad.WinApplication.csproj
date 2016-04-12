@@ -115,6 +115,8 @@
     <Compile Include="Dialogs\OpenFileDialog.cs" />
     <Compile Include="Dialogs\SaveFileDialog.cs" />
     <Compile Include="Dialogs\SelectSourceDialog.cs" />
+    <Compile Include="ISettingsProvider.cs" />
+    <Compile Include="MathExtensions.cs" />
     <Compile Include="Views\PidControlView.xaml.cs">
       <DependentUpon>PidControlView.xaml</DependentUpon>
     </Compile>

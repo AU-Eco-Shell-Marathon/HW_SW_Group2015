@@ -6,10 +6,16 @@ using System.Linq;
 
 namespace RollingRoad.WinApplication
 {
+    public static class Settings
+    {
+        public static ISettingsProvider ColorSettings { get; } = new SettingsFile("GraphColors.Settings");
+        public static ISettingsProvider DefaultSettings { get; } = new SettingsFile("Settings.settings");
+    }
+
     /// <summary>
     /// Settings file originally used in the game "Norse"
     /// </summary>
-    public class SettingsFile
+    public class SettingsFile : ISettingsProvider
     {
         /// <summary>
         /// Structure used to store stats
@@ -113,11 +119,18 @@ namespace RollingRoad.WinApplication
         /// </summary>
         /// <param name="stat">The stat to retrieve</param>
         /// <returns>Value of the stat, if unable to load or parse 0 will be returned</returns>
-        public int GetIntStat(string stat)
+        public int GetIntStat(string stat, int defaultValue = 0)
         {
             int value;
 
-            return int.TryParse(GetStat(stat), out value) ? value : 0;
+            return int.TryParse(GetStat(stat), out value) ? value : defaultValue;
+        }
+
+        public double GetDoubleStat(string stat, double defaultValue = 0)
+        {
+            double value;
+
+            return double.TryParse(GetStat(stat), out value) ? value : defaultValue;
         }
 
         /// <summary>

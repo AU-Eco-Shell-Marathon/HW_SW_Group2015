@@ -14,8 +14,6 @@ namespace RollingRoad.LiveData
         private int _index;
         private double _lastMs;
 
-        public bool Started { get; private set; }
-
         /// <summary>
         /// Event when at new value is sent
         /// </summary>
@@ -26,6 +24,7 @@ namespace RollingRoad.LiveData
         public ILogger Logger { get; set; }
 
         private ITimer _timer;
+        private LiveDataSourceStatus _status;
 
         /// <summary>
         /// Timer used for timing when to send new values
@@ -65,17 +64,32 @@ namespace RollingRoad.LiveData
         //Stop the transmission of values
         public void Stop()
         {
-            Started = false;
+            Status = LiveDataSourceStatus.Stopped;
             Timer.Stop();
             Logger?.WriteLine("Emulator: stopping");
         }
+
+        public LiveDataSourceStatus Status
+        {
+            get { return _status; }
+            private set
+            {
+                _status = value;
+                OnStatusChange?.Invoke(this, value);
+            }
+        }
+
+        public event OnStatusUpdate OnStatusChange;
 
         /// <summary>
         /// Start the timer
         /// </summary>
         public void Start()
         {
-            Started = true;
+            if (Status == LiveDataSourceStatus.Disconnected)
+                return;
+
+            Status = LiveDataSourceStatus.Running;
             Logger?.WriteLine("Emulator: starting");
             SendNextValue();
         }
@@ -138,7 +152,7 @@ namespace RollingRoad.LiveData
             if (Math.Abs(delta) < double.Epsilon)
                 delta = 1;
 
-            if(Started)
+            if(Status == LiveDataSourceStatus.Running)
                 Timer.Start((int) delta);
         }
 

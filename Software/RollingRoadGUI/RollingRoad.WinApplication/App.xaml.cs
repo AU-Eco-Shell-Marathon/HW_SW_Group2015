@@ -13,7 +13,6 @@ namespace RollingRoad.WinApplication
     /// </summary>
     public partial class App : Application
     {
-        public SettingsFile Settings { get; } = new SettingsFile("Settings.settings");
         public ILogger Logger { get; }
 
         public App()

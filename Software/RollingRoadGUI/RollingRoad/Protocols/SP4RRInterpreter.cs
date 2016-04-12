@@ -25,8 +25,7 @@ namespace RollingRoad.Protocols
         private double _kp;
         private double _ki;
         private double _kd;
-
-        public bool Started { get; private set; }
+        private LiveDataSourceStatus _status;
 
         /// <summary>
         /// Logger used
@@ -92,7 +91,7 @@ namespace RollingRoad.Protocols
         /// </summary>
         private void ListenThread()
         {
-            while (Started)
+            while (Status == LiveDataSourceStatus.Running)
             {
                 Listen();
             }
@@ -115,7 +114,7 @@ namespace RollingRoad.Protocols
                 //Read packet id
                 PacketId packetId = (PacketId) int.Parse(values[0]);
 
-                if (!Started && packetId != PacketId.HandShake)
+                if (Status != LiveDataSourceStatus.Running && packetId != PacketId.HandShake)
                     return;
 
                 switch (packetId)
@@ -149,7 +148,7 @@ namespace RollingRoad.Protocols
                         break;
                     case PacketId.Information:
 
-                        //First value is command ID, and each value has an typeId and actual value
+                        //<PacketID> <ID 0 Value> <ID 1 Value> .. <ID X Value>
                         int valuesToRead = values.Length - 1;
                         List<Datapoint> dataRead = new List<Datapoint>();
 
@@ -202,7 +201,7 @@ namespace RollingRoad.Protocols
             }
             catch (Exception e)
             {
-                Started = false;
+                Status = LiveDataSourceStatus.Disconnected;
                 Logger?.WriteLine(e.Message);
             }
         }
@@ -236,8 +235,20 @@ namespace RollingRoad.Protocols
         public void Stop()
         {
             SendCommand(((int)PacketId.Stop).ToString());
-            Started = false;
+            Status = LiveDataSourceStatus.Stopped;
         }
+
+        public LiveDataSourceStatus Status
+        {
+            get { return _status; }
+            private set
+            {
+                _status = value; 
+                OnStatusChange?.Invoke(this, value);
+            }
+        }
+
+        public event OnStatusUpdate OnStatusChange;
 
         public void SendHandshake()
         {
@@ -251,9 +262,12 @@ namespace RollingRoad.Protocols
 
         public void Start(bool startThread)
         {
+            if (Status == LiveDataSourceStatus.Disconnected)
+                return;
+
             SendHandshake();
             
-            Started = true;
+            Status = LiveDataSourceStatus.Running;
             if (!startThread)
                 return;
 
