@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?validation-md5-digest 38a66deb6115337c8a4458ff24d47548?>
+<?validation-md5-digest e912acfb85209d205d759ade6982d3ee?>
 <worksheet version="3.0.3" xmlns="http://schemas.mathsoft.com/worksheet30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://schemas.mathsoft.com/worksheet30" xmlns:ml="http://schemas.mathsoft.com/math30" xmlns:u="http://schemas.mathsoft.com/units10" xmlns:p="http://schemas.mathsoft.com/provenance10">
 	<pointReleaseData/>
 	<metadata>
@@ -13,9 +13,9 @@
 			<revisedBy>komlir@hotmail.com</revisedBy>
 		</userData>
 		<identityInfo>
-			<revision>1</revision>
+			<revision>2</revision>
 			<documentID>9746C0B6-C35B-4271-93C6-F5E41333AF96</documentID>
-			<versionID>EFB69A90-30D0-4DDD-9C11-8890900C7C5E</versionID>
+			<versionID>8D1C07F3-579A-4E88-97F7-C369A6184CA7</versionID>
 			<parentVersionID>00000000-0000-0000-0000-000000000000</parentVersionID>
 			<branchID>00000000-0000-0000-0000-000000000000</branchID>
 		</identityInfo>
@@ -107,7 +107,7 @@
 		</editor>
 		<fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false" screen-dpi="96"/>
 		<miscellaneous>
-			<handbook handbook-region-tag-ub="7" can-delete-original-handbook-regions="true" can-delete-user-regions="true" can-print="true" can-copy="true" can-save="true" file-permission-mask="4294967295"/>
+			<handbook handbook-region-tag-ub="15" can-delete-original-handbook-regions="true" can-delete-user-regions="true" can-print="true" can-copy="true" can-save="true" file-permission-mask="4294967295"/>
 		</miscellaneous>
 	</settings>
 	<regions>
@@ -166,6 +166,127 @@
 			</math>
 			<rendering item-idref="1"/>
 		</region>
+		<region region-id="9" left="24" top="104.25" width="138" height="12" align-x="48.75" align-y="114" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<text use-page-width="false" push-down="false" lock-width="false">
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Udregninger til cut off frekvenser</p>
+			</text>
+		</region>
+		<region region-id="10" left="24" top="128.25" width="285.75" height="27.75" align-x="242.25" align-y="144" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<math optimize="false" disable-calc="false">
+				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
+					<ml:symEval style="default" hide-keywords="false" hide-lhs="false">
+						<ml:apply>
+							<ml:equal/>
+							<ml:apply>
+								<ml:mult style="auto-select"/>
+								<ml:real>500</ml:real>
+								<ml:id xml:space="preserve">Hz</ml:id>
+							</ml:apply>
+							<ml:apply>
+								<ml:div/>
+								<ml:real>1</ml:real>
+								<ml:apply>
+									<ml:mult/>
+									<ml:apply>
+										<ml:mult style="auto-select"/>
+										<ml:apply>
+											<ml:mult/>
+											<ml:apply>
+												<ml:mult/>
+												<ml:real>2</ml:real>
+												<ml:id xml:space="preserve">π</ml:id>
+											</ml:apply>
+											<ml:real>100</ml:real>
+										</ml:apply>
+										<ml:id xml:space="preserve">nF</ml:id>
+									</ml:apply>
+									<ml:id xml:space="preserve">R</ml:id>
+								</ml:apply>
+							</ml:apply>
+						</ml:apply>
+						<ml:command>
+							<ml:sequence>
+								<ml:id xml:space="preserve">solve</ml:id>
+								<ml:id xml:space="preserve">R</ml:id>
+							</ml:sequence>
+						</ml:command>
+						<ml:symResult>
+							<ml:apply>
+								<ml:div/>
+								<ml:real>1</ml:real>
+								<ml:apply>
+									<ml:mult/>
+									<ml:apply>
+										<ml:mult/>
+										<ml:apply>
+											<ml:mult/>
+											<ml:real>100000</ml:real>
+											<ml:id xml:space="preserve">π</ml:id>
+										</ml:apply>
+										<ml:id xml:space="preserve">Hz</ml:id>
+									</ml:apply>
+									<ml:id xml:space="preserve">nF</ml:id>
+								</ml:apply>
+							</ml:apply>
+						</ml:symResult>
+					</ml:symEval>
+					<result xmlns="http://schemas.mathsoft.com/math30">
+						<unitedValue>
+							<ml:real>3183.098861837907</ml:real>
+							<unitMonomial xmlns="http://schemas.mathsoft.com/units10">
+								<unitReference unit="ohm"/>
+							</unitMonomial>
+						</unitedValue>
+					</result>
+				</ml:eval>
+			</math>
+			<rendering item-idref="2"/>
+		</region>
+		<region region-id="14" left="30" top="164.25" width="270.75" height="12" align-x="44.25" align-y="174" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<text use-page-width="false" push-down="false" lock-width="false">
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Vælges til 3.3 kΩ, grundedt e24 række og derved fremkommer</p>
+			</text>
+		</region>
+		<region region-id="15" left="36" top="188.25" width="127.5" height="27.75" align-x="111.75" align-y="204" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<math optimize="false" disable-calc="false">
+				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
+					<ml:apply>
+						<ml:div/>
+						<ml:real>1</ml:real>
+						<ml:apply>
+							<ml:mult style="auto-select"/>
+							<ml:apply>
+								<ml:mult/>
+								<ml:apply>
+									<ml:mult style="auto-select"/>
+									<ml:apply>
+										<ml:mult/>
+										<ml:apply>
+											<ml:mult/>
+											<ml:real>2</ml:real>
+											<ml:id xml:space="preserve">π</ml:id>
+										</ml:apply>
+										<ml:real>100</ml:real>
+									</ml:apply>
+									<ml:id xml:space="preserve">nF</ml:id>
+								</ml:apply>
+								<ml:real>3.3</ml:real>
+							</ml:apply>
+							<ml:id xml:space="preserve">kΩ</ml:id>
+						</ml:apply>
+					</ml:apply>
+					<result xmlns="http://schemas.mathsoft.com/math30">
+						<unitedValue>
+							<ml:real>482.28770633907686</ml:real>
+							<unitMonomial xmlns="http://schemas.mathsoft.com/units10">
+								<unitReference unit="second" power-numerator="-1"/>
+							</unitMonomial>
+						</unitedValue>
+					</result>
+				</ml:eval>
+			</math>
+			<rendering item-idref="3"/>
+		</region>
 	</regions>
 	<binaryContent>
 		<item item-id="1">iVBORw0KGgoAAAANSUhEUgAAAKgAAAAtCAYAAAA6NiDfAAAAAXNSR0IArs4c6QAAAARnQU1B
@@ -194,5 +315,62 @@ jJi6wu+BKkHp+7ACzpXHQIOTjAQZsPDVLWkM7TDSo2+wy3/DrzyCakGxDFhQrjwFSSqQE5DG
 0AwT1/bzIDuFaDunVup4sqCAGzpf8fMDCVBfWECFV8v6lTpeMAc9J2jduWpJ/3CYPb8O8y+j
 TlArF1pBbw2XK6ecH+Ll56qn5q9DK88hLyhkqjDM4dax8zIoJ3OzXPkGkjNQEqw2hrtxmdid
 C8eIy82rYWdQZBxmUEV5NSqo0jUqqNI1KqjSMev6H5Tj4eFxZ29LAAAAAElFTkSuQmCC</item>
+		<item item-id="2">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
+/wEGcU1+Smx0IAAAAABJRU5ErkJggg==</item>
+		<item item-id="3">iVBORw0KGgoAAAANSUhEUgAAAKoAAAAlCAYAAADSkHKPAAAAAXNSR0IArs4c6QAAAARnQU1B
+AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPeSURBVHhe7ZlNsuIgEIBzrhyI8hAe
+wUUOMHv3Lth5B7evXHkDb5Ch+QkNdBPUzNTD9FeVeoa0EOFLA3nDLAgdIKIKXSCiCl0gogpd
+0L2o92mcB6X9mdAD74xZ16LaHzwMImpHvDtmklGF/87uMiogovaHiCp0gYgqdIGIKnSBiCp0
+wf5E1cq96pBXVP3w5ph1n1GFiFbDjMfeZi4vxTjdQ+k8jV6UYZyX4gQ+hq6TL98KEfVbuE/z
+aCSJoupZBcnsNff5PqlFPBB7GCejZQofQ9fJl2+HiPol6GmaJ5xRrTDKKAQgkTBJDAOO4eps
+aetDRNRvwKz7QNB06vfTt7tAT8cgGJFRE5IYrs6Gtj5ERP1V4LVhdkQDM8x3JnctX6OaEpPd
+Kt9tkaqI4epcaetDElHJDpLjnxyboc2U7z0qN1Ow1vTyF5nTiLWWTYkYrs56W3W3WpCM+qt4
+PaPazU4WazMgMWXjKrRaWZsaihiuzpW2tkBE/SKSjAryJBuceA1eJeE4RUz/ZAxXZ6WtrRBR
+v4hy6i/fbZYZGO/c3ffZGBsm71EFgUVEFbqAEBUv6Ld/cQvYaSJfxPipp2iTKyfhNyPcdBSn
+LL5+MiZZl5Vcr9f5fD7bv/iz8B6FqC3/YvuEZdATUWEB7iUoFuZUeR2470RM811qw4DLyYcH
+IGPchmFg7udyudjfmANlcE14nfrU/4Icr1BIoRU6R683uPIVClFbePXld6VvQMjj8ejPIlBG
+CSyssy4qk1Gfz6ftdO54PB4+siQXNT8PonHlThLItCGzmYOKsyfxhTiPeQj8f3d4shgkqr1P
+uAffV/D5dDrZMAyUwbU9s/QV6q8W6r1WyTLQ6bfbzQobBqV1EChRcTtY1LL8T5QzZDTIvGj9
+CHFLZ+B1JUmUnfutZAzOqNnDcDgcbGwOlMG1/QL9GGehu9ZbiGoqxcbbgYlTb8iYICsravad
+wGeimvMlo/oL2fkSZ0+QRMz9APaemKk8kMT4NkfYvGUVQt9wotZmmj0Qkgge1xZYUVv+xQbA
+5gCL+vPzYz/XyEU1jaHzhjXqK6I2kz7tNCjGt6mU+S3ZFBZmGbzLDzt/uCaEGarNMYAUFUSK
+fjA7Zg/IGXayMK21TG2FqPbGvWggwDLwTHkmZn7+lqjJQ8GAY2ybrqPz9kJ/4B0+VbY/tFnn
+x37S5iFvHaZC1JCa41GvDGLCdAbZFM6r2PWkrxuLYQeeaK8od5nV1QGioPNRmeVKuGaOFfHc
+VE7E+jahiI5BbULZ8pucuEu8OQJU2f4ImdQfK+OD2XOvCR0hogpdIKIKXSCiCh0wz38BoSmK
+CY/uszQAAAAASUVORK5CYII=</item>
 	</binaryContent>
 </worksheet>
