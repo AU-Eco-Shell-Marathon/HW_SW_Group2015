@@ -295,11 +295,15 @@ char getData(struct data * Data)
     calcSamples(A_motor, n, &Data->A_motor, 1000000);
     calcSamples(Moment, n, &Data->Moment, 1000000);
     calcSamples(RPM, n, &Data->RPM, 1000);
-    
+    /*
     calcSamples(P_motor, n, &Data->P_motor, 1000000);
     calcSamples(P_mekanisk, n, &Data->P_mekanisk, 1000000);
     
     calcSamples(efficiency, n, &Data->efficiency, 10); // udprinter i procent.
+    */
+    Data->P_motor.avg = Data->V_motor.avg*Data->A_motor.avg;
+    Data->P_mekanisk.avg = Data->Moment.avg*Data->RPM.avg*0.10472f;
+    Data->efficiency.avg = (Data->P_mekanisk.avg*100)/Data->P_motor.avg;
     
     Data->distance = (uint32)((2.0f*PI*RR_radius*(float)Counter_1_ReadCounter())/360.0f);
     Data->time_ms = Counter_2_ReadCounter();

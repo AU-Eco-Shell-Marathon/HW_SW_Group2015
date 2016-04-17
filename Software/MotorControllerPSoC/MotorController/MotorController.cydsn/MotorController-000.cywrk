@@ -8,6 +8,7 @@
 <files />
 <projects>
 <v>.\MotorController.cyprj</v>
+<v>.\CAN_Full_Example01.cydsn\CAN_Full_Example01.cyprj</v>
 </projects>
 <workspace_id v="1e96967b-c87d-4aef-b914-3d3a08917e9f" />
 <WriteAppVersionLastSavedWith v="3.3.0.7343" />

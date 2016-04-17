@@ -11,16 +11,16 @@
 */
 #include "Pedal.h"
 
-uint16 set_ = 0;
+uint8 set_ = 0;
 
-const uint16 *Pedal_init()
+const uint8 *Pedal_init()
 {
     return &set_;
 }
 
 void Pedal_update()
 {
-    set_ = 15u * Status_Reg_1_Read()&0b1;
+    set_ = 275u * Status_Reg_1_Read()&0b1;
 }
 
 /* [] END OF FILE */

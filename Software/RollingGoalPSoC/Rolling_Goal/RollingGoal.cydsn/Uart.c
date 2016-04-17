@@ -65,13 +65,13 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 3 Ampere A\n");
                 CyDelay(1);
-                SendUART("1 4 Effect(Mek) W\n");
+                SendUART("1 4 Effect(EL) W\n");
                 CyDelay(1);
                 SendUART("1 5 Distance m\n");
                 CyDelay(1);
                 SendUART("1 6 Speed m/s\n");
                 CyDelay(1);
-                SendUART("1 7 Effect(EL) W\n");
+                SendUART("1 7 Effect(Mek) W\n");
                 CyDelay(1);
                 SendUART("1 8 efficiency procent\n");
                 CyDelay(1);
@@ -194,7 +194,7 @@ void SendData (struct data* Data,  float setForce, float PIDinput, float PIDsens
         return;
 
     
-    char buf[100];
+    char buf[500];
        
     sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d %f %f %f %f %f %f\n\r", 
         Data->time_ms, 
@@ -204,7 +204,7 @@ void SendData (struct data* Data,  float setForce, float PIDinput, float PIDsens
         Data->P_motor.avg,
         Data->distance, 
         RPMToSpeed(Data->RPM.avg), 
-        Data->P_motor.avg, 
+        Data->P_mekanisk.avg, 
         Data->efficiency.avg,
         Data->stop,
         setForce,

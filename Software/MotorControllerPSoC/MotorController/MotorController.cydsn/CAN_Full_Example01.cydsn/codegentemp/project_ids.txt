@@ -1,0 +1,6 @@
+C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj|6dc17b1b-79b7-4f3a-9028-5c670301a333
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|6f096ca4-d6b4-4a9d-bb7a-6c9d69294397
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|54654deb-0f68-4faa-9f07-e1cbc4b6400a
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f1b2da36-2a98-48e8-93a3-3e151b4fa1f5
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|05f5eff5-e799-4a80-a4f2-5652ac853500
+C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.cyprj|98f40dcd-c334-4e6d-8f4b-baba08a498bd
