@@ -27,7 +27,7 @@ Overview of packets:
 		4  & Torque control 	& <double>    			& PC $\rightarrow$ PSoC & 4 2.5  				\\
 		5  & PID control        & <double(P)> <double(I)> <double(D)> & PC $\leftrightarrow$ PSoC & 5 2.3 3.4 4.5 \\
 	\end{tabular}
-	\caption{Overview for commands sent between PSoC og PC}
+	\caption{Overview for commands sent between PSoC and PC}
 \end{table}
 
 The table \ref{Protocol:overviewRR} will give an overview regardring the protocol that will be used between PC and PSoC. The chosen protocol will always start by sending an integer that corresponds with the given number from the above table.  The next thing that will be send is the column "Commando" that corresponds with the given number. The direction column shows the direction of the signals, where from and where to the signal will flow.
@@ -76,13 +76,13 @@ The torque control command  can change the input to the regulator. This is to ch
 PID control is used to control the P, I and D parameters of the regulator. These parameters can then be adjusted during runtime. Furthermore the latest regulator parameters will be saved on an EEPROM on the PSoC, which will be send to the PC on startup. This is done to ensure the PC have updated numbers to start with.
           
 
-In figure \ref{fig:TimingDiagram}, the flow of communication can be seen.
+In figure \ref{fig:SeqDiagram}, the flow of communication can be seen.
 Starting with the handshake initiated by the PC, replying with unit descriptions for this transfer. When the connection is established after the handshake, the PSoC will send the information with a frequency of 10 Hz. On the GUI, the user can choose to regulate the torque, which then will be send and understood on the PSoC. Furthermore, the user have the ability to stop the data transfer, by pressing the stop button or by closing the program. When the command Stop is send, the PSoC will cease the data transfer.
 
 \begin{figure}
-\centering
-\includegraphics[width=0.65\linewidth]{Protocol/TimingDiagram}
-\caption{Figure shows the timing diagram of the protocol}
-\label{fig:TimingDiagram}
+	\centering
+	\includegraphics[width=0.65\linewidth]{Protocol/SD_Protocol}
+	\caption{Figure shows the timing diagram of the protocol}
+	\label{fig:SeqDiagram}
 \end{figure}
 
