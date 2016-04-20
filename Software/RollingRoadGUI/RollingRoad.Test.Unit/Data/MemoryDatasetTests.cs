@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
 
 namespace RollingRoad.Test.Unit.Data
@@ -11,7 +12,7 @@ namespace RollingRoad.Test.Unit.Data
         [TestCase(null)]
         public void Name_SetAndGet_CorrectName(string name)
         {
-            Dataset source = new Dataset {Name = name};
+            DataSet source = new DataSet { Name = name};
             
             Assert.That(source.Name, Is.EqualTo(name));
         }

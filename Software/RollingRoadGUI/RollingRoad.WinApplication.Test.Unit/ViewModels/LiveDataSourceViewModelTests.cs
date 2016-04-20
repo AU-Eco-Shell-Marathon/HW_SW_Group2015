@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using NSubstitute;
 using NUnit.Framework;
-using RollingRoad.Data;
-using RollingRoad.LiveData;
+using RollingRoad.Core.ApplicationServices;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication.Test.Unit.ViewModels
@@ -73,12 +73,11 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
         {
             Assert.That(_vm.DataSet.Collection, Is.Empty);
         }
-
-        [Test]
+        
         public void Collection_SourceSend1Datapoint_NewListAdded()
         {
             _source.OnNextReadValue +=
-                Raise.Event<ReadOnlyDataEntryList>(new List<Datapoint>(){new Datapoint(new DataType("TestName", "TestUnit"), 0)});
+                Raise.Event<ReadOnlyDataEntryList>(new List<DataPoint>(){new DataPoint(0)});
 
             Assert.That(_vm.DataSet.Count, Is.EqualTo(1));
         }

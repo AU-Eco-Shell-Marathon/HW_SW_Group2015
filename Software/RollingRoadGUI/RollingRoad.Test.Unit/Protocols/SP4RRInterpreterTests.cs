@@ -1,7 +1,10 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using RollingRoad.Core.ApplicationServices;
+using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Protocols;
 
 namespace RollingRoad.Test.Unit.Protocols
@@ -124,56 +127,6 @@ namespace RollingRoad.Test.Unit.Protocols
 
             Assert.That(Encoding.UTF8.GetString(_ms.ToArray()), Is.EqualTo("5 0 0 " + value.ToString(_cultureTarget) + "\n"));
         }
-
-        [Test]
-        public void OnNextReadValueEvent_OneUnitAndOneDataPoint_EventCalledWithCorrectTypename()
-        {
-            StreamWriter writer = new StreamWriter(_ms);
-            string nameRead = "";
-
-            _interpreter.OnNextReadValue += data => nameRead = data[0].Type.Name;
-            
-            _interpreter.Start(false);
-
-            WriteToMemoryStream(writer, "0 RollingRoad\n");
-            _interpreter.Listen();
-
-            WriteToMemoryStream(writer, "1 0 Time Seconds\n");
-            _interpreter.Listen();
-            
-            WriteToMemoryStream(writer, "3 2.3\n");
-            _interpreter.Listen();
-
-            Assert.That(nameRead, Is.EqualTo("Time"));
-        }
-
-        [Test]
-        public void OnNextReadValueEvent_TwoUnitsAndOneDataPoint_EventCalledWithCorrectTypenames()
-        {
-            StreamWriter writer = new StreamWriter(_ms);
-            string nameRead1 = "", nameRead2 = "";
-
-            _interpreter.OnNextReadValue += data =>
-            {
-                nameRead1 = data[0].Type.Name;
-                nameRead2 = data[1].Type.Name;
-            };
-
-            _interpreter.Start(false);
-            
-            WriteToMemoryStream(writer, "1 0 Time Seconds\n");
-            _interpreter.Listen();
-
-            WriteToMemoryStream(writer, "1 1 Torque Nm\n");
-            _interpreter.Listen();
-
-            WriteToMemoryStream(writer, "3 2.3 5\n");
-            _interpreter.Listen();
-
-            Assert.That(nameRead1, Is.EqualTo("Time"));
-            Assert.That(nameRead2, Is.EqualTo("Torque"));
-        }
-
 
         [TestCase(5.0)]
         [TestCase(-5.0)]

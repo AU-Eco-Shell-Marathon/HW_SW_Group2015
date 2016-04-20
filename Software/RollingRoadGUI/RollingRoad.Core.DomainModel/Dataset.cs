@@ -3,7 +3,7 @@ using RollingRoad.Data;
 
 namespace RollingRoad.Core.DomainModel
 {
-    public class Dataset
+    public class DataSet : IEntity
     {
         /// <summary>
         /// Name of the file
@@ -13,11 +13,13 @@ namespace RollingRoad.Core.DomainModel
         /// Description written in the file
         /// </summary>
         public string Description { get; set; }
-        public virtual ICollection<DataList> DataLists { get; set; } 
+        public virtual ICollection<DataList> DataLists { get; set; } = new List<DataList>();
 
         public override string ToString()
         {
             return Name;
         }
+
+        public int Id { get; set; }
     }
 }

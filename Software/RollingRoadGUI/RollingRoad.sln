@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad", "RollingRoad\RollingRoad.csproj", "{74AE667F-F08A-473B-9C9A-9B08ED534554}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.Test.Unit", "RollingRoad.Test.Unit\RollingRoad.Test.Unit.csproj", "{A473F1D8-551C-4A2E-88FF-85A39A240B40}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollingRoad.WinApplication", "RollingRoad.WinApplication\RollingRoad.WinApplication.csproj", "{3D13FD8D-C5C1-4057-8E76-6AFA5E81FBD5}"
@@ -27,14 +25,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Debug|x64.ActiveCfg = Debug|x64
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Debug|x64.Build.0 = Debug|x64
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Release|x64.ActiveCfg = Release|x64
-		{74AE667F-F08A-473B-9C9A-9B08ED534554}.Release|x64.Build.0 = Release|x64
 		{A473F1D8-551C-4A2E-88FF-85A39A240B40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A473F1D8-551C-4A2E-88FF-85A39A240B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A473F1D8-551C-4A2E-88FF-85A39A240B40}.Debug|x64.ActiveCfg = Debug|x64

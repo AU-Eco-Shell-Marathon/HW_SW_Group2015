@@ -6,8 +6,9 @@ using System.Windows.Threading;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Control;
+using RollingRoad.Core.ApplicationServices;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
-using RollingRoad.LiveData;
 using RollingRoad.Loggers;
 using RollingRoad.WinApplication.Dialogs;
 using MessageBox = System.Windows.MessageBox;
@@ -21,7 +22,7 @@ namespace RollingRoad.WinApplication.ViewModels
         public DelegateCommand SelectSourceCommand { get; }
         public DelegateCommand SaveCommand { get; }
 
-        public DataSetViewModel DataSet { get; } = new DataSetViewModel(new Dataset());
+        public DataSetViewModel DataSet { get; } = new DataSetViewModel(new DataSet());
         public ICollection<DataListViewModel> DataLists => DataSet.Collection; 
         public IDispatcher Dispatcher { get; set; }
         public ILogger Logger
@@ -205,11 +206,12 @@ namespace RollingRoad.WinApplication.ViewModels
             return Source != null;
         }
 
-        private void IncommingData(IReadOnlyList<Datapoint> datapoints)
+        private void IncommingData(IReadOnlyList<DataPoint> datapoints)
         {
             HasBeenSaved = false;
-            foreach (Datapoint datapoint in datapoints)
+            foreach (DataPoint datapoint in datapoints)
             {
+                /*
                 DataListViewModel list = DataSet.Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
@@ -226,16 +228,16 @@ namespace RollingRoad.WinApplication.ViewModels
                     TestSession.LastestDistance = value;
                 }
 
-                list.Add(value);
+                list.Add(value);*/
             }
         }
 
 
-        private void ThreadMover(IReadOnlyList<Datapoint> entries)
+        private void ThreadMover(IReadOnlyList<DataPoint> values)
         {
             try
             {
-                Dispatcher?.BeginInvoke(DispatcherPriority.Input, new Action(() => IncommingData(entries)));
+                Dispatcher?.BeginInvoke(DispatcherPriority.Input, new Action(() => IncommingData(values)));
             }
             catch (Exception)
             {
@@ -290,24 +292,29 @@ namespace RollingRoad.WinApplication.ViewModels
 
             try
             {
-                Dataset source = new Dataset(new List<DataList>(DataSet.Collection.Select(x => x.List)))
+                DataSet source = new DataSet()
                 {
-                    Description = DateTime.Now.ToLongDateString()
+                    Description = DateTime.Now.ToLongDateString(),
+                    DataLists = new List<DataList>(DataSet.Collection.Select(x => x.List))
                 };
 
                 //Offset time to start from 0
-                DataList list = source.FirstOrDefault(x => x.Type.Name == "Time");
+                DataList list = source.DataLists.FirstOrDefault(x => x.Type.Name == "Time");
 
                 if (list != null)
                 {
-                    double offset = list.First();
-                    
-                    list.ForEach(x => x = x - offset);
+                    double offset = list.Data.First().Value;
+
+                    foreach (DataPoint dataPoint in list.Data)
+                    {
+                        dataPoint.Value -= offset;
+                    }
                 }
 
 
+                //TODO
                 //Save file
-                CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
+                //CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)

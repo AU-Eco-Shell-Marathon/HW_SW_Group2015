@@ -1,5 +1,5 @@
 ﻿using System;
-using RollingRoad.LiveData;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication.Dialogs

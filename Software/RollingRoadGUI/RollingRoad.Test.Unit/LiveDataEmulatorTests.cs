@@ -1,48 +1,27 @@
-﻿using NSubstitute;
+﻿using System.Linq;
+using NSubstitute;
 using NUnit.Framework;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
-using RollingRoad.LiveData;
+using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Timers;
 
 namespace RollingRoad.Test.Unit
 {
-    /*internal class MockITimer : ITimer
-    {
-        public int StartCallAmount { get; private set; }
-        public int StopCallAmount { get; private set; }
-
-        /// <summary>
-        /// Invoke instantly
-        /// </summary>
-        /// <param name="ms"></param>
-        public void Start(int ms)
-        {
-            StartCallAmount++;
-            Elapsed?.Invoke();
-        }
-
-        public void Stop()
-        {
-            StopCallAmount++;
-        }
-
-        public event TimerElapsedEvent Elapsed;
-    }*/
-
     [TestFixture]
     public class LiveDataEmulatorTests
     {
-        private Dataset _dataset;
+        private DataSet _dataset;
         private ITimer _timer;
         private LiveDataEmulator _emulator;
 
         [SetUp]
         public void SetUp()
         {
-            _dataset = new Dataset();
+            _dataset = new DataSet();
             _timer = Substitute.For<ITimer>();
             
-            _dataset.Add(new DataList(new DataType("Time", "TestUnit")));
+            _dataset.DataLists.Add(new DataList(new DataType("Time", "TestUnit")));
 
             _emulator = new LiveDataEmulator(_dataset) {Timer = _timer};
         }
@@ -67,7 +46,7 @@ namespace RollingRoad.Test.Unit
         [TestCase(-0.852)]
         public void OnNextReadValueEvent_OneDataPointGiven_CorrectData(double value)
         {
-            _dataset[0].Add(value);
+            _dataset.DataLists.ElementAt(0).Data.Add(new DataPoint(value));
             _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<TimerElapsedEvent>());
             
             double dataRead = -1000;

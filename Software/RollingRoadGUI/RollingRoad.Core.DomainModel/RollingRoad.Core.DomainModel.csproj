@@ -41,9 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataList.cs" />
-    <Compile Include="Datapoint.cs" />
-    <Compile Include="Dataset.cs" />
+    <Compile Include="DataPoint.cs" />
+    <Compile Include="DataSet.cs" />
     <Compile Include="DataType.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

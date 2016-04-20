@@ -73,13 +73,25 @@
     <Compile Include="ViewModels\TorqueControlViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RollingRoad.Core.ApplicationServices\RollingRoad.Core.ApplicationServices.csproj">
+      <Project>{DC2F6792-31D7-4B3A-80E5-9A648E70E7D3}</Project>
+      <Name>RollingRoad.Core.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Core.DomainModel\RollingRoad.Core.DomainModel.csproj">
+      <Project>{5355aac5-cb40-485e-9200-f01b280355b7}</Project>
+      <Name>RollingRoad.Core.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Core.DomainServices\RollingRoad.Core.DomainServices.csproj">
+      <Project>{da0dfd3f-8f85-480a-a559-9bc1d088373a}</Project>
+      <Name>RollingRoad.Core.DomainServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Infrastructure.DataAccess\RollingRoad.Infrastructure.DataAccess.csproj">
+      <Project>{05872ca6-be23-47a2-8d4f-499dbe6c7634}</Project>
+      <Name>RollingRoad.Infrastructure.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RollingRoad.WinApplication\RollingRoad.WinApplication.csproj">
       <Project>{3d13fd8d-c5c1-4057-8e76-6afa5e81fbd5}</Project>
       <Name>RollingRoad.WinApplication</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RollingRoad\RollingRoad.csproj">
-      <Project>{74ae667f-f08a-473b-9c9a-9b08ed534554}</Project>
-      <Name>RollingRoad</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

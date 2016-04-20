@@ -40,9 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICsvHandler.cs" />
-    <Compile Include="ICsvService.cs" />
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="ICalibrateControl.cs" />
+    <Compile Include="ILiveDataSource.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="IMotorControl.cs" />
+    <Compile Include="IPidControl.cs" />
+    <Compile Include="ITimer.cs" />
+    <Compile Include="ITorqueControl.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RollingRoad.Core.DomainModel\RollingRoad.Core.DomainModel.csproj">

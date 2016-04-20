@@ -4,11 +4,13 @@ using RollingRoad.Core.DomainModel;
 
 namespace RollingRoad.Data
 {
-    public class DataList
+    public class DataList : IEntity
     {
+        public int Id { get; set; }
+        public DataSet DataSet { get; set; }
         public DataType Type { get; }
         
-        public virtual ICollection<double> Data { get; set; } 
+        public virtual ICollection<DataPoint> Data { get; set; } = new List<DataPoint>();
         
         /// <summary>
         /// Creates a new data list with the specified name and unit

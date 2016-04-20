@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
 
 namespace RollingRoad.Test.Unit.Data
@@ -21,24 +22,24 @@ namespace RollingRoad.Test.Unit.Data
         [Test]
         public void AddData_DoubleAsData_DataAdded()
         {
-            _list.Add(123);
+            _list.Data.Add(new DataPoint(123));
 
-            Assert.That(_list.First(), Is.EqualTo(123));
+            Assert.That(_list.Data.First().Value, Is.EqualTo(123));
         }
 
         [Test]
         public void GetData_NoDataAdded_NoDataPresent()
         {
-            Assert.That(_list.Count, Is.EqualTo(0));
+            Assert.That(_list.Data.Count, Is.EqualTo(0));
         }
 
         [Test]
         public void GetData_OneDataAdded_DataPresent()
         {
-            _list.Add(3);
+            _list.Data.Add(new DataPoint(3));
 
-            Assert.That(_list.Count, Is.EqualTo(1));
-            Assert.That(_list.First(), Is.EqualTo(3));
+            Assert.That(_list.Data.Count, Is.EqualTo(1));
+            Assert.That(_list.Data.First().Value, Is.EqualTo(3));
         }
 
         [Test]

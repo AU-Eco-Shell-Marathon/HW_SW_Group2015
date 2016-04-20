@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Mvvm;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication.ViewModels
@@ -8,13 +9,13 @@ namespace RollingRoad.WinApplication.ViewModels
     {
         private bool _isSelected;
         private int _datasetIndex = 0;
-        private Dataset DataSet { get; }
+        private DataSet DataSet { get; }
 
-        public DataSetViewModel(Dataset dataset)
+        public DataSetViewModel(DataSet dataset)
         {
             DataSet = dataset;
 
-            foreach (DataList dataList in dataset)
+            foreach (DataList dataList in dataset.DataLists)
             {
                 Collection.Add(new DataListViewModel(dataList));
             }
@@ -47,10 +48,10 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public void Clear()
         {
-            DataSet.Clear();
+            DataSet.DataLists.Clear();
         }
 
-        public int Count => Collection.Count;
+        public int Count => DataSet.DataLists.Count;
 
         public ObservableCollection<DataListViewModel> Collection { get; } = new ObservableCollection<DataListViewModel>();
 

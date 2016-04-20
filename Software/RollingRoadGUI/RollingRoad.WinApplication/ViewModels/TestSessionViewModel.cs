@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
 using RollingRoad.Loggers;
 
@@ -62,18 +63,18 @@ namespace RollingRoad.WinApplication.ViewModels
                 if (Status != TestSessionStatus.Running)
                     return;
 
-                DataList distanceDataList = TorqueDataset.First(x => x.Type.Name == "Distance");
+                /*DataList distanceDataList = TorqueDataset.DataLists.First(x => x.Type.Name == "Distance");
 
-                double closest = distanceDataList.OrderBy(x => Math.Abs(x - value + DistanceOffset)).First();
+                double closest = distanceDataList.Data.OrderBy(x => Math.Abs(x - value + DistanceOffset)).First();
                 int index = distanceDataList.IndexOf(closest);
-                CurrentTorque = TorqueDataset.First(x => x.Type.Name == "Torque").ElementAt(index);
+                CurrentTorque = TorqueDataset.DataLists.First(x => x.Type.Name == "Torque").Data.ElementAt(index).Value;*/
             }
         }
         
         private TorqueControlViewModel _control;
         private double _currentTorque;
         private TestSessionStatus _status;
-        private Dataset TorqueDataset { get; set; }
+        private DataSet TorqueDataset { get; set; }
 
         public TestSessionViewModel(TorqueControlViewModel control = null)
         {
@@ -97,7 +98,8 @@ namespace RollingRoad.WinApplication.ViewModels
             }
             else
             {
-                TorqueDataset =
+                //TODO FIX FILE
+                /*TorqueDataset =
                     CsvDataFile.LoadFromFile("TestSessions/" + TestSessionList.ElementAt(SelectedTestSession),
                         "eco shell marathon torque");
 
@@ -110,7 +112,7 @@ namespace RollingRoad.WinApplication.ViewModels
                 }
 
                 Status = TestSessionStatus.Running;
-                LastestDistance = DistanceOffset;
+                LastestDistance = DistanceOffset;*/
             }
         }
     }

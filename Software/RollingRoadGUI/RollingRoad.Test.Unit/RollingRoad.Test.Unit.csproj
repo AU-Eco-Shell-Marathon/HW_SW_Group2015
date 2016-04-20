@@ -80,13 +80,25 @@
     <Compile Include="Protocols\SP4RRInterpreterTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RollingRoad\RollingRoad.csproj">
-      <Project>{74ae667f-f08a-473b-9c9a-9b08ed534554}</Project>
-      <Name>RollingRoad</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\RollingRoad.Core.ApplicationServices\RollingRoad.Core.ApplicationServices.csproj">
+      <Project>{dc2f6792-31d7-4b3a-80e5-9a648e70e7d3}</Project>
+      <Name>RollingRoad.Core.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Core.DomainModel\RollingRoad.Core.DomainModel.csproj">
+      <Project>{5355aac5-cb40-485e-9200-f01b280355b7}</Project>
+      <Name>RollingRoad.Core.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Core.DomainServices\RollingRoad.Core.DomainServices.csproj">
+      <Project>{da0dfd3f-8f85-480a-a559-9bc1d088373a}</Project>
+      <Name>RollingRoad.Core.DomainServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RollingRoad.Infrastructure.DataAccess\RollingRoad.Infrastructure.DataAccess.csproj">
+      <Project>{05872CA6-BE23-47A2-8D4F-499DBE6C7634}</Project>
+      <Name>RollingRoad.Infrastructure.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

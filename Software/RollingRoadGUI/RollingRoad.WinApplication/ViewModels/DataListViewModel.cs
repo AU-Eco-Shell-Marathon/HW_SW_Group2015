@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Media;
 using Microsoft.Practices.Prism.Mvvm;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication.ViewModels
@@ -20,17 +21,17 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public void Add(double value)
         {
-            List.Add(value);
+            List.Data.Add(new DataPoint(value));
             OnPropertyChanged(nameof(NewestValue));
         }
         
-        public double NewestValue => List.Last();
+        public double NewestValue => List.Data.Last().Value;
 
         public int DataSetIndex { get; set; } = 0;
 
-        public int Count => List.Count;
+        public int Count => List.Data.Count;
         public bool Selected { get; set; } = true;
-        public IReadOnlyCollection<double> Data => List;
+        public ICollection<DataPoint> Data => List.Data;
 
         private Brush _fill;
         public Brush Fill
