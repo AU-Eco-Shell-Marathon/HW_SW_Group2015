@@ -125,7 +125,7 @@ namespace RollingRoad.Infrastructure.DataAccess
                         throw new Exception("Error at line " + currentLine + " could not parse number");
                     }
 
-                    data.DataLists.ElementAt(i - 1).Data.Add(new DataPoint(value));
+                    data.DataLists.ElementAt(i - 1).Data.Add(new DataPoint(value) {DataList = data.DataLists.ElementAt(i - 1)});
                 }
 
                 //Progress one line

@@ -212,7 +212,6 @@ namespace RollingRoad.WinApplication.ViewModels
             HasBeenSaved = false;
             foreach (DataPoint datapoint in datapoints)
             {
-                /*
                 DataListViewModel list = DataSet.Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
 
                 if (list == null)
@@ -229,7 +228,7 @@ namespace RollingRoad.WinApplication.ViewModels
                     TestSession.LastestDistance = value;
                 }
 
-                list.Add(value);*/
+                list.Add(value);
             }
         }
 

@@ -12,6 +12,8 @@ namespace RollingRoad.Core.DomainModel
         
         public double Value { get; set; }
         public int Id { get; set; }
+
+        public DataType Type => DataList.Type;
         public DataList DataList { get; set; }
     }
 }
