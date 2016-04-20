@@ -24,9 +24,8 @@ The Torque Sensor must be supplied with atleast 12 VDC, in order to power the in
 The sensor specified to be able to measure torque levels ranging from $0$ to $5 Nm$ and angular velocity from $0$ to $30,000 rpm$. The sensor is able to measure these parameters irregardles of the input-shaft's rotational direction. Thus the mathematical limits of the sensor range from $-5 Nm$ to $+5 Nm$ and $-30,000 rpm$ to $+30,000 rpm$.
 
 \textbf{Torque}\\
-The Torque Sensor outputs the measured torque on Pin C. The signal-output is a DC-voltage which is proportional to the measured torque - as long as the input value lies withing the specified range. An input outside this range would cause the sensor to reach saturation. The output-voltage range from $-5 V$ to $+5 V$ and the relationship between the input and output can therefore be expressed mathematically as:
+The Torque Sensor outputs the measured torque on Pin C (Signal+). The output-signal is a DC-voltage which is proportional to the measured torque - as long as the input value lies withing the specified range. An input outside this range would cause the sensor to reach saturation. The output-voltage range from $-5 V$ to $+5 V$ and the relationship between the input and output can therefore be expressed mathematically as:
 \begin{equation}
-%	V_{sensor} = \tau_{sensor}, \quad \quad -5 Nm \leq V \leq +5 Nm\\
 	V_{sensor} = 
 	\begin{cases}
 		+5V				& \quad \text{if } \tau_{sensor} > +5 Nm\\
@@ -36,7 +35,9 @@ The Torque Sensor outputs the measured torque on Pin C. The signal-output is a D
 \end{equation}
 
 \textbf{Angular velocity}\\
-Text
+The Torque Sensor outputs the measured angular velocity on Pin B (Angle B) and Pin G (Signal A) - however only the signal from Pin G is used for calculations. The output-signal is a square-waved signal with a DC-offset of 2.5 V and a peak-peak value of 5 V.
+
+The output-signal changes level 360 times per axial revolution in the Torque Sensor. Thus the frequency of the signal is proportional to the angular velocity.
 
 \subsection{Unity test}
 Text
