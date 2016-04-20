@@ -9,6 +9,7 @@ using RollingRoad.Control;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
+using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Loggers;
 using RollingRoad.WinApplication.Dialogs;
 using MessageBox = System.Windows.MessageBox;
@@ -311,10 +312,9 @@ namespace RollingRoad.WinApplication.ViewModels
                     }
                 }
 
-
-                //TODO
+                
                 //Save file
-                //CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
+                CsvDataFile.WriteToFile(SaveFileDialog.FileName, source, "shell eco marathon");
                 return true;
             }
             catch (Exception e)

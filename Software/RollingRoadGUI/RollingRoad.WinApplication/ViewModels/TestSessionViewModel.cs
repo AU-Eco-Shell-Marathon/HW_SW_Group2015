@@ -7,6 +7,7 @@ using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
+using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication.ViewModels
@@ -98,21 +99,20 @@ namespace RollingRoad.WinApplication.ViewModels
             }
             else
             {
-                //TODO FIX FILE
-                /*TorqueDataset =
+                TorqueDataset =
                     CsvDataFile.LoadFromFile("TestSessions/" + TestSessionList.ElementAt(SelectedTestSession),
                         "eco shell marathon torque");
 
                 //Must contain torque and distance info
-                if (TorqueDataset.FirstOrDefault(x => x.Type.Name == "Torque") == null ||
-                    TorqueDataset.FirstOrDefault(x => x.Type.Name == "Distance") == null)
+                if (TorqueDataset.DataLists.FirstOrDefault(x => x.Type.Name == "Torque") == null ||
+                    TorqueDataset.DataLists.FirstOrDefault(x => x.Type.Name == "Distance") == null)
                 {
                     Logger?.WriteLine("Torque track does not contain torque and distance");
                     return;
                 }
 
                 Status = TestSessionStatus.Running;
-                LastestDistance = DistanceOffset;*/
+                LastestDistance = DistanceOffset;
             }
         }
     }

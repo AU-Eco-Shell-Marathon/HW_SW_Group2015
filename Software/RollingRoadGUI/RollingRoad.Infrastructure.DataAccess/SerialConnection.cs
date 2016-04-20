@@ -2,9 +2,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Ports;
-using RollingRoad.Protocols;
 
-namespace RollingRoad
+namespace RollingRoad.Infrastructure.DataAccess
 {
     [ExcludeFromCodeCoverage]
     public class SerialConnection : SP4RRInterpreter, IDisposable

@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using RollingRoad.Core.ApplicationServices;
+using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Loggers;
 using MessageBox = System.Windows.MessageBox;
 
@@ -60,8 +61,7 @@ namespace RollingRoad.WinApplication.Dialogs
 
                 try
                 {
-                    //TODO FIX
-                    //LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename, "shell eco marathon"));
+                    LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename, "shell eco marathon"));
                     OnClose?.Invoke(true);
                 }
                 catch (Exception exception)
@@ -81,9 +81,8 @@ namespace RollingRoad.WinApplication.Dialogs
 
             SerialPort port = new SerialPort(portname) { BaudRate = 9600 };
             port.Open();
-
-            //TODO FIX
-            //LiveDataSource = new SerialConnection(port);
+            
+            LiveDataSource = new SerialConnection(port);
             DisposableSource = port;
             OnClose?.Invoke(true);
         }

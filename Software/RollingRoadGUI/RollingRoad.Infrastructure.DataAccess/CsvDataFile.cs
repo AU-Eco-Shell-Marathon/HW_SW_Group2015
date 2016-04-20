@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using RollingRoad.Data;
-using RollingRoad.Protocols;
+using RollingRoad.Core.DomainModel;
 
-namespace RollingRoad
+namespace RollingRoad.Infrastructure.DataAccess
 {
     [ExcludeFromCodeCoverage]
     public static class CsvDataFile
@@ -13,7 +12,7 @@ namespace RollingRoad
         /// </summary>
         /// <param name="path">What path to save the file to</param>
         /// <param name="data">Data to be saved</param>
-        public static void WriteToFile(string path, Dataset data, string header)
+        public static void WriteToFile(string path, DataSet data, string header)
         {
             //Overwrite file if exists or create new
             using (FileStream fileStream = File.Open(path, FileMode.Create, FileAccess.Write))
@@ -26,10 +25,10 @@ namespace RollingRoad
         /// <exception cref="FileLoadException"></exception>
         /// <exception cref="FileNotFoundException"></exception>
         /// <param name="path">Path of the csv file to load</param>
-        public static Dataset LoadFromFile(string path, string header)
+        public static DataSet LoadFromFile(string path, string header)
         {
             //Source the data will be loaded into
-            Dataset data;
+            DataSet data;
 
             //Check if file exists
             if (!File.Exists(path))
