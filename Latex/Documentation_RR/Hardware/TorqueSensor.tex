@@ -37,7 +37,12 @@ The Torque Sensor outputs the measured torque on Pin C (Signal+). The output-sig
 \textbf{Angular velocity}\\
 The Torque Sensor outputs the measured angular velocity on Pin B (Angle B) and Pin G (Signal A) - however only the signal from Pin G is used for calculations. The output-signal is a square-waved signal with a DC-offset of 2.5 V and a peak-peak value of 5 V.
 
-The output-signal changes level 360 times per axial revolution in the Torque Sensor. Thus the frequency of the signal is proportional to the angular velocity.
+The output-signal changes level 360 times per axial revolution in the Torque Sensor. Thus the frequency of the signal is proportional to the angular velocity. The frequency of the output is given by the following equation:
+\begin{equation}
+	\begin{split}
+		f_{sensor} = 360 \cdot \omega_{Roll}
+	\end{split}
+\end{equation}
 
 \subsection{Unity test}
 Text
