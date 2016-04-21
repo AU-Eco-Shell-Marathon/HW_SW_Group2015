@@ -226,7 +226,7 @@ void PWM_horn_RestoreConfig(void) ;
 /***************************************
 *         Initialization Values
 **************************************/
-#define PWM_horn_INIT_PERIOD_VALUE          (100u)
+#define PWM_horn_INIT_PERIOD_VALUE          (255u)
 #define PWM_horn_INIT_COMPARE_VALUE1        (0u)
 #define PWM_horn_INIT_COMPARE_VALUE2        (63u)
 #define PWM_horn_INIT_INTERRUPTS_MODE       (uint8)(((uint8)(0u <<   \
