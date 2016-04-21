@@ -90,6 +90,7 @@ void MC_init(const uint8 * speed, const uint16 * rpm, const uint16 * current,con
     isr_motor_StartEx(MOTOR_tick);
     Clock_motor_Start();
     PWM_motor_Start();
+    PWM_horn_Start();
     MC_start();
 }
 
