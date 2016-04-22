@@ -12,7 +12,7 @@ namespace RollingRoad.Infrastructure.DataAccess
     {
         private readonly DbContext _context;
 
-        public UnitOfWork(ApplicationContext context)
+        public UnitOfWork(DbContext context)
         {
             _context = context;
         }

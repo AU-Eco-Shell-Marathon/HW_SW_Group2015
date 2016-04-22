@@ -16,8 +16,8 @@ namespace RollingRoad.WinApplication.ViewModels
 {
     public class DataSetsViewModel : BindableBase
     {
-        public ObservableCollection<DataSetViewModel> DataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
-        public ObservableCollection<DataListViewModel> SelectedDatalists { get; set; } = new ObservableCollection<DataListViewModel>();
+        public ObservableCollection<DataSetViewModel> DataSets { get; } = new ObservableCollection<DataSetViewModel>();
+        public ObservableCollection<DataListViewModel> SelectedDatalists { get; } = new ObservableCollection<DataListViewModel>();
 
         public ICommand ImportFromFileCommand { get; }
         public ICommand SelectionChanged { get; }
@@ -68,9 +68,15 @@ namespace RollingRoad.WinApplication.ViewModels
             RefreshCommand = new DelegateCommand(Refresh);
         }
 
-        public DataSetsViewModel(IRepository<DataSet> source, IUnitOfWork unitOfWork) : this()
+        public DataSetsViewModel(IRepository<DataSet> repository, IUnitOfWork unitOfWork) : this()
         {
-            _dataSetRepository = source;
+            if(repository == null)
+                throw new ArgumentNullException(nameof(repository));
+
+            if(unitOfWork == null)
+                throw new ArgumentNullException(nameof(unitOfWork));
+
+            _dataSetRepository = repository;
             _unitOfWork = unitOfWork;
 
             Refresh();
@@ -92,12 +98,12 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private void ImportFromFile()
         {
-            bool? result = _openFileDialog.ShowDialog();
+            bool? result = OpenFileDialog.ShowDialog();
 
             if (result == true)
             {
                 // Open document 
-                string filename = _openFileDialog.FileName;
+                string filename = OpenFileDialog.FileName;
 
                 try
                 {
