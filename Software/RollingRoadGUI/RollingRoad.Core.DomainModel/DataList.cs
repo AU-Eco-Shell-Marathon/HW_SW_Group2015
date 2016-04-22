@@ -12,7 +12,13 @@ namespace RollingRoad.Core.DomainModel
         public string Unit { get; set; }
         
         public virtual ICollection<DataPoint> Data { get; set; } = new List<DataPoint>();
-        
+
+        public DataList()
+        {
+            Name = "Unknown";
+            Unit = "Unknown";
+        }
+
         /// <summary>
         /// Creates a new data list with the specified name and unit
         /// </summary>

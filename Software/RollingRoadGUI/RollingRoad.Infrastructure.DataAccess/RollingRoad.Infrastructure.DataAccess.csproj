@@ -60,6 +60,15 @@
     <Compile Include="Mapping\DataPointMap.cs" />
     <Compile Include="Mapping\DataSetMap.cs" />
     <Compile Include="Mapping\EntityMap.cs" />
+    <Compile Include="Migrations\201604221231360_Initial.cs" />
+    <Compile Include="Migrations\201604221231360_Initial.Designer.cs">
+      <DependentUpon>201604221231360_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604221324298_DataPointIndex.cs" />
+    <Compile Include="Migrations\201604221324298_DataPointIndex.Designer.cs">
+      <DependentUpon>201604221324298_DataPointIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SerialConnection.cs" />
@@ -83,6 +92,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604221231360_Initial.resx">
+      <DependentUpon>201604221231360_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221324298_DataPointIndex.resx">
+      <DependentUpon>201604221324298_DataPointIndex.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

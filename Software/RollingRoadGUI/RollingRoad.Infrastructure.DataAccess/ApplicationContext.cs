@@ -7,7 +7,7 @@ namespace RollingRoad.Infrastructure.DataAccess
     public class ApplicationContext : DbContext
     {
 
-        public ApplicationContext()
+        public ApplicationContext() : base("Name=ApplicationContext")
         {
 
         }

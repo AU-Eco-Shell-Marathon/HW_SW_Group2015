@@ -11,18 +11,6 @@ namespace RollingRoad.WinApplication
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += OnLoaded;
-        }
-
-        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
-        {
-            ApplicationContext context = ApplicationContext.Create();
-
-            string output = "";
-
-            output += context.DataLists.Select(x => x.Name);
-
-            Debug.WriteLine(output);
         }
     }
 }

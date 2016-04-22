@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using RollingRoad.Core.DomainModel;
+using RollingRoad.Infrastructure.DataAccess.Migrations;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {
@@ -100,6 +101,7 @@ namespace RollingRoad.Infrastructure.DataAccess
                 data.DataLists.Add(new DataList(names[i], units[i]));
             }
 
+            int dataIndex = 0;
             //Read all data
             while (!reader.EndOfStream)
             {
@@ -124,10 +126,11 @@ namespace RollingRoad.Infrastructure.DataAccess
                         throw new Exception("Error at line " + currentLine + " could not parse number");
                     }
 
-                    data.DataLists.ElementAt(i - 1).Data.Add(new DataPoint(value) {DataList = data.DataLists.ElementAt(i - 1)});
+                    data.DataLists.ElementAt(i - 1).Data.Add(new DataPoint(value) {DataList = data.DataLists.ElementAt(i - 1), Index = dataIndex});
                 }
 
                 //Progress one line
+                dataIndex++;
                 currentLine++;
             }
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -18,12 +20,14 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public DataSetsViewModel()
         {
-            OpenSelectWindow = new DelegateCommand(OpenSelect);
+            ImportFromFileCommand = new DelegateCommand(ImportFromFile);
             SelectedChanged = new DelegateCommand(OnSelectedChanged);
+            RefreshCommand = new DelegateCommand(Refresh);
         }
 
-        public ICommand OpenSelectWindow { get; }
+        public ICommand ImportFromFileCommand { get; }
         public ICommand SelectedChanged { get; }
+        public ICommand RefreshCommand { get; }
 
         private void OnSelectedChanged()
         {
@@ -39,7 +43,7 @@ namespace RollingRoad.WinApplication.ViewModels
             }
         }
 
-        private void OpenSelect()
+        private void ImportFromFile()
         {
             OpenFileDialog dlg = new OpenFileDialog
             {
@@ -57,21 +61,31 @@ namespace RollingRoad.WinApplication.ViewModels
                 try
                 {
                     DataSet dataset = CsvDataFile.LoadFromFile(filename, "shell eco marathon");
-                    
-                    DataSets.Add(new DataSetViewModel(dataset));
+                    ((App) Application.Current).Context.DataSets.Add(dataset);
+                    Refresh();
+                    ((App) Application.Current).Context.SaveChanges();
 
-                    int i = 0;
-                    foreach (DataSetViewModel dataSetViewModel in DataSets)
-                    {
-                        dataSetViewModel.DatasetIndex = i;
-                        i++;
-                    }
                 }
                 catch (Exception exception)
                 {
                     MessageBox.Show(exception.Message, "Error opening file", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void Refresh()
+        {
+            DataSets.Clear();
+
+            ICollection<DataSet> tempSets = ((App)Application.Current).Context.DataSets.ToList();
+
+            int i = 0;
+            foreach (DataSet dataSet in tempSets)
+            {
+                DataSets.Add(new DataSetViewModel(dataSet) {DatasetIndex = i++});
+            }
+
+            OnPropertyChanged(nameof(DataSets));
         }
 
         public override string ToString()

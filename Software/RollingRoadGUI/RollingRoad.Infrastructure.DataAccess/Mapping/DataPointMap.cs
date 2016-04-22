@@ -9,6 +9,9 @@ namespace RollingRoad.Infrastructure.DataAccess.Mapping
             Property(x => x.Value)
                 .IsRequired();
 
+            Property(x => x.Index)
+                .IsRequired();
+
             ToTable("DataPoints");
         }
     }

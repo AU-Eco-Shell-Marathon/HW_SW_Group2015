@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Core.DomainModel;
 

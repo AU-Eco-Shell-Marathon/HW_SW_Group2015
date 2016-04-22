@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Management;
 using System.Windows;
+using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication
@@ -13,6 +14,7 @@ namespace RollingRoad.WinApplication
     public partial class App : Application
     {
         public ILogger Logger { get; }
+        public ApplicationContext Context { get; }
 
         public App()
         {
@@ -31,6 +33,8 @@ namespace RollingRoad.WinApplication
             Logger.WriteLine(".Net Version: " + Environment.Version);
             
             AppDomain.CurrentDomain.UnhandledException += CatchException;
+
+            Context = ApplicationContext.Create();
         }
 
         public static string GetOSBit()
