@@ -1,5 +1,4 @@
 ﻿using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 
 namespace RollingRoad.Infrastructure.DataAccess.Mapping
 {

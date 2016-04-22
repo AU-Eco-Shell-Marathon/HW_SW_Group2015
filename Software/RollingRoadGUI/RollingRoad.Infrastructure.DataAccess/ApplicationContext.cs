@@ -2,7 +2,6 @@
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Data;
 using RollingRoad.Infrastructure.DataAccess.Mapping;
-using DataSet = System.Data.DataSet;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {

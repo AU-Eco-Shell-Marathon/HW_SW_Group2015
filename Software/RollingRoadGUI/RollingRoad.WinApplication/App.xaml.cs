@@ -58,6 +58,9 @@ namespace RollingRoad.WinApplication
             Exception e = (Exception) args.ExceptionObject;
             
             Logger.WriteLine(e.Message + ": " + e.StackTrace);
+
+            AppDomain.CurrentDomain.UnhandledException -= CatchException;
+            throw e;
         }
 
 

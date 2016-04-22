@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Windows;
+using RollingRoad.Infrastructure.DataAccess;
 
 namespace RollingRoad.WinApplication
 {
@@ -7,6 +11,18 @@ namespace RollingRoad.WinApplication
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        {
+            ApplicationContext context = ApplicationContext.Create();
+
+            string output = "";
+
+            output += context.DataLists.Select(x => x.Type.Name);
+
+            Debug.WriteLine(output);
         }
     }
 }
