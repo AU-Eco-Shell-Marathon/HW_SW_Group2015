@@ -57,6 +57,7 @@ namespace RollingRoad.Test.Unit.Protocols
             _interpreter.Start();
             //Reset memory stream
             _ms.SetLength(0);
+            _ms.Position = 0;
 
             _interpreter.Stop();
 
@@ -74,6 +75,7 @@ namespace RollingRoad.Test.Unit.Protocols
             _interpreter.Start();
             //Reset memory stream
             _ms.SetLength(0);
+            _ms.Position = 0;
 
             _interpreter.SetTorque(value);
 
@@ -90,6 +92,7 @@ namespace RollingRoad.Test.Unit.Protocols
             _interpreter.Start();
             //Reset memory stream
             _ms.SetLength(0);
+            _ms.Position = 0;
 
             _interpreter.Kp = value;
 
@@ -106,6 +109,7 @@ namespace RollingRoad.Test.Unit.Protocols
             _interpreter.Start();
             //Reset memory stream
             _ms.SetLength(0);
+            _ms.Position = 0;
 
             _interpreter.Ki = value;
 
@@ -122,6 +126,7 @@ namespace RollingRoad.Test.Unit.Protocols
             _interpreter.Start();
             //Reset memory stream
             _ms.SetLength(0);
+            _ms.Position = 0;
 
             _interpreter.Kd = value;
 
