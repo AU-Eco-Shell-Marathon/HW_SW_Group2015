@@ -63,7 +63,7 @@ namespace RollingRoad.WinApplication
                         _timer.Start();
                 }
                 _selectedRefreshRate = value;
-                _settings.SetIntStat("SelectedRefreshRate", value);
+                _settings.SetIntStat(nameof(SelectedRefreshRate), value);
                 OnPropertyChanged();
 
             }
@@ -82,7 +82,7 @@ namespace RollingRoad.WinApplication
                 BufferSizeEnabled = bufferType == "Circular";
 
                 _selectedBufferType = value;
-                _settings.SetIntStat("SelectedBufferType", value);
+                _settings.SetIntStat(nameof(SelectedBufferType), value);
                 OnPropertyChanged();
             }
         }
@@ -96,7 +96,7 @@ namespace RollingRoad.WinApplication
                     return;
 
                 _selectedBufferSize = value;
-                _settings.SetIntStat("SelectedBufferSize", value);
+                _settings.SetIntStat(nameof(SelectedBufferType), value);
                 OnPropertyChanged();
             }
         }
@@ -127,9 +127,9 @@ namespace RollingRoad.WinApplication
             _timer = new DispatcherTimer();
             _timer.Tick += (sender, e) => Refresh();
 
-            _settings.GetIntStat("SelectedRefreshRate");
-            _settings.GetIntStat("SelectedBufferType");
-            _settings.GetIntStat("SelectedBufferSize");
+            SelectedRefreshRate = _settings.GetIntStat(nameof(SelectedRefreshRate));
+            SelectedBufferSize = _settings.GetIntStat(nameof(SelectedBufferType));
+            SelectedBufferType = _settings.GetIntStat(nameof(SelectedBufferSize));
 
             Chart.LegendVisible = false;
         }
@@ -158,7 +158,6 @@ namespace RollingRoad.WinApplication
             DataListViewModel xAxis = null;
             EnumerableDataSource<DataPoint> xData = null;
             
-
             foreach (DataListViewModel dataList in ItemsSource)
             {
                 if (dataList.Name == XAxisName)

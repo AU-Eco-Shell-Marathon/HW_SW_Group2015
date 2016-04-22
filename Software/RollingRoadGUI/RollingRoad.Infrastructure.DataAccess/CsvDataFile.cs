@@ -1,12 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {
     [ExcludeFromCodeCoverage]
-    public static class CsvDataFile
+    public class CsvDataFile : IDataSetLoader
     {
+        public string ExpectedHeader { get; set; } = "shell eco marathon";
+
         /// <summary>
         /// Save datasource to file
         /// </summary>
@@ -46,6 +49,11 @@ namespace RollingRoad.Infrastructure.DataAccess
 
             //Return data
             return data;
+        }
+
+        public DataSet LoadFromFile(string path)
+        {
+            return LoadFromFile(path, ExpectedHeader);
         }
     }
 }

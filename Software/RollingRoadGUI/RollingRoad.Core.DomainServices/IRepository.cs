@@ -24,7 +24,6 @@ namespace RollingRoad.Core.DomainServices
         IQueryable<T> AsQueryable();
         T Create();
         T GetByKey(params object[] key);
-        Task<T> GetByKeyAsync(params object[] key);
         T Insert(T entity);
         void DeleteByKey(params object[] key);
         void Update(T entity);

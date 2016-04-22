@@ -8,12 +8,12 @@ using RollingRoad.Core.DomainServices;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {
-    public class GenericRepository<T> : IRepository<T>
+    public class Repository<T> : IRepository<T>
         where T : class
     {
-        private readonly DbSet<T> _dbSet;
+        private readonly IDbSet<T> _dbSet;
 
-        public GenericRepository(DbSet<T> dbset)
+        public Repository(IDbSet<T> dbset)
         {
             _dbSet = dbset;
         }
@@ -25,7 +25,7 @@ namespace RollingRoad.Infrastructure.DataAccess
             int? page = null,
             int? pageSize = null)
         {
-            var query = FilterLogic(filter, orderBy, includeProperties, page, pageSize);
+            IQueryable<T> query = FilterLogic(filter, orderBy, includeProperties, page, pageSize);
             return query.ToList();
         }
 
@@ -36,7 +36,7 @@ namespace RollingRoad.Infrastructure.DataAccess
             int? page = null,
             int? pageSize = null)
         {
-            var query = FilterLogic(filter, orderBy, includeProperties, page, pageSize);
+            IQueryable<T> query = FilterLogic(filter, orderBy, includeProperties, page, pageSize);
             return await query.ToListAsync();
         }
 
@@ -44,7 +44,7 @@ namespace RollingRoad.Infrastructure.DataAccess
         {
             IQueryable<T> query = _dbSet;
 
-            foreach (var includeProperty in includeProperties.Split
+            foreach (string includeProperty in includeProperties.Split
                 (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
@@ -72,7 +72,7 @@ namespace RollingRoad.Infrastructure.DataAccess
 
         public T Create()
         {
-            var entity = _dbSet.Create<T>();
+            T entity = _dbSet.Create<T>();
             return entity;
         }
 
@@ -80,12 +80,7 @@ namespace RollingRoad.Infrastructure.DataAccess
         {
             return _dbSet.Find(key);
         }
-
-        public async Task<T> GetByKeyAsync(params object[] key)
-        {
-            return await _dbSet.FindAsync(key);
-        }
-
+        
         public T Insert(T entity)
         {
             return _dbSet.Add(entity);
@@ -93,7 +88,7 @@ namespace RollingRoad.Infrastructure.DataAccess
 
         public void DeleteByKey(params object[] key)
         {
-            var entityToDelete = _dbSet.Find(key);
+            T entityToDelete = _dbSet.Find(key);
 
             _dbSet.Remove(entityToDelete);
         }

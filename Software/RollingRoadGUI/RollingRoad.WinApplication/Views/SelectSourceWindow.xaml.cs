@@ -22,10 +22,10 @@ namespace RollingRoad.WinApplication.Views
             InitializeComponent();
         }
 
-        private void OnClose(bool success)
+        private void OnClose(object sender, bool args)
         {
             _vm.OnClose -= OnClose;
-            DialogResult = success;
+            DialogResult = args;
             Close();
         }
     }

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
-using Microsoft.Win32;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
+using RollingRoad.Core.DomainServices;
 using RollingRoad.Infrastructure.DataAccess;
+using RollingRoad.WinApplication.Dialogs;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
@@ -18,16 +19,62 @@ namespace RollingRoad.WinApplication.ViewModels
         public ObservableCollection<DataSetViewModel> DataSets { get; set; } = new ObservableCollection<DataSetViewModel>();
         public ObservableCollection<DataListViewModel> SelectedDatalists { get; set; } = new ObservableCollection<DataListViewModel>();
 
+        public ICommand ImportFromFileCommand { get; }
+        public ICommand SelectionChanged { get; }
+        public ICommand RefreshCommand { get; }
+
+        public IOpenFileDialog OpenFileDialog
+        {
+            get { return _openFileDialog; }
+            set
+            {
+                if(value == null)
+                    throw new ArgumentNullException(nameof(value));
+                _openFileDialog = value;
+            }
+        }
+        public IDataSetLoader DataSetLoader
+        {
+            get { return _dataSetLoader; }
+            set
+            {
+                if(value == null)
+                    throw new ArgumentNullException(nameof(value));
+                _dataSetLoader = value;
+            }
+        }
+        public IErrorMessageBox ErrorMessageBox
+        {
+            get { return _errorMessageBox; }
+            set
+            {
+                if(value == null)
+                    throw new ArgumentNullException(nameof(value));
+
+                _errorMessageBox = value;
+            }
+        }
+
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<DataSet> _dataSetRepository; 
+        private IOpenFileDialog _openFileDialog = new OpenFileDialog(){DefaultExt = ".csv",Filter = "CSV Files (*.csv)|*.csv"};
+        private IErrorMessageBox _errorMessageBox = new ErrorMessageBox();
+        private IDataSetLoader _dataSetLoader = new CsvDataFile() {ExpectedHeader = "shell eco marathon"};
+        
         public DataSetsViewModel()
         {
             ImportFromFileCommand = new DelegateCommand(ImportFromFile);
-            SelectedChanged = new DelegateCommand(OnSelectedChanged);
+            SelectionChanged = new DelegateCommand(OnSelectedChanged);
             RefreshCommand = new DelegateCommand(Refresh);
         }
 
-        public ICommand ImportFromFileCommand { get; }
-        public ICommand SelectedChanged { get; }
-        public ICommand RefreshCommand { get; }
+        public DataSetsViewModel(IRepository<DataSet> source, IUnitOfWork unitOfWork) : this()
+        {
+            _dataSetRepository = source;
+            _unitOfWork = unitOfWork;
+
+            Refresh();
+        }
 
         private void OnSelectedChanged()
         {
@@ -45,39 +92,38 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private void ImportFromFile()
         {
-            OpenFileDialog dlg = new OpenFileDialog
-            {
-                DefaultExt = ".csv",
-                Filter = "CSV Files (*.csv)|*.csv"
-            };
-            
-            bool? result = dlg.ShowDialog();
+            bool? result = _openFileDialog.ShowDialog();
 
             if (result == true)
             {
                 // Open document 
-                string filename = dlg.FileName;
+                string filename = _openFileDialog.FileName;
 
                 try
                 {
-                    DataSet dataset = CsvDataFile.LoadFromFile(filename, "shell eco marathon");
-                    ((App) Application.Current).Context.DataSets.Add(dataset);
-                    Refresh();
-                    ((App) Application.Current).Context.SaveChanges();
+                    DataSet dataset = DataSetLoader.LoadFromFile(filename);
+                    dataset = _dataSetRepository.Insert(dataset);
+                    _unitOfWork.Save();
+                    AddDataSet(dataset);
 
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message, "Error opening file", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ErrorMessageBox.Show("Error opening file", exception.Message);
                 }
             }
+        }
+
+        private void AddDataSet(DataSet dataSet)
+        {
+            DataSets.Add(new DataSetViewModel(dataSet) { DatasetIndex = DataSets.Count});
         }
 
         private void Refresh()
         {
             DataSets.Clear();
 
-            ICollection<DataSet> tempSets = ((App)Application.Current).Context.DataSets.ToList();
+            ICollection<DataSet> tempSets = _dataSetRepository.Get().ToList();
 
             int i = 0;
             foreach (DataSet dataSet in tempSets)

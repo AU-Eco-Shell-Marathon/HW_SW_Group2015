@@ -1,4 +1,6 @@
-﻿namespace RollingRoad.Loggers
+﻿using System;
+
+namespace RollingRoad.Loggers
 {
     /// <summary>
     /// Invokes OnLog every time there's a log message, does not store log.
@@ -11,12 +13,12 @@
         /// <param name="line">Line to write</param>
         public virtual void WriteLine(string line)
         {
-            OnLog?.Invoke(line);
+            OnLog?.Invoke(this, line);
         }
 
         /// <summary>
         /// Called when there's a new line written, without a newline at the end
         /// </summary>
-        public event LogEvent OnLog;
+        public event EventHandler<string> OnLog;
     }
 }

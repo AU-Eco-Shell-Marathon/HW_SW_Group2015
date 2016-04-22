@@ -12,7 +12,7 @@ namespace RollingRoad.Test.Unit
             Logger eventLogger = new Logger();
             int eventCallCount = 0;
 
-            eventLogger.OnLog += text => eventCallCount++;
+            eventLogger.OnLog += (sender, args) => eventCallCount++;
 
             eventLogger.WriteLine("Test line");
 
@@ -26,7 +26,7 @@ namespace RollingRoad.Test.Unit
             Logger eventLogger = new Logger();
             string eventCallValue = "";
 
-            eventLogger.OnLog += text => eventCallValue = text;
+            eventLogger.OnLog += (sender, args) => eventCallValue = args;
 
             eventLogger.WriteLine(str);
 
@@ -40,7 +40,7 @@ namespace RollingRoad.Test.Unit
             Logger eventLogger = new Logger();
             string eventCallValue = "";
 
-            eventLogger.OnLog += text => eventCallValue = text;
+            eventLogger.OnLog += (sender, args) => eventCallValue = args;
             
             int i;
             for (i = 0; i < number; i++)

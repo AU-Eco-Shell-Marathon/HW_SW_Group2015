@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Timers;
 
 namespace RollingRoad.Timers
@@ -6,7 +7,7 @@ namespace RollingRoad.Timers
     [ExcludeFromCodeCoverage]
     public class SystemTimer : ITimer
     {
-        public event TimerElapsedEvent Elapsed;
+        public event Action Elapsed;
 
         private Timer _timer;
 

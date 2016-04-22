@@ -27,7 +27,7 @@ namespace RollingRoad.WinApplication.ViewModels
             if(Logger == null)
                 Logger = new Logger();
 
-            Logger.OnLog += WriteLine;
+            Logger.OnLog += (sender, args) => WriteLine(args);
 
             Logger.WriteLine("Logger started");
         }

@@ -1,7 +1,7 @@
-﻿namespace RollingRoad.Timers
-{
-    public delegate void TimerElapsedEvent();
+﻿using System;
 
+namespace RollingRoad.Timers
+{
     public interface ITimer
     {
         /// <summary>
@@ -18,6 +18,6 @@
         /// <summary>
         /// Event called when the timer is done
         /// </summary>
-        event TimerElapsedEvent Elapsed;
+        event Action Elapsed;
     }
 }

@@ -63,6 +63,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\DataSetsViewModelTests.cs" />
     <Compile Include="ViewModels\LoggerViewModelTests.cs" />
     <Compile Include="ViewModels\MotorControlViewModelTests.cs" />
     <Compile Include="ViewModels\PidControlViewModelTests.cs" />

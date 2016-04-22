@@ -120,6 +120,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\ErrorMessageBox.cs" />
+    <Compile Include="Dialogs\IErrorMessageBox.cs" />
     <Compile Include="Dialogs\IOpenFileDialog.cs" />
     <Compile Include="Dialogs\ISaveFileDialog.cs" />
     <Compile Include="Dialogs\ISelectSourceDialog.cs" />

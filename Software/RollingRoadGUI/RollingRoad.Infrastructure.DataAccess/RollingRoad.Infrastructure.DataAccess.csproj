@@ -74,6 +74,7 @@
     <Compile Include="SerialConnection.cs" />
     <Compile Include="SP4MCInterpreter.cs" />
     <Compile Include="SP4RRInterpreter.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RollingRoad.Core.ApplicationServices\RollingRoad.Core.ApplicationServices.csproj">

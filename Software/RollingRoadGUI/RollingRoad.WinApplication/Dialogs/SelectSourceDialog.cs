@@ -26,7 +26,7 @@ namespace RollingRoad.WinApplication.Dialogs
             return success.Value;
         }
 
-        public event RequestDialogCloseEvent OnClose;
+        public event EventHandler<bool> OnClose;
 
         public ILiveDataSource LiveDataSource { get; private set; }
         public IDisposable DisposableSource { get; private set; }
@@ -62,7 +62,7 @@ namespace RollingRoad.WinApplication.Dialogs
                 try
                 {
                     LiveDataSource = new LiveDataEmulator(CsvDataFile.LoadFromFile(filename, "shell eco marathon"));
-                    OnClose?.Invoke(true);
+                    OnClose?.Invoke(this, true);
                 }
                 catch (Exception exception)
                 {
@@ -84,7 +84,7 @@ namespace RollingRoad.WinApplication.Dialogs
             
             LiveDataSource = new SerialConnection(port);
             DisposableSource = port;
-            OnClose?.Invoke(true);
+            OnClose?.Invoke(this, true);
         }
     }
 }

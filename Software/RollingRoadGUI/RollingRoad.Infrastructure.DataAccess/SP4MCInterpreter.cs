@@ -1,11 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using RollingRoad.Control;
 
 namespace RollingRoad.Protocols
 {
     // ReSharper disable once InconsistentNaming
-    public class SP4MCInterpreter : IMotorControl
+    public class SP4MCInterpreter : IMotorControl, IDisposable
     {
         public int CruiseSpeed
         {
@@ -63,6 +64,20 @@ namespace RollingRoad.Protocols
         {
             _writer?.Write(cmd + CommandDivider);
             _writer?.Flush();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _writer?.Dispose();
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RollingRoad.Loggers
 {
-    public class FileLogger : Logger
+    public class FileLogger : Logger, IDisposable
     {
         public string FilePath { get; }
         private readonly StreamWriter _writer;
@@ -24,6 +24,20 @@ namespace RollingRoad.Loggers
             _writer.WriteLine(DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture) + ": " + line);
             _writer.Flush();
             base.WriteLine(line);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _writer?.Dispose();
+            }
         }
     }
 }

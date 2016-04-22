@@ -8,7 +8,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:viewModels="clr-namespace:RollingRoad.WinApplication.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance viewModels:DataSetsViewModel}">
+             d:DesignHeight="300" d:DesignWidth="500" d:DataContext="{d:DesignInstance viewModels:DataSetsViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" MinWidth="160"/>
@@ -32,7 +32,7 @@
             <ListView Grid.Row="1" x:Name="ListViewDataselect" ItemsSource="{Binding DataSets}" SelectionMode="Multiple" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="5, 0, 5, 0">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding SelectedChanged}"></i:InvokeCommandAction>
+                        <i:InvokeCommandAction Command="{Binding SelectionChanged}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <ListView.ItemContainerStyle>

@@ -1,11 +1,7 @@
-﻿namespace RollingRoad.Loggers
-{
-    /// <summary>
-    /// Event used for log
-    /// </summary>
-    /// <param name="text">The text to be logged</param>
-    public delegate void LogEvent(string text);
+﻿using System;
 
+namespace RollingRoad.Loggers
+{
     public interface ILogger
     {
         /// <summary>
@@ -17,6 +13,6 @@
         /// <summary>
         /// Event that may be called on line recieved
         /// </summary>
-        event LogEvent OnLog;
+        event EventHandler<string> OnLog;
     }
 }

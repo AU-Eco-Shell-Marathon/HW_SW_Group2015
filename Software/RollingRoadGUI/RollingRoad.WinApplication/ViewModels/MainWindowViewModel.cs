@@ -4,6 +4,8 @@ using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Research.DynamicDataDisplay.Navigation;
+using RollingRoad.Core.DomainModel;
+using RollingRoad.Infrastructure.DataAccess;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
@@ -18,20 +20,26 @@ namespace RollingRoad.WinApplication.ViewModels
             QuitCommand = new DelegateCommand(Quit);
             OpenAboutWindowCommand = new DelegateCommand(OpenAboutWindow);
 
-            LoggerViewModel vm;
+            LoggerViewModel loggerViewModel;
 
-            if (Application.Current is App)
+            App app = Application.Current as App;
+            if (app != null)
             {
-                vm = new LoggerViewModel(null, ((App) Application.Current).Logger);
+                loggerViewModel = new LoggerViewModel(null, app.Logger);
+
+                Tabs.Add(new LiveDataSourceViewModel() { Logger = loggerViewModel.Logger });
+                Tabs.Add(new DataSetsViewModel(new Repository<DataSet>(app.Context.DataSets), app.UnitOfWork));
+                Tabs.Add(loggerViewModel);
             }
             else
             {
-                vm = new LoggerViewModel();
+                loggerViewModel = new LoggerViewModel();
+
+                Tabs.Add(new LiveDataSourceViewModel() { Logger = loggerViewModel.Logger });
+                Tabs.Add(new DataSetsViewModel());
+                Tabs.Add(loggerViewModel);
             }
 
-            Tabs.Add(new LiveDataSourceViewModel() {Logger = vm.Logger});
-            Tabs.Add(new DataSetsViewModel());
-            Tabs.Add(vm);
         }
 
         private void Quit()

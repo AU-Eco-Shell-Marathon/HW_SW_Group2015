@@ -14,16 +14,19 @@ namespace RollingRoad.Infrastructure.DataAccess
         {
             Port = port;
         }
-
+        
         public void Dispose()
         {
-            if (Port == null)
-                return;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            if (!Port.IsOpen)
-                return;
-
-            Port.Dispose();
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Port?.Dispose();
+            }
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.Core.DomainModel;
@@ -46,7 +47,7 @@ namespace RollingRoad.Test.Unit
         public void OnNextReadValueEvent_OneDataPointGiven_CorrectData(double value)
         {
             _dataset.DataLists.ElementAt(0).Data.Add(new DataPoint(value));
-            _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<TimerElapsedEvent>());
+            _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<Action>());
             
             double dataRead = -1000;
             _emulator.OnNextReadValue += (sender, args) => dataRead = args.Data.First().Item1.Value;

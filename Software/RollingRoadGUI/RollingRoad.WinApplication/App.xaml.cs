@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Management;
 using System.Windows;
+using RollingRoad.Core.DomainServices;
 using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Loggers;
 
@@ -15,6 +16,7 @@ namespace RollingRoad.WinApplication
     {
         public ILogger Logger { get; }
         public ApplicationContext Context { get; }
+        public IUnitOfWork UnitOfWork { get; }
 
         public App()
         {
@@ -35,6 +37,7 @@ namespace RollingRoad.WinApplication
             AppDomain.CurrentDomain.UnhandledException += CatchException;
 
             Context = ApplicationContext.Create();
+            UnitOfWork = new UnitOfWork(Context);
         }
 
         public static string GetOSBit()
