@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RollingRoad.Timers
+namespace RollingRoad.Core.ApplicationServices
 {
     public interface ITimer
     {

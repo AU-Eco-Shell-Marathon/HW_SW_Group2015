@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Loggers;
 
 namespace RollingRoad.Core.ApplicationServices
 {

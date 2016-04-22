@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using RollingRoad.Loggers;
+using RollingRoad.Core.ApplicationServices;
 
 namespace RollingRoad.Test.Unit
 {

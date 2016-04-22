@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Threading;
 using Microsoft.Practices.Prism.Mvvm;
-using RollingRoad.Loggers;
+using RollingRoad.Core.ApplicationServices;
 
 namespace RollingRoad.WinApplication.ViewModels
 {

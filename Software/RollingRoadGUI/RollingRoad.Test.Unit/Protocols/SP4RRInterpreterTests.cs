@@ -5,7 +5,6 @@ using System.Text;
 using NUnit.Framework;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Infrastructure.DataAccess;
-using RollingRoad.Protocols;
 
 namespace RollingRoad.Test.Unit.Protocols
 {

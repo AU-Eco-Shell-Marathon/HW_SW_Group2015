@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Threading;
-using RollingRoad.Control;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Loggers;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {

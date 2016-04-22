@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Infrastructure.DataAccess;
-using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication.ViewModels
 {

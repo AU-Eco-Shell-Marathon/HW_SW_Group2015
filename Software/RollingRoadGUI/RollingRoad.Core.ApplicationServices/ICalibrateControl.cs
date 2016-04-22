@@ -1,4 +1,4 @@
-﻿namespace RollingRoad.Control
+﻿namespace RollingRoad.Core.ApplicationServices
 {
     public interface ICalibrateControl
     {

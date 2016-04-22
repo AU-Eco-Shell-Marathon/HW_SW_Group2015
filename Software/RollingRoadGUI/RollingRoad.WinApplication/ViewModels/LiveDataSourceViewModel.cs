@@ -5,11 +5,9 @@ using System.Windows;
 using System.Windows.Threading;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
-using RollingRoad.Control;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Infrastructure.DataAccess;
-using RollingRoad.Loggers;
 using RollingRoad.WinApplication.Dialogs;
 using MessageBox = System.Windows.MessageBox;
 

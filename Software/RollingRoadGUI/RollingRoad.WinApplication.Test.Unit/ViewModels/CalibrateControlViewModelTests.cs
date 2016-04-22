@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
-using RollingRoad.Control;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.WinApplication.ViewModels;
 
 namespace RollingRoad.WinApplication.Test.Unit.ViewModels

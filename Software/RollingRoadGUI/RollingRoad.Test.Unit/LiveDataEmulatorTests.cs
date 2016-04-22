@@ -2,9 +2,9 @@
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Infrastructure.DataAccess;
-using RollingRoad.Timers;
 
 namespace RollingRoad.Test.Unit
 {

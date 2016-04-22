@@ -3,7 +3,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Infrastructure.DataAccess.Migrations;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {

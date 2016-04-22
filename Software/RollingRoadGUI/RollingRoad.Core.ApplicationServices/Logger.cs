@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RollingRoad.Loggers
+namespace RollingRoad.Core.ApplicationServices
 {
     /// <summary>
     /// Invokes OnLog every time there's a log message, does not store log.

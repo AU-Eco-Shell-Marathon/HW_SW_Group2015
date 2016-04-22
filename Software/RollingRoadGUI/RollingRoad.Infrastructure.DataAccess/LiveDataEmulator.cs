@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Loggers;
-using RollingRoad.Timers;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {

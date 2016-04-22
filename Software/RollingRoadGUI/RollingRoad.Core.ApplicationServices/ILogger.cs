@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RollingRoad.Loggers
+namespace RollingRoad.Core.ApplicationServices
 {
     public interface ILogger
     {

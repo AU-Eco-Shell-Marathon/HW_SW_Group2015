@@ -7,7 +7,6 @@ using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Infrastructure.DataAccess;
-using RollingRoad.Loggers;
 using MessageBox = System.Windows.MessageBox;
 
 namespace RollingRoad.WinApplication.Dialogs

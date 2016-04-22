@@ -3,9 +3,9 @@ using System.Globalization;
 using System.IO;
 using System.Management;
 using System.Windows;
+using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainServices;
 using RollingRoad.Infrastructure.DataAccess;
-using RollingRoad.Loggers;
 
 namespace RollingRoad.WinApplication
 {

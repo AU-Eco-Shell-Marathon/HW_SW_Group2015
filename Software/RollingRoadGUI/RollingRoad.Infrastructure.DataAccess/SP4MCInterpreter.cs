@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using RollingRoad.Control;
+using RollingRoad.Core.ApplicationServices;
 
-namespace RollingRoad.Protocols
+namespace RollingRoad.Infrastructure.DataAccess
 {
     // ReSharper disable once InconsistentNaming
     public class SP4MCInterpreter : IMotorControl, IDisposable

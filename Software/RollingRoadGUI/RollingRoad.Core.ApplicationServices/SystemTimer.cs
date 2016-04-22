@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Timers;
 
-namespace RollingRoad.Timers
+namespace RollingRoad.Core.ApplicationServices
 {
     [ExcludeFromCodeCoverage]
     public class SystemTimer : ITimer

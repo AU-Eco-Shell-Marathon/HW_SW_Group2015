@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using NUnit.Framework;
-using RollingRoad.Protocols;
+using RollingRoad.Infrastructure.DataAccess;
 
 namespace RollingRoad.Test.Unit.Protocols
 {
