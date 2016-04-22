@@ -8,7 +8,6 @@ using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Control;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Loggers;
 using RollingRoad.WinApplication.Dialogs;
@@ -207,23 +206,23 @@ namespace RollingRoad.WinApplication.ViewModels
             return Source != null;
         }
 
-        private void IncommingData(IReadOnlyList<DataPoint> datapoints)
+        private void IncommingData(LiveDataPointsEventArgs datapoints)
         {
             HasBeenSaved = false;
-            foreach (DataPoint datapoint in datapoints)
+            foreach (Tuple<DataPoint, DataType> datapoint in datapoints.Data)
             {
-                DataListViewModel list = DataSet.Collection.FirstOrDefault(x => x.Type.Name == datapoint.Type.Name);
+                DataListViewModel list = DataSet.Collection.FirstOrDefault(x => x.Name == datapoint.Item2.Name);
 
                 if (list == null)
                 {
-                    list = new DataListViewModel(new DataList(datapoint.Type));
+                    list = new DataListViewModel(new DataList(datapoint.Item2.Name, datapoint.Item2.Unit));
                     DataSet.Collection.Add(list);
                     ClearCommand.RaiseCanExecuteChanged();
                     SaveCommand.RaiseCanExecuteChanged();
                 }
-                double value = datapoint.Value;
+                double value = datapoint.Item1.Value;
 
-                if (list.Type.Name == "Distance" && TestSession != null)
+                if (list.Name == "Distance" && TestSession != null)
                 {
                     TestSession.LastestDistance = value;
                 }
@@ -233,11 +232,11 @@ namespace RollingRoad.WinApplication.ViewModels
         }
 
 
-        private void ThreadMover(IReadOnlyList<DataPoint> values)
+        private void ThreadMover(object sender, LiveDataPointsEventArgs liveDataPointsEventArgs)
         {
             try
             {
-                Dispatcher?.BeginInvoke(DispatcherPriority.Input, new Action(() => IncommingData(values)));
+                Dispatcher?.BeginInvoke(DispatcherPriority.Input, new Action(() => IncommingData(liveDataPointsEventArgs)));
             }
             catch (Exception)
             {
@@ -299,7 +298,7 @@ namespace RollingRoad.WinApplication.ViewModels
                 };
 
                 //Offset time to start from 0
-                DataList list = source.DataLists.FirstOrDefault(x => x.Type.Name == "Time");
+                DataList list = source.DataLists.FirstOrDefault(x => x.Name == "Time");
 
                 if (list != null)
                 {

@@ -143,7 +143,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamWriter writer = new StreamWriter(_ms);
             double valueRead = 0;
 
-            _interpreter.OnNextReadValue += data => valueRead = data[0].Value;
+            _interpreter.OnNextReadValue += (sender, args) => valueRead = args.Data.First().Item1.Value;
 
             _interpreter.Start(false);
 
@@ -166,7 +166,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamWriter writer = new StreamWriter(_ms);
             double valueRead = 0;
 
-            _interpreter.OnNextReadValue += data => valueRead = data[0].Value;
+            _interpreter.OnNextReadValue += (sender, args) => valueRead = args.Data.First().Item1.Value;
 
             _interpreter.Start(false);
 

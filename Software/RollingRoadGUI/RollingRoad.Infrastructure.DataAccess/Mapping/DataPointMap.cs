@@ -6,8 +6,10 @@ namespace RollingRoad.Infrastructure.DataAccess.Mapping
     {
         public DataPointMap()
         {
-            this.Property(x => x.Value)
+            Property(x => x.Value)
                 .IsRequired();
+
+            ToTable("DataPoints");
         }
     }
 }

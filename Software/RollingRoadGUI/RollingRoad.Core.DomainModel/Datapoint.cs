@@ -1,19 +1,16 @@
-﻿using System;
-using RollingRoad.Data;
-
-namespace RollingRoad.Core.DomainModel
+﻿namespace RollingRoad.Core.DomainModel
 {
     public class DataPoint : IEntity
     {
+        public int Id { get; set; }
+
         public DataPoint(double value)
         {
             Value = value;
         }
         
         public double Value { get; set; }
-        public int Id { get; set; }
-
-        public DataType Type => DataList.Type;
+        
         public DataList DataList { get; set; }
     }
 }

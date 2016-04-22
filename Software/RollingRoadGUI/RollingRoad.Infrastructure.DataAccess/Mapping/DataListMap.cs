@@ -1,4 +1,4 @@
-﻿using RollingRoad.Data;
+﻿using RollingRoad.Core.DomainModel;
 
 namespace RollingRoad.Infrastructure.DataAccess.Mapping
 {
@@ -6,11 +6,13 @@ namespace RollingRoad.Infrastructure.DataAccess.Mapping
     {
         public DataListMap()
         {
-            this.Property(x => x.Type.Name)
+            Property(x => x.Name)
                 .IsRequired();
-            this.Property(x => x.Type.Unit)
+            Property(x => x.Unit)
                 .IsRequired();
-            this.HasMany(x => x.Data).WithRequired(x => x.DataList);
+            HasMany(x => x.Data).WithRequired(x => x.DataList);
+
+            ToTable("DataLists");
         }
     }
 }

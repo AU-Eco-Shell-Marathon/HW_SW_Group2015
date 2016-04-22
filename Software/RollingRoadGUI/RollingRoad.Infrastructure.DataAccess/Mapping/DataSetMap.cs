@@ -6,15 +6,16 @@ namespace RollingRoad.Infrastructure.DataAccess.Mapping
     {
         public DataSetMap()
         {
-            this.Property(t => t.Name)
-                .IsRequired();
-            this.Property(t => t.Description)
+            Property(t => t.Name)
                 .IsRequired();
 
-            this.HasMany(x => x.DataLists)
+            Property(t => t.Description)
+                .IsRequired();
+
+            HasMany(x => x.DataLists)
                 .WithRequired(x => x.DataSet);
 
-            this.ToTable("DataSet");
+            ToTable("DataSet");
         }
     }
 }

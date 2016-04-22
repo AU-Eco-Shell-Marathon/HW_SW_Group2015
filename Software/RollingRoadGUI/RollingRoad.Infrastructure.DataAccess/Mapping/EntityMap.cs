@@ -7,7 +7,7 @@ namespace RollingRoad.Infrastructure.DataAccess.Mapping
     {
         protected EntityMap()
         {
-            this.HasKey(t => t.Id);
+            HasKey(t => t.Id);
         }
     }
 }

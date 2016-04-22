@@ -7,7 +7,6 @@ using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
 using Microsoft.Win32;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 using RollingRoad.Infrastructure.DataAccess;
 
 namespace RollingRoad.WinApplication.ViewModels

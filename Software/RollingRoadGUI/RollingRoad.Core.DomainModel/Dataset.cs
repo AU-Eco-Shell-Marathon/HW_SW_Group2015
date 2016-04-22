@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using RollingRoad.Data;
 
 namespace RollingRoad.Core.DomainModel
 {

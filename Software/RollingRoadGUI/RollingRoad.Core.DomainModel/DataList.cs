@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using RollingRoad.Core.DomainModel;
 
-namespace RollingRoad.Data
+namespace RollingRoad.Core.DomainModel
 {
     public class DataList : IEntity
     {
         public int Id { get; set; }
         public DataSet DataSet { get; set; }
-        public DataType Type { get; }
+
+        public string Name { get; set; }
+        public string Unit { get; set; }
         
         public virtual ICollection<DataPoint> Data { get; set; } = new List<DataPoint>();
         
@@ -17,17 +18,15 @@ namespace RollingRoad.Data
         /// </summary>
         /// <param name="type"></param>
         /// <exception cref="System.ArgumentException">Thrown when name or unit is empty or null</exception>
-        public DataList(DataType type)
+        public DataList(string name, string unit)
         {
-            if(type == null)
-                throw new Exception("Type cant be null");
-            
-            Type = type;
+            Name = name;
+            Unit = unit;
         }
 
         public override string ToString()
         {
-            return $"{Type} + ({Data.Count} datapoints)";
+            return $"{Name} ({Unit}). ({Data.Count} datapoints)";
         }
     }
 }

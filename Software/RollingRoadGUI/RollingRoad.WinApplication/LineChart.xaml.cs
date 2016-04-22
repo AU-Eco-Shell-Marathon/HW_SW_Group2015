@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
+using RollingRoad.Core.DomainModel;
 using RollingRoad.WinApplication.Annotations;
 using RollingRoad.WinApplication.ViewModels;
 using Color = System.Windows.Media.Color;
@@ -155,17 +156,17 @@ namespace RollingRoad.WinApplication
                 return;
             
             DataListViewModel xAxis = null;
-            EnumerableDataSource<double> xData = null;
+            EnumerableDataSource<DataPoint> xData = null;
             
 
             foreach (DataListViewModel dataList in ItemsSource)
             {
-                if (dataList.Type.Name == XAxisName)
+                if (dataList.Name == XAxisName)
                 {
                     xAxis = dataList;
-                    xData = new EnumerableDataSource<double>(xAxis.Data);
-                    xData.SetXMapping(x => x);
-                    HorizontalAxisTitle.Content = xAxis.Type.ToString();
+                    xData = new EnumerableDataSource<DataPoint>(xAxis.Data);
+                    xData.SetXMapping(x => x.Value);
+                    HorizontalAxisTitle.Content = $"{xAxis.Name} ({xAxis.Unit})";
                     continue;
                 }
 
@@ -175,11 +176,11 @@ namespace RollingRoad.WinApplication
                 if(!dataList.Selected)
                     continue;
 
-                EnumerableDataSource<double> yData = new EnumerableDataSource<double>(dataList.Data);
-                yData.SetYMapping(x => x);
+                EnumerableDataSource<DataPoint> yData = new EnumerableDataSource<DataPoint>(dataList.Data);
+                yData.SetYMapping(x => x.Value);
 
                 CompositeDataSource source = new CompositeDataSource(xData, yData);
-                Color color = GetLineColor(dataList.Type.Name + dataList.DataSetIndex + "LineColor");
+                Color color = GetLineColor(dataList.Name + dataList.DataSetIndex + "LineColor");
                 dataList.Fill = new SolidColorBrush(color);
 
                 Chart.AddLineGraph(source, color, 2, dataList.ToString());

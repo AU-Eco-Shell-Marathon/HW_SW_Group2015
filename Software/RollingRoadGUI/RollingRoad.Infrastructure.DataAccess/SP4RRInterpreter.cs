@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -16,7 +17,7 @@ namespace RollingRoad.Infrastructure.DataAccess
         /// <summary>
         /// Updated each time a fullset om data has been recived.
         /// </summary>
-        public event ReadOnlyDataEntryList OnNextReadValue;
+        public event EventHandler<LiveDataPointsEventArgs> OnNextReadValue;
 
         private Thread _listenThread;
         private readonly StreamReader _reader;
@@ -133,24 +134,22 @@ namespace RollingRoad.Infrastructure.DataAccess
                         if (values.Length == 4)
                             typeUnit = values[3];
 
-                        DataType type = new DataType(typeName, typeUnit);
-
-                        Logger?.WriteLine("New type recieved: " + type);
+                        Logger?.WriteLine("New type recieved: " + typeName);
 
                         if (_typeDictionary.ContainsKey(typeId))
                         {
-                            _typeDictionary[typeId] = type;
+                            _typeDictionary[typeId] = new DataType(typeName, typeUnit);
                         }
                         else
                         {
-                            _typeDictionary.Add(typeId, type);
+                            _typeDictionary.Add(typeId, new DataType(typeName, typeUnit));
                         }
                         break;
                     case PacketId.Information:
 
                         //<PacketID> <ID 0 Value> <ID 1 Value> .. <ID X Value>
                         int valuesToRead = values.Length - 1;
-                        List<DataPoint> dataRead = new List<DataPoint>();
+                        ICollection<Tuple<DataPoint, DataType>> dataRead = new List<Tuple<DataPoint, DataType>>();
 
                         for (int i = 0; i < valuesToRead; i++)
                         {
@@ -172,10 +171,10 @@ namespace RollingRoad.Infrastructure.DataAccess
                                     _typeDictionary.Add(i, new DataType("Unknown", "Unknown"));
                             }
                             
-                            dataRead.Add(new DataPoint(value));
+                            dataRead.Add(new Tuple<DataPoint, DataType>(new DataPoint(value), _typeDictionary[i]));
                         }
 
-                        OnNextReadValue?.Invoke(dataRead);
+                        OnNextReadValue?.Invoke(this, new LiveDataPointsEventArgs(dataRead));
                         break;
                     case PacketId.PidCtrl:
 

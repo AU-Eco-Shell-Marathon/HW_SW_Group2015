@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 using RollingRoad.Infrastructure.DataAccess.Mapping;
 
 namespace RollingRoad.Infrastructure.DataAccess

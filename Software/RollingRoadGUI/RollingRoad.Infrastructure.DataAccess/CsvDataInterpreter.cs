@@ -3,7 +3,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 
 namespace RollingRoad.Infrastructure.DataAccess
 {
@@ -32,10 +31,10 @@ namespace RollingRoad.Infrastructure.DataAccess
             int dataLength = source.DataLists.First().Data.Count;
 
             //Write header and all type names
-            writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), source.DataLists.Select(x => x.Type.Name)));
+            writer.WriteLine(headername + Seperator + string.Join(Seperator.ToString(), source.DataLists.Select(x => x.Name)));
 
             //Writer description and all type units
-            writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), source.DataLists.Select(x => x.Type.Unit)));
+            writer.WriteLine(source.Description + Seperator + string.Join(Seperator.ToString(), source.DataLists.Select(x => x.Unit)));
 
             //Data
             for (int i = 0; i < dataLength; i++)
@@ -98,7 +97,7 @@ namespace RollingRoad.Infrastructure.DataAccess
             //Create a new list for each of the units
             for (int i = 1; i < names.Length; i++)
             {
-                data.DataLists.Add(new DataList(new DataType(names[i], units[i])));
+                data.DataLists.Add(new DataList(names[i], units[i]));
             }
 
             //Read all data

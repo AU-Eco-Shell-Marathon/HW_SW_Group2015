@@ -7,7 +7,6 @@ using System.Text;
 using NUnit.Framework;
 using RollingRoad.Protocols;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 using RollingRoad.Infrastructure.DataAccess;
 
 namespace RollingRoad.Test.Unit.Protocols
@@ -75,7 +74,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.That(source.DataLists.FirstOrDefault(x => x.Type.Name == "type1").Type.Name, Is.EqualTo("type1"));
+            Assert.That(source.DataLists.FirstOrDefault(x => x.Name == "type1").Name, Is.EqualTo("type1"));
         }
 
         [Test]
@@ -84,7 +83,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.That(source.DataLists.FirstOrDefault(x => x.Type.Name == "type1").Type.Unit, Is.EqualTo("unit1"));
+            Assert.That(source.DataLists.FirstOrDefault(x => x.Name == "type1").Unit, Is.EqualTo("unit1"));
         }
 
         [Test]
@@ -93,7 +92,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.That(source.DataLists.FirstOrDefault(x => x.Type.Name == "type3"), Is.EqualTo(null));
+            Assert.That(source.DataLists.FirstOrDefault(x => x.Name == "type3"), Is.EqualTo(null));
         }
         
         [TestCase(5.0)]
@@ -106,7 +105,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;{data.ToString(new CultureInfo("en-US"))};3");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
             
-            Assert.That(source.DataLists.FirstOrDefault(x => x.Type.Name == "type1").Data.First().Value, Is.EqualTo(data));
+            Assert.That(source.DataLists.FirstOrDefault(x => x.Name == "type1").Data.First().Value, Is.EqualTo(data));
         }
 
         [Test]
@@ -115,7 +114,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;3.0E2;3");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.That(source.DataLists.FirstOrDefault(x => x.Type.Name == "type1").Data.First().Value, Is.EqualTo(300));
+            Assert.That(source.DataLists.FirstOrDefault(x => x.Name == "type1").Data.First().Value, Is.EqualTo(300));
         }
 
         [Test]
@@ -124,7 +123,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString("SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;3.0e2;3");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.That(source.DataLists.FirstOrDefault(x => x.Type.Name == "type1").Data.First().Value, Is.EqualTo(300));
+            Assert.That(source.DataLists.FirstOrDefault(x => x.Name == "type1").Data.First().Value, Is.EqualTo(300));
         }
 
         [TestCase(5.0)]
@@ -137,7 +136,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StreamReader reader = CreateStreamReaderFromString($"SHELL ECO MARATHON;type1;type2\nTest Description;unit1;unit2\n;1;2\n;{data.ToString(new CultureInfo("en-US"))};3");
             DataSet source = CsvDataInterpreter.LoadFromStream(reader, "shell eco marathon");
 
-            Assert.That(source.DataLists.First(x => x.Type.Name == "type1").Data.ElementAt(1).Value, Is.EqualTo(data));
+            Assert.That(source.DataLists.First(x => x.Name == "type1").Data.ElementAt(1).Value, Is.EqualTo(data));
         }
 
         [Test]
@@ -149,7 +148,7 @@ namespace RollingRoad.Test.Unit.Protocols
             string testDescription = "testdescription1234";
 
             dataset.Description = testDescription;
-            dataset.DataLists.Add(new DataList(new DataType("Test", "Test2")));
+            dataset.DataLists.Add(new DataList("Test", "Test2"));
 
             CsvDataInterpreter.WriteToStream(writer, dataset, "");
 
@@ -167,7 +166,7 @@ namespace RollingRoad.Test.Unit.Protocols
             StringBuilder builder = new StringBuilder();
             TextWriter writer = new StringWriter(builder);
             DataSet dataset = new DataSet();
-            DataList list = new DataList(new DataType("Test", "Test2")) { Data = new List<DataPoint>() { new DataPoint(value)}};
+            DataList list = new DataList("Test", "Test2") { Data = new List<DataPoint>() { new DataPoint(value)}};
 
             dataset.DataLists.Add(list);
 

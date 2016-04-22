@@ -2,7 +2,6 @@
 using NSubstitute;
 using NUnit.Framework;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 using RollingRoad.Infrastructure.DataAccess;
 using RollingRoad.Timers;
 
@@ -21,7 +20,7 @@ namespace RollingRoad.Test.Unit
             _dataset = new DataSet();
             _timer = Substitute.For<ITimer>();
             
-            _dataset.DataLists.Add(new DataList(new DataType("Time", "TestUnit")));
+            _dataset.DataLists.Add(new DataList("Time", "TestUnit"));
 
             _emulator = new LiveDataEmulator(_dataset) {Timer = _timer};
         }
@@ -32,7 +31,7 @@ namespace RollingRoad.Test.Unit
             int invokeCount = 0;
 
             //Excluded from coverage since invokeCount should not be called
-            _emulator.OnNextReadValue += data =>invokeCount++;
+            _emulator.OnNextReadValue += (sender, args) => invokeCount++;
 
             _emulator.Start();
 
@@ -50,7 +49,7 @@ namespace RollingRoad.Test.Unit
             _timer.When(timer => timer.Start(Arg.Any<int>())).Do(x => _timer.Elapsed += Raise.Event<TimerElapsedEvent>());
             
             double dataRead = -1000;
-            _emulator.OnNextReadValue += incommingData => dataRead = incommingData[0].Value;
+            _emulator.OnNextReadValue += (sender, args) => dataRead = args.Data.First().Item1.Value;
 
             _emulator.Start();
 

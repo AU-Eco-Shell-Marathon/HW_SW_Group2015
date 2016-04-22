@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 
 namespace RollingRoad.Test.Unit.Data
 {

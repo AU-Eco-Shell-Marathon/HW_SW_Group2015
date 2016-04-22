@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using RollingRoad.Core.ApplicationServices;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 using RollingRoad.Loggers;
 using RollingRoad.Timers;
 
@@ -19,7 +18,7 @@ namespace RollingRoad.Infrastructure.DataAccess
         /// <summary>
         /// Event when at new value is sent
         /// </summary>
-        public event ReadOnlyDataEntryList OnNextReadValue;
+        public event EventHandler<LiveDataPointsEventArgs> OnNextReadValue;
         /// <summary>
         /// Logger used for debug messages
         /// </summary>
@@ -56,7 +55,7 @@ namespace RollingRoad.Infrastructure.DataAccess
         {
             _source = source;
             
-            _xAxis = source.DataLists.FirstOrDefault(x => x.Type.Name == "Time");
+            _xAxis = source.DataLists.FirstOrDefault(x => x.Name == "Time");
 
             Timer = new SystemTimer();
             
@@ -105,7 +104,7 @@ namespace RollingRoad.Infrastructure.DataAccess
             _index = 0;
 
             if(_xAxis != null && _xAxis.Data.Count > 0)
-                _lastMs = GetMs(_xAxis.Data.First().Value, _xAxis.Type.Unit);
+                _lastMs = GetMs(_xAxis.Data.First().Value, _xAxis.Unit);
         }
 
         private double GetMs(double value, string unit)
@@ -139,12 +138,16 @@ namespace RollingRoad.Infrastructure.DataAccess
             }
 
             //Setup data to transmit
-            List<DataPoint> entry = _source.DataLists.Select(dataList => dataList.Data.ElementAt(_index)).ToList();
+            IList<Tuple<DataPoint, DataType>> entry = _source.DataLists.Select(
+                dataList =>
+                    new Tuple<DataPoint, DataType>(
+                        dataList.Data.ElementAt(_index),
+                        new DataType(dataList.Name, dataList.Unit))).ToList();
 
-            OnNextReadValue?.Invoke(entry); //Send value
+            OnNextReadValue?.Invoke(this, new LiveDataPointsEventArgs(entry)); //Send value
 
             //Calculate time to wait
-            double time = GetMs(_xAxis.Data.ElementAt(_index).Value, _xAxis.Type.Unit);
+            double time = GetMs(_xAxis.Data.ElementAt(_index).Value, _xAxis.Unit);
             double delta = time - _lastMs;
             _lastMs = time;
 

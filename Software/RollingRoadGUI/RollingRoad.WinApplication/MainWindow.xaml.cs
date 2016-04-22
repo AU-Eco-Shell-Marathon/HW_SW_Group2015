@@ -20,7 +20,7 @@ namespace RollingRoad.WinApplication
 
             string output = "";
 
-            output += context.DataLists.Select(x => x.Type.Name);
+            output += context.DataLists.Select(x => x.Name);
 
             Debug.WriteLine(output);
         }

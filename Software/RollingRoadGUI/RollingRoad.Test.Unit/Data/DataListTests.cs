@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 
 namespace RollingRoad.Test.Unit.Data
 {
@@ -15,7 +14,7 @@ namespace RollingRoad.Test.Unit.Data
         [SetUp]
         public void SetUp()
         {
-            _list = new DataList(new DataType(_name, _unit));
+            _list = new DataList(_name, _unit);
         }
 
 

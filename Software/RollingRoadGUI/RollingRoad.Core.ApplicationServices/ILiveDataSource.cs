@@ -1,12 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Loggers;
 
 namespace RollingRoad.Core.ApplicationServices
 {
+    public class LiveDataPointsEventArgs : EventArgs
+    {
+        public LiveDataPointsEventArgs(ICollection<Tuple<DataPoint, DataType>> data)
+        {
+            Data = data;
+        }
 
-    public delegate void ReadOnlyDataEntryList(IReadOnlyList<DataPoint> values);
-
+        public ICollection<Tuple<DataPoint, DataType>> Data { get; }
+    }
+    
     public delegate void OnStatusUpdate(object sender, LiveDataSourceStatus status);
 
     public enum LiveDataSourceStatus
@@ -22,7 +30,7 @@ namespace RollingRoad.Core.ApplicationServices
         /// <summary>
         /// Updated each time a fullset om data has been recived.
         /// </summary>
-        event ReadOnlyDataEntryList OnNextReadValue;
+        event EventHandler<LiveDataPointsEventArgs> OnNextReadValue;
 
         /// <summary>
         /// Starts the transmission/recieving of data

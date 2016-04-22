@@ -74,12 +74,12 @@ namespace RollingRoad.WinApplication.Test.Unit.ViewModels
             Assert.That(_vm.DataSet.Collection, Is.Empty);
         }
         
-        public void Collection_SourceSend1Datapoint_NewListAdded()
+        /*public void Collection_SourceSend1Datapoint_NewListAdded()
         {
             _source.OnNextReadValue +=
-                Raise.Event<ReadOnlyDataEntryList>(new List<DataPoint>(){new DataPoint(0)});
+                Raise.Event(new LiveDataPointsEventArgs(new List<Tuple<DataPoint, DataType>>() {new Tuple<DataPoint, DataType>(new DataPoint(1), new DataType())}));
 
             Assert.That(_vm.DataSet.Count, Is.EqualTo(1));
-        }
+        }*/
     }
 }

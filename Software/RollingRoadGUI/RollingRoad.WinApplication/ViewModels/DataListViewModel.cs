@@ -3,7 +3,6 @@ using System.Linq;
 using System.Windows.Media;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
@@ -17,7 +16,8 @@ namespace RollingRoad.WinApplication.ViewModels
             //List.Data = new ObservableCollection<double>(List.Data);
         }
 
-        public DataType Type => List.Type;
+        public string Name => List.Name;
+        public string Unit => List.Unit;
 
         public void Add(double value)
         {
@@ -46,7 +46,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         public override string ToString()
         {
-            return $"D{DataSetIndex}:{Type}";
+            return $"D{DataSetIndex}:{Name} ({Unit})";
         }
     }
 }

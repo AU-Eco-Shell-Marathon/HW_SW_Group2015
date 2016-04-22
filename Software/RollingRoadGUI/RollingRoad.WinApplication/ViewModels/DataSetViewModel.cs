@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Mvvm;
 using RollingRoad.Core.DomainModel;
-using RollingRoad.Data;
 
 namespace RollingRoad.WinApplication.ViewModels
 {
