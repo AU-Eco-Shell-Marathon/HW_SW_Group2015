@@ -6,7 +6,7 @@
              xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
              xmlns:viewModels="clr-namespace:RollingRoad.WinApplication.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" x:Name="LineChartUC">
+             d:DesignHeight="300" d:DesignWidth="500" x:Name="LineChartUC">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -49,8 +49,8 @@
             <!-- Graph options -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 
                 <Grid.RowDefinitions>
@@ -65,15 +65,9 @@
                           ItemsSource="{Binding RefreshRateOptions, ElementName=LineChartUC}" 
                           SelectedIndex="{Binding SelectedRefreshRate, ElementName=LineChartUC}"/>
 
-                <!-- Buffer type -->
-                <Label Grid.Row="1" Grid.Column="0" Content="Buffer type:"/>
+                <!-- Buffer size -->
+                <Label Grid.Row="1" Grid.Column="0" Content="Dispaly buffer size:"/>
                 <ComboBox Grid.Row="1" Grid.Column="1" 
-                          ItemsSource="{Binding BufferTypeOptions, ElementName=LineChartUC}" 
-                          SelectedIndex="{Binding SelectedBufferType, ElementName=LineChartUC}"/>
-
-                 <!-- Buffer size -->
-                <Label Grid.Row="2" Grid.Column="0" Content="Buffer size:"/>
-                <ComboBox Grid.Row="2" Grid.Column="1" 
                           IsEnabled="{Binding BufferSizeEnabled, ElementName=LineChartUC}"
                           ItemsSource="{Binding BufferSizeOptions, ElementName=LineChartUC}" 
                           SelectedIndex="{Binding SelectedBufferSize, ElementName=LineChartUC}"/>

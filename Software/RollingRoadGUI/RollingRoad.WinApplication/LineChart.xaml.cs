@@ -37,8 +37,7 @@ namespace RollingRoad.WinApplication
                                                                             new FrameworkPropertyMetadata(ItemsSourceChange, null));
 
         public ICollection<string> RefreshRateOptions { get; } = new List<string>() {"Off", "500 ms", "1000 ms", "5000 ms", "10000 ms"};
-        public ICollection<string> BufferTypeOptions { get; } = new List<string>() {"Circular", "List"}; 
-        public ICollection<int> BufferSizeOptions { get; } = new List<int>() {500, 1000};
+        public ICollection<int> BufferSizeOptions { get; } = new List<int>() {100, 500, 1000, 10000};
 
         public int SelectedRefreshRate
         {
@@ -68,25 +67,6 @@ namespace RollingRoad.WinApplication
 
             }
         }
-
-        public int SelectedBufferType
-        {
-            get { return _selectedBufferType; }
-            set
-            {
-                if (_selectedBufferType == value)
-                    return;
-
-                string bufferType = BufferTypeOptions.ElementAt(value);
-
-                BufferSizeEnabled = bufferType == "Circular";
-
-                _selectedBufferType = value;
-                _settings.SetIntStat(nameof(SelectedBufferType), value);
-                OnPropertyChanged();
-            }
-        }
-
         public int SelectedBufferSize
         {
             get { return _selectedBufferSize; }
@@ -96,17 +76,7 @@ namespace RollingRoad.WinApplication
                     return;
 
                 _selectedBufferSize = value;
-                _settings.SetIntStat(nameof(SelectedBufferType), value);
-                OnPropertyChanged();
-            }
-        }
-
-        public bool BufferSizeEnabled
-        {
-            get { return _bufferSizeEnabled; }
-            private set
-            {
-                _bufferSizeEnabled = value;
+                _settings.SetIntStat(nameof(_selectedBufferSize), value);
                 OnPropertyChanged();
             }
         }
@@ -128,8 +98,7 @@ namespace RollingRoad.WinApplication
             _timer.Tick += (sender, e) => Refresh();
 
             SelectedRefreshRate = _settings.GetIntStat(nameof(SelectedRefreshRate));
-            SelectedBufferSize = _settings.GetIntStat(nameof(SelectedBufferType));
-            SelectedBufferType = _settings.GetIntStat(nameof(SelectedBufferSize));
+            SelectedBufferSize = _settings.GetIntStat(nameof(SelectedBufferSize));
 
             Chart.LegendVisible = false;
         }
@@ -163,7 +132,7 @@ namespace RollingRoad.WinApplication
                 if (dataList.Name == XAxisName)
                 {
                     xAxis = dataList;
-                    xData = new EnumerableDataSource<DataPoint>(xAxis.Data);
+                    xData = new EnumerableDataSource<DataPoint>(xAxis.Data.Reverse().Take(BufferSizeOptions.ElementAt(SelectedBufferSize)));
                     xData.SetXMapping(x => x.Value);
                     HorizontalAxisTitle.Content = $"{xAxis.Name} ({xAxis.Unit})";
                     continue;
@@ -175,14 +144,14 @@ namespace RollingRoad.WinApplication
                 if(!dataList.Selected)
                     continue;
 
-                EnumerableDataSource<DataPoint> yData = new EnumerableDataSource<DataPoint>(dataList.Data);
+                EnumerableDataSource<DataPoint> yData = new EnumerableDataSource<DataPoint>(dataList.Data.Reverse().Take(BufferSizeOptions.ElementAt(SelectedBufferSize)));
                 yData.SetYMapping(x => x.Value);
 
                 CompositeDataSource source = new CompositeDataSource(xData, yData);
                 Color color = GetLineColor(dataList.Name + dataList.DataSetIndex + "LineColor");
                 dataList.Fill = new SolidColorBrush(color);
 
-                Chart.AddLineGraph(source, color, 2, dataList.ToString());
+                LineGraph test = Chart.AddLineGraph(source, color, 2, dataList.ToString());
             }
         }
 
