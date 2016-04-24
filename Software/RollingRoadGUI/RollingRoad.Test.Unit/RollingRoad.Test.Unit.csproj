@@ -67,16 +67,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DatasetTests.cs" />
-    <Compile Include="Protocols\CsvDataInterpeterTests.cs" />
-    <Compile Include="Data\DatapointTests.cs" />
-    <Compile Include="Data\DataListTests.cs" />
+    <Compile Include="DomainModel\DatasetTests.cs" />
+    <Compile Include="DomainModel\DateTypeTests.cs" />
+    <Compile Include="DataAccess\CsvDataInterpeterTests.cs" />
+    <Compile Include="DomainModel\DataPointTests.cs" />
+    <Compile Include="DomainModel\DataListTests.cs" />
     <Compile Include="EventLoggerTests.cs" />
     <Compile Include="LiveDataEmulatorTests.cs" />
-    <Compile Include="Data\MemoryDatasetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Protocols\SP4MCInterpreterTests.cs" />
-    <Compile Include="Protocols\SP4RRInterpreterTests.cs" />
+    <Compile Include="DataAccess\SP4MCInterpreterTests.cs" />
+    <Compile Include="DataAccess\SP4RRInterpreterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

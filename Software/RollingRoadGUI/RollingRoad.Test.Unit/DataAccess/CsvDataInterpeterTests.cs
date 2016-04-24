@@ -8,7 +8,7 @@ using NUnit.Framework;
 using RollingRoad.Core.DomainModel;
 using RollingRoad.Infrastructure.DataAccess;
 
-namespace RollingRoad.Test.Unit.Protocols
+namespace RollingRoad.Test.Unit.DataAccess
 {
     [TestFixture]
     public class CsvDataInterpeterTests

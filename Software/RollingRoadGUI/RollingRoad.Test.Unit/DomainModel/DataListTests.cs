@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using RollingRoad.Core.DomainModel;
 
-namespace RollingRoad.Test.Unit.Data
+namespace RollingRoad.Test.Unit.DomainModel
 {
     [TestFixture]
     public class DataListTests
@@ -51,6 +51,37 @@ namespace RollingRoad.Test.Unit.Data
         public void Title_NameAndUnitSet_UnitContainedInTitle()
         {
             Assert.That(_list.ToString(), Does.Contain("TestUnit"));
+        }
+
+        [Test]
+        public void Ctor_NoValues_NameIsUnknown()
+        {
+            Assert.That(new DataList().Name, Is.EqualTo("Unknown"));
+        }
+
+        [Test]
+        public void Ctor_NoValues_UnitIsUnknown()
+        {
+            Assert.That(new DataList().Unit, Is.EqualTo("Unknown"));
+        }
+
+        [TestCase(5)]
+        [TestCase(10)]
+        public void Id_SetValue_CorrectId(int id)
+        {
+            _list.Id = id;
+
+            Assert.That(_list.Id, Is.EqualTo(id));
+        }
+
+        [Test]
+        public void DataSet_SetValue_ValueSet()
+        {
+            DataSet test = new DataSet();
+
+            _list.DataSet = test;
+
+            Assert.That(_list.DataSet, Is.EqualTo(test));
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Text;
 using NUnit.Framework;
 using RollingRoad.Infrastructure.DataAccess;
 
-namespace RollingRoad.Test.Unit.Protocols
+namespace RollingRoad.Test.Unit.DataAccess
 {
     [TestFixture]
     // ReSharper disable once InconsistentNaming
