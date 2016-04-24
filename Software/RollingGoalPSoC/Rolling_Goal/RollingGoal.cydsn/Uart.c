@@ -89,6 +89,12 @@ void ReceiveUARTData(void)
                 CyDelay(1);
                 SendUART("1 15 PIDsensor\n");
                 CyDelay(1);
+                SendUART("1 16 ForceRMS N\n");
+                CyDelay(1);
+                SendUART("1 17 VoltageRMS V\n");
+                CyDelay(1);
+                SendUART("1 3 AmpereRMS A\n");
+                CyDelay(1);
                 char buf[50];
                 sprintf(buf, "5 %f %f %f\n",
                     PIDval.Kp,
@@ -196,7 +202,7 @@ void SendData (struct data* Data,  float setForce, float PIDinput, float PIDsens
     
     char buf[500];
        
-    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d %f %f %f %f %f %f\n\r", 
+    sprintf(buf, "3 %lu %f %f %f %f %lu %f %f %f %d %f %f %f %f %f %f %f %f %f\n\r", 
         Data->time_ms, 
         MomentToForce(Data->Moment.avg), 
         Data->V_motor.avg, 
@@ -212,7 +218,10 @@ void SendData (struct data* Data,  float setForce, float PIDinput, float PIDsens
         PIDdebug[1], //err
         PIDdebug[2],//antiwindup
         PIDinput, //input
-        PIDsensor //sensor
+        PIDsensor, //sensor
+        MomentToForce(Data->Moment.rms), 
+        Data->V_motor.rms, 
+        Data->A_motor.rms
     );
     SendUART(buf);
     /*
