@@ -176,7 +176,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private bool CanClear()
         {
-            return DataSet.Count > 0;
+            return DataSet.Collection.Count > 0;
         }
 
         private void Start()
@@ -324,7 +324,7 @@ namespace RollingRoad.WinApplication.ViewModels
 
         private bool CanSave()
         {
-            return DataSet.Count > 0;
+            return DataSet.Collection.Count > 0;
         }
 
         public override string ToString()

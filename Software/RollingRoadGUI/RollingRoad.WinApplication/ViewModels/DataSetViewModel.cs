@@ -51,8 +51,6 @@ namespace RollingRoad.WinApplication.ViewModels
             DataSet.DataLists.Clear();
         }
 
-        public int Count => DataSet.DataLists.Count;
-
         public ObservableCollection<DataListViewModel> Collection { get; } = new ObservableCollection<DataListViewModel>();
 
         public string ToStringProperty => ToString();

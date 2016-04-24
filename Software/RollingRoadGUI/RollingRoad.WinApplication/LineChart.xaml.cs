@@ -37,7 +37,7 @@ namespace RollingRoad.WinApplication
                                                                             new FrameworkPropertyMetadata(ItemsSourceChange, null));
 
         public ICollection<string> RefreshRateOptions { get; } = new List<string>() {"Off", "500 ms", "1000 ms", "5000 ms", "10000 ms"};
-        public ICollection<int> BufferSizeOptions { get; } = new List<int>() {100, 500, 1000, 10000};
+        public ICollection<int> BufferSizeOptions { get; } = new List<int>() {100, 250, 500, 750, 1000, 10000};
 
         public int SelectedRefreshRate
         {
@@ -77,6 +77,16 @@ namespace RollingRoad.WinApplication
 
                 _selectedBufferSize = value;
                 _settings.SetIntStat(nameof(_selectedBufferSize), value);
+                OnPropertyChanged();
+            }
+        }
+
+        public string BufferSizeUsage
+        {
+            get { return _bufferSizeUsage; }
+            private set
+            {
+                _bufferSizeUsage = value;
                 OnPropertyChanged();
             }
         }
@@ -123,12 +133,15 @@ namespace RollingRoad.WinApplication
 
             if (ItemsSource == null || ItemsSource.Count == 0)
                 return;
-            
+
+            int backbufferSize = 0;
+
             DataListViewModel xAxis = null;
             EnumerableDataSource<DataPoint> xData = null;
             
             foreach (DataListViewModel dataList in ItemsSource)
             {
+                backbufferSize += dataList.Data.Count * sizeof(double);
                 if (dataList.Name == XAxisName)
                 {
                     xAxis = dataList;
@@ -153,6 +166,8 @@ namespace RollingRoad.WinApplication
 
                 LineGraph test = Chart.AddLineGraph(source, color, 2, dataList.ToString());
             }
+
+            BufferSizeUsage = (backbufferSize/1024) + " KB";
         }
 
         private Color GetLineColor(string key)
@@ -181,6 +196,8 @@ namespace RollingRoad.WinApplication
         }
 
         private Random _rand = new Random();
+        private string _bufferSizeUsage = "0 KB";
+
         private Color GenerateRandom()
         {
             byte[] b = new byte[3];

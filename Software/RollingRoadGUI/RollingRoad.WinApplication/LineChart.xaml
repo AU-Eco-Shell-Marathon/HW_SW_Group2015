@@ -57,6 +57,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <!-- Update rate -->
@@ -66,11 +67,14 @@
                           SelectedIndex="{Binding SelectedRefreshRate, ElementName=LineChartUC}"/>
 
                 <!-- Buffer size -->
-                <Label Grid.Row="1" Grid.Column="0" Content="Dispaly buffer size:"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Display buffer size:"/>
                 <ComboBox Grid.Row="1" Grid.Column="1" 
                           IsEnabled="{Binding BufferSizeEnabled, ElementName=LineChartUC}"
                           ItemsSource="{Binding BufferSizeOptions, ElementName=LineChartUC}" 
                           SelectedIndex="{Binding SelectedBufferSize, ElementName=LineChartUC}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Back-buffer usage:"/>
+                <Label Grid.Row="2" Grid.Column="1" Content="{Binding BufferSizeUsage, ElementName=LineChartUC}"/>
             </Grid>
         </Grid>
     </Grid>

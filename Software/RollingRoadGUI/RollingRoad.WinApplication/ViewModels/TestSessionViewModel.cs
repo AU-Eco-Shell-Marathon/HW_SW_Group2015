@@ -63,17 +63,16 @@ namespace RollingRoad.WinApplication.ViewModels
                 if (Status != TestSessionStatus.Running)
                     return;
 
-                /*DataList distanceDataList = TorqueDataset.DataLists.First(x => x.Type.Name == "Distance");
-
-                double closest = distanceDataList.Data.OrderBy(x => Math.Abs(x - value + DistanceOffset)).First();
-                int index = distanceDataList.IndexOf(closest);
-                CurrentTorque = TorqueDataset.DataLists.First(x => x.Type.Name == "Torque").Data.ElementAt(index).Value;*/
+                DataList distanceDataList = TorqueDataset.DataLists.First(x => x.Name == "Distance");
+                
+                int index = distanceDataList.Data.OrderBy(x => Math.Abs(x.Value - value + DistanceOffset)).First().Index;
+                CurrentTorque = TorqueDataset.DataLists.First(x => x.Name == "Torque").Data.ElementAt(index).Value;
             }
         }
         
         private TorqueControlViewModel _control;
         private double _currentTorque;
-        private TestSessionStatus _status;
+        private TestSessionStatus _status = TestSessionStatus.Stopped;
         private DataSet TorqueDataset { get; set; }
 
         public TestSessionViewModel(TorqueControlViewModel control = null)
