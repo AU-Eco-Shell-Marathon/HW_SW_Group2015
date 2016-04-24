@@ -88,7 +88,7 @@ extern uint8 CAN_1_initVar;
 #define CAN_1_RX2_FUNC_ENABLE          (1u)
 #define CAN_1_RX3_FUNC_ENABLE          (1u)
 #define CAN_1_RX4_FUNC_ENABLE          (1u)
-#define CAN_1_RX5_FUNC_ENABLE          (0u)
+#define CAN_1_RX5_FUNC_ENABLE          (1u)
 #define CAN_1_RX6_FUNC_ENABLE          (0u)
 #define CAN_1_RX7_FUNC_ENABLE          (0u)
 #define CAN_1_RX8_FUNC_ENABLE          (0u)
@@ -99,7 +99,7 @@ extern uint8 CAN_1_initVar;
 #define CAN_1_RX13_FUNC_ENABLE         (0u)
 #define CAN_1_RX14_FUNC_ENABLE         (0u)
 #define CAN_1_RX15_FUNC_ENABLE         (0u)
-#define CAN_1_RX_MAILBOX_TYPE          (0x1Fu)
+#define CAN_1_RX_MAILBOX_TYPE          (0x3Fu)
 #define CAN_1_TX_MAILBOX_TYPE          (0x0u)
 
 
@@ -318,10 +318,10 @@ void  CAN_1_ReceiveMsg(uint8 rxMailbox) ;
     void CAN_1_ReceiveMsgDOD(void) ;
 #endif /* CAN_1_RX3_FUNC_ENABLE */
 #if (CAN_1_RX4_FUNC_ENABLE)
-    void CAN_1_ReceiveMsgT_BATTERY_IR(void) ;
+    void CAN_1_ReceiveMsgT_BATTERY(void) ;
 #endif /* CAN_1_RX4_FUNC_ENABLE */
 #if (CAN_1_RX5_FUNC_ENABLE)
-    void CAN_1_ReceiveMsg5(void) ;
+    void CAN_1_ReceiveMsgIR(void) ;
 #endif /* CAN_1_RX5_FUNC_ENABLE */
 #if (CAN_1_RX6_FUNC_ENABLE)
     void CAN_1_ReceiveMsg6(void) ;
@@ -425,8 +425,8 @@ void  CAN_1_ReceiveMsg(uint8 rxMailbox) ;
 #define CAN_1_RX_MAILBOX_BATTERY_V     (1u)
 #define CAN_1_RX_MAILBOX_BATTERY_A     (2u)
 #define CAN_1_RX_MAILBOX_DOD           (3u)
-#define CAN_1_RX_MAILBOX_T_BATTERY_IR  (4u)
-#define CAN_1_RX_MAILBOX_5             (5u)
+#define CAN_1_RX_MAILBOX_T_BATTERY     (4u)
+#define CAN_1_RX_MAILBOX_IR            (5u)
 #define CAN_1_RX_MAILBOX_6             (6u)
 #define CAN_1_RX_MAILBOX_7             (7u)
 #define CAN_1_RX_MAILBOX_8             (8u)

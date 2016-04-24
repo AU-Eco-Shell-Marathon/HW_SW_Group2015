@@ -786,7 +786,7 @@ void CAN_1_ReceiveMsg(uint8 rxMailbox)
 
 #if (CAN_1_RX4_FUNC_ENABLE)
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_ReceiveMsgT_BATTERY_IR
+    * FUNCTION NAME:   CAN_1_ReceiveMsgT_BATTERY
     ********************************************************************************
     *
     * Summary:
@@ -804,15 +804,15 @@ void CAN_1_ReceiveMsg(uint8 rxMailbox)
     *  Depends on the Customer code.
     *
     *******************************************************************************/
-    void CAN_1_ReceiveMsgT_BATTERY_IR(void) 
+    void CAN_1_ReceiveMsgT_BATTERY(void) 
     {
-        /* `#START MESSAGE_T_BATTERY_IR_RECEIVED` */
-        CAN_func(CAN_1_GET_DLC(CAN_1_RX_MAILBOX_T_BATTERY_IR), T_BATTERY_IR);
+        /* `#START MESSAGE_T_BATTERY_RECEIVED` */
+        CAN_func(CAN_1_GET_DLC(CAN_1_RX_MAILBOX_T_BATTERY), T_BATTERY);
         /* `#END` */
 
-        #ifdef CAN_1_RECEIVE_MSG_T_BATTERY_IR_CALLBACK
-            CAN_1_ReceiveMsg_T_BATTERY_IR_Callback();
-        #endif /* CAN_1_RECEIVE_MSG_T_BATTERY_IR_CALLBACK */
+        #ifdef CAN_1_RECEIVE_MSG_T_BATTERY_CALLBACK
+            CAN_1_ReceiveMsg_T_BATTERY_Callback();
+        #endif /* CAN_1_RECEIVE_MSG_T_BATTERY_CALLBACK */
 
         CAN_1_RX[4u].rxcmd.byte[0u] |= CAN_1_RX_ACK_MSG;
     }
@@ -821,7 +821,7 @@ void CAN_1_ReceiveMsg(uint8 rxMailbox)
 
 #if (CAN_1_RX5_FUNC_ENABLE)
     /*******************************************************************************
-    * FUNCTION NAME:   CAN_1_ReceiveMsg5
+    * FUNCTION NAME:   CAN_1_ReceiveMsgIR
     ********************************************************************************
     *
     * Summary:
@@ -839,15 +839,15 @@ void CAN_1_ReceiveMsg(uint8 rxMailbox)
     *  Depends on the Customer code.
     *
     *******************************************************************************/
-    void CAN_1_ReceiveMsg5(void) 
+    void CAN_1_ReceiveMsgIR(void) 
     {
-        /* `#START MESSAGE_5_RECEIVED` */
-
+        /* `#START MESSAGE_IR_RECEIVED` */
+        CAN_func(CAN_1_GET_DLC(CAN_1_RX_MAILBOX_IR), IR);
         /* `#END` */
 
-        #ifdef CAN_1_RECEIVE_MSG_5_CALLBACK
-            CAN_1_ReceiveMsg_5_Callback();
-        #endif /* CAN_1_RECEIVE_MSG_5_CALLBACK */
+        #ifdef CAN_1_RECEIVE_MSG_IR_CALLBACK
+            CAN_1_ReceiveMsg_IR_Callback();
+        #endif /* CAN_1_RECEIVE_MSG_IR_CALLBACK */
 
         CAN_1_RX[5u].rxcmd.byte[0u] |= CAN_1_RX_ACK_MSG;
     }
@@ -1205,3 +1205,9 @@ void CAN_1_ReceiveMsg(uint8 rxMailbox)
 
 
 /* [] END OF FILE */
+#if 0 /* begin disabled code */
+`#start MESSAGE_T_BATTERY_IR_RECEIVED` -- section removed from template
+        CAN_func(CAN_1_GET_DLC(CAN_1_RX_MAILBOX_T_BATTERY_IR), T_BATTERY_IR);
+`#end`
+
+#endif /* end disabled code */

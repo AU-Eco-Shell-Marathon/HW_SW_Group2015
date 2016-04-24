@@ -54,15 +54,18 @@ void CAN_func(uint8 mailbox,enum CAN_flag flag)
             BMS.capacity = ((uint16)CAN_1_RX_DATA_BYTE(mailbox,3)<<8) || ((uint16)CAN_1_RX_DATA_BYTE(mailbox,4));
             BMS.NewData |= (1<<3);
             break;
-        case T_BATTERY_IR :
+        case T_BATTERY :
             if(DLC < 6) break; 
             BMS.Tbatt = CAN_1_RX_DATA_BYTE(mailbox,0);
+            BMS.NewData |= (1<<4);
+            break;
+        case IR :
+            if(DLC < 6) break;
             BMS.IR_min = CAN_1_RX_DATA_BYTE(mailbox,2); 
             BMS.IR_no_min = CAN_1_RX_DATA_BYTE(mailbox,3);
             BMS.IR_max = CAN_1_RX_DATA_BYTE(mailbox,4);
             BMS.IR_no_max = CAN_1_RX_DATA_BYTE(mailbox,5);
-            BMS.NewData |= (1<<4);
-            break;
+            BMS.NewData |= (1<<5);
         default :
             break;
     }

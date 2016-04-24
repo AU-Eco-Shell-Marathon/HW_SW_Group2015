@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.634ms
+Loading plugins phase: Elapsed time ==> 0s.522ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj -d CY8C5888LTI-LP097 -s C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 5s.741ms
+Elaboration phase: Elapsed time ==> 5s.700ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.161ms
+HDL generation phase: Elapsed time ==> 0s.187ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonat
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Apr 17 16:18:25 2016
+Sun Apr 24 18:53:56 2016
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 MotorController.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Apr 17 16:18:25 2016
+Sun Apr 24 18:53:56 2016
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
@@ -75,6 +75,8 @@ Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\ps
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_SPI_Master_v2_40\B_SPI_Master_v2_40.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 
 vpp:  No errors.
@@ -109,7 +111,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonat
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Apr 17 16:18:26 2016
+Sun Apr 24 18:53:57 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -140,6 +142,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_SPI_Master_v2_40\B_SPI_Master_v2_40.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\lcpsoc3\stdlogic\mod_cnst.vif'.
@@ -155,7 +158,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonat
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Apr 17 16:18:27 2016
+Sun Apr 24 18:53:59 2016
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -186,6 +189,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_SPI_Master_v2_40\B_SPI_Master_v2_40.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\lcpsoc3\stdlogic\mod_cnst.vif'.
@@ -535,6 +539,7 @@ Aliasing \ADC_A:vp_ctl_3\ to zero
 Aliasing \ADC_A:vn_ctl_0\ to zero
 Aliasing \ADC_A:vn_ctl_2\ to zero
 Aliasing \ADC_A:soc\ to zero
+Aliasing \ADC_A:tmpOE__Bypass_net_0\ to one
 Aliasing \ADC_A:Net_381\ to zero
 Aliasing tmpOE__Motor_A_gnd_net_0 to one
 Aliasing \emFile_1:SPI0:BSPIM:pol_supprt\ to zero
@@ -560,6 +565,7 @@ Aliasing \ADC_V:vn_ctl_0\ to zero
 Aliasing \ADC_V:vn_ctl_2\ to zero
 Aliasing \ADC_V:soc\ to zero
 Aliasing \ADC_V:Net_381\ to zero
+Aliasing tmpOE__HornInput_net_0 to one
 Aliasing \PWM_motor:PWMUDB:min_kill_reg\\D\ to one
 Aliasing \PWM_motor:PWMUDB:prevCapture\\D\ to zero
 Aliasing \PWM_motor:PWMUDB:trig_last\\D\ to zero
@@ -567,6 +573,10 @@ Aliasing \PWM_motor:PWMUDB:ltch_kill_reg\\D\ to one
 Aliasing \Timer_RPM:TimerUDB:hwEnable_reg\\D\ to \Timer_RPM:TimerUDB:run_mode\
 Aliasing \emFile_1:SPI0:BSPIM:so_send_reg\\D\ to zero
 Aliasing \emFile_1:SPI0:BSPIM:dpcounter_one_reg\\D\ to \emFile_1:SPI0:BSPIM:load_rx_data\
+Aliasing \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\ to Net_3206
+Aliasing Net_3209D to zero
+Aliasing Net_3207D to zero
+Aliasing Net_3208D to zero
 Removing Lhs of wire \PWM_motor:PWMUDB:ctrl_enable\[16] = \PWM_motor:PWMUDB:control_7\[8]
 Removing Lhs of wire \PWM_motor:PWMUDB:hwCapture\[26] = zero[7]
 Removing Lhs of wire \PWM_motor:PWMUDB:hwEnable\[27] = \PWM_motor:PWMUDB:control_7\[8]
@@ -725,61 +735,70 @@ Removing Lhs of wire \ADC_A:vn_ctl_0\[832] = zero[7]
 Removing Lhs of wire \ADC_A:vn_ctl_2\[833] = zero[7]
 Removing Rhs of wire \ADC_A:Net_188\[836] = \ADC_A:Net_221\[837]
 Removing Lhs of wire \ADC_A:soc\[842] = zero[7]
-Removing Lhs of wire \ADC_A:Net_381\[867] = zero[7]
-Removing Lhs of wire tmpOE__Motor_A_gnd_net_0[869] = one[4]
-Removing Lhs of wire \emFile_1:SPI0:Net_276\[874] = \emFile_1:Net_19\[875]
-Removing Rhs of wire \emFile_1:SPI0:BSPIM:load_rx_data\[878] = \emFile_1:SPI0:BSPIM:dpcounter_one\[879]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:pol_supprt\[880] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:miso_to_dp\[881] = \emFile_1:SPI0:Net_244\[882]
-Removing Lhs of wire \emFile_1:SPI0:Net_244\[882] = \emFile_1:Net_16\[975]
-Removing Rhs of wire \emFile_1:Net_10\[886] = \emFile_1:SPI0:BSPIM:mosi_fin\[887]
-Removing Rhs of wire \emFile_1:Net_10\[886] = \emFile_1:SPI0:BSPIM:mosi_cpha_0\[888]
-Removing Rhs of wire \emFile_1:SPI0:BSPIM:tx_status_1\[909] = \emFile_1:SPI0:BSPIM:dpMOSI_fifo_empty\[910]
-Removing Rhs of wire \emFile_1:SPI0:BSPIM:tx_status_2\[911] = \emFile_1:SPI0:BSPIM:dpMOSI_fifo_not_full\[912]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:tx_status_3\[913] = \emFile_1:SPI0:BSPIM:load_rx_data\[878]
-Removing Rhs of wire \emFile_1:SPI0:BSPIM:rx_status_4\[915] = \emFile_1:SPI0:BSPIM:dpMISO_fifo_full\[916]
-Removing Rhs of wire \emFile_1:SPI0:BSPIM:rx_status_5\[917] = \emFile_1:SPI0:BSPIM:dpMISO_fifo_not_empty\[918]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:tx_status_6\[920] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:tx_status_5\[921] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_3\[922] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_2\[923] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_1\[924] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_0\[925] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:Net_273\[935] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:Net_274\[976] = zero[7]
-Removing Lhs of wire \emFile_1:tmpOE__mosi0_net_0\[978] = one[4]
-Removing Lhs of wire \emFile_1:tmpOE__miso0_net_0\[985] = one[4]
-Removing Lhs of wire \emFile_1:tmpOE__sclk0_net_0\[991] = one[4]
-Removing Lhs of wire \emFile_1:tmpOE__SPI0_CS_net_0\[997] = one[4]
-Removing Lhs of wire \ADC_V:vp_ctl_0\[1006] = zero[7]
-Removing Lhs of wire \ADC_V:vp_ctl_2\[1007] = zero[7]
-Removing Lhs of wire \ADC_V:vn_ctl_1\[1008] = zero[7]
-Removing Lhs of wire \ADC_V:vn_ctl_3\[1009] = zero[7]
-Removing Lhs of wire \ADC_V:vp_ctl_1\[1010] = zero[7]
-Removing Lhs of wire \ADC_V:vp_ctl_3\[1011] = zero[7]
-Removing Lhs of wire \ADC_V:vn_ctl_0\[1012] = zero[7]
-Removing Lhs of wire \ADC_V:vn_ctl_2\[1013] = zero[7]
-Removing Rhs of wire \ADC_V:Net_188\[1016] = \ADC_V:Net_221\[1017]
-Removing Lhs of wire \ADC_V:soc\[1022] = zero[7]
-Removing Lhs of wire \ADC_V:Net_381\[1047] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:min_kill_reg\\D\[1048] = one[4]
-Removing Lhs of wire \PWM_motor:PWMUDB:prevCapture\\D\[1049] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:trig_last\\D\[1050] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:ltch_kill_reg\\D\[1053] = one[4]
-Removing Lhs of wire \PWM_motor:PWMUDB:pwm_i_reg\\D\[1056] = \PWM_motor:PWMUDB:pwm_i\[97]
-Removing Lhs of wire \PWM_motor:PWMUDB:pwm1_i_reg\\D\[1057] = zero[7]
-Removing Lhs of wire \PWM_motor:PWMUDB:pwm2_i_reg\\D\[1058] = zero[7]
-Removing Lhs of wire \Timer_RPM:TimerUDB:capture_last\\D\[1060] = Net_701[383]
-Removing Lhs of wire \Timer_RPM:TimerUDB:tc_reg_i\\D\[1061] = \Timer_RPM:TimerUDB:status_tc\[389]
-Removing Lhs of wire \Timer_RPM:TimerUDB:hwEnable_reg\\D\[1062] = \Timer_RPM:TimerUDB:control_7\[366]
-Removing Lhs of wire \Timer_RPM:TimerUDB:capture_out_reg_i\\D\[1063] = \Timer_RPM:TimerUDB:capt_fifo_load\[385]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:so_send_reg\\D\[1068] = zero[7]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:mosi_reg\\D\[1075] = \emFile_1:SPI0:BSPIM:mosi_pre_reg\[902]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:dpcounter_one_reg\\D\[1077] = \emFile_1:SPI0:BSPIM:load_rx_data\[878]
-Removing Lhs of wire \emFile_1:SPI0:BSPIM:mosi_from_dp_reg\\D\[1078] = \emFile_1:SPI0:BSPIM:mosi_from_dp\[892]
+Removing Lhs of wire \ADC_A:tmpOE__Bypass_net_0\[860] = one[4]
+Removing Lhs of wire \ADC_A:Net_381\[874] = zero[7]
+Removing Lhs of wire tmpOE__Motor_A_gnd_net_0[876] = one[4]
+Removing Lhs of wire \emFile_1:SPI0:Net_276\[881] = \emFile_1:Net_19\[882]
+Removing Rhs of wire \emFile_1:SPI0:BSPIM:load_rx_data\[885] = \emFile_1:SPI0:BSPIM:dpcounter_one\[886]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:pol_supprt\[887] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:miso_to_dp\[888] = \emFile_1:SPI0:Net_244\[889]
+Removing Lhs of wire \emFile_1:SPI0:Net_244\[889] = \emFile_1:Net_16\[982]
+Removing Rhs of wire \emFile_1:Net_10\[893] = \emFile_1:SPI0:BSPIM:mosi_fin\[894]
+Removing Rhs of wire \emFile_1:Net_10\[893] = \emFile_1:SPI0:BSPIM:mosi_cpha_0\[895]
+Removing Rhs of wire \emFile_1:SPI0:BSPIM:tx_status_1\[916] = \emFile_1:SPI0:BSPIM:dpMOSI_fifo_empty\[917]
+Removing Rhs of wire \emFile_1:SPI0:BSPIM:tx_status_2\[918] = \emFile_1:SPI0:BSPIM:dpMOSI_fifo_not_full\[919]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:tx_status_3\[920] = \emFile_1:SPI0:BSPIM:load_rx_data\[885]
+Removing Rhs of wire \emFile_1:SPI0:BSPIM:rx_status_4\[922] = \emFile_1:SPI0:BSPIM:dpMISO_fifo_full\[923]
+Removing Rhs of wire \emFile_1:SPI0:BSPIM:rx_status_5\[924] = \emFile_1:SPI0:BSPIM:dpMISO_fifo_not_empty\[925]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:tx_status_6\[927] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:tx_status_5\[928] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_3\[929] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_2\[930] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_1\[931] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:rx_status_0\[932] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:Net_273\[942] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:Net_274\[983] = zero[7]
+Removing Lhs of wire \emFile_1:tmpOE__mosi0_net_0\[985] = one[4]
+Removing Lhs of wire \emFile_1:tmpOE__miso0_net_0\[992] = one[4]
+Removing Lhs of wire \emFile_1:tmpOE__sclk0_net_0\[998] = one[4]
+Removing Lhs of wire \emFile_1:tmpOE__SPI0_CS_net_0\[1004] = one[4]
+Removing Lhs of wire \ADC_V:vp_ctl_0\[1013] = zero[7]
+Removing Lhs of wire \ADC_V:vp_ctl_2\[1014] = zero[7]
+Removing Lhs of wire \ADC_V:vn_ctl_1\[1015] = zero[7]
+Removing Lhs of wire \ADC_V:vn_ctl_3\[1016] = zero[7]
+Removing Lhs of wire \ADC_V:vp_ctl_1\[1017] = zero[7]
+Removing Lhs of wire \ADC_V:vp_ctl_3\[1018] = zero[7]
+Removing Lhs of wire \ADC_V:vn_ctl_0\[1019] = zero[7]
+Removing Lhs of wire \ADC_V:vn_ctl_2\[1020] = zero[7]
+Removing Rhs of wire \ADC_V:Net_188\[1023] = \ADC_V:Net_221\[1024]
+Removing Lhs of wire \ADC_V:soc\[1029] = zero[7]
+Removing Lhs of wire \ADC_V:Net_381\[1054] = zero[7]
+Removing Rhs of wire tmpOE__HornPWM_net_0[1058] = Net_3206[1063]
+Removing Rhs of wire tmpOE__HornPWM_net_0[1058] = \Debouncer_1:DEBOUNCER[0]:d_sync_0\[1072]
+Removing Lhs of wire tmpOE__HornInput_net_0[1065] = one[4]
+Removing Lhs of wire \PWM_motor:PWMUDB:min_kill_reg\\D\[1077] = one[4]
+Removing Lhs of wire \PWM_motor:PWMUDB:prevCapture\\D\[1078] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:trig_last\\D\[1079] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:ltch_kill_reg\\D\[1082] = one[4]
+Removing Lhs of wire \PWM_motor:PWMUDB:pwm_i_reg\\D\[1085] = \PWM_motor:PWMUDB:pwm_i\[97]
+Removing Lhs of wire \PWM_motor:PWMUDB:pwm1_i_reg\\D\[1086] = zero[7]
+Removing Lhs of wire \PWM_motor:PWMUDB:pwm2_i_reg\\D\[1087] = zero[7]
+Removing Lhs of wire \Timer_RPM:TimerUDB:capture_last\\D\[1089] = Net_701[383]
+Removing Lhs of wire \Timer_RPM:TimerUDB:tc_reg_i\\D\[1090] = \Timer_RPM:TimerUDB:status_tc\[389]
+Removing Lhs of wire \Timer_RPM:TimerUDB:hwEnable_reg\\D\[1091] = \Timer_RPM:TimerUDB:control_7\[366]
+Removing Lhs of wire \Timer_RPM:TimerUDB:capture_out_reg_i\\D\[1092] = \Timer_RPM:TimerUDB:capt_fifo_load\[385]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:so_send_reg\\D\[1097] = zero[7]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:mosi_reg\\D\[1104] = \emFile_1:SPI0:BSPIM:mosi_pre_reg\[909]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:dpcounter_one_reg\\D\[1106] = \emFile_1:SPI0:BSPIM:load_rx_data\[885]
+Removing Lhs of wire \emFile_1:SPI0:BSPIM:mosi_from_dp_reg\\D\[1107] = \emFile_1:SPI0:BSPIM:mosi_from_dp\[899]
+Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\[1111] = Net_3204[1066]
+Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\[1112] = tmpOE__HornPWM_net_0[1058]
+Removing Lhs of wire Net_3209D[1113] = zero[7]
+Removing Lhs of wire Net_3207D[1114] = zero[7]
+Removing Lhs of wire Net_3208D[1115] = zero[7]
 
 ------------------------------------------------------
-Aliased 0 equations, 210 wires.
+Aliased 0 equations, 219 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -955,8 +974,8 @@ Removing Lhs of wire \PWM_motor:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[288] 
 Removing Lhs of wire \PWM_motor:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[298] = zero[7]
 Removing Lhs of wire \Timer_RPM:TimerUDB:trig_reg\[460] = \Timer_RPM:TimerUDB:control_7\[366]
 Removing Lhs of wire \ADC_A:Net_188\[836] = \ADC_A:Net_376\[835]
-Removing Lhs of wire \ADC_V:Net_188\[1016] = \ADC_V:Net_376\[1015]
-Removing Lhs of wire \PWM_motor:PWMUDB:runmode_enable\\D\[1051] = \PWM_motor:PWMUDB:control_7\[8]
+Removing Lhs of wire \ADC_V:Net_188\[1023] = \ADC_V:Net_376\[1022]
+Removing Lhs of wire \PWM_motor:PWMUDB:runmode_enable\\D\[1080] = \PWM_motor:PWMUDB:control_7\[8]
 
 ------------------------------------------------------
 Aliased 0 equations, 8 wires.
@@ -989,14 +1008,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj -dcpsoc3 MotorController.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 2s.949ms
+Warp synthesis phase: Elapsed time ==> 3s.185ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Sunday, 17 April 2016 16:18:28
+cyp3fit: V3.3.0.7343, Family: PSoC3, Started at: Sunday, 24 April 2016 18:53:59
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj -d CY8C5888LTI-LP097 MotorController.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.042ms
+Design parsing phase: Elapsed time ==> 0s.068ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -1008,15 +1027,19 @@ Design parsing phase: Elapsed time ==> 0s.042ms
     Converted constant MacroCell: \PWM_motor:PWMUDB:pwm1_i_reg\ from registered to combinatorial
     Converted constant MacroCell: \PWM_motor:PWMUDB:pwm2_i_reg\ from registered to combinatorial
     Converted constant MacroCell: \emFile_1:SPI0:BSPIM:so_send_reg\ from registered to combinatorial
+    Converted constant MacroCell: Net_3209 from registered to combinatorial
+    Converted constant MacroCell: Net_3207 from registered to combinatorial
+    Converted constant MacroCell: Net_3208 from registered to combinatorial
 Assigning clock timer_clock to clock BUS_CLK because it is a pass-through
 Assigning clock CAN_1_Clock to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Digital Clock 0: Automatic-assigning  clock 'emFile_1_Clock_1'. Fanout=1, Signal=\emFile_1:Net_19\
     Digital Clock 1: Automatic-assigning  clock 'Clock_2'. Fanout=3, Signal=Net_1334
     Digital Clock 2: Automatic-assigning  clock 'Clock_1'. Fanout=1, Signal=Net_174
-    Digital Clock 3: Automatic-assigning  clock 'ADC_V_theACLK'. Fanout=1, Signal=\ADC_V:Net_376\
-    Digital Clock 4: Automatic-assigning  clock 'ADC_A_theACLK'. Fanout=1, Signal=\ADC_A:Net_376\
-    Digital Clock 5: Automatic-assigning  clock 'Clock_motor'. Fanout=1, Signal=Net_1844
+    Digital Clock 3: Automatic-assigning  clock 'ADC_A_theACLK'. Fanout=1, Signal=\ADC_A:Net_376\
+    Digital Clock 4: Automatic-assigning  clock 'ADC_V_theACLK'. Fanout=1, Signal=\ADC_V:Net_376\
+    Digital Clock 5: Automatic-assigning  clock 'Clock_3'. Fanout=1, Signal=Net_3213
+    Digital Clock 6: Automatic-assigning  clock 'Clock_motor'. Fanout=2, Signal=Net_1844
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
@@ -1038,8 +1061,12 @@ Done removing unused cells.
         ClockIn: emFile_1_Clock_1 was determined to be a global clock that is synchronous to BUS_CLK
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
         ClockOut: emFile_1_Clock_1, EnableOut: Constant 1
+    UDB Clk/Enable \Debouncer_1:ClkSync\: with output requested to be synchronous
+        ClockIn: Clock_motor was determined to be a global clock that is synchronous to BUS_CLK
+        EnableIn: Constant 1 was determined to be synchronous to ClockIn
+        ClockOut: Clock_motor, EnableOut: Constant 1
 </CYPRESSTAG>
-ADD: pft.M0040: information: The following 11 pin(s) will be assigned a location by the fitter: \emFile_1:miso0(0)\, \emFile_1:mosi0(0)\, \emFile_1:sclk0(0)\, \emFile_1:SPI0_CS(0)\, Motor_A(0), Motor_A_gnd(0), Motor_out(0), Motor_V(0), Motor_V_gnd(0), Padel_in(0), RPM(0)
+ADD: pft.M0040: information: The following 4 pin(s) will be assigned a location by the fitter: \emFile_1:miso0(0)\, \emFile_1:mosi0(0)\, \emFile_1:sclk0(0)\, \emFile_1:SPI0_CS(0)\
 
 
 Removing unused cells resulting from optimization
@@ -1099,6 +1126,9 @@ Design Equations
             pa_out => Motor_out(0)__PA ,
             input => Net_276 ,
             pad => Motor_out(0)_PAD );
+        Properties:
+        {
+        }
 
     Pin : Name = RPM(0)
         Attributes:
@@ -1136,6 +1166,9 @@ Design Equations
             pa_out => RPM(0)__PA ,
             fb => Net_701 ,
             pad => RPM(0)_PAD );
+        Properties:
+        {
+        }
 
     Pin : Name = Motor_A(0)
         Attributes:
@@ -1173,6 +1206,9 @@ Design Equations
             pa_out => Motor_A(0)__PA ,
             analog_term => Net_2968 ,
             pad => Motor_A(0)_PAD );
+        Properties:
+        {
+        }
 
     Pin : Name = RX_1(0)
         Attributes:
@@ -1370,6 +1406,9 @@ Design Equations
             pa_out => Motor_V(0)__PA ,
             analog_term => Net_3009 ,
             pad => Motor_V(0)_PAD );
+        Properties:
+        {
+        }
 
     Pin : Name = Padel_in(0)
         Attributes:
@@ -1407,6 +1446,9 @@ Design Equations
             pa_out => Padel_in(0)__PA ,
             fb => Net_2455 ,
             pad => Padel_in(0)_PAD );
+        Properties:
+        {
+        }
 
     Pin : Name = Motor_V_gnd(0)
         Attributes:
@@ -1444,6 +1486,49 @@ Design Equations
             pa_out => Motor_V_gnd(0)__PA ,
             analog_term => Net_3010 ,
             pad => Motor_V_gnd(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = \ADC_A:Bypass(0)\
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: HI_Z_ANALOG
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: True
+            Can contain Digital: False
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: ANALOG
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => \ADC_A:Bypass(0)\__PA ,
+            analog_term => \ADC_A:Net_210\ ,
+            pad => \ADC_A:Bypass(0)_PAD\ );
+        Properties:
+        {
+        }
 
     Pin : Name = Motor_A_gnd(0)
         Attributes:
@@ -1481,6 +1566,9 @@ Design Equations
             pa_out => Motor_A_gnd(0)__PA ,
             analog_term => Net_2957 ,
             pad => Motor_A_gnd(0)_PAD );
+        Properties:
+        {
+        }
 
     Pin : Name = \emFile_1:mosi0(0)\
         Attributes:
@@ -1628,6 +1716,87 @@ Design Equations
         PORT MAP (
             pa_out => \emFile_1:SPI0_CS(0)\__PA ,
             pad => \emFile_1:SPI0_CS(0)_PAD\ );
+
+    Pin : Name = HornPWM(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: AUTO
+            Out Sync Option: NOSYNC
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: CMOS_OUT
+            VTrip: EITHER
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => HornPWM(0)__PA ,
+            oe => tmpOE__HornPWM_net_0 ,
+            input => Net_3213_local ,
+            pad => HornPWM(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = HornInput(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => HornInput(0)__PA ,
+            fb => Net_3204 ,
+            pad => HornInput(0)_PAD );
+        Properties:
+        {
+        }
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
 
@@ -2131,6 +2300,18 @@ Design Equations
             + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\
         );
         Output = \emFile_1:Net_22\ (fanout=2)
+
+    MacroCell: Name=tmpOE__HornPWM_net_0, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_1844) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_3204
+        );
+        Output = tmpOE__HornPWM_net_0 (fanout=1)
     </CYPRESSTAG>
     <CYPRESSTAG name="Datapath listing">
 
@@ -2710,12 +2891,12 @@ Technology mapping summary
 
 Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
-Digital Clocks                :    6 :    2 :    8 : 75.00 %
+Digital Clocks                :    7 :    1 :    8 : 87.50 %
 Analog Clocks                 :    0 :    4 :    4 :  0.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
 Interrupts                    :   14 :   18 :   32 : 43.75 %
-IO                            :   18 :   30 :   48 : 37.50 %
+IO                            :   21 :   27 :   48 : 43.75 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    1 :    0 :    1 : 100.00 %
 I2C                           :    0 :    1 :    1 :  0.00 %
@@ -2723,9 +2904,9 @@ USB                           :    1 :    0 :    1 : 100.00 %
 DMA Channels                  :    2 :   22 :   24 :  8.33 %
 Timer                         :    0 :    4 :    4 :  0.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :   28 :  164 :  192 : 14.58 %
-  Unique P-terms              :   66 :  318 :  384 : 17.19 %
-  Total P-terms               :   72 :      :      :        
+  Macrocells                  :   29 :  163 :  192 : 15.10 %
+  Unique P-terms              :   67 :  317 :  384 : 17.45 %
+  Total P-terms               :   73 :      :      :        
   Datapath Cells              :    6 :   18 :   24 : 25.00 %
   Status Cells                :    7 :   17 :   24 : 29.17 %
     Status Registers          :    2 :      :      :        
@@ -2744,50 +2925,63 @@ Analog (SC/CT) Blocks         :    1 :    3 :    4 : 25.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    1 :    3 :    4 : 25.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.113ms
-Tech mapping phase: Elapsed time ==> 0s.263ms
+Technology Mapping: Elapsed time ==> 0s.134ms
+Tech mapping phase: Elapsed time ==> 0s.277ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
-IO_0@[IOP=(0)][IoId=(0)] : RX_1(0) (fixed)
-IO_7@[IOP=(0)][IoId=(7)] : TX_1(0) (fixed)
+IO_7@[IOP=(1)][IoId=(7)] : HornInput(0) (fixed)
+IO_6@[IOP=(1)][IoId=(6)] : HornPWM(0) (fixed)
+IO_3@[IOP=(3)][IoId=(3)] : Motor_A(0) (fixed)
+IO_2@[IOP=(3)][IoId=(2)] : Motor_A_gnd(0) (fixed)
+IO_5@[IOP=(3)][IoId=(5)] : Motor_V(0) (fixed)
+IO_4@[IOP=(3)][IoId=(4)] : Motor_V_gnd(0) (fixed)
+IO_0@[IOP=(2)][IoId=(0)] : Motor_out(0) (fixed)
+IO_4@[IOP=(2)][IoId=(4)] : Padel_in(0) (fixed)
+IO_6@[IOP=(2)][IoId=(6)] : RPM(0) (fixed)
+IO_6@[IOP=(12)][IoId=(6)] : RX_1(0) (fixed)
+IO_7@[IOP=(12)][IoId=(7)] : TX_1(0) (fixed)
+IO_2@[IOP=(0)][IoId=(2)] : \ADC_A:Bypass(0)\ (fixed, SAR-ExtVref)
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART_1:Dm(0)\ (fixed)
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART_1:Dp(0)\ (fixed)
-IO_5@[IOP=(1)][IoId=(5)] : Motor_A(0)
-IO_6@[IOP=(1)][IoId=(6)] : Motor_A_gnd(0)
-IO_1@[IOP=(0)][IoId=(1)] : Motor_V(0)
-IO_4@[IOP=(0)][IoId=(4)] : Motor_V_gnd(0)
-SAR[1]@[FFB(SAR,1)] : \ADC_A:ADC_SAR\
-Vref[12]@[FFB(Vref,12)] : \ADC_A:vRef_Vdda\
-SAR[0]@[FFB(SAR,0)] : \ADC_V:ADC_SAR\
-Comparator[1]@[FFB(Comparator,1)] : \Comp_1:ctComp\
-SC[2]@[FFB(SC,2)] : \PGA_1:SC\
+SAR[1]@[FFB(SAR,1)] : \ADC_A:ADC_SAR\ (fixed, SAR-ExtVref)
+SAR[0]@[FFB(SAR,0)] : \ADC_V:ADC_SAR\ (fixed)
+Vref[13]@[FFB(Vref,13)] : \ADC_A:vRef_Vdda_1\
+Vref[12]@[FFB(Vref,12)] : \ADC_V:vRef_Vdda\
+Comparator[0]@[FFB(Comparator,0)] : \Comp_1:ctComp\
+SC[0]@[FFB(SC,0)] : \PGA_1:SC\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
-VIDAC[3]@[FFB(VIDAC,3)] : \VDAC8_1:viDAC8\
-Log: apr.M0058: The analog placement iterative improvement is 29% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 53% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 100% done. (App=cydsfit)
+VIDAC[1]@[FFB(VIDAC,1)] : \VDAC8_1:viDAC8\
+Log: apr.M0058: The analog placement iterative improvement is 34% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 71% done. (App=cydsfit)
 Analog Placement Results:
-IO_0@[IOP=(0)][IoId=(0)] : RX_1(0) (fixed)
-IO_7@[IOP=(0)][IoId=(7)] : TX_1(0) (fixed)
+IO_7@[IOP=(1)][IoId=(7)] : HornInput(0) (fixed)
+IO_6@[IOP=(1)][IoId=(6)] : HornPWM(0) (fixed)
+IO_3@[IOP=(3)][IoId=(3)] : Motor_A(0) (fixed)
+IO_2@[IOP=(3)][IoId=(2)] : Motor_A_gnd(0) (fixed)
+IO_5@[IOP=(3)][IoId=(5)] : Motor_V(0) (fixed)
+IO_4@[IOP=(3)][IoId=(4)] : Motor_V_gnd(0) (fixed)
+IO_0@[IOP=(2)][IoId=(0)] : Motor_out(0) (fixed)
+IO_4@[IOP=(2)][IoId=(4)] : Padel_in(0) (fixed)
+IO_6@[IOP=(2)][IoId=(6)] : RPM(0) (fixed)
+IO_6@[IOP=(12)][IoId=(6)] : RX_1(0) (fixed)
+IO_7@[IOP=(12)][IoId=(7)] : TX_1(0) (fixed)
+IO_2@[IOP=(0)][IoId=(2)] : \ADC_A:Bypass(0)\ (fixed, SAR-ExtVref)
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART_1:Dm(0)\ (fixed)
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART_1:Dp(0)\ (fixed)
-IO_5@[IOP=(1)][IoId=(5)] : Motor_A(0)
-IO_6@[IOP=(1)][IoId=(6)] : Motor_A_gnd(0)
-IO_1@[IOP=(0)][IoId=(1)] : Motor_V(0)
-IO_4@[IOP=(0)][IoId=(4)] : Motor_V_gnd(0)
-SAR[1]@[FFB(SAR,1)] : \ADC_A:ADC_SAR\
-Vref[12]@[FFB(Vref,12)] : \ADC_A:vRef_Vdda\
-SAR[0]@[FFB(SAR,0)] : \ADC_V:ADC_SAR\
-Comparator[1]@[FFB(Comparator,1)] : \Comp_1:ctComp\
+SAR[1]@[FFB(SAR,1)] : \ADC_A:ADC_SAR\ (fixed, SAR-ExtVref)
+SAR[0]@[FFB(SAR,0)] : \ADC_V:ADC_SAR\ (fixed)
+Vref[13]@[FFB(Vref,13)] : \ADC_A:vRef_Vdda_1\
+Vref[12]@[FFB(Vref,12)] : \ADC_V:vRef_Vdda\
+Comparator[3]@[FFB(Comparator,3)] : \Comp_1:ctComp\
 SC[1]@[FFB(SC,1)] : \PGA_1:SC\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
 VIDAC[1]@[FFB(VIDAC,1)] : \VDAC8_1:viDAC8\
 
-Analog Placement phase: Elapsed time ==> 3s.002ms
+Analog Placement phase: Elapsed time ==> 2s.152ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.017ms
+Analog Routing phase: Elapsed time ==> 0s.020ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -2795,52 +2989,54 @@ Dump of CyAnalogRoutingResultsDB
 Map of net to items {
   Net: Net_2968 {
     sc_1_vin
-    agr6_x_sc_1_vin
-    agr6
-    agr6_x_p15_2
-    p15_2
+    agr7_x_sc_1_vin
+    agr7
+    agr7_x_p3_3
+    p3_3
   }
   Net: Net_2957 {
     sc_1_vref
-    agr4_x_sc_1_vref
-    agr4
-    agr4_x_sar_1_vminus
+    agr6_x_sc_1_vref
+    agr6
+    agr6_x_sar_1_vminus
     sar_1_vminus
-    agr4_x_p15_0
-    p15_0
+    agr6_x_p3_2
+    p3_2
   }
   Net: Net_3009 {
     sar_0_vplus
-    agl6_x_sar_0_vplus
-    agl6
-    agl6_x_p0_6
-    p0_6
+    agl5_x_sar_0_vplus
+    agl5
+    agl5_x_agr5
+    agr5
+    agr5_x_p3_5
+    p3_5
   }
   Net: Net_3010 {
     sar_0_vminus
     agl4_x_sar_0_vminus
     agl4
-    agl4_x_p0_4
-    p0_4
+    agl4_x_agr4
+    agr4
+    agr4_x_p3_4
+    p3_4
   }
   Net: Net_3023 {
     sc_1_vout
-    agr7_x_sc_1_vout
-    agr7
-    agr7_x_comp_1_vplus
-    comp_1_vplus
-    agr7_x_sar_1_vplus
+    agr3_x_sc_1_vout
+    agr3
+    agr3_x_comp_3_vplus
+    comp_3_vplus
+    agr3_x_sar_1_vplus
     sar_1_vplus
   }
-  Net: \ADC_A:Net_209\ {
+  Net: \ADC_A:Net_210\ {
+    p0_2
+    p0_2_exvref
   }
-  Net: \ADC_A:Net_216\ {
-    sar_0_vref
-    sar_0_vref_x_sar_0_vref_vdda_vdda_2
-    sar_0_vref_vdda_vdda_2
-    common_sar_vref_vdda_x_sar_0_vref_vdda_vdda_2
-    common_sar_vref_vdda
-    common_sar_vref_vdda_x_sar_1_vref_vdda_vdda_2
+  Net: \ADC_A:Net_235\ {
+    common_sar_vref_vdda/2
+    common_sar_vref_vdda/2_x_sar_1_vref_vdda_vdda_2
     sar_1_vref_vdda_vdda_2
     sar_1_vref_x_sar_1_vref_vdda_vdda_2
     sar_1_vref
@@ -2849,74 +3045,88 @@ Map of net to items {
   }
   Net: \ADC_V:Net_209\ {
   }
+  Net: \ADC_V:Net_216\ {
+    common_sar_vref_vdda
+    common_sar_vref_vdda_x_sar_0_vref_vdda_vdda_2
+    sar_0_vref_vdda_vdda_2
+    sar_0_vref_x_sar_0_vref_vdda_vdda_2
+    sar_0_vref
+  }
   Net: \ADC_V:Net_255\ {
   }
   Net: Net_1078 {
     vidac_1_vout
-    agr0_x_vidac_1_vout
-    agr0
-    agr0_x_comp_1_vminus
-    comp_1_vminus
+    agr1_x_vidac_1_vout
+    agr1
+    agr1_x_comp_3_vminus
+    comp_3_vminus
   }
   Net: \VDAC8_1:Net_77\ {
   }
 }
 Map of item to net {
   sc_1_vin                                         -> Net_2968
-  agr6_x_sc_1_vin                                  -> Net_2968
-  agr6                                             -> Net_2968
-  agr6_x_p15_2                                     -> Net_2968
-  p15_2                                            -> Net_2968
+  agr7_x_sc_1_vin                                  -> Net_2968
+  agr7                                             -> Net_2968
+  agr7_x_p3_3                                      -> Net_2968
+  p3_3                                             -> Net_2968
   sc_1_vref                                        -> Net_2957
-  agr4_x_sc_1_vref                                 -> Net_2957
-  agr4                                             -> Net_2957
-  agr4_x_sar_1_vminus                              -> Net_2957
+  agr6_x_sc_1_vref                                 -> Net_2957
+  agr6                                             -> Net_2957
+  agr6_x_sar_1_vminus                              -> Net_2957
   sar_1_vminus                                     -> Net_2957
-  agr4_x_p15_0                                     -> Net_2957
-  p15_0                                            -> Net_2957
+  agr6_x_p3_2                                      -> Net_2957
+  p3_2                                             -> Net_2957
   sar_0_vplus                                      -> Net_3009
-  agl6_x_sar_0_vplus                               -> Net_3009
-  agl6                                             -> Net_3009
-  agl6_x_p0_6                                      -> Net_3009
-  p0_6                                             -> Net_3009
+  agl5_x_sar_0_vplus                               -> Net_3009
+  agl5                                             -> Net_3009
+  agl5_x_agr5                                      -> Net_3009
+  agr5                                             -> Net_3009
+  agr5_x_p3_5                                      -> Net_3009
+  p3_5                                             -> Net_3009
   sar_0_vminus                                     -> Net_3010
   agl4_x_sar_0_vminus                              -> Net_3010
   agl4                                             -> Net_3010
-  agl4_x_p0_4                                      -> Net_3010
-  p0_4                                             -> Net_3010
+  agl4_x_agr4                                      -> Net_3010
+  agr4                                             -> Net_3010
+  agr4_x_p3_4                                      -> Net_3010
+  p3_4                                             -> Net_3010
   sc_1_vout                                        -> Net_3023
-  agr7_x_sc_1_vout                                 -> Net_3023
-  agr7                                             -> Net_3023
-  agr7_x_comp_1_vplus                              -> Net_3023
-  comp_1_vplus                                     -> Net_3023
-  agr7_x_sar_1_vplus                               -> Net_3023
+  agr3_x_sc_1_vout                                 -> Net_3023
+  agr3                                             -> Net_3023
+  agr3_x_comp_3_vplus                              -> Net_3023
+  comp_3_vplus                                     -> Net_3023
+  agr3_x_sar_1_vplus                               -> Net_3023
   sar_1_vplus                                      -> Net_3023
-  sar_0_vref                                       -> \ADC_A:Net_216\
-  sar_0_vref_x_sar_0_vref_vdda_vdda_2              -> \ADC_A:Net_216\
-  sar_0_vref_vdda_vdda_2                           -> \ADC_A:Net_216\
-  common_sar_vref_vdda_x_sar_0_vref_vdda_vdda_2    -> \ADC_A:Net_216\
-  common_sar_vref_vdda                             -> \ADC_A:Net_216\
-  common_sar_vref_vdda_x_sar_1_vref_vdda_vdda_2    -> \ADC_A:Net_216\
-  sar_1_vref_vdda_vdda_2                           -> \ADC_A:Net_216\
-  sar_1_vref_x_sar_1_vref_vdda_vdda_2              -> \ADC_A:Net_216\
-  sar_1_vref                                       -> \ADC_A:Net_216\
+  p0_2                                             -> \ADC_A:Net_210\
+  p0_2_exvref                                      -> \ADC_A:Net_210\
+  common_sar_vref_vdda/2                           -> \ADC_A:Net_235\
+  common_sar_vref_vdda/2_x_sar_1_vref_vdda_vdda_2  -> \ADC_A:Net_235\
+  sar_1_vref_vdda_vdda_2                           -> \ADC_A:Net_235\
+  sar_1_vref_x_sar_1_vref_vdda_vdda_2              -> \ADC_A:Net_235\
+  sar_1_vref                                       -> \ADC_A:Net_235\
+  common_sar_vref_vdda                             -> \ADC_V:Net_216\
+  common_sar_vref_vdda_x_sar_0_vref_vdda_vdda_2    -> \ADC_V:Net_216\
+  sar_0_vref_vdda_vdda_2                           -> \ADC_V:Net_216\
+  sar_0_vref_x_sar_0_vref_vdda_vdda_2              -> \ADC_V:Net_216\
+  sar_0_vref                                       -> \ADC_V:Net_216\
   vidac_1_vout                                     -> Net_1078
-  agr0_x_vidac_1_vout                              -> Net_1078
-  agr0                                             -> Net_1078
-  agr0_x_comp_1_vminus                             -> Net_1078
-  comp_1_vminus                                    -> Net_1078
+  agr1_x_vidac_1_vout                              -> Net_1078
+  agr1                                             -> Net_1078
+  agr1_x_comp_3_vminus                             -> Net_1078
+  comp_3_vminus                                    -> Net_1078
 }
 Mux Info {
 }
 Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
-IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.640ms
+IsVddaHalfUsedForSar1 = True
+Analog Code Generation phase: Elapsed time ==> 0s.694ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 2.4 sec.
+I2076: Total run-time: 2.5 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -2927,33 +3137,33 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   16 :   32 :   48 :  33.33%
+                     PLDs :   14 :   34 :   48 :  29.17%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            7.75
-                   Pterms :            4.44
-               Macrocells :            1.75
+                   Inputs :            6.93
+                   Pterms :            5.07
+               Macrocells :            2.07
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.000ms
+PLD Packing: Elapsed time ==> 0s.001ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.168ms
+Partitioning: Elapsed time ==> 0s.161ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
 Annealing: Elapsed time ==> 0s.001ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 556, final cost is 556 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 524, final cost is 524 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -2963,7 +3173,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         10 :       9.10 :       2.80
+                 UDB :          8 :       7.88 :       3.63
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -2973,275 +3183,10 @@ Component Placement Details
 UDB [UDB=(0,0)] is empty.
 UDB [UDB=(0,1)] is empty.
 UDB [UDB=(0,2)] is empty.
-UDB [UDB=(0,3)] is empty.
-UDB [UDB=(0,4)] is empty.
-UDB [UDB=(0,5)] is empty.
-UDB [UDB=(1,0)] is empty.
-UDB [UDB=(1,1)] is empty.
-UDB [UDB=(1,2)] is empty.
-UDB [UDB=(1,3)] is empty.
-UDB [UDB=(1,4)] is empty.
-UDB [UDB=(1,5)] is empty.
-UDB [UDB=(2,0)] is empty.
-UDB [UDB=(2,1)] contents:
-LAB@[UDB=(2,1)][LB=0] #macrocells=1, #inputs=9, #pterms=2
+UDB [UDB=(0,3)] contents:
+LAB@[UDB=(0,3)][LB=0] #macrocells=4, #inputs=9, #pterms=6
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(2,1)][LB=0][MC=3]
-        Total # of inputs        : 9
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
-              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
-              !\emFile_1:SPI0:BSPIM:count_1\ * \emFile_1:SPI0:BSPIM:count_0\ * 
-              \emFile_1:SPI0:BSPIM:ld_ident\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:ld_ident\
-        );
-        Output = \emFile_1:SPI0:BSPIM:ld_ident\ (fanout=6)
-        Properties               : 
-        {
-        }
-}
-
-UDB [UDB=(2,2)] contents:
-count7cell: Name =\emFile_1:SPI0:BSPIM:BitCounter\
-    PORT MAP (
-        clock => \emFile_1:Net_19\ ,
-        enable => \emFile_1:SPI0:BSPIM:cnt_enable\ ,
-        count_6 => \emFile_1:SPI0:BSPIM:count_6\ ,
-        count_5 => \emFile_1:SPI0:BSPIM:count_5\ ,
-        count_4 => \emFile_1:SPI0:BSPIM:count_4\ ,
-        count_3 => \emFile_1:SPI0:BSPIM:count_3\ ,
-        count_2 => \emFile_1:SPI0:BSPIM:count_2\ ,
-        count_1 => \emFile_1:SPI0:BSPIM:count_1\ ,
-        count_0 => \emFile_1:SPI0:BSPIM:count_0\ ,
-        tc => \emFile_1:SPI0:BSPIM:cnt_tc\ );
-    Properties:
-    {
-        cy_alt_mode = 0
-        cy_init_value = "0000000"
-        cy_period = "0001111"
-        cy_route_en = 1
-        cy_route_ld = 0
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=2, #inputs=7, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=0]
-        Total # of inputs        : 6
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
-              \emFile_1:SPI0:BSPIM:count_0\ * 
-              \emFile_1:SPI0:BSPIM:rx_status_4\
-        );
-        Output = \emFile_1:SPI0:BSPIM:rx_status_6\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Timer_RPM:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_701
-        );
-        Output = \Timer_RPM:TimerUDB:capture_last\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,3)][LB=1] #macrocells=1, #inputs=4, #pterms=3
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(2,3)][LB=1][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:cnt_enable\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:cnt_enable\
-            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:cnt_enable\
-        );
-        Output = \emFile_1:SPI0:BSPIM:cnt_enable\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-statusicell: Name =\emFile_1:SPI0:BSPIM:RxStsReg\
-    PORT MAP (
-        clock => \emFile_1:Net_19\ ,
-        status_6 => \emFile_1:SPI0:BSPIM:rx_status_6\ ,
-        status_5 => \emFile_1:SPI0:BSPIM:rx_status_5\ ,
-        status_4 => \emFile_1:SPI0:BSPIM:rx_status_4\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "1000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,4)] contents:
-LAB@[UDB=(2,4)][LB=0] #macrocells=1, #inputs=6, #pterms=4
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_hs_reg\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=2]
-        Total # of inputs        : 6
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp_reg\
-            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\
-            + !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
-            + !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
-        );
-        Output = \emFile_1:SPI0:BSPIM:mosi_hs_reg\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=10, #pterms=5
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(2,4)][LB=1][MC=1]
-        Total # of inputs        : 9
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
-              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
-              !\emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
-              \emFile_1:SPI0:BSPIM:load_cond\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:load_cond\
-            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
-              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
-              !\emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
-              \emFile_1:SPI0:BSPIM:load_cond\
-            + \emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
-              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
-              !\emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
-              \emFile_1:SPI0:BSPIM:load_cond\
-        );
-        Output = \emFile_1:SPI0:BSPIM:load_cond\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_from_dp_reg\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\
-        );
-        Output = \emFile_1:SPI0:BSPIM:mosi_from_dp_reg\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u3\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_1 => \Timer_RPM:TimerUDB:control_7\ ,
-        cs_addr_0 => \Timer_RPM:TimerUDB:per_zero\ ,
-        f0_load => \Timer_RPM:TimerUDB:capt_fifo_load\ ,
-        z0_comb => \Timer_RPM:TimerUDB:per_zero\ ,
-        f0_bus_stat_comb => \Timer_RPM:TimerUDB:status_3\ ,
-        f0_blk_stat_comb => \Timer_RPM:TimerUDB:status_2\ ,
-        chain_in => \Timer_RPM:TimerUDB:sT32:timerdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u2\
-
-UDB [UDB=(2,5)] contents:
-LAB@[UDB=(2,5)][LB=0] #macrocells=3, #inputs=9, #pterms=5
-{
-    [McSlotId=0]:     MacroCell: Name=\Timer_RPM:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\Timer_RPM:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -3254,7 +3199,7 @@ LAB@[UDB=(2,5)][LB=0] #macrocells=3, #inputs=9, #pterms=5
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\Timer_RPM:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Timer_RPM:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=1]
         Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
@@ -3269,8 +3214,22 @@ LAB@[UDB=(2,5)][LB=0] #macrocells=3, #inputs=9, #pterms=5
             soft = 1
         }
 
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\Timer_RPM:TimerUDB:int_capt_count_0\, Mode=(T-Register) @ [UDB=(2,5)][LB=0][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\Timer_RPM:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_701
+        );
+        Output = \Timer_RPM:TimerUDB:capture_last\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\Timer_RPM:TimerUDB:int_capt_count_0\, Mode=(T-Register) @ [UDB=(0,3)][LB=0][MC=3]
         Total # of inputs        : 5
         Total # of product terms : 3
         List of special equations: 
@@ -3294,9 +3253,9 @@ LAB@[UDB=(2,5)][LB=0] #macrocells=3, #inputs=9, #pterms=5
         }
 }
 
-LAB@[UDB=(2,5)][LB=1] #macrocells=2, #inputs=5, #pterms=8
+LAB@[UDB=(0,3)][LB=1] #macrocells=2, #inputs=5, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\Timer_RPM:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(2,5)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\Timer_RPM:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(0,3)][LB=1][MC=0]
         Total # of inputs        : 5
         Total # of product terms : 4
         List of special equations: 
@@ -3323,7 +3282,7 @@ LAB@[UDB=(2,5)][LB=1] #macrocells=2, #inputs=5, #pterms=8
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\Timer_RPM:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Timer_RPM:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=1]
         Total # of inputs        : 5
         Total # of product terms : 4
         List of special equations: 
@@ -3434,161 +3393,43 @@ controlcell: Name =\Timer_RPM:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,0)] is empty.
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=2, #inputs=12, #pterms=5
+UDB [UDB=(0,4)] contents:
+LAB@[UDB=(0,4)][LB=0] #macrocells=1, #inputs=3, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=0]
-        Total # of inputs        : 10
-        Total # of product terms : 4
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
         List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
+            Clock  = (Net_1334) => Global
             Clock Enable: True
-        Main Equation            : 4 pterms
+        Main Equation            : 2 pterms
         (
-              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\
-            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\
-            + \emFile_1:SPI0:BSPIM:state_1\ * \emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * \emFile_1:SPI0:BSPIM:count_1\ * 
-              !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:ld_ident\
-            + \emFile_1:SPI0:BSPIM:state_1\ * \emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              \emFile_1:SPI0:BSPIM:count_2\ * \emFile_1:SPI0:BSPIM:count_1\ * 
-              !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:tx_status_1\
+              Net_1396 * !Net_1488
+            + cy_srff_1 * !Net_1488
         );
-        Output = \emFile_1:SPI0:BSPIM:state_2\ (fanout=15)
+        Output = cy_srff_1 (fanout=4)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_pre_reg\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=1]
-        Total # of inputs        : 2
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,4)][LB=1] #macrocells=1, #inputs=1, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=tmpOE__HornPWM_net_0, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=0]
+        Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
+            Clock  = (Net_1844) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
-        !(
-              !\emFile_1:SPI0:BSPIM:mosi_pre_reg_split\ * 
-              !\emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\
-        );
-        Output = \emFile_1:SPI0:BSPIM:mosi_pre_reg\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,1)][LB=1] #macrocells=2, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=0]
-        Total # of inputs        : 10
-        Total # of product terms : 6
-            Clock Enable: True
-        Main Equation            : 6 pterms
-        !(
-              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:ld_ident\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_0\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * 
-              !\emFile_1:SPI0:BSPIM:mosi_pre_reg\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\
-            + \emFile_1:SPI0:BSPIM:state_2\ * 
-              !\emFile_1:SPI0:BSPIM:mosi_from_dp\
-            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\
-        );
-        Output = \emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\emFile_1:Net_22\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
         (
-              \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:Net_22\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_0\
-            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\
+              Net_3204
         );
-        Output = \emFile_1:Net_22\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-statuscell: Name =\Status_Reg_1:sts:sts_reg\
-    PORT MAP (
-        status_0 => Net_2455 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_md_select = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(3,2)] contents:
-LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_pre_reg_split\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=0]
-        Total # of inputs        : 11
-        Total # of product terms : 8
-            Clock Enable: True
-        Main Equation            : 8 pterms
-        (
-              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
-              \emFile_1:SPI0:BSPIM:count_4\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
-              \emFile_1:SPI0:BSPIM:count_3\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
-              \emFile_1:SPI0:BSPIM:count_2\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
-              \emFile_1:SPI0:BSPIM:count_1\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
-              !\emFile_1:SPI0:BSPIM:count_0\
-            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_pre_reg\
-            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
-              \emFile_1:SPI0:BSPIM:count_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_pre_reg\
-            + \emFile_1:SPI0:BSPIM:state_1\ * \emFile_1:SPI0:BSPIM:state_0\ * 
-              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
-              !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:ld_ident\
-        );
-        Output = \emFile_1:SPI0:BSPIM:mosi_pre_reg_split\ (fanout=1)
+        Output = tmpOE__HornPWM_net_0 (fanout=1)
         Properties               : 
         {
         }
@@ -3598,68 +3439,16 @@ LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=11, #pterms=8
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(3,2)][LB=1] #macrocells=2, #inputs=10, #pterms=5
-{
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=1][MC=0]
-        Total # of inputs        : 5
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
-              \emFile_1:SPI0:BSPIM:count_0\
-        );
-        Output = \emFile_1:SPI0:BSPIM:load_rx_data\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:state_1\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=2]
-        Total # of inputs        : 10
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\emFile_1:Net_19\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        !(
-              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
-              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
-              \emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:ld_ident\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
-              !\emFile_1:SPI0:BSPIM:count_3\ * \emFile_1:SPI0:BSPIM:count_2\ * 
-              \emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:tx_status_1\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\
-        );
-        Output = \emFile_1:SPI0:BSPIM:state_1\ (fanout=15)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\emFile_1:SPI0:BSPIM:sR8:Dp:u0\
+datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u3\
     PORT MAP (
-        clock => \emFile_1:Net_19\ ,
-        cs_addr_2 => \emFile_1:SPI0:BSPIM:state_2\ ,
-        cs_addr_1 => \emFile_1:SPI0:BSPIM:state_1\ ,
-        cs_addr_0 => \emFile_1:SPI0:BSPIM:state_0\ ,
-        route_si => \emFile_1:Net_16\ ,
-        f1_load => \emFile_1:SPI0:BSPIM:load_rx_data\ ,
-        so_comb => \emFile_1:SPI0:BSPIM:mosi_from_dp\ ,
-        f0_bus_stat_comb => \emFile_1:SPI0:BSPIM:tx_status_2\ ,
-        f0_blk_stat_comb => \emFile_1:SPI0:BSPIM:tx_status_1\ ,
-        f1_bus_stat_comb => \emFile_1:SPI0:BSPIM:rx_status_5\ ,
-        f1_blk_stat_comb => \emFile_1:SPI0:BSPIM:rx_status_4\ );
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \Timer_RPM:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer_RPM:TimerUDB:per_zero\ ,
+        f0_load => \Timer_RPM:TimerUDB:capt_fifo_load\ ,
+        z0_comb => \Timer_RPM:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \Timer_RPM:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \Timer_RPM:TimerUDB:status_2\ ,
+        chain_in => \Timer_RPM:TimerUDB:sT32:timerdp:carry2\ );
     Properties:
     {
         a0_init = "00000000"
@@ -3670,7 +3459,7 @@ datapathcell: Name =\emFile_1:SPI0:BSPIM:sR8:Dp:u0\
         cl1_sync = 1
         cmsb_sync = 1
         co_msb_sync = 1
-        cy_dpconfig = "0000000000000000000000001100000000000001010000000001000100010000000000011100000000010001000000000000000101000000000000010100000011111111000000001111111111111111000000000010001000001000111100000000000000000100"
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
         d0_init = "00000000"
         d1_init = "00000000"
         f0_blk_sync = 1
@@ -3686,44 +3475,117 @@ datapathcell: Name =\emFile_1:SPI0:BSPIM:sR8:Dp:u0\
     }
     Clock Polarity: Active High
     Clock Enable: True
+    Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u2\
 
-statusicell: Name =\emFile_1:SPI0:BSPIM:TxStsReg\
+controlcell: Name =\Control_Reg_motor_reset:Sync:ctrl_reg\
     PORT MAP (
-        clock => \emFile_1:Net_19\ ,
-        status_4 => \emFile_1:SPI0:BSPIM:tx_status_4\ ,
-        status_3 => \emFile_1:SPI0:BSPIM:load_rx_data\ ,
-        status_2 => \emFile_1:SPI0:BSPIM:tx_status_2\ ,
-        status_1 => \emFile_1:SPI0:BSPIM:tx_status_1\ ,
-        status_0 => \emFile_1:SPI0:BSPIM:tx_status_0\ );
+        clock => Net_1334 ,
+        control_7 => \Control_Reg_motor_reset:control_7\ ,
+        control_6 => \Control_Reg_motor_reset:control_6\ ,
+        control_5 => \Control_Reg_motor_reset:control_5\ ,
+        control_4 => \Control_Reg_motor_reset:control_4\ ,
+        control_3 => \Control_Reg_motor_reset:control_3\ ,
+        control_2 => \Control_Reg_motor_reset:control_2\ ,
+        control_1 => \Control_Reg_motor_reset:control_1\ ,
+        control_0 => Net_1473 );
     Properties:
     {
+        cy_ctrl_mode_0 = "00000001"
+        cy_ctrl_mode_1 = "00000001"
+        cy_ext_reset = 1
         cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "0001001"
+        cy_init_value = "00000000"
     }
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,3)] contents:
-LAB@[UDB=(3,3)][LB=0] #macrocells=2, #inputs=10, #pterms=4
+synccell: Name =\Sync_1:genblk1[0]:INST\
+    PORT MAP (
+        clock => Net_1334 ,
+        in => Net_1473 ,
+        out => Net_1488 );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] is empty.
+UDB [UDB=(1,1)] is empty.
+UDB [UDB=(1,2)] is empty.
+UDB [UDB=(1,3)] contents:
+datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \Timer_RPM:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer_RPM:TimerUDB:per_zero\ ,
+        f0_load => \Timer_RPM:TimerUDB:capt_fifo_load\ ,
+        chain_in => \Timer_RPM:TimerUDB:sT32:timerdp:carry0\ ,
+        chain_out => \Timer_RPM:TimerUDB:sT32:timerdp:carry1\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u0\
+    Next in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u2\
+
+statuscell: Name =\Status_Reg_OverCurrent:sts:sts_reg\
+    PORT MAP (
+        status_0 => cy_srff_1 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_md_select = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(1,4)] contents:
+LAB@[UDB=(1,4)][LB=0] #macrocells=3, #inputs=7, #pterms=7
 {
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 1
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\emFile_1:Net_10\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=1]
+        Total # of inputs        : 5
+        Total # of product terms : 3
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 3 pterms
         (
-              \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:state_0\
+              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:Net_1\ * 
+              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
+            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:Net_1\ * 
+              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
+            + !\emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:Net_1\ * 
+              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
         );
-        Output = \emFile_1:SPI0:BSPIM:tx_status_0\ (fanout=1)
+        Output = \emFile_1:Net_10\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(3,3)][LB=0][MC=2]
-        Total # of inputs        : 10
+    [McSlotId=2]:     MacroCell: Name=\emFile_1:Net_1\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=2]
+        Total # of inputs        : 4
         Total # of product terms : 3
         List of special equations: 
             Clock  = (\emFile_1:Net_19\) => Global
@@ -3732,55 +3594,161 @@ LAB@[UDB=(3,3)][LB=0] #macrocells=2, #inputs=10, #pterms=4
         !(
               !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
               \emFile_1:SPI0:BSPIM:state_0\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              \emFile_1:SPI0:BSPIM:tx_status_1\
-            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
-              !\emFile_1:SPI0:BSPIM:count_2\ * \emFile_1:SPI0:BSPIM:count_1\ * 
-              !\emFile_1:SPI0:BSPIM:count_0\ * 
-              !\emFile_1:SPI0:BSPIM:ld_ident\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:Net_1\
+            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:Net_1\
         );
-        Output = \emFile_1:SPI0:BSPIM:state_0\ (fanout=15)
+        Output = \emFile_1:Net_1\ (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,3)][LB=1] #macrocells=3, #inputs=6, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_motor:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=0]
-        Total # of inputs        : 1
+    [McSlotId=3]:     MacroCell: Name=Net_276, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=3]
+        Total # of inputs        : 2
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_174) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \PWM_motor:PWMUDB:control_7\
+              Net_289 * !cy_srff_1
         );
-        Output = \PWM_motor:PWMUDB:runmode_enable\ (fanout=2)
+        Output = Net_276 (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,4)][LB=1] #macrocells=2, #inputs=6, #pterms=5
+{
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_hs_reg\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=0]
+        Total # of inputs        : 6
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp_reg\
+            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\
+            + !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
+            + !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
+        );
+        Output = \emFile_1:SPI0:BSPIM:mosi_hs_reg\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_from_dp_reg\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\
+        );
+        Output = \emFile_1:SPI0:BSPIM:mosi_from_dp_reg\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u2\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_1 => \Timer_RPM:TimerUDB:control_7\ ,
+        cs_addr_0 => \Timer_RPM:TimerUDB:per_zero\ ,
+        f0_load => \Timer_RPM:TimerUDB:capt_fifo_load\ ,
+        chain_in => \Timer_RPM:TimerUDB:sT32:timerdp:carry1\ ,
+        chain_out => \Timer_RPM:TimerUDB:sT32:timerdp:carry2\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u1\
+    Next in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u3\
+
+statuscell: Name =\Status_Reg_1:sts:sts_reg\
+    PORT MAP (
+        status_0 => Net_2455 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_md_select = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(1,5)] is empty.
+UDB [UDB=(2,0)] is empty.
+UDB [UDB=(2,1)] is empty.
+UDB [UDB=(2,2)] is empty.
+UDB [UDB=(2,3)] is empty.
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=1, #inputs=4, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(2,4)][LB=0][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:cnt_enable\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:cnt_enable\
+            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:cnt_enable\
+        );
+        Output = \emFile_1:SPI0:BSPIM:cnt_enable\ (fanout=3)
         Properties               : 
         {
         }
 
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
-              !\emFile_1:SPI0:BSPIM:state_0\
-        );
-        Output = \emFile_1:SPI0:BSPIM:tx_status_4\ (fanout=1)
-        Properties               : 
-        {
-        }
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
 
-    [McSlotId=3]:     MacroCell: Name=Net_289, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=3]
+LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=3, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=Net_289, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -3795,6 +3763,23 @@ LAB@[UDB=(3,3)][LB=1] #macrocells=3, #inputs=6, #pterms=3
         Properties               : 
         {
         }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_motor:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_174) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_motor:PWMUDB:control_7\
+        );
+        Output = \PWM_motor:PWMUDB:runmode_enable\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
 }
 
 datapathcell: Name =\PWM_motor:PWMUDB:sP8:pwmdp:u0\
@@ -3853,25 +3838,270 @@ controlcell: Name =\PWM_motor:PWMUDB:genblk1:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=6, #pterms=4
+UDB [UDB=(2,5)] contents:
+LAB@[UDB=(2,5)][LB=0] #macrocells=2, #inputs=12, #pterms=7
 {
-    [McSlotId=0]:     MacroCell: Name=Net_276, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=0][MC=0]
+        Total # of inputs        : 10
+        Total # of product terms : 6
             Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_289 * !cy_srff_1
+        Main Equation            : 6 pterms
+        !(
+              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:ld_ident\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_0\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * 
+              !\emFile_1:SPI0:BSPIM:mosi_pre_reg\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\
+            + \emFile_1:SPI0:BSPIM:state_2\ * 
+              !\emFile_1:SPI0:BSPIM:mosi_from_dp\
+            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\
         );
-        Output = Net_276 (fanout=1)
+        Output = \emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\ (fanout=1)
         Properties               : 
         {
         }
 
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\emFile_1:Net_1\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=2]
+    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_pre_reg\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !\emFile_1:SPI0:BSPIM:mosi_pre_reg_split\ * 
+              !\emFile_1:SPI0:BSPIM:mosi_pre_reg_split_1\
+        );
+        Output = \emFile_1:SPI0:BSPIM:mosi_pre_reg\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,5)][LB=1] #macrocells=1, #inputs=11, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:mosi_pre_reg_split\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=0]
+        Total # of inputs        : 11
+        Total # of product terms : 8
+            Clock Enable: True
+        Main Equation            : 8 pterms
+        (
+              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
+              \emFile_1:SPI0:BSPIM:count_4\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
+              \emFile_1:SPI0:BSPIM:count_3\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
+              \emFile_1:SPI0:BSPIM:count_2\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
+              \emFile_1:SPI0:BSPIM:count_1\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
+              !\emFile_1:SPI0:BSPIM:count_0\
+            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_pre_reg\
+            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
+              \emFile_1:SPI0:BSPIM:count_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_pre_reg\
+            + \emFile_1:SPI0:BSPIM:state_1\ * \emFile_1:SPI0:BSPIM:state_0\ * 
+              \emFile_1:SPI0:BSPIM:mosi_from_dp\ * 
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
+              !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:ld_ident\
+        );
+        Output = \emFile_1:SPI0:BSPIM:mosi_pre_reg_split\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+count7cell: Name =\emFile_1:SPI0:BSPIM:BitCounter\
+    PORT MAP (
+        clock => \emFile_1:Net_19\ ,
+        enable => \emFile_1:SPI0:BSPIM:cnt_enable\ ,
+        count_6 => \emFile_1:SPI0:BSPIM:count_6\ ,
+        count_5 => \emFile_1:SPI0:BSPIM:count_5\ ,
+        count_4 => \emFile_1:SPI0:BSPIM:count_4\ ,
+        count_3 => \emFile_1:SPI0:BSPIM:count_3\ ,
+        count_2 => \emFile_1:SPI0:BSPIM:count_2\ ,
+        count_1 => \emFile_1:SPI0:BSPIM:count_1\ ,
+        count_0 => \emFile_1:SPI0:BSPIM:count_0\ ,
+        tc => \emFile_1:SPI0:BSPIM:cnt_tc\ );
+    Properties:
+    {
+        cy_alt_mode = 0
+        cy_init_value = "0000000"
+        cy_period = "0001111"
+        cy_route_en = 1
+        cy_route_ld = 0
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,0)] is empty.
+UDB [UDB=(3,1)] is empty.
+UDB [UDB=(3,2)] is empty.
+UDB [UDB=(3,3)] is empty.
+UDB [UDB=(3,4)] contents:
+LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=10, #pterms=7
+{
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:Net_22\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=0]
         Total # of inputs        : 4
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:Net_22\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_0\
+            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:state_0\
+        );
+        Output = \emFile_1:Net_22\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(3,4)][LB=0][MC=1]
+        Total # of inputs        : 9
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
+              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
+              !\emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
+              \emFile_1:SPI0:BSPIM:load_cond\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:load_cond\
+            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
+              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
+              !\emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
+              \emFile_1:SPI0:BSPIM:load_cond\
+            + \emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
+              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
+              !\emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
+              \emFile_1:SPI0:BSPIM:load_cond\
+        );
+        Output = \emFile_1:SPI0:BSPIM:load_cond\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,4)][LB=1] #macrocells=1, #inputs=6, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=1][MC=0]
+        Total # of inputs        : 6
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
+              \emFile_1:SPI0:BSPIM:count_0\ * 
+              \emFile_1:SPI0:BSPIM:rx_status_4\
+        );
+        Output = \emFile_1:SPI0:BSPIM:rx_status_6\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\emFile_1:SPI0:BSPIM:sR8:Dp:u0\
+    PORT MAP (
+        clock => \emFile_1:Net_19\ ,
+        cs_addr_2 => \emFile_1:SPI0:BSPIM:state_2\ ,
+        cs_addr_1 => \emFile_1:SPI0:BSPIM:state_1\ ,
+        cs_addr_0 => \emFile_1:SPI0:BSPIM:state_0\ ,
+        route_si => \emFile_1:Net_16\ ,
+        f1_load => \emFile_1:SPI0:BSPIM:load_rx_data\ ,
+        so_comb => \emFile_1:SPI0:BSPIM:mosi_from_dp\ ,
+        f0_bus_stat_comb => \emFile_1:SPI0:BSPIM:tx_status_2\ ,
+        f0_blk_stat_comb => \emFile_1:SPI0:BSPIM:tx_status_1\ ,
+        f1_bus_stat_comb => \emFile_1:SPI0:BSPIM:rx_status_5\ ,
+        f1_blk_stat_comb => \emFile_1:SPI0:BSPIM:rx_status_4\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000000000000000000001100000000000001010000000001000100010000000000011100000000010001000000000000000101000000000000010100000011111111000000001111111111111111000000000010001000001000111100000000000000000100"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+statusicell: Name =\emFile_1:SPI0:BSPIM:RxStsReg\
+    PORT MAP (
+        clock => \emFile_1:Net_19\ ,
+        status_6 => \emFile_1:SPI0:BSPIM:rx_status_6\ ,
+        status_5 => \emFile_1:SPI0:BSPIM:rx_status_5\ ,
+        status_4 => \emFile_1:SPI0:BSPIM:rx_status_4\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "1000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,5)] contents:
+LAB@[UDB=(3,5)][LB=0] #macrocells=4, #inputs=10, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(3,5)][LB=0][MC=0]
+        Total # of inputs        : 10
         Total # of product terms : 3
         List of special equations: 
             Clock  = (\emFile_1:Net_19\) => Global
@@ -3880,180 +4110,158 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=6, #pterms=4
         !(
               !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
               \emFile_1:SPI0:BSPIM:state_0\
-            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_0\ * 
-              !\emFile_1:Net_1\
-            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:Net_1\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:tx_status_1\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * \emFile_1:SPI0:BSPIM:count_1\ * 
+              !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:ld_ident\
         );
-        Output = \emFile_1:Net_1\ (fanout=2)
+        Output = \emFile_1:SPI0:BSPIM:state_0\ (fanout=15)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,4)][LB=1] #macrocells=1, #inputs=5, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\emFile_1:Net_10\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=1][MC=0]
-        Total # of inputs        : 5
-        Total # of product terms : 3
+    [McSlotId=1]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=1]
+        Total # of inputs        : 10
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
             Clock Enable: True
-        Main Equation            : 3 pterms
+        Main Equation            : 4 pterms
         (
-              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:Net_1\ * 
-              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
-            + \emFile_1:SPI0:BSPIM:state_1\ * !\emFile_1:Net_1\ * 
-              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
-            + !\emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:Net_1\ * 
-              \emFile_1:SPI0:BSPIM:mosi_hs_reg\
+              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\
+            + \emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\
+            + \emFile_1:SPI0:BSPIM:state_1\ * \emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * \emFile_1:SPI0:BSPIM:count_1\ * 
+              !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:ld_ident\
+            + \emFile_1:SPI0:BSPIM:state_1\ * \emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              \emFile_1:SPI0:BSPIM:count_2\ * \emFile_1:SPI0:BSPIM:count_1\ * 
+              !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:tx_status_1\
         );
-        Output = \emFile_1:Net_10\ (fanout=1)
+        Output = \emFile_1:SPI0:BSPIM:state_2\ (fanout=15)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\
+        );
+        Output = \emFile_1:SPI0:BSPIM:tx_status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=3]
+        Total # of inputs        : 5
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\emFile_1:SPI0:BSPIM:count_4\ * !\emFile_1:SPI0:BSPIM:count_3\ * 
+              !\emFile_1:SPI0:BSPIM:count_2\ * !\emFile_1:SPI0:BSPIM:count_1\ * 
+              \emFile_1:SPI0:BSPIM:count_0\
+        );
+        Output = \emFile_1:SPI0:BSPIM:load_rx_data\ (fanout=2)
+        Properties               : 
+        {
+        }
 }
 
-datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u2\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_1 => \Timer_RPM:TimerUDB:control_7\ ,
-        cs_addr_0 => \Timer_RPM:TimerUDB:per_zero\ ,
-        f0_load => \Timer_RPM:TimerUDB:capt_fifo_load\ ,
-        chain_in => \Timer_RPM:TimerUDB:sT32:timerdp:carry1\ ,
-        chain_out => \Timer_RPM:TimerUDB:sT32:timerdp:carry2\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u1\
-    Next in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u3\
-
-statuscell: Name =\Status_Reg_OverCurrent:sts:sts_reg\
-    PORT MAP (
-        status_0 => cy_srff_1 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_md_select = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(3,5)] contents:
-LAB@[UDB=(3,5)][LB=0] #macrocells=1, #inputs=3, #pterms=2
+LAB@[UDB=(3,5)][LB=1] #macrocells=3, #inputs=10, #pterms=6
 {
-    [McSlotId=0]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=0]
-        Total # of inputs        : 3
+    [McSlotId=0]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(3,5)][LB=1][MC=0]
+        Total # of inputs        : 9
         Total # of product terms : 2
         List of special equations: 
-            Clock  = (Net_1334) => Global
+            Clock  = (\emFile_1:Net_19\) => Global
             Clock Enable: True
         Main Equation            : 2 pterms
         (
-              Net_1396 * !Net_1488
-            + cy_srff_1 * !Net_1488
+              !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
+              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
+              !\emFile_1:SPI0:BSPIM:count_1\ * \emFile_1:SPI0:BSPIM:count_0\ * 
+              \emFile_1:SPI0:BSPIM:ld_ident\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\ * 
+              !\emFile_1:SPI0:BSPIM:ld_ident\
         );
-        Output = cy_srff_1 (fanout=4)
+        Output = \emFile_1:SPI0:BSPIM:ld_ident\ (fanout=6)
         Properties               : 
         {
         }
 
     [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:state_1\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=2]
+        Total # of inputs        : 10
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\emFile_1:Net_19\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        !(
+              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
+              !\emFile_1:SPI0:BSPIM:count_3\ * !\emFile_1:SPI0:BSPIM:count_2\ * 
+              \emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:ld_ident\
+            + !\emFile_1:SPI0:BSPIM:state_2\ * \emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\ * !\emFile_1:SPI0:BSPIM:count_4\ * 
+              !\emFile_1:SPI0:BSPIM:count_3\ * \emFile_1:SPI0:BSPIM:count_2\ * 
+              \emFile_1:SPI0:BSPIM:count_1\ * !\emFile_1:SPI0:BSPIM:count_0\ * 
+              !\emFile_1:SPI0:BSPIM:tx_status_1\
+            + \emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              \emFile_1:SPI0:BSPIM:state_0\
+        );
+        Output = \emFile_1:SPI0:BSPIM:state_1\ (fanout=15)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\emFile_1:SPI0:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\emFile_1:SPI0:BSPIM:state_2\ * !\emFile_1:SPI0:BSPIM:state_1\ * 
+              !\emFile_1:SPI0:BSPIM:state_0\
+        );
+        Output = \emFile_1:SPI0:BSPIM:tx_status_4\ (fanout=1)
+        Properties               : 
+        {
+        }
 }
 
-datapathcell: Name =\Timer_RPM:TimerUDB:sT32:timerdp:u1\
+statusicell: Name =\emFile_1:SPI0:BSPIM:TxStsReg\
     PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_1 => \Timer_RPM:TimerUDB:control_7\ ,
-        cs_addr_0 => \Timer_RPM:TimerUDB:per_zero\ ,
-        f0_load => \Timer_RPM:TimerUDB:capt_fifo_load\ ,
-        chain_in => \Timer_RPM:TimerUDB:sT32:timerdp:carry0\ ,
-        chain_out => \Timer_RPM:TimerUDB:sT32:timerdp:carry1\ );
+        clock => \emFile_1:Net_19\ ,
+        status_4 => \emFile_1:SPI0:BSPIM:tx_status_4\ ,
+        status_3 => \emFile_1:SPI0:BSPIM:load_rx_data\ ,
+        status_2 => \emFile_1:SPI0:BSPIM:tx_status_2\ ,
+        status_1 => \emFile_1:SPI0:BSPIM:tx_status_1\ ,
+        status_0 => \emFile_1:SPI0:BSPIM:tx_status_0\ );
     Properties:
     {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u0\
-    Next in chain : \Timer_RPM:TimerUDB:sT32:timerdp:u2\
-
-controlcell: Name =\Control_Reg_motor_reset:Sync:ctrl_reg\
-    PORT MAP (
-        clock => Net_1334 ,
-        control_7 => \Control_Reg_motor_reset:control_7\ ,
-        control_6 => \Control_Reg_motor_reset:control_6\ ,
-        control_5 => \Control_Reg_motor_reset:control_5\ ,
-        control_4 => \Control_Reg_motor_reset:control_4\ ,
-        control_3 => \Control_Reg_motor_reset:control_3\ ,
-        control_2 => \Control_Reg_motor_reset:control_2\ ,
-        control_1 => \Control_Reg_motor_reset:control_1\ ,
-        control_0 => Net_1473 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000001"
-        cy_ctrl_mode_1 = "00000001"
-        cy_ext_reset = 1
         cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =\Sync_1:genblk1[0]:INST\
-    PORT MAP (
-        clock => Net_1334 ,
-        in => Net_1473 ,
-        out => Net_1488 );
-    Properties:
-    {
+        cy_int_mask = "0000000"
+        cy_md_select = "0001001"
     }
     Clock Polarity: Active High
     Clock Enable: True
@@ -4196,48 +4404,7 @@ Drq container @ [DrqContainer=(0)]:
         }
 Port 0 contains the following IO cells:
 [IoId=0]: 
-Pin : Name = RX_1(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: NOSYNC
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_DIGITAL
-        VTrip: CMOS
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL, ROUTABLE
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => RX_1(0)__PA ,
-        fb => Net_11 ,
-        pad => RX_1(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=1]: 
-Pin : Name = \emFile_1:mosi0(0)\
+Pin : Name = \emFile_1:sclk0(0)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -4270,14 +4437,55 @@ Pin : Name = \emFile_1:mosi0(0)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \emFile_1:mosi0(0)\__PA ,
-        input => \emFile_1:Net_10\ ,
-        pad => \emFile_1:mosi0(0)_PAD\ );
+        pa_out => \emFile_1:sclk0(0)\__PA ,
+        input => \emFile_1:Net_22\ ,
+        pad => \emFile_1:sclk0(0)_PAD\ );
     Properties:
     {
     }
 
 [IoId=2]: 
+Pin : Name = \ADC_A:Bypass(0)\
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => \ADC_A:Bypass(0)\__PA ,
+        analog_term => \ADC_A:Net_210\ ,
+        pad => \ADC_A:Bypass(0)_PAD\ );
+    Properties:
+    {
+    }
+
+[IoId=3]: 
 Pin : Name = \emFile_1:miso0(0)\
     Attributes:
         In Group/Port: True
@@ -4318,7 +4526,132 @@ Pin : Name = \emFile_1:miso0(0)\
     {
     }
 
-[IoId=3]: 
+[IoId=4]: 
+Pin : Name = \emFile_1:SPI0_CS(0)\
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: NOSYNC
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: CMOS_OUT
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => \emFile_1:SPI0_CS(0)\__PA ,
+        pad => \emFile_1:SPI0_CS(0)_PAD\ );
+    Properties:
+    {
+    }
+
+Port 1 contains the following IO cells:
+[IoId=6]: 
+Pin : Name = HornPWM(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: NOSYNC
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: CMOS_OUT
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => HornPWM(0)__PA ,
+        oe => tmpOE__HornPWM_net_0 ,
+        input => Net_3213_local ,
+        pad => HornPWM(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=7]: 
+Pin : Name = HornInput(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => HornInput(0)__PA ,
+        fb => Net_3204 ,
+        pad => HornInput(0)_PAD );
+    Properties:
+    {
+    }
+
+Port 2 contains the following IO cells:
+[IoId=0]: 
 Pin : Name = Motor_out(0)
     Attributes:
         In Group/Port: True
@@ -4355,6 +4688,171 @@ Pin : Name = Motor_out(0)
         pa_out => Motor_out(0)__PA ,
         input => Net_276 ,
         pad => Motor_out(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=4]: 
+Pin : Name = Padel_in(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => Padel_in(0)__PA ,
+        fb => Net_2455 ,
+        pad => Padel_in(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=6]: 
+Pin : Name = RPM(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => RPM(0)__PA ,
+        fb => Net_701 ,
+        pad => RPM(0)_PAD );
+    Properties:
+    {
+    }
+
+Port 3 contains the following IO cells:
+[IoId=2]: 
+Pin : Name = Motor_A_gnd(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => Motor_A_gnd(0)__PA ,
+        analog_term => Net_2957 ,
+        pad => Motor_A_gnd(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=3]: 
+Pin : Name = Motor_A(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: AUTO
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_ANALOG
+        VTrip: EITHER
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: True
+        Can contain Digital: False
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: ANALOG
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => Motor_A(0)__PA ,
+        analog_term => Net_2968 ,
+        pad => Motor_A(0)_PAD );
     Properties:
     {
     }
@@ -4401,47 +4899,6 @@ Pin : Name = Motor_V_gnd(0)
     }
 
 [IoId=5]: 
-Pin : Name = RPM(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: NOSYNC
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_DIGITAL
-        VTrip: CMOS
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL, ROUTABLE
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => RPM(0)__PA ,
-        fb => Net_701 ,
-        pad => RPM(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=6]: 
 Pin : Name = Motor_V(0)
     Attributes:
         In Group/Port: True
@@ -4478,6 +4935,48 @@ Pin : Name = Motor_V(0)
         pa_out => Motor_V(0)__PA ,
         analog_term => Net_3009 ,
         pad => Motor_V(0)_PAD );
+    Properties:
+    {
+    }
+
+Port 12 contains the following IO cells:
+[IoId=6]: 
+Pin : Name = RX_1(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: HI_Z_DIGITAL
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => RX_1(0)__PA ,
+        fb => Net_11 ,
+        pad => RX_1(0)_PAD );
     Properties:
     {
     }
@@ -4523,50 +5022,6 @@ Pin : Name = TX_1(0)
     {
     }
 
-Port 1 is empty
-Port 2 is empty
-Port 3 contains the following IO cells:
-[IoId=5]: 
-Pin : Name = \emFile_1:SPI0_CS(0)\
-    Attributes:
-        In Group/Port: True
-        In Sync Option: AUTO
-        Out Sync Option: NOSYNC
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: CMOS_OUT
-        VTrip: EITHER
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => \emFile_1:SPI0_CS(0)\__PA ,
-        pad => \emFile_1:SPI0_CS(0)_PAD\ );
-    Properties:
-    {
-    }
-
-Port 12 is empty
 Port 15 generates interrupt for logical port:
     logicalport: Name =\USBUART_1:Dp\
         PORT MAP (
@@ -4636,130 +5091,7 @@ Port 15 generates interrupt for logical port:
         }
     and contains the following IO cells:
 [IoId=0]: 
-Pin : Name = Motor_A_gnd(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: AUTO
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_ANALOG
-        VTrip: EITHER
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: True
-        Can contain Digital: False
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: ANALOG
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => Motor_A_gnd(0)__PA ,
-        analog_term => Net_2957 ,
-        pad => Motor_A_gnd(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=1]: 
-Pin : Name = Padel_in(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: NOSYNC
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_DIGITAL
-        VTrip: CMOS
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL, ROUTABLE
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => Padel_in(0)__PA ,
-        fb => Net_2455 ,
-        pad => Padel_in(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=2]: 
-Pin : Name = Motor_A(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: AUTO
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_ANALOG
-        VTrip: EITHER
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: True
-        Can contain Digital: False
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: ANALOG
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => Motor_A(0)__PA ,
-        analog_term => Net_2968 ,
-        pad => Motor_A(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=3]: 
-Pin : Name = \emFile_1:sclk0(0)\
+Pin : Name = \emFile_1:mosi0(0)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -4792,9 +5124,9 @@ Pin : Name = \emFile_1:sclk0(0)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \emFile_1:sclk0(0)\__PA ,
-        input => \emFile_1:Net_22\ ,
-        pad => \emFile_1:sclk0(0)_PAD\ );
+        pa_out => \emFile_1:mosi0(0)\__PA ,
+        input => \emFile_1:Net_10\ ,
+        pad => \emFile_1:mosi0(0)_PAD\ );
     Properties:
     {
     }
@@ -4917,17 +5249,19 @@ Clock group 0:
             dclk_1 => Net_1334_local ,
             dclk_glb_2 => Net_174 ,
             dclk_2 => Net_174_local ,
-            dclk_glb_3 => \ADC_V:Net_376\ ,
-            dclk_3 => \ADC_V:Net_376_local\ ,
-            dclk_glb_4 => \ADC_A:Net_376\ ,
-            dclk_4 => \ADC_A:Net_376_local\ ,
-            dclk_glb_5 => Net_1844 ,
-            dclk_5 => Net_1844_local );
+            dclk_glb_3 => \ADC_A:Net_376\ ,
+            dclk_3 => \ADC_A:Net_376_local\ ,
+            dclk_glb_4 => \ADC_V:Net_376\ ,
+            dclk_4 => \ADC_V:Net_376_local\ ,
+            dclk_glb_5 => Net_3213 ,
+            dclk_5 => Net_3213_local ,
+            dclk_glb_6 => Net_1844 ,
+            dclk_6 => Net_1844_local );
         Properties:
         {
         }
 Comparator group 0: 
-    Comparator Block @ F(Comparator,1): 
+    Comparator Block @ F(Comparator,3): 
     comparatorcell: Name =\Comp_1:ctComp\
         PORT MAP (
             vplus => Net_3023 ,
@@ -5007,15 +5341,26 @@ Opamp group 0: empty
 CapSense Buffers group 0: empty
 Vref group 0: 
     Vref Block @ F(Vref,12): 
-    vrefcell: Name =\ADC_A:vRef_Vdda\
+    vrefcell: Name =\ADC_V:vRef_Vdda\
         PORT MAP (
-            vout => \ADC_A:Net_216\ );
+            vout => \ADC_V:Net_216\ );
         Properties:
         {
             autoenable = 1
             guid = "206B3D12-10C8-4e0c-A050-DDD8AA31CF27"
             ignoresleep = 0
             name = "Vdda(HiZ)"
+        }
+    Vref Block @ F(Vref,13): 
+    vrefcell: Name =\ADC_A:vRef_Vdda_1\
+        PORT MAP (
+            vout => \ADC_A:Net_235\ );
+        Properties:
+        {
+            autoenable = 1
+            guid = "4720866E-BC14-478d-B8A0-3E44F38CADAC"
+            ignoresleep = 0
+            name = "Vdda/2"
         }
 LPF group 0: empty
 SAR ADC group 0: 
@@ -5026,7 +5371,7 @@ SAR ADC group 0:
             vminus => Net_3010 ,
             ext_pin => \ADC_V:Net_209\ ,
             vrefhi_out => \ADC_V:Net_255\ ,
-            vref => \ADC_A:Net_216\ ,
+            vref => \ADC_V:Net_216\ ,
             clk_udb => \ADC_V:Net_376_local\ ,
             irq => \ADC_V:Net_252\ ,
             next => Net_3015 ,
@@ -5052,9 +5397,9 @@ SAR ADC group 0:
         PORT MAP (
             vplus => Net_3023 ,
             vminus => Net_2957 ,
-            ext_pin => \ADC_A:Net_209\ ,
+            ext_pin => \ADC_A:Net_210\ ,
             vrefhi_out => \ADC_A:Net_255\ ,
-            vref => \ADC_A:Net_216\ ,
+            vref => \ADC_A:Net_235\ ,
             clk_udb => \ADC_A:Net_376_local\ ,
             irq => \ADC_A:Net_252\ ,
             next => Net_3034 ,
@@ -5083,54 +5428,60 @@ Port Configuration report
 ------------------------------------------------------------
      |     |       | Interrupt |                  |                       | 
 Port | Pin | Fixed |      Type |       Drive Mode |                  Name | Connections
------+-----+-------+-----------+------------------+-----------------------+-----------------------------
-   0 |   0 |     * |      NONE |     HI_Z_DIGITAL |               RX_1(0) | FB(Net_11)
-     |   1 |       |      NONE |         CMOS_OUT |   \emFile_1:mosi0(0)\ | In(\emFile_1:Net_10\)
-     |   2 |       |      NONE |     HI_Z_DIGITAL |   \emFile_1:miso0(0)\ | FB(\emFile_1:Net_16\)
-     |   3 |       |      NONE |         CMOS_OUT |          Motor_out(0) | In(Net_276)
-     |   4 |       |      NONE |      HI_Z_ANALOG |        Motor_V_gnd(0) | Analog(Net_3010)
-     |   5 |       |      NONE |     HI_Z_DIGITAL |                RPM(0) | FB(Net_701)
-     |   6 |       |      NONE |      HI_Z_ANALOG |            Motor_V(0) | Analog(Net_3009)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------------------------
+   0 |   0 |       |      NONE |         CMOS_OUT |   \emFile_1:sclk0(0)\ | In(\emFile_1:Net_22\)
+     |   2 |     * |      NONE |      HI_Z_ANALOG |     \ADC_A:Bypass(0)\ | Analog(\ADC_A:Net_210\)
+     |   3 |       |      NONE |     HI_Z_DIGITAL |   \emFile_1:miso0(0)\ | FB(\emFile_1:Net_16\)
+     |   4 |       |      NONE |         CMOS_OUT | \emFile_1:SPI0_CS(0)\ | 
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------------------------
+   1 |   6 |     * |      NONE |         CMOS_OUT |            HornPWM(0) | In(Net_3213_local), OE(tmpOE__HornPWM_net_0)
+     |   7 |     * |      NONE |      RES_PULL_UP |          HornInput(0) | FB(Net_3204)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------------------------
+   2 |   0 |     * |      NONE |         CMOS_OUT |          Motor_out(0) | In(Net_276)
+     |   4 |     * |      NONE |     HI_Z_DIGITAL |           Padel_in(0) | FB(Net_2455)
+     |   6 |     * |      NONE |     HI_Z_DIGITAL |                RPM(0) | FB(Net_701)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------------------------
+   3 |   2 |     * |      NONE |      HI_Z_ANALOG |        Motor_A_gnd(0) | Analog(Net_2957)
+     |   3 |     * |      NONE |      HI_Z_ANALOG |            Motor_A(0) | Analog(Net_2968)
+     |   4 |     * |      NONE |      HI_Z_ANALOG |        Motor_V_gnd(0) | Analog(Net_3010)
+     |   5 |     * |      NONE |      HI_Z_ANALOG |            Motor_V(0) | Analog(Net_3009)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------------------------
+  12 |   6 |     * |      NONE |     HI_Z_DIGITAL |               RX_1(0) | FB(Net_11)
      |   7 |     * |      NONE |         CMOS_OUT |               TX_1(0) | In(Net_2248)
------+-----+-------+-----------+------------------+-----------------------+-----------------------------
-   3 |   5 |       |      NONE |         CMOS_OUT | \emFile_1:SPI0_CS(0)\ | 
------+-----+-------+-----------+------------------+-----------------------+-----------------------------
-  15 |   0 |       |      NONE |      HI_Z_ANALOG |        Motor_A_gnd(0) | Analog(Net_2957)
-     |   1 |       |      NONE |     HI_Z_DIGITAL |           Padel_in(0) | FB(Net_2455)
-     |   2 |       |      NONE |      HI_Z_ANALOG |            Motor_A(0) | Analog(Net_2968)
-     |   3 |       |      NONE |         CMOS_OUT |   \emFile_1:sclk0(0)\ | In(\emFile_1:Net_22\)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------------------------
+  15 |   0 |       |      NONE |         CMOS_OUT |   \emFile_1:mosi0(0)\ | In(\emFile_1:Net_10\)
      |   6 |     * |   FALLING |      HI_Z_ANALOG |     \USBUART_1:Dp(0)\ | Analog(\USBUART_1:Net_1000\)
      |   7 |     * |      NONE |      HI_Z_ANALOG |     \USBUART_1:Dm(0)\ | Analog(\USBUART_1:Net_597\)
---------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.006ms
-Digital Placement phase: Elapsed time ==> 3s.225ms
+Digital component placer commit/Report: Elapsed time ==> 0s.004ms
+Digital Placement phase: Elapsed time ==> 3s.212ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 4s.190ms
+Digital Routing phase: Elapsed time ==> 3s.704ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.410ms
+Bitstream and API generation phase: Elapsed time ==> 0s.419ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.072ms
+Bitstream verification phase: Elapsed time ==> 0s.063ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in MotorController_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.791ms
+Static timing analysis phase: Elapsed time ==> 0s.780ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.511ms
+Design database save phase: Elapsed time ==> 0s.488ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 13s.197ms
+cydsfit: Elapsed time ==> 11s.919ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 13s.285ms
-API generation phase: Elapsed time ==> 4s.526ms
-Dependency generation phase: Elapsed time ==> 0s.049ms
+Fitter phase: Elapsed time ==> 12s.006ms
+API generation phase: Elapsed time ==> 4s.533ms
+Dependency generation phase: Elapsed time ==> 0s.089ms
 Cleanup phase: Elapsed time ==> 0s.001ms

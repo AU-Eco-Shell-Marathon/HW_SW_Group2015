@@ -436,7 +436,9 @@
                             break;
                             case 3u : CAN_1_ReceiveMsgDOD();
                             break;
-                            case 4u : CAN_1_ReceiveMsgT_BATTERY_IR();
+                            case 4u : CAN_1_ReceiveMsgT_BATTERY();
+                            break;
+                            case 5u : CAN_1_ReceiveMsgIR();
                             break;
                             default:
                             break;

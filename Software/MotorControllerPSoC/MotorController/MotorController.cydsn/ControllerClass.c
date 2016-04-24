@@ -54,7 +54,7 @@ struct dataSample
 void run()
 {
     Pedal_update();
-    if(BMSdata->NewData == 0b00011111)
+    if(BMSdata->NewData == 0b00111111)
     {
         Logger_LogData(1,
             BMSdata->battery_V,
