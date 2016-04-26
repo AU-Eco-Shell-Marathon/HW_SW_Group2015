@@ -1,0 +1,97 @@
+\input{../Preamble}
+\newcommand{\HRule}{\rule{\linewidth}{0.1mm}}
+
+\begin{document}
+	\begin{center}
+		{\huge \bfseries \textsc{Møde referat nr. 10}}\\
+		\textsc{\large 4. semesterprojekt - Gruppe 1}\\[0.3cm]
+	\end{center}
+	\begin{tabular}{ll}
+	\large \textbf{Dato:} & 26/04/2016  \\ % Sted
+	\large \textbf{Tid:}  & 14.15-15.15 \\ % Tid
+	\large \textbf{Sted:} & Kahn bygningen	\\ % Lokation
+	\large \textbf{Deltagere:} & Jens (JN), Jonas (JH), Jonathan (JS), Laimonas (LB), \\
+	\large \textbf & Thomas (TN),  Thomas (TS) \& Carl Jakobsen (JA)\\
+	\large \textbf{Udeblevet:} & Navn her (Syg) \& Navn her (Ingen udmelding)	\\
+	\end{tabular}\\
+	\phantom{\,}\hspace{0.1em} \large \textbf{Referat:}
+	\begin{enumerate}
+		\itemsep 0.3em 
+		\item Mødeleder\\
+			Jens-Peter
+		\item Referent\\
+			Laimonas
+		\item Godkendelse af sidste referat\\
+			Møde referat 10 gennemgås ved næste møde: 3 maj. 
+
+		\item Opfølgning på aktionspunkter
+		\begin{itemize}
+			\itemsep 0.3em 
+			\item Ingen
+		\end{itemize}
+		
+		\item Generelle ting
+			\begin{itemize}
+					
+				\item Dokumenterne afspejler egenligt ikke hvad der skulle laves - Rullefeltet => man skal ind og se på hvilke momentmålere der skal købes... 
+				\item Carl har lavet et overordnet opgave formulering samt en statusrapport, som giver et godt overblik over kravene i projektet - Vi er velkomne til at komme med inputs til evt. ændringer/tilføjelser. 
+				
+				\item Få en beddre på ting som vi har løst - Man skal ikke helt specifikt tænke i genrelle kravspec ting... Men mere som f.eks. der er foretaget 
+				
+				\item Hvordan dokumenterer jeg at jeg har sat mig i SEM krav, og læst tidligere rapporter etc - Dem kan man formegenlig se i et design dokument som så er hentet fra et eller andet sted.
+				Det passende sted at putte disse ting, ville være i rapporten, siden det er den som censoren læser. 
+				
+				\item hver 14 dag skrives status til hver punkt i statusrapporten - Gøres gerne så overordnet som muligt, sådan så det er spændende for andre. 
+				
+				\item Snakke om dublet print til BMS, da det er svært at se på printene hvilke komponenter skal hvor hen. 
+				
+			\end{itemize}
+			
+		\item Dokumentations feedback
+		
+		\begin{itemize}
+			\item Det ville være en god ide at inkludere noget software i dokumentationen sådan så man har en overblik. 
+			\item Optimized driving algorithm... / specificere om vi rent faktisk bruger Coast and Burn
+			
+			\item Sætte kilde på når man refererer til SEM krav - Helst lægge dem som bilig og dertil direkte referere til de enkelte krav. 
+			
+			\item funktionelle krav er meget "bløde" - Her ville man skulle referere til SEM krav og specificere det mere, så vi rent faktisk kan sende det til til Kina og være sikre på vi for det som vi skal have tilbage - Så f.eks. specificere hvilken eletric storage unit der benyttes og dertil at alle specifikatonerne kommer fra (BILAG SEM KRAV ETC...) så man ikke er i tvivl om hvad der skal bruges.
+			
+			\item Ikke-funktionellekrav - Enten angive i interval eller tolerancer.
+			
+			-Det skal skrives hvad vi ønsker udstyret skal kunne - Så f.eks. max 30 A fra batteriet da vi har en sikring på det 
+			Hvad er måleintervallet for motoren/bilen - specificere tingene meget mere.
+			
+			-Carl mener at der er meget flere ikke funktionelle krav, kommunikation, SD-kort specifikationer, etc. etc. Til hele den samlede opgave. 
+			
+			- Det skal helst være, at når kravspecifikationen er færdig, så er man sikker på hvilke krav skal opflyldes.
+			
+			\item Grænseflader til enheder - Der skal opstilles f.eks. volt og ampere til de forskellige ting, hvor der skal være et overordnet BDD og der behøver man ikke at specificere portnavne etc på BDDet - Det skal være så overordnet og overskueligt som muligt. Man kan så senere tilføje portnavne og lign i IBDerne, men man skal passe på at de ikke bliver alt for komplicerede og uoverskuelige. 
+			
+			\item At trække ledninger rundt i bilen er også en del af arkitekturen, som f.eks. et IBD, så man havde det som et punkt under BDDet som generel aptering (føring af ledninger). 
+			
+			\item Man skal være enige om f.eks. ved SD-kortet, at man skal have 2 cifre fr kommaet... f.eks. 8 decimaler om det skal være i den ene eller den anden størrelse. 
+			
+			- Her skal man have i minde, at man har en person som kommer udefra som skal kunne læse rapporten - Så først f.eks. se et billede af bilen også derefter et rigt billede og på den måde kan censoren være "tunet ind i emnet" og derfor læse det mere rigtigt uden man måske har specificeret det rigtigt. 
+			
+			- Referencer og protokoller skal også beskrives eller refereres til hvis der er udarbejdede, f.eks. CAN-bus protokollen så man i sidste ende har det skudsikkert dokumenteret. 
+			
+			\item Det er vigtigt at referere til de ting vi tager fra de tidligere rapporter. Det er OK at tage derfra, så længe at vi refererer til disse ting.
+			
+			\item Ud fra ASE-modellen, skal man kunne tage f.eks. kravspeccen også kunne læses uden at man behøves at læse de andre dokumenter. 
+			
+			\item Der står under Rolling Road, at man kan skrive i kravene, at man ikke KUN kan teste det med at bruge batterierne, men f.eks. også en spændingsforsyning med diverse specifikationer. 
+			
+			\item Force er skrevet i stedet for moment, fordi vi vil kunne bruge hvilken som helst bil eller hjul til at teste på Rolling Road. Så den kan både passe til at teste på forskellige gearinger, børsteløs, m. børste etc. Det ville være en ide at specificere dette og argumentere for dette så det fremstår klart. 
+			
+			\item RR-krav, så længe det overholdes med båndbredde el. settling time, OS etc., behøves man ikke skrives f.eks. "MUST BE controlled by PID controller." Det kan løses på andre måder, men de initale krav skal overholdes. 
+			
+		\end{itemize}
+			
+		\item Tidsplan\\
+			Sprint 6 er igangværende. 
+
+		\item Tidspunkt for næste møde\\
+			03/05/2016 - 14.15-15.15
+	\end{enumerate}
+\end{document}
