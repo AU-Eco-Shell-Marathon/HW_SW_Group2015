@@ -3,7 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  This file provides function prototypes and constants for the USBFS component. 
+*  Header File for the USBFS component. Contains prototypes and constant values.
 *
 ********************************************************************************
 * \copyright
@@ -20,12 +20,23 @@
 #include "cyfitter.h"
 #include "cytypes.h"
 #include "CyLib.h"
-#include "cyapicallbacks.h"
 
 /*  User supplied definitions. */
 /* `#START USER_DEFINITIONS` Place your declaration here */
 
 /* `#END` */
+
+
+/***************************************
+* Conditional Compilation Parameters
+***************************************/
+
+/* Check to see if required defines such as CY_PSOC5LP are available */
+/* They are defined starting with cy_boot v3.0 */
+#if !defined (CY_PSOC5LP)
+    #error Component USBFS_v3_0 requires cy_boot v3.0 or later
+#endif /* (CY_PSOC5LP) */
+
 
 /***************************************
 * Enumerated Types and Parameters
@@ -204,9 +215,9 @@ typedef struct
                                             USBUART_1_USB__SIE_EP1_CNT0)
 
 /* Size of gap between SIE endpoint registers groups. */
-#define USBUART_1_SIE_GAP_CNT        (((USBUART_1_USB__SIE_EP2_CNT0 - \
+#define USBUART_1_SIE_GAP_CNT        ((USBUART_1_USB__SIE_EP2_CNT0 - \
                                              (USBUART_1_USB__SIE_EP1_CNT0 + \
-                                              USBUART_1_SIE_EP_REG_SIZE)) / sizeof(reg8)) - 1u)
+                                              USBUART_1_SIE_EP_REG_SIZE)) / sizeof(reg8) - 1u)
 
 /* Structure to access to SIE registers for endpoint. */
 typedef struct
@@ -222,9 +233,9 @@ typedef struct
                                              USBUART_1_USB__ARB_EP1_CFG)
 
 /* Size of gap between ARB endpoint registers groups. */
-#define USBUART_1_ARB_GAP_CNT        (((USBUART_1_USB__ARB_EP2_CFG - \
+#define USBUART_1_ARB_GAP_CNT        ((USBUART_1_USB__ARB_EP2_CFG - \
                                              (USBUART_1_USB__ARB_EP1_CFG + \
-                                              USBUART_1_ARB_EP_REG_SIZE)) / sizeof(reg8)) - 1u)
+                                              USBUART_1_ARB_EP_REG_SIZE)) / sizeof(reg8) - 1u)
 
 /* Structure to access to ARB registers for endpoint. */
 typedef struct
@@ -247,9 +258,9 @@ typedef struct
                                                      USBUART_1_USB__ARB_RW1_WA16)
 
     /* Size of gap between ARB endpoint registers groups (16-bits access). */
-    #define USBUART_1_ARB_EP_REG16_GAP_CNT   (((USBUART_1_USB__ARB_RW2_WA16 - \
+    #define USBUART_1_ARB_EP_REG16_GAP_CNT   ((USBUART_1_USB__ARB_RW2_WA16 - \
                                                      (USBUART_1_USB__ARB_RW1_WA16 + \
-                                                      USBUART_1_ARB_EP_REG16_SIZE)) / sizeof(reg8)) - 1u)
+                                                      USBUART_1_ARB_EP_REG16_SIZE)) / sizeof(reg8) - 1u)
 
     /* Structure to access to ARB registers for endpoint (16-bits access). */
     typedef struct
@@ -312,7 +323,7 @@ void   USBUART_1_DisableOutEP(uint8 epNumber)            ;
 void   USBUART_1_Force(uint8 bState)                     ;
 uint8  USBUART_1_GetEPAckState(uint8 epNumber)           ;
 void   USBUART_1_SetPowerStatus(uint8 powerStatus)       ;
-void   USBUART_1_TerminateEP(uint8 epNumber)             ;
+void   USBUART_1_TerminateEP(uint8 ep)                   ;
 
 uint8 USBUART_1_GetDeviceAddress(void) ;
 
@@ -339,19 +350,19 @@ void USBUART_1_DisableSofInt(void) ;
 #endif /* (USBUART_1_BATT_CHARG_DET_ENABLE) */
 
 #if (USBUART_1_EP_MANAGEMENT_DMA)
-    void USBUART_1_InitEP_DMA(uint8 epNumber, const uint8 *pData) ;   
+    void USBUART_1_InitEP_DMA(uint8 epNumber, const uint8 *pData) ;
+/** @} general */    
     void USBUART_1_Stop_DMA(uint8 epNumber) ;
-/** @} general */ 
 #endif /* (USBUART_1_EP_MANAGEMENT_DMA) */
 
 /**
 * \addtogroup group_power
 * @{
 */
-uint8  USBUART_1_CheckActivity(void) ;
-void   USBUART_1_Suspend(void)       ;
-void   USBUART_1_Resume(void)        ;
-uint8  USBUART_1_RWUEnabled(void)    ;
+uint8  USBUART_1_CheckActivity(void)                     ;
+void   USBUART_1_Suspend(void) ;
+void   USBUART_1_Resume(void)  ;
+uint8  USBUART_1_RWUEnabled(void)                        ;
 
 #if (USBUART_1_LPM_ACTIVE)
     uint32 USBUART_1_Lpm_GetBeslValue(void);
@@ -1120,15 +1131,6 @@ extern volatile uint8 USBUART_1_deviceStatus;
         #endif
     #endif /*(USBUART_1_VBUS_MONITORING_ENABLE) */
 
-    #define USBUART_1_BURSTEND_0_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND0_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_1_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND1_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_2_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND2_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_3_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND3_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_4_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND4_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_5_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND5_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_6_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND6_TR_OUTPUT)
-    #define USBUART_1_BURSTEND_7_TR_OUTPUT    (USBUART_1_cy_m0s8_usb__BURSTEND7_TR_OUTPUT)
-    
 #else /* (CY_PSOC3 || CY_PSOC5LP) */
 
     /* USBUART_1_PM_USB_CR0 */
@@ -1284,11 +1286,8 @@ extern volatile uint8 USBUART_1_deviceStatus;
 #define USBUART_1_USB_CLK_ENABLE         (USBUART_1_USB_CLK_CSR_CLK_EN)
 
 /* USBUART_1_CR0 */
-#define USBUART_1_CR0_DEVICE_ADDRESS_POS     (0u)
-#define USBUART_1_CR0_ENABLE_POS             (7u)
-#define USBUART_1_CR0_DEVICE_ADDRESS_MASK    ((uint8) ((uint8) 0x7Fu << USBUART_1_CR0_DEVICE_ADDRESS_POS))
-#define USBUART_1_CR0_ENABLE                 ((uint8) ((uint8) 0x01u << USBUART_1_CR0_ENABLE_POS))
-
+#define USBUART_1_CR0_ENABLE_POS     (7u)
+#define USBUART_1_CR0_ENABLE         ((uint8) ((uint8) 0x1u << USBUART_1_CR0_ENABLE_POS))
 
 /* USBUART_1_CR1 */
 #define USBUART_1_CR1_REG_ENABLE_POS         (0u)
@@ -1311,7 +1310,6 @@ extern volatile uint8 USBUART_1_deviceStatus;
 #define USBUART_1_EPX_DATA_BUF_MAX           (512u)
 
 /* USBUART_1_USBIO_CR0 */
-
 #define USBUART_1_USBIO_CR0_TEN              (0x80u)
 #define USBUART_1_USBIO_CR0_TSE0             (0x40u)
 #define USBUART_1_USBIO_CR0_TD               (0x20u)
@@ -1384,13 +1382,9 @@ extern volatile uint8 USBUART_1_deviceStatus;
 #define USBUART_1_ARB_CFG_CFG_CMP        ((uint8) ((uint8) 0x1u << USBUART_1_ARB_CFG_CFG_CMP_POS))
 
 /* USBUART_1_DYN_RECONFIG */
-#define USBUART_1_DYN_RECONFIG_EP_SHIFT      (1u)
-#define USBUART_1_DYN_RECONFIG_ENABLE_POS    (0u)
-#define USBUART_1_DYN_RECONFIG_EPNO_POS      (1u)
-#define USBUART_1_DYN_RECONFIG_RDY_STS_POS   (4u)
-#define USBUART_1_DYN_RECONFIG_ENABLE        ((uint8) ((uint8) 0x1u << USBUART_1_DYN_RECONFIG_ENABLE_POS))
-#define USBUART_1_DYN_RECONFIG_EPNO_MASK     ((uint8) ((uint8) 0x7u << USBUART_1_DYN_RECONFIG_EPNO_POS))
-#define USBUART_1_DYN_RECONFIG_RDY_STS       ((uint8) ((uint8) 0x1u << USBUART_1_DYN_RECONFIG_RDY_STS_POS))
+#define USBUART_1_DYN_RECONFIG_ENABLE        (0x01u)
+#define USBUART_1_DYN_RECONFIG_EP_SHIFT      (0x01u)
+#define USBUART_1_DYN_RECONFIG_RDY_STS       (0x10u)
 
 /* USBUART_1_ARB_INT */
 #define USBUART_1_ARB_INT_EP1_INTR_POS          (0u) /* [0] Interrupt for USB EP1 */
@@ -1668,9 +1662,8 @@ extern volatile uint8 USBUART_1_deviceStatus;
     /* Set USB lock option when IMO is locked to USB traffic. */
     #define USBUART_1_DEFUALT_CR1    ((0u != CySysClkImoGetUsbLock()) ? (USBUART_1_CR1_ENABLE_LOCK) : (0u))
 
-    /* Recommended value is increased from 3 to 10 due to suppress glitch on  
-     * RSE0 with USB2.0 hubs (LF CLK = 32kHz equal to 350us). */
-    #define USBUART_1_DEFUALT_BUS_RST_CNT  (10u)
+    /* Recommended value is 3 for LF CLK = 32kHz equal to 100us. */
+    #define USBUART_1_DEFUALT_BUS_RST_CNT  (3u)
 
     /* Select VBUS sources as: valid, PHY of GPIO, and clears isolate bit. */
     /* Application level must ensure that VBUS is valid valid to use. */
@@ -1698,6 +1691,9 @@ extern volatile uint8 USBUART_1_deviceStatus;
                  (uint32) ((uint32) USBUART_1_LPM_ACTIVE           << USBUART_1_INTR_SIE_LPM_INTR_POS)       | \
                  (uint32) ((uint32) USBUART_1_INTR_SIE_EP0_INTR))
 
+    /* Enable LPM functionality. */
+    #define USBUART_1_ENABLE_LPM_CTRL    (USBUART_1_LPM_CTRL_LPM_EN | \
+                                                 USBUART_1_LPM_CTRL_LPM_ACK_RESP)
     /* Arbiter interrupt sources */
     #define USBUART_1_ARB_EPX_INT_MASK   (USBUART_1_ARB_EPX_INT_COMMON_MASK | \
                                                 (USBUART_1_EP_MANAGEMENT_DMA_AUTO ? USBUART_1_ARB_EPX_INT_DMA_TERMIN : 0u))

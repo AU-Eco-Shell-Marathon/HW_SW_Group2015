@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Speedometer-000\Speedometer\Generated_Source\PSoC5\Timer_Speedometer\Timer_Speedometer.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Speedometer-000\Speedometer\Source Files\main.c">
 <ExpandedNodeIds>
 <v>Speedometer-000</v>
 <v>Speedometer-000\Speedometer</v>
@@ -113,34 +113,34 @@
 <v>Speedometer-000\Speedometer\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Pin_Speedometer\Pin_Speedometer_aliases.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Timer_Speedometer</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Timer_Speedometer\Timer_Speedometer.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Timer_Speedometer\Timer_Speedometer.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Timer_Speedometer\Timer_Speedometer_PM.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_audio.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_audio.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_boot.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_cdc.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_cdc.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_cdc.inf</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_cls.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_descr.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_drv.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_episr.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_hid.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_hid.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_midi.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_midi.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_pm.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_pvt.h</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_std.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1\USBUART_1_vnd.c</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1_Dm</v>
-<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\USBUART_1_Dm\USBUART_1_Dm.c</v>
+<v>Speedometer-000</v>
+<v>Speedometer-000\Speedometer</v>
+<v>Speedometer-000\Speedometer\TopDesign</v>
+<v>Speedometer-000\Speedometer\Speedometer.cydwr</v>
+<v>Speedometer-000\Speedometer\Header Files</v>
+<v>Speedometer-000\Speedometer\Source Files</v>
+<v>Speedometer-000\Speedometer\Source Files\main.c</v>
+<v>Speedometer-000\Speedometer\Generated_Source</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Bootloadable_1</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Bootloadable_1\Bootloadable_1.c</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\Bootloadable_1\Bootloadable_1.h</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\clock_1</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\clock_1\Clock_1.c</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\clock_1\Clock_1.h</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\cm3gcc.ld</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\Cm3Iar.icf</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\Cm3RealView.scat</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\Cm3Start.c</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\core_cm3.h</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\core_cm3_psoc5.h</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\core_cmFunc.h</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\core_cmInstr.h</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\CyBootAsmGnu.s</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\CyBootAsmIar.s</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\CyBootAsmRv.s</v>
+<v>Speedometer-000\Speedometer\Generated_Source\PSoC5\cy_boot\CyDmac.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -161,46 +161,6 @@
 <ExpandedNodeIds>
 <v>Speedometer-000</v>
 <v>Speedometer-000\Speedometer</v>
-<v>Speedometer-000\Speedometer\CortexM3</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\Bootloadable_1.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\Clock_1.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\Cm3Start.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\cybootloader.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\CyDmac.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\CyFlash.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\CyLib.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\cymetadata.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\cyPm.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\CySpc.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\cyutils.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\main.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\Pin_Speedometer.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\Timer_Speedometer.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\Timer_Speedometer_PM.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_audio.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_boot.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_cdc.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_cls.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_descr.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_Dm.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_Dp.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_drv.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_episr.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_hid.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_midi.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_pm.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_std.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Listing Files\USBUART_1_vnd.lst</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Speedometer.cyacd</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Speedometer.elf</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Speedometer.hex</v>
-<v>Speedometer-000\Speedometer\CortexM3\ARM_GCC_484\Debug\Speedometer.map</v>
 <v>Speedometer-000\Speedometer\Speedometer.gpdsc</v>
 <v>Speedometer-000\Speedometer\Speedometer.rpt</v>
 <v>Speedometer-000\Speedometer\Speedometer_timing.html</v>
@@ -208,6 +168,9 @@
 <VisibleNodeIds>
 <v>Speedometer-000</v>
 <v>Speedometer-000\Speedometer</v>
+<v>Speedometer-000\Speedometer\Speedometer.gpdsc</v>
+<v>Speedometer-000\Speedometer\Speedometer.rpt</v>
+<v>Speedometer-000\Speedometer\Speedometer_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -223,11 +186,11 @@
 <v>Speedometer-000\Speedometer\CY8C58LP Family Datasheet</v>
 <v>Speedometer-000\Speedometer\System Reference Guides</v>
 <v>Speedometer-000\Speedometer\System Reference Guides\cy_boot_v4_10</v>
-<v>Speedometer-000\Speedometer\Bootloadable_v1_20</v>
-<v>Speedometer-000\Speedometer\cy_clock_v2_20</v>
-<v>Speedometer-000\Speedometer\cy_pins_v2_10</v>
-<v>Speedometer-000\Speedometer\Timer_v2_70</v>
-<v>Speedometer-000\Speedometer\USBFS_v2_70</v>
+<v>Speedometer-000\Speedometer\Bootloadable_v1_20.pdf</v>
+<v>Speedometer-000\Speedometer\cy_clock_v2_20.pdf</v>
+<v>Speedometer-000\Speedometer\cy_pins_v2_10.pdf</v>
+<v>Speedometer-000\Speedometer\Timer_v2_70.pdf</v>
+<v>Speedometer-000\Speedometer\USBFS_v2_70.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Speedometer-000</v>
@@ -236,11 +199,11 @@
 <v>Speedometer-000\Speedometer\CY8C58LP Family Datasheet</v>
 <v>Speedometer-000\Speedometer\System Reference Guides</v>
 <v>Speedometer-000\Speedometer\System Reference Guides\cy_boot_v4_10</v>
-<v>Speedometer-000\Speedometer\Bootloadable_v1_20</v>
-<v>Speedometer-000\Speedometer\cy_clock_v2_20</v>
-<v>Speedometer-000\Speedometer\cy_pins_v2_10</v>
-<v>Speedometer-000\Speedometer\Timer_v2_70</v>
-<v>Speedometer-000\Speedometer\USBFS_v2_70</v>
+<v>Speedometer-000\Speedometer\Bootloadable_v1_20.pdf</v>
+<v>Speedometer-000\Speedometer\cy_clock_v2_20.pdf</v>
+<v>Speedometer-000\Speedometer\cy_pins_v2_10.pdf</v>
+<v>Speedometer-000\Speedometer\Timer_v2_70.pdf</v>
+<v>Speedometer-000\Speedometer\USBFS_v2_70.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>

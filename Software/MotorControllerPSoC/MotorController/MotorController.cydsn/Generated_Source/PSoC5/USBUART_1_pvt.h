@@ -3,8 +3,11 @@
 * \version 3.0
 *
 * \brief
-*  This file provides private function prototypes and constants for the 
-*  USBFS component. It is not intended to be used in the user project.
+*  This private file provides constants and parameter values for the
+*  USBFS Component.
+*  Please do not use this file or its content in your project.
+*
+* Note:
 *
 ********************************************************************************
 * \copyright
@@ -137,9 +140,7 @@ extern volatile T_USBUART_1_TD USBUART_1_currentTD;
 
     extern uint8  USBUART_1_DmaEpBurstCntBackup  [USBUART_1_MAX_EP];
     extern uint32 USBUART_1_DmaEpBufferAddrBackup[USBUART_1_MAX_EP];
-    
-    extern const uint8 USBUART_1_DmaReqOut     [USBUART_1_MAX_EP];    
-    extern const uint8 USBUART_1_DmaBurstEndOut[USBUART_1_MAX_EP];
+
 #else
     #if (USBUART_1_EP_DMA_AUTO_OPT == 0u)
         extern uint8 USBUART_1_DmaNextTd[USBUART_1_MAX_EP];
@@ -172,7 +173,7 @@ void  USBUART_1_ControlReadDataStage(void)       ;
 void  USBUART_1_ControlReadStatusStage(void)     ;
 void  USBUART_1_ControlReadPrematureStatus(void) ;
 uint8 USBUART_1_InitControlWrite(void)           ;
-uint8 USBUART_1_InitZeroLengthControlTransfer(void) ;
+uint8 USBUART_1_InitZeroLengthControlTransfer(void)  ;
 void  USBUART_1_ControlWriteDataStage(void)      ;
 void  USBUART_1_ControlWriteStatusStage(void)    ;
 void  USBUART_1_ControlWritePrematureStatus(void);

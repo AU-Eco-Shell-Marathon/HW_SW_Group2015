@@ -3,8 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  This file provides function prototypes and constants for the USBFS component 
-*  Audio class.
+*  Header File for the USBFS component. Contains prototypes and constant values.
 *
 * Related Document:
 *  Universal Serial Bus Device Class Definition for Audio Devices Release 1.0

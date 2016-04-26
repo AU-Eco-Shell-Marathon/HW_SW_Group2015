@@ -3,7 +3,9 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the USB descriptors and storage.
+*  USB descriptors and storage.
+*
+*  Note:
 *
 ********************************************************************************
 * \copyright

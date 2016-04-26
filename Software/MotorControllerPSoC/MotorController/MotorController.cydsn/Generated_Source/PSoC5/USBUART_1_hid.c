@@ -3,10 +3,12 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the USB HID Class request handler. 
+*  USB HID Class request handler.
 *
 * Related Document:
 *  Device Class Definition for Human Interface Devices (HID) Version 1.11
+*
+* Note:
 *
 ********************************************************************************
 * \copyright
@@ -120,9 +122,7 @@ uint8 USBUART_1_GetProtocol(uint8 interface)
 *  This routine dispatches class requests
 *
 * \return
-*  Results of HID Class request handling: 
-*  - USBUART_1_TRUE  - request was handled without errors
-*  - USBUART_1_FALSE - error occurs during handling of request  
+*  requestHandled
 *
 * \reentrant
 *  No.
@@ -323,6 +323,8 @@ void USBUART_1_FindHidClassDecriptor(void)
 *  number, then loads the currentTD structure with the address of the buffer
 *  and the size.
 *  Hid Report Descriptor is located after IN/OUT/FEATURE reports.
+*
+*   void
 *
 * \return
 *  currentTD

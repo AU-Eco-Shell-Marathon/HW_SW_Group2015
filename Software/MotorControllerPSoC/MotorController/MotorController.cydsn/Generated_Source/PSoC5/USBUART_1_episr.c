@@ -3,7 +3,9 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the Data endpoint Interrupt Service Routines.
+*  Data endpoint Interrupt Service Routines.
+*
+* Note:
 *
 ********************************************************************************
 * \copyright
@@ -45,32 +47,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP1_INTR);
-            
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
+
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP1].epCr0;
+
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to be read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP1].addr & USBUART_1_DIR_IN))
-    #endif /* (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
         {
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP1].epCr0;
-            
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP1) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP1].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -80,16 +74,22 @@
             USBUART_1_EP[USBUART_1_EP1].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if (USBUART_1_midi_out_ep == USBUART_1_EP1)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */
-    
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP1) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP1].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP1_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if (USBUART_1_midi_out_ep == USBUART_1_EP1)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
+
         /* `#START EP1_END_USER_CODE` Place your code here */
 
         /* `#END` */
@@ -98,12 +98,11 @@
         USBUART_1_EP_1_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_1_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 
 #endif /* (USBUART_1_EP1_ISR_ACTIVE) */
@@ -127,32 +126,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
 
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP2_INTR);
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP2].epCr0;
 
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to be read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP2].addr & USBUART_1_DIR_IN))
-    #endif /* (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
-        {            
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP2].epCr0;
-            
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP2) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP2].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
+        {
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -162,16 +153,22 @@
             USBUART_1_EP[USBUART_1_EP2].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if (USBUART_1_midi_out_ep == USBUART_1_EP2)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */        
-    
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP2) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP2].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP2_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if (USBUART_1_midi_out_ep == USBUART_1_EP2)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
+
         /* `#START EP2_END_USER_CODE` Place your code here */
 
         /* `#END` */
@@ -180,12 +177,11 @@
         USBUART_1_EP_2_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_2_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP2_ISR_ACTIVE) */
 
@@ -208,32 +204,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
 
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP3_INTR);    
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP3].epCr0;
 
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to be read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP3].addr & USBUART_1_DIR_IN))
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
-        {            
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP3].epCr0;
-
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP3) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP3].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
+        {
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -243,15 +231,21 @@
             USBUART_1_EP[USBUART_1_EP3].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if (USBUART_1_midi_out_ep == USBUART_1_EP3)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */        
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP3) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP3].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP3_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if (USBUART_1_midi_out_ep == USBUART_1_EP3)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
 
         /* `#START EP3_END_USER_CODE` Place your code here */
 
@@ -261,12 +255,11 @@
         USBUART_1_EP_3_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_3_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP3_ISR_ACTIVE) */
 
@@ -289,32 +282,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
 
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP4_INTR);
-        
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP4].epCr0;
+
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP4].addr & USBUART_1_DIR_IN))
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
         {
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP4].epCr0;
-
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP4) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP4].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -324,15 +309,21 @@
             USBUART_1_EP[USBUART_1_EP4].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if(USBUART_1_midi_out_ep == USBUART_1_EP4)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */        
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP4) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP4].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP4_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if(USBUART_1_midi_out_ep == USBUART_1_EP4)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
 
         /* `#START EP4_END_USER_CODE` Place your code here */
 
@@ -342,12 +333,11 @@
         USBUART_1_EP_4_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_4_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP4_ISR_ACTIVE) */
 
@@ -376,27 +366,19 @@
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
 
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP5_INTR);
-    
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP5].epCr0;
+
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP5].addr & USBUART_1_DIR_IN))
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
-        {            
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP5].epCr0;
-
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP5) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP5].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
+        {
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -406,15 +388,21 @@
             USBUART_1_EP[USBUART_1_EP5].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))        
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if (USBUART_1_midi_out_ep == USBUART_1_EP5)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP5) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP5].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP5_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if (USBUART_1_midi_out_ep == USBUART_1_EP5)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
 
         /* `#START EP5_END_USER_CODE` Place your code here */
 
@@ -424,12 +412,11 @@
         USBUART_1_EP_5_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_5_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP5_ISR_ACTIVE) */
 
@@ -453,32 +440,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
 
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP6_INTR);
-        
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP6].epCr0;
+
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP6].addr & USBUART_1_DIR_IN))
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
         {
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP6].epCr0;
-
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP6) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP6].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-            
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -488,15 +467,21 @@
             USBUART_1_EP[USBUART_1_EP6].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if (USBUART_1_midi_out_ep == USBUART_1_EP6)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP6) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP6].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP6_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if (USBUART_1_midi_out_ep == USBUART_1_EP6)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
 
         /* `#START EP6_END_USER_CODE` Place your code here */
 
@@ -506,12 +491,11 @@
         USBUART_1_EP_6_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_6_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP6_ISR_ACTIVE) */
 
@@ -535,32 +519,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP7_INTR);
-        
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
+
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP7].epCr0;
+
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP7].addr & USBUART_1_DIR_IN))
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
-        {           
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP7].epCr0;
-
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP7) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP7].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-            
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
+        {
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -570,16 +546,21 @@
             USBUART_1_EP[USBUART_1_EP7].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP7) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP7].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if(USBUART_1_midi_out_ep == USBUART_1_EP7)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP7_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if(USBUART_1_midi_out_ep == USBUART_1_EP7)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
 
         /* `#START EP7_END_USER_CODE` Place your code here */
 
@@ -589,12 +570,11 @@
         USBUART_1_EP_7_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_7_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
-            EA = intEn; /* Restore nested interrupt configuration. */
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
+        EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP7_ISR_ACTIVE) */
 
@@ -618,32 +598,24 @@
 
         /* `#END` */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
         {
             uint8 intEn = EA;
             CyGlobalIntEnable;  /* Enable nested interrupts. */
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
 
-        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP8_INTR);
-        
+        /* Read CR0 register to clear SIE lock. */
+        (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP8].epCr0;
+
         /* Notifies user that transfer IN or OUT transfer is completed.
         * IN endpoint: endpoint buffer can be reloaded, Host is read data.
         * OUT endpoint: data is ready to read from endpoint buffer. 
         */
-    #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+    #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
         if (0u != (USBUART_1_EP[USBUART_1_EP8].addr & USBUART_1_DIR_IN))
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
+    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
         {
-            /* Read CR0 register to clear SIE lock. */
-            (void) USBUART_1_SIE_EP_BASE.sieEp[USBUART_1_EP8].epCr0;
-
-            /* Toggle all endpoint types except ISOC. */
-            if (USBUART_1_GET_EP_TYPE(USBUART_1_EP8) != USBUART_1_EP_TYPE_ISOC)
-            {
-                USBUART_1_EP[USBUART_1_EP8].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-            }
-
             /* EP_MANAGEMENT_DMA_AUTO (Ticket ID# 214187): For OUT endpoint this event is used to notify
             * user that DMA has completed copying data from OUT endpoint which is not completely true.
             * Because last chunk of data is being copied.
@@ -653,15 +625,21 @@
             USBUART_1_EP[USBUART_1_EP8].apiEpState = USBUART_1_EVENT_PENDING;
         }
 
-    #if (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO))
-        #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-            !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-            if (USBUART_1_midi_out_ep == USBUART_1_EP8)
-            {
-                USBUART_1_MIDI_OUT_Service();
-            }
-        #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
-    #endif /* (!(CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)) */
+        /* Toggle all endpoint types except ISOC. */
+        if (USBUART_1_GET_EP_TYPE(USBUART_1_EP8) != USBUART_1_EP_TYPE_ISOC)
+        {
+            USBUART_1_EP[USBUART_1_EP8].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
+        }
+
+        USBUART_1_ClearSieEpInterruptSource(USBUART_1_SIE_INT_EP8_INTR);
+
+    #if  (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                  USBUART_1_ISR_SERVICE_MIDI_OUT)
+        if (USBUART_1_midi_out_ep == USBUART_1_EP8)
+        {
+            USBUART_1_MIDI_OUT_Service();
+        }
+    #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
 
         /* `#START EP8_END_USER_CODE` Place your code here */
 
@@ -671,12 +649,11 @@
         USBUART_1_EP_8_ISR_ExitCallback();
     #endif /* (USBUART_1_EP_8_ISR_EXIT_CALLBACK) */
 
-    #if (CY_PSOC3 && defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-        !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-        
+    #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && \
+                 USBUART_1_ISR_SERVICE_MIDI_OUT && CY_PSOC3)
             EA = intEn; /* Restore nested interrupt configuration. */
         }
-    #endif /* (CY_PSOC3 && USBUART_1_ISR_SERVICE_MIDI_OUT) */
+    #endif /* (USBUART_1_EP_ISR_SERVICE_MIDI_OUT && CY_PSOC3) */
     }
 #endif /* (USBUART_1_EP8_ISR_ACTIVE) */
 
@@ -812,7 +789,7 @@ CY_ISR(USBUART_1_LPM_ISR)
                     if (0u != (USBUART_1_EP[ep].addr & USBUART_1_DIR_IN))
                     {
                         /* Clear data ready status. */
-                        USBUART_1_ARB_EP_BASE.arbEp[ep].epCfg &= (uint8) ~USBUART_1_ARB_EPX_CFG_IN_DATA_RDY;
+                        USBUART_1_ARB_EP_BASE.arbEp[ep].epCfg &= (uint8) ~(uint8)USBUART_1_ARB_EPX_CFG_IN_DATA_RDY;
 
                     #if (CY_PSOC3 || CY_PSOC5LP)
                         #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && (USBUART_1_EP_DMA_AUTO_OPT == 0u))
@@ -855,11 +832,14 @@ CY_ISR(USBUART_1_LPM_ISR)
                 }
             #endif /* (USBUART_1_EP_MANAGEMENT_DMA_MANUAL) */
 
-            #if (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+            #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4)
                 /* Handle DMA completion event for OUT endpoints. */
                 if (0u != (epStatus & USBUART_1_ARB_EPX_INT_DMA_TERMIN))
                 {
                     uint32 channelNum = USBUART_1_DmaChan[ep];
+
+                    /* Notify user that data has been copied from endpoint buffer. */
+                    USBUART_1_EP[ep].apiEpState = USBUART_1_EVENT_PENDING;
 
                     /* Restore burst counter for endpoint. */
                     USBUART_1_DmaEpBurstCnt[ep] = USBUART_1_DmaEpBurstCntBackup[ep];
@@ -870,7 +850,7 @@ CY_ISR(USBUART_1_LPM_ISR)
                     /* Generate DMA tr_out signal to notify USB IP that DMA is done. This signal is not generated
                     * when transfer was aborted (it occurs when host writes less bytes than buffer size).
                     */
-                    USBUART_1_CyDmaTriggerOut(USBUART_1_DmaBurstEndOut[ep]);
+                    USBUART_1_CyDmaTriggerOut(channelNum);
 
                     /* Restore destination address for output endpoint. */
                     USBUART_1_CyDmaSetDstAddress(channelNum, USBUART_1_DMA_DESCR0, (void*) ((uint32) USBUART_1_DmaEpBufferAddrBackup[ep]));
@@ -891,29 +871,8 @@ CY_ISR(USBUART_1_LPM_ISR)
 
                     /* Enable DMA channel: configuration complete. */
                     USBUART_1_CyDmaChEnable(channelNum);
-                    
-                    
-                    /* Read CR0 register to clear SIE lock. */
-                    (void) USBUART_1_SIE_EP_BASE.sieEp[ep].epCr0;
-                    
-                    /* Toggle all endpoint types except ISOC. */
-                    if (USBUART_1_GET_EP_TYPE(ep) != USBUART_1_EP_TYPE_ISOC)
-                    {
-                        USBUART_1_EP[ep].epToggle ^= USBUART_1_EPX_CNT_DATA_TOGGLE;
-                    }
-            
-                    /* Notify user that data has been copied from endpoint buffer. */
-                    USBUART_1_EP[ep].apiEpState = USBUART_1_EVENT_PENDING;
-                    
-                #if (defined(USBUART_1_ENABLE_MIDI_STREAMING) && \
-                    !defined(USBUART_1_MAIN_SERVICE_MIDI_OUT) && USBUART_1_ISR_SERVICE_MIDI_OUT)
-                    if (USBUART_1_midi_out_ep == ep)
-                    {
-                        USBUART_1_MIDI_OUT_Service();
-                    }
-                #endif /* (USBUART_1_ISR_SERVICE_MIDI_OUT) */
                 }
-            #endif /* (CY_PSOC4 && USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
+            #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO && CY_PSOC4) */
 
 
                 /* `#START ARB_USER_CODE` Place your code here for handle Buffer Underflow/Overflow */
@@ -921,7 +880,7 @@ CY_ISR(USBUART_1_LPM_ISR)
                 /* `#END` */
 
             #ifdef USBUART_1_ARB_ISR_CALLBACK
-                USBUART_1_ARB_ISR_Callback(ep, epStatus);
+                USBUART_1_ARB_ISR_Callback();
             #endif /* (USBUART_1_ARB_ISR_CALLBACK) */
 
                 /* Clear serviced endpoint interrupt sources. */
@@ -1000,7 +959,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP1_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP1_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP1]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP1_DMA_CH);
         }
     #endif /* (USBUART_1_DMA1_ACTIVE) */
 
@@ -1059,7 +1018,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP2_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP2_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP2]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP2_DMA_CH);
         }
     #endif /* (USBUART_1_DMA2_ACTIVE) */
 
@@ -1118,7 +1077,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP3_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP3_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP3]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP3_DMA_CH);
         }
     #endif /* (USBUART_1_DMA3_ACTIVE) */
 
@@ -1177,7 +1136,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP4_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP4_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP4]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP4_DMA_CH);
         }
     #endif /* (USBUART_1_DMA4_ACTIVE) */
 
@@ -1236,7 +1195,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP5_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP5_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP5]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP5_DMA_CH);
         }
     #endif /* (USBUART_1_DMA5_ACTIVE) */
 
@@ -1295,7 +1254,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable the DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP6_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP6_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP6]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP6_DMA_CH);
         }
     #endif /* (USBUART_1_DMA6_ACTIVE) */
 
@@ -1354,7 +1313,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP7_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP7_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP7]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP7_DMA_CH);
         }
     #endif /* (USBUART_1_DMA7_ACTIVE) */
 
@@ -1413,7 +1372,7 @@ CY_ISR(USBUART_1_LPM_ISR)
             /* Enable DMA to execute transfer as it was disabled because there were no valid descriptor. */
             USBUART_1_CyDmaValidateDescriptor(USBUART_1_EP8_DMA_CH, USBUART_1_DMA_DESCR0);
             USBUART_1_CyDmaChEnable (USBUART_1_EP8_DMA_CH);
-            USBUART_1_CyDmaTriggerIn(USBUART_1_DmaReqOut[USBUART_1_EP8]);
+            USBUART_1_CyDmaTriggerIn(USBUART_1_EP8_DMA_CH);
         }
     #endif /* (USBUART_1_DMA8_ACTIVE) */
 

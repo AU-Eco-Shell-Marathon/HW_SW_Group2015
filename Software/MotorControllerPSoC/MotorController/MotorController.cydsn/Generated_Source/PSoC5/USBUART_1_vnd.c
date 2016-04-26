@@ -3,7 +3,9 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the  USB vendor request handler.
+*  USB vendor request handler.
+*
+* Note:
 *
 ********************************************************************************
 * \copyright

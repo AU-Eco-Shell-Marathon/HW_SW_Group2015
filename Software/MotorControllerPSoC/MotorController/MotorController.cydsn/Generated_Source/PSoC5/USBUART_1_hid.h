@@ -3,8 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  This file provides function prototypes and constants for the USBFS component 
-*  HID class.
+*  Header File for the USBFS component. Contains prototypes and constant values.
 *
 * Related Document:
 *  Device Class Definition for Human Interface Devices (HID) Version 1.11

@@ -3,10 +3,10 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the global USBFS API functions.
+*  API for USBFS Component.
 *
 * Note:
-*  Many of the functions use an endpoint number. SRAM arrays are sized with 9
+*  Many of the functions use an endpoint number.  RAM arrays are sized with 9
 *  elements, so they are indexed directly by epNumber.  The SIE and ARB
 *  registers are indexed by variations of epNumber - 1.
 *
@@ -27,22 +27,21 @@
 * Global data allocation
 ***************************************/
 
-/** Indicates whether the USBFS has been initialized. The variable is
-* initialized to 0 after device reset and set to 1 the first time USBFS_Start()
-* is called. This allows the Component to restart without reinitialization after
+/** Indicates whether the USBFS has been initialized. The variable is 
+* initialized to 0 after device reset and set to 1 the first time USBFS_Start() 
+* is called. This allows the Component to restart without reinitialization after 
 * the first call to the USBFS_Start() routine.
-* If re-initialization of the Component is required, the variable should be set
-* to 0 before the USBFS_Start() routine is called. Alternatively, the USBFS can
-* be reinitialized by calling both USBFS_Init() and USBFS_InitComponent()
+* If re-initialization of the Component is required, the variable should be set 
+* to 0 before the USBFS_Start() routine is called. Alternatively, the USBFS can 
+* be reinitialized by calling both USBFS_Init() and USBFS_InitComponent() 
 * functions.
 */
-uint8 USBUART_1_initVar = 0u;
+uint8 USBUART_1_initVar = 0u; 
 
 #if (USBUART_1_EP_MANAGEMENT_DMA)
     #if (CY_PSOC4)
         static void USBUART_1_InitEpDma(void);
 
-        /* DMA chanels assigend for endpoints. */
         const uint8 USBUART_1_DmaChan[USBUART_1_MAX_EP] =
         {
             0u,
@@ -54,11 +53,9 @@ uint8 USBUART_1_initVar = 0u;
             0u,
             0u,
             0u,
-        };        
+        };
     #else
-        /* DMA chanels assigend for endpoints. */
         uint8 USBUART_1_DmaChan[USBUART_1_MAX_EP];
-        
         /* DMA TDs require for PSoC 3/5LP operation. */
         uint8 USBUART_1_DmaTd[USBUART_1_MAX_EP];
     #endif /* (CY_PSOC4) */
@@ -66,44 +63,11 @@ uint8 USBUART_1_initVar = 0u;
 
 #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO)
 #if (CY_PSOC4)
-    /* Number of DMA bursts. */
     uint8  USBUART_1_DmaEpBurstCnt   [USBUART_1_MAX_EP];
-    
-    /* Number of bytes to transfer in last DMA burst. */
     uint8  USBUART_1_DmaEpLastBurstEl[USBUART_1_MAX_EP];
 
-    /* Storage for arrays above. */
     uint8  USBUART_1_DmaEpBurstCntBackup  [USBUART_1_MAX_EP];
     uint32 USBUART_1_DmaEpBufferAddrBackup[USBUART_1_MAX_EP];
-     
-    /* DMA trigger mux output for usb.dma_req[0-7]. */
-    const uint8 USBUART_1_DmaReqOut[USBUART_1_MAX_EP] =
-    {
-        0u,
-        USBUART_1_ep1_dma__TR_OUTPUT,
-        USBUART_1_ep2_dma__TR_OUTPUT,
-        USBUART_1_ep3_dma__TR_OUTPUT,
-        0u,
-        0u,
-        0u,
-        0u,
-        0u,
-    };
-
-    /* DMA trigger mux output for usb.dma_burstend[0-7]. */
-    const uint8 USBUART_1_DmaBurstEndOut[USBUART_1_MAX_EP] =
-    {
-        0u,
-        USBUART_1_BURSTEND_0_TR_OUTPUT,
-        USBUART_1_BURSTEND_1_TR_OUTPUT,
-        USBUART_1_BURSTEND_2_TR_OUTPUT,
-        USBUART_1_BURSTEND_3_TR_OUTPUT,
-        USBUART_1_BURSTEND_4_TR_OUTPUT,
-        USBUART_1_BURSTEND_5_TR_OUTPUT,
-        USBUART_1_BURSTEND_6_TR_OUTPUT,
-        USBUART_1_BURSTEND_7_TR_OUTPUT
-    };
-    
 #else
     #if (USBUART_1_EP_DMA_AUTO_OPT == 0u)
         static uint8 clearInDataRdyStatus = USBUART_1_ARB_EPX_CFG_DEFAULT;
@@ -133,20 +97,20 @@ uint8 USBUART_1_initVar = 0u;
 * Function Name: USBUART_1_Start
 ****************************************************************************//**
 *
-*   This function performs all required initialization for the USBFS component.
-*   After this function call, the USB device initiates communication with the
-*   host by pull-up D+ line. This is the preferred method to begin component
-*   operation.
-*
-*   Note that global interrupts have to be enabled because interrupts are
+*   This function performs all required initialization for the USBFS component. 
+*   After this function call, the USB device initiates communication with the 
+*   host by pull-up D+ line. This is the preferred method to begin component 
+*   operation. 
+*   
+*   Note that global interrupts have to be enabled because interrupts are 
 *   required for USBFS component operation.
-*
-*   PSoC 4200L devices: when USBFS component configured to DMA with Automatic
-*   Buffer Management, the DMA interrupt priority is changed to the highest
+*   
+*   PSoC 4200L devices: when USBFS component configured to DMA with Automatic 
+*   Buffer Management, the DMA interrupt priority is changed to the highest 
 *   (priority 0) inside this function.
 *
-*   PSoC 3/PSoC 5LP devices: when USBFS component configured to DMA with
-*   Automatic Buffer Management, the Arbiter interrupt priority is changed to
+*   PSoC 3/PSoC 5LP devices: when USBFS component configured to DMA with 
+*   Automatic Buffer Management, the Arbiter interrupt priority is changed to 
 *   the highest (priority 0) inside this function.
 *
 *  \param device
@@ -154,28 +118,26 @@ uint8 USBUART_1_initVar = 0u;
 *          The device number can be found in the Device Descriptor Tab of
 *          "Configure" dialog, under the settings of desired Device Descriptor,
 *          in the "Device Number" field.
-*  \param mode:
-*   The operating voltage. This determines whether the voltage regulator
-*   is enabled for 5V operation or if pass through mode is used for 3.3V
-*   operation. Symbolic names and their associated values are given in the
-*   following list.
+*   \param mode 
+*        The operating voltage. This determines whether the voltage regulator
+*        is enabled for 5V operation or if pass through mode is used for 3.3V
+*        operation. Symbolic names and their associated values are given in the
+*        following table.
+ *        <table>
+*     <tr><th>Power Setting</th>                   <th>Notes</th></tr>
+*     <tr><td>USBUART_1_3V_OPERATION</td>  <td>Disable voltage regulator 
+ *                                   and pass through Vcc for pull-up.</td></tr>  
+*     <tr><td>USBUART_1_5V_OPERATION</td>   <td>Enable voltage regulator 
+ *                                      and use regulator for pull-up.</td></tr>  
+*     <tr><td>USBUART_1_DWR_POWER_OPERATION</td>  <td>Enable or disable the voltage
+*       regulator depending on the power supply voltage configuration in the DWR 
+*       tab. For PSoC 3/5LP devices, the VDDD supply voltage is considered and for PSoC 4A-L, 
+*       the VBUS supply voltage is considered. </td></tr> </table>
 *
-*       *USBUART_1_3V_OPERATION* - Disable voltage regulator and pass-
-*                                      through Vcc for pull-up
-*
-*       *USBUART_1_5V_OPERATION* - Enable voltage regulator and use
-*                                      regulator for pull-up
-*
-*       *USBUART_1_DWR_POWER_OPERATION* - Enable or disable the voltage
-*                                      regulator depending on the power supply
-*                                      voltage configuration in the DWR tab.
-*                                      For PSoC 3/5LP devices, the VDDD supply
-*                                      voltage is considered and for PSoC 4A-L,
-*                                      the VBUS supply voltage is considered.*
 * \globalvars
-*  \ref USBUART_1_initVar
+*  \ref USBUART_1_initVar 
 *
-* \sideeffect
+*  \sideeffect
 *   This function will reset all communication states to default.
 *
 * \reentrant
@@ -198,9 +160,9 @@ void USBUART_1_Start(uint8 device, uint8 mode)
 * Function Name: USBUART_1_Init
 ****************************************************************************//**
 *
-* This function initializes or restores the component according to the
-* customizer Configure dialog settings. It is not necessary to call
-* USBUART_1_Init() because the USBUART_1_Start() routine calls
+* This function initializes or restores the component according to the 
+* customizer Configure dialog settings. It is not necessary to call 
+* USBUART_1_Init() because the USBUART_1_Start() routine calls 
 * this function and is the preferred method to begin component operation.
 *
 * \reentrant
@@ -213,14 +175,14 @@ void USBUART_1_Init(void)
     /* Enable clock to USB IP. */
     USBUART_1_USB_CLK_EN_REG = USBUART_1_USB_CLK_CSR_CLK_EN;
 
-    /* The internal regulator (CR1.REG_ENABLE) is enabled in
-    * USBUART_1_InitComponent() if it is required.
-    */
+    /* Enable internal regulator CR1.REG_ENABLE. if required.
+    * This step is executed in the InitComponent().
+   . */
 
     /* Enable USBIO control on drive mode of D+ and D- pins. */
     USBUART_1_USBIO_CR1_REG &= ~ (uint32) USBUART_1_USBIO_CR1_IOMODE;
 
-    /* Set number of LF CLK to detect UBS bus reset. */
+    /* Set number of LF CLK to defect UBS bus reset. */
     USBUART_1_BUS_RST_CNT_REG = USBUART_1_DEFUALT_BUS_RST_CNT;
 
     /* Select VBUS detection source and clear PHY isolate. The application level
@@ -292,7 +254,7 @@ void USBUART_1_Init(void)
     /* Set USBIO pull-up enable. */
     USBUART_1_PM_USB_CR0_REG |= USBUART_1_PM_USB_CR0_PD_PULLUP_N;
 
-    /* Reset Arbiter Write Address register for endpoint 1. */
+    /* Write WAx. */
     CY_SET_REG8(USBUART_1_ARB_RW1_WA_PTR,     0u);
     CY_SET_REG8(USBUART_1_ARB_RW1_WA_MSB_PTR, 0u);
 
@@ -412,44 +374,44 @@ void USBUART_1_Init(void)
 * Function Name: USBUART_1_InitComponent
 ****************************************************************************//**
 *
-*   This function initializes the component’s global variables and initiates
+*   This function initializes the component’s global variables and initiates 
 *   communication with the host by pull-up D+ line.
 *
-* \param device:
-*   Contains the device number of the desired device descriptor. The device
-*   number can be found in the Device Descriptor Tab of "Configure" dialog,
-*   under the settings of desired Device Descriptor, in the *Device Number*
+* \param device: 
+*   Contains the device number of the desired device descriptor. The device 
+*   number can be found in the Device Descriptor Tab of "Configure" dialog, 
+*   under the settings of desired Device Descriptor, in the *Device Number* 
 *   field.
-*  \param mode:
+*  \param mode: 
 *   The operating voltage. This determines whether the voltage regulator
-*   is enabled for 5V operation or if pass through mode is used for 3.3V
-*   operation. Symbolic names and their associated values are given in the
-*   following list.
-*
+*        is enabled for 5V operation or if pass through mode is used for 3.3V
+*        operation. Symbolic names and their associated values are given in the
+*        following table.
+*        
 *       *USBUART_1_3V_OPERATION* - Disable voltage regulator and pass-
 *                                      through Vcc for pull-up
-*
+*                                      
 *       *USBUART_1_5V_OPERATION* - Enable voltage regulator and use
 *                                      regulator for pull-up
-*
-*       *USBUART_1_DWR_POWER_OPERATION* - Enable or disable the voltage
-*                                      regulator depending on the power supply
-*                                      voltage configuration in the DWR tab.
-*                                      For PSoC 3/5LP devices, the VDDD supply
-*                                      voltage is considered and for PSoC 4A-L,
+*                                      
+*       *USBUART_1_DWR_POWER_OPERATION* - Enable or disable the voltage 
+*                                      regulator depending on the power supply 
+*                                      voltage configuration in the DWR tab. 
+*                                      For PSoC 3/5LP devices, the VDDD supply 
+*                                      voltage is considered and for PSoC 4A-L, 
 *                                      the VBUS supply voltage is considered.
 *
 * \globalvars
-*   \ref USBUART_1_device
-*   \ref USBUART_1_transferState
+*   \ref USBUART_1_device 
+*   \ref USBUART_1_transferState 
 *   \ref USBUART_1_configuration
 *   \ref USBUART_1_deviceStatus
-*
+*    
 *   \ref USBUART_1_deviceAddress - Contains the current device address. This
 *       variable is initialized to zero in this API. The Host starts to communicate
 *      to the device with address 0 and then sets it to a whatever value using a
-*      SET_ADDRESS request.
-*
+*      SET_ADDRESS request.     
+*   
 *   \ref USBUART_1_lastPacketSize - Initialized to 0;
 *
 * \reentrant
@@ -495,7 +457,7 @@ void USBUART_1_InitComponent(uint8 device, uint8 mode)
     #if (USBUART_1_SOF_ISR_ACTIVE)
         CyIntEnable(USBUART_1_SOF_VECT_NUM);
     #endif /* (USBUART_1_SOF_ISR_ACTIVE) */
-
+        
     #if (USBUART_1_EP1_ISR_ACTIVE)
         CyIntEnable(USBUART_1_EP_1_VECT_NUM);
     #endif /* (USBUART_1_EP1_ISR_ACTIVE) */
@@ -546,7 +508,7 @@ void USBUART_1_InitComponent(uint8 device, uint8 mode)
     #if (CY_PSOC4)
         /* Enable DMA operation. */
         CyDmaEnable();
-
+        
         #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO)
             /* Change DMA priority to be highest. */
              CyIntSetPriority(CYDMA_INTR_NUMBER, USBUART_1_DMA_AUTO_INTR_PRIO);
@@ -603,18 +565,15 @@ void USBUART_1_InitComponent(uint8 device, uint8 mode)
     USBUART_1_EP0_CR_REG = USBUART_1_MODE_NAK_IN_OUT;
 
     #if (USBUART_1_LPM_ACTIVE)
-        if (NULL != USBUART_1_GetBOSPtr())
+        if (USBUART_1_GetBOSPtr() != NULL)
         {
-            /* Enable LPM and acknowledge LPM packets for active device.
-            * Reset NYET_EN and SUB_RESP bits in the LPM_CTRL register.
-            */
-            USBUART_1_LPM_CTRL_REG = (USBUART_1_LPM_CTRL_LPM_EN | \
-                                             USBUART_1_LPM_CTRL_LPM_ACK_RESP);
+            /* Enable LPM functionality for selected device. */
+            USBUART_1_LPM_CTRL_REG = USBUART_1_ENABLE_LPM_CTRL;
         }
         else
         {
-            /* Disable LPM for active device. */
-            USBUART_1_LPM_CTRL_REG &= (uint32) ~USBUART_1_LPM_CTRL_LPM_EN;
+            /* Disable LPM functionality for selected device. */
+            USBUART_1_LPM_CTRL_REG = (uint32) ~USBUART_1_LPM_CTRL_LPM_EN;
         }
     #endif /* (USBUART_1_LPM_ACTIVE) */
 
@@ -712,29 +671,25 @@ void USBUART_1_ReInitComponent(void)
 *
 * \globalvars
 *   \ref USBUART_1_configuration
-*
+*       
 *   USBUART_1_deviceAddress - Contains the current device address. This
 *       variable is initialized to zero in this API. The Host starts to communicate
 *      to the device with address 0 and then sets it to a whatever value using
 *      a SET_ADDRESS request.
-*
-*   \ref USBUART_1_deviceStatus
-*
-*   \ref USBUART_1_configurationChanged
-*
+*      
+*   \ref USBUART_1_deviceStatus 
+*       
+*   \ref USBUART_1_configurationChanged 
+*       
 *   USBUART_1_intiVar -  This variable is set to zero
 *
 *******************************************************************************/
 void USBUART_1_Stop(void) 
 {
-    uint8 enableInterrupts;
-
 #if (USBUART_1_EP_MANAGEMENT_DMA)
     /* Stop all DMA channels. */
     USBUART_1_Stop_DMA(USBUART_1_MAX_EP);
 #endif /* (USBUART_1_EP_MANAGEMENT_DMA) */
-
-    enableInterrupts = CyEnterCriticalSection();
 
     /* Disable USB IP to respond to USB traffic. */
     USBUART_1_CR0_REG &= (uint8) ~USBUART_1_CR0_ENABLE;
@@ -751,8 +706,6 @@ void USBUART_1_Stop(void)
     USBUART_1_PM_STBY_CFG_REG &= (uint8) ~USBUART_1_PM_STBY_EN_FSUSB;
 #endif /* (CY_PSOC4) */
 
-    CyExitCriticalSection(enableInterrupts);
-
     /* Disable component interrupts. */
 #if (CY_PSOC4)
     CyIntDisable(USBUART_1_INTR_HI_VECT_NUM);
@@ -766,22 +719,22 @@ void USBUART_1_Stop(void)
     #if (USBUART_1_SOF_ISR_ACTIVE)
         CyIntDisable(USBUART_1_SOF_VECT_NUM);
     #endif /* (USBUART_1_SOF_ISR_ACTIVE) */
-
+    
     #if (USBUART_1_EP1_ISR_ACTIVE)
         CyIntDisable(USBUART_1_EP_1_VECT_NUM);
     #endif /* (USBUART_1_EP1_ISR_ACTIVE) */
 
     #if (USBUART_1_EP2_ISR_ACTIVE)
         CyIntDisable(USBUART_1_EP_2_VECT_NUM);
-    #endif /* (USBUART_1_EP2_ISR_ACTIVE) */
+    #endif /* (USBUART_1_EP5_ISR_ACTIVE) */
 
     #if (USBUART_1_EP3_ISR_ACTIVE)
         CyIntDisable(USBUART_1_EP_3_VECT_NUM);
-    #endif /* (USBUART_1_EP3_ISR_ACTIVE) */
+    #endif /* (USBUART_1_EP5_ISR_ACTIVE) */
 
     #if (USBUART_1_EP4_ISR_ACTIVE)
         CyIntDisable(USBUART_1_EP_4_VECT_NUM);
-    #endif /* (USBUART_1_EP4_ISR_ACTIVE) */
+    #endif /* (USBUART_1_EP5_ISR_ACTIVE) */
 
     #if (USBUART_1_EP5_ISR_ACTIVE)
         CyIntDisable(USBUART_1_EP_5_VECT_NUM);
@@ -806,21 +759,18 @@ void USBUART_1_Stop(void)
     USBUART_1_interfaceNumber = 0u;
     USBUART_1_deviceAddress   = 0u;
     USBUART_1_deviceStatus    = 0u;
-
-    /* It is mandatory for correct device startup. */
-    USBUART_1_initVar = 0u;
+    USBUART_1_initVar         = 0u;
 }
-
 
 /*******************************************************************************
 * Function Name: USBUART_1_CheckActivity
 ****************************************************************************//**
 *
-*  This function returns the activity status of the bus. It clears the hardware
-*  status to provide updated status on the next call of this function. It
-*  provides a way to determine whether any USB bus activity occurred. The
-*  application should use this function to determine if the USB suspend
-*  conditions are met.
+*  This function returns the activity status of the bus. It clears the hardware 
+*  status to provide updated status on the next call of this function. It 
+*  provides a way to determine whether any USB bus activity occurred. The 
+*  application should use this function to determine if the USB suspend 
+*  conditions are met. 
 *
 *
 * \return
@@ -851,7 +801,7 @@ uint8 USBUART_1_CheckActivity(void)
 *  This function gets the current configuration of the USB device.
 *
 * \return
-*  Returns the currently assigned configuration. Returns 0 if the device
+*  Returns the currently assigned configuration. Returns 0 if the device 
 *  is not configured
 *
 *******************************************************************************/
@@ -865,19 +815,16 @@ uint8 USBUART_1_GetConfiguration(void)
 * Function Name: USBUART_1_IsConfigurationChanged
 ****************************************************************************//**
 *
-*  This function returns the clear-on-read configuration state.  It is useful
-*  when the host sends double SET_CONFIGURATION request with the same 
-*  configuration number or changes alternate settings of the interface. 
-*  After configuration has been changed the OUT endpoints must be enabled and IN 
-*  endpoint must be loaded with data to start communication with the host.
+*  This function returns the clear-on-read configuration state.  It is useful 
+*  when PC send double SET_CONFIGURATION request with same configuration number.
 *
 * \return
-*  None-zero value when new configuration has been changed, otherwise zero is
+*  Not zero value when new configuration has been changed, otherwise zero is
 *  returned.
 *
 * \globalvars
-*
-*  \ref USBUART_1_configurationChanged - This variable is set to 1 after
+* 
+*   \ref USBUART_1_configurationChanged - This variable is set to 1 after
 *   a SET_CONFIGURATION request and cleared in this function.
 *
 *******************************************************************************/
@@ -900,10 +847,8 @@ uint8 USBUART_1_IsConfigurationChanged(void)
 ****************************************************************************//**
 *
 *  This function gets the current alternate setting for the specified interface.
-*  It is useful to identify which alternate settings are active in the specified 
-*  interface.
 *
-*  \param
+*  \param 
 *  interfaceNumber interface number
 *
 * \return
@@ -926,11 +871,11 @@ uint8  USBUART_1_GetInterfaceSetting(uint8 interfaceNumber)
 * \param epNumber Data endpoint number
 *
 * \return
-*  Returns the current state of the specified USBFS endpoint. Symbolic names and
-*  their associated values are given in the following table. Use these constants
-*  whenever you write code to change the state of the endpoints, such as ISR
+*  Returns the current state of the specified USBFS endpoint. Symbolic names and 
+*  their associated values are given in the following table. Use these constants 
+*  whenever you write code to change the state of the endpoints, such as ISR 
 *  code, to handle data sent or received.
-*
+*  
 *  Return Value           | Description
 *  -----------------------|-----------------------------------------------------
 *  USBFS_NO_EVENT_PENDING |The endpoint is awaiting SIE action
@@ -1024,7 +969,7 @@ uint16 USBUART_1_GetEPCount(uint8 epNumber)
     #if (USBUART_1_DMA8_ACTIVE)
         CYDMA_CH_CTL_BASE.ctl[USBUART_1_ep8_dma_CHANNEL] = USBUART_1_ep8_dma_CHANNEL_CFG;
     #endif /* (USBUART_1_DMA8_ACTIVE) */
-
+    
     #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO)
         /* Initialize DMA channel callbacks. */
         #if (USBUART_1_DMA1_ACTIVE)
@@ -1069,10 +1014,10 @@ uint16 USBUART_1_GetEPCount(uint8 epNumber)
     *
     *  This function allocates and initializes a DMA channel to be used by the
     *  USBUART_1_LoadInEP() or USBUART_1_ReadOutEP() APIs for data
-    *  transfer. It is available when the Endpoint Memory Management parameter
+    *  transfer. It is available when the Endpoint Memory Management parameter 
     *  is set to DMA.
-    *
-    *  This function is automatically called from the USBFS_LoadInEP() and USBFS_ReadOutEP() APIs.
+    *  
+    *  This function is automatically called from the USBFS_LoadInEP() and USBFS_ReadOutEP() APIs. 
     *
     *  \param epNumber Contains the data endpoint number.
     *            Valid values are between 1 and 8.
@@ -1183,17 +1128,10 @@ uint16 USBUART_1_GetEPCount(uint8 epNumber)
     /***************************************************************************
     * Function Name: USBUART_1_Stop_DMA
     ************************************************************************//**
-    *  
-    *  This function stops DMA channel associated with endpoint. It is available 
-    *  when the Endpoint Buffer Management parameter is set to DMA. Call this 
-    *  function when endpoint direction is changed from IN to OUT or vice versa 
-    *  to trigger DMA re-configuration when USBUART_1_LoadInEP() or 
-    *  USBUART_1_ReadOutEP() functions are called the first time. 
-    *  
-    *  \param epNumber: The data endpoint number for which associated DMA 
-    *  channel is stopped. The range of valid values is between 1 and 8. To stop 
-    *  all DMAs associated with endpoints call this function with 
-    *  USBUART_1_MAX_EP argument.
+    *  \internal
+    *  \param epNumber: Contains the data endpoint number or
+    *           USBUART_1_MAX_EP to stop all DMAs
+    *
     *
     * \reentrant
     *  No.
@@ -1293,31 +1231,31 @@ uint16 USBUART_1_GetEPCount(uint8 epNumber)
 * Function Name: USBUART_1_LoadInEP
 ****************************************************************************//**
 *
-*  This function performs different functionality depending on the Component’s
-*  configured Endpoint Buffer Management. This parameter is defined in
+*  This function performs different functionality depending on the Component’s 
+*  configured Endpoint Buffer Management. This parameter is defined in 
 *  the Descriptor Root in Component Configure window.
-*
-*  *Manual (Static/Dynamic Allocation):*
-*  This function loads and enables the specified USB data endpoint for an IN
+*  
+*  *Manual (Static/Dynamic Allocation):*  
+*  This function loads and enables the specified USB data endpoint for an IN 
 *  data transfer.
-*
+*  
 *  *DMA with Manual Buffer Management:*
-*  Configures DMA for a data transfer from system RAM to endpoint buffer.
+*  Configures DMA for a data transfer from system RAM to endpoint buffer. 
 *  Generates request for a transfer.
 *
-*  *DMA with Automatic Buffer Management:*
-*  Configures DMA. This is required only once, so it is done only when parameter
-*  pData is not NULL. When the pData pointer is NULL, the function skips this
-*  task. Sets Data ready status: This generates the first DMA transfer and
+*  *DMA with Automatic Buffer Management:*  
+*  Configures DMA. This is required only once, so it is done only when parameter 
+*  pData is not NULL. When the pData pointer is NULL, the function skips this 
+*  task. Sets Data ready status: This generates the first DMA transfer and 
 *  prepares data in endpoint buffer.
 *
 *  \param epNumber Contains the data endpoint number.
 *            Valid values are between 1 and 8.
 *  \param *pData A pointer to a data array from which the data for the endpoint space
 *          is loaded.
-*  \param length The number of bytes to transfer from the array and then send as
-*          a result of an IN request. Valid values are between 0 and 512
-*          (1023 for DMA with Automatic Buffer Management mode). The value 512
+*  \param length The number of bytes to transfer from the array and then send as 
+*          a result of an IN request. Valid values are between 0 and 512 
+*          (1023 for DMA with Automatic Buffer Management mode). The value 512 
 *          is applicable if only one endpoint is used.
 *
 *
@@ -1396,17 +1334,16 @@ void USBUART_1_LoadInEP(uint8 epNumber, const uint8 pData[], uint16 length)
                 /* Enable DMA channel: configuration complete. */
                 USBUART_1_CyDmaChEnable(channelNum);
             #else
-                /* Configure DMA to transfer data. */
                 (void) CyDmaChDisable(USBUART_1_DmaChan[epNumber]);
-                (void) CyDmaTdSetConfiguration(USBUART_1_DmaTd[epNumber], length, CY_DMA_DISABLE_TD, TD_TERMIN_EN | TD_INC_SRC_ADR);
+                (void) CyDmaTdSetConfiguration(USBUART_1_DmaTd[epNumber], length, CY_DMA_DISABLE_TD,TD_TERMIN_EN | TD_INC_SRC_ADR);
                 (void) CyDmaTdSetAddress(USBUART_1_DmaTd[epNumber], LO16((uint32) pData), LO16((uint32) &USBUART_1_ARB_EP_BASE.arbEp[epNumber].rwDr));
 
-                /* Enable DMA channel. */
+                /* Enable DMA. */
                 (void) CyDmaChSetInitialTd(USBUART_1_DmaChan[epNumber], USBUART_1_DmaTd[epNumber]);
                 (void) CyDmaChEnable(USBUART_1_DmaChan[epNumber], 1u);
             #endif /* (CY_PSOC4) */
 
-                /* Generate DMA request. */
+                /* Generate DMA request */
                 USBUART_1_ARB_EP_BASE.arbEp[epNumber].epCfg |=  (uint8)  USBUART_1_ARB_EPX_CFG_DMA_REQ;
                 USBUART_1_ARB_EP_BASE.arbEp[epNumber].epCfg &=  (uint8) ~USBUART_1_ARB_EPX_CFG_DMA_REQ;
 
@@ -1473,7 +1410,6 @@ void USBUART_1_LoadInEP(uint8 epNumber, const uint8 pData[], uint16 length)
                     (void) CyDmaTdSetConfiguration(USBUART_1_DmaNextTd[epNumber], 1u,
                                                    USBUART_1_DmaNextTd[epNumber],
                                                    USBUART_1_epX_TD_TERMOUT_EN[epNumber]);
-
                     /* Configure DmaNextTd to clear Data Ready status. */
                     (void) CyDmaTdSetAddress(USBUART_1_DmaNextTd[epNumber], LO16((uint32) &clearInDataRdyStatus),
                                                                                    LO16((uint32) &USBUART_1_ARB_EP_BASE.arbEp[epNumber].epCfg));
@@ -1535,7 +1471,7 @@ void USBUART_1_LoadInEP(uint8 epNumber, const uint8 pData[], uint16 length)
                     /* Restore destination address for input endpoint. */
                     USBUART_1_CyDmaSetSrcAddress(channelNum, USBUART_1_DMA_DESCR0, (void*) ((uint32) USBUART_1_DmaEpBufferAddrBackup[epNumber]));
                     USBUART_1_CyDmaSetSrcAddress(channelNum, USBUART_1_DMA_DESCR1, (void*) ((uint32) USBUART_1_DmaEpBufferAddrBackup[epNumber] +
-                                                                                                                   USBUART_1_DMA_BYTES_PER_BURST));
+                                                                                                                  USBUART_1_DMA_BYTES_PER_BURST));
 
                     /* Set number of elements to transfer. */
                     USBUART_1_CyDmaSetNumDataElements(channelNum, USBUART_1_DMA_DESCR0, lengthDescr0);
@@ -1590,39 +1526,35 @@ void USBUART_1_LoadInEP(uint8 epNumber, const uint8 pData[], uint16 length)
 * Function Name: USBUART_1_ReadOutEP
 ****************************************************************************//**
 *
-*   This function performs different functionality depending on the Component’s
-*   configured Endpoint Buffer Management. This parameter is defined in the
+*   This function performs different functionality depending on the Component’s 
+*   configured Endpoint Buffer Management. This parameter is defined in the 
 *   Descriptor Root in Component Configure window.
-*
-*   *Manual (Static/Dynamic Allocation):*
-*   This function moves the specified number of bytes from endpoint buffer to
-*   system RAM. The number of bytes actually transferred from endpoint buffer to
-*   system RAM is the lesser of the actual number of bytes sent by the host or
+*   
+*   *Manual (Static/Dynamic Allocation):* 
+*   This function moves the specified number of bytes from endpoint buffer to 
+*   system RAM. The number of bytes actually transferred from endpoint buffer to 
+*   system RAM is the lesser of the actual number of bytes sent by the host or 
 *   the number of bytes requested by the length parameter.
 *
-*   *DMA with Manual Buffer Management:*
-*   Configure DMA to transfer data from endpoint buffer to system RAM. Generate
-*   a DMA request. The firmware must wait until the DMA completes the data
-*   transfer after calling the USBUART_1_ReadOutEP() API. For example,
+*   *DMA with Manual Buffer Management:* 
+*   Configure DMA to transfer data from endpoint buffer to system RAM. Generate 
+*   a DMA request. The firmware must wait until the DMA completes the data 
+*   transfer after calling the USBUART_1_ReadOutEP() API. For example, 
 *   by checking EPstate:
-*
-*   \snippet /USBFS_sut_02.cydsn/main.c checking EPstatey
-*
-*   The USBFS_EnableOutEP() has to be called to allow host to write data into
-*   the endpoint buffer after DMA has completed transfer data from OUT endpoint
-*   buffer to SRAM.
-*
-*   *DMA with Automatic Buffer Management:*
-*   Configure DMA. This is required only once and automatically generates DMA
+*   
+*   \snippet /USBFS_sut_02.cydsn/main.c checking EPstatey 
+*   
+*   *DMA with Automatic Buffer Management:* 
+*   Configure DMA. This is required only once and automatically generates DMA 
 *   requests as data arrives
 *
 *  \param epNumber: Contains the data endpoint number.
 *            Valid values are between 1 and 8.
-*  \param pData: A pointer to a data array from which the data for the endpoint
+*  \param pData: A pointer to a data array from which the data for the endpoint 
 *         space is loaded.
 *  \param length: The number of bytes to transfer from the USB Out endpoint and
-*          loads it into data array. Valid values are between 0 and 1023. The
-*          function moves fewer than the requested number of bytes if the host
+*          loads it into data array. Valid values are between 0 and 1023. The 
+*          function moves fewer than the requested number of bytes if the host 
 *          sends fewer bytes than requested.
 *
 * \return
@@ -1687,12 +1619,12 @@ uint16 USBUART_1_ReadOutEP(uint8 epNumber, uint8 pData[], uint16 length)
             USBUART_1_CyDmaChEnable(channelNum);
         }
         #else
-            /* Configure DMA to transfer data. */
+            /* Enable DMA in mode2 for transferring data. */
             (void) CyDmaChDisable(USBUART_1_DmaChan[epNumber]);
             (void) CyDmaTdSetConfiguration(USBUART_1_DmaTd[epNumber], length, CY_DMA_DISABLE_TD, TD_TERMIN_EN | TD_INC_DST_ADR);
             (void) CyDmaTdSetAddress(USBUART_1_DmaTd[epNumber], LO16((uint32) &USBUART_1_ARB_EP_BASE.arbEp[epNumber].rwDr), LO16((uint32)pData));
 
-            /* Enable DMA channel. */
+            /* Enable the DMA. */
             (void) CyDmaChSetInitialTd(USBUART_1_DmaChan[epNumber], USBUART_1_DmaTd[epNumber]);
             (void) CyDmaChEnable(USBUART_1_DmaChan[epNumber], 1u);
         #endif /* (CY_PSOC4) */
@@ -1775,7 +1707,7 @@ uint16 USBUART_1_ReadOutEP(uint8 epNumber, uint8 pData[], uint16 length)
         }
         #else
             (void) CyDmaChDisable(USBUART_1_DmaChan[epNumber]);
-            (void) CyDmaTdSetConfiguration(USBUART_1_DmaTd[epNumber], length,  USBUART_1_DmaTd[epNumber], TD_TERMIN_EN | TD_INC_DST_ADR);
+            (void) CyDmaTdSetConfiguration(USBUART_1_DmaTd[epNumber], length, USBUART_1_DmaTd[epNumber], TD_TERMIN_EN | TD_INC_DST_ADR);
             (void) CyDmaTdSetAddress(USBUART_1_DmaTd[epNumber], LO16((uint32) &USBUART_1_ARB_EP_BASE.arbEp[epNumber].rwDr), LO16((uint32) pData));
 
             /* Clear Any potential pending DMA requests before starting DMA channel to transfer data. */
@@ -1807,33 +1739,33 @@ uint16 USBUART_1_ReadOutEP(uint8 epNumber, uint8 pData[], uint16 length)
 * Function Name: USBUART_1_LoadInEP16
 ****************************************************************************//**
 *
-*  This function performs different functionality depending on the Component’s
-*  configured Endpoint Buffer Management. This parameter is defined in
+*  This function performs different functionality depending on the Component’s 
+*  configured Endpoint Buffer Management. This parameter is defined in 
 *  the Descriptor Root in Component Configure window.
-*
-*  *Manual (Static/Dynamic Allocation):*
-*  This function loads and enables the specified USB data endpoint for an IN
+*  
+*  *Manual (Static/Dynamic Allocation):*  
+*  This function loads and enables the specified USB data endpoint for an IN 
 *  data transfer.
-*
+*  
 *  *DMA with Manual Buffer Management:*
-*  Configures DMA for a data transfer from system RAM to endpoint buffer.
+*  Configures DMA for a data transfer from system RAM to endpoint buffer. 
 *  Generates request for a transfer.
 *
-*  *DMA with Automatic Buffer Management:*
-*  Configures DMA. This is required only once, so it is done only when parameter
-*  pData is not NULL. When the pData pointer is NULL, the function skips this
-*  task. Sets Data ready status: This generates the first DMA transfer and
+*  *DMA with Automatic Buffer Management:*  
+*  Configures DMA. This is required only once, so it is done only when parameter 
+*  pData is not NULL. When the pData pointer is NULL, the function skips this 
+*  task. Sets Data ready status: This generates the first DMA transfer and 
 *  prepares data in endpoint buffer.
 *
 *  \param epNumber Contains the data endpoint number.
 *        Valid values are between 1 and 8.
-*  \param *pData A pointer to a data array from which the data for the endpoint
-*        space is loaded. It shall be ensured that this pointer address is even
-*        to ensure the 16-bit transfer is aligned to even address. Else, a hard
+*  \param *pData A pointer to a data array from which the data for the endpoint 
+*        space is loaded. It shall be ensured that this pointer address is even 
+*        to ensure the 16-bit transfer is aligned to even address. Else, a hard 
 *        fault condition can occur.
-*  \param length The number of bytes to transfer from the array and then send as
-*        a result of an IN request. Valid values are between 0 and 512 (1023 for
-*        DMA with Automatic Buffer Management mode). The value 512 is applicable
+*  \param length The number of bytes to transfer from the array and then send as 
+*        a result of an IN request. Valid values are between 0 and 512 (1023 for  
+*        DMA with Automatic Buffer Management mode). The value 512 is applicable 
 *        if only one endpoint is used.
 *
 * \reentrant
@@ -1996,7 +1928,7 @@ void USBUART_1_LoadInEP16(uint8 epNumber, const uint8 pData[], uint16 length)
                     /* Restore destination address for input endpoint. */
                     USBUART_1_CyDmaSetSrcAddress(channelNum, USBUART_1_DMA_DESCR0, (void*) ((uint32) USBUART_1_DmaEpBufferAddrBackup[epNumber]));
                     USBUART_1_CyDmaSetSrcAddress(channelNum, USBUART_1_DMA_DESCR1, (void*) ((uint32) USBUART_1_DmaEpBufferAddrBackup[epNumber] +
-                                                                                                                   USBUART_1_DMA_BYTES_PER_BURST));
+                                                                                                                  USBUART_1_DMA_BYTES_PER_BURST));
 
                     /* Set number of elements to transfer. */
                     USBUART_1_CyDmaSetNumDataElements(channelNum, USBUART_1_DMA_DESCR0, lengthDescr0);
@@ -2032,41 +1964,37 @@ void USBUART_1_LoadInEP16(uint8 epNumber, const uint8 pData[], uint16 length)
 * Function Name: USBUART_1_ReadOutEP16
 ****************************************************************************//**
 *
-*   This function performs different functionality depending on the Component’s
-*   configured Endpoint Buffer Management. This parameter is defined in the
+*   This function performs different functionality depending on the Component’s 
+*   configured Endpoint Buffer Management. This parameter is defined in the 
 *   Descriptor Root in Component Configure window.
-*
-*   *Manual (Static/Dynamic Allocation):*
-*   This function moves the specified number of bytes from endpoint buffer to
-*   system RAM. The number of bytes actually transferred from endpoint buffer to
-*   system RAM is the lesser of the actual number of bytes sent by the host or
+*   
+*   *Manual (Static/Dynamic Allocation):* 
+*   This function moves the specified number of bytes from endpoint buffer to 
+*   system RAM. The number of bytes actually transferred from endpoint buffer to 
+*   system RAM is the lesser of the actual number of bytes sent by the host or 
 *   the number of bytes requested by the length parameter.
 *
-*   *DMA with Manual Buffer Management:*
-*   Configure DMA to transfer data from endpoint buffer to system RAM. Generate
-*   a DMA request. The firmware must wait until the DMA completes the data
-*   transfer after calling the USBUART_1_ReadOutEP() API. For example,
+*   *DMA with Manual Buffer Management:* 
+*   Configure DMA to transfer data from endpoint buffer to system RAM. Generate 
+*   a DMA request. The firmware must wait until the DMA completes the data 
+*   transfer after calling the USBUART_1_ReadOutEP() API. For example, 
 *   by checking EPstate:
-*
-*   \snippet /USBFS_sut_02.cydsn/main.c checking EPstatey
-*
-*   The USBFS_EnableOutEP() has to be called to allow host to write data into
-*   the endpoint buffer after DMA has completed transfer data from OUT endpoint
-*   buffer to SRAM.
-*
-*   *DMA with Automatic Buffer Management:*
-*   Configure DMA. This is required only once and automatically generates DMA
+*    
+*   \snippet /USBFS_sut_02.cydsn/main.c checking EPstatey 
+*   
+*   *DMA with Automatic Buffer Management:* 
+*   Configure DMA. This is required only once and automatically generates DMA 
 *   requests as data arrives
 *
 *  \param epNumber: Contains the data endpoint number.
 *         Valid values are between 1 and 8.
-*  \param pData: A pointer to a data array into which the data for the endpoint
-*         space is copied. It shall be ensured that this pointer address is
-*         even to ensure the 16-bit transfer is aligned to even address. Else,
+*  \param pData: A pointer to a data array from which the data for the endpoint 
+*         space is loaded. It shall be ensured that this pointer address is 
+*         even to ensure the 16-bit transfer is aligned to even address. Else, 
 *         a hard fault condition can occur.
 *  \param length: The number of bytes to transfer from the USB Out endpoint and
-*         loads it into data array. Valid values are between 0 and 1023. The
-*         function moves fewer than the requested number of bytes if the host
+*         loads it into data array. Valid values are between 0 and 1023. The 
+*         function moves fewer than the requested number of bytes if the host 
 *         sends fewer bytes than requested.
 *
 * \return
@@ -2078,8 +2006,6 @@ void USBUART_1_LoadInEP16(uint8 epNumber, const uint8 pData[], uint16 length)
 *******************************************************************************/
 uint16 USBUART_1_ReadOutEP16(uint8 epNumber, uint8 pData[], uint16 length)
 {
-    uint32 adjLength;
-
     /* Check array alignment on half-word boundary */
     CYASSERT(0u == (((uint32) pData) & 0x01u));
 
@@ -2091,7 +2017,7 @@ uint16 USBUART_1_ReadOutEP16(uint8 epNumber, uint8 pData[], uint16 length)
     #endif /* (!USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
 
     /* Adjust requested length: 2 bytes are handled at one data register access. */
-    adjLength =  length + ((uint32)length & 1u);
+    length += (length & 0x01u);
 
     #if (USBUART_1_EP_MANAGEMENT_MANUAL)
         {
@@ -2100,7 +2026,7 @@ uint16 USBUART_1_ReadOutEP16(uint8 epNumber, uint8 pData[], uint16 length)
 
             /* Copy data using 16-bits arbiter data register. */
             uint16 i;
-            for (i = 0u; i < (adjLength >> 1u); ++i)
+            for (i = 0u; i < (length >> 1u); ++i)
             {
                 dataBuf[i] = (uint16) USBUART_1_ARB_EP16_BASE.arbEp[epNumber].rwDr16;
             }
@@ -2122,7 +2048,7 @@ uint16 USBUART_1_ReadOutEP16(uint8 epNumber, uint8 pData[], uint16 length)
             USBUART_1_CyDmaSetDstAddress(channelNum, USBUART_1_DMA_DESCR0, (void*) pData);
 
             /* Configure DMA descriptor. */
-            USBUART_1_CyDmaSetConfiguration(channelNum, USBUART_1_DMA_DESCR0, USBUART_1_DMA_COMMON_CFG | (uint16)((adjLength >> 1u) - 1u) |
+            USBUART_1_CyDmaSetConfiguration(channelNum, USBUART_1_DMA_DESCR0, USBUART_1_DMA_COMMON_CFG | (uint16)((length >> 1u) - 1u) |
                                                     CYDMA_HALFWORD | CYDMA_WORD_ELEMENT | CYDMA_INC_DST_ADDR | CYDMA_INVALIDATE | CYDMA_PREEMPTABLE);
 
             /* Validate descriptor to execute on following DMA request. */
@@ -2147,10 +2073,10 @@ uint16 USBUART_1_ReadOutEP16(uint8 epNumber, uint8 pData[], uint16 length)
             uint32 channelNum = (uint32) USBUART_1_DmaChan[epNumber];
 
             /* Get number of full bursts. */
-            USBUART_1_DmaEpBurstCnt[epNumber] = (uint8) (adjLength / USBUART_1_DMA_BYTES_PER_BURST);
+            USBUART_1_DmaEpBurstCnt[epNumber] = (uint8) (length / USBUART_1_DMA_BYTES_PER_BURST);
 
             /* Get number of elements in last burst. */
-            USBUART_1_DmaEpLastBurstEl[epNumber] = (uint8) (adjLength % USBUART_1_DMA_BYTES_PER_BURST);
+            USBUART_1_DmaEpLastBurstEl[epNumber] = (uint8) (length % USBUART_1_DMA_BYTES_PER_BURST);
 
             /* Get total number of bursts. */
             USBUART_1_DmaEpBurstCnt[epNumber] += (0u != USBUART_1_DmaEpLastBurstEl[epNumber]) ? 1u : 0u;
@@ -2230,14 +2156,14 @@ uint16 USBUART_1_ReadOutEP16(uint8 epNumber, uint8 pData[], uint16 length)
 * Function Name: USBUART_1_EnableOutEP
 ****************************************************************************//**
 *
-*  This function enables the specified endpoint for OUT transfers. Do not call
+*  This function enables the specified endpoint for OUT transfers. Do not call 
 *  this function for IN endpoints.
 *
-*  \param epNumber: Contains the data endpoint number. Valid values are between
+*  \param epNumber: Contains the data endpoint number. Valid values are between 
 *  1 and 8.
 *
 * \globalvars
-*
+* 
 *  \ref USBUART_1_EP[epNumber].apiEpState - set to NO_EVENT_PENDING
 *
 * \reentrant
@@ -2252,7 +2178,6 @@ void USBUART_1_EnableOutEP(uint8 epNumber)
 
         /* Enable OUT endpoint to be written by Host. */
         USBUART_1_SIE_EP_BASE.sieEp[epNumber].epCr0 = USBUART_1_EP[epNumber].epMode;
-        
     }
 }
 
@@ -2261,7 +2186,7 @@ void USBUART_1_EnableOutEP(uint8 epNumber)
 * Function Name: USBUART_1_DisableOutEP
 ****************************************************************************//**
 *
-*  This function disables the specified USBFS OUT endpoint. Do not call this
+*  This function disables the specified USBFS OUT endpoint. Do not call this 
 *  function for IN endpoints.
 *
 *  \param epNumber: Contains the data endpoint number.
@@ -2282,27 +2207,24 @@ void USBUART_1_DisableOutEP(uint8 epNumber)
 * Function Name: USBUART_1_Force
 ****************************************************************************//**
 *
-*  This function forces a USB J, K, or SE0 state on the D+/D– lines. It provides
-*  the necessary mechanism for a USB device application to perform a USB Remote
-*  Wakeup. For more information, see the USB 2.0 Specification for details on
+*  This function forces a USB J, K, or SE0 state on the D+/D– lines. It provides 
+*  the necessary mechanism for a USB device application to perform a USB Remote 
+*  Wakeup. For more information, see the USB 2.0 Specification for details on 
 *  Suspend and Resume.
 *
-*  \param state A byte indicating which of the four bus states to enable.
+*  \param state A byte indicating which of the four bus states to enable. 
 *        Symbolic names  and their associated values are listed here:
 *    State                      |Description
-*    ---------------------------|----------------------------------------------
-*    USBUART_1_FORCE_J   | Force a J State onto the D+/D– lines
-*    USBUART_1_FORCE_K   | Force a K State onto the D+/D– lines
-*    USBUART_1_FORCE_SE0 | Force a Single Ended 0 onto the D+/D– lines
-*    USBUART_1_FORCE_NONE| Return bus to SIE control
+*    ---------------------------|----------------------------------------------    
+*    USBUART_1_FORCE_J   |Force a J State onto the D+/D– lines
+*    USBUART_1_FORCE_K   |Force a K State onto the D+/D– lines
+*    USBUART_1_FORCE_SE0 |Force a Single Ended 0 onto the D+/D– lines
+*    USBUART_1_FORCE_NONE|Return bus to SIE control
 *
 *
 *******************************************************************************/
 void USBUART_1_Force(uint8 bState) 
 {
-    /* This registers is used only for manual control of SIE (no masking is
-    * needed before write into it).
-    */
     USBUART_1_USBIO_CR0_REG = bState;
 }
 
@@ -2311,15 +2233,15 @@ void USBUART_1_Force(uint8 bState)
 * Function Name: USBUART_1_GetEPAckState
 ****************************************************************************//**
 *
-*  This function determines whether an ACK transaction occurred on this endpoint
-*  by reading the ACK bit in the control register of the endpoint. It does not
+*  This function determines whether an ACK transaction occurred on this endpoint 
+*  by reading the ACK bit in the control register of the endpoint. It does not 
 *  clear the ACK bit.
 *
 *  \param epNumber Contains the data endpoint number.
 *            Valid values are between 1 and 8.
 *
 *  \return
-*  If an ACKed transaction occurred, this function returns a non-zero value.
+*  If an ACKed transaction occurred, this function returns a nonzero value. 
 *  Otherwise, it returns zero.
 *
 *******************************************************************************/
@@ -2340,16 +2262,16 @@ uint8 USBUART_1_GetEPAckState(uint8 epNumber)
 * Function Name: USBUART_1_SetPowerStatus
 ****************************************************************************//**
 *
-*  This function sets the current power status. The device replies to USB
-*  GET_STATUS requests based on this value. This allows the device to properly
-*  report its status for USB Chapter 9 compliance. Devices can change their
-*  power source from self powered to bus powered at any time and report their
-*  current power source as part of the device status. You should call this
-*  function any time your device changes from self powered to bus powered or
+*  This function sets the current power status. The device replies to USB 
+*  GET_STATUS requests based on this value. This allows the device to properly 
+*  report its status for USB Chapter 9 compliance. Devices can change their 
+*  power source from self powered to bus powered at any time and report their 
+*  current power source as part of the device status. You should call this 
+*  function any time your device changes from self powered to bus powered or 
 *  vice versa, and set the status appropriately.
 *
-*  \param powerStatus: Contains the desired power status, one for self powered
-*        or zero for bus powered. Symbolic names and their associated values are
+*  \param powerStatus: Contains the desired power status, one for self powered 
+*        or zero for bus powered. Symbolic names and their associated values are 
 *        given here:
 *  Power Status                                |Description
 *  --------------------------------------------|---------------------------
@@ -2357,7 +2279,7 @@ uint8 USBUART_1_GetEPAckState(uint8 epNumber)
 *  USBUART_1_DEVICE_STATUS_SELF_POWERED | Set the device to self powered
 *
 * \globalvars
-*
+* 
 *  \ref USBUART_1_deviceStatus - set power status
 *
 * \reentrant
@@ -2382,21 +2304,21 @@ void USBUART_1_SetPowerStatus(uint8 powerStatus)
     * Function Name: USBUART_1_VBusPresent
     ************************************************************************//**
     *
-    *  Determines VBUS presence for self-powered devices. This function is
+    *  Determines VBUS presence for self-powered devices. This function is 
     *  available when the VBUS Monitoring option is enabled in the Advanced tab.
     *
     * \return
-    *  The return value can be the following:
+    *  The return value can be the following:   
     *  Return Value | Description
     *  -------------|-----------------
     *  1            | VBUS is present
     *  0            | VBUS is absent
-    *
+    *  
     *
     ***************************************************************************/
     uint8 USBUART_1_VBusPresent(void) 
     {
-        return ((0u != (USBUART_1_VBUS_STATUS_REG & USBUART_1_VBUS_VALID)) ? (uint8) 1u : (uint8) 0u);
+        return ((0u != (USBUART_1_VBUS_STATUS_REG & USBUART_1_VBUS_VALID)) ? 1u : 0u);
     }
 #endif /* (USBUART_1_VBUS_MONITORING_ENABLE) */
 
@@ -2406,11 +2328,11 @@ void USBUART_1_SetPowerStatus(uint8 powerStatus)
 ****************************************************************************//**
 *
 *  This function returns the current remote wakeup status.
-*  If the device supports remote wakeup, the application should use this
-*  function to determine if remote wakeup was enabled by the host. When the
-*  device is suspended and it determines the conditions to initiate a remote
-*  wakeup are met, the application should use the USBFS_Force() function to
-*  force the appropriate J and K states onto the USB bus, signaling a remote
+*  If the device supports remote wakeup, the application should use this 
+*  function to determine if remote wakeup was enabled by the host. When the 
+*  device is suspended and it determines the conditions to initiate a remote 
+*  wakeup are met, the application should use the USBFS_Force() function to 
+*  force the appropriate J and K states onto the USB bus, signaling a remote 
 *  wakeup.
 *
 *
@@ -2441,21 +2363,21 @@ uint8 USBUART_1_RWUEnabled(void)
 *  This function returns the currently assigned address for the USB device.
 *
 * \return
-*  Returns the currently assigned address.
+*  Returns the currently assigned address. 
 *  Returns 0 if the device has not yet been assigned an address.
 *
 *******************************************************************************/
 uint8 USBUART_1_GetDeviceAddress(void) 
 {
-    return (uint8)(USBUART_1_CR0_REG & USBUART_1_CR0_DEVICE_ADDRESS_MASK);
-}
+    return (uint8)(USBUART_1_CR0_REG & (uint8) ~USBUART_1_CR0_ENABLE);
+} 
 
 
 /*******************************************************************************
 * Function Name: USBUART_1_EnableSofInt
 ****************************************************************************//**
 *
-*  This function enables interrupt generation when a Start-of-Frame (SOF)
+*  This function enables interrupt generation when a Start-of-Frame (SOF) 
 *  packet is received from the host.
 *
 *******************************************************************************/
@@ -2468,7 +2390,7 @@ void USBUART_1_EnableSofInt(void)
     /* Enable SOF interrupt if it is present. */
     #if (USBUART_1_SOF_ISR_ACTIVE)
         CyIntEnable(USBUART_1_SOF_VECT_NUM);
-    #endif /* (USBUART_1_SOF_ISR_ACTIVE) */
+    #endif /* (USBUART_1_SOF_ISR_ACTIVE) */    
 #endif /* (CY_PSOC4) */
 }
 
@@ -2477,7 +2399,7 @@ void USBUART_1_EnableSofInt(void)
 * Function Name: USBUART_1_DisableSofInt
 ****************************************************************************//**
 *
-*  This function disables interrupt generation when a Start-of-Frame (SOF)
+*  This function disables interrupt generation when a Start-of-Frame (SOF) 
 *  packet is received from the host.
 *
 *******************************************************************************/
@@ -2490,7 +2412,7 @@ void USBUART_1_DisableSofInt(void)
     /* Disable SOF interrupt if it is present. */
     #if (USBUART_1_SOF_ISR_ACTIVE)
         CyIntDisable(USBUART_1_SOF_VECT_NUM);
-    #endif /* (USBUART_1_SOF_ISR_ACTIVE) */
+    #endif /* (USBUART_1_SOF_ISR_ACTIVE) */        
 #endif /* (CY_PSOC4) */
 }
 
@@ -2500,29 +2422,20 @@ void USBUART_1_DisableSofInt(void)
     * Function Name: USBUART_1_DetectPortType
     ************************************************************************//**
     *
-    *   This function implements the USB  Battery Charger Detection (BCD)
-    *   algorithm to determine the type of USB host downstream port. This API
-    *   is available only for PSoC 4 devices, and should be called when the VBUS
-    *   voltage transition (OFF to ON) is detected on the bus. If the USB device
-    *   functionality is enabled, this API first calls USBFS_Stop() API
-    *   internally to disable the USB device functionality, and then proceeds to
-    *   implement the BCD algorithm to detect the USB host port type.
-    *   The USBFS_Start() API should be called after this API if the USB
+    *   This function implements the USB  Battery Charger Detection (BCD) 
+    *   algorithm to determine the type of USB host downstream port. This API 
+    *   is available only for PSoC 4 devices, and should be called when the VBUS 
+    *   voltage transition (OFF to ON) is detected on the bus. If the USB device 
+    *   functionality is enabled, this API first calls USBFS_Stop() API 
+    *   internally to disable the USB device functionality, and then proceeds to 
+    *   implement the BCD algorithm to detect the USB host port type. 
+    *   The USBFS_Start() API should be called after this API if the USB 
     *   communication needs to be initiated with the host.
-    *   *Note* This API is generated only if the “Enable Battery Charging 
-    *   Detection” option is enabled in the “Advanced” tab of the component GUI.
-    *   *Note* API implements the steps 2-4 of the BCD algorithm which are 
-    *   - Data Contact Detect
-    *   - Primary Detection 
-    *   - Secondary Detection 
-    * 
-    *   The first step of BCD algorithm, namely, VBUS detection shall be handled 
-    *   at the application firmware level.
     *
     * \return
     *   The return value can be the following:
     *   Return Value                      |Description
-    *   ----------------------------------|-------------------------------------
+    *   ----------------------------------|-------------------------------------     
     *   USBUART_1_BCD_PORT_SDP     | Standard downstream port detected
     *   USBUART_1_BCD_PORT_CDP     | Charging downstream port detected
     *   USBUART_1_BCD_PORT_DCP     | Dedicated charging port detected
@@ -2530,9 +2443,9 @@ void USBUART_1_DisableSofInt(void)
     *   USBUART_1_BCD_PORT_ERR     | Error condition in detection process
     *
     *
-    * \sideeffects
+    * \sideeffects   
     *
-    *  USB device functionality is disabled by this API if not already disabled.
+    *  USB device functionality is disabled by this API if not already disabled. 
     *
     ***************************************************************************/
     uint8 USBUART_1_Bcd_DetectPortType(void)
@@ -2555,8 +2468,8 @@ void USBUART_1_DisableSofInt(void)
         /* Enable USBIO control on drive mode of D+ and D- pins. */
         USBUART_1_USBIO_CR1_REG &= ~ (uint32) USBUART_1_USBIO_CR1_IOMODE;
 
-        /* Select VBUS detection source and clear PHY isolate. The application
-        *  level must ensure that VBUS is valid. There is no need to wait 2us
+        /* Select VBUS detection source and clear PHY isolate. The application 
+        *  level must ensure that VBUS is valid. There is no need to wait 2us 
         *  before VBUS is valid.
         */
         bkPwrCtrl = USBUART_1_POWER_CTRL_REG;
@@ -2565,7 +2478,7 @@ void USBUART_1_DisableSofInt(void)
                             & (~USBUART_1_POWER_CTRL_ENABLE_DM_PULLDOWN);
 
 
-        /* Enable PHY detector and single-ended and differential receivers.
+        /* Enable PHY detector and single-ended and differential receivers. 
          * Enable charger detection.  */
         USBUART_1_POWER_CTRL_REG |= USBUART_1_DEFAULT_POWER_CTRL_PHY\
                                          | USBUART_1_POWER_CTRL_ENABLE_CHGDET;
@@ -2582,12 +2495,12 @@ void USBUART_1_DisableSofInt(void)
         CyDelay(USBUART_1_BCD_TIMEOUT);
         #else
         /* DCD implementation:*/
-
+        
         {
             uint16 timeout = USBUART_1_BCD_TIMEOUT;
             uint8 connectionApproved = 0u;
             uint8 connected = 0u;
-
+            
             /*   BCD spec 1.2: Turns on Idp_src and D- pull-down resistor */
             USBUART_1_POWER_CTRL_REG |= USBUART_1_POWER_CTRL_ENABLE_DM_PULLDOWN;
             USBUART_1_CHGDET_CTRL_REG |= USBUART_1_CHGDET_CTRL_DCD_SRC_EN;
@@ -2620,7 +2533,7 @@ void USBUART_1_DisableSofInt(void)
 
         /* Check is it SDP or DCP/CDP, read comparator 2 output. */
         if (0u == (USBUART_1_CHGDET_CTRL_REG & USBUART_1_CHGDET_CTRL_COMP_OUT))
-        {
+        {   
             /* Check status of D- line. */
             if (0u == (cr1RegVal & USBUART_1_USBIO_CR1_DM0))
             {
@@ -2628,8 +2541,8 @@ void USBUART_1_DisableSofInt(void)
             }
             else
             {
-                /* ERROR: such combination is impossible. Abort charger
-                 * detection.
+                /* ERROR: such combination is impossible. Abort charger 
+                 * detection. 
                 */
                 result = USBUART_1_BCD_PORT_ERR;
             }
@@ -2659,8 +2572,8 @@ void USBUART_1_DisableSofInt(void)
                 }
                 else
                 {
-                    /* ERROR: such combination is impossible. Abort charger
-                     * detection.
+                    /* ERROR: such combination is impossible. Abort charger 
+                     * detection. 
                     */
                     result = USBUART_1_BCD_PORT_ERR;
                 }
@@ -2700,7 +2613,7 @@ void USBUART_1_DisableSofInt(void)
     * Function Name: USBUART_1_Lpm_GetBeslValue
     ************************************************************************//**
     *
-    *  This function returns the Best Effort Service Latency (BESL) value
+    *  This function returns the Best Effort Service Latency (BESL) value 
     *  sent by the host as part of the LPM token transaction.
     *
     * \return
@@ -2718,7 +2631,7 @@ void USBUART_1_DisableSofInt(void)
     * Function Name: USBUART_1_Lpm_RemoteWakeUpAllowed
     ************************************************************************//**
     *
-    *  This function returns the remote wakeup permission set for the device by
+    *  This function returns the remote wakeup permission set for the device by 
     *  the host as part of the LPM token transaction.
     *
     * \return
@@ -2736,7 +2649,7 @@ void USBUART_1_DisableSofInt(void)
     * Function Name: USBUART_1_Lpm_SetResponse
     ************************************************************************//**
     *
-    *  This function configures the response in the handshake packet the device
+    *  This function configures the response in the handshake packet the device 
     *  has to send when an LPM token packet is received.
     *
     * \param response
@@ -2757,17 +2670,17 @@ void USBUART_1_DisableSofInt(void)
         USBUART_1_LPM_CTRL_REG = lpmCtrl | ((uint32) response & USBUART_1_LPM_CTRL_ACK_NYET_MASK);
     }
 
-
+    
     /***************************************************************************
     * Function Name: USBUART_1_Lpm_GetResponse
     ************************************************************************//**
     *
-    *  This function returns the currently configured response value that the
-    *  device will send as part of the handshake packet when an LPM token
+    *  This function returns the currently configured response value that the 
+    *  device will send as part of the handshake packet when an LPM token 
     *  packet is received.
     *
     * \return
-    *   type of handshake response that will be returned by the device
+    *   type of handshake response that will be returned by the device 
     *   for an LPM token packet
     *   Possible response values:
     *       - USBUART_1_LPM_REQ_ACK - next LPM request will be responded

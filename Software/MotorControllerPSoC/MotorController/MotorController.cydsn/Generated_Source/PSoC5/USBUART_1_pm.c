@@ -3,7 +3,9 @@
 * \version 3.0
 *
 * \brief
-*  This file provides Suspend/Resume APIs implementation.
+*  This file provides Suspend/Resume APIs functionality.
+*
+* Note:
 *
 ********************************************************************************
 * \copyright
@@ -132,7 +134,7 @@ void USBUART_1_Suspend(void)
         USBUART_1_backup.enableState = 1u;
 
     #if (USBUART_1_EP_MANAGEMENT_DMA)
-        USBUART_1_Stop_DMA(USBUART_1_MAX_EP);
+            USBUART_1_Stop_DMA(USBUART_1_MAX_EP);
     #endif /* (USBUART_1_EP_MANAGEMENT_DMA) */
 
     #if (CY_PSOC4)

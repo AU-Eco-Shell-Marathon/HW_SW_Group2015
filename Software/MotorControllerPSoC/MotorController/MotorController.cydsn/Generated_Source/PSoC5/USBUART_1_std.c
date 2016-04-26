@@ -3,7 +3,9 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the USB Standard request handler.
+*  USB Standard request handler.
+*
+* Note:
 *
 ********************************************************************************
 * \copyright
@@ -824,7 +826,7 @@ void USBUART_1_ConfigAltChanged(void)
         /* Get pointer to endpoints setting table (pEP). */
         pEP = (const T_USBUART_1_EP_SETTINGS_BLOCK CYCODE *) pTmp->p_list;
         
-        /* Look through all possible endpoint configurations. Find endpoints 
+        /* Look througth all possible endpoint configurations. Find endpoints 
         * which belong to current interface and alternate settings for 
         * re-configuration.
         */
@@ -879,8 +881,8 @@ void USBUART_1_ConfigAltChanged(void)
                 /* Change EP Type with new direction */
                 if (0u != (pEP->addr & USBUART_1_DIR_IN))
                 {
-                    /* Set endpoint type: 0 - IN and 1 - OUT. */
-                    USBUART_1_EP_TYPE_REG &= (uint8) ~(uint8)((uint8) 0x01u << (curEp - 1u));
+                    /* Set endpoint type: 0 - IN and 1- OUT. */
+                    USBUART_1_EP_TYPE_REG &= (uint8)~(uint8)((uint8)0x01u << (curEp - 1u));
                     
                 #if (CY_PSOC4)
                     /* Clear DMA_TERMIN for IN endpoint */
@@ -890,7 +892,7 @@ void USBUART_1_ConfigAltChanged(void)
                 else
                 {
                     /* Set endpoint type: 0 - IN and 1- OUT. */
-                    USBUART_1_EP_TYPE_REG |= (uint8) ((uint8) 0x01u << (curEp - 1u));
+                    USBUART_1_EP_TYPE_REG |= (uint8) ((uint8)0x01u << (curEp - 1u));
                     
                 #if (CY_PSOC4)
                     /* Set DMA_TERMIN for OUT endpoint */
@@ -901,8 +903,9 @@ void USBUART_1_ConfigAltChanged(void)
                 /* Complete dynamic re-configuration: all endpoint related status and signals 
                 * are set into the default state.
                 */
-                USBUART_1_DYN_RECONFIG_REG &= (uint8) ~USBUART_1_DYN_RECONFIG_ENABLE;
-
+                USBUART_1_DYN_RECONFIG_REG &= (uint8)~(uint8)USBUART_1_DYN_RECONFIG_ENABLE;
+                
+                /* The main loop has to re-enable DMA and OUT endpoint */
             #else
                 USBUART_1_SIE_EP_BASE.sieEp[curEp].epCnt0 = HI8(USBUART_1_EP[curEp].bufferSize);
                 USBUART_1_SIE_EP_BASE.sieEp[curEp].epCnt1 = LO8(USBUART_1_EP[curEp].bufferSize);
@@ -915,14 +918,15 @@ void USBUART_1_ConfigAltChanged(void)
                     USBUART_1_ARB_EP_BASE.arbEp[curEp].rwRaMsb = HI8(USBUART_1_EP[curEp].buffOffset);
                     USBUART_1_ARB_EP_BASE.arbEp[curEp].rwWa    = LO8(USBUART_1_EP[curEp].buffOffset);
                     USBUART_1_ARB_EP_BASE.arbEp[curEp].rwWaMsb = HI8(USBUART_1_EP[curEp].buffOffset);
-                #endif /* (CY_PSOC4) */                
+                #endif /* (CY_PSOC4) */
+                
+                /* The main loop has to re-enable DMA and OUT endpoint */
+                
             #endif /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
             }
             
             pEP = &pEP[1u]; /* Get next EP element */
         }
-        
-        /* The main loop has to re-enable DMA and OUT endpoint */
     }
 }
 
@@ -936,7 +940,7 @@ void USBUART_1_ConfigAltChanged(void)
 *  \param confIndex:  Configuration Index
 *
 * \return
-*  Device Descriptor pointer or NULL when descriptor does not exist.
+*  Device Descriptor pointer or NULL when descriptor isn't exists.
 *
 *******************************************************************************/
 const T_USBUART_1_LUT CYCODE *USBUART_1_GetConfigTablePtr(uint8 confIndex)
@@ -977,7 +981,7 @@ const T_USBUART_1_LUT CYCODE *USBUART_1_GetConfigTablePtr(uint8 confIndex)
     *  
     *
     * \return
-    *  BOS Descriptor pointer or NULL when descriptor does not exist.
+    *  BOS Descriptor pointer or NULL when descriptor isn't exists.
     *
     *******************************************************************************/
     const T_USBUART_1_LUT CYCODE *USBUART_1_GetBOSPtr(void)
@@ -1069,29 +1073,29 @@ const uint8 CYCODE *USBUART_1_GetInterfaceClassTablePtr(void)
 * The device responds with a NAK for any transactions on the selected endpoint.
 *   
 *******************************************************************************/
-void USBUART_1_TerminateEP(uint8 epNumber) 
+void USBUART_1_TerminateEP(uint8 ep) 
 {
     /* Get endpoint number */
-    epNumber &= USBUART_1_DIR_UNUSED;
+    ep &= USBUART_1_DIR_UNUSED;
 
-    if ((epNumber > USBUART_1_EP0) && (epNumber < USBUART_1_MAX_EP))
+    if ((ep > USBUART_1_EP0) && (ep < USBUART_1_MAX_EP))
     {
         /* Set the endpoint Halt */
-        USBUART_1_EP[epNumber].hwEpState |= USBUART_1_ENDPOINT_STATUS_HALT;
+        USBUART_1_EP[ep].hwEpState |= USBUART_1_ENDPOINT_STATUS_HALT;
 
         /* Clear the data toggle */
-        USBUART_1_EP[epNumber].epToggle = 0u;
-        USBUART_1_EP[epNumber].apiEpState = USBUART_1_NO_EVENT_ALLOWED;
+        USBUART_1_EP[ep].epToggle = 0u;
+        USBUART_1_EP[ep].apiEpState = USBUART_1_NO_EVENT_ALLOWED;
 
-        if ((USBUART_1_EP[epNumber].addr & USBUART_1_DIR_IN) != 0u)
+        if ((USBUART_1_EP[ep].addr & USBUART_1_DIR_IN) != 0u)
         {   
             /* IN Endpoint */
-            USBUART_1_SIE_EP_BASE.sieEp[epNumber].epCr0 = USBUART_1_MODE_NAK_IN;
+            USBUART_1_SIE_EP_BASE.sieEp[ep].epCr0 = USBUART_1_MODE_NAK_IN;
         }
         else
         {
             /* OUT Endpoint */
-            USBUART_1_SIE_EP_BASE.sieEp[epNumber].epCr0 = USBUART_1_MODE_NAK_OUT;
+            USBUART_1_SIE_EP_BASE.sieEp[ep].epCr0 = USBUART_1_MODE_NAK_OUT;
         }
     }
 }

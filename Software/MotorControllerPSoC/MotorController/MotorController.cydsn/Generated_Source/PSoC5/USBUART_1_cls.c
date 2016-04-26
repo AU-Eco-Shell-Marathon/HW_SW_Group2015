@@ -3,7 +3,9 @@
 * \version 3.0
 *
 * \brief
-*  This file contains the USB Class request handler.
+*  USB Class request handler.
+*
+* Note:
 *
 ********************************************************************************
 * \copyright
@@ -113,7 +115,7 @@ uint8 USBUART_1_DispatchClassRqst(void)
             break;
     }
 #else /*No class is defined*/
-    if (0u != interfaceNumber)
+    if (interfaceNumber)
     {
         /* Suppress warning message */
     }
