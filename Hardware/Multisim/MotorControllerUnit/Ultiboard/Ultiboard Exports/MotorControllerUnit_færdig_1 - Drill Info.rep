@@ -1,0 +1,30 @@
+ULTIBOARD DRILL REPORT
+
+Design: MotorControllerUnit_f_uc100e6rdig_1
+
+DRILL FILE SETTINGS
+Excellon 2, Absolute, Metric, 3.4 
+
+
+DEFINITION COPPER LAYERS
+Copper Top
+Copper Bottom
+
+
+--------------------------------------------------------------------
+
+DRILLFILE                                                     LAMINATION
+MotorControllerUnit_f_uc100e6rdig_1 - Copper Top-Copper Bottom.drl   Copper Top .. Copper Bottom
+
+TOOL     SIZE   TYPE  COUNT
+   1   3.0480    PTH      2
+   2   1.0000    PTH      9
+   3   0.8890    PTH     91
+   4   1.0160   NPTH      3
+   5   0.9949    PTH      7
+   6   1.1854    PTH      3
+   7   1.3124    PTH      4
+   8   2.5080   NPTH      4
+   9   0.9000    PTH     82
+  10   1.1810    PTH      3
+  11   0.8000    PTH      4

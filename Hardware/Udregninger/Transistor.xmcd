@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?validation-md5-digest 585571d62ed553111f76f05a119241ff?>
+<?validation-md5-digest 5742af1a84f3ed1a2ade4cad5bb72d8a?>
 <worksheet version="3.0.3" xmlns="http://schemas.mathsoft.com/worksheet30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://schemas.mathsoft.com/worksheet30" xmlns:ml="http://schemas.mathsoft.com/math30" xmlns:u="http://schemas.mathsoft.com/units10" xmlns:p="http://schemas.mathsoft.com/provenance10">
 	<pointReleaseData/>
 	<metadata>
@@ -13,9 +13,9 @@
 			<revisedBy>komlir@hotmail.com</revisedBy>
 		</userData>
 		<identityInfo>
-			<revision>3</revision>
+			<revision>4</revision>
 			<documentID>D2F941EE-AA2A-47F3-B1CA-31E5AE487C74</documentID>
-			<versionID>A77371EA-2C23-4F92-B86C-EE7DF9D8A900</versionID>
+			<versionID>214A6852-A4B5-4A99-AA71-E1C07145AA76</versionID>
 			<parentVersionID>00000000-0000-0000-0000-000000000000</parentVersionID>
 			<branchID>00000000-0000-0000-0000-000000000000</branchID>
 		</identityInfo>
@@ -107,7 +107,7 @@
 		</editor>
 		<fileFormat image-type="image/png" image-quality="75" save-numeric-results="true" exclude-large-results="true" save-text-images="false" screen-dpi="96"/>
 		<miscellaneous>
-			<handbook handbook-region-tag-ub="29" can-delete-original-handbook-regions="true" can-delete-user-regions="true" can-print="true" can-copy="true" can-save="true" file-permission-mask="4294967295"/>
+			<handbook handbook-region-tag-ub="38" can-delete-original-handbook-regions="true" can-delete-user-regions="true" can-print="true" can-copy="true" can-save="true" file-permission-mask="4294967295"/>
 		</miscellaneous>
 	</settings>
 	<regions>
@@ -248,6 +248,120 @@
 				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Der vælges derfor en modstand med værdien 1.8 kΩ</p>
 			</text>
 		</region>
+		<region region-id="33" left="24" top="302.25" width="126" height="12" align-x="44.25" align-y="312" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<text use-page-width="false" push-down="false" lock-width="true">
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Beregning af spændingsdeler</p>
+			</text>
+		</region>
+		<region region-id="34" left="36" top="326.25" width="225" height="27.75" align-x="193.5" align-y="342" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<math optimize="false" disable-calc="false">
+				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
+					<ml:symEval style="default" hide-keywords="false" hide-lhs="false">
+						<ml:apply>
+							<ml:equal/>
+							<ml:apply>
+								<ml:mult style="auto-select"/>
+								<ml:real>5</ml:real>
+								<ml:id xml:space="preserve">V</ml:id>
+							</ml:apply>
+							<ml:apply>
+								<ml:mult style="auto-select"/>
+								<ml:apply>
+									<ml:mult/>
+									<ml:apply>
+										<ml:div/>
+										<ml:id xml:space="preserve">x</ml:id>
+										<ml:apply>
+											<ml:plus/>
+											<ml:apply>
+												<ml:mult style="auto-select"/>
+												<ml:real>10</ml:real>
+												<ml:id xml:space="preserve">kΩ</ml:id>
+											</ml:apply>
+											<ml:id xml:space="preserve">x</ml:id>
+										</ml:apply>
+									</ml:apply>
+									<ml:real>48</ml:real>
+								</ml:apply>
+								<ml:id xml:space="preserve">V</ml:id>
+							</ml:apply>
+						</ml:apply>
+						<ml:command>
+							<ml:id xml:space="preserve">solve</ml:id>
+						</ml:command>
+						<ml:symResult>
+							<ml:apply>
+								<ml:div/>
+								<ml:apply>
+									<ml:mult/>
+									<ml:real>50</ml:real>
+									<ml:id xml:space="preserve">kΩ</ml:id>
+								</ml:apply>
+								<ml:real>43</ml:real>
+							</ml:apply>
+						</ml:symResult>
+					</ml:symEval>
+					<result xmlns="http://schemas.mathsoft.com/math30">
+						<unitedValue>
+							<ml:real>1162.7906976744187</ml:real>
+							<unitMonomial xmlns="http://schemas.mathsoft.com/units10">
+								<unitReference unit="ohm"/>
+							</unitMonomial>
+						</unitedValue>
+					</result>
+				</ml:eval>
+			</math>
+			<rendering item-idref="8"/>
+		</region>
+		<region region-id="38" left="30" top="368.25" width="407.25" height="24" align-x="44.25" align-y="378" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<text use-page-width="false" push-down="false" lock-width="false">
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Vælges til 1.1kΩ for at overholde E24 rækken. Der rundes ned for at holde inde for grænsen af 5 V</p>
+			</text>
+		</region>
+		<region region-id="36" left="36" top="398.25" width="123.75" height="27.75" align-x="118.5" align-y="414" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<math optimize="false" disable-calc="false">
+				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
+					<ml:apply>
+						<ml:mult style="auto-select"/>
+						<ml:apply>
+							<ml:mult/>
+							<ml:apply>
+								<ml:div/>
+								<ml:apply>
+									<ml:mult style="auto-select"/>
+									<ml:real>1.1</ml:real>
+									<ml:id xml:space="preserve">kΩ</ml:id>
+								</ml:apply>
+								<ml:apply>
+									<ml:plus/>
+									<ml:apply>
+										<ml:mult style="auto-select"/>
+										<ml:real>10</ml:real>
+										<ml:id xml:space="preserve">kΩ</ml:id>
+									</ml:apply>
+									<ml:apply>
+										<ml:mult style="auto-select"/>
+										<ml:real>1.1</ml:real>
+										<ml:id xml:space="preserve">kΩ</ml:id>
+									</ml:apply>
+								</ml:apply>
+							</ml:apply>
+							<ml:real>48</ml:real>
+						</ml:apply>
+						<ml:id xml:space="preserve">V</ml:id>
+					</ml:apply>
+					<result xmlns="http://schemas.mathsoft.com/math30">
+						<unitedValue>
+							<ml:real>4.756756756756757</ml:real>
+							<unitMonomial xmlns="http://schemas.mathsoft.com/units10">
+								<unitReference unit="volt"/>
+							</unitMonomial>
+						</unitedValue>
+					</result>
+				</ml:eval>
+			</math>
+			<rendering item-idref="9"/>
+		</region>
 	</regions>
 	<binaryContent>
 		<item item-id="1">iVBORw0KGgoAAAANSUhEUgAAAD0AAAAWCAYAAABzCZQcAAAAAXNSR0IArs4c6QAAAARnQU1B
@@ -329,5 +443,58 @@ VgJigyqB2KBKTIudLHT0ZyYAKuYzNsm9tEQEgACxQZVAbFAlEBtUybHE9jVRe9++A/Y4kNj8
 8S7EBgtAxgZVYlpskjqpY4vYpf8YBwDGfMZOkO8dyHcWeB+f3YCcA4qdTkVQNQEaEBtUybHF
 9vvZ1ysBcBxLbP5XGMOCElKDAgcTG4BlQGxQJRAbVAnEBhXS9/8A9wwPDAyo+qsAAAAASUVO
 RK5CYII=</item>
+		<item item-id="8">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
+OmGa/gNFex6nvnymCAAAAABJRU5ErkJggg==</item>
+		<item item-id="9">iVBORw0KGgoAAAANSUhEUgAAAKUAAAAlCAYAAAAjmykCAAAAAXNSR0IArs4c6QAAAARnQU1B
+AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOqSURBVHhe7ZvLkcMgDIZdlwvypIiU
+kANd5J6Db6kkp3SQDlgEAgMSjuPXwoy+GWZjrKzF6o8EZOm0IFSGiFKoDhGlUB0iSqE6Thfl
+S/W6G0a84iE2L6X7btCldz2fT32/3+3P+LXQJqeK0oqt62ZFSW1GPcB1QZSPx8Pa50Af3BPa
+o/lMCeK7Xq94NQF9nFiF+mlOlCGT9kq/zDW8vt1u1iwG+kSUbdJephyVVqBG5HK5sOKDPrgn
+tEdDoux139P56Pv9LooS7gnt0ZQoh8H0Y9n2fD4fW6rj1bZfgcM9oT2aK9/j0Ok+qt9+hR2v
+tLk+oR3OFeU42LJqmxedFVyngwaJzUsrKNv+Otx3Ig22pnm4PqEdJGoHA5k9TfqmCuAHxmX8
+6ENnpiihCPgPXzZd2Uruz4TfD57aZBff81tzc/bbxiSiPJK8CthAYpBwnuwC5gKci2UcvAB2
+gvgTMY7Js+Jnv9SQ7HhYZuwd68ckojyQUSmt4swUzY1d0KYsAhk0niubHq3Ut/D9BvGniHn2
+4LPZlBFT/2Ji+4m1YxJRHoUpVRD8tFxiWXM30oAlgjWY6101yfpTwDx7yAWIWZYVJmcPrByT
+iPIQpoxARYCZhyjDCdZ3Q1ZjwmxAYWP2SlpRbXP+UNhybQHfafkt2y8dU0oiSnag0ootgFkk
+BDv61ikXgQsgCiuf8MNCwBqPRkRLwreQGX8oxjemFHvonHDefs2YJFMeAAQ+F7AteyDeIMQ0
+izhwnglzv2L8UNDZ77etoLaiPyzGh6Jq4dm5KOfsgSVjShFRHkySmZI5FgSLZi0roJ23gWK+
+Zkqce7Lk82Bgzh75dUwiyoPJRUD3KTMWLgbWQj8kqX+kPEP5RX+5TLxki+fXMYkoheoQUQrV
+URQl+acIANN98tVRMk+ixGdm4td7w/qbQWwq8V1IYUUZ5j1JkHEVBWIMwXST9f8+P8P7m0Jt
+6vBdoCzPlGG/CYi2M2ayDQRw/fmZL/tfGcRfBmJzmO/CFhaLMr+GVVzYe8PAWhsTML/8h9fr
+z8+cK8p9fRe28JMo4y0MTpTxNwfAtvMzJ2dKOftTDTuJcq/zM25aAPdJ+7L5ul6Ue/ku7MVi
+Uc7PKY84P3NWppSzP7WxXJSmyCWrbx9EG1hXAkP2RPwqNV6tcn0855bvfX0XtsCLsvTVkg0i
+9Pt9yqjcgl14nwt0+B2mebg+nh9EyfmLvgb3ic2RvgtbkL+uUB0iSqE6RJRCdYgohcrQ+g+R
+H/XVnp6YxAAAAABJRU5ErkJggg==</item>
 	</binaryContent>
 </worksheet>
