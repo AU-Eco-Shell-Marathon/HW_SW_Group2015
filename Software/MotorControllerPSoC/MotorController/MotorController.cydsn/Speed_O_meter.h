@@ -1,15 +1,9 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
+#ifndef SPEED_O_METER_H
+#define SPEED_O_METER_H
 
 #include <project.h>
+    
+float Speedo_GetSpeed(void);
+void Speedo_Init();
 
-/* [] END OF FILE */
+#endif

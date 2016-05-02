@@ -1,18 +1,9 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
+#ifndef PEDAL_H
+#define PEDAL_H
+
 #include <project.h>
 
 const uint8 *Pedal_init();
-
 void Pedal_update();
 
-/* [] END OF FILE */
+#endif
