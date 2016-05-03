@@ -3,8 +3,11 @@
 char cellSeparator_ = ';';
 char lineSepartor_ = '\n';
 
-char logFileName_[] = "log%d.txt";
-char dataFileName_[] = "data%d.csv";
+char* logFileName_ = "log%d.txt";
+char* dataFileName_ = "data%d.csv";
+
+int maxFileNumber_ = 20;
+int maxFileNameLength_ = 100;
 
 FS_FILE* logFile_;
 FS_FILE* dataFile_;
@@ -14,10 +17,10 @@ void Logger_Init(void)
     int i;
     FS_Init();
     
-    char buffer[100];
+    char buffer[maxFileNameLength_];
         
     //Open files
-    for(i = 0; i < 10; i++)
+    for(i = 0; i < maxFileNumber_; i++)
     {
         sprintf(buffer, logFileName_, i);
         
@@ -28,7 +31,7 @@ void Logger_Init(void)
     }
     
     
-    for(i = 0; i < 10; i++)
+    for(i = 0; i < maxFileNumber_; i++)
     {
         sprintf(buffer, dataFileName_, i);
         

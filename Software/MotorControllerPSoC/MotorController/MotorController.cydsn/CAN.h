@@ -1,16 +1,6 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
 #ifndef CAN_H
 #define CAN_H
+
 #include <project.h>
 
 struct BMSData
@@ -35,6 +25,6 @@ struct BMSData
 };
 
 struct BMSData * CAN_init();
-//void CANtransmit();
+
 #endif
-/* [] END OF FILE */
+

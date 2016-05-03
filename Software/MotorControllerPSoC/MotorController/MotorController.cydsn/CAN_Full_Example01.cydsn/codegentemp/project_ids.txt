@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj|a783f3d1-655d-4805-9130-44d37c2b02d1
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|58798be1-254c-44f1-af53-52a6fce46aef
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7f78a26f-11fd-45d8-ad60-edbca9071c10
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a0398fe8-41b6-4163-8fcf-c56bdc82dfc3
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|57c5e7f3-0d75-40c8-9d3d-61befec29e17
 C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.cyprj|eaf42b9c-447a-4148-bc9c-d2389a86ff8f
+=======
+C:\Users\Jonas\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\MotorController.cyprj|087afcf5-ed45-40d4-9d5c-72e1547c89af
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|901ee474-0061-4719-935e-5389e0ff8aad
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|7d53edb7-285f-416b-9b78-8f6806a81c1a
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2fd9e11f-911b-4643-8128-cefad7a59386
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f0196bab-33b0-4e7d-961e-052e6cd48d13
+C:\Users\Jonas\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.cyprj|526d0306-816d-4d10-ae32-1ba273fe0529
+>>>>>>> 1921551670d0f993ef628f127bf278ceac0af77f

@@ -1,5 +1,9 @@
 # CAN_Full_Example01
+<<<<<<< HEAD
 # 2016-05-02 20:53:57Z
+=======
+# 2016-05-02 10:57:09Z
+>>>>>>> 1921551670d0f993ef628f127bf278ceac0af77f
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0

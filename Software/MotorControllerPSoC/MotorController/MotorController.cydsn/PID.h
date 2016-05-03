@@ -1,14 +1,3 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
 #ifndef PID_H
 #define PID_H
 #include <project.h>
@@ -37,4 +26,3 @@ void PID_init();
 void PID(const uint16 * input, const uint16 * plant, uint16 * output);
 void setPID(const struct PIDparameter * parameter);
 #endif
-/* [] END OF FILE */

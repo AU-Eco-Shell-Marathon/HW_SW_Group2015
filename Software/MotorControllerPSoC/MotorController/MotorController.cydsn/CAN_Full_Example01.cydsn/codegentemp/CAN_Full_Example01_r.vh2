@@ -1,5 +1,9 @@
 -- Project:   CAN_Full_Example01
+<<<<<<< HEAD
 -- Generated: 05/02/2016 22:53:59
+=======
+-- Generated: 05/02/2016 12:57:12
+>>>>>>> 1921551670d0f993ef628f127bf278ceac0af77f
 -- PSoC Creator  3.3 SP1
 
 ENTITY CAN_Full_Example01 IS
