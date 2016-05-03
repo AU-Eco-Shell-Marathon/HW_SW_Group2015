@@ -41,11 +41,11 @@ CY_ISR(MOTOR_tick)
     case ACC:
         
         output = PID(Speed_LUT, rpm);
-        PWM_motor_WriteCompare(output);
+        PWM_motor_WriteCompare((uint8)output);
         if(rpm >= WantedSpeed) state = CAB;
         break;
     case CAB:
-        if(rpm <= WantedSpeed - Threshold_) state = ACC;
+        if(rpm <= (WantedSpeed - Threshold_)) state = ACC;
     case STOP:
     default:
         PWM_motor_WriteCompare(0x00);

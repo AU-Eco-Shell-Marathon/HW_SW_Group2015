@@ -27,7 +27,7 @@ void init()
     
     if(EEPROM_read(0, (uint8 *)&PID) == 0)
     {
-        PID.Kp = 1000;
+        PID.Kp = 1;
         PID.Ki = 0;
         PID.Kd = 0;
         PID.KShift = 0;

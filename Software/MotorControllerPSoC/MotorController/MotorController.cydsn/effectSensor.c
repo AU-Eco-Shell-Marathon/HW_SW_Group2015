@@ -56,10 +56,13 @@ void effectSensor_init()
 
 uint16 effectSensor_getValue()
 {
-    uint32 volt = ((ADC_V_CountsTo_mVolts(y_Volt) < 0 ? 0u : (uint32)ADC_V_CountsTo_mVolts(y_Volt)) - effect_sensor_OFFSET);//*15.625)/1000; skal trække minus 5 volt fra!!!
-    uint32 current = ((ADC_A_CountsTo_mVolts(y_Current) < 0 ? 0u : (uint32)ADC_A_CountsTo_mVolts(y_Current)) - effect_sensor_OFFSET);//*3)/1000;
+    int16 rawVolt = ADC_V_CountsTo_mVolts(y_Volt);
+    int16 rawCurrent = ADC_A_CountsTo_mVolts(y_Current);
     
-    return volt*current;
+    uint32 volt = (rawVolt <= (int16)effect_sensor_OFFSET ? 0u : rawVolt - (uint32)effect_sensor_OFFSET)*15.625;//*15.625)/1000; skal trække minus 5 volt fra!!!
+    uint32 current = (rawCurrent <= (int16)effect_sensor_OFFSET ? 0u : rawCurrent - (uint32)effect_sensor_OFFSET)*3;//*3)/1000;
+    
+    return ((uint16)(((uint64)volt*(uint64)current)/100000));
 }
 
 
@@ -83,7 +86,7 @@ void DMA_ADC_A_V_init()
     DMA_A_Chan = DMA_A_DmaInitialize(DMA_A_BYTES_PER_BURST, DMA_A_REQUEST_PER_BURST, 
         HI16(DMA_A_SRC_BASE), HI16(DMA_A_DST_BASE));
     DMA_A_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(DMA_A_TD[0], 2, DMA_INVALID_TD, TD_INC_DST_ADR);
+    CyDmaTdSetConfiguration(DMA_A_TD[0], 2, DMA_INVALID_TD, DMA_A__TD_TERMOUT_EN | TD_INC_DST_ADR);
     CyDmaTdSetAddress(DMA_A_TD[0], LO16((uint32)ADC_A_SAR_WRK0_PTR), LO16((uint32)&Current_temp));
     CyDmaChSetInitialTd(DMA_A_Chan, DMA_A_TD[0]);
     CyDmaChEnable(DMA_A_Chan, 1);
@@ -106,7 +109,7 @@ void DMA_ADC_A_V_init()
     DMA_V_Chan = DMA_V_DmaInitialize(DMA_V_BYTES_PER_BURST, DMA_V_REQUEST_PER_BURST, 
         HI16(DMA_V_SRC_BASE), HI16(DMA_V_DST_BASE));
     DMA_V_TD[0] = CyDmaTdAllocate();
-    CyDmaTdSetConfiguration(DMA_V_TD[0], 2, DMA_INVALID_TD, TD_INC_DST_ADR);
+    CyDmaTdSetConfiguration(DMA_V_TD[0], 2, DMA_INVALID_TD, DMA_V__TD_TERMOUT_EN | TD_INC_DST_ADR);
     CyDmaTdSetAddress(DMA_V_TD[0], LO16((uint32)ADC_V_SAR_WRK0_PTR), LO16((uint32)&Volt_temp));
     CyDmaChSetInitialTd(DMA_V_Chan, DMA_V_TD[0]);
     CyDmaChEnable(DMA_V_Chan, 1);

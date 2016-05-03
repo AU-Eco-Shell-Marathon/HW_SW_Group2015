@@ -15,7 +15,7 @@
 uint16 LUT_speed(const uint16 wanted_speed,const uint16 speed,const uint16 power)
 {
     volatile uint16 calc_speed = 0;
-    volatile uint16 point = ((power>>LUT_SHIFT) >= (LUT_SIZE-1) ? LUT_SIZE-1 : power>>LUT_SHIFT);
+    volatile uint16 point = (((power/10)>>LUT_SHIFT) >= (LUT_SIZE-1) ? LUT_SIZE-1 : (power/10)>>LUT_SHIFT);
     if(wanted_speed > speed)
     {
         calc_speed = RAMP_LUT[point];
@@ -23,7 +23,7 @@ uint16 LUT_speed(const uint16 wanted_speed,const uint16 speed,const uint16 power
     }
     else
     {
-        return ((uint16)CONST_LUT[(power>>LUT_SHIFT >= LUT_SIZE ? LUT_SIZE : power>>LUT_SHIFT)]);
+        return ((uint16)CONST_LUT[((power/10)>>LUT_SHIFT >= LUT_SIZE ? LUT_SIZE : (power/10)>>LUT_SHIFT)]);
     }
 }
 
