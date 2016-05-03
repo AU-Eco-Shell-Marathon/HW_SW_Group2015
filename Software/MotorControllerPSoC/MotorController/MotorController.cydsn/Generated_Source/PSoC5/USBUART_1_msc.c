@@ -3,7 +3,8 @@
 * \version 3.0
 *
 * \brief
-*  USB CDC class request handler.
+*  This file contains the USB MSC Class request handler and global API for MSC 
+*  class.
 *
 * Related Document:
 *  Universal Serial Bus Class Definitions for Communication Devices Version 1.1
@@ -52,7 +53,7 @@ uint8 USBUART_1_DispatchMSCClassRqst(void)
     
     /* Get request data. */
     uint16 value  = USBUART_1_GET_UINT16(USBUART_1_wValueHiReg,  USBUART_1_wValueLoReg);
-    uint16 length = USBUART_1_GET_UINT16(USBUART_1_wLengthHiReg, USBUART_1_wLengthLoReg);
+    uint16 dataLength = USBUART_1_GET_UINT16(USBUART_1_wLengthHiReg, USBUART_1_wLengthLoReg);
        
     /* Check request direction: D2H or H2D. */
     if (0u != (USBUART_1_bmRequestTypeReg & USBUART_1_RQST_DIR_D2H))
@@ -63,7 +64,7 @@ uint8 USBUART_1_DispatchMSCClassRqst(void)
         {
             /* Check request fields. */
             if ((value  == USBUART_1_MSC_GET_MAX_LUN_WVALUE) &&
-                (length == USBUART_1_MSC_GET_MAX_LUN_WLENGTH))
+                (dataLength == USBUART_1_MSC_GET_MAX_LUN_WLENGTH))
             {
                 /* Reply to Get Max LUN request: setup control read. */
                 USBUART_1_currentTD.pData = &USBUART_1_lunCount;
@@ -81,7 +82,7 @@ uint8 USBUART_1_DispatchMSCClassRqst(void)
         {
             /* Check request fields. */
             if ((value  == USBUART_1_MSC_RESET_WVALUE) &&
-                (length == USBUART_1_MSC_RESET_WLENGTH))
+                (dataLength == USBUART_1_MSC_RESET_WLENGTH))
             {
                 /* Handle to Bulk-Only Reset request: no data control transfer. */
                 USBUART_1_currentTD.count = USBUART_1_MSC_RESET_WLENGTH;

@@ -3,9 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  Endpoint 0 Driver for the USBFS Component.
-*
-* Note:
+*  This file contains the Endpoint 0 Driver for the USBFS Component.  
 *
 ********************************************************************************
 * \copyright
@@ -400,7 +398,7 @@ void USBUART_1_LoadEP0(void)
 * Function Name: USBUART_1_InitControlRead
 ****************************************************************************//**
 *
-*  Initialize a control read transaction, usable to send data to the host.
+*  Initialize a control read transaction. It is used to send data to the host.
 *  The following global variables should be initialized before this function
 *  called. To send zero length packet use InitZeroLengthControlTransfer
 *  function.

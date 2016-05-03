@@ -1,6 +1,6 @@
 // ======================================================================
 // CAN_Full_Example01.v generated from TopDesign.cysch
-// 04/26/2016 at 20:36
+// 05/02/2016 at 22:53
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 

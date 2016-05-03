@@ -1,5 +1,5 @@
--- Project:   C:\Users\Thomas\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.cyprj
--- Generated: 04/26/2016 20:36:40
+-- Project:   C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.cyprj
+-- Generated: 05/02/2016 22:54:01
 -- PSoC Creator  3.3 SP1
 
 ENTITY CAN_Full_Example01 IS

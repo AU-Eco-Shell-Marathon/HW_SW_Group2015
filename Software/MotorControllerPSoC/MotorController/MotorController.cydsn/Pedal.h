@@ -9,10 +9,16 @@
  *
  * ========================================
 */
+#ifndef PEDAL_H
+#define PEDAL_H
+    
 #include <project.h>
 
-const uint8 *Pedal_init();
+void Pedal_init();
+
+uint16 Pedal_getValue();
 
 void Pedal_update();
 
+#endif
 /* [] END OF FILE */

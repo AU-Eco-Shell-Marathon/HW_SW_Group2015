@@ -9,6 +9,8 @@
  *
  * ========================================
 */
+#ifndef CAN_H
+#define CAN_H
 #include <project.h>
 
 struct BMSData
@@ -34,5 +36,5 @@ struct BMSData
 
 struct BMSData * CAN_init();
 //void CANtransmit();
-
+#endif
 /* [] END OF FILE */

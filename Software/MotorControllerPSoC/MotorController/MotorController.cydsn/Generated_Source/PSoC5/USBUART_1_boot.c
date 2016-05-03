@@ -3,9 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  Boot loader API for USBFS Component.
-*
-*  Note:
+*  This file contains the Bootloader API for USBFS Component.
 *
 ********************************************************************************
 * \copyright
@@ -44,12 +42,13 @@ static uint8  USBUART_1_started = 0u;
 *******************************************************************************/
 void USBUART_1_CyBtldrCommStart(void) 
 {
-    CyGlobalIntEnable;      /* Enable Global Interrupts */
+    /* Enable Global Interrupts. Interrupts are mandatory for USBFS component operation. */
+    CyGlobalIntEnable;
 
-    /*Start USBFS Operation/device 0 and with 5V or 3V operation depend on Voltage Configuration in DWR */
+    /* Start USBFS Operation: device 0 and with 5V or 3V operation depend on Voltage Configuration in DWR. */
     USBUART_1_Start(0u, USBUART_1_DWR_POWER_OPERATION);
 
-    /* USB component started, the correct enumeration will be checked in first Read operation */
+    /* USB component started, the correct enumeration will be checked in the first Read operation. */
     USBUART_1_started = 1u;
 }
 
@@ -83,7 +82,7 @@ void USBUART_1_CyBtldrCommStop(void)
 *******************************************************************************/
 void USBUART_1_CyBtldrCommReset(void) 
 {
-    USBUART_1_EnableOutEP(USBUART_1_BTLDR_OUT_EP);  /* Enable the OUT endpoint */
+    USBUART_1_EnableOutEP(USBUART_1_BTLDR_OUT_EP); 
 }
 
 
@@ -116,12 +115,13 @@ cystatus USBUART_1_CyBtldrCommWrite(const uint8 pData[], uint16 size, uint16 *co
     cystatus retCode;
     uint16 timeoutMs;
 
-    timeoutMs = ((uint16) 10u * timeOut);  /* Convert from 10mS check to number 1mS checks */
+    /* Convert 10mS checks into 1mS checks. */
+    timeoutMs = ((uint16) 10u * timeOut);
 
-    /* Enable IN transfer */
+    /* Load data into IN endpoint to be read by host. */
     USBUART_1_LoadInEP(USBUART_1_BTLDR_IN_EP, pData, USBUART_1_BTLDR_SIZEOF_READ_BUFFER);
 
-    /* Wait for the master to read it. */
+    /* Wait unitl host reads data from IN endpoint. */
     while ((USBUART_1_GetEPState(USBUART_1_BTLDR_IN_EP) == USBUART_1_IN_BUFFER_FULL) &&
            (0u != timeoutMs))
     {
@@ -139,7 +139,7 @@ cystatus USBUART_1_CyBtldrCommWrite(const uint8 pData[], uint16 size, uint16 *co
         retCode = CYRET_SUCCESS;
     }
 
-    return(retCode);
+    return (retCode);
 }
 
 
@@ -174,36 +174,38 @@ cystatus USBUART_1_CyBtldrCommRead(uint8 pData[], uint16 size, uint16 *count, ui
     cystatus retCode;
     uint16 timeoutMs;
 
-    timeoutMs = ((uint16) 10u * timeOut);  /* Convert from 10mS check to number 1mS checks */
+    /* Convert 10mS checks into 1mS checks. */
+    timeoutMs = ((uint16) 10u * timeOut);
 
     if (size > USBUART_1_BTLDR_SIZEOF_WRITE_BUFFER)
     {
         size = USBUART_1_BTLDR_SIZEOF_WRITE_BUFFER;
     }
 
-    /* Wait on enumeration in first time */
+    /* Wait for enumeration first time. */
     if (0u != USBUART_1_started)
     {
-        /* Wait for Device to enumerate */
-        while ((0u ==USBUART_1_GetConfiguration()) && (0u != timeoutMs))
+        /* Wait for device enumeration. */
+        while ((0u == USBUART_1_GetConfiguration()) && (0u != timeoutMs))
         {
             CyDelay(USBUART_1_BTLDR_WAIT_1_MS);
             timeoutMs--;
         }
 
-        /* Enable first OUT, if enumeration complete */
+        /* Enable OUT after enumeration. */
         if (0u != USBUART_1_GetConfiguration())
         {
-            (void) USBUART_1_IsConfigurationChanged();  /* Clear configuration changes state status */
+            (void) USBUART_1_IsConfigurationChanged();  /* Clear configuration changes state status. */
             USBUART_1_CyBtldrCommReset();
+            
             USBUART_1_started = 0u;
         }
     }
-    else /* Check for configuration changes, has been done by Host */
+    else /* Check for configuration changes, has been done by Host. */
     {
-        if (0u != USBUART_1_IsConfigurationChanged()) /* Host could send double SET_INTERFACE request or RESET */
+        if (0u != USBUART_1_IsConfigurationChanged()) /* Host could send double SET_INTERFACE request or RESET. */
         {
-            if (0u != USBUART_1_GetConfiguration())   /* Init OUT endpoints when device reconfigured */
+            if (0u != USBUART_1_GetConfiguration())   /* Init OUT endpoints when device reconfigured. */
             {
                 USBUART_1_CyBtldrCommReset();
             }
@@ -212,15 +214,15 @@ cystatus USBUART_1_CyBtldrCommRead(uint8 pData[], uint16 size, uint16 *count, ui
 
     timeoutMs = ((uint16) 10u * timeOut); /* Re-arm timeout */
 
-    /* Wait on next packet */
-    while((USBUART_1_GetEPState(USBUART_1_BTLDR_OUT_EP) != USBUART_1_OUT_BUFFER_FULL) && \
-          (0u != timeoutMs))
+    /* Wait unitl host writes data into OUT endpoint. */
+    while ((USBUART_1_GetEPState(USBUART_1_BTLDR_OUT_EP) != USBUART_1_OUT_BUFFER_FULL) && \
+           (0u != timeoutMs))
     {
         CyDelay(USBUART_1_BTLDR_WAIT_1_MS);
         timeoutMs--;
     }
 
-    /* OUT EP has completed */
+    /* Read data from OUT endpoint if host wrote data into it. */
     if (USBUART_1_GetEPState(USBUART_1_BTLDR_OUT_EP) == USBUART_1_OUT_BUFFER_FULL)
     {
         *count = USBUART_1_ReadOutEP(USBUART_1_BTLDR_OUT_EP, pData, size);
@@ -232,10 +234,10 @@ cystatus USBUART_1_CyBtldrCommRead(uint8 pData[], uint16 size, uint16 *count, ui
         retCode = CYRET_TIMEOUT;
     }
 
-    return(retCode);
+    return (retCode);
 }
 
-#endif /*  CYDEV_BOOTLOADER_IO_COMP == CyBtldr_USBUART_1 */
+#endif /* (CYDEV_BOOTLOADER_IO_COMP == CyBtldr_USBUART_1) */
 
 
 /* [] END OF FILE */

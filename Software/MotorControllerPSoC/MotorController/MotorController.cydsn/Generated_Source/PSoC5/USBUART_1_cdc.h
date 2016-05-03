@@ -3,8 +3,8 @@
 * \version 3.0
 *
 * \brief
-*  Header File for the USBFS component.
-*  Contains CDC class prototypes and constant values.
+*  This file provides function prototypes and constants for the USBFS component 
+*  CDC class.
 *
 * Related Document:
 *  Universal Serial Bus Class Definitions for Communication Devices Version 1.1
@@ -49,9 +49,9 @@
     uint8  USBUART_1_GetDataBits(void)       ;
     uint16 USBUART_1_GetLineControl(void)    ;
     void USBUART_1_SendSerialState (uint16 serialState) ;
-    uint16 USBUART_1_GetSerialState (void) ;
-    void USBUART_1_SetComPort (uint8 COMPortNumber) ;
-    uint8 USBUART_1_GetComPort (void) ;
+    uint16 USBUART_1_GetSerialState (void)   ;
+    void USBUART_1_SetComPort (uint8 comNumber) ;
+    uint8 USBUART_1_GetComPort (void)        ;
     uint8 USBUART_1_NotificationIsReady(void) ;
 
 #endif  /* (USBUART_1_ENABLE_CDC_CLASS_API) */

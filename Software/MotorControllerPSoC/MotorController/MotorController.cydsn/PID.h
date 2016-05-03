@@ -9,6 +9,8 @@
  *
  * ========================================
 */
+#ifndef PID_H
+#define PID_H
 #include <project.h>
 
 #define Kp_def 1000;
@@ -32,6 +34,7 @@ struct PIDparameter
 };
 
 void PID_init();
-void PID(const uint8 * input, const uint16 * plant, uint16 * output);
+void PID(const uint16 * input, const uint16 * plant, uint16 * output);
 void setPID(const struct PIDparameter * parameter);
+#endif
 /* [] END OF FILE */

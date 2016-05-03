@@ -3,7 +3,8 @@
 * \version 3.0
 *
 * \brief
-*  Header File for the USBFS component. Contains prototypes and constant values.
+*  This file provides function prototypes and constants for the USBFS component 
+*  MSC class support.
 *
 * Related Document:
 *  Device Class Definition for Mass Storage (MSC) Version TDB
@@ -37,8 +38,8 @@
 * @{
 */
 #if (USBUART_1_HANDLE_MSC_REQUESTS)
-    void  USBUART_1_MSC_SetLunCount(uint8 lunCount)  ;
-    uint8 USBUART_1_MSC_GetLunCount(void)            ;
+    void  USBUART_1_MSC_SetLunCount(uint8 lunCount) ;
+    uint8 USBUART_1_MSC_GetLunCount(void)           ;
 #endif /* (USBUART_1_HANDLE_MSC_REQUESTS) */
 /** @} msc */
 

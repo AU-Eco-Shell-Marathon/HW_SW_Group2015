@@ -3,7 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  USB AUDIO Class request handler.
+*  This file contains the USB AUDIO Class request handler.
 *
 * Related Document:
 *  Universal Serial Bus Device Class Definition for Audio Devices Release 1.0
@@ -68,7 +68,9 @@
 *  This routine dispatches class requests
 *
 * \return
-*  requestHandled
+*  Results of Audio Class request handling: 
+*  - USBUART_1_TRUE  - request was handled without errors
+*  - USBUART_1_FALSE - error occurs during handling of request     
 *
 * \globalvars
 *   USBUART_1_currentSampleFrequency: Contains the current audio Sample
@@ -188,7 +190,7 @@ uint8 USBUART_1_DispatchAUDIOClassRqst(void)
                     }
                     break;
                     
-                case USBUART_1_GET_MIN:    /* GET_MIN */
+                case USBUART_1_GET_MIN:
                     if (wValueHi == USBUART_1_VOLUME_CONTROL)
                     {
                         /* Entity ID Control Selector is VOLUME, */
@@ -199,7 +201,7 @@ uint8 USBUART_1_DispatchAUDIOClassRqst(void)
                     }
                     break;
                     
-                case USBUART_1_GET_MAX:    /* GET_MAX */
+                case USBUART_1_GET_MAX:
                     if (wValueHi == USBUART_1_VOLUME_CONTROL)
                     {
                         /* Entity ID Control Selector is VOLUME, */
@@ -210,7 +212,7 @@ uint8 USBUART_1_DispatchAUDIOClassRqst(void)
                     }
                     break;
                     
-                case USBUART_1_GET_RES:    /* GET_RES */
+                case USBUART_1_GET_RES:
                     if (wValueHi == USBUART_1_VOLUME_CONTROL)
                     {
                          /* Entity ID Control Selector is VOLUME, */

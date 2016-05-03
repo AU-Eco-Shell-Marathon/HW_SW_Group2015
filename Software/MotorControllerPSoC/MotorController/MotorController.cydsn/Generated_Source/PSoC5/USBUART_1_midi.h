@@ -3,8 +3,8 @@
 * \version 3.0
 *
 * \brief
-*  Header File for the USBFS MIDI module.
-*  Contains prototypes and constant values.
+*  This file provides function prototypes and constants for the USBFS component 
+*  MIDI class support.
 *
 * Related Document:
 *  Universal Serial Bus Device Class Definition for MIDI Devices Release 1.0
@@ -69,7 +69,7 @@ typedef struct
     uint8    count;         /* current byte count */
     uint8    size;          /* complete size */
     uint8    runstat;       /* running status */
-    uint8    msgBuff[4];    /* message buffer */
+    uint8    msgBuff[4u];   /* message buffer */
 } USBUART_1_MIDI_RX_STATUS;
 
 
@@ -92,7 +92,6 @@ typedef struct
         void USBUART_1_MIDI_OUT_Service(void) ;
     #endif /* (USBUART_1_MIDI_OUT_BUFF_SIZE > 0u) */
 #endif /*  (USBUART_1_ENABLE_MIDI_API != 0u) */
-
 
 
 /*******************************************************************************
@@ -191,8 +190,14 @@ void USBUART_1_callbackLocalMidiEvent(uint8 cable, uint8 *midiMsg)
 #define USBUART_1_MIDI_SYSEX_SYSTEM_ON       (0x01u)
 #define USBUART_1_MIDI_SYSEX_SYSTEM_OFF      (0x02u)
 
-#define USBUART_1_CUSTOM_UART_TX_PRIOR_NUM   (0x04u)
-#define USBUART_1_CUSTOM_UART_RX_PRIOR_NUM   (0x02u)
+/* UART TX and RX interrupt priority. */
+#if (CY_PSOC4)
+    #define USBUART_1_CUSTOM_UART_RX_PRIOR_NUM   (0x01u)
+    #define USBUART_1_CUSTOM_UART_TX_PRIOR_NUM   (0x02u)
+#else
+    #define USBUART_1_CUSTOM_UART_RX_PRIOR_NUM   (0x02u)
+    #define USBUART_1_CUSTOM_UART_TX_PRIOR_NUM   (0x04u)
+#endif /* (CYPSOC4) */
 
 
 /***************************************

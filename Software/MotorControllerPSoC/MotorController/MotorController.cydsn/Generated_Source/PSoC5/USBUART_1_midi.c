@@ -61,34 +61,34 @@
 
 #if (USBUART_1_MIDI_IN_BUFF_SIZE > 0)
     #if (USBUART_1_MIDI_IN_BUFF_SIZE >= 256)
-        /** Input endpoint buffer pointer. This pointer is used as an index for the 
-        * USBMIDI_midiInBuffer to write data. It is cleared to zero by the 
+        /** Input endpoint buffer pointer. This pointer is used as an index for the
+        * USBMIDI_midiInBuffer to write data. It is cleared to zero by the
         * USBMIDI_MIDI_EP_Init() function.*/
         volatile uint16 USBUART_1_midiInPointer;                            /* Input endpoint buffer pointer */
     #else
         volatile uint8 USBUART_1_midiInPointer;                             /* Input endpoint buffer pointer */
     #endif /* (USBUART_1_MIDI_IN_BUFF_SIZE >= 256) */
-    /** Contains the midi IN endpoint number, It is initialized after a 
-     * SET_CONFIGURATION request based on a user descriptor. It is used in MIDI 
+    /** Contains the midi IN endpoint number, It is initialized after a
+     * SET_CONFIGURATION request based on a user descriptor. It is used in MIDI
      * APIs to send data to the host.*/
     volatile uint8 USBUART_1_midi_in_ep;
-    /** Input endpoint buffer with a length equal to MIDI IN EP Max Packet Size. 
-     * This buffer is used to save and combine the data received from the UARTs, 
-     * generated internally by USBMIDI_PutUsbMidiIn() function messages, or both. 
-     * The USBMIDI_MIDI_IN_Service() function transfers the data from this buffer to the host.*/                                    
+    /** Input endpoint buffer with a length equal to MIDI IN EP Max Packet Size.
+     * This buffer is used to save and combine the data received from the UARTs,
+     * generated internally by USBMIDI_PutUsbMidiIn() function messages, or both.
+     * The USBMIDI_MIDI_IN_Service() function transfers the data from this buffer to the host.*/
     uint8 USBUART_1_midiInBuffer[USBUART_1_MIDI_IN_BUFF_SIZE];       /* Input endpoint buffer */
 #endif /* (USBUART_1_MIDI_IN_BUFF_SIZE > 0) */
 
 #if (USBUART_1_MIDI_OUT_BUFF_SIZE > 0)
-    /** Contains the midi OUT endpoint number. It is initialized after a 
-     * SET_CONFIGURATION request based on a user descriptor. It is used in 
-     * MIDI APIs to receive data from the host.*/ 
+    /** Contains the midi OUT endpoint number. It is initialized after a
+     * SET_CONFIGURATION request based on a user descriptor. It is used in
+     * MIDI APIs to receive data from the host.*/
     volatile uint8 USBUART_1_midi_out_ep;                                   /* Output endpoint number */
-    /** Output endpoint buffer with a length equal to MIDI OUT EP Max Packet Size. 
-     * This buffer is used by the USBMIDI_MIDI_OUT_EP_Service() function to save 
-     * the data received from the host. The received data is then parsed. The 
-     * parsed data is transferred to the UARTs buffer and also used for internal 
-     * processing by the USBMIDI_callbackLocalMidiEvent() function.*/ 
+    /** Output endpoint buffer with a length equal to MIDI OUT EP Max Packet Size.
+     * This buffer is used by the USBMIDI_MIDI_OUT_EP_Service() function to save
+     * the data received from the host. The received data is then parsed. The
+     * parsed data is transferred to the UARTs buffer and also used for internal
+     * processing by the USBMIDI_callbackLocalMidiEvent() function.*/
     uint8 USBUART_1_midiOutBuffer[USBUART_1_MIDI_OUT_BUFF_SIZE];     /* Output endpoint buffer */
 #endif /* (USBUART_1_MIDI_OUT_BUFF_SIZE > 0) */
 
@@ -96,17 +96,17 @@
 
     static USBUART_1_MIDI_RX_STATUS USBUART_1_MIDI1_Event;            /* MIDI RX status structure */
     static volatile uint8 USBUART_1_MIDI1_TxRunStat;                         /* MIDI Output running status */
-    /** The USBFS supports a maximum of two external Jacks. The two flag variables 
-     * are used to represent the status of two external Jacks. These optional variables 
-     * are allocated when External Mode is enabled. The following flags help to 
-     * detect and generate responses for SysEx messages. The USBMIDI_MIDI2_InqFlags 
+    /** The USBFS supports a maximum of two external Jacks. The two flag variables
+     * are used to represent the status of two external Jacks. These optional variables
+     * are allocated when External Mode is enabled. The following flags help to
+     * detect and generate responses for SysEx messages. The USBMIDI_MIDI2_InqFlags
      * is optional and is not available when only one external Jack is configured.
      * Flag                          | Description
      * ------------------------------|---------------------------------------
      * USBMIDI_INQ_SYSEX_FLAG        | Non-real-time SysEx message received.
      * USBMIDI_INQ_IDENTITY_REQ_FLAG | Identity Request received. You should clear this bit when an Identity Reply message is generated.
-     * SysEX messages are intended for local device and shouldn't go out on the 
-     * external MIDI jack, this flag indicates when a MIDI SysEx OUT message is 
+     * SysEX messages are intended for local device and shouldn't go out on the
+     * external MIDI jack, this flag indicates when a MIDI SysEx OUT message is
      * in progress for the application */
     volatile uint8 USBUART_1_MIDI1_InqFlags;                                 /* Device inquiry flag */
 
@@ -137,7 +137,7 @@
 *   receive data from the PC and MIDI ports.
 *
 * \globalvars
-* 
+*
 *  \ref USBUART_1_midiInBuffer: This buffer is used for saving and combining
 *    the received data from UART(s) and(or) generated internally by
 *    PutUsbMidiIn() function messages. USBUART_1_MIDI_IN_EP_Service()
@@ -155,9 +155,9 @@
 *  \ref USBUART_1_midi_in_ep: Used as an IN endpoint number.
 *
 *   \ref USBUART_1_midiInPointer: Initialized to zero.
-* 
+*
 * \sideeffect
-*   The priority of the UART RX ISR should be higher than UART TX ISR. To do 
+*   The priority of the UART RX ISR should be higher than UART TX ISR. To do
 *   that this function changes the priority of the UARTs TX and RX interrupts.
 *
 * \reentrant
@@ -172,13 +172,13 @@ void USBUART_1_MIDI_Init(void)
 
 #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO)
     #if (USBUART_1_MIDI_IN_BUFF_SIZE > 0)
-        /* Init DMA configurations for IN endpoint. */
+        /* Provide buffer for IN endpoint. */
         USBUART_1_LoadInEP(USBUART_1_midi_in_ep, USBUART_1_midiInBuffer,
                                                                USBUART_1_MIDI_IN_BUFF_SIZE);
     #endif  /* (USBUART_1_MIDI_IN_BUFF_SIZE > 0) */
-    
+
     #if (USBUART_1_MIDI_OUT_BUFF_SIZE > 0)
-        /* Init DMA configurations for OUT endpoint. */
+        /* Provide buffer for OUT endpoint. */
         (void)USBUART_1_ReadOutEP(USBUART_1_midi_out_ep, USBUART_1_midiOutBuffer,
                                                                        USBUART_1_MIDI_OUT_BUFF_SIZE);
     #endif /* (USBUART_1_MIDI_OUT_BUFF_SIZE > 0) */
@@ -200,18 +200,18 @@ void USBUART_1_MIDI_Init(void)
     * Function Name: USBUART_1_MIDI_OUT_Service
     ****************************************************************************//**
     *
-    *  This function services the traffic from the USBMIDI OUT endpoint and 
-    *  sends the data to the MIDI output ports (TX UARTs). It is blocked by the 
+    *  This function services the traffic from the USBMIDI OUT endpoint and
+    *  sends the data to the MIDI output ports (TX UARTs). It is blocked by the
     *  UART when not enough space is available in the UART TX buffer.
-    *  This function is automatically called from OUT EP ISR in DMA with 
-    *  Automatic Memory Management mode. In Manual and DMA with Manual EP 
+    *  This function is automatically called from OUT EP ISR in DMA with
+    *  Automatic Memory Management mode. In Manual and DMA with Manual EP
     *  Management modes you must call it from the main foreground task.
     *
     * \globalvars
-    * 
-    *  \ref USBUART_1_midiOutBuffer: Used as temporary buffer between USB 
+    *
+    *  \ref USBUART_1_midiOutBuffer: Used as temporary buffer between USB
     *       internal memory and UART TX buffer.
-    *       
+    *
     *  \ref USBUART_1_midi_out_ep: Used as an OUT endpoint number.
     *
     * \reentrant
@@ -227,18 +227,9 @@ void USBUART_1_MIDI_Init(void)
         uint8 outLength;
         uint8 outPointer;
     #endif /* (USBUART_1_MIDI_OUT_BUFF_SIZE >= 256) */
-    
-    #if (USBUART_1_EP_MANAGEMENT_DMA_MANUAL)
-        #if (CY_PSOC4)
-            uint32 dmaActiveChan = 0u;
-            uint32 dmaCurChanMask = 0u;
-        #else
-            uint8 dmaState = 0u;
-        #endif /* (CY_PSOC4) */
-    #endif /* (USBUART_1_EP_MANAGEMENT_DMA_MANUAL) */
 
-        /* Service the USB MIDI output endpoint */
-        if (USBUART_1_GetEPState(USBUART_1_midi_out_ep) == USBUART_1_OUT_BUFFER_FULL)
+        /* Service the USB MIDI output endpoint. */
+        if (USBUART_1_OUT_BUFFER_FULL == USBUART_1_GetEPState(USBUART_1_midi_out_ep))
         {
         #if (USBUART_1_MIDI_OUT_BUFF_SIZE >= 256)
             outLength = USBUART_1_GetEPCount(USBUART_1_midi_out_ep);
@@ -256,21 +247,13 @@ void USBUART_1_MIDI_Init(void)
             #endif /* (USBUART_1_MIDI_OUT_BUFF_SIZE >= 256) */
 
             #if (USBUART_1_EP_MANAGEMENT_DMA_MANUAL)
-                /* Wait for DMA transfer completion. */
-                #if (CY_PSOC4)
-                    dmaCurChanMask = (uint32) (0x01u << USBUART_1_DmaChan[USBUART_1_midi_out_ep]);
-                    do
-                    {
-                        dmaActiveChan = CyDmaGetActiveChannels();
-                    }
-                    while ((dmaActiveChan & dmaCurChanMask) != 0u);
-                #else    
-                    do
-                    {
-                        (void) CyDmaChStatus(USBUART_1_DmaChan[USBUART_1_midi_out_ep], NULL, &dmaState);
-                    }
-                    while ((dmaState & (STATUS_TD_ACTIVE | STATUS_CHAIN_ACTIVE)) != 0u);
-                #endif /* (CY_PSOC4) */
+                /* Wait until DMA complete transferring data from OUT endpoint buffer. */
+                while (USBUART_1_OUT_BUFFER_FULL == USBUART_1_GetEPState(USBUART_1_midi_out_ep))
+                {
+                }
+
+                /* Enable OUT endpoint for communication with host. */
+                USBUART_1_EnableOutEP(USBUART_1_midi_out_ep);
             #endif /* (USBUART_1_EP_MANAGEMENT_DMA_MANUAL) */
         #endif /* (!USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
 
@@ -279,12 +262,12 @@ void USBUART_1_MIDI_Init(void)
                 outPointer = 0u;
                 while (outPointer < outLength)
                 {
-                    /* In some OS OUT packet could be appended by nulls which could be skipped */
+                    /* In some OS OUT packet could be appended by nulls which could be skipped. */
                     if (USBUART_1_midiOutBuffer[outPointer] == 0u)
                     {
                         break;
                     }
-                    
+
                 /* Route USB MIDI to the External connection */
                 #if (USBUART_1_MIDI_EXT_MODE >= USBUART_1_ONE_EXT_INTRF)
                     if ((USBUART_1_midiOutBuffer[outPointer] & USBUART_1_CABLE_MASK) ==
@@ -317,8 +300,9 @@ void USBUART_1_MIDI_Init(void)
                     outPointer += USBUART_1_EVENT_LENGTH;
                 }
             }
-            
+
         #if (USBUART_1_EP_MANAGEMENT_DMA_AUTO)
+            /* Enable OUT endpoint for communiation. */
             USBUART_1_EnableOutEP(USBUART_1_midi_out_ep);
         #endif  /* (USBUART_1_EP_MANAGEMENT_DMA_AUTO) */
         }
@@ -375,7 +359,7 @@ void USBUART_1_MIDI_Init(void)
     * Function Name: USBUART_1_MIDI_IN_Service
     ****************************************************************************//**
     *
-    *  This function services the traffic from the MIDI input ports (RX UART) 
+    *  This function services the traffic from the MIDI input ports (RX UART)
     *  and prepare data in USB MIDI IN endpoint buffer.
     *  Calls the USBUART_1_MIDI_IN_EP_Service() function to sent the
     *  data from buffer to PC. Non-blocking. Should be called from main foreground
@@ -383,13 +367,13 @@ void USBUART_1_MIDI_Init(void)
     *  This function is not protected from the reentrant calls. When it is required
     *  to use this function in UART RX ISR to guaranty low latency, care should be
     *  taken to protect from reentrant calls.
-    *  In PSoC 3, if this function is called from an ISR, you must declare this 
-    *  function as re-entrant so that different variable storage space is 
-    *  created by the compiler. This is automatically taken care for PSoC 4 and 
+    *  In PSoC 3, if this function is called from an ISR, you must declare this
+    *  function as re-entrant so that different variable storage space is
+    *  created by the compiler. This is automatically taken care for PSoC 4 and
     *  PSoC 5LP devices by the compiler.
     *
     * \globalvars
-    * 
+    *
     *   USBUART_1_midiInPointer: Cleared to zero when data are sent.
     *
     * \reentrant
@@ -404,7 +388,9 @@ void USBUART_1_MIDI_Init(void)
     #if (USBUART_1_MIDI_EXT_MODE >= USBUART_1_ONE_EXT_INTRF)
             uint8 m1 = 0u;
             uint8 m2 = 0u;
-            
+
+        if (0u == USBUART_1_midiInPointer)
+        {
             do
             {
                 if (USBUART_1_midiInPointer <= (USBUART_1_MIDI_IN_BUFF_SIZE - USBUART_1_EVENT_LENGTH))
@@ -433,7 +419,8 @@ void USBUART_1_MIDI_Init(void)
             }
             while((USBUART_1_midiInPointer <= (USBUART_1_MIDI_IN_BUFF_SIZE - USBUART_1_EVENT_LENGTH)) &&
                   ((m1 != 0u) || (m2 != 0u)));
-        #endif /* (USBUART_1_MIDI_EXT_MODE >= USBUART_1_ONE_EXT_INTRF) */
+        }
+    #endif /* (USBUART_1_MIDI_EXT_MODE >= USBUART_1_ONE_EXT_INTRF) */
 
         /* Service the USB MIDI input endpoint */
         USBUART_1_MIDI_IN_EP_Service();
@@ -444,16 +431,16 @@ void USBUART_1_MIDI_Init(void)
     * Function Name: USBUART_1_PutUsbMidiIn
     ************************************************************************//**
     *
-    *  This function puts one MIDI message into the USB MIDI In endpoint buffer. 
-    *  This is a MIDI input message to the host. This function is used only if 
-    *  the device has internal MIDI input functionality. 
-    *  The USBUART_1_MIDI_IN_Service() function should also be called to 
-    *  send the message from local buffer to the IN endpoint.  
+    *  This function puts one MIDI message into the USB MIDI In endpoint buffer.
+    *  This is a MIDI input message to the host. This function is used only if
+    *  the device has internal MIDI input functionality.
+    *  The USBUART_1_MIDI_IN_Service() function should also be called to
+    *  send the message from local buffer to the IN endpoint.
     *
-    *  \param ic: The length of the MIDI message or command is described on the 
+    *  \param ic: The length of the MIDI message or command is described on the
     *  following table.
     *  Value          | Description
-    *  ---------------|---------------------------------------------------------      
+    *  ---------------|---------------------------------------------------------
     *  0              | No message (should never happen)
     *  1 - 3          | Complete MIDI message in midiMsg
     *  3 IN EP LENGTH | Complete SySEx message(without EOSEX byte) in midiMsg. The length is limited by the max BULK EP size(64)
@@ -461,7 +448,7 @@ void USBUART_1_MIDI_Init(void)
     *  MIDI_EOSEX     | End of SysEx message (put event bytes in midiMsg buffer)
     *  MIDI_TUNEREQ   | Tune Request message (single byte system common msg)
     *  0xF8 - 0xFF    | Single byte real-time message
-    *  
+    *
     *  \param midiMsg: pointer to MIDI message.
     *  \param cable:   cable number.
     *
@@ -472,12 +459,12 @@ void USBUART_1_MIDI_Init(void)
     *  USBUART_1_FALSE | Success transfer
     *
     * \globalvars
-    * 
-    *  \ref USBUART_1_midi_in_ep: MIDI IN endpoint number used for 
+    *
+    *  \ref USBUART_1_midi_in_ep: MIDI IN endpoint number used for
     *        sending data.
-    *        
-    *  \ref USBUART_1_midiInPointer: Checked this variable to see if 
-    *        there is enough free space in the IN endpoint buffer. If buffer is 
+    *
+    *  \ref USBUART_1_midiInPointer: Checked this variable to see if
+    *        there is enough free space in the IN endpoint buffer. If buffer is
     *        full, initiate sending to PC.
     *
     * \reentrant
@@ -503,7 +490,7 @@ void USBUART_1_MIDI_Init(void)
         {
             USBUART_1_MIDI_IN_EP_Service();
         }
-        
+
         if (USBUART_1_midiInPointer <=
                     (USBUART_1_EP[USBUART_1_midi_in_ep].bufferSize - USBUART_1_EVENT_LENGTH))
         {
@@ -512,23 +499,23 @@ void USBUART_1_MIDI_Init(void)
                 USBUART_1_PrepareInBuffer(ic, midiMsg, ic, cable);
             }
             else
-            {   
+            {
                 /* Only SysEx message is greater than 4 bytes */
                 msgIndex = 0u;
-                
+
                 do
                 {
                     USBUART_1_PrepareInBuffer(USBUART_1_MIDI_SYSEX, &midiMsg[msgIndex],
                                                      USBUART_1_EVENT_BYTE3, cable);
-                    
+
                     ic -= USBUART_1_EVENT_BYTE3;
                     msgIndex += USBUART_1_EVENT_BYTE3;
-                    
+
                     if (USBUART_1_midiInPointer >
                         (USBUART_1_EP[USBUART_1_midi_in_ep].bufferSize - USBUART_1_EVENT_LENGTH))
                     {
                         USBUART_1_MIDI_IN_EP_Service();
-                        
+
                         if (USBUART_1_midiInPointer >
                            (USBUART_1_EP[USBUART_1_midi_in_ep].bufferSize - USBUART_1_EVENT_LENGTH))
                         {
@@ -729,10 +716,10 @@ void USBUART_1_MIDI_Init(void)
         USBUART_1_MIDI1_Event.runstat = 0u;
         USBUART_1_MIDI1_TxRunStat     = 0u;
         USBUART_1_MIDI1_InqFlags      = 0u;
-        
+
         /* Start UART block */
         MIDI1_UART_Start();
-        
+
         /* Change the priority of the UART TX and RX interrupt */
         CyIntSetPriority(MIDI1_UART_TX_VECT_NUM, USBUART_1_CUSTOM_UART_TX_PRIOR_NUM);
         CyIntSetPriority(MIDI1_UART_RX_VECT_NUM, USBUART_1_CUSTOM_UART_RX_PRIOR_NUM);
@@ -744,10 +731,10 @@ void USBUART_1_MIDI_Init(void)
         USBUART_1_MIDI2_Event.runstat = 0u;
         USBUART_1_MIDI2_TxRunStat     = 0u;
         USBUART_1_MIDI2_InqFlags      = 0u;
-        
+
         /* Start second UART block */
         MIDI2_UART_Start();
-        
+
         /* Change the priority of the UART TX interrupt */
         CyIntSetPriority(MIDI2_UART_TX_VECT_NUM, USBUART_1_CUSTOM_UART_TX_PRIOR_NUM);
         CyIntSetPriority(MIDI2_UART_RX_VECT_NUM, USBUART_1_CUSTOM_UART_RX_PRIOR_NUM);
@@ -968,7 +955,7 @@ void USBUART_1_MIDI_Init(void)
             #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                 CyIntDisable(MIDI1_UART_RX_VECT_NUM);
             #endif /* ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3)) */
-            
+
             rxBufferRead = MIDI1_UART_rxBufferRead;
             #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                 rxBufferWrite = MIDI1_UART_rxBufferWrite;
@@ -995,7 +982,7 @@ void USBUART_1_MIDI_Init(void)
                     {
                         rxBufferRead = 0u;
                     }
-                    
+
                     /* If loop condition was set - update real read buffer pointer
                     *  to avoid overflow status
                     */
@@ -1005,7 +992,7 @@ void USBUART_1_MIDI_Init(void)
                     #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                         CyIntDisable(MIDI1_UART_RX_VECT_NUM);
                     #endif /*  MIDI1_UART_RXBUFFERSIZE >= 256 */
-                        
+
                         MIDI1_UART_rxBufferRead = rxBufferRead;
                     #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                         CyIntEnable(MIDI1_UART_RX_VECT_NUM);
@@ -1025,7 +1012,7 @@ void USBUART_1_MIDI_Init(void)
         #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
             CyIntDisable(MIDI1_UART_RX_VECT_NUM);
         #endif /* ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3)) */
-        
+
         MIDI1_UART_rxBufferRead = rxBufferRead;
         #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
             CyIntEnable(MIDI1_UART_RX_VECT_NUM);
@@ -1072,7 +1059,7 @@ void USBUART_1_MIDI_Init(void)
     #endif /* (USBUART_1_MIDI1_PROCESS_USB_OUT_ENTRY_CALLBACK) */
 
         cmd = epBuf[USBUART_1_EVENT_BYTE0] & USBUART_1_CIN_MASK;
-        
+
         if ((cmd != USBUART_1_RESERVED0) && (cmd != USBUART_1_RESERVED1))
         {
             len = USBUART_1_MIDI_SIZE[cmd];
@@ -1082,7 +1069,7 @@ void USBUART_1_MIDI_Init(void)
             {
                 if ((epBuf[USBUART_1_EVENT_BYTE1] == USBUART_1_MIDI_SYSEX) &&
                     (epBuf[USBUART_1_EVENT_BYTE2] == USBUART_1_MIDI_SYSEX_NON_REAL_TIME))
-                {   
+                {
                     /* Non-Real Time SySEx starts */
                     USBUART_1_MIDI1_InqFlags |= USBUART_1_INQ_SYSEX_FLAG;
                 }
@@ -1107,7 +1094,7 @@ void USBUART_1_MIDI_Init(void)
                     USBUART_1_MIDI1_InqFlags &= (uint8)~USBUART_1_INQ_SYSEX_FLAG;
                     if ((epBuf[USBUART_1_EVENT_BYTE1] == USBUART_1_MIDI_SYSEX_GEN_INFORMATION) &&
                         (epBuf[USBUART_1_EVENT_BYTE2] == USBUART_1_MIDI_SYSEX_IDENTITY_REQ))
-                    {   
+                    {
                         /* Set the flag about received the Identity Request.
                         *  The Identity Reply message may be send by user code.
                         */
@@ -1118,27 +1105,27 @@ void USBUART_1_MIDI_Init(void)
             else /* Do nothing for other command */
             {
             }
-            
+
             /* Running Status for Voice and Mode messages only. */
             if ((cmd >= USBUART_1_NOTE_OFF) && (cmd <= USBUART_1_PITCH_BEND_CHANGE))
             {
                 if (USBUART_1_MIDI1_TxRunStat == epBuf[USBUART_1_EVENT_BYTE1])
-                {   
+                {
                     /* Skip the repeated Status byte */
                     i++;
                 }
                 else
-                {   
+                {
                     /* Save Status byte for next event */
                     USBUART_1_MIDI1_TxRunStat = epBuf[USBUART_1_EVENT_BYTE1];
                 }
             }
             else
-            {   
+            {
                 /* Clear Running Status */
                 USBUART_1_MIDI1_TxRunStat = 0u;
             }
-            
+
             /* Puts data into the MIDI TX output buffer.*/
             do
             {
@@ -1183,7 +1170,7 @@ void USBUART_1_MIDI_Init(void)
     {
         uint8 msgRtn = 0u;
         uint8 rxData;
-        
+
         #if (MIDI2_UART_RXBUFFERSIZE >= 256u)
             uint16 rxBufferRead;
             #if (CY_PSOC3) /* This local variable required only for PSOC3 and large buffer */
@@ -1228,7 +1215,7 @@ void USBUART_1_MIDI_Init(void)
                     {
                         rxBufferRead = 0u;
                     }
-                    
+
                     /* If loop condition was set - update real read buffer pointer
                     *  to avoid overflow status
                     */
@@ -1238,7 +1225,7 @@ void USBUART_1_MIDI_Init(void)
                     #if ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                         CyIntDisable(MIDI2_UART_RX_VECT_NUM);
                     #endif /* ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3)) */
-                        
+
                         MIDI2_UART_rxBufferRead = rxBufferRead;
                     #if ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                         CyIntEnable(MIDI2_UART_RX_VECT_NUM);
@@ -1258,7 +1245,7 @@ void USBUART_1_MIDI_Init(void)
         #if ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
             CyIntDisable(MIDI2_UART_RX_VECT_NUM);
         #endif /* ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3)) */
-            
+
             MIDI2_UART_rxBufferRead = rxBufferRead;
         #if ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
             CyIntEnable(MIDI2_UART_RX_VECT_NUM);
@@ -1305,18 +1292,18 @@ void USBUART_1_MIDI_Init(void)
     #endif /* (USBUART_1_MIDI2_PROCESS_USB_OUT_ENTRY_CALLBACK) */
 
         cmd = epBuf[USBUART_1_EVENT_BYTE0] & USBUART_1_CIN_MASK;
-        
+
         if ((cmd != USBUART_1_RESERVED0) && (cmd != USBUART_1_RESERVED1))
         {
             len = USBUART_1_MIDI_SIZE[cmd];
             i = USBUART_1_EVENT_BYTE1;
-            
+
             /* Universal System Exclusive message parsing */
             if(cmd == USBUART_1_SYSEX)
             {
                 if((epBuf[USBUART_1_EVENT_BYTE1] == USBUART_1_MIDI_SYSEX) &&
                    (epBuf[USBUART_1_EVENT_BYTE2] == USBUART_1_MIDI_SYSEX_NON_REAL_TIME))
-                {   
+                {
                     /* SySEx starts */
                     USBUART_1_MIDI2_InqFlags |= USBUART_1_INQ_SYSEX_FLAG;
                 }
@@ -1339,7 +1326,7 @@ void USBUART_1_MIDI_Init(void)
                 if ((USBUART_1_MIDI2_InqFlags & USBUART_1_INQ_SYSEX_FLAG) != 0u)
                 {
                     USBUART_1_MIDI2_InqFlags &= (uint8)~USBUART_1_INQ_SYSEX_FLAG;
-                    
+
                     if((epBuf[USBUART_1_EVENT_BYTE1] == USBUART_1_MIDI_SYSEX_GEN_INFORMATION) &&
                        (epBuf[USBUART_1_EVENT_BYTE2] == USBUART_1_MIDI_SYSEX_IDENTITY_REQ))
                     {   /* Set the flag about received the Identity Request.
@@ -1352,7 +1339,7 @@ void USBUART_1_MIDI_Init(void)
             else /* Do nothing for other command */
             {
             }
-            
+
             /* Running Status for Voice and Mode messages only. */
             if ((cmd >= USBUART_1_NOTE_OFF) && ( cmd <= USBUART_1_PITCH_BEND_CHANGE))
             {
@@ -1369,7 +1356,7 @@ void USBUART_1_MIDI_Init(void)
             {   /* Clear Running Status */
                 USBUART_1_MIDI2_TxRunStat = 0u;
             }
-            
+
             /* Puts data into the MIDI TX output buffer.*/
             do
             {

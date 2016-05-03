@@ -37,11 +37,11 @@ void PID_init()
 
 
 
-void PID(const uint8 * input, const uint16 * plant, uint16 * output)
+void PID(const uint16 * input, const uint16 * plant, uint16 * output)
 {
     PIDval = 0;
 
-    err = (((int32)(((uint16)*input)<<8))<<parameter_.preShift) - (((int32)*plant)<<parameter_.preShift);
+    err = (((int32)*input)<<parameter_.preShift) - (((int32)*plant)<<parameter_.preShift);
     
     
 	PIDval = Kp*err; //Proportional calc.
@@ -70,13 +70,20 @@ void setPID(const struct PIDparameter * parameter)
 {
     parameter_ = *parameter;
     
-    uint32 MSB_temp = (parameter_.Ki>>31);
     
+    /*
+    uint32 MSB_temp = (parameter_.Ki>>31);
     Ki_dt = ((parameter_.Ki<<(parameter_.preShift-parameter_.KShift))||(MSB_temp<<31))*dt;
     MSB_temp = (parameter_.Kd>>31);
     Kd_dt = ((parameter_.Kd<<(parameter_.preShift-parameter_.KShift))||(MSB_temp<<31))/dt;
     MSB_temp = (parameter_.Kp>>31);
     Kp = (parameter_.Kp<<(parameter_.preShift-parameter_.KShift))||(MSB_temp<<31);
+    */
+    
+    Ki_dt = (parameter_.Ki<<(parameter_.preShift-parameter_.KShift))*dt;
+    Kd_dt = (parameter_.Kd<<(parameter_.preShift-parameter_.KShift))/dt;
+    Kp = parameter_.Kp<<(parameter_.preShift-parameter_.KShift);
+    
 }
 
 /* [] END OF FILE */

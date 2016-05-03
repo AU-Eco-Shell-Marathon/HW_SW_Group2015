@@ -27,9 +27,9 @@ void init()
     
     if(EEPROM_read(0, (uint8 *)&PID) == 0)
     {
-        PID.Kp = 1000;
-        PID.Ki = 100;
-        PID.Kd = 1;
+        PID.Kp = 0;
+        PID.Ki = 5000;
+        PID.Kd = 0;
         PID.KShift = 3;
         PID.MAX = 100;
         PID.MIN = 0;
@@ -38,10 +38,17 @@ void init()
         EEPROM_write(0, (const uint8 *)&PID);
     }
     
-    S_init();
-    MC_init(Pedal_init(), S_RPM_ptr(), S_Current_ptr(), S_Volt_ptr(), (struct PIDparameter *)&PID);
+    //S_init();
+    
+    effectSensor_init();
+    RPMSensor_init();
+    Pedal_init();
+    
+    
+    MC_init((struct PIDparameter *)&PID);
     Logger_Init();
     BMSdata = CAN_init();
+    Clock_3_Start();
 }
 
 

@@ -9,14 +9,16 @@
  *
  * ========================================
 */
-#ifndef EEPROM_H
-#define EEPROM_H
+#ifndef RPMSENSOR_H
+#define RPMSENSOR_H
+
 #include <project.h>
+    
+void RPMSensor_init();
 
+uint16 RPMSensor_getValue();
 
-char EEPROM_read(uint8 id, uint8 * data);
-char EEPROM_write(uint8 id, const uint8 * data);
-char EEPROM_init(const size_t * types, uint8 count);
+uint16 RPMSensor_getSpeed();
 
 #endif
 /* [] END OF FILE */

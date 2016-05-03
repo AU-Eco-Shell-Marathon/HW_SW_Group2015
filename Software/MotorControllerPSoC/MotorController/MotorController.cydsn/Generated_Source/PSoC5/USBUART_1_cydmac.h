@@ -3,7 +3,7 @@
 * \version 3.0
 *
 * \brief
-*  Header File for the USBFS component includes
+*  This file provides macros implemenation of DMA_P4 functions.
 *
 ********************************************************************************
 * \copyright
@@ -29,7 +29,9 @@
 *  \param cfg:   Descriptor control register.
 *
 * \sideeffect
-*   Refer to CyDmaSetConfiguration() function of DMA component.
+*   The status register associated with the specified descriptor is reset to 
+*   zero after this function call. This function should not be called while 
+*   the descriptor is active. This can be checked by calling CyDmaGetStatus().
 *
 *******************************************************************************/
 #define USBUART_1_CyDmaSetConfiguration(ch, descr, cfg) \
@@ -84,7 +86,8 @@
 *
 *
 * \sideeffect
-*   Refer to CyDmaSetNumDataElements() function of DMA component.
+*   This function should not be called when the specified descriptor is active 
+*   in the DMA transfer engine. This can be checked by calling CyDmaGetStatus().
 *
 *******************************************************************************/
 #define USBUART_1_CyDmaSetNumDataElements(ch, descr, numEl) \
@@ -122,7 +125,8 @@
 *
 *
 * \sideeffect
-*   Refer to CyDmaSetSrcAddress() function of DMA component.
+*   This function should not be called when the specified descriptor is active 
+*   in the DMA transfer engine. This can be checked by calling CyDmaGetStatus().
 *
 *******************************************************************************/
 #define USBUART_1_CyDmaSetSrcAddress(ch, descr, srcAddress) \
@@ -160,7 +164,8 @@
 *
 *
 * \sideeffect
-*   Refer to CyDmaSetDstAddress() function of DMA component.
+*   This function should not be called when the specified descriptor is active 
+*   in the DMA transfer engine. This can be checked by calling CyDmaGetStatus().
 *
 *******************************************************************************/
 #define USBUART_1_CyDmaSetDstAddress(ch, descr, dstAddress) \
@@ -180,7 +185,10 @@
 *
 *
 * \sideeffect
-*   Refer to CyDmaValidateDescriptor() function of DMA component.
+*   The status register associated with the specified descriptor is reset to 
+*   zero after this function call.
+*   This function should not be called when the specified descriptor is active 
+*   in the DMA transfer engine. This can be checked by calling CyDmaGetStatus().
 *
 *******************************************************************************/
 #define USBUART_1_CyDmaValidateDescriptor(ch, descr) \
@@ -199,7 +207,8 @@
 *
 *
 * \sideeffect
-*   Refer to CyDmaChEnable() function of DMA component.
+*   If this function is called before DMA is completely configured the operation 
+*   of the DMA is undefined and could result in system data corruption.
 *
 *******************************************************************************/
 #define USBUART_1_CyDmaChEnable(ch) \
@@ -234,31 +243,32 @@
 *  Triggers the DMA channel to execute a transfer. The tr_in signal is 
 *  triggered.
 *
-*  \param ch: Channel used by this function.
+*  \param trSel: trigger to be activated.
 *
 *
 *******************************************************************************/
-#define USBUART_1_USB_TR_GROUP1  (0xC0020100U)
-#define USBUART_1_CyDmaTriggerIn(ch) \
+#define USBUART_1_DMA_USB_REQ_TR_OUT (0xC0020100U)
+#define USBUART_1_CyDmaTriggerIn(trSel) \
     do{ \
-        CYDMA_TR_CTL_REG = USBUART_1_USB_TR_GROUP1 | ((uint32)(ch) & CYDMA_TR_SEL_MASK); \
+        CYDMA_TR_CTL_REG = USBUART_1_DMA_USB_REQ_TR_OUT | (uint32)(trSel); \
     }while(0)
 
-    /*******************************************************************************
+
+/*******************************************************************************
 * Function Name: USBUART_1_CyDmaTriggerOut
 ****************************************************************************//**
 *
 *  Triggers the DMA channel to generate a transfer completion signal without 
 *  actual transfer executed. The tr_out signal is triggered.
 *
-*  \param ch: Channel used by this function.
+*  \param trSel: trigger to be activated.
 *
 *
 *******************************************************************************/
-#define USBUART_1_USB_TR_GROUP3  (0xC0020300U)
-#define USBUART_1_CyDmaTriggerOut(ch) \
+#define USBUART_1_DMA_USB_BURST_END_TR_OUT  (0xC0020300U)
+#define USBUART_1_CyDmaTriggerOut(trSel) \
     do{ \
-        CYDMA_TR_CTL_REG = USBUART_1_USB_TR_GROUP3 | ((uint32)(ch) & CYDMA_TR_SEL_MASK); \
+        CYDMA_TR_CTL_REG = USBUART_1_DMA_USB_BURST_END_TR_OUT | (uint32)(trSel); \
     }while(0)
 
 

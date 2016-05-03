@@ -9,7 +9,9 @@
  *
  * ========================================
 */
-
+#ifndef SPEED_O_METER_H
+#define SPEED_O_METER_H
 #include <project.h>
 
+#endif
 /* [] END OF FILE */
