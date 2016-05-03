@@ -37,17 +37,19 @@ void PID_init()
 
 
 
-void PID(const uint16 * input, const uint16 * plant, uint16 * output)
+uint16 PID(const uint16 input, const uint16 plant)
 {
     PIDval = 0;
 
-    err = (((int32)*input)<<parameter_.preShift) - (((int32)*plant)<<parameter_.preShift);
+    err = (((int32)input)<<parameter_.preShift) - (((int32)plant)<<parameter_.preShift);
     
     
 	PIDval = Kp*err; //Proportional calc.
 	
-	iState += Ki_dt*err + anti_windup_back_calc; //intergral calc and anti windup
-
+    if(Ki_dt != 0)
+    {
+	    iState += Ki_dt*err + anti_windup_back_calc; //intergral calc and anti windup
+    }
 	PIDval += iState; //intergral calc
 	
 	PIDval += Kd_dt*(err-pre_err); //differentiel calc
@@ -56,19 +58,21 @@ void PID(const uint16 * input, const uint16 * plant, uint16 * output)
 	
     anti_windup_back_calc = PIDval;
     
-	if(PIDval > parameter_.MAX)
-		PIDval = parameter_.MAX;
-    else if(PIDval < parameter_.MIN)
-        PIDval = parameter_.MIN;
+	if(PIDval > parameter_.MAX<<parameter_.preShift)
+		PIDval = parameter_.MAX<<parameter_.preShift;
+    else if(PIDval < parameter_.MIN<<parameter_.preShift)
+        PIDval = parameter_.MIN<<parameter_.preShift;
 	
     anti_windup_back_calc = PIDval - anti_windup_back_calc;
     
-    *output = ((uint16)(PIDval>>parameter_.preShift));
+    return ((uint16)(PIDval>>parameter_.preShift));
 }
 
 void setPID(const struct PIDparameter * parameter)
 {
     parameter_ = *parameter;
+    
+    
     
     
     /*

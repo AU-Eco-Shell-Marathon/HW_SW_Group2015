@@ -17,7 +17,7 @@ const uint16 * rpm_ = NULL;
 const uint16 * volt_ = NULL;
 const uint16 * current_ = NULL;
 */
-uint16 Threshold_ = 57713; // i mRPM
+uint16 Threshold_ = 57; // i RPM
 enum STATES {TEST, ACC, CAB, STOP}; //CAB = cost and burn
 
 enum STATES state = STOP;
@@ -32,7 +32,7 @@ CY_ISR(MOTOR_tick)
     uint16 power = effectSensor_getValue();
     uint16 rpm = RPMSensor_getValue();
     uint16 WantedSpeed = Pedal_getValue();
-    uint16 Speed_LUT = LUT_speed(&WantedSpeed, &rpm, &power);
+    uint16 Speed_LUT = LUT_speed(WantedSpeed, rpm, power);
     
     switch(state){
     case TEST:
@@ -40,8 +40,8 @@ CY_ISR(MOTOR_tick)
         break;
     case ACC:
         
-        PID(&Speed_LUT, &rpm, &output);
-        PWM_motor_WriteCompare((uint8)(output>>8));
+        output = PID(Speed_LUT, rpm);
+        PWM_motor_WriteCompare(output);
         if(rpm >= WantedSpeed) state = CAB;
         break;
     case CAB:

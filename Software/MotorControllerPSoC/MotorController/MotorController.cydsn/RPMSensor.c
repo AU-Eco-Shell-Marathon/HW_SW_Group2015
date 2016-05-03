@@ -34,7 +34,7 @@ CY_ISR(RPM)
         
         if(temp2 != 0)
         {
-            RPM_temp = ((uint16)(1000000/(temp-temp2)));
+            RPM_temp = ((uint16)(60000/(temp-temp2)));
         }
         else
         {
@@ -59,6 +59,9 @@ CY_ISR(RPM)
 
 void RPMSensor_init()
 {
+    RPM_isr_StartEx(RPM);
+    Timer_RPM_Start();
+    Clock_4_Start();
 }
 
 uint16 RPMSensor_getValue()

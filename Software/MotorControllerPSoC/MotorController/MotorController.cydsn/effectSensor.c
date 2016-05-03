@@ -16,6 +16,26 @@ uint16 Volt_temp = 0;
 
 void DMA_ADC_A_V_init();
 
+CY_ISR_PROTO(ISR_AMP);
+
+CY_ISR_PROTO(ISR_VOLT);
+
+uint16 y_Current = 0;
+uint16 y_Volt = 0;
+
+uint8 a = 127; // fra 0 til 255!
+
+CY_ISR(ISR_AMP)
+{
+    y_Current = (uint16)(((uint32)a*(uint32)Current_temp + (uint32)(0xFF-a)*(uint32)y_Current)>>8);
+}
+
+
+CY_ISR(ISR_VOLT)
+{
+    y_Volt = (uint16)(((uint32)a*(uint32)Volt_temp + (uint32)(0xFF-a)*(uint32)y_Volt)>>8);
+}
+
 void effectSensor_init()
 {
     PGA_1_Start();
@@ -25,12 +45,21 @@ void effectSensor_init()
     ADC_A_StartConvert();
     ADC_V_StartConvert();
     
+    isr_A_StartEx(ISR_AMP);
+    isr_V_StartEx(ISR_VOLT);
+    
+    
     DMA_ADC_A_V_init();
 }
 
+#define effect_sensor_OFFSET 5000 //mV
+
 uint16 effectSensor_getValue()
 {
-    return (((uint16)ADC_V_CountsTo_mVolts(Volt_temp))>>8)*((uint16)ADC_A_CountsTo_mVolts(Current_temp)>>8)*15.625;
+    uint32 volt = ((ADC_V_CountsTo_mVolts(y_Volt) < 0 ? 0u : (uint32)ADC_V_CountsTo_mVolts(y_Volt)) - effect_sensor_OFFSET);//*15.625)/1000; skal trække minus 5 volt fra!!!
+    uint32 current = ((ADC_A_CountsTo_mVolts(y_Current) < 0 ? 0u : (uint32)ADC_A_CountsTo_mVolts(y_Current)) - effect_sensor_OFFSET);//*3)/1000;
+    
+    return volt*current;
 }
 
 

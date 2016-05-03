@@ -25,7 +25,7 @@ uint16 Pedal_getValue()
 
 void Pedal_update()
 {
-    set_ = 275u * (uint16)Status_Reg_1_Read()&0b1;
+    set_ = (uint16)275u * (uint16)(Status_Reg_1_Read()&0b1);
 }
 
 /* [] END OF FILE */

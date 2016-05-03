@@ -12,15 +12,18 @@
 #include "Motor_LookupTable.h"
 #include "LUT_data.h"
 
-uint16 LUT_speed(const uint16 * wanted_speed,const uint16 * speed,const uint16 * power)
+uint16 LUT_speed(const uint16 wanted_speed,const uint16 speed,const uint16 power)
 {
-    if(*wanted_speed > *speed)
+    volatile uint16 calc_speed = 0;
+    volatile uint16 point = ((power>>LUT_SHIFT) >= (LUT_SIZE-1) ? LUT_SIZE-1 : power>>LUT_SHIFT);
+    if(wanted_speed > speed)
     {
-        return RAMP_LUT[(*power>>LUT_SHIFT >= LUT_SIZE ? LUT_SIZE : *power>>LUT_SHIFT)]<<8;
+        calc_speed = RAMP_LUT[point];
+        return calc_speed;
     }
     else
     {
-        return CONST_LUT[(*power>>LUT_SHIFT >= LUT_SIZE ? LUT_SIZE : *power>>LUT_SHIFT)]<<8;
+        return ((uint16)CONST_LUT[(power>>LUT_SHIFT >= LUT_SIZE ? LUT_SIZE : power>>LUT_SHIFT)]);
     }
 }
 

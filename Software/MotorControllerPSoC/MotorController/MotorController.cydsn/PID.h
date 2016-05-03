@@ -23,6 +23,6 @@ struct PIDparameter
 };
 
 void PID_init();
-void PID(const uint16 * input, const uint16 * plant, uint16 * output);
+uint16 PID(const uint16 input, const uint16 plant);
 void setPID(const struct PIDparameter * parameter);
 #endif
