@@ -1,0 +1,15 @@
+Mangler modstande:   ---  men tager nærmeste.
+230 kOhm mangler 2
+960 kOhm mangler 1
+40 kOhm mangler 1
+10 kOhm mangler 3
+
+SMD fuse hos cypax.dk
+
+
+
+liste over obsolete:
+PMV90EN
+FM25V20-G
+LT6656A    ----   men man kan købe B version
+modstandene ovenover
