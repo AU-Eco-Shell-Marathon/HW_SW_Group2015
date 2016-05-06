@@ -38,7 +38,7 @@ CY_ISR(RPM)
         }
         else
         {
-            RPM_temp=0;
+            //RPM_temp=0;
         }
         
     }
@@ -52,7 +52,7 @@ CY_ISR(RPM)
         RPM_reset=1;
         
     }
-    Timer_RPM_WriteCounter(2000u);
+    Timer_RPM_WriteCounter(6000u);
     Timer_RPM_ClearFIFO();
 }
 

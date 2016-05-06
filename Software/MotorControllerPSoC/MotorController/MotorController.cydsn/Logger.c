@@ -63,7 +63,7 @@ void Logger_LogData(int argc,...)
         
         for(i = 0; i < argc; i++)
         {
-            FS_Write(dataFile_, &cellSeparator_, 1);
+            FS_Write(dataFile_, &cellSeparator_, 1); // kan vi ikke bare udføre alt dette i en?
             count = sprintf(buff, "%d", va_arg(valist, int));
             FS_Write(dataFile_, buff, count);
             FS_Write(dataFile_, &lineSepartor_, 1);

@@ -79,6 +79,7 @@
 #include "Speedometer_isr.h"
 #include "isr_A.h"
 #include "isr_V.h"
+#include "PGA_2.h"
 #include "USBUART_1_Dm_aliases.h"
 #include "USBUART_1_Dm.h"
 #include "USBUART_1_Dp_aliases.h"

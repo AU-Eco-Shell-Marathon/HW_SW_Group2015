@@ -74,9 +74,9 @@ void MC_init(const struct PIDparameter * pidval)
 {
     PID_init();
     setPID(pidval);
-    VDAC8_1_Start();
-    Comp_1_Start();
+    
     isr_overCurrent_StartEx(OVERCURRENT);
+    
     /*
     speed_ = speed;
     rpm_ = rpm;

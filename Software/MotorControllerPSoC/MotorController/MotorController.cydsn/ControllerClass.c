@@ -13,17 +13,12 @@
 
 struct BMSData * BMSdata; //Ik' tænk over hvordan det virker, det gøre det bare ;)
 
-uint32 * speed;
-uint32 * power;
 
 void init()
 {
-    volatile struct PIDparameter PID;
-    size_t sizes[] = {sizeof(struct PIDparameter)};
-    
-    //size_t test = sizeof(struct PIDparameter);
-    
-    EEPROM_init(sizes, 1);
+    struct PIDparameter PID;
+    size_t sizes[] = {sizeof(struct PIDparameter), sizeof(int16[2])};
+    EEPROM_init(sizes, 2);
     
     if(EEPROM_read(0, (uint8 *)&PID) == 0)
     {
@@ -38,12 +33,20 @@ void init()
         EEPROM_write(0, (const uint8 *)&PID);
     }
     
-    //S_init();
-    
-    effectSensor_init();
+    int16 offset[2];
+    if(EEPROM_read(1, (uint8 *)offset) == 0)
+    {
+        effectSensor_init(0, 0);
+        effectSensor_calibrate(&offset[0], &offset[1]);
+        EEPROM_write(1, (uint8 *)offset);
+    }
+    else
+    {
+        effectSensor_init(offset[0], offset[1]); 
+    }
+
     RPMSensor_init();
     Pedal_init();
-    
     
     MC_init((struct PIDparameter *)&PID);
     Logger_Init();
@@ -77,8 +80,8 @@ void run()
             BMSdata->Tbatt,
             BMSdata->state,
             BMSdata->RunTime,
-            *speed,
-            *power
+            RPMSensor_getSpeed(),
+            effectSensor_getValue()
         );
         
         BMSdata->NewData = 0x00;

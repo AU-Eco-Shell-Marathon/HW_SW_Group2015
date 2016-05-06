@@ -10,9 +10,19 @@
  * ========================================
 */
 #include "effectSensor.h"
+#define effect_sensor_OFFSET 5000 //mV
+int16 Current_temp = 0;
+int16 Volt_temp = 0;
 
-uint16 Current_temp = 0;
-uint16 Volt_temp = 0;
+int16 Volt_offset = 0;
+int16 Current_offset = 0;
+
+
+int32 y_Current = 0;
+int32 y_Volt = 0;
+
+uint8 a = 3; // fra 0 til 255! er lig med 0-1.
+
 
 void DMA_ADC_A_V_init();
 
@@ -20,25 +30,29 @@ CY_ISR_PROTO(ISR_AMP);
 
 CY_ISR_PROTO(ISR_VOLT);
 
-uint16 y_Current = 0;
-uint16 y_Volt = 0;
+void VDACSetOffset(int16 Current);
 
-uint8 a = 127; // fra 0 til 255!
 
 CY_ISR(ISR_AMP)
 {
-    y_Current = (uint16)(((uint32)a*(uint32)Current_temp + (uint32)(0xFF-a)*(uint32)y_Current)>>8);
+    y_Current = (int32)a*(int32)Current_temp + (((int32)(256u-a)*(int32)y_Current)>>8);
 }
 
 
 CY_ISR(ISR_VOLT)
 {
-    y_Volt = (uint16)(((uint32)a*(uint32)Volt_temp + (uint32)(0xFF-a)*(uint32)y_Volt)>>8);
+    y_Volt = (int32)a*(int32)Volt_temp + (((int32)(256u-a)*(int32)y_Volt)>>8);
 }
 
-void effectSensor_init()
+void effectSensor_init(int16 Volt, int16 Current)
 {
+    Volt_offset = Volt;
+    Current_offset = Current;
+    
+    
     PGA_1_Start();
+    PGA_2_Start();
+   // Opamp_1_Start();
     
     ADC_A_Start();
     ADC_V_Start();
@@ -48,19 +62,50 @@ void effectSensor_init()
     isr_A_StartEx(ISR_AMP);
     isr_V_StartEx(ISR_VOLT);
     
-    
     DMA_ADC_A_V_init();
+    
+    VDACSetOffset(Current_offset);
+    VDAC8_1_Start();
+    CyDelay(100);
+    Comp_1_Start();
 }
 
-#define effect_sensor_OFFSET 5000 //mV
+void effectSensor_calibrate(int16 * Volt, int16 * Current)
+{
+    uint8 a_tmp = a;
+    a = 1;
+    CyDelay(10000);
+    Volt_offset = (int16)(y_Volt>>8);
+    Current_offset = (int16)(y_Current>>8);
+    
+    a = a_tmp;
+    
+    *Volt = Volt_offset;
+    *Current = Current_offset;
+    VDACSetOffset(ADC_A_CountsTo_mVolts(Current_offset)-effect_sensor_OFFSET);
+}
+
+void VDACSetOffset(int16 Current)
+{
+    uint8 calc = (uint8)(200+(int8)(Current>>4)); // 200 => 3200mV
+    //VDAC8_1_SetValue(calc); 
+    Control_Reg_motor_reset_Write(1u);
+}
+
+
+
 
 uint16 effectSensor_getValue()
 {
-    int16 rawVolt = ADC_V_CountsTo_mVolts(y_Volt);
-    int16 rawCurrent = ADC_A_CountsTo_mVolts(y_Current);
+    int16 rawVolt = ADC_V_CountsTo_mVolts((int16)(y_Volt>>8)-Volt_offset); // mangler validering
+    int16 rawCurrent = ADC_A_CountsTo_mVolts((int16)(y_Current>>8)-Current_offset);
     
-    uint32 volt = (rawVolt <= (int16)effect_sensor_OFFSET ? 0u : rawVolt - (uint32)effect_sensor_OFFSET)*15.625;//*15.625)/1000; skal trække minus 5 volt fra!!!
-    uint32 current = (rawCurrent <= (int16)effect_sensor_OFFSET ? 0u : rawCurrent - (uint32)effect_sensor_OFFSET)*3;//*3)/1000;
+    /*
+    uint32 volt = (rawVolt <= (int16)effect_sensor_OFFSET ? 0u : rawVolt - (uint32)effect_sensor_OFFSET)*15.625;// *15.625)/1000; skal trække minus 5 volt fra!!!
+    uint32 current = (rawCurrent <= (int16)effect_sensor_OFFSET ? 0u : rawCurrent - (uint32)effect_sensor_OFFSET)*5;// *3)/1000;
+    */
+    uint32 volt = (rawVolt <= 0 ? 0u : rawVolt)*15.625;
+    uint32 current = (rawCurrent <= 0 ? 0u : rawCurrent)*5.21;
     
     return ((uint16)(((uint64)volt*(uint64)current)/100000));
 }
@@ -92,7 +137,7 @@ void DMA_ADC_A_V_init()
     CyDmaChEnable(DMA_A_Chan, 1);
 
     
-    // ------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------ //
     
     /* Defines for DMA_V */
     #define DMA_V_BYTES_PER_BURST 2

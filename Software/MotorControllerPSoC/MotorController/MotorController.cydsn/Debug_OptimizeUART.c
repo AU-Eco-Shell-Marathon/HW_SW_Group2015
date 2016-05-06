@@ -9,5 +9,12 @@
  *
  * ========================================
 */
+#include "Debug_OptimizeUART.h"
+
+void Debug_Optimize_init()
+{
+       
+}
+
 
 /* [] END OF FILE */
