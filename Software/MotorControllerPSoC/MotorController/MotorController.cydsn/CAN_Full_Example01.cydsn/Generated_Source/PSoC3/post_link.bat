@@ -17,9 +17,5 @@ move "%~1\%~2\%~n3.hex" "%~1\%~2\%~n3.ihx"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 CD /D "C:\Keil\UV4"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
-<<<<<<< HEAD
-IF NOT EXIST "C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.svd" rem "C:\Users\jonathan\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.sfr"
-=======
 IF NOT EXIST "C:\Users\Jonas\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.svd" rem "C:\Users\Jonas\Documents\GitHub\PRJ4\Software\MotorControllerPSoC\MotorController\MotorController.cydsn\CAN_Full_Example01.cydsn\CAN_Full_Example01.sfr"
->>>>>>> 1921551670d0f993ef628f127bf278ceac0af77f
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 

@@ -820,13 +820,6 @@ int FS_LOGVOL_Create   (const char * sVolName);
 int FS_LOGVOL_AddDevice(const char * sLogVolName, const FS_DEVICE_TYPE * pDevice, U8 Unit, U32 StartOff, U32 NumSectors);
 
 
-/*********************************************************************
-*
-*       Debug support
-*/
-void   FS_X_Log     (const char *s);
-void   FS_X_Warn    (const char *s);
-void   FS_X_ErrorOut(const char *s);
 
 
 /*********************************************************************

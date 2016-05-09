@@ -15,12 +15,73 @@ FS_FILE* dataFile_;
 void Logger_Init(void)
 {
     int i;
+    char buffer[100];
+    char volumeName[20];
+    
     FS_Init();
     
-    char buffer[maxFileNameLength_];
+    
+    if(0 != FS_GetVolumeName(0u, volumeName, 19))
+    {
+        Logger_WriteToDebugUART("Volume: ");
+        Logger_WriteToDebugUART(buffer);
+        Logger_WriteToDebugUART("\n");
+    }
+    else
+    {
+        Logger_WriteToDebugUART("failed to get sd card volume\n");
+    }
+    
+    FS_FormatLLIfRequired(volumeName);
+    
+    Logger_WriteToDebugUART("Initializing\n");
+         
+        
+    if(FS_IsHLFormatted(volumeName) == 0)
+    {
+        Logger_WriteToDebugUART("High level formatting\n");
+        FS_Format(volumeName, NULL);
+    }
+    
+    U32 freeSpace = FS_GetVolumeFreeSpaceKB(volumeName);
+    
+    sprintf(buffer, "%lu", freeSpace);
+    Logger_WriteToDebugUART(buffer);
+    Logger_WriteToDebugUART("kB Free\n");
+    
+    DEBUG_UART_Start();
+    
+    
+    sprintf(buffer, "%d", FS_DEBUG_LEVEL);
+    
+    Logger_WriteToDebugUART("FS Debug level: ");
+    Logger_WriteToDebugUART(buffer);
+    Logger_WriteToDebugUART("\n");
+    
+    if(0 == FS_MkDir("Dir"))
+    {
+        /* Display successful directory creation message */
+        Logger_WriteToDebugUART("\"Dir\" created\n");
+    }
+    else
+    {
+        /* Display failure message */
+        Logger_WriteToDebugUART("Failed to create dir\n");
+    }
+    
+        
+    logFile_ = FS_FOpen("testlog.txt", "w");
+    
+    if(!logFile_)
+        Logger_WriteToDebugUART("Could not open log file\n");
+    
+    dataFile_ = FS_FOpen("testdata.txt", "w");
+    
+    if(!dataFile_)
+        Logger_WriteToDebugUART("Could not open data file\n");
         
     //Open files
-    for(i = 0; i < maxFileNumber_; i++)
+    /*for(i = 0; i < maxFileNumber_; i++)
     {
         sprintf(buffer, logFileName_, i);
         
@@ -39,12 +100,12 @@ void Logger_Init(void)
         {
             dataFile_ = FS_FOpen(buffer, "w");
         }
-    }
+    }*/
 }
 
 void Logger_Write(char* str)
 {
-    if(logFile_)
+    if(logFile_ != 0)
     {
         FS_Write(logFile_, str, strlen(str)); //Hope for the best, in case of any errors ignore it
     }
@@ -82,4 +143,24 @@ void Logger_Exit(void)
     {
         FS_FClose(dataFile_);
     }
+}
+
+void FS_X_Log(const char *s)
+{
+    Logger_WriteToDebugUART(s);
+}
+
+void FS_X_Warn(const char *s)
+{
+    Logger_WriteToDebugUART(s);
+}
+
+void FS_X_ErrorOut(const char *s)
+{
+    Logger_WriteToDebugUART(s);
+}
+
+void Logger_WriteToDebugUART(const char* str)
+{
+    DEBUG_UART_PutString(str);
 }

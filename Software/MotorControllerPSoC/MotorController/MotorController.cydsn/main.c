@@ -11,11 +11,15 @@
 */
 #include <project.h>
 #include "ControllerClass.h"
+#include "Logger.h"
 
 
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
+    
+    Logger_Init();
+    Logger_Write("TEST");    
     
     init();            /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 

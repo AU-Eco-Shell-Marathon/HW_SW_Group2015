@@ -61,7 +61,7 @@ void RPMSensor_init()
 {
     RPM_isr_StartEx(RPM);
     Timer_RPM_Start();
-    Clock_4_Start();
+    Clock_1kHz_Start();
 }
 
 uint16 RPMSensor_getValue()

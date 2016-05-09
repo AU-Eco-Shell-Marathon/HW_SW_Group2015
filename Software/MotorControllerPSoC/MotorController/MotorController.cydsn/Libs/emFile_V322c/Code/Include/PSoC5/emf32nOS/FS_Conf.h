@@ -23,7 +23,7 @@ Purpose     : Simple File system configuration
 #ifndef _FS_CONF_H_
 #define _FS_CONF_H_
 
-#define FS_DEBUG_LEVEL              0        /* 0: Smallest code, 5: Full debug. See chapter 9 "Debugging". */
+#define FS_DEBUG_LEVEL              5        /* 0: Smallest code, 5: Full debug. See chapter 9 "Debugging". */
 #define FS_SUPPORT_CACHE            0
 #define FS_USE_FILE_BUFFER          0        // Enables file buffering, which makes file access faster and code bigger & increases ram usage
 #define FS_OS_LOCKING				0
