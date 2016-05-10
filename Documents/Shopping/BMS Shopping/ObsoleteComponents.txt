@@ -15,8 +15,6 @@ modstandene ovenover
 http://dk.farnell.com/texas-instruments/bq76pl536atpaptq1/batt-prot-li-ion-27v-htqfp-64/dp/2492116
 
 Bestilling NU 9 maj 2016:
-BAV19W mindst 5 stk
-SMD fuse hos cypax.dk
-PMV90EN
-FM25V20-G
-BSS84
+SMD fuse bestit 5stk slow acting BOURNS
+PMV90EN bestilt anderledes
+FM25V20-G bestilt anderledes
