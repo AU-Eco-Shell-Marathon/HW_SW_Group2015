@@ -5,7 +5,7 @@ The blocks in the BDD are described as follows:
 	\item \textbf{Rolling Road}\\
 	Description: A secondary system which has been designed to test the efficiency of the driving algorithm.
 	\item \textbf{Joulemeter}\\
-	Description: A joulementer that can measure the amount of energy used.
+	Description: A joulementer which measures the amount of energy consumed by the Propulsion Motor. This block is only part of the system during the SEM.
 	\item \textbf{Battery Holder}\\
 	Description: A battery holder for the two batteries, which will be implemented in a serial connection and thereby understood as one battery. The battery implemented is a 2 times 6 celled battery with a nominal voltage on 3.7 V per cell. The battery is used as the power source.
 	\item \textbf{Battery Management System}\\
@@ -25,16 +25,16 @@ The blocks in the BDD are described as follows:
 	\item \textbf{Motor Control System}\\
 	Description: The system controls the driving-algorithm which the car operates by. Furthermore, it logs various parameters about the car's current run (velocity and power-consumption) on to a removable SD-card.
 	\begin{itemize}
-		\item \textbf{Motor Controller}\\
-		Description: Controls the power consumption of the Propulsion Motor in order to let the car follow the implemented driving-algorithm. 
+		\item \textbf{CAN Tranceiver}\\
+		Description: Allows connection between the Motor Controller and a computer using the CAN-protocol.
 		\item \textbf{Speedometer}\\
 		Description: Constantly measures the car's current speed in order to let the car follow the implemented driving-algorithm.
 		\item \textbf{SD-Logger}\\
 		Description: Logs various parameters about the current run to a removable SD-card which may be examined to optimize the driving algorithm.
 		\item \textbf{Power Control}\\
 		Description: Controls the amount of current delivered to the motor.
-		\item \textbf{CAN Tranceiver}\\
-		Description: Allows connection between the Motor Controller and a computer using the CAN-protocol.
+		\item \textbf{Motor Controller}\\
+		Description: Controls the power consumption of the Propulsion Motor in order to let the car follow the implemented driving-algorithm. 
 	\end{itemize}
 	\item \textbf{Propulsion Motor}\\
 	Description: The electrical motor which propels the car forwards.

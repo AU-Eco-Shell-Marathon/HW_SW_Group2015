@@ -1,5 +1,5 @@
 \section{Internal Block Diagram - AU2}
-The IBD on \ref{fig:IBD} shows the internal connection between the blocks described in the BDD. As both BMS and MCS are large and complicated blocks, they are treated as single blocks. The internal connections of these systems are described in their own sections and the IBD below should only be used to gain a general overview of the system's internal connectivity. 
+The IBD on \ref{fig:IBD} shows the internal connection between the blocks described in the BDD. As both BMS and MCS are large and complicated blocks they are simplified as single blocks in this IBD. The internal connections of the BMS and MCS are described using separate IBD's in later sections and the IBD below should only be used to gain a general overview of the system's internal connectivity. 
 
 \begin{figure}[H]
 	\centering
@@ -8,6 +8,6 @@ The IBD on \ref{fig:IBD} shows the internal connection between the blocks descri
 	\label{fig:IBD}
 \end{figure}
 
-It should be noted that both CAN-connections (BMSC and MCSC) are optional. They should only be connected when the user wants to read data from the BMS or the MCS. \fxnote{Er det rigtigt?}
+As the Joulemeter is only part of the system during SEM it is not a vital block. During times where the Joulemeter isn't implemented the block's input/output should simply be connected to eachother.
 
-The connection MotorPower:PowerMeas should only be used when AU2 is connected with Rolling Road for testing. This is represented by a dotted connector. 
+%The connection MotorPower:PowerMeas should only be used when AU2 is connected with Rolling Road for testing purposes. This is represented by a dotted connector. 
