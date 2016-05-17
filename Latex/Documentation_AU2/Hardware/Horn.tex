@@ -6,12 +6,12 @@ First off, when designing the horn it was necessary to find a suitable horn, tha
 Next up was the design of output stage. In this design it has been chosen to use a BJT transistor. It is used as a switching transistor, turning on and off according to input signal. There is a base resistance which size is defined by the h\textsubscript{fe} and the current used to supply the horn. \\
 \begin{align}
 	\begin{split}
-		I_b &= \frac{I_c}{h_fe}
+		I_b &= \frac{I_c}{h_{fe}}
 	\end{split}
 \end{align}
 Where $I_b$ is the current flowing into the base \\ 
-$I_c$ is current flowing in the collector \\ 
-$h_fe$ is the beta value of the transistor. \\
+$I_c$ is the current flowing in the collector \\ 
+$h_{fe}$ is the beta value of the transistor. \\
 
 Lastly, there is going to some safety implemented. Here in the form of a diode, which supplies a path for return current when the transistor is off. This protection is mostly implemented for use with a magnetic buzzer, but it is implemented so that the PCB is prepared for many different kind of buzzers.   
 
@@ -27,10 +27,25 @@ A full overview concerning the controls of buzzer can seen on figure underneath.
 
 The specific transistor being used is BSX20.The datasheet \fxnote{Husk ref} for this BJT shows a minimum garaunteed $h_fe$ for these is 40 and therefore that which will be used. This makes the calculations worst case, since the used BJT probably will have a larger $h_fe$. The desired collector current will be set by the buzzer being used and will therefore vary according to that. Many of the buzzers looked upon, will draw a current of 30 mA and because it is suspected that more than one buzzer will be needed that nubmer is multiplied by 2. That leaves us with the following numbers:
 
-$h_fe = 40 $ 
+$h_{fe} = 40 $ 
 
 $I_c = 60 mA$
 
-This yields 
+This yields a base current of 1.5 mA and the base resistance can be calulated from here. This can be done as we know the voltage level of PSoC, which is 5V. \\
+To calculate the base resistance Ohm's law is applied. 
+
+\begin{align}
+	\begin{split}
+		R_B &= \frac{V_be - V_be-sat}{I_b}
+	\end{split}
+\end{align}
+
+Where $V_{be}$ is the voltage level across the transistor equal to 5V. \\ 
+$V_{be-sat}$ is the voltage drop across the transistor equal to 0.85V. \\ 
+$I_b$ is the current in the equal to 1.5mA.  \\
+$R_b$ is the size of the resistor. \\ 
+
+This calcualtion yields a base resistor of 2.77 k$\Omega$.
+
 \subsection{Unity test}
 text
