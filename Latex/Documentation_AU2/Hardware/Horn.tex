@@ -16,7 +16,7 @@ $h_{fe}$ is the beta value of the transistor. \\
 Lastly, there is going to some safety implemented. Here in the form of a diode, which supplies a path for return current when the transistor is off. This protection is mostly implemented for use with a magnetic buzzer, but it is implemented so that the PCB is prepared for many different kind of buzzers.   
 
 \subsection{Implementation}
-A full overview concerning the controls of buzzer can seen on figure underneath.
+A full overview concerning the controls of the buzzer can be seen on the figure underneath.
 
 \begin{figure}[H]
 	\centering
@@ -25,7 +25,7 @@ A full overview concerning the controls of buzzer can seen on figure underneath.
 	\label{fig:Horn control}
 \end{figure}
 
-The specific transistor being used is BSX20.The datasheet \fxnote{Husk ref} for this BJT shows a minimum garaunteed $h_fe$ for these is 40 and therefore that which will be used. This makes the calculations worst case, since the used BJT probably will have a larger $h_fe$. The desired collector current will be set by the buzzer being used and will therefore vary according to that. Many of the buzzers looked upon, will draw a current of 30 mA and because it is suspected that more than one buzzer will be needed that nubmer is multiplied by 2. That leaves us with the following numbers:
+The specific transistor being used is BSX20.The datasheet \fxnote{Husk ref} for this BJT shows a minimum guaranteed $h_fe$ for these is 40 and therefore that which will be used. This makes the calculations worst case, since the used BJT probably will have a larger $h_fe$. The desired collector current will be set by the buzzer being used and will therefore vary according to that. Many of the buzzers looked upon, will draw a current of 30 mA and because it is suspected that more than one buzzer will be needed that nubmer is multiplied by 2. That leaves us with the following numbers:
 
 $h_{fe} = 40 $ 
 
