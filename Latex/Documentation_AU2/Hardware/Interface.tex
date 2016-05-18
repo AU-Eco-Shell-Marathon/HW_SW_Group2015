@@ -1,12 +1,29 @@
 \section{Interface}
 The interface gives the user, here the driver, an opportunity to coomunicate with the system. This gives the driver some form of control over the operation of the vehicle. Furthermore it ensures the driver has the ability to use the horn and to keep the dead man safety switch activated as stated by the requirements.
 
-The interface also includes the  connections to the CAN transceiver and the SDcard interface.  
+The interface also includes the  connections to the CAN transceiver and the SDcard interface but these will be discussed in their own respective paragraphs accordingly.  
 \subsection{Design}
 
+The design consist of 2 connections for each button, with at pulldown resistor at each pin. This ensures no perception of a false positive at the MCU. As seen on the picture, the interface consists of 4 different buttons. These buttons are:
+
+\begin{itemize}
+	\item{Dead Man Safety Switch}
+	\item{Start button for driving algorithm}
+	\item{Stop button for driving algorithm}
+	\item{Input for horn}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Hardware/Pictures/User_interface}
+	\caption{Circuitry of interface}
+	\label{fig:interface}
+\end{figure}
 
 \subsection{Implementation}
-text
+The buttons will be placed inside the cockpit, which gives driver easy access to them. Since the requirements states that all electronic must be placed behind bulkhead, there must be run long wires from the casing to the buttons. The long wires are prone to noise induction, but this part have been overlooked. This can be done, since the signal running along the wires do not carry sensitive information in the sense that the MCU is indifferent of the voltage level as long as it upholds the limits of MCU.
 
 \subsection{Unity test}
-text
+The test is performed by placing the scope on either pin that is connected to a button. Measuring at these points yields a result as shown on the figure \fxnote{Husk at indsætte billede}.
+
+As seen on the figure \fxnote{Husk ref} the measurement equals a step input with minor ripple due to bouncing of the button, which is removed internally in the MCU. 
