@@ -14,6 +14,13 @@ The designs from the previous section is implemented using a non-inverting adder
 \textbf{Non-inverting adder}\\
 The circuit is built using a MCP601 operational amplifier. Its positive and negative supply lines are connected with 5 VDC and ground. The op-amps positive power supply is parallel-connected with a capacitor. This capacitor improves the op-amps high-frequency response.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{Hardware/SignalConverter/TorqueDesign3}
+	\caption{Implemented circuit design on Rolling Road}
+	\label{fig:SignalConverterTorque3}
+\end{figure}
+
 \textbf{Schmitt-trigger}\\
 The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-trigger inputs. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5VDC power supply this delay is given by:
 \begin{equation}

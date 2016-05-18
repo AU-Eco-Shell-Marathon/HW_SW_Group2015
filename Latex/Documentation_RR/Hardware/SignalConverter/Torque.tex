@@ -6,7 +6,12 @@ As the PSoC can only measure voltage-levels ranging from $0$ to $+5 V$, and the 
 
 The desired signal can be found by amplifying the input-signal with a factor 0.5 and then lifting the signal with an offset of $\SI{2.5}{\volt}$. This can be done using a non-inverting adder.
 
-\fxnote{Circuit diagram here}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{Hardware/SignalConverter/TorqueDesign1}
+	\caption{Non-inverting adder using operational amplifier}
+	\label{fig:SignalConverterTorque1}
+\end{figure}
 
 A non-inverting adder is similiar to a non-inverting amplifier but contains a voltage divider on the Op-amps non-inverting input. The design is based on equally sized resistors:
 \begin{equation}
@@ -30,5 +35,9 @@ This means that the op-amps output-voltage can be calculated as:
 \end{equation}
 The signals V\textsubscript{1} is the $\pm \SI{5}{\volt}$ signal from the Torque Sensor. The signal's voltage is cut in half using a voltage divider. The signal V\textsubscript{2} is the 5 VDC supply which can be used to add a $\SI{2.5}{\volt}$ offset to the input. This is also done using a voltage divider. Both voltage dividers can be made using only $\SI{10}{\kilo \ohm}$ resistors. This resistor-value is also used in the rest of the design. This leads to the final design seen below:
 
-\fxnote{Circuit diagram here}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Hardware/SignalConverter/TorqueDesign2}
+	\caption{Circuit diagram for Signal Converter (torque-signal)}
+	\label{fig:SignalConverterTorque2}
+\end{figure}
