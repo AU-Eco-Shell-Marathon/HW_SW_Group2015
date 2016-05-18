@@ -1,21 +1,29 @@
-\section{Distribution block - SMPS}
+\section{Distribution block}
 A conversion from the 48V to a supply voltage 5V is needed to supply various parts of the circuit. Therefore it is required to use a DC-DC converter for the conversion. It has been chosen by the designer that the converter is being implemented as a switch mode power supply(SMPS from here and onwards). This is chosen as the efficiency of SMPS is increasingly higher than others converters e.g. LDO's. The downside to using a SMPS is additional components must be used.  
 
 \subsection{Design}
 
 When designing SMPS there is several packages out there, that works with passive componentes only. These packages makes the job for the designer much easier as many of the considerations are made for you. Considerations that still much be taken into account are input and output voltages, which already have been decided here. The next thing that can be considered is the efficiency of the package, which is stated in the datasheet.
 
+It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet(see figure \ref{fig:LT8300}) \fxnote{husk ref} except there is implemented a snubbercircuit and a decoupling capacitor before the transformer. Furthermore the values of the resistors are changed.  \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Hardware/Pictures/LT8300_circuit}
+	\caption{Circuit from LT8300 datasheet}
+	\label{fig:LT8300}
+\end{figure}
+
+\subsection{Implementation}
+
 Figure \ref{fig:SMPS_control} shows the hardware implementation of the SMPS. There is implemented some form of protection circuit before the signal comes into the actual SMPS. This is done by a fuse that limits the current running into the SMPS. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Hardware/Pictures/SMPS_hw}
-	\caption{SMPS hardware overview}
+	\caption{Step down converter hardware overview}
 	\label{fig:SMPS_control}
 \end{figure}
-
-\subsection{Implementation}
-It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet \fxnote{husk ref} except there is implemented a snubbercircuit and a decoupling before the transformer. Furthermore the values of the resistors is changed.  \\
 
 There are various resistors can be changed and thereby change the different things e.g. the output voltage. 
 
@@ -23,7 +31,7 @@ The value of the resistor R8 on figure \ref{fig:SMPS_control} is calculated on t
 
 \begin{align}
 	\begin{split}
-		R_{FB} &= \frac{N \cdot (V_{out}+V_F}{\SI{100}{\micro \ampere}}
+		R_{FB} &= \frac{N \cdot (V_{out}+V_F)}{\SI{100}{\micro \ampere}}
 	\end{split}
 \end{align}
 
@@ -32,8 +40,9 @@ N is the number of turns on the primary inductor. Here 6 is used. \\
 $V_{out}$ is the desired output voltage from the SMPS. This is chosen to be 5V. \\
 $V_F$ is the forward voltage of the diode in output stage. This is set 0.3V as a schottkey is used. \\
 $R_{FB}$ is the feedback resistor. \\
+This calculation yields a resistance of 318 k$\Omega$.
 
-This calculation yields a resistance of 318 k$\omega$.
+The dimensions of the snubber circuits are standard sizes. Furthermore, there is used decoupling capacitors to reduce the ripple on the output and to ensure a steady current for the IC.
 
 \subsection{Unity test}
 text
