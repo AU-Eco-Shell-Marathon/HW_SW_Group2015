@@ -5,7 +5,7 @@ A conversion from the 48V to a supply voltage 5V is needed to supply various par
 
 When designing SMPS there is several packages out there, that works with passive componentes only. These packages makes the job for the designer much easier as many of the considerations are made for you. Considerations that still much be taken into account are input and output voltages, which already have been decided here. The next thing that can be considered is the efficiency of the package, which is stated in the datasheet.
 
-It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet(see figure \ref{fig:LT8300}) \fxnote{husk ref} except there is implemented a snubbercircuit and a decoupling capacitor before the transformer. Furthermore the values of the resistors are changed.  \\
+It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet(see figure \vref{fig:LT8300}) \fxnote{husk ref} except there is implemented a snubbercircuit and a decoupling capacitor before the transformer. Furthermore the values of the resistors are changed.  \\
 
 \begin{figure}[H]
 	\centering
@@ -16,7 +16,7 @@ It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Tech
 
 \subsection{Implementation}
 
-Figure \ref{fig:SMPS_control} shows the hardware implementation of the SMPS. There is implemented some form of protection circuit before the signal comes into the actual SMPS. This is done by a fuse that limits the current running into the SMPS. 
+Figure \vref{fig:SMPS_control} shows the hardware implementation of the SMPS. There is implemented some form of protection circuit before the signal comes into the actual SMPS. This is done by a fuse that limits the current running into the SMPS. 
 
 \begin{figure}[H]
 	\centering
@@ -27,7 +27,7 @@ Figure \ref{fig:SMPS_control} shows the hardware implementation of the SMPS. The
 
 There are various resistors can be changed and thereby change the different things e.g. the output voltage. 
 
-The value of the resistor R8 on figure \ref{fig:SMPS_control} is calculated on the formula below. The value of this resistor decides the output of the SMPS.
+The value of the resistor R8 on figure \vref{fig:SMPS_control} is calculated on the formula below. The value of this resistor decides the output of the SMPS.
 
 \begin{align}
 	\begin{split}
