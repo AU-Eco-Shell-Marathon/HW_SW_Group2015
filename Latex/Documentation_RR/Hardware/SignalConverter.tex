@@ -5,25 +5,20 @@ The primary purpose of this block is to convert the output from the Torque Senso
 \subsection{Design}
 The torque-signal and the velocity-signal from the Torque Sensor are measured by the PSoC using different techniques and the Signal Converter must therefore be in charge of three different signal-processing techniques: Rescaling the torque-signal and reduce the noise in the velocity-signal.
 
-\textbf{Rescaling torque-signal}\\
-As the PSoC can only measure voltage-levels ranging from $0$ to $+5 V$, and the output-signal from the torque measurement lies between $-5 V$ to $+5 V$, it is necessary to rescale the signal.
-\begin{equation}
-	V_t = \frac{\tau_{sensor} }{2} + 2.5 V
-\end{equation}
-
-\textbf{Noise reduction in velocity-signal}\\
-The output-signal for the measured angular velocity lies between the $0$ to $+5 V$ range and can therefore be measured correctly by the PSoC without rescaling. However, the electrical noise in the signal must be reduced, in order to let the PSoC measure correctly.
+\input{Hardware/SignalConverter/Torque}
+\input{Hardware/SignalConverter/Velocity}
 
 \subsection{Implementation}
-Text
+The designs from the previous section is implemented using a non-inverting adder and two schmitt-triggers in series.
 
 \textbf{Non-inverting adder}\\
-Text
+The circuit is built using a MCP601 operational amplifier. Its positive and negative supply lines are connected with 5 VDC and ground. The op-amps positive power supply is parallel-connected with a capacitor. This capacitor improves the op-amps high-frequency response.
 
-\textbf{Noise reduction}\\
-The noise reduction is implemented using a 74HC14 hex inverter with Schmitt-trigger inputs. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5VDC power supply this delay is given by:\\
-$t_{pd} = t_{PHL} = t_{PLH} = 12 ns$
-
+\textbf{Schmitt-trigger}\\
+The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-trigger inputs. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5VDC power supply this delay is given by:
+\begin{equation}
+	t_{pd} = t_{PHL} = t_{PLH} = \SI{24}{\nano \second}
+\end{equation}
 
 \begin{figure}[H]
 	\centering
@@ -32,7 +27,7 @@ $t_{pd} = t_{PHL} = t_{PLH} = 12 ns$
 	\label{fig:SchmittTrigger_waveform}
 \end{figure}
 
-In order to counter the inverting property of 74HC14 the noise reduction must be compromised of two Schmitt-triggers in series. This gives the subsystem a total propagation delay of $24 ns$. As 74HC14 contains six Schmitt-triggers the 4 unused Schmitt-trigger's inputs must be connected to ground in order to prevent unwanted oscilliation.
+In order to counter the inverting property of 74HC14, and create a comperator, the noise reduction  must consist of two Schmitt-triggers in series. This gives the subsystem a total propagation delay of $\SI{24}{\nano \second}$. As the 74HC14 contains six Schmitt-triggers the 4 unused Schmitt-trigger's inputs are connected to ground in order to prevent unwanted oscilliation.
 
 \subsection{Unity test}
 Text
