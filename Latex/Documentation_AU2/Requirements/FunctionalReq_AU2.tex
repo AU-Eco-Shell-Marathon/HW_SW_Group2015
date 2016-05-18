@@ -1,10 +1,7 @@
 \section{Functional requirements}
 The functional requirements for AU2 are labeled and specified in the table below.
 
-\begin{table}[h!]
-	\label{FREQ_AU2}
-	\centering
-	\begin{tabular}{|p{2 cm}|p{7 cm}|p{4 cm}|}
+\begin{longtable}{|p{2 cm}|p{7 cm}|p{4 cm}|}
 		\hline
 		\textbf{Req. \#} & \textbf{Description} & \textbf{Comments} \\\hline
 		AU2\_F1		& The car must have one electric storage device, one motor and one control unit. &   \\\hline
@@ -23,8 +20,6 @@ The functional requirements for AU2 are labeled and specified in the table below
 		AU2\_F13	& The car's BMS must be able to balance the cells if needed. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.4) \fxnote{reference to 2013BMS Documentation} &   \\\hline
 		AU2\_F14	& The car's BMS must be able to protect the battery from overheating. The threshold when discharging is set to 60 degrees celsius maximum. And when charging, the threshold is set to 45 degrees celsius maximum. This requirement is already implemented in the BMS from earlier projects. (BMS\_NF.2) \fxnote{reference to 2013BMS Documentation} &   \\\hline
 		AU2\_F15	& The car's BMS should be able to transfer data to the MCS via CAN-Communication so the data can be collected on a SD-card. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.8) \fxnote{reference to 2013BMS Documentation} &   \\\hline
-	\end{tabular}
-	\caption{Functional requirements concerning AU2}
-\end{table}
+\end{longtable}
 
 %AU2\_F5		& The battery must be placed on a metal tray in order to prevent an eventual battery-fire that would damage the system. &   \\\hline
