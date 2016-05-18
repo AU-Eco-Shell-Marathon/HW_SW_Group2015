@@ -15,22 +15,25 @@ Figure \ref{fig:SMPS_control} shows the hardware implementation of the SMPS. The
 \end{figure}
 
 \subsection{Implementation}
-It has been chosen to use the LT8300 Isolated Flyback Converter. The implementation is done almost according to the datasheet except there is implemented a snubbercircuit and a decoupling before the transformer.  \\
+It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet \fxnote{husk ref} except there is implemented a snubbercircuit and a decoupling before the transformer. Furthermore the values of the resistors is changed.  \\
 
-There is various resistors can be changed and thereby change the different things e.g. the output voltage. 
+There are various resistors can be changed and thereby change the different things e.g. the output voltage. 
 
-The value of the resistor R8 on figure \ref{fig:SMPS_control} is calculated on the formula below.
+The value of the resistor R8 on figure \ref{fig:SMPS_control} is calculated on the formula below. The value of this resistor decides the output of the SMPS.
 
 \begin{align}
 	\begin{split}
-		I_b &= \frac{N*(V_{out}+V_F)}{100$\my$A}
+		R_{FB} &= \frac{N \cdot (V_{out}+V_F}{\SI{100}{\micro \ampere}}
 	\end{split}
 \end{align}
 
 Where:\\
-N is the number of turns on the primary inductor. \\
-$V_{out}$ is the desired output voltage from the SMPS. \\
-$V_F$ is the forward voltage of the diode in output stage. \\
+N is the number of turns on the primary inductor. Here 6 is used. \\
+$V_{out}$ is the desired output voltage from the SMPS. This is chosen to be 5V. \\
+$V_F$ is the forward voltage of the diode in output stage. This is set 0.3V as a schottkey is used. \\
+$R_{FB}$ is the feedback resistor. \\
+
+This calculation yields a resistance of 318 k$\omega$.
 
 \subsection{Unity test}
 text
