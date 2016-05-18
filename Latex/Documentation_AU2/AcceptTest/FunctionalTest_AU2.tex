@@ -65,7 +65,37 @@
 	& Inspect the car's rear wheel and locate the speedometer.
 	& The speedometer is found on the car's rear wheel. 
 	& 
-	& \\ \hline				
+	& \\ \hline	
+	AU2\_F11 
+	& The car's BMS must be able to protect the cells of the battery from undervoltage and overvoltage. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1)
+	& Connect a voltage between one of the BMS cell inputs and the reference pin. Try with both 1 V and 5 V. Test the two connections to "J9" on the analog front end board with a multimeter.
+	& The multimeter shows less than 20 V.
+	& 
+	& \\ \hline
+	AU2\_F12 
+	& The car's BMS must be able to protect the battery from emitting overcurrent. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1)
+	& Connect a powersource which is emitting 40 A. Test the two connections to "J9" on the analog front end board with a multimeter. (Replace the fuse with a new one after the test of this requirement.)
+	& The multimeter shows less than 20 V.
+	& 
+	& \\ \hline
+	AU2\_F13 
+	& The car's BMS must be able to balance the cells if needed. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.4)
+	& Unbalance the cells of the battery. Connect the micro-USB to a PC and use for example Tera Term to see the cell voltages. Connect all the cells and wait for BMS to balance them again.
+	& The cell voltages slowly belances out. 
+	& 
+	& \\ \hline
+	AU2\_F14
+	& The car's BMS must be able to protect the battery from overheating. The threshold when discharging is set to 60 degrees celsius maximum. And when charging, the threshold is set to 45 degrees celsius maximum.
+	& Warm the batteries up to above 60 degrees celsius without connecting the charger. Test the two connections to "J9" on the analog front end board with a multimeter. Try also when charging the batteries.
+	& The multimeter shows less than 20 V.
+	& 
+	& \\ \hline
+	AU2\_F15
+	& BMS should be able to transfer data to the motorcontroller via CAN-communication so the data can be collected on a SD-card.
+	& Connect a CAN-reader and see if the results matches what it should. As specified in the earlier documentation of the BMS. \fxnote{reference to 2013BMS Documentation}
+	& \fxnote{reference to 2013BMS Documentation}. 
+	& 
+	& \\ \hline	
 \end{longtable}
 
 %AU2\_F5 
