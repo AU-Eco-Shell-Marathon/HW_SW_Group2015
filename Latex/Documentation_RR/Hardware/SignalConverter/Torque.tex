@@ -1,5 +1,5 @@
 \textbf{Rescaling torque-signal}\\
-As the PSoC can only measure voltage-levels ranging from $0$ to $+5 V$, and the output-signal from the torque measurement lies between $-5 V$ to $+5 V$, it is necessary to rescale the signal such that the input-signal can be described using this formula:
+As the PSoC can only measure voltage-levels ranging from $0$ to $+5 V$, and the output-signal from the torque measurement lies between $-5 V$ to $+5 V$, it is necessary to rescale the signal such that the PSoC's input-signal can be described using this formula:
 \begin{equation}
 	V_t = \frac{\tau_{sensor} }{2} + 2.5 V
 \end{equation}

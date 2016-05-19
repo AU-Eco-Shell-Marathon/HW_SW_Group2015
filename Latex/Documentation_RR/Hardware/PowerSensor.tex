@@ -53,6 +53,23 @@ The transducer's measuring-resolution can be calculated as a output-difference p
 \textbf{Voltage Transducer}\\
 The voltage delivered to the motor is measured using a voltage divider consisting of two resistors. The voltage didiver must be placed parallel to the motor to correctly measure the voltage.
 
+\fxnote{kredsløbsdiagram}
+
+According to the requirements the car's motor operates with a supply-voltage between $\SI{0}{\volt}$ and $\SI{50}{\volt}$. This range must be rescaled to a range between $\SI{0}{\volt}$ and $\SI{5}{\volt}$ as this is the range which can be measured by the PSoC's ADC.
+
+The voltage divider can be designed by choosing either pf the resistor's values. For this calculation, however, the value of R\textsubscript{1} is choosen to be equal to $\SI{10}{\kilo \ohm}$. The desired value of the resistor R\textsubscript{2} can then be calculated using the following formula:
+\begin{equation}
+	\begin{split}
+	V_{in} &= V_{motor} \cdot \frac{R_2}{R_1 + R_2}\\
+	\\
+	\SI{5}{\volt} &= \SI{50}{\volt} \cdot \frac{R_2}{\SI{10}{\kilo \ohm} + R_2} \quad \Rightarrow \quad R_2 = \SI{1.1}{\kilo \ohm}
+	\end{split}
+\end{equation}
+For simplicity the resistor's value is rounded to $\SI{1}{\kilo \ohm}$ which means that the highest voltage on the PSoC's input can be calculated as:
+\begin{equation}
+	V_{in} = \SI{50}{\volt} \cdot \frac{ \SI{10}{\kilo \ohm} }{ \SI{1}{\kilo \ohm} + \SI{10}{\kilo \ohm}} = \SI{4.545}{\volt}
+\end{equation}
+
 \subsection{Implementation}
 Text
 

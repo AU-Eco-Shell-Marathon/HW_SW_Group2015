@@ -3,7 +3,7 @@
 The primary purpose of this block is to convert the output from the Torque Sensor to a signal which can be correctly measured by the Control Unit.
 
 \subsection{Design}
-The torque-signal and the velocity-signal from the Torque Sensor are measured by the PSoC using different techniques and the Signal Converter must therefore be in charge of three different signal-processing techniques: Rescaling the torque-signal and reduce the noise in the velocity-signal.
+The torque-signal and the velocity-signal from the Torque Sensor are measured by the PSoC using different techniques and the Signal Converter must therefore be in charge of two different signal-processing techniques: Rescaling the torque-signal and reducing the noise in the velocity-signal.
 
 \input{Hardware/SignalConverter/Torque}
 \input{Hardware/SignalConverter/Velocity}
@@ -12,7 +12,7 @@ The torque-signal and the velocity-signal from the Torque Sensor are measured by
 The designs from the previous section is implemented using a non-inverting adder and two schmitt-triggers in series.
 
 \textbf{Non-inverting adder}\\
-The circuit is built using a MCP601 operational amplifier. Its positive and negative supply lines are connected with 5 VDC and ground. The op-amps positive power supply is parallel-connected with a capacitor. This capacitor improves the op-amps high-frequency response.
+The circuit is built using a MCP6004 I/P operational amplifier. Its positive and negative supply lines are connected with 5 VDC and ground. The op-amps positive power supply is connected in parallel with a $\SI{100}{\nano \farad}$ capacitor. This capacitor improves the op-amps high-frequency response. The final design is seen on Figure \vref{fig:SignalConverterTorque3}
 
 \begin{figure}[H]
 	\centering
@@ -22,10 +22,11 @@ The circuit is built using a MCP601 operational amplifier. Its positive and nega
 \end{figure}
 
 \textbf{Schmitt-trigger}\\
-The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-trigger inputs. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5VDC power supply this delay is given by:
+The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-trigger inputs. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5 VDC power supply this delay is given by:
 \begin{equation}
 	t_{pd} = t_{PHL} = t_{PLH} = \SI{24}{\nano \second}
 \end{equation}
+Which means that if the ADC in the PSoC samples input signals with a frequency greater than $\SI{41.67}{\mega \hertz}$ then the resulting samples are gonna be displaced one sample compared to the velocity-samples. 
 
 \begin{figure}[H]
 	\centering
