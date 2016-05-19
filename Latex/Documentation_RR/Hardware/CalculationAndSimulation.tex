@@ -178,6 +178,14 @@ Before making the Rolling Road a simulation of the system was made, to check tha
 	\label{fig:sim_top}
 \end{figure}
 
+The top model in \ref{fig:sim_top} are a simulation of how the speed of a moving object will produce a reverse force on it self then using the Rolling Road. Of course the Rolling Road can control how much force that will be send back to the test object.\\
+The first block on the left side "Speed (km/h)" are the speed that the test object runs with. The next two block are only used to make a more smooth speed curvy.\\
+The next thing what happening is that the speed are been convert to a rotational speed.\\
+Before the generator is there a Gear, and the rotating speed goes up.\\
+The next 3 blocks are the transformation in the generator and the load system, where the speed are converted to a torque.\\
+The torque are control with a PID regulator (see \ref{fig:sim_PSOC}). of course this part are controlling the current and not the torque, but it the same just a different scale. So just to get better overview it will been seem as it the torque that are been regulated and not the current.\\ 
+After the PID regulator has regulated the torgue, the torque are send back to the object and are converted to a force.   
+
 \begin{figure}[H]
 	\centering
 	\includegraphics [width=6in]{Hardware/Pictures/simulation_uController.PNG}
@@ -185,4 +193,5 @@ Before making the Rolling Road a simulation of the system was made, to check tha
 	\label{fig:sim_PSOC}
 \end{figure}  
 
+This is the digital PID regulator \ref{fig:sim_PSOC}, the special thing with the regulator is that it has a function of rotational speed to the propagation part. Sample frequency is set to 2000 S/s. The PID regulator are controlling a Power Mosfet wish is the same as a Product in the simulation. It is also this part that is the reason the Propagation part need to be a function of rotational speed. after it has been regulated where is a little time delay from the power circuit too the mechanical part, in the feedback loop are there also implemented a anti-aliasing filter for the torque sensor.  
   
