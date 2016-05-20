@@ -4,14 +4,27 @@ The purpose of the Battery Management System (BMS)...
 INTRO HERE ------
 
 \subsection{Design}
-In this paragraph a detailed documentation of the BMS' hardware will be given. Furthermore, each unit contained in the BMS will be described where the implementation and contents of each unit is viewed upon as a black-box. This means that the units will be considered purchased from a third party vendor and therefore a detailed description of the circuitry will not be given. This will lead to a different form of documenting with a lot of references to the "manufacturers" documentation that is the "BAC-projekt\_BMSogbatteri\_2013" \fxnote{Reference til dokumentationen / lokaliteten} documentation. Thus the general purpose and overview of each unit will elaborated in this section. 
+In this paragraph a detailed documentation of the BMS' hardware will be given. Furthermore, each unit contained in the BMS will be described where the implementation and contents of each unit is viewed upon as a black-box. This means that the units will be considered purchased from a third party vendor and therefore a detailed description of the circuitry will not be given. This will lead to a different form of documenting with a lot of references to the "manufacturers" documentation that is the "BAC-projekt\_BMSogbatteri\_2013" \fxnote{Reference to 2013BMS Documentation} documentation. Thus the general purpose and overview of each unit will elaborated in this section. 
 
 \subsubsection{Propulsion battery}
 Er flyttet til Hardware/Battery 
 
 \subsubsection{Analog Front end}
 The purpose of this unit is that it performs calculations and analog to digital conversion of the battery's cell voltages, battery's temperature and the signal from current sensor. Moreover, this unit manages cell balancing on request from the digital unit. It also has additional battery protection independent of the digital unit.
+An overview of the Analog Front End can be seen on figure \ref{fig:frontendOverview}.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Hardware/Pictures/analogfrontendOverview}
+	\caption[Empty]{Analog Front End circuit blocks\footnotemark}
+	\label{fig:frontendOverview}
+\end{figure}
+\footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation}}
+
+Now every circuit block will be elaborated on its functionality and how it all works. If you wish to receive an even more thorough and detailed explanation, calculations and choices for components included, on the Analog Front End please see the \fxnote{reference to BMS2013 documentation}\\
+The anti-aliasing filters are there to decrease unwanted ac noise and they're placed very near their respective ADC inputs. The filters are traditional 1. order RC low-pass filters and they are implemented with respects to the battery monitor IC, which will be discussed in a moment.\\
+The balancing circuit is connected to the battery monitor IC where it has outputs that are capable of controlling balancing of the cells. This process can be initialized by the Digital Unit if given parameters exceed a specific threshold. The circuit can charge the cells  when it is connected to a charger to balance them by discharging them into bleeder resistors located on the circuit. This is done to keep the cells within the recommended safe operation area, which is in between 3-4.2V. \\
+The heart of the BMS is the bq76PL536A-Q1 Battery Monitoring IC (new chip used since 2014 instead of the one on figure \ref{fig:frontendOverview}). It was chosen as it offers very low quiescent current, secondary protection, high precision voltage measurements and has the choice of stacking several IC's to attain support of a respective number of cells. The core functionality of this said chip is that it can receive and handle a lot of commands at the same time. As you see on figure \ref{fig:frontendOverview} it is connected to several circuits. It's job is, among other things, to receive a vast amount of data from it's surroundings / connected circuits. Example of data could be data requests from the Digital Unit, cell voltages, current sensor signal, cell temperature signal balancing requests from the Digital unit and more. With all of this data the Battery Monitoring IC converts this data through its ADC's where it sends them off to the Digital Unit. It can also perform the balancing if it receives a request. Furthermore, it is possible for it to drive the Isolation Switch, which means that in an even where the safe operation area is exceeded it can cut off the current battery supply to the rest of the vehicle.
 
 \subsubsection{Current Sensor}
 The purpose of this unit is to measure the amount of amperes flowing through it as well as the direction of the current. This data is handled by the Analog Front End.
