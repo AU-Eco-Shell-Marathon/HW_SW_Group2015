@@ -52,15 +52,23 @@ The Extension Module unit's purpose is that it gives the BMS the capability to s
 On figure \ref{fig:BMSextensionmod} you can see an overview of how a possible stacking of Battery Monitor ICs can be handled. You can also see that only the Analog Front End has a connection to the Digital Unit through SPI. A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.
 
 \subsubsection{Current Sensor}
-The purpose of this unit is to measure the amount of amperes flowing through it as well as the direction of the current. This data is handled by the Analog Front End.
-
-//to do...
+The purpose of this unit is to measure the amount of current flowing through the sensor as well as the direction of the current. The data that the sensor generates is sent to and handled by the Analog Front End. \\
+The choice for a current sensor was either to use a Hall current sensor as done in the Motor Controller unit or use a shunt current sensor. Since the goal is to make the BMS as energy efficient as possible the choice fell on the shunt based sensor. It is a better choice when considering the power consumption for the current sensor, more on the specifications and calculations can be found in xx \fxnote{reference BMS 2013 sec 3.1.4}.
 
 \subsubsection{Isolation Switch}
-The Isolation Switch has a very important functionality concerning the BMS. If anything goes wrong with the battery, which means it exceeds the safe operation area of any specified thresholds then the Isolation Switch will prevent any current from flowing to the distribution block.
+The Isolation Switch has a very important functionality concerning the BMS. If anything goes wrong with the battery, which means it exceeds the safe operation area of any specified thresholds, then the Isolation Switch will prevent any current from flowing through it and to the distribution block. \\
+Since it is a requirement by the Shell Eco-Marathon committee that an automatic form of isolation of the battery from the rest of the system is required within the BMS. This leaves us with the only choice of using a relay to fulfil this requirement. Nonetheless, a relay isn't the best solution when considering low power application and consumption. If the BMS was to be implemented in a commercial application where it wouldn't be obligatory to fulfil the Shell Eco-Marathon committee's requirement, then a solution using RDS MOSFETs would be a huge benefactor when considering supply current draw.\\
+The Isolation Switch relay is of a type Normally Open(NO), which means unless it has a specific amount of voltage running through it's coils, then it won't allow current to flow through it's terminals. Nonetheless, the relay is  capable of withstanding a current of up to 30 Amps and has a nominal coil rating of 48V, which is within the specified ratings by Shell's rules. Below on figure \ref{fig:BMSRelay} the physical relay can be seen.
 
-//to do...
-//picture of relay 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{Hardware/Pictures/BMSRelay}
+	\caption[Empty]{Picture of the Isolation Switch Relay used in the BMS\footnotemark}
+	\label{fig:BMSRelay}
+\end{figure}
+\footnotetext{\url{http://uk.rs-online.com/web/p/non-latching-relays/6995676/} (Date: 21-05-2016)}
+
+The Isolation Switch works by having the Digital Unit send commands to the Analog Front End, which in return controls the Isolation Switch Driver. And the driver controls the relay. If the cells are within a safe operation area and the Digital Unit hasn't told the Analog Front End to open the relay - meaning to prevent current flowing through it - then a secondary option is available to isolate the battery manually. This functionality is implemented by a Emergency Switch(button). It serves the purpose of delivering a 0V drop over the relay's coil when the Emergency Switch is pressed. This will force the relay to open and seize to supply current through its terminals and therefore isolate the battery. \\
 
 \subsubsection{Digital Unit (HW)}
 This unit's purpose is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell and battery parameters. If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. Furthermore the Digital Unit is capable of communication with external units. 
