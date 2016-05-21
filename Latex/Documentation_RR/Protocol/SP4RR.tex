@@ -24,8 +24,11 @@ Overview of packets:
 		1  & Type description 	& <int> <str> <str> & PSoC $\rightarrow$ PC & 1 0 Time Seconds 	\\
 		2  & Stop        		&            		& PC $\rightarrow$ PSoC	& 2        			\\
 		3  & Information 		& <double> ... <double>	& PSoC $\rightarrow$ PC & 3 2 3 	    	\\
-		4  & Torque control 	& <double>    			& PC $\rightarrow$ PSoC & 4 2.5  				\\
+		4  & Torque control 	& <double>    			& PC $\rightarrow$ PSoC & 4 0.5  				\\
 		5  & PID control        & <double(P)> <double(I)> <double(D)> & PC $\leftrightarrow$ PSoC & 5 2.3 3.4 4.5 \\
+		6  & Calibrate			&					& PC $\rightarrow$ PSoC & 6 \\ 
+		7  & reset distance meter & 				& PC $\rightarrow$ PSoC & 7 \\ 
+		8  & Force control		& <double>    			& PC $\rightarrow$ PSoC & 8 12.5  				\\
 	\end{tabular}
 	\caption{Overview for commands sent between PSoC and PC}
 \end{table}
