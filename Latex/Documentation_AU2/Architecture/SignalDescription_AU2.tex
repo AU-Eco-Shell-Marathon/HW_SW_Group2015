@@ -6,7 +6,7 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Force}\\
 	Direction: [External] $\rightarrow$ [Emergency System]\\
-	Description: Can be triggered by pressing a button on the vehicle's frame or by releasing the Deadmans Switch inside the cockpit.	
+	Description: Can be triggered by pressing a button on the vehicle's frame. (This button is called the Emergency Shutdown Safety Switch)	
 	\item \textbf{HornOn:Force}\\
 	Direction: [External] $\rightarrow$ [Horn]\\
 	Description: The driver activates the system by pressing the corresponding button inside the vehicle's cockpit.
@@ -50,10 +50,10 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{Button:Force}\\
 	Direction: [External] $\rightarrow$ [Emergency System]\\
-	Description: Can be triggered by pressing a button on the vehicle's frame or by depressing the Deadmans Switch inside the cockpit.
-	\item \textbf{OUT:ESignal}\\  \fxnote{Enten ESignal eller ESsignal}
+	Description: Can be triggered by pressing a button on the vehicle's frame.
+	\item \textbf{Shutdown:Voltage}\\
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
-	Description: The button-press triggers a short-circuit which corrosponds to a change in the voltage-level, which can be detected by the BMS.
+	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, from 48 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.
 \end{itemize}
 
 \textbf{Block :Horn}\\
@@ -76,7 +76,7 @@ Block interface description:
 \textbf{Block :Battery Management System}\\
 Block interface description:
 \begin{itemize}
-	\item \textbf{ShutDown:ESignal}\\
+	\item \textbf{ShutDown:Voltage}\\
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
 	Description: The button-press triggers a short-circuit which corrosponds to a change in the voltage-level, which can be detected by the BMS.
 	\item \textbf{MainSupply:Power}\\
