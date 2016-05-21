@@ -4,7 +4,7 @@ Due to the complexity of the Battery Management System its interconnectivity has
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{Architecture/Diagrams/IBD_BMS}
-	\caption{IBD for AU2's Battery Management System}
+	\caption{IBD for AU2's Management System}
 	\label{fig:IBD_BMS}
 \end{figure}
 
@@ -15,11 +15,11 @@ The signals and protocols used to communicate between the blocks in BMS are spec
 Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Voltage}\\
-	Direction: [External] $\rightarrow$ [Analog Unit]\\
-	Description: Shuts down the system if a change in the voltage-level is measured.
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
+	Description: Shuts down the system if a change in the voltage-level is measured from 48 V to 0 V. This happens when the corresponding Emergency Shutdown Switch is pressed.
 	\item \textbf{MainSupply:Power}\\
-	Direction: [External] $\rightarrow$ [Analog Unit]\\
-	Description: The power from the battery which is delivered to the remaining electrical systems in the car.
+	Direction: [Analog Front End] $\rightarrow$ [External]\\
+	Description: The power from the battery which is delivered through the relay in the Analog Front End to the remaining electrical systems in the car. 
 	\item \textbf{BMSC:CAN}\\
 	Direction: [External] $\leftrightarrow$ [Digital Unit]\\
 	Description: CAN-communication with a computer in order to gain information about various variables.
@@ -27,10 +27,10 @@ Block interface description:
 	Direction: [External] $\rightarrow$ [Current Sensor]\\
 	Description: Power directly from the battery before being measured by the current sensor.
 	\item \textbf{AnSupply:Voltage}\\
-	Direction: [External] $\rightarrow$ [Analog Unit]\\
-	Description: Power supply for the analog part of the system.
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
+	Description: Power supply for the Analog Front End.
 	\item \textbf{TempSense:Voltage}\\
-	Direction: [External] $\rightarrow$ [Analog Unit]\\
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the battery's temperature.
 \end{itemize}
 
@@ -38,13 +38,13 @@ Block interface description:
 Block interface description:
 \begin{itemize}
 	\item \textbf{BatterySupplyA:Power}\\
-	Direction: [Battery] $\rightarrow$ [Current Sensor]\\
+	Direction: [External] $\rightarrow$ [Current Sensor]\\
 	Description: Power directly from the battery before being measured by the current sensor.
 	\item \textbf{BatterySupplyB:Power}\\
-	Direction: [Current Sensor] $\rightarrow$ [Analog Unit]\\
+	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
 	Description: Power directly from the battery after being measured by the current sensor.
 	\item \textbf{CurrentSense:Voltage}\\
-	Direction: [Current Sensor] $\rightarrow$ [Analog Unit]\\
+	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the output current from the battery.
 \end{itemize}
 
@@ -52,28 +52,28 @@ Block interface description:
 Block interface description:
 \begin{itemize}
 	\item \textbf{AnSupply:Voltage}\\
-	Direction: [Battery] $\rightarrow$ [Analog Unit]\\
-	Description: Power supply for the analog part of the system.
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
+	Description: Power supply for the Analog Front End.
 	\item \textbf{BatterySupplyB:Power}\\
-	Direction: [Current Sensor] $\rightarrow$ [Analog Unit]\\
+	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
 	Description: Power directly from the battery after being measured by the current sensor.
 	\item \textbf{CurrentSense:Voltage}\\
-	Direction: [Current Sensor] $\rightarrow$ [Analog Unit]\\
+	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the output current from the battery.
 	\item \textbf{ShutDown:Voltage}\\
-	Direction: [External] $\rightarrow$ [Analog Unit]\\
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: Shuts down the system if a change in the voltage-level is measured.
 	\item \textbf{Error:SPI}\\
-	Direction: [Analog Unit] $\leftrightarrow$ [Digital Unit]\\
+	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
 	Description: Sends the measured analog data to the digital unit in order to be sent to a computer.
 	\item \textbf{DigSupply:Voltage}\\
-	Direction: [Analog Unit] $\rightarrow$ [Digital Unit]\\
+	Direction: [Analog Front End] $\rightarrow$ [Digital Unit]\\
 	Description: Power supply for the digital part of the system.
 	\item \textbf{MainSupply:Power}\\
-	Direction: [External] $\rightarrow$ [Analog Unit]\\
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: The power from the battery which is delivered to the remaining electrical systems in the car.
 	\item \textbf{TempSense:Voltage}\\
-	Direction: [Battery] $\rightarrow$ [Analog Unit]\\
+	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the battery's temperature.
 \end{itemize}
 
@@ -81,13 +81,13 @@ Block interface description:
 Block interface description:
 \begin{itemize}
 	\item \textbf{Error:SPI}\\
-	Direction: [Analog Unit] $\leftrightarrow$ [Digital Unit]\\
-	Description: Sends the measured analog data to the digital unit in order to be sent to a computer.
+	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
+	Description: Sends the measured analog data to the Digital Unit in order to be sent to a computer via CAN later.
 	\item \textbf{BMSC:CAN}\\
 	Direction: [External] $\leftrightarrow$ [Digital Unit]\\
-	Description: CAN-communication with a computer in order to gain information about various variables.
+	Description: CAN-communication with a computer in order to gain information about various variables measured.
 	\item \textbf{DigSupply:Voltage}\\
-	Direction: [Analog Unit] $\rightarrow$ [Digital Unit]\\
-	Description: Power supply for the digital part of the system.
+	Direction: [Analog Front End] $\rightarrow$ [Digital Unit]\\
+	Description: Power supply for the Digital Unit.
 \end{itemize}
 

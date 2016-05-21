@@ -14,8 +14,12 @@ If the battery cells at startup has a voltage too high, the BMS system sets the 
 
 Details about how the software works can be found in BAC….\fxnote{Reference to 2013BMS Documentation} Where the software is well documented with flowcharts, application models/class diagrams and function descriptions.
 The BMS software consists of the following c- and h-files:\\
-\includegraphics[width=1.0\linewidth]{Software/BMS-ClassDiagram.PNG} \\
-//INSERT PICTURE OF CLASS DIAGRAM HERE PAGE 60 PDF\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Software/BMS-ClassDiagram.PNG}
+	\caption{Class Diagram from 2013BMS Documentation}
+	\label{fig:SOFTWARE_BMS}
+\end{figure}
 The only function description that isn’t documented is the “CalculateSOC()” function. This is because “CalculateSOC()” was re-implemented as a function in 2014 instead of just being part of the “done\_every\_second()” function. Therefore the function description for the “CalculateSOC()” will be presented now. (This function is located in the CellAnalysis.c file):
 \begin{table}[h!]
 	\centering
