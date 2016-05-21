@@ -12,6 +12,24 @@ This is because it is assumed that if the data is far away from the thresholds, 
 
 If the battery cells at startup has a voltage too high, the BMS system sets the cells to balance down in voltage with the help of bleeder resistors and sets the initiation of the system on a hold for four seconds, so that the cells have time to discharge. The twelve cells are also analyzed every second, so that if any threshold is exceeded, the isolation switch is opened, and will stay this way until the cells are balanced back within acceptable thresholds. This balancing is possible when a charger is connected. Lastly every second the collected data is send via CAN-Communication. After 20 seconds have passed, a State Of Charge analysis (SOC-analysis) is executed, this data is of course also send via CAN\_Communication.
 
+Details about how the software works can be found in BAC….\fxnote{Reference to 2013BMS Documentation} Where the software is well documented with flowcharts, application models/class diagrams and function descriptions.
+The BMS software consists of the following c- and h-files:\\
+\includegraphics[width=1.0\linewidth]{Software/BMS-ClassDiagram.PNG} \\
+//INSERT PICTURE OF CLASS DIAGRAM HERE PAGE 60 PDF\\
+The only function description that isn’t documented is the “CalculateSOC()” function. This is because “CalculateSOC()” was re-implemented as a function in 2014 instead of just being part of the “done\_every\_second()” function. Therefore the function description for the “CalculateSOC()” will be presented now. (This function is located in the CellAnalysis.c file):
+\begin{table}[h!]
+	\centering
+	\label{CalculateSOCfunction}
+	\begin{tabular}{|p{4 cm}|p{9 cm}|}
+		\hline
+		\textbf{Function:} & \textbf{void CalculateSOC(void)}	\\\hline
+		Parameters	& None	\\\hline
+		Return Value	& None	\\\hline
+		Description of function	& After data has been collected this function can be called and the state of charge will be found by compared the value of the cell voltages and ten different levels of voltage. This way the state of charge will be represented from 1 to 10, where 1 is 10 percent and 10 is 100 percent.	\\\hline
+	\end{tabular}
+	\caption{function description of the CalculateSOC function}
+\end{table}
+
 \textbf{END OF DIN TEXT} \\ 
 \\
 
