@@ -1,5 +1,8 @@
 \section{Battery Management System}
 INTRO HERE ------\\
+Batteri besparelse -- lav strøms stilstand (quiescent)... from for færdig solution... State of BMS...
+Hardware overview \\ 
+//FUSES \\
 The purpose of the Battery Management System (BMS)...
 
 \subsection{Design}
@@ -35,8 +38,18 @@ The temperature sensor is rather self explanatory, its purpose is to measure the
 \textbf{Isolation Switch Driver circuit}\\
 The purpose of this part is to assure and allow the Battery Monitor IC and Digital Unit to control the Isolation Switch. In case of a parameter exceeding a threshold this is how the BMS shuts of current to the rest of the vehicle - By using the Isolation Switch Driver circuit.\\
 
-\subsubsection{Extension Module}
-//to do... capability to have more than 6 cells --- by stacking ICs etc etc. 
+\subsubsection{Analog Front End: Extension Module}
+The Extension Module unit's purpose is that it gives the BMS the capability to support a larger amount of battery cells. Since the BMS Front End only supports 6 cells - and using the Extension Module the BMS can support up to 18 cells. This is done by stacking the Battery Monitor ICs - See figure \ref{fig:BMSextensionmod}. The Extension Module resembles the Analog Front End, however, it doesn't include the same features. Features like SPI to the Digital Unit, current sensor input and Isolation Switch Driver are left out and not included. It's purpose is to communicate with the Battery Monitor IC and report the voltages from the other cells. That way the BMS has full control and is able to monitor all the batteries.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Hardware/Pictures/BMSextensionmod}
+	\caption[Empty]{Connection of Extension Modules\footnotemark}
+	\label{fig:BMSextensionmod}
+\end{figure}
+\footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation kap 3.1.3}}
+
+On figure \ref{fig:BMSextensionmod} you can see an overview of how a possible stacking of Battery Monitor ICs can be handled. You can also see that only the Analog Front End has a connection to the Digital Unit through SPI. A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.
 
 \subsubsection{Current Sensor}
 The purpose of this unit is to measure the amount of amperes flowing through it as well as the direction of the current. This data is handled by the Analog Front End.
