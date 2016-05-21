@@ -8,6 +8,7 @@ The torque-signal and the velocity-signal from the Torque Sensor are measured by
 \input{Hardware/SignalConverter/Torque}
 \input{Hardware/SignalConverter/Velocity}
 
+\newpage
 \subsection{Implementation}
 The designs from the previous section is implemented using a non-inverting adder and two schmitt-triggers in series.
 
@@ -16,7 +17,7 @@ The circuit is built using a MCP6004 I/P operational amplifier. Its positive and
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{Hardware/SignalConverter/TorqueDesign3}
+	\includegraphics[width=0.5\linewidth]{Hardware/SignalConverter/TorqueDesign3}
 	\caption{Implemented circuit design on Rolling Road}
 	\label{fig:SignalConverterTorque3}
 \end{figure}
@@ -26,7 +27,7 @@ The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-tr
 \begin{equation}
 	t_{pd} = t_{PHL} = t_{PLH} = \SI{24}{\nano \second}
 \end{equation}
-Which means that if the ADC in the PSoC samples input signals with a frequency greater than $\SI{41.67}{\mega \hertz}$ then the resulting samples are gonna be displaced one sample compared to the velocity-samples. 
+Which means that if the ADC in the PSoC samples input signals with a frequency greater than $\SI{41.67}{\mega \hertz}$ then the resulting samples are gonna be displaced one sample compared to the velocity-samples.
 
 \begin{figure}[H]
 	\centering
@@ -35,7 +36,14 @@ Which means that if the ADC in the PSoC samples input signals with a frequency g
 	\label{fig:SchmittTrigger_waveform}
 \end{figure}
 
-In order to counter the inverting property of 74HC14, and create a comperator, the noise reduction  must consist of two Schmitt-triggers in series. This gives the subsystem a total propagation delay of $\SI{24}{\nano \second}$. As the 74HC14 contains six Schmitt-triggers the 4 unused Schmitt-trigger's inputs are connected to ground in order to prevent unwanted oscilliation.
+In order to counter the inverting property of 74HC14, and create a comperator, the noise reduction  must consist of two Schmitt-triggers in series. This gives the subsystem a total propagation delay of $\SI{24}{\nano \second}$. As the 74HC14 contains six Schmitt-triggers the 4 unused Schmitt-trigger's inputs are connected to ground in order to prevent unwanted oscilliation. The subsystem's final design is seen on Figure \ref{fig:SignalConverterVelocity} below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Hardware/SignalConverter/VelocityDesign}
+	\caption{Implemented circuit design on Rolling Road}
+	\label{fig:SignalConverterVelocity}
+\end{figure}
 
 \subsection{Unity test}
 Text
