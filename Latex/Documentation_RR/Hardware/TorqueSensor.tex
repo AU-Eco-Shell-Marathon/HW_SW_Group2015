@@ -35,6 +35,12 @@ The Torque Sensor outputs the measured torque on Pin C (Signal+). The output-sig
 	\end{cases}
 \end{equation}
 
+The motor used to built the Generator is specified to handle a maximum power of \SI{200}{\watt}. This can be used to calculate the maximum torque given to the Torque Sensor's rotor, when AU2 operates at cruise speed. In the Generator's section it was found, that at AU2's cruise speed the Roll (and the sensor's input-shaft) had an angular velocity of \SI[per-mode=fraction]{109.65}{\radian \per \second}. The input-shaft's torque can then be calculated as:
+\begin{equation}
+	\tau_{max} = \frac{P_{max}}{\omega_{Roll}} = \frac{\SI{200}{\watt}}{\SI[per-mode=fraction]{109.65}{\radian \per \second}} = \SI{1.83}{\newton \meter}
+\end{equation}
+The calculated torque lies well within the specified boundaries of the Torque Sensor.
+
 \textbf{Angular velocity}\\
 The Torque Sensor outputs the measured angular velocity on Pin B (Angle B) and Pin G (Signal A) - however only the signal from Pin G is used for calculations. The output-signal is a square-waved signal with a DC-offset of 2.5 V and a peak-peak value of 5 V.
 
