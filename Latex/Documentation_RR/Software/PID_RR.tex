@@ -1,0 +1,60 @@
+\newpage
+\section{Software PID regulator}
+
+The PID regulator are made in "c" and not implemented in a digital filter block, is because of a problem that is mention in Calculation and simulation section see page \pageref{sec:Calculation_and_Simulation}. The problem is that the "P" part is a function of speed. Where for it is implemented using "c" instead.\\
+
+\subsection{Code}
+
+The mathematical equation for the PID regulator is:\\   
+
+$ PID_{value} \left( s,rpm \right) = {\frac {P_{rpm}\,P}{rpm} \left( 1+{\frac {I}{s}}+ \left( D \right) s \right) } $\\
+
+There is somethings that is dangerous. \\
+First. Then the $ rpm $ value goes zero the $  PID_{value} \left( s,rpm \right) $ will be infinity big, this has to be provented, with a simple if sentence what control what the rpm is not under 1 rpm (line 5). \\
+Second. because the solution to generate the torque with passive components and the speed of the test object. It will not always be possible to reach the wanted torque, if the test object don't have engoft speed. This will generate a windup problem. To kill this problem we use back calculation that will use the previous value that has exceed the limit, and add it to the integral part. 
+
+
+\lstset{language=C}
+\begin{lstlisting}
+float *PID_tick(float sensor, float input, float RPM)
+{
+	err = (input - sensor);
+	
+	float P_RPM = (RPM <= 1.0f ? 0 : P_RPM_reciprocal / RPM) ;
+	
+	float PIDval = 0;
+	
+	//Proportional part
+	PIDval += P_RPM*parameter_.Kp*err;
+	
+	//intergral part
+	iState += P_RPM*parameter_.Kp*parameter_.Ki*err*dt + anti_windup_back_calc*dt;
+	PIDval += iState; 
+	
+	//differentiel
+	PIDval += P_RPM*parameter_.Kp*parameter_.Kd*((err-pre_err)/dt);
+	pre_err = err;
+	
+	//anti windup back calculation
+	anti_windup_back_calc = PIDval;
+	
+	if(PIDval > parameter_.MAX)
+		PIDval = parameter_.MAX;
+	else if(PIDval < parameter_.MIN)
+		PIDval = parameter_.MIN;
+	
+	anti_windup_back_calc = PIDval - anti_windup_back_calc;
+	// --- //
+	
+	//use PIDval
+	PWM_1_WriteCompare((uint8)PIDval);
+	
+	//Debug
+	PID_debug[0] = PIDval;
+	PID_debug[1] = err;
+	PID_debug[2] = anti_windup_back_calc;
+	return PID_debug;
+}
+\end{lstlisting}
+
+

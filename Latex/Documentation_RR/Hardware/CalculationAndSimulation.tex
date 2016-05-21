@@ -1,5 +1,6 @@
 \newpage
-\section{Calculation and Simulation of Rolling Roads regulator}
+\section{Calculation and Simulation} %  of Rolling Roads regulator
+\label{sec:Calculation_and_Simulation}
 
 This section will go though the simulation of Rolling Roads regulator. First what kind of regulator what has been choose to Rolling Road and the calculation of the regulator and finally a simulation too see if it will work.
 
@@ -14,7 +15,7 @@ The load system consists of some elements: A generator that both have a resistor
 All result are calculate with Matlab. Script (RollingRoad.m)   
 
 A list of all constants what are used.
-
+\lstset{language=MATLAB}
 \begin{lstlisting}
 	%% Constants
 	L_a      = 0.000072;        %DC-generator inductance (H)
@@ -194,4 +195,3 @@ After the PID regulator has regulated the torgue, the torque are send back to th
 \end{figure}  
 
 This is the digital PID regulator \ref{fig:sim_PSOC}, the special thing with the regulator is that it has a function of rotational speed to the propagation part. Sample frequency is set to 2000 S/s. The PID regulator are controlling a Power Mosfet wish is the same as a Product in the simulation. It is also this part that is the reason the Propagation part need to be a function of rotational speed. after it has been regulated where is a little time delay from the power circuit too the mechanical part, in the feedback loop are there also implemented a anti-aliasing filter for the torque sensor.  
-  

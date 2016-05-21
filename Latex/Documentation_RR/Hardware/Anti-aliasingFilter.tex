@@ -13,7 +13,7 @@ The script '\textit{ADC\_lowpassFilter}' will automatically find the best compon
 The script below is used to calculate the RC low-pass filter for the Torque Sensor. The script requires the following pieces of information: The sample frequency, the ADC's resolution (number of bits) and the desired cutoff-frequency.
 
 The sample rate is 48000 samples/s and the ADC is using 12 bit to represent the signal. The desired cutoff-frequency is chosen to be the maximum frequency at which the Roll is gonna rotate, if AU2 is chosen as the test object.
-
+\lstset{language=MATLAB}
 \begin{lstlisting}
 	ADC_fs=48000;
 	ADC_N=12;
