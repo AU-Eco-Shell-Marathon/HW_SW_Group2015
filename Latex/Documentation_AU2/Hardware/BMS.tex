@@ -62,7 +62,7 @@ The Isolation Switch relay is of a type Normally Open(NO), which means unless it
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{Hardware/Pictures/BMSRelay}
+	\includegraphics[width=0.3\linewidth]{Hardware/Pictures/BMSRelay}
 	\caption[Empty]{Picture of the Isolation Switch Relay used in the BMS\footnotemark}
 	\label{fig:BMSRelay}
 \end{figure}
@@ -73,7 +73,15 @@ The Isolation Switch works by having the Digital Unit send commands to the Analo
 \subsubsection{Digital Unit (HW)}
 This unit's purpose is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell and battery parameters. If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. Furthermore the Digital Unit is capable of communication with external units. 
 
-//to do...
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Hardware/Pictures/BMSdigitalUnit}
+	\caption[Empty]{Digital Unit circuit blocks\footnotemark}
+	\label{fig:BMSdigitalUnit}
+\end{figure}
+\footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation kap 3.1.6}}
+
+
 
 \subsection{Implementation}
 text
