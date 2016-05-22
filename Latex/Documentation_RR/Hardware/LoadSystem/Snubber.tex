@@ -1,5 +1,6 @@
+\newpage
 \subsection{Snubber}
-Due to the fast-switching application of the MOSFET it will create transients which must be supressed. This can be done using an electrical snubber connected between the MOSFET's drain and source. The snubber consists of a resistor and a capacitor in series. The snubber is specified as follows:
+Due to the fast-switching application of the MOSFET it will create transients which must be supressed. This can be done using an electrical snubber connected between the MOSFET's drain and source. The snubber consists of a resistor and a capacitor in series. The snubber is specified to the following values:
 \begin{equation}
 	\begin{split}
 		C_{snubber} &= \SI{250}{\nano \farad}\\
@@ -32,16 +33,11 @@ The filter can be modelled as seen on the the diagram below:
 	\label{fig:SnubberFilter}
 \end{figure}
 
-The filter's transfer function in the s-domain can be found using the Laplace transform and standard circuit-analysis. The function is found as:
-\begin{equation}
-	content...
-\end{equation}
-
-The damping ratio can then be calculated using the following formula:
+The filter's transfer function in the s-domain can be found using the Laplace transform and standard circuit-analysis. The damping ratio can then be calculated as:
 \begin{equation}
 	\begin{split}
-		\zeta &= \frac{R_{snubber} + R_{load} + R_a \cdot \sqrt{C_{snubber} \cdot  L_a}}{2 \cdot L_a}\\
-		&= \frac{\SI{22}{\ohm} + \SI{1.1065}{\ohm} + \SI{103}{\milli \ohm} \cdot \sqrt{\SI{250}{\nano \farad} \cdot \SI{0.072}{\milli \henry}}}{2 \cdot \SI{0.072}{\milli \henry}}\\
-		&= 0.679
+		\zeta &= \frac{(R_{snubber} + R_{load} + R_a) \cdot \sqrt{C_{snubber} \cdot  L_a}}{2 \cdot L_a}\\
+		&= \frac{(\SI{22}{\ohm} + \SI{1.1065}{\ohm} + \SI{103}{\milli \ohm}) \cdot \sqrt{\SI{250}{\nano \farad} \cdot \SI{0.072}{\milli \henry}}}{2 \cdot \SI{0.072}{\milli \henry}}\\
+		&= 0.683
 	\end{split}
 \end{equation}
