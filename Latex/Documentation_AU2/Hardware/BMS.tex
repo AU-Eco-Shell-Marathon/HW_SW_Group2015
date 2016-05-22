@@ -1,6 +1,7 @@
 \section{Battery Management System}
+\label{sec:BMSHWChapter}
 The purpose of the BMS is to observe and make sure that the propulsion battery is kept within a safe operation area at all times. It does this by monitoring cell voltages, temperature and current from the battery. The data the BMS collects from these units is compared to lower and upper threshold limits that are in compliance with the requirements from the Shell Eco-Marathon committee \footnote{See "sem-2016-global-rules-chapter1-010715"}. In case an event occurs where the temperature, cell voltages or current from the battery exceed the allowed thresholds, then the BMS must autonomously make sure to protect the rest of the vehicle from over-current by isolating the battery. \\
-The BMS is designed to be as low power consuming as possible
+One can find a vast variety of commercially available BMSs that can fulfil the most of the requirements given by the Shell Eco-Marathon committee. However, not all of the BMSs are in compliance with these terms. An option of buying a fully functioning BMS and implementing a few things to meet the requirements is a possible solution. Nonetheless, most of these off-the-shelf BMSs are very power hungry and are usually meant for bigger systems with huge cell counts. However, a centralized and small BMS system is made, which is designed to be as energy efficient as possible. Furthermore, advanced features has been included such as the capability to measure State of Charge (SOC) and State of Health(SOH). The reason and argument for building the BMS as eco-friendly as possible is that it is crucial both power consumption and weight wise, when competing to be the most energy efficient team in our respective class. The lower power consumption each unit has in the vehicle then e.g. a lower weighted battery can be used, which has less capacitance. Instead of a heavy and bulky battery.\\
 
 \begin{figure}[H]
 	\centering
@@ -8,24 +9,42 @@ The BMS is designed to be as low power consuming as possible
 	\caption[Empty]{An elaborated system and interfacing diagram for the BMS\footnotemark}
 	\label{fig:BMSOverview}
 \end{figure}
-\footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation sec 2.4}}
+\footnotetext{Reference to 2013BMS sec 2.4\fxnote{Reference to 2013BMS Documentation sec 2.4}}
 
-
-
-INTRO HERE ------\\
-Batteri besparelse -- lav strøms stilstand (quiescent)... from for færdig solution... State of BMS...
-Hardware overview \\ 
-
-\ref{fig:IBD_BMS}
-
-
+On figure \ref{fig:BMSOverview} you can see an overview of the BMS's interfaces and how it is connected to the rest of the vehicle. A truly detailed and descriptive IBD of the BMS has also been developed, which can be seen on figure \ref{fig:IBD_BMS}.
 
 \subsection{Disclaimer}
-In this chapter a detailed documentation of the BMS' hardware will be given. Furthermore, each unit contained in the BMS will be described where the implementation and contents of each unit's circuitry is viewed upon as a black-box. This means that the units will be considered purchased from a third party vendor and therefore a detailed description of the circuitry will not be given. This will lead to a different form of documentation with a lot of references to the "manufacturer's" documentation that is the "BAC-projekt\_BMSogbatteri\_2013", which was done by Jonas Nyborg in 2013. \fxnote{Reference to 2013BMS Documentation} documentation.
-Thus the general purpose and overview of each unit will elaborated in this chapter. 
+In this chapter a detailed documentation of the BMS' hardware will be given. Furthermore, each unit contained in the BMS will be elaborated where the implementation and contents of each unit's circuitry is viewed upon as a black-box. This means that the units will be considered purchased from a third party vendor and therefore a detailed description of the circuitry will not be given. This will lead to a different form of documentation with a lot of references to the "manufacturer's" documentation that is the "BAC-projekt\_BMSogbatteri\_2013", which was done by Jonas Nyborg in 2013. \fxnote{Reference to 2013BMS Documentation} documentation.\\
+Thus In this chapter each of these units on figure \ref{fig:BMSOverview} will be elaborated, which means the general purpose and overview of each unit will be thoroughly documented. 
 
-\subsubsection{Propulsion battery}
-Er flyttet til Hardware/Battery \fxnote{Delete later}
+\subsection{Propulsion battery}
+\label{sec:BMSBattery}
+The purpose of this block is to deliver electrical energy to supply the  Propulsion Motor as well as the accessory systems in the car.
+
+This unit consists of twelve battery cells, which are responsible for storing electrical energy. Moreover, it must be capable of delivering the required current to turn the propulsion motor and be able to acquire energy from an external charger.   
+The requirements for batteries when participating in the SEM are that the prototype battery electric class must utilize lithium type batteries. There was two choices between lithium type batteries: LiFePo4 and Lithium-ion polymer(Li-Po). Based on the tests done by Jonas \fxnote{REFERENCE to BMS "see Battery cell type test.pdf"} the Li-Po is the obvious choice, since it has a more satisfying capacity at the simulated worst case Eco-Marathon conditions. Moreover, it has a solid low internal resistance and weight for the purpose.\\
+Since the Li-Po batteries are the better choice compared to the LiFePo4 batteries there will be used two Li-Po batteries in series to power the vehicle. Each of the batteries will have 6 cells, which results in a nominal voltage of 44.4V since each cell's nominal voltage is 3.7V. By doing so we are still within our limitations of having the voltage to not exceed the maximum of 48V nominal as specified by AU2\_NF3. See section: \ref{sec:requirements}.\\
+The batteries which have been purchased are of different capacities, however, they all have the same amount of cells, thus the same nominal voltage. This is done in preparation to test the required capacity needed by the vehicle. Furthermore, to be able to have a battery which weighs less if the given capacity is more than enough for a run will improve the effectiveness of the car, since the motor will have less weight to pull.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Hardware/Pictures/2650battery}
+	\caption[Empty]{Picture of the battery with 2650mAh\footnotemark}
+	\label{fig:2650battery}
+\end{figure}
+\footnotetext{\url{http://www.hobbyking.com/hobbyking/store/__32651__Turnigy_nano_tech_2650mAh_6S_35_70C_Lipo_Pack_EU_Warehouse_.html} (Date: 20-05-2016)}
+
+\textbf{Battery specifications}\\
+Chemistry: Lithium-ion polymer(Li-cobalt)\\
+Manufacturer: Turnigy\\
+Type: Nano-tech\\
+Nominal: 44.4V\\
+Max. charging voltage: 50.4V\\
+Min. voltage: 36V\\
+Capacity: 2200 / 2650 / 3300mAh (depends on weather and achieved efficiency)\\
+Max. continuous discharge: 35 / 35 / 45C\\
+Max. charge rate: 8 / 8 / 10C\\
+Weight: 730 / 834 / 1130g\\
 
 \subsection{Analog Front end}
 The purpose of this unit is that it performs calculations and analog to digital conversion of the battery's cell voltages, battery's temperature and the signal from current sensor. Moreover, this unit manages cell balancing on request from the digital unit. It also has additional battery protection independent of the digital unit.
@@ -53,7 +72,7 @@ The heart of the BMS is the bq76PL536A-Q1 Battery Monitoring IC (new chip used s
 The temperature sensor is rather self explanatory, its purpose is to measure the temperature of the batteries. To do this a Thermistor(NTC) has been used to get voltage readouts by converting the temperature from the Thermistor. The temperature thresholds are specified in AU2\_F14, which can be seen here: \ref{sec:requirements}. If the given threshold is exceeded the Isolation Switch will prevent current from flowing through it.
 
 \subsubsection{Isolation Switch Driver circuit}
-The purpose of this part is to assure and allow the Battery Monitor IC and Digital Unit to control the Isolation Switch. In case of a parameter exceeding a threshold this is how the BMS shuts of current to the rest of the vehicle - By using the Isolation Switch Driver circuit.\\
+The purpose of this part is to assure and allow the Battery Monitor IC and Digital Unit to control the Isolation Switch. In case of a parameter exceeding a threshold this is how the BMS shuts of current to the rest of the vehicle - By using the Isolation Switch Driver circuit.
 
 \subsection{Analog Front End: Extension Module}
 The Extension Module unit's purpose is that it gives the BMS the capability to support a larger amount of battery cells. Since the BMS Front End only supports 6 cells - and using the Extension Module the BMS can support up to 18 cells. This is done by stacking the Battery Monitor ICs - See figure \ref{fig:BMSextensionmod}. The Extension Module resembles the Analog Front End, however, it doesn't include the same features. Features like SPI to the Digital Unit, current sensor input and Isolation Switch Driver are left out and not included. It's purpose is to communicate with the Battery Monitor IC and report the voltages from the other cells. That way the BMS has full control and is able to monitor all the batteries.\\
@@ -68,7 +87,7 @@ The Extension Module unit's purpose is that it gives the BMS the capability to s
 
 On figure \ref{fig:BMSextensionmod} you can see an overview of how a possible stacking of Battery Monitor ICs can be handled. You can also see that only the Analog Front End has a connection to the Digital Unit through SPI.\\
 The fuse block seen on figure \ref{fig:BMSextensionmod} is a fast-acting fuse that can handle up to 30A before it breaks. It is implemented as a requirement by the Shell Eco-Marathon committee.\\
-A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.\\
+A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.
 
 
 \subsection{Current Sensor}
@@ -123,7 +142,7 @@ The purpose of the DC/DC Converter is to convert the battery voltage, which is e
 Since power consumption is a very important factor in the design of the BMS, several DC/DC converters were examined to see if it was possible to find a suitable prefabricated and commercial DC/DC converter. The results of this inspection and a more detailed description of the converter can be found in \fxnote{reference to BMS2013 sec 3.1.6.2}. Moreover, please note that a newer DC/DC Converter than in the 2013 BMS Documentation has been used - More details on the changes done since the 2013 documentation can be found in section \fxnote{reference to CHANGES from BMS 2013 to BMS 2014}.  
 
 \subsubsection{MCU with CAN, USB and F-RAM}
-This unit is the brains of the operation. It consists of vital parts to make the BMS function properly. It has a micro controller that has an implemented CAN controller. It also has non-volatile memory, which is in the form of Ferroelectric Random Access Memory (F-RAM). Nonetheless, a USB interface is also part of this unit, which makes it possible to directly debug the BMS through the micro controller. For more info on how to use the USB interface and how to program the BMS see section \ref{sec:BMSDebugging}.\\
+This unit is the brains of the operation. It consists of vital parts to make the BMS function properly. It has a micro controller that has an implemented CAN controller. It also has non-volatile memory, which is in the form of Ferroelectric Random Access Memory (F-RAM). Nonetheless, a USB interface is also part of this unit, which makes it possible to directly debug the BMS through the micro controller. For more info on how to use the USB interface and how to program the BMS see section \ref{sec:BMSDebugging}.
 
 \textbf{The MCU - AVR-CAN}\\
 The micro controller unit is a OLIMEX AVR-CAN development board. It would have been sufficient to have emulated a CAN interface. However, the platform is now equipped for future improvements by using a micro controller with an integrated CAN controller. This way a CAN protocol is required for the BMS if it is to become commercially viable.
