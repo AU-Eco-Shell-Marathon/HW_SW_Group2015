@@ -100,17 +100,27 @@ With low power consumption in mind, a few digital isolators based on optocoupler
 
 \subsubsection{DC/DC Converter}
 The purpose of the DC/DC Converter is to convert the battery voltage, which is expected to be around 44.4V nominal, to a lower voltage that is usable by the other components in the Digital unit. This includes the Galvanic Isolation and micro controller circuit with its included parts. \\
-Since power consumption is a very important factor in the design of the BMS, several DC/DC converters were examined to see if it was possible to find a suitable prefabricated and commercial DC/DC converter. The results of this inspection and a more detailed description of the converter can be found in \fxnote{reference to BMS2013 sec 3.1.6.2}.
+Since power consumption is a very important factor in the design of the BMS, several DC/DC converters were examined to see if it was possible to find a suitable prefabricated and commercial DC/DC converter. The results of this inspection and a more detailed description of the converter can be found in \fxnote{reference to BMS2013 sec 3.1.6.2}. Moreover, please note that a newer DC/DC Converter than in the 2013 BMS Documentation has been used - More details on the changes done since the 2013 documentation can be found in section \fxnote{reference to CHANGES from BMS 2013 to BMS 2014}.  
 
 \subsubsection{MCU with CAN, USB and F-RAM}
 This unit is the brains of the operation. It consists of vital parts to make the BMS function properly. It has a micro controller that has an implemented CAN controller. It also has non-volatile memory, which is in the form of Ferroelectric Random Access Memory (F-RAM). Nonetheless, a USB interface is also part of this unit, which makes it possible to directly debug the BMS through the micro controller. For more info on how to use the USB interface and how to program the BMS see section \ref{sec:BMSDebugging}.\\
 
-\textbf{The MCU - AVR-CAN}
+\textbf{The MCU - AVR-CAN}\\
 The micro controller unit is a OLIMEX AVR-CAN development board. It would have been sufficient to have emulated a CAN interface. However, the platform is now equipped for future improvements by using a micro controller with an integrated CAN controller. This way a CAN protocol is required for the BMS if it is to become commercially viable.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Hardware/Pictures/BMSCANProto}
+	\caption[Empty]{CAN protocol for the BMS\footnotemark}
+	\label{fig:BMSCANProto}
+\end{figure}
+\footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation kap 1.5.3.1}}
 
+On figure \ref{fig:BMSCANProto} you can see the CAN protocol, which is based on the Original Standard Traction Pack. Since the BMS was first implemented with a CAN bus it was found that it would be a good idea to perform heavy duty data logging on the Motor Controller via CAN bus, therefore a CAN transceiver and software to support it was implemented on the Motor Controller. For more info about the Can-transceiver see section \ref{sec:CAN-Tranceiver}. A more detailed description of the CAN protocol can be found in \fxnote{reference to BMS2013}.\\
+Otherwise the AVR-CAN is mainly used as a control unit, since it performs calculations and sends commands to the Analog Front End all whilst monitoring different thresholds for safe operation areas for the batteries. The AVR-CAN is mainly used for programming and this is where all the BMS Software is stored and executed by the AT90CAN128 IC which is contained on the developer board. The software functionality will be described in the BMS Software chapter \fxnote{Godt med krydsreferencer til forskellige dokumenter - burde være include(xr) ... ?} %\externaldocument{BMSSoftware}.. 
 
-Microcontroller code ... see section \fxnote{Godt med krydsreferencer til forskellige dokumenter - burde være include(xr) ... ?} %\externaldocument{BMSSoftware}.
+\textbf{F-RAM}\\
+As mentioned earlier it was required by the 2013 requirements (BMS\_F.5)\fxnote{reference BMS 2013 sec 1.5.1.2.} that the BMS must be able to store the most critical information on internal memory for the ability to read the data on the USB interface or SD-card on the Motor Controller. Since the AVR-CAN module didn't have enough on-board memory a few options were considered for implementing a solution. EEPROM was considered since it is non-volatile and cheap but offers a limited amount of write cycles as well as the power consumption is fairly higher than the  F-RAM. However, the solution is F-RAM, which is non-volatile has a lot of write cycles and is fairly low power between write cycles. Moreover, please note that a newer F-RAM module than in the 2013 BMS Documentation has been used - More details on the changes done since the 2013 documentation can be found in section \fxnote{reference to CHANGES from BMS 2013 to BMS 2014}.  
 
 
 
