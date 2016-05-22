@@ -1,11 +1,28 @@
 \section{Battery Management System}
+The purpose of the BMS is to observe and make sure that the propulsion battery is kept within a safe operation area at all times. It does this by monitoring cell voltages, temperature and current from the battery. The data the BMS collects from these units is compared to lower and upper threshold limits that are in compliance with the requirements from the Shell Eco-Marathon committee \footnote{See "sem-2016-global-rules-chapter1-010715"}. In case an event occurs where the temperature, cell voltages or current from the battery exceed the allowed thresholds, then the BMS must autonomously make sure to protect the rest of the vehicle from over-current by isolating the battery. \\
+The BMS is designed to be as low power consuming as possible
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Hardware/Pictures/BMSOverview}
+	\caption[Empty]{An elaborated system and interfacing diagram for the BMS\footnotemark}
+	\label{fig:BMSOverview}
+\end{figure}
+\footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation sec 2.4}}
+
+
+
 INTRO HERE ------\\
 Batteri besparelse -- lav strøms stilstand (quiescent)... from for færdig solution... State of BMS...
 Hardware overview \\ 
-//FUSES \\
-The purpose of the Battery Management System (BMS)...
 
-In this paragraph a detailed documentation of the BMS' hardware will be given. Furthermore, each unit contained in the BMS will be described where the implementation and contents of each unit is viewed upon as a black-box. This means that the units will be considered purchased from a third party vendor and therefore a detailed description of the circuitry will not be given. This will lead to a different form of documenting with a lot of references to the "manufacturers" documentation that is the "BAC-projekt\_BMSogbatteri\_2013" \fxnote{Reference to 2013BMS Documentation} documentation. Thus the general purpose and overview of each unit will elaborated in this section. 
+\ref{fig:IBD_BMS}
+
+
+
+\subsection{Disclaimer}
+In this chapter a detailed documentation of the BMS' hardware will be given. Furthermore, each unit contained in the BMS will be described where the implementation and contents of each unit's circuitry is viewed upon as a black-box. This means that the units will be considered purchased from a third party vendor and therefore a detailed description of the circuitry will not be given. This will lead to a different form of documentation with a lot of references to the "manufacturer's" documentation that is the "BAC-projekt\_BMSogbatteri\_2013", which was done by Jonas Nyborg in 2013. \fxnote{Reference to 2013BMS Documentation} documentation.
+Thus the general purpose and overview of each unit will elaborated in this chapter. 
 
 \subsubsection{Propulsion battery}
 Er flyttet til Hardware/Battery \fxnote{Delete later}
@@ -39,7 +56,7 @@ The temperature sensor is rather self explanatory, its purpose is to measure the
 The purpose of this part is to assure and allow the Battery Monitor IC and Digital Unit to control the Isolation Switch. In case of a parameter exceeding a threshold this is how the BMS shuts of current to the rest of the vehicle - By using the Isolation Switch Driver circuit.\\
 
 \subsection{Analog Front End: Extension Module}
-The Extension Module unit's purpose is that it gives the BMS the capability to support a larger amount of battery cells. Since the BMS Front End only supports 6 cells - and using the Extension Module the BMS can support up to 18 cells. This is done by stacking the Battery Monitor ICs - See figure \ref{fig:BMSextensionmod}. The Extension Module resembles the Analog Front End, however, it doesn't include the same features. Features like SPI to the Digital Unit, current sensor input and Isolation Switch Driver are left out and not included. It's purpose is to communicate with the Battery Monitor IC and report the voltages from the other cells. That way the BMS has full control and is able to monitor all the batteries.
+The Extension Module unit's purpose is that it gives the BMS the capability to support a larger amount of battery cells. Since the BMS Front End only supports 6 cells - and using the Extension Module the BMS can support up to 18 cells. This is done by stacking the Battery Monitor ICs - See figure \ref{fig:BMSextensionmod}. The Extension Module resembles the Analog Front End, however, it doesn't include the same features. Features like SPI to the Digital Unit, current sensor input and Isolation Switch Driver are left out and not included. It's purpose is to communicate with the Battery Monitor IC and report the voltages from the other cells. That way the BMS has full control and is able to monitor all the batteries.\\
 
 \begin{figure}[H]
 	\centering
@@ -49,7 +66,10 @@ The Extension Module unit's purpose is that it gives the BMS the capability to s
 \end{figure}
 \footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation kap 3.1.3}}
 
-On figure \ref{fig:BMSextensionmod} you can see an overview of how a possible stacking of Battery Monitor ICs can be handled. You can also see that only the Analog Front End has a connection to the Digital Unit through SPI. A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.
+On figure \ref{fig:BMSextensionmod} you can see an overview of how a possible stacking of Battery Monitor ICs can be handled. You can also see that only the Analog Front End has a connection to the Digital Unit through SPI.\\
+The fuse block seen on figure \ref{fig:BMSextensionmod} is a fast-acting fuse that can handle up to 30A before it breaks. It is implemented as a requirement by the Shell Eco-Marathon committee.\\
+A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.\\
+
 
 \subsection{Current Sensor}
 The purpose of this unit is to measure the amount of current flowing through the sensor as well as the direction of the current. The data that the sensor generates is sent to and handled by the Analog Front End. \\
@@ -123,16 +143,12 @@ Otherwise the AVR-CAN is mainly used as a control unit, since it performs calcul
 As mentioned earlier it was required by the 2013 requirements (BMS\_F.5)\fxnote{reference BMS 2013 sec 1.5.1.2.} that the BMS must be able to store the most critical information on internal memory for the ability to read the data on the USB interface or SD-card on the Motor Controller. Since the AVR-CAN module didn't have enough on-board memory a few options were considered for implementing a solution. EEPROM was considered since it is non-volatile and cheap but offers a limited amount of write cycles as well as the power consumption is fairly higher than the  F-RAM. However, the solution is F-RAM, which is non-volatile has a lot of write cycles and is fairly low power between write cycles. Moreover, please note that a newer F-RAM module than in the 2013 BMS Documentation has been used - More details on the changes done since the 2013 documentation can be found in section \fxnote{reference to CHANGES from BMS 2013 to BMS 2014}.  
 
 
-
-\subsection{Implementation}
-text
-
-\subsection{Unity test}
-text
+%\subsection{Implementation}
+%\subsection{Unity test}
 
 \subsection{Programming Quick Guide}
 \label{sec:BMSDebugging}
-The purpose of this section is meant to help whoever is going to work with the BMS in the future. Here you will be guided in how to use, debug and program the Digital Unit.
+The purpose of this section is meant to help whoever is going to work with the BMS in the future. Here you will be guided in how to use, debug and program the Digital Unit thus the BMS.
 
 Firstly, you will need a few prerequisites listed below to be able to program the BMS. Since the BMS was originally build in 2013 the software to program the BMS is outdated but sometimes it is only possible to proceed and get it to work with the specified utilities. 
 
