@@ -76,7 +76,7 @@ The filter's transfer function in the s-domain can be found using the Laplace-tr
 	G(s) = \frac{1}{CLs^2 + CRs + 1}
 \end{equation}
 
- The filter's frequency-response as well as the cutoff-frequency can be calculated using the specified values for the capacitance, resistance and the inductance.
+ The filter's frequency-response (bode plot) as well as the cutoff-frequency can be calculated using the specified values for the capacitance, resistance and the inductance.
 \begin{equation}
 	\begin{split}
 		L_a &= \SI{0.072}{\milli \henry}\\
@@ -87,8 +87,11 @@ The filter's transfer function in the s-domain can be found using the Laplace-tr
 	\end{split}
 \end{equation}
 
-The frequency response is represented below in the form of a Bode-plot.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Hardware/LoadSystem/BodeFilter}
+	\caption{RLC-filter consisting of the Generator and the Super Capacitor}
+	\label{fig:RLC_filter}
+\end{figure}
 
-% bode plot
-
-Using the filter's transfer function it can be found that the amplification at the switching frequency f\textsubscript{switch} of \SI{20}{\kilo \hertz} is equal to \SI{-80}{dB}. At such high damping the the output-signal can effectively be assumed to be a DC-value.
+Using the filter's transfer function it can be found that the amplification at the switching frequency f\textsubscript{switch} of \SI{20}{\kilo \hertz} is equal to \SI{-80}{dB}. At such high damping the output-current can effectively be assumed to be a steady DC-value.
