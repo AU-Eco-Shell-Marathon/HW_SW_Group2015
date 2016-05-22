@@ -29,6 +29,11 @@ The chosen driver is a MCP1407 High Speed Power Driver. This driver is specified
 	\label{fig:MOSFETDriverInternal}
 \end{figure}
 
-The MOSFET-driver is configured such that the outputs are connected with the MOSFET's gate through a \SI{3.3}{\ohm} resistor and the input is connected with the PSoC's output. The driver's positive supply line V\textsubscript{CC} is connected with the 12 VDC line in parallel with a \SI{1}{\micro \farad} and a \SI{0.1}{\micro \farad} capacitor. The driver's remaining pins are connected to ground as specified in the datasheet.
+The MOSFET-driver is configured such that the outputs are connected with the MOSFET's gate through a \SI{3.3}{\ohm} resistor and the input is connected with the PSoC's output. The driver's positive supply line V\textsubscript{CC} is connected with the 12 VDC line in parallel with a \SI{1}{\micro \farad} and a \SI{0.1}{\micro \farad} capacitor. The driver's remaining pins are connected to ground as specified in the datasheet. The implemented design is seen below.
 
-\fxnote{kredsløbsdiagram}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Hardware/LoadSystem/MOSFET}
+	\caption{Configuration of MOSFET and driver in the system}
+	\label{fig:MOSFETCircuit}
+\end{figure}
