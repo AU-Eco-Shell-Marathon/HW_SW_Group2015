@@ -10,13 +10,22 @@ As seen on figure \vref{SD} the hardware outlay to communicate with the SD-card 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{Hardware/Pictures/SD_card}
+	\includegraphics[width=0.4\linewidth]{Hardware/Pictures/SD_card}
 	\caption{SD-card schematic}
 	\label{fig:SD}
 \end{figure}
 
 \subsection{Implementation}
 The implementation of the SD-card reader is done away from the PCB. This is done so that reader is removable, in case that it is not needed to collect any data in that specific run and thereby not drawing any, albeit small, current.  
+
+The connection between the breakout board used and the controller is via 6 connectors. Supply and ground for the board, and 4 wires used for data transfer. The data transfer works via the SPI protocol, so connections shown on figure \vref{SD} corresponds to the following:
+
+\begin{itemize}
+	\item{SD\_SS = Slave select}
+	\item{SD\_SCLK = SPI Clock}
+	\item{SD\_DI = Master in, Slave out(MISO)}
+	\item{SD\_DO = Master Out, Slave in(MOSI)}
+\end{itemize}
 
 \subsection{Unity test}
 The test is done in correlation with the software test. Since it is a board that is bought, it is assumed to work, which the test showed succesfully. 
