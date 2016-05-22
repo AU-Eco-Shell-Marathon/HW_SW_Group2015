@@ -6,7 +6,10 @@ Usually one would think that the coast and burn method would consume more fuel t
 
 In AU2 this principle is utilized to its fullest potential. A rundown of what happens in the motor controller is as follows: when the car is turned on, it will start accelerating rapidly. When it reaches a given velocity, it will start coasting, meaning the motor will shutdown. Then it will proceed to slow down until it reaches a specified speed before starting to accelerate again. This process will keep on repeating until either there is an overcurrent on the engine or the driver presses a button to disable the coast and burn functionality.
 
-\includegraphics[width=1.0\linewidth]{Software/Coastburn.PNG}
-
-\fxnote{Reference til drivlinje rapporten}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Software/Coastburn.PNG}
+	\caption[Empty]{Illustration of a simulation cycle with a constant acceleration\footnotemark}
+	\label{fig:Coastburn}
+\end{figure}
+\footnotetext{Reference to driv linje her + tage nyt high res billede uden texten\fxnote{Reference til drivlinje rapporten}}

@@ -68,10 +68,10 @@ The Isolation Switch relay is of a type Normally Open(NO), which means unless it
 \end{figure}
 \footnotetext{\url{http://uk.rs-online.com/web/p/non-latching-relays/6995676/} (Date: 21-05-2016)}
 
-The Isolation Switch works by having the Digital Unit send commands to the Analog Front End, which in return controls the Isolation Switch Driver. And the driver controls the relay. If the cells are within a safe operation area and the Digital Unit hasn't told the Analog Front End to open the relay - meaning to prevent current flowing through it - then a secondary option is available to isolate the battery manually. This functionality is implemented by a Emergency Switch(button). It serves the purpose of delivering a 0V drop over the relay's coil when the Emergency Switch is pressed. This will force the relay to open and seize to supply current through its terminals and therefore isolate the battery. \\
+The Isolation Switch works by having the Digital Unit send commands to the Analog Front End, which in return controls the Isolation Switch Driver. And the driver controls the relay. If the cells are within a safe operation area and the Digital Unit hasn't told the Analog Front End to open the relay - meaning to prevent current flowing through it - then a secondary option is available to isolate the battery manually. This functionality is implemented by a Emergency Switch(button). It serves the purpose of delivering a 0V drop over the relay's coil when the Emergency Switch is pressed. This will force the relay to open and seize to supply current through its terminals and therefore isolate the battery.
 
 \subsubsection{Digital Unit (HW)}
-This unit's purpose is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell and battery parameters. If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. Furthermore the Digital Unit is capable of communication with external units. 
+This unit's purpose is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell and battery parameters. If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. The Digital Unit is capable of communication with external units. Furthermore, the Digital Unit utilizes galvanic isolation and a DC/DC converter, which will be described in detail below. 
 
 \begin{figure}[H]
 	\centering
@@ -80,6 +80,27 @@ This unit's purpose is to gather the measured values from the Analog Front End a
 	\label{fig:BMSdigitalUnit}
 \end{figure}
 \footnotetext{Reference to 2013BMS\fxnote{Reference to 2013BMS Documentation kap 3.1.6}}
+
+On figure \ref{fig:BMSdigitalUnit} you can see the Digital Unit and its contents. A elaborative description will be given on each of the circuit blocks in this section. As mentioned earlier none of the implementation will be addressed since this unit along with others are viewed upon as a black box.
+
+\textbf{Galvanic Isolation}\\
+Galvanic isolation is a principle of isolating functional parts of electrical systems to prevent flow of current. This means that no direct path of conductivity is permitted. However, information can still be exchanged by utilization of different techniques such as electromagnetic waves or by optical and mechanical means. These are simply a few methods mentioned, there are a lot of various ways to transmit information by using galvanic isolation.\\
+In any case, the way the galvanic isolation is used in the BMS is through the use of optocouplers. Optocouplers or opto-isolators are components that by the use of light can transfer electrical signals between two isolated circuits. This application often consists of an LED on the sender side, and a photodiode on the receiver side - You can see figure \ref{fig:BMSoptocoup} for a quick orientation of the principle.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Hardware/Pictures/BMSoptocoup}
+	\caption[Empty]{Basic illustration of the functionality of an optocoupler\footnotemark.}
+	\label{fig:BMSoptocoup}
+\end{figure}
+\footnotetext{\url{https://commons.wikimedia.org/wiki/File:Optocoupler.svg} (Date: 22-05-2016)}
+
+When the sender side wants to send something it activates the LED. The light from the LED activates the photodiode on the other side of the isolated circuit. Then through either OP-AMPs or transistors the light received in the photodiode can be translated into electrical signals and thus you utilize light to send information. Other than being able to send information through light, the optocouplers are also good for safety. They can often withstand high input-to-output voltages and voltage transients. \\
+With low power consumption in mind, a few digital isolators based on optocouplers were examined to find the best possible solution. You can see more about which digital isolators were investigated in the \fxnote{reference to BMS2013 sec 3.1.6.1}. The examination of the two digital isolators resulted in neither of them being chosen since they were consuming to much power on both the receiver and sender side. Therefore the Galvanic Isolation circuit is based on dual-channel optocouplers. This design approach makes it possible to have a low power consumption during use and nearly nothing while quiescent. Furthermore, when the SPI bus isn't used for non-isolated devices a smart power saving option has been implemented, more on this can be found in \fxnote{BMS2013 reference cap 3.1.6.1}.
+
+\textbf{DC/DC Converter}
+
+
 
 
 
