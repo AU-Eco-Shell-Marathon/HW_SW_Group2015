@@ -99,6 +99,11 @@ When the sender side wants to send something it activates the LED. The light fro
 With low power consumption in mind, a few digital isolators based on optocouplers were examined to find the best possible solution. You can see more about which digital isolators were investigated in the \fxnote{reference to BMS2013 sec 3.1.6.1}. The examination of the two digital isolators resulted in neither of them being chosen since they were consuming to much power on both the receiver and sender side. Therefore the Galvanic Isolation circuit is based on dual-channel optocouplers. This design approach makes it possible to have a low power consumption during use and nearly nothing while quiescent. Furthermore, when the SPI bus isn't used for non-isolated devices a smart power saving option has been implemented, more on this can be found in \fxnote{BMS2013 reference cap 3.1.6.1}.
 
 \textbf{DC/DC Converter}
+The purpose of the DC/DC Converter is to convert the battery voltage, which is expected to be around 44.4V nominal, to a lower voltage that is usable by the other components in the Digital unit. This includes the Galvanic Isolation and micro controller circuit with its included parts. \\
+Since power consumption is a very important factor in the design of the BMS, several DC/DC converters were examined to see if it was possible to find a suitable prefabricated and commercial DC/DC converter. The results of this inspection and a more detailed description of the converter can be found in \fxnote{reference to BMS2013 sec 3.1.6.2}.
+
+\textbf{MCU with CAN, USB and F-RAM}\\
+
 
 
 
