@@ -4,16 +4,24 @@
 % https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#BibTeX
 % ---------------------------------------------------------------------------------------
 
+@techreport{BMSDocumentation,
+	author = "Jonas Nyborg",
+	title = "Propulsion Battery and Battery Management System - Project Documentation",
+	institution = "Aarhus University School of Engineering ((AU IHA))",
+	year = "2013"
+	note = "Bilag: gg.pdf"
+}
+
 % ---------------------------------------------------------------------------------------
-% Template for references
+% Datasheets
 % ---------------------------------------------------------------------------------------
-%@type{name,
-%		title = "[Something]",
-%		author = "[Someone]",
-%		year = "[Sometime]",
-%		note = "Bilag: [Name of the file in folder]
-%		}
-% ---------------------------------------------------------------------------------------
+
+@manual{BMSBatteryTest,
+	title = "Battery cell type test",
+	author = "Jonas Nyborg",
+	year = "2013",	
+	note = "Bilag: Battery cell type test.pdf"
+}
 
 @manual{CAN,
 	title = "SN65HVD1040 Low-Power CAN bus Transceiver",
@@ -59,15 +67,13 @@
 
 @manual{BK2250,
 	title = "Hand Held Analyzer Types 2250 and 2270",
-	author = "Bruel & Kjær",
-	year = "----",	
-	note = "Bilag: BK_type2250.pdf"
+	author = "Bruel and Kjær",
+	note = {Bilag: BK\_type2250.pdf}
 }
 
 @manual{PSoC5,
 	title = "PSoC 5LP prototyping kit guide",
 	author = "Cypress Perform",
-	year = "----",	
 	note = "Bilag: PSoC 5LP Protoyping Kit Guide.pdf"
 }
 
@@ -106,9 +112,30 @@
 	note = "Bilag: MCP1407.pdf"
 }
 
+@manual{BMSRelay,
+	title = "HE RELAYS (HE1aN-S-DC48V)",
+	author = "Panasonic Electric Works",
+	year = "",	
+	note = "Bilag: HE Relays TV-10,15(HE1aN-S-DC48V).pdf"
+}
+
 @online{CAN-Connection,
 	author = "",
-	title = "{CAN_BUS}",
+	title = "CAN\_BUS",
 	url = "https://en.wikipedia.org/wiki/CAN_bus#Layers",
 	note = "Last Visited d. 24/5-2016",
+}
+
+@online{IsolationSwitchOnline,
+	author = "",
+	title = "SPST-NO PCB Mount Non-Latching Relay Screw, 30 A, 48V dc",
+	url = "http://uk.rs-online.com/web/p/non-latching-relays/6995676/",
+	note = "Last visited 21/05-2016",
+}
+
+@online{OptoIllu,
+	author = "",
+	title = "Optocoupler Illustration",
+	url = "https://commons.wikimedia.org/wiki/File:Optocoupler.svg",
+	note = "Last visited 22/05-2016",
 }
