@@ -95,7 +95,6 @@ On figure \ref{fig:BMSextensionmod} you can see an overview of how a possible st
 The fuse block seen on figure \ref{fig:BMSextensionmod} is a fast-acting fuse that can handle up to 30A before it breaks. It is implemented as a requirement by the Shell Eco-Marathon committee.\\
 A few things to note on this diagram: The extension modules are capable of utilising an NTC Thermistor, however, for simplicity it has been chosen that only the Analog Front End contains and handles the Thermistor to measure the temperature of the batteries. One of these is more than enough since the other Thermistors would simply put out almost or exactly the same readings.
 
-
 \subsection{Current Sensor}
 The purpose of this unit is to measure the amount of current flowing through the sensor as well as the direction of the current. The data that the sensor generates is sent to and handled by the Analog Front End. \\
 The choice for a current sensor was either to use a Hall current sensor as done in the Motor Controller unit or use a shunt current sensor. Since the goal is to make the BMS as energy efficient as possible the choice fell on the shunt based sensor. It is a better choice when considering the power consumption for the current sensor, more on the specifications and calculations can be found in xx \fxnote{reference BMS 2013 sec 3.1.4}.
@@ -167,9 +166,23 @@ Otherwise the AVR-CAN is mainly used as a control unit, since it performs calcul
 \textbf{F-RAM}\\
 As mentioned earlier it was required by the 2013 requirements (BMS\_F.5)\fxnote{reference BMS 2013 sec 1.5.1.2.} that the BMS must be able to store the most critical information on internal memory for the ability to read the data on the USB interface or SD-card on the Motor Controller. Since the AVR-CAN module didn't have enough on-board memory a few options were considered for implementing a solution. EEPROM was considered since it is non-volatile and cheap but offers a limited amount of write cycles as well as the power consumption is fairly higher than the  F-RAM. However, the solution is F-RAM, which is non-volatile has a lot of write cycles and is fairly low power between write cycles. Moreover, please note that a newer F-RAM module than in the 2013 BMS Documentation has been used - More details on the changes done since the 2013 documentation can be found in section \fxnote{reference to CHANGES from BMS 2013 to BMS 2014}.  
 
+\subsection{Unit test}
+In this section.... test of
 
-%\subsection{Implementation}
-%\subsection{Unity test}
+\subsubsection{Isolation Switch}
+The way this unit was tested is rather straight forward. A few things were used to complete it. These include a digital multimeter and a power supply. This test is both audible and visual. To test it the datasheet \fxnote{reference to RELAY datasheet} for the relay was read to make sure the coil voltages were known beforehand. It was found that the pick-up voltage was 70\% or less of the nominal coil voltage. Whereas the drop-out voltage 
+
+\subsubsection{Digital Unit (HW)}
+
+
+
+\subsubsection{Analog Front End}
+
+
+
+\subsubsection{Current Sensor}
+
+
 
 \subsection{Programming Quick Guide}
 \label{sec:BMSDebugging}
@@ -188,13 +201,15 @@ Tools required to program the BMS are listed here:
 	\end{itemize}
 	
 After you have acquired these tools you are ready to proceed. First of you connect the USB cable from your computer to the BMS front end. Then you launch your chosen hyper terminal and select the COM-port which the BMS has. Afterwards you configure the hyper terminal, where the two most important settings are the baud rate and the way you receive from the BMS. Set the baud rate to 38400, 1 stop bit, 8 data bits and 0 parity bits. Then you specify the newline settings so that you receive both CR+LF else select AUTO. In Tera Term you go to Setup->Terminal->New-line to perform these changes. 
-Now you can attach the two batteries to the BMS (remember to plug in both the main plug and the cell plug to the front end), once this is done you're ready to receive data from the front end and it should look something like in the figure below \ref{fig:BMSTeraTerm}.
+Now you can attach the two batteries to the BMS (remember to plug in both the main plug and the cell plug to the front end), once this is done you're ready to receive data from the front end whilst a successfull and working condition of the BMS USB interface should look something like in the figure below \vref{fig:BMSTeraTerm}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\linewidth]{Hardware/Pictures/BMS_teraterm}
 	\caption{Tera Term Printout from BMS}
 	\label{fig:BMSTeraTerm}
 \end{figure}
+
+\fxnote{referere to unit test }
 
 Now you're ready to program the BMS. You can compile the code from either Atmel Studio 6 or 7, when you're done compiling you'll have a .hex file which is used for the AVR-CAN (Digital Unit). From this point on you have to follow the guide located in the pdf-file "How-to-install-and-use-AVR-JTAG-USB.pdf" which is located in the BMS repository. Now you can program the AVR-CAN module by selecting the .hex file or other valid files and program the BMS.
 
