@@ -20,7 +20,22 @@ The design considerations when using these specific components will be discussed
 
 \textbf{IRFB7530} \fxnote{husk ref}
 
-This com
+When using a MOSFET to control a DC-motor, there are numerous precautions that must be taken into account. Most of the precautions will be mentioned further down, when designing the MOSFET driver. 
+
+The MOSFET is the most wide-spread and reckoned way to control a DC-motor and therefore it is chosen here as well. Since the car is not required to run in reverse, it is implemented as a single component and not a H-bridge. This eases the implementation greatly.
+
+This specific component is chosen as it consist of a very low on resistance and thereby the power dissipated in the component will be lower than for a similar MOSFET with a higher on resistance. The maximum on resistance, as described by the datasheet is mere 2 m$\Omega$. Due to a lower power dissipation the heatshink reqiured by the MOSFET to keep it within its operating range, can be smaller or even obsolete. When choosing a MOSFET with a low on resistance, as this is the case, it will come with a very high input capacitance. This is caused by the manufactoring proces of a MOSFET and the values are inversely proportional with each other. For this reason also it has been chosen to implement a MOSFET driver. 
+
+The chosen MOSFET is overdimensioned for this purpose, as it can both endure a much higher current and voltage, than what the motor will operate at. This is done, as the stress that it will be put under during the race will be great and a breakdown would be more or less catastrophic. The specifications can be seen on the table in figure \vref{MOSFET}. 
+
+The chosen MOSFET is in the TO-200 housing. This housing is chosen, so that if it is needed to mount the MOSFET on a heat sink it can be done conveniently.  
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{Hardware/Pictures/MOSFET}
+	\caption{MOSFET specifications}
+	\label{fig:MOSFET}
+\end{figure}
 
 \textbf{MBR20200CT} \fxnote{husk ref}
 
