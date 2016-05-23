@@ -17,7 +17,7 @@ The biggest allowed voltage-drop over one switching-period can be calculated as 
 	dV = V_b - V_{b,minimum} = \SI{18.16}{\volt} - \SI{16.13}{\volt} = \SI{2.03}{\volt}
 \end{equation}
  
-The MOSFET's switchfrequency f\textsubscript{switch} is chosen to be equal to \SI{20}{\kilo \hertz}. The time between each switch can then be calculated as:
+The MOSFET's switch frequency f\textsubscript{switch} is chosen to be equal to \SI{20}{\kilo \hertz}. The time between each switch can then be calculated as:
 \begin{equation}
 	dt = \frac{1}{f_{switch}} = \frac{1}{\SI{20}{\kilo \hertz}} = \SI{0.05}{\milli \second}
 \end{equation}
@@ -31,7 +31,7 @@ The minimum value of the Super Capacitor's capacitance can be found using the ca
 	\end{split}
 \end{equation}
 
-The chosen type of super capacitor is a Epcos B41570 Aluminum electrolytic capacitor. This capacitor has a capacitance of \SI{10}{\milli \farad} and is rated to be able to handle a DC-voltage of \SI{100}{\volt}. The chosen capacitor has a much larger value than the one needed. However, this will only cause the voltage-drop dV to be much smaller than the required. The new voltage-drop can be found as:
+The chosen type of super capacitor is a Epcos B41570 Aluminum electrolytic capacitor\cite{SuperCapacitor}. This capacitor has a capacitance of \SI{10}{\milli \farad} and is rated to be able to handle a DC-voltage of \SI{100}{\volt}. The chosen capacitor has a much larger value than the one needed. However, this will only cause the voltage-drop dV to be much smaller than the required. The new voltage-drop can be found as:
 \begin{equation}
 	\begin{split}
 		I &= C \cdot \frac{dV}{dt}\\
@@ -41,7 +41,7 @@ The chosen type of super capacitor is a Epcos B41570 Aluminum electrolytic capac
 \end{equation}
 
 \textbf{Calculations - Power}\\
-Due to the non-ideal nature of the capacitor it will contain both a resistance and a reactance. This means that both an active an a reactive power will be generated in the Super Capacitor. The active power can be calculated using the capacitor's equivalent series resistance (ESR):
+Due to the non-ideal nature of the capacitor it will contain both a resistance and a reactance. This means that both an active an a reactive power will be generated in the Super Capacitor. The active power can be calculated using the capacitor's equivalent series resistance (ESR)\cite{SuperCapacitor}:
 \begin{equation}
 	P_C = I_{C,rms}^2 \cdot ESR
 \end{equation}
@@ -62,7 +62,7 @@ Where u(t) is the unit-step-function. For a square-waved signal the rms-value ca
 \end{equation}
 
 \textbf{Calculations - RLC-filter}\\
-The coupling between the Generator and the Super Capacitor creates a low-pass RLC-filter due to the internal impedance in the Generator. The filter is seen below:
+The coupling between the Generator and the Super Capacitor creates a low-pass RLC-filter due to the internal impedance in the Generator\cite{Maxon}. The filter is seen below:
 
 \begin{figure}[H]
 	\centering

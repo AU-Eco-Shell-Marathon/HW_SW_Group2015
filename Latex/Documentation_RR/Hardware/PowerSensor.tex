@@ -9,7 +9,7 @@ The purpose of this block is to measure the electrical power delivered to the ca
 The design is split in two due to the fact that the sensor must measure two parameters.
 
 \textbf{Current Transducer}\\
-The current is measured using a Hall-effect based current transducer of the type LTS 15-NP. The internal circuit of the component is seen on Figure \ref{fig:LTS_internal_circuit} below. The transucer measures the strength of the magnetic field induced by the input current and converts it to a voltage. This voltage is amplified and given as the transducer's output. The internal amplifier must be supplied with 5 VDC in order for the transducer to measure properly.
+The current is measured using a Hall-effect based current transducer of the type LTS 15-NP\cite{CurrentTransducer}. The internal circuit of the component is seen on Figure \ref{fig:LTS_internal_circuit} below. The transucer measures the strength of the magnetic field induced by the input current and converts it to a voltage. This voltage is amplified and given as the transducer's output. The internal amplifier must be supplied with 5 VDC in order for the transducer to measure properly.
 
 \begin{figure}[H]
 	\centering
@@ -18,7 +18,7 @@ The current is measured using a Hall-effect based current transducer of the type
 	\label{fig:LTS_internal_circuit}
 \end{figure}
 
-The LTS 15-NP is gives an output-voltage which is proportional to the input-current and lies in the range between $\SI{0.5}{\volt}$ and $\SI{4.5}{\volt}$. The transducer contains 6 pins which can be connected in different ways in order to change the number of primary turns in the coil - and thus changing the primary nominal current rms I\textsubscript{PN}. This means that the input's measuring range can be configured as the output-voltage V\textsubscript{out} can be described using the following formula:
+The LTS 15-NP is gives an output-voltage which is proportional to the input-current and lies in the range between $\SI{0.5}{\volt}$ and $\SI{4.5}{\volt}$. The transducer contains 6 pins which can be connected in different ways in order to change the number of primary turns in the coil - and thus changing the primary nominal current rms I\textsubscript{PN}\cite{CurrentTransducer}. This means that the input's measuring range can be configured as the output-voltage V\textsubscript{out} can be described using the following formula:
 \begin{equation}
 	V_{out} = 2.5 \pm \left( 0.625 \cdot \frac{I_{P}}{I_{PN}} \right)
 	\label{eq:current_transducer}
@@ -92,7 +92,7 @@ The Power Sensor's circuit can be implemented by combining the two designs above
 	\label{fig:PowerSensor_circuit}
 \end{figure}
 
-The diodes D1 and D2 are of the type 1N4007 and are used to protect the circuit as the node between them becomes limited to a voltage in the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-current will flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons\cite{EMC}.
+The diodes D1 and D2 are of the type 1N4007\cite{1N4007} and are used to protect the circuit as the node between them becomes limited to a voltage in the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-current will flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons\cite{EMC}.
 
 \subsection{Unity test}
 \label{sec:PowerSensorTest}
@@ -125,7 +125,7 @@ In order to let \SI{0}{\ampere} flow through the transducer, the voltage-source 
 	\end{split}
 \end{equation}
 
-It is seen that the according to the regression the output is exactly as it is specified in datasheet. However, this may very well be due to the fact that the used volt-meter (Tenma 72-7765) doesn't have a large enough precision. The measured data is seen on the table below:
+It is seen that the according to the regression the output is exactly as it is specified in datasheet. However, this may very well be due to the fact that the used volt-meter (Tenma 72-7765\cite{Tenma}) doesn't have a large enough precision. The measured data is seen on the table below:
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}

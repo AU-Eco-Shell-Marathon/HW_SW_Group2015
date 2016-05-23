@@ -13,7 +13,7 @@ The torque-signal and the velocity-signal from the Torque Sensor are measured by
 The designs from the previous section is implemented using a non-inverting adder and two schmitt-triggers in series.
 
 \textbf{Non-inverting adder}\\
-The circuit is built using a MCP6004 I/P operational amplifier. Its positive and negative supply lines are connected with 5 VDC and ground. The op-amps positive power supply is connected in parallel with a $\SI{100}{\nano \farad}$ capacitor. This capacitor improves the op-amps high-frequency response. The final design is seen on Figure \vref{fig:SignalConverterTorque3}
+The circuit is built using a MCP6004 I/P operational amplifier\cite{MCP6004}. Its positive and negative supply lines are connected with 5 VDC and ground. The op-amps positive power supply is connected in parallel with a $\SI{100}{\nano \farad}$ capacitor. This capacitor improves the op-amps high-frequency response. The final design is seen on Figure \vref{fig:SignalConverterTorque3}
 
 \begin{figure}[H]
 	\centering
@@ -23,7 +23,7 @@ The circuit is built using a MCP6004 I/P operational amplifier. Its positive and
 \end{figure}
 
 \textbf{Schmitt-trigger}\\
-The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-trigger inputs. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5 VDC power supply this delay is given by:
+The noise reduction is implemented using two 74HC14 hex inverter with Schmitt-trigger inputs\cite{74HC14}. The inverter creates a small propagation delay between the Torque Sensor's output and the PSoC's input. At a 5 VDC power supply this delay is given by:
 \begin{equation}
 	t_{pd} = t_{PHL} = t_{PLH} = \SI{24}{\nano \second}
 \end{equation}

@@ -1,6 +1,6 @@
 \newpage
 \subsection{Snubber}
-Due to the fast-switching application of the MOSFET it will create transients which must be supressed. This can be done using an electrical snubber connected between the MOSFET's drain and source. The snubber consists of a resistor and a capacitor in series. The snubber is specified to the following values:
+Due to the fast-switching application of the MOSFET it will create transients which must be supressed. This can be done using an electrical snubber connected between the MOSFET's drain and source. The snubber consists of a resistor and a capacitor in series\cite{Snubber}. The snubber is specified to the following values:
 \begin{equation}
 	\begin{split}
 		C_{snubber} &= \SI{250}{\nano \farad}\\
@@ -16,7 +16,7 @@ Furthermore it is rated to be able to handle alternating voltages up to \SI{250}
 	\label{fig:SnubberCircuit}
 \end{figure}
 
-When the snubber is inserted in the Load System it will be part of a filter consisting of the Generator, the Snubber and the Load. In order to determine ift the filter is stable, the damping ratio must be calculated. This can be done by using the values for the Generator's internal armature: 
+When the snubber is inserted in the Load System it will be part of a filter consisting of the Generator, the Snubber and the Load. In order to determine ift the filter is stable, the damping ratio must be calculated. This can be done by using the values for the Generator's internal armature\cite{Maxon}: 
 \begin{equation}
 	\begin{split}
 		L_a &= \SI{0.072}{\milli \henry}\\

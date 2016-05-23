@@ -6,7 +6,7 @@ The purpose of this block is to supply both the various 5 Volt components in the
 In order to determine which component can be used to convert the voltage, the maximum current drawn by the 5 VDC components must be calculated. This is done by looking through the components' datasheets. It is assumed that all component operates at an ambient temperature of around \SI{25}{\celsius}. The current-values from the datasheet are selected by this temperature - or the closest specified temperature.
 \begin{itemize}
 	\item \textbf{The current transducers in the Power Sensor and Load System}\\
-	The current consumed by the LTS 15-NP can be calculated by this equation:
+	The current consumed by the LTS 15-NP can be calculated by this equation\cite{CurrentTransducer}:
 	\begin{equation}
 		I_{LTS} = \SI{28}{\milli \ampere} + \frac{I_P}{N_S} + I_{out}
 	\end{equation}
@@ -27,12 +27,12 @@ In order to determine which component can be used to convert the voltage, the ma
 	\end{split}
 	\end{equation}
 	\item \textbf{The schmitt-trigger in the Signal Converter}\\
-	According to the datasheet for the 74HC14 the quiescent supply current I\textsubscript{CC} (the current drawn when no input is given) at the specified temperature has a typical value of \SI{2.0}{\micro \ampere}. An additional current of \SI{108}{\micro \ampere} is drawn when the Schmitt-trigger recieves an input. The typical amount of current drawn by the component can therefore be found as:
+	According to the datasheet for the 74HC14\cite{74HC14} the quiescent supply current I\textsubscript{CC} (the current drawn when no input is given) at the specified temperature has a typical value of \SI{2.0}{\micro \ampere}. An additional current of \SI{108}{\micro \ampere} is drawn when the Schmitt-trigger recieves an input. The typical amount of current drawn by the component can therefore be found as:
 	\begin{equation}
 		I_{ST} = I_{CC} + \Delta I_{CC} = \SI{2.0}{\micro \ampere} + \SI{108}{\micro \ampere} = \SI{110}{\micro \ampere}
 	\end{equation}
 	\item \textbf{Operational amplifiers in the Signal Converter and Anti-aliasing Filters}
-	According to the datasheet for the MCP6004 the supply current I\textsubscript{Q} at the specified temperature is has a typical value of \SI{100}{\micro \ampere}. As the subsystem contains 4 operational amplifiers the typical amount of current drawn by them can be found as:
+	According to the datasheet for the MCP6004\cite{MCP6004} the supply current I\textsubscript{Q} at the specified temperature is has a typical value of \SI{100}{\micro \ampere}. As the subsystem contains 4 operational amplifiers the typical amount of current drawn by them can be found as:
 	\begin{equation}
 		I_{OpAmp} = 4 \cdot I_Q = 4 \cdot \SI{100}{\micro \ampere} = \SI{400}{\micro \ampere}
 	\end{equation}
@@ -59,7 +59,7 @@ The total amount of current drawn on the 5 VDC supply line can now be calculated
 Which means that the voltage regulator must be able to deliver an output-current of atleast \SI{613}{\milli \ampere} in order for the system to function properly.
 
 \subsection{Implementation}
-The block is implemented using a LM7805 voltage regulator which is able to deliver an output-current of \SI{1}{\ampere} and an output-voltage of \SI{5}{\volt}. In order to give a steady DC-output, the voltage regulator's setup is configured as seen on Figure \ref{fig:LM7805_app} below.
+The block is implemented using a LM7805 voltage regulator\cite{LM7805} which is able to deliver an output-current of \SI{1}{\ampere} and an output-voltage of \SI{5}{\volt}. In order to give a steady DC-output, the voltage regulator's setup is configured as seen on Figure \ref{fig:LM7805_app} below.
 
 \begin{figure}[H]
 	\centering
