@@ -18,7 +18,7 @@ There are three components at use here:
 
 The design considerations when using these specific components will be discussed here. Furthermore the components specific application purpose will be mentioned. Lastly, it will be explained as to why this component was chosen.  
 
-\textbf{IRFB7530} \fxnote{husk ref}
+\textbf{IRFB7530} \cite{IRFB7530}
 
 When using a MOSFET to control a DC-motor, there are numerous precautions that must be taken into account. Most of the precautions will be mentioned further down, when designing the MOSFET driver. 
 
@@ -37,7 +37,7 @@ The chosen MOSFET is in the TO-200 housing. This housing is chosen, so that if i
 	\label{fig:MOSFET}
 \end{figure}
 
-\textbf{MBR20200CT} \fxnote{husk ref}
+\textbf{MBR20200CT} \cite{MBR20200}
 
 This diode is a flyback diode, in place to secure a known passage for the generated current by the motor, when the MOSFET is shut off. When the motor is supplied is supplied with a current it works as a motor, but when the current is shut off, the motor works as a generator. It is necessary to secure components from possible breaking down after trying to sink the current from the generated motor. The diode is placed in parallel with the motor.
 
@@ -45,7 +45,7 @@ A schottkey diode is chosen for its very fast switching time and less for the lo
 
 This diode is chosen for its specifications to be able to withstand the current coming from the motor. It can be switched with another diode with similar specifications.
 
-\textbf{MCP1407} \fxnote{husk ref}
+\textbf{MCP1407} \cite{MCP1407}
 
 When using a MOSFET driver the design must live up to requirements set forth by the datasheet. This mostly consists of proper placement on the PCB layout, but also includes which capacitors to use as decoupling. But it also leaves a lot for the designer to choose, as there is no suggestions for connections. 
 

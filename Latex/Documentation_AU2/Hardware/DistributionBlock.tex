@@ -6,7 +6,7 @@ A conversion from the 48V to a supply voltage 5V is needed to supply various par
 
 When designing SMPS there is several packages out there, that works with passive componentes only. These packages makes the job for the designer much easier as many of the considerations are made for you. Considerations that still much be taken into account are input and output voltages, which already have been decided here. The next thing that can be considered is the efficiency of the package, which is stated in the datasheet.
 
-It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet(see figure \vref{fig:LT8300}) \fxnote{husk ref} except there is implemented a snubbercircuit and a decoupling capacitor before the transformer. Furthermore the values of the resistors are changed.  \\
+It has been chosen to use the LT8300 Isolated Flyback Converter from Linear Technology. The implementation is done almost according to the datasheet(see figure \vref{fig:LT8300}) \cite{LT8300} except there is implemented a snubbercircuit and a decoupling capacitor before the transformer. Furthermore the values of the resistors are changed.  \\
 
 \begin{figure}[H]
 	\centering

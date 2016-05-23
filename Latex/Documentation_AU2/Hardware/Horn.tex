@@ -25,7 +25,7 @@ A full overview concerning the controls of the buzzer can be seen on the figure 
 	\label{fig:Horn_control}
 \end{figure}
 
-The specific transistor being used is BSX20.The datasheet \fxnote{Husk ref} for this BJT shows a minimum guaranteed $h_fe$ for these is 40 and therefore that which will be used. This makes the calculations worst case, since the used BJT probably will have a larger $h_fe$. The desired collector current will be set by the buzzer being used and will therefore vary according to that. Many of the buzzers looked upon, will draw a maximum current of 60 mA and because it is suspected that more than one buzzer will be needed that number is multiplied by 2. That leaves us with the following numbers:
+The specific transistor being used is BSX20.The datasheet \cite{BSX20} for this BJT shows a minimum guaranteed $h_fe$ for these is 40 and therefore that which will be used. This makes the calculations worst case, since the used BJT probably will have a larger $h_fe$. The desired collector current will be set by the buzzer being used and will therefore vary according to that. Many of the buzzers looked upon, will draw a maximum current of 60 mA and because it is suspected that more than one buzzer will be needed that number is multiplied by 2. That leaves us with the following numbers:
 
 $h_{fe} = 40 $ 
 
@@ -50,7 +50,7 @@ This calcualtion yields a base resistor of 1.383 k$\Omega$.
 THe above calculations are done based upon the buzzer KPEG500.
 
 \subsection{Unity test}
-There have been performed tests with 2 different kinds of buzzers. The sound level meter being used for all tests was a Bruel og Kjær Type 2250 \fxnote{husk ref} with no addons connected.
+There have been performed tests with 2 different kinds of buzzers. The sound level meter being used for all tests was a Bruel og Kjær Type 2250 \cite{BK2250} with no addons connected.
 
 The test setup was as shown on figure \vref{fig:Horn_test}. 
 
@@ -61,8 +61,8 @@ The test setup was as shown on figure \vref{fig:Horn_test}.
 	\label{fig:Horn_test}
 \end{figure}
 
-First tests were conducted on buzzer with product number KTG1205C\fxnote{husk ref} from manucfactor Kingstate. This were rated to provide a sound level of minimum 90dB (avg 94dB) at 10 cm. This specific model was chosen because of the small package size, their current consumption and relatively small weight weighing in at mere 2 gram per buzzer. This buzzers proved inadequate to provide the desired sound level required. It was tested to improve the sound level by parallel-coupling 2 buzzers, but the it was still not enough. Even with 2 sets of parallel-coupled buzzers, the sound level reached only 71 dB measured 4 meters away.
+First tests were conducted on buzzer with product number KTG1205C\cite{KTG1205} from manucfactor Kingstate. This were rated to provide a sound level of minimum 90dB (avg 94dB) at 10 cm. This specific model was chosen because of the small package size, their current consumption and relatively small weight weighing in at mere 2 gram per buzzer. This buzzers proved inadequate to provide the desired sound level required. It was tested to improve the sound level by parallel-coupling 2 buzzers, but the it was still not enough. Even with 2 sets of parallel-coupled buzzers, the sound level reached only 71 dB measured 4 meters away.
 
-The next set of buzzers that were tested, was KPEG500\fxnote{husk ref} also from Kingstate. These buzzer were chosen from a sound level perspective and only that. This buzzer was much larger in size, current consumption was doubled and weighed roughly 15 times more at 27.8 gram. But they provided 104dB at 30cm at minimum, which was a much needed boost in deciBel. Testing with 2 of these buzzers resulted in a sound  level of 93 dB at 4 meters which is enough to fulfill the requirements. But as seen on the test setup it is not a 100\% accurate test and these measurements cannot be trusted completely but they show promise. \\
+The next set of buzzers that were tested, was KPEG500\cite{KPEG500} also from Kingstate. These buzzer were chosen from a sound level perspective and only that. This buzzer was much larger in size, current consumption was doubled and weighed roughly 15 times more at 27.8 gram. But they provided 104dB at 30cm at minimum, which was a much needed boost in deciBel. Testing with 2 of these buzzers resulted in a sound  level of 93 dB at 4 meters which is enough to fulfill the requirements. But as seen on the test setup it is not a 100\% accurate test and these measurements cannot be trusted completely but they show promise. \\
 To perform a 100\% accurate test the speakers must be placed inside the vehicle and from there test if the sound level is adequate.
 

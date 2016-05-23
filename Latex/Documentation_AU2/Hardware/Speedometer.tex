@@ -2,7 +2,7 @@
 The purpose of the speedometer is to measure the car's current speed.
 
 \subsection{Design}
-The speed is measured using a TLE49X5L Hal sensor. This sensor has a digital output wich will go HIGH when a magnet is near the sensor. The voltage level for the HIGH output is equal to the supply voltage V\textsubscript{S}. As the sensor's output is to be measured by the PSoC, then a supply 5 V is used.
+The speed is measured using a TLE49X5L Hal sensor\cite{TLE4905}. This sensor has a digital output wich will go HIGH when a magnet is near the sensor. The voltage level for the HIGH output is equal to the supply voltage V\textsubscript{S}. As the sensor's output is to be measured by the PSoC, then a supply 5 V is used.
 In order for the sensor to output a digital signal, it must be connected as seen in the circuit in \ref{fig:HAL_application} below.
 
 \begin{figure}[H]
