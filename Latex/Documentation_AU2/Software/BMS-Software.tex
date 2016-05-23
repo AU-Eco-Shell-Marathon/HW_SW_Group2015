@@ -59,8 +59,8 @@ This is what makes it possible to read from the additional Analog Front End Exte
 
 
 \subsection{Unit test}
-When it was discovered that the software from SEM2014 was on the Digital Unit a test was made to ensure that the software worked as promised. This test was made by connecting the micro-USB connector on the Analog Front End to the USB port on a PC. Thereafter by using Tera Term, the information from the batteries' cells were requested from the Digital Unit, read by the Analog Front End and printed to Tera Term. This test was a success, because all the cells had voltages around 3.8 V, which is within the thresholds from 3 V to 4.2 V.
-The temperature was also registered correctly at 25 degrees celsius, which also was as expected since the batteries did not have any strong load on them such as the motor.
+When it was discovered that the software from SEM2014 was on the Digital Unit a test was made to ensure that the software worked as promised. This test was made by connecting the micro-USB connector on the Analog Front End to the USB port on a PC. Thereafter by using Tera Term, the information from the batteries' cells were requested from the Digital Unit, read by the Analog Front End and printed to Tera Term.\\ 
+This test was a success, because all the cells had voltages around 3.8 V, which is within the thresholds from 3 V to 4.2 V. The temperature was also registered correctly at 25 degrees celsius, which also was as expected since the batteries did not have any strong load on them such as the motor.\\
 A picture of the test can be seen on the following figure:\\
 \begin{figure}[H]
 	\centering
@@ -69,9 +69,9 @@ A picture of the test can be seen on the following figure:\\
 	\label{fig:SoftwareTest_teraterm_BMS}
 \end{figure}
 
-Now only the CAN-communication is needed to be tested. For testing the CAN-communication the corresponding requirement in the 2013 BMS documentation accept test was executed (BMS\_F.8).\fxnote{Reference to BMS2013 documentation page 91}
+Now only the CAN-communication is needed to be tested. For testing the CAN-communication the corresponding requirement in the 2013 BMS documentation accept test was executed (BMS\_F.8).\fxnote{Reference to BMS2013 documentation page 91}\\
 
-After installing PCAN-view the CAN/USB converter (PCAN-USB from Peak-System) was connected from the OLIMEX AVR-CAN development board to a PC. PCAN-view did not receive any information from the CAN-communication. To be sure we used Analog Discovery on the CAN connector to see if anything was sent out. WaveForms' Digital Logic Analyzer was used after the CANL, CANH, VIN and GND pins were connected to Analog Discovery:\\
+After installing PCAN-view the CAN/USB converter (PCAN-USB from Peak-System) was connected from the OLIMEX AVR-CAN development board to a PC. PCAN-view did not receive any information from the CAN-communication. To be sure Analog Discovery was used on the CAN connector to see if anything was sent out. WaveForms' Digital Logic Analyzer was used after the CANL, CANH, VIN and GND pins were connected to Analog Discovery:\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{Software/SnipFromOlimexDatasheet.PNG}
@@ -81,4 +81,11 @@ After installing PCAN-view the CAN/USB converter (PCAN-USB from Peak-System) was
 
 The result was that nothing other than noise was received from the CAN bus.
 
-SKRIV OM JONAS' BMS SOFTWARE DERFOR SKULLE FINDES.
+From the documentation of BMS 2013 \fxnote{vref BMS2013 dokumentation} that Jonas Nyborg made the CAN-communication was documented and claimed to be already tested and well functioning.\\
+The reason for the CAN-communication not operating as expected was therefore an important question to be answered. The CAN-communication software was then inspected to see if we could find the reason for it not operating correctly. No mistakes were to be found, which let the group to the idea that that maybe Jonas Nyborg had commented out the "transmit\_all\_CAN\_data();" in the "done\_every\_second()" function. Contact was made with Jonas Nyborg and the idea was confirmed to be the case, because the team at Rotterdam SEM2014 did not need the CAN-communication therefor power could be saved.\\
+After knowing the CAN-communication was not programmed properly to the Digital Unit, the software was reprogrammed to the Digital Unit. After this was done the BMS did only read from one of the batteries and it was discovered that the software that was available, was the 2013 software, that was not compatible with two batteries at once.\\
+Contact was made with Jonas Nyborg yet again, but after a few days the BMS software that Nyborg sent was still outdated, with the words; "If anybody has the newest BMS software version saved, it would be AU Campus Herning and their SEM2014 dropbox". This was discussed with Carl Jakobsen and the day after this dropbox was declared non-existent.\\
+\\
+Since the BMS software was not ready for SEM2016 and the BMS software for SEM2014 was not to be found, the group tried to rebuild the changes made in 2014, so that the BMS software also would work with multiple batteries operating at the same time.\\ In this process the group learned a lot about the BMS software, but after many tries of programming and testing a wire from the Analog Front End Extension Module was connected wrongly to the Analog Front End, which resulted in the destruction of the "BQ76PL536A-Q1"\fxnote{vref to datasheet of bq76...-Q1} on each board.\\
+A few days after contact was made with Simon Møiniche Skov, a person who worked on the SEM2014 project. He was asked if he had the newest version of the BMS software. A meeting with him took place and the software version was received. This version was the one used in SEM2014, the one that was seeked and the one that has been discussed earlier of which changes that was made to this version compared to the well documented SEM2013 version.\\
+Since the software version that was tested earlier now is found and secured, the software should be ready for use, but the CAN-communication could not be tested before the Analog Front End and Analog Front End Extension Module was fixed.\\  
