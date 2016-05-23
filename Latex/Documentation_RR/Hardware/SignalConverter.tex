@@ -46,4 +46,39 @@ In order to counter the inverting property of 74HC14, and create a comperator, t
 \end{figure}
 
 \subsection{Unity test}
-Text
+The Signal Converter's unity test is split into two: The torque- and the velocity-signal:
+
+\textbf{Torque-signal}\\
+The non-inverting adder is tested using Analog Discovery's built-in oscilloscope and voltage-source. The input-voltage is generated using the voltage-source and lies within \SI{-5}{\volt} and \SI{+5}{\volt}. The output-signal is then measured to check if it is rescaled correctly to lie between \SI{0}{\volt} and \SI{+5}{\volt}. The different outputs can be seen on the figures on the next pages. The results from the test are listed below:
+\begin{equation}
+	\begin{split}
+		V_{in} = -\SI{5}{\volt} \quad &\Rightarrow \quad V_{out} = \SI{-0.020}{\volt}\\
+		V_{in} = \SI{0}{\volt} \quad &\Rightarrow \quad V_{out} = \SI{2.476}{\volt}\\
+		V_{in} = +\SI{5}{\volt} \quad &\Rightarrow \quad V_{out} = \SI{4.946}{\volt}\\
+	\end{split}
+\end{equation}
+It is seen that there is a small measurement-error. This error can be corrected in the PSoC - as long as the output-voltage is positive.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Hardware/SignalConverter/Torque_test1}
+	\caption{Non-inverting adders output with an input of -5 Volt}
+	\label{fig:TorqueTest1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Hardware/SignalConverter/Torque_test2}
+	\caption{Non-inverting adders output with an input of 0 Volt}
+	\label{fig:TorqueTest2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Hardware/SignalConverter/Torque_test3}
+	\caption{Non-inverting adders output with an input of +5 Volt}
+	\label{fig:TorqueTest3}
+\end{figure}
+
+\textbf{Velocity-signal}\\
+Text \fxnote{enhedstest af signal converter}
