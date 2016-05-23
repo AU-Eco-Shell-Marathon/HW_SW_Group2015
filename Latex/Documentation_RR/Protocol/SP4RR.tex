@@ -14,7 +14,7 @@ Overview of types:
 	\caption{Overview for commands sent between PSoC og PC}
 \end{table}
 
-Overview of packets:
+Overview of packets: \fxnote{Fix table}
 \begin{table}[h!]
 	\centering
 	\label{Protocol:overviewRR}
@@ -33,7 +33,7 @@ Overview of packets:
 	\caption{Overview for commands sent between PSoC and PC}
 \end{table}
 
-The table \ref{Protocol:overviewRR} will give an overview regardring the protocol that will be used between PC and PSoC. The chosen protocol will always start by sending an integer that corresponds with the given number from the above table.  The next thing that will be send is the column "Commando" that corresponds with the given number. The direction column shows the direction of the signals, where from and where to the signal will flow.
+The table \ref{Protocol:overviewRR} will give an overview regarding the protocol that will be used between PC and PSoC. The chosen protocol will always start by sending an integer that corresponds with the given number from the above table.  The next thing that will be send is the column "Commando" that corresponds with the given number. The direction column shows the direction of the signals, where from and where to the signal will flow.
 
 \subsection{Handshake}
 The handshake command is used to establish that the connection between the PC and the embedded platform is correct. This is to ensure that it will not register an arbitrary unit and for that unit to send values to the PC.  

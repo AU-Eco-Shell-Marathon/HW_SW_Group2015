@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?validation-md5-digest 6aab4251e4d0274850c3de4435eb744f?>
+<?validation-md5-digest b3ef0112c51363ded6428baa27336227?>
 <worksheet version="3.0.3" xmlns="http://schemas.mathsoft.com/worksheet30" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://schemas.mathsoft.com/worksheet30" xmlns:ml="http://schemas.mathsoft.com/math30" xmlns:u="http://schemas.mathsoft.com/units10" xmlns:p="http://schemas.mathsoft.com/provenance10">
 	<pointReleaseData/>
 	<metadata>
@@ -13,9 +13,9 @@
 			<revisedBy>komlir@hotmail.com</revisedBy>
 		</userData>
 		<identityInfo>
-			<revision>6</revision>
+			<revision>7</revision>
 			<documentID>D2F941EE-AA2A-47F3-B1CA-31E5AE487C74</documentID>
-			<versionID>1C8DD810-EF7D-443E-A14C-BF276A2FF15F</versionID>
+			<versionID>141EFABB-9AD5-4550-8CA1-725697D28E3A</versionID>
 			<parentVersionID>00000000-0000-0000-0000-000000000000</parentVersionID>
 			<branchID>00000000-0000-0000-0000-000000000000</branchID>
 		</identityInfo>
@@ -362,6 +362,66 @@
 			</math>
 			<rendering item-idref="9"/>
 		</region>
+		<region region-id="40" left="18" top="446.25" width="116.25" height="12" align-x="38.25" align-y="456" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<text use-page-width="false" push-down="false" lock-width="false">
+				<p style="Normal" margin-left="inherit" margin-right="inherit" text-indent="inherit" text-align="inherit" list-style-type="inherit" tabs="inherit">Beregning af shunt resistor</p>
+			</text>
+		</region>
+		<region region-id="42" left="36" top="482.25" width="148.5" height="39.75" align-x="124.5" align-y="504" show-border="false" show-highlight="false" is-protected="true" z-order="0" background-color="inherit" tag="">
+			<math optimize="false" disable-calc="false">
+				<ml:eval placeholderMultiplicationStyle="default" xmlns:ml="http://schemas.mathsoft.com/math30">
+					<ml:apply>
+						<ml:div/>
+						<ml:apply>
+							<ml:mult style="auto-select"/>
+							<ml:apply>
+								<ml:mult/>
+								<ml:apply>
+									<ml:mult/>
+									<ml:apply>
+										<ml:mult/>
+										<ml:apply>
+											<ml:mult style="auto-select"/>
+											<ml:real>16.8</ml:real>
+											<ml:id xml:space="preserve">Ω</ml:id>
+										</ml:apply>
+										<ml:id xml:space="preserve">m</ml:id>
+									</ml:apply>
+									<ml:apply>
+										<ml:pow/>
+										<ml:real>10</ml:real>
+										<ml:real>-9</ml:real>
+									</ml:apply>
+								</ml:apply>
+								<ml:real>15</ml:real>
+							</ml:apply>
+							<ml:id xml:space="preserve">cm</ml:id>
+						</ml:apply>
+						<ml:apply>
+							<ml:mult style="auto-select"/>
+							<ml:real>0.7</ml:real>
+							<ml:apply>
+								<ml:pow/>
+								<ml:id xml:space="preserve">mm</ml:id>
+								<ml:real>2</ml:real>
+							</ml:apply>
+						</ml:apply>
+					</ml:apply>
+					<ml:unitOverride>
+						<ml:id xml:space="preserve">Ω</ml:id>
+					</ml:unitOverride>
+					<result xmlns="http://schemas.mathsoft.com/math30">
+						<unitedValue>
+							<ml:real>0.0036000000000000008</ml:real>
+							<unitMonomial xmlns="http://schemas.mathsoft.com/units10">
+								<unitReference unit="ohm"/>
+							</unitMonomial>
+						</unitedValue>
+					</result>
+				</ml:eval>
+			</math>
+			<rendering item-idref="10"/>
+		</region>
 	</regions>
 	<binaryContent>
 		<item item-id="1">iVBORw0KGgoAAAANSUhEUgAAAEMAAAAWCAYAAACbiSE3AAAAAXNSR0IArs4c6QAAAARnQU1B
@@ -494,5 +554,31 @@ z8+cK8p9fRe28JMo4y0MTpTxNwfAtvMzJ2dKOftTDTuJcq/zM25aAPdJ+7L5ul6Ue/ku7MVi
 Uc7PKY84P3NWppSzP7WxXJSmyCWrbx9EG1hXAkP2RPwqNV6tcn0855bvfX0XtsCLsvTVkg0i
 9Pt9yqjcgl14nwt0+B2mebg+nh9EyfmLvgb3ic2RvgtbkL+uUB0iSqE6RJRCdYgohcrQ+g+R
 H/XVnp6YxAAAAABJRU5ErkJggg==</item>
+		<item item-id="10">iVBORw0KGgoAAAANSUhEUgAAAMYAAAA1CAYAAAAanZTqAAAAAXNSR0IArs4c6QAAAARnQU1B
+AACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAT+SURBVHhe7ZxNdqwgEIV7XS7Ik0Vk
+CRm4i8wzcJaV9Cg7yA58VAFSYKH4l/bh/c7xtKCtCHWhCux+DACACRAGAAoQBgAKEAYAChDG
+Gvp2eDwevLW9ywNVAmGU8uyGpumGp99/tAO0US8QRiHPrhmajmXB9C1GjZqBMApJhZGmQV1A
+GKVwfBHcJxoxIIx6ubkwnkPX2GB6sil+EokhnNMM0EW9YMTYAgXfCDCqBsJYS+JSgTrJCoOC
+S82dkO6Hdpi/59yN1Af//v4ePj8/+VPun4Fafp5m3egG+TUMP2W7gF5//dC6uoG4ro0qjNG4
+cw2rCoag487o2AiDAX59ffE1UyiPjh2JXv60bOcZZq7+nl2LuOSPGNtgYyy4YsSwI8XsTExk
+cMIQDVTI9/d3mxBQHh07mkn5qccf0/ZZErs9lGn9hdECs1knY+ywdXU8bYcyyoXhjL71MzPq
+zZybRceMIUoDoO98fHy4VIDyssIgYzauS09lcQbF5SowrrT8afrs6dZsg3A9Jvf2bhpt3lXb
+8exAkNhhKcXCsGkzGlCWa1yt3U1JVHfr7e2NGzWF8ujYlKSHlQblRKre3qGVX1bQy4TB0LO5
+8kfPYp+5NZW859mBx3TU3baaWiWMEsOyfrQbOUSg+vPzkxUGHWOcAYy3lUYwuz8V6Z8Jo/D+
+KT11MuYzLddIybODPK5dxs5lJStHjJBWDYsKM4oh9uN/f3/ZbZKzUH5mio6p7DCOiWGSazKm
+XxFjSOj+tvzZ83Y8e524ztYZe7TNNCTXr+igSykWhm0QH0zTUK9E+1GjebeAE+PMk5yB0vIi
+dhjH1OBEmen7GyprDbPCkH4vP4uoS5PmwDH3vHIfFGDa/TBhyGBQNq7IH7O5oUKaDcKdI0cU
+n0ebR8sLhB6i7eW+uMeM4fnrTsVN+Yqoj0S7f65MhDzGRr/j2UGMqdtDXSlwL0KHttRpxEI9
+AnV03dGJyc55rgORi8xyn4AwABth2by/my07cLTSR8DE7T3BdST3ne6bQnl8zKUBsGRdDztS
+bHFLlpiIkVzLMW3ve6AWGRLA3IIzhAEExghz8/6u555f4KWePund6XsLwW8qjDR9xpoTPcPc
+gjOEUR0hBphss92uc5PMphmhNVZj9HQJ5//rlxPiKBAFoQlDluEMYSwtOEdHxgrE9l9sZ8BG
+qvj064zViaxwmvQVwlhacMaIUR1bRwyP4g4ZUuM9Uxjm4iJ9ToyxtOAMYYCYyCgF7D75qVMy
+/Nw06n5XKrp+4TXWoi0uyzwIA1jD1EaVNJYg0bjz9B5cGW2WDFtcU7v3WYux4z3N5pF5EAYA
+ChAGAAoQxiwykJ0GpKBeIIwZ5G+0aRZmy+vL4P8EwiiFg0GMGncBwihGmXEB1QJhlGJGDP8G
+KqgfCKOQvkN8cScgjAJoAUxf0AK1AmEsQKII7wT1Qwd36hZcWxiLrwVQQOzXGex2ZM/OU7TR
+9c95PQFcjwsLI3mRTJsR6vsoz/9XEwB7ua4wVr96bM5pESCDY7isMNJXkRd/rCKnU0lUzcL/
+vpacA27LpYUhDXRJGOH1jRB38PkuTgn75G6VnAPuTCXCSNwoadx79sFtqSTGMCOAPLhHDHIf
+3JbrCsOYZvHPG42IItGsFUBuH9yWCwvDwEaarB+4PCmEeJo2/IYi/7+vXcE5kMadubYwAHgR
+EAYAChAGAAoQBgAThuEfgRq7ywodMzIAAAAASUVORK5CYII=</item>
 	</binaryContent>
 </worksheet>
