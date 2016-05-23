@@ -68,4 +68,10 @@ This component was chosen as it was already implemented in the Rolling road desi
 
 
 \subsection{Unity test}
-text
+There is going to be conducted 2 tests for this module. The first test is a unity test that will make sure the general purpose of the circuitry is working as designed. The other test that will be conducted on this module is a stress test, that will simulate an entire run as it will be in London. 
+
+Neither of these tests have been made at hand in, but are fairly straight forward to conduct. 
+
+The first test consist of hooking up the motor and placing a PWM on the input of the MOSFET driver. Also there must be 48V connected and a working distribution block must be available. A succesful test here is composed of a motor that is rotating. 
+
+The second test must contain the same start parameters as the previous test. The difference here is that this test must first of all run at least 45 minutes. This time should be sufficient to ensure that the testing is done for a long enough period that it can safely be stated that the MOSFET and surrounding circuit can withstand the power dissipation. To take the stress test even further it can programmed to run a higher speed or with a higher load. 
