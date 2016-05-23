@@ -1,6 +1,6 @@
 \section{BMS Software}
 
-\subsection{Design}
+%\subsection{Design}
 The BMS software is programmed to the Digital Unit. The purpose of the BMS software is to continually collect data from the Analog Front End and then inspect this data to see if the batteries are working as expected. Data is at least collected every second, but if the collected data has parameters close to the respective threshold, the data collection increases to being done every 200 milliseconds, where also a safety check of the parameters is executed. \fxnote{Reference to 2013BMS Documentation function safety\_check()}
 
 This is because it is assumed that if the data is far away from the thresholds, the thresholds are most likely not exceeded as quick as if the data was close to the thresholds. It is very important to have a safe operating system with many safety checks, but it is also important to do as few calculations as possible. This is because the system should be in the power saving “sleep mode” as much of the time as possible to save energy and thereby be as energy efficient as possible.
@@ -55,8 +55,30 @@ This is some of the changes that seemingly happened in 2014 without being docume
 
 This is what makes it possible to read from the additional Analog Front End Extension Module and thereby makes it possible to analyze two batteries at the same time.
 
-\subsection{Implementation}
-text
+%\subsection{Implementation}
 
-\subsection{Unity test}
-text
+
+\subsection{Unit test}
+When it was discovered that the software from SEM2014 was on the Digital Unit a test was made to ensure that the software worked as promised. This test was made by connecting the micro-USB connector on the Analog Front End to the USB port on a PC. Thereafter by using Tera Term, the information from the batteries' cells were requested from the Digital Unit, read by the Analog Front End and printed to Tera Term. This test was a success, because all the cells had voltages around 3.8 V, which is within the thresholds from 3 V to 4.2 V.
+The temperature was also registered correctly at 25 degrees celsius, which also was as expected since the batteries did not have any strong load on them such as the motor.
+A picture of the test can be seen on the following figure:\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Software/BMS_teraterm_test.PNG}
+	\caption{Test of the software to BMS}
+	\label{fig:SoftwareTest_teraterm_BMS}
+\end{figure}
+
+Now only the CAN-communication is needed to be tested. For testing the CAN-communication the corresponding requirement in the 2013 BMS documentation accept test was executed (BMS\_F.8).\fxnote{Reference to BMS2013 documentation page 91}
+
+After installing PCAN-view the CAN/USB converter (PCAN-USB from Peak-System) was connected from the OLIMEX AVR-CAN development board to a PC. PCAN-view did not receive any information from the CAN-communication. To be sure we used Analog Discovery on the CAN connector to see if anything was sent out. WaveForms' Digital Logic Analyzer was used after the CANL, CANH, VIN and GND pins were connected to Analog Discovery:\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Software/SnipFromOlimexDatasheet.PNG}
+	\caption{Excerpt from OLIMEX AVR-CAN development board datasheet}
+	\label{fig:OLIMEX_AVR-CAN_BMS}
+\end{figure}
+
+The result was that nothing other than noise was received from the CAN bus.
+
+SKRIV OM JONAS' BMS SOFTWARE DERFOR SKULLE FINDES.
