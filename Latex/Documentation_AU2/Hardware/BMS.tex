@@ -190,7 +190,7 @@ The Digital Unit could be tested by analyzing the circuitry especially around th
 
 
 \subsubsection{Current Sensor}
-bg
+The Current Sensor is meant to be functioning giving the first tests at a very early stage. However, the Analog Front End posed a lot of problem and those haven't been resolved even after very long hours of debugging. Therefore, it wasn't possible to test this unit. However, if the BMS was fully functional a way to test the current sensor would be to firstly identify the problem. Lets say we applied a constant current load of 4 Amps to the BMS. This would result in a specific result and data output from the Analog Front End. These data could then be examined by using the USB interface and confirm the values. If for instance different values were output the code for the calculation for the current sensor as well as individual components would need to be investigated. A good start would be to replace the OP-AMPs as well as the LDO since the rest of the components contained in the current sensor are merely passive components. Tests could be done for continuity and expected voltage levels in the circuit with a digital multimeter. These tests should be sufficient enough to test the current sensor since it is a rather small circuit with a basic functionality. In a worst case scenario a duplicate should be made on an entirely new PCB and then tested individually before being implemented into the BMS.    
 
 
 \subsection{Programming Quick Guide}
