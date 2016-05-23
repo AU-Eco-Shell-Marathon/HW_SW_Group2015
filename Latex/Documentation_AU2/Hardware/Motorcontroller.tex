@@ -24,7 +24,11 @@ This com
 
 \textbf{MBR20200CT}
 
-This diode is chosen for
+This diode is a flyback diode, in place to secure a known passage for the generated current by the motor, when the MOSFET is shut off. When the motor is supplied is supplied with a current it works as a motor, but when the current is shut off, the motor works as a generator. It is necessary to secure components from possible breaking down after trying to sink the current from the generated motor. The diode is placed in parallel with the motor.
+
+A schottkey diode is chosen for its very fast switching time and less for the low voltage drop. This means that there is a smaller power dissipation in the diode and thereby less loss which equals a higher efficiency. 
+
+This diode is chosen for its specifications to be able to withstand the current coming from the motor. It can be switched with another diode with similar specifications.
 
 \textbf{MCP1407}
 
