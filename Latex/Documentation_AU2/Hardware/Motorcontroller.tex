@@ -18,11 +18,11 @@ There are three components at use here:
 
 The design considerations when using these specific components will be discussed here. Furthermore the components specific application purpose will be mentioned. Lastly, it will be explained as to why this component was chosen.  
 
-\textbf{IRFB7530}
+\textbf{IRFB7530} \fxnote{husk ref}
 
 This com
 
-\textbf{MBR20200CT}
+\textbf{MBR20200CT} \fxnote{husk ref}
 
 This diode is a flyback diode, in place to secure a known passage for the generated current by the motor, when the MOSFET is shut off. When the motor is supplied is supplied with a current it works as a motor, but when the current is shut off, the motor works as a generator. It is necessary to secure components from possible breaking down after trying to sink the current from the generated motor. The diode is placed in parallel with the motor.
 
@@ -30,7 +30,17 @@ A schottkey diode is chosen for its very fast switching time and less for the lo
 
 This diode is chosen for its specifications to be able to withstand the current coming from the motor. It can be switched with another diode with similar specifications.
 
-\textbf{MCP1407}
+\textbf{MCP1407} \fxnote{husk ref}
+
+When using a MOSFET driver the design must live up to requirements set forth by the datasheet. This mostly consists of proper placement on the PCB layout, but also includes which capacitors to use as decoupling. But it also leaves a lot for the designer to choose, as there is no suggestions for connections. 
+
+The decoupling capacitors are needed as there is high current requirements for driving the gate capacitance of a standard MOSFET and the IC is therefore in need of a local storage. This also means that the placement of the capacitors must be physically close to the IC to avoid stray capacitances. The capacitors chosen to perform the task, are the same as specified in the datasheet, 1 ceramic and 1 low ESR film capacitor. 
+
+There is connected a resistor to the output pin of the driver. This is included for two reasons. The primary reason being that when using a MOSFET to drive an inductive load, as it is the case here, the di/dt must be reduced as to secure proper switching in the MOSFET. The second reason is to protect the MOSFET, more specific, the gate insultation, which could be damaged by the spikes caused by having an inductive load.
+
+Increasing this resistors value would mean a slower switching time, but would be able to provide a more stable output and decrease ringing. The ringing is caused by the gate being in series with, albeit involuntarily, a small inductor caused by the PCB trace. By decreasing the value of the resistor the turn on peaks of the drain pin increases as well as the ringing. But it also increases the switching time, which makes it a trade off, and causes it to be a major point of optimization in the system. The only boundary for the resistor is that it must be of a certain value to ensure that the components in use doesn't go up in flames.   
+
+The main reason for the choosing to use a driver for the MOSFET is that the PSoC only can deliver so much current. And since faster switching times, means less power loss in the MOSFET which is favorable for when designing a energy efficient vehicle. The argument could be made that the driver also consumes current, but the maximum current drawn from the driver at any time is 150 $\mu $A for typical values. With those numbers the benefits are set to outway the costs.  
 
 This component was chosen as it was already implemented in the Rolling road design and therefore the group had both experience and spare parts of this. This component is easily interchangeable with other components of the same specifications. 
 
