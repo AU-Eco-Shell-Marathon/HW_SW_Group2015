@@ -167,21 +167,30 @@ Otherwise the AVR-CAN is mainly used as a control unit, since it performs calcul
 As mentioned earlier it was required by the 2013 requirements (BMS\_F.5)\fxnote{reference BMS 2013 sec 1.5.1.2.} that the BMS must be able to store the most critical information on internal memory for the ability to read the data on the USB interface or SD-card on the Motor Controller. Since the AVR-CAN module didn't have enough on-board memory a few options were considered for implementing a solution. EEPROM was considered since it is non-volatile and cheap but offers a limited amount of write cycles as well as the power consumption is fairly higher than the  F-RAM. However, the solution is F-RAM, which is non-volatile has a lot of write cycles and is fairly low power between write cycles. Moreover, please note that a newer F-RAM module than in the 2013 BMS Documentation has been used - More details on the changes done since the 2013 documentation can be found in section \fxnote{reference to CHANGES from BMS 2013 to BMS 2014}.  
 
 \subsection{Unit test}
-In this section.... test of
+In this section a description of each of the elaborated units will be given below. 
 
 \subsubsection{Isolation Switch}
-The way this unit was tested is rather straight forward. A few things were used to complete it. These include a digital multimeter and a power supply. This test is both audible and visual. To test it the datasheet \fxnote{reference to RELAY datasheet} for the relay was read to make sure the coil voltages were known beforehand. It was found that the pick-up voltage was 70\% or less of the nominal coil voltage. Whereas the drop-out voltage 
+The way this unit was tested is rather straight forward. A few things were used to complete it. These include a digital multimeter and a power supply. This test is both audible and visual. To test it the datasheet \fxnote{reference to RELAY datasheet} for the relay was read to make sure the coil voltages were known beforehand. It is expected that the pick-up voltage is 70\% or less of the nominal coil voltage, which is 48V for our Isolation Switch relay. Whereas the drop-out voltage is expected to be around 10\% of the nominal coil voltage. This translates to a pick-up voltage of max 33.6V and a drop-out voltage of max 4.8V.\\
+When the test was done a voltage drop over the coil was driven by the power supply. We kept increasing the voltage drop until one of two things happened. Either the digital multimeter made a sound, which it will when it achieves continuity. Or one could hear the relay click, which means that the pick-up voltage was reached.\\
+From the test done a pick-up coil voltage of approximately 23V was reached as well as a drop-out voltage of approximately 12V. Below on figure \vref{fig:BMSIsoTest} you can see the test setup for the test. Where the voltage was read from the power supply whilst the multimeter was checking for continuity. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{Hardware/Pictures/BMSIsoTest}
+	\caption[Empty]{Test setup for the test of the Isolation Switch relay.}
+	\label{fig:BMSIsoTest}
+\end{figure}
+
 
 \subsubsection{Digital Unit (HW)}
-
-
+The Digital Unit could be tested by analyzing the circuitry especially around the most critical parts to the Digital Unit. These include the USB interface circuit along with the F-RAM IC. The tests could include testing each of the pins of the IC and/or test the units separately by trying to exclude as much of the surrounding circuitry as possible. Investigating the parts around these would be a crucial step in finding a solution to the problem. Furthermore, if there are problems with connecting to the AVR-CAN board and more specifically the AT90CAN128 IC then this should be replaced. A procedure to test the software and program the BMS can be found in section \vref{sec:BMSDebugging}. However, there were no problems with the Digital Unit and it was working properly and as expected. Therefore no unit testing was required for the Digital Unit but some possible approaches have been listed. 
 
 \subsubsection{Analog Front End}
 
 
 
 \subsubsection{Current Sensor}
-
+bg
 
 
 \subsection{Programming Quick Guide}
