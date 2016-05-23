@@ -35,6 +35,13 @@ Where I\textsubscript{P} is the transducer's input current. The formula above ca
 
 The transducer's pins are configured in such a way that the the primary nominal current rms I\textsubscript{PN} is equal to $\pm \SI{15}{\ampere}$. This allows for the largest measuring range possible. Using this number and equation \ref{eq:current_transducer} it is possible to calculate the range wherein the transducer measurements are linear.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{Hardware/Pictures/PowerSensor_Current}
+	\caption{Method of current-measurement in the Power Sensor}
+	\label{fig:PowerSensorCurrent}
+\end{figure}
+
 The minimum-current which the transducer can measure correctly before it enters saturation can be calculated as:
 \begin{equation}
 	0.5 = 2.5 + \left( 0.625 \cdot \frac{I_{Pmini}}{15} \right) \quad \Rightarrow \quad I_{Pmini} = \SI{48}{\ampere}
@@ -53,7 +60,12 @@ The transducer's measuring-resolution can be calculated as a output-difference p
 \textbf{Voltage Transducer}\\
 The voltage delivered to the motor is measured using a voltage divider consisting of two resistors. The voltage didiver must be placed parallel to the motor to correctly measure the voltage.
 
-\fxnote{kredsløbsdiagram}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{Hardware/Pictures/PowerSensor_Voltage}
+	\caption{Method of voltage-measurement in the Power Sensor}
+	\label{fig:PowerSensorCurrent}
+\end{figure}
 
 According to the requirements the car's motor operates with a supply-voltage between $\SI{0}{\volt}$ and $\SI{50}{\volt}$. This range must be rescaled to a range between $\SI{0}{\volt}$ and $\SI{5}{\volt}$ as this is the range which can be measured by the PSoC's ADC.
 
@@ -71,7 +83,16 @@ For simplicity the resistor's value is rounded to $\SI{1}{\kilo \ohm}$ which mea
 \end{equation}
 
 \subsection{Implementation}
-Text
+The Power Sensor's circuit can be implemented by combining the two designs above. The product is seen on the circuit-diagram below. All four motor-connections can be connected to using banana-plugs. The voltage- and current-measurements are connected to the PSoC through analog low-pass filters.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Hardware/Pictures/PowerSensor_circuit}
+	\caption{Implemented circuit design on Rolling Road}
+	\label{fig:PowerSensor_circuit}
+\end{figure}
+
+The diodes D1 and D2 are used to protect the circuit as the node between them is limited to the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-current will flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons \fxnote{cite til EMC-rapport}.
 
 \subsection{Unity test}
 Text
