@@ -1,3 +1,4 @@
+\newpage
 \section{Voltage and current measurements}
 \label{sec:measurements}
 These measurements are done for 2 reasons. The first reason being that is the best and most precise way to calculate the power consumed by the motor and thereby paint a picture of the overall current consumption of the system as it is the motor that is responsible for a large part of the current consumption. This information is also useful in calculating the overall efficiency of the motor. The second reason for measuring is that the MCU contains software that will shut down the system if there is drawn excessive amount of current. 
@@ -8,16 +9,14 @@ The design is split up so that there is a section for voltage measurement and a 
 The current measurement is done via a shunt resistor. There is placed a measurement point on each side of the shuntresistor that feeds this signal into the MCU. Internally in the PSoC the signal is then amplified and measured. The measurement is conducted as a voltage, but since both the resistance and voltage is known the current corresponding can be calculated via Ohm's law.
 
 The voltage measurement consist of 2 terminals. One before and one after the motor. This is done so that a measurement is different from zero when there runs a current through the motor. But since the signal supplied to the motor consists of 48V and the MCU has a maximum input voltage of 5V, the voltage must be reduced. This is done via voltage divider. This is done so that a voltage of 48V is equal to 5V after the voltage divider. This results in the following resistor values:
-
 \begin{align}
 	\begin{split}
-		5V &= \frac{X)}{X+10k\Omega} \cdot 48V
+		5V &= \frac{R}{X+10k\Omega} \cdot 48V
 	\end{split}
 \end{align}
 
-Solving for X in the above equation yields a resistance of 1163 $\Omega$. Since this value is not realisable, the value is chosen at \SI{1.1}{\kilo \ohm}, since this is the closest value in the E24 resistor values. This yields a maximum voltage of 4.75V \\
+Solving for R in the above equation yields a resistance of 1163 $\Omega$. Since this value is not realisable, the value is chosen at \SI{1.1}{\kilo \ohm}, since this is the closest value in the E24 resistor values. This yields a maximum voltage of 4.75V \\
 Since there is a high probability of high frequency transients being embeddedd onto the signal there is implemented a low pass filter that also works as an anti aliasing filter. The cut off frequency of this filter is calculated based on the formula below.
-
 \begin{align}
 	\begin{split}
 		500Hz &= \frac{1}{2 \cdot \pi \cdot \SI{100}{\nano \farad} \cdot R} 
@@ -28,9 +27,9 @@ The above calculations yields a resistor with the value of \SI{3.2}{\kilo \ohm}.
 
 Lastly the design is made with protection diodes as extra security measures. These ensures that no voltage going in is out of range from -0.7V to Vdd+0.7V. 
 
+\newpage
 \subsection{Implementation}
-The resistance for the shunt resistor is calculated via the following formula
-
+The resistance of the shunt resistor is calculated using the formula for a voltage-divider:
 \begin{align}
 	\begin{split}
 		R_{shunt} &= \frac{\rho \cdot l}{A}

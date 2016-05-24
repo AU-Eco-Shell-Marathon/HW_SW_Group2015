@@ -9,7 +9,6 @@ This documentation contains information about the specifications, architecture, 
 \end{figure}
 
 \section{System description}
-
 The primary purpose of the car is to be as energy-effecient as possible, as this is the goal of Shell Eco Marathon. This is done by letting the car use an optimized driving algorithm. This algorithm is explained in greater details in later chapters. This algorithm can be turned on or off by the driver at the press of two buttons.
 
 In order for the car to follow the technique's procedures correctly it has a variable energy-output to the electric motor. Furthermore, the car constantly measures the current speed and the amount of energy consumed. The measured parameters from a test-drive can be collected on a SD-card, if the user inserts such a card in the built-in SD-socket.
@@ -25,6 +24,7 @@ As the car is designed to compete in Shell Eco-Marathon it must follow the safet
 	\label{fig:System_overview}
 \end{figure}
 
+\newpage
 \section{List of terms}
 The following list explains the various terms which have been used to refer to certain parts or subsystems in this documentation.
 
@@ -38,5 +38,5 @@ The following list explains the various terms which have been used to refer to c
 	\item \textbf{MCU}\\
 	Refers to microprocessor being used in the project. MCU stands for Motor Controller Unit. The microprocessor chosen is a PSC 5LP Prototyping kit. It is build up around a Cortex M3. It is not to be confused with MCS which is the entire system for controlling the motor. 
 	\item \textbf{PSoC}\\
-	See 'MCU'.
+	Refers to the CY8CKIT-059 PSoC 5LP Prototype Kit which is used as the Motorr Control Unit in the system.
 \end{itemize}

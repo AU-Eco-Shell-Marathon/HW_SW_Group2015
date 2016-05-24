@@ -1,3 +1,4 @@
+\newpage
 \section{Interface}
 The interface gives the user, here the driver, an opportunity to coomunicate with the system. This gives the driver some form of control over the operation of the vehicle. Furthermore it ensures the driver has the ability to use the horn and to keep the dead man safety switch activated as stated by the requirements.
 
@@ -16,10 +17,11 @@ The design consist of 2 connections for each button, with at pulldown resistor a
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\linewidth]{Hardware/Pictures/User_interface}
-	\caption{Circuitry of interface}
+	\caption{Interface circuit diagram}
 	\label{fig:interface}
 \end{figure}
 
+\newpage
 \subsection{Implementation}
 The buttons will be placed inside the cockpit, which gives driver easy access to them. Since the requirements states that all electronic must be placed behind bulkhead, there must be run long wires from the casing to the buttons. The long wires are prone to noise induction, but this part have been overlooked. This can be done, since the signal running along the wires do not carry sensitive information in the sense that the MCU is indifferent of the voltage level as long as it upholds the limits of MCU.
 
