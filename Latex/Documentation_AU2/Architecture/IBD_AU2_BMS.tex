@@ -26,9 +26,9 @@ Block interface description:
 	\item \textbf{BatterySupplyA:Power}\\
 	Direction: [External] $\rightarrow$ [Current Sensor]\\
 	Description: Power directly from the battery before being measured by the current sensor.
-	\item \textbf{AnSupply:Voltage}\\
+	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
-	Description: Power supply for the Analog Front End.
+	Description: Voltages that indicate the voltage of the individual cells.
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the battery's temperature.
@@ -51,9 +51,9 @@ Block interface description:
 \textbf{Block :Analog Frontend}\\
 Block interface description:
 \begin{itemize}
-	\item \textbf{AnSupply:Voltage}\\
+	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
-	Description: Power supply for the Analog Front End.
+	Description: Voltages that indicate the voltage of the individual cells.
 	\item \textbf{BatterySupplyB:Power}\\
 	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
 	Description: Power directly from the battery after being measured by the current sensor.

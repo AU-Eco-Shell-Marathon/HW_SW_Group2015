@@ -88,12 +88,13 @@ Block interface description:
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltage indicating the temperature of the battery.
-	\item \textbf{AnSupply:Voltage}\\
+	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
-	Description: Voltage indicating the battery's different cells's statuses and outputs.
-	\item \textbf{BatterySupply:Power}\\
+	Description: Voltages that indicate the voltage of the individual cells.
+	\item \textbf{BatterySupplyA:Power}\\
 	Direction: [External] $\rightarrow$ [Battery Management System]\\
-	Description: Power running through the external Joulemeter connectors, which originally came from the battery, which is going straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
+	Description: Power which is running straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
+	
 \end{itemize}
 
 \textbf{Block :Distribution Block}\\
@@ -165,9 +166,9 @@ Block interface description:
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltage indicating the temperature of the battery.
-	\item \textbf{AnSupply:Voltage}\\
+	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
-	Description: Voltage indicating the battery's different cell's statuses and outputs.
+	Description: Voltages that indicate the voltage of the individual cells.
 	\item \textbf{BatterySupply:Power}\\
 	Direction: [Battery Holder] $\rightarrow$ [External]\\
 	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is of course going back into the AU2 system, so that the power can be put to use.
