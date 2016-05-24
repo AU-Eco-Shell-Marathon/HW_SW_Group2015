@@ -16,7 +16,7 @@ The communication with the Rolling Road is using the SP4RR protocol over a UART 
 
 \subsection{Implementation}
 
-Since some kind of plotting needed to be implemented, the search for a library started, the application originally used the WPF Toolkit data visualization, but after testing it, it appeared to have a huge memory leak when continuously updating the graph with new data. Therefor another library was required since it did not meet the requirements, and the D3 library was found and is still used. It's a free library with features such as zooming and screen-shoots. Even though it's outdated, it's the best library free library from WPF we were able to find. The first version using the WPF-Toolkit graph can be seen in figure \vref{fig:First_GUI} and the current version can be seen in figure \vref{fig:Current_GUI}
+Since some kind of plotting needed to be implemented, the search for a library started, the application originally used the WPF Toolkit data visualization\cite{WPf_Toolkit}, but after testing it, it appeared to have a huge memory leak when continuously updating the graph with new data. Therefor another library was required since it did not meet the requirements, and the D3(Dynamic Data Display) library\cite{WPf_D3} was found and is still used. It's a free library with features such as zooming and screen-shoots. Even though it's outdated, it's the best library free library from WPF we were able to find. The first version using the WPF-Toolkit graph can be seen in figure \vref{fig:First_GUI} and the current version can be seen in figure \vref{fig:Current_GUI}
 
 %https://www.nuget.org/packages/WPFToolkit.DataVisualization/
 
