@@ -44,21 +44,21 @@ The transducer's pins are configured in such a way that the the primary nominal 
 
 The minimum-current which the transducer can measure correctly before it enters saturation can be calculated as:
 \begin{equation}
-	0.5 = 2.5 + \left( 0.625 \cdot \frac{I_{Pmini}}{15} \right) \quad \Rightarrow \quad I_{Pmini} = \SI{48}{\ampere}
+	0.5 = 2.5 + \left( 0.625 \cdot \frac{I_{Pmini}}{15} \right) \quad \Rightarrow \quad I_{Pmini} = \SI{-48}{\ampere}
 \end{equation}
 
 The maximum-current which the transducer can measure correctly before it enters saturation can be calculated as:
 \begin{equation}
-	4.5 = 2.5 + \left( 0.625 \cdot \frac{I_{Pmaxi}}{15} \right) \quad \Rightarrow \quad I_{Pmaxi} = \SI{-48}{\ampere}
+	4.5 = 2.5 + \left( 0.625 \cdot \frac{I_{Pmaxi}}{15} \right) \quad \Rightarrow \quad I_{Pmaxi} = \SI{48}{\ampere}
 \end{equation}
 
-The transducer's measuring-resolution can be calculated as a output-difference per the corrosponding input-difference. The difference is found using the minimum and maximum range values from the calculations above:
+The transducer's measuring-resolution can be calculated as a output-difference per the corresponding input-difference. The difference is found using the minimum and maximum range values from the calculations above:
 \begin{equation}
 	\Delta V = \frac{\SI{4.5}{\volt} - \SI{0.5}{\volt}}{\SI{48}{\ampere} - (\SI{-48}{\ampere})} = \SI[per-mode = fraction]{41.67}{\milli \volt \per \ampere}
 \end{equation}
 
 \textbf{Voltage Transducer}\\
-The voltage delivered to the motor is measured using a voltage divider consisting of two resistors. The voltage didiver must be placed parallel to the motor to correctly measure the voltage.
+The voltage delivered to the motor is measured using a voltage divider consisting of two resistors. The voltage divider must be placed parallel to the motor to correctly measure the voltage.
 
 \begin{figure}[H]
 	\centering
@@ -69,7 +69,7 @@ The voltage delivered to the motor is measured using a voltage divider consistin
 
 According to the requirements the car's motor operates with a supply-voltage between $\SI{0}{\volt}$ and $\SI{50}{\volt}$. This range must be rescaled to a range between $\SI{0}{\volt}$ and $\SI{5}{\volt}$ as this is the range which can be measured by the PSoC's ADC.
 
-The voltage divider can be designed by choosing either pf the resistor's values. For this calculation, however, the value of R\textsubscript{1} is choosen to be equal to $\SI{10}{\kilo \ohm}$. The desired value of the resistor R\textsubscript{2} can then be calculated using the following formula:
+The voltage divider can be designed by choosing either of the resistor's values. For this calculation, however, the value of R\textsubscript{1} is choosen to be equal to $\SI{10}{\kilo \ohm}$. The desired value of the resistor R\textsubscript{2} can then be calculated using the following formula:
 \begin{equation}
 	\begin{split}
 	V_{in} &= V_{motor} \cdot \frac{R_2}{R_1 + R_2}\\
@@ -81,7 +81,7 @@ For simplicity the resistor's value is rounded to $\SI{1}{\kilo \ohm}$ which mea
 \begin{equation}
 	V_{in} = \SI{50}{\volt} \cdot \frac{ \SI{10}{\kilo \ohm} }{ \SI{1}{\kilo \ohm} + \SI{10}{\kilo \ohm}} = \SI{4.545}{\volt}
 \end{equation}
-
+\fxnote{Tjek formler, burde der ikke den sidste stå 1/1+10 istedet? TN}
 \subsection{Implementation}
 The Power Sensor's circuit can be implemented by combining the two designs above. The product is seen on the circuit-diagram below. All four motor-connections can be connected to using banana-plugs. The voltage- and current-measurements are connected to the PSoC through analog low-pass filters.
 
@@ -92,7 +92,7 @@ The Power Sensor's circuit can be implemented by combining the two designs above
 	\label{fig:PowerSensor_circuit}
 \end{figure}
 
-The diodes D1 and D2 are of the type 1N4007\cite{1N4007} and are used to protect the circuit as the node between them becomes limited to a voltage in the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-current will flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons\cite{EMC}.
+The diodes D1 and D2 are of the type 1N4007\cite{1N4007} and are used to protect the circuit as the node between them becomes limited to a voltage in the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-current\fxnote{vel overvoltage de begrænser? TN} will flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons\cite{EMC}.
 
 \subsection{Unity test}
 \label{sec:PowerSensorTest}

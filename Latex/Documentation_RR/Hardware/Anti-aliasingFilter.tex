@@ -7,7 +7,7 @@ The filters are not treated as separate blocks due to the fact that the sensors 
 
 \subsection{Design}
 The Anti-aliasing filters are made up by analog low-pass filters. The different sensors in the system requires different kinds of anti-aliasing filters and a Matlab script is used to determine the best design for all the sensor.
-The script '\textit{ADC\_lowpassFilter}' will automatically find the best components to realized the Anti-aliasing filters from E12 values, and will make sure that it will suppress the aliasing down to the SNR of the ADC.
+The script '\textit{ADC\_lowpassFilter}' will automatically find the best components to realized the Anti-aliasing filters from E12 values, and will make sure that it will suppress the aliasing down to the SNR of the ADC. \fxnote{sætning giver ikke mening, Suppres the aliasing down to the SNR? what - TN}
 	
 \subsubsection*{Torque sensor}
 The script below is used to calculate the RC low-pass filter for the Torque Sensor. The script requires the following pieces of information: The sample frequency, the ADC's resolution (number of bits) and the desired cutoff-frequency.
@@ -52,20 +52,20 @@ And the low-pass filter's transfer function is:
 	
 	
 \subsubsection*{Power sensor}
-The signal of interest is the average value, because the PWM signal will be seen as noise signal, and must be filtered out, also because else the sample rate have to be around 512 times bigger then PWM frequency.
+The signal of interest is the average value, because the PWM signal will be seen as noise signal, and must be filtered out, also because else the sample rate have to be around 512 times bigger then PWM frequency. \fxnote{omformulering tak - TN}
 	
 \begin{lstlisting}
 	ADC_fs=52500;
 	ADC_N=12;
 \end{lstlisting}
 	
-calculate how much the PWM signal have to be suppress to meet the requirement of 0.1\% accuracy.
+The following will calculate how much the PWM signal have to be suppressed to meet the requirement of 0.1\% accuracy.
 	
 \begin{lstlisting}
 	Supress_dB=-20*log10(0.001)
 \end{lstlisting}
 
-The design will be build based on that the PWM frequency is greater then 2000Hz, and have to suppress the PWM signal 60dB too only getting a 0.1\% accuracy. This can be done with a 2. order low-pass filter 2 decades before 2000Hz this is 20Hz. The PWM signal will be suppress with 80dB.
+The design will be build based on that the PWM frequency is greater then 2000Hz, and have to suppress the PWM signal 60dB to get an  accuracy of 0.1\%. This can be done with a 2. order low-pass filter 2 decades before 2000Hz this is 20Hz. The PWM signal will be suppressed with 80dB.
 	
 \begin{lstlisting}
 	fc=20;
@@ -80,7 +80,7 @@ The design will be build based on that the PWM frequency is greater then 2000Hz,
 	grid on;
 \end{lstlisting}
 
-The result from the script are. Note this is a 2 order low-pass filter:
+The result from the script are: (Note this is a 2. order low-pass filter)
 	
 \begin{equation}
 	\begin{split}
@@ -104,7 +104,7 @@ And the transfer function is:
 
 \subsection{Implementation}
 
-Anti-aliasing filter will be realized in the implementation process. To implement the 2. order low-pass filter a buffer is needed, to realized the circuit. As a buffer the IC MCP6004 are used.
+Anti-aliasing filter will be realized in the implementation process. To implement the 2. order low-pass filter a buffer is needed, to realize the circuit. As a buffer the IC MCP6004 are used.
 	
 \subsubsection*{Torque Sensor}
 	

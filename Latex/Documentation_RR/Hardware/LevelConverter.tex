@@ -42,9 +42,9 @@ In order to determine which component can be used to convert the voltage, the ma
 		I_{PSoC} = \SI{500}{\milli \ampere}
 	\end{equation}
 	\item \textbf{Voltage divider for the PSoC's reference voltage}\\
-	The PSoC has a \SI{2.5}{\volt} reference-pin which is supplied by a voltage divider which consists of two \SI{10}{\kilo \ohm} resistors in series with the 5 VDC supply and ground. If it is assumed that no current flows into the pin then the total amount of current in the resistors can be found as:
+	The PSoC has a \SI{2.5}{\volt} reference-pin which is supplied by a voltage divider which consists of two \SI{10}{\kilo \ohm} resistors in series with the 5 VDC supply and ground. If it is assumed that no current flows into the pin then the total amount of current in the resistors can be found as: \fxnote{Er du sikker på den udregning? TN}
 	\begin{equation}
-		I_{VD} = \frac{V}{R} = \frac{\SI{5}{\volt}}{\SI{20}{\kilo \ohm}} = \SI{250}{\micro \ampere}
+		I_{VD} = \frac{V}{R} = \frac{\SI{5}{\volt}}{\SI{20}{\kilo \ohm}} = \SI{250}{\micro \ampere} 
 	\end{equation}
 \end{itemize}
 

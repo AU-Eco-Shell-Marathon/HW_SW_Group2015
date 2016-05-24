@@ -36,7 +36,7 @@ Which means that if the ADC in the PSoC samples input signals with a frequency g
 	\label{fig:SchmittTrigger_waveform}
 \end{figure}
 
-In order to counter the inverting property of 74HC14, and create a comperator, the noise reduction  must consist of two Schmitt-triggers in series. This gives the subsystem a total propagation delay of $\SI{24}{\nano \second}$. As the 74HC14 contains six Schmitt-triggers the 4 unused Schmitt-trigger's inputs are connected to ground in order to prevent unwanted oscilliation. The subsystem's final design is seen on Figure \ref{fig:SignalConverterVelocity} below.
+In order to counter the inverting property of 74HC14, and create a comperator, the noise reduction  must consist of two Schmitt-triggers in series. This gives the subsystem a total propagation delay of $\SI{24}{\nano \second}$ \fxnote{giver det ikke 48 ns når det skal igennem 2? - TN}. As the 74HC14 contains six Schmitt-triggers the 4 unused Schmitt-trigger's inputs are connected to ground in order to prevent unwanted oscilliation. The subsystem's final design is seen on Figure \ref{fig:SignalConverterVelocity} below.
 
 \begin{figure}[H]
 	\centering
@@ -57,7 +57,7 @@ The non-inverting adder is tested using Analog Discovery's built-in oscilloscope
 		V_{in} = +\SI{5}{\volt} \quad &\Rightarrow \quad V_{out} = \SI{4.946}{\volt}\\
 	\end{split}
 \end{equation}
-It is seen that there is a small measurement-error. This error can be corrected in the PSoC - as long as the output-voltage is positive.
+It is seen that there is a small measurement-error. This error can be corrected in the PSoC \fxnote{Hvordan? TN}- as long as the output-voltage is positive. \fxnote{Hvorfor? TN}
 
 \fxnote{Ville ikke mene det er nødvendigt med graf, da de ikke giver noget information. Kunne ellers have været rart at både input og output blev målt og vist - JH}
 

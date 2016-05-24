@@ -13,7 +13,7 @@ The only components which are directly supplied by the Voltage Adaptor are the T
 	$I_{sensor} = \SI{60}{\milli \ampere}$
 	\item Current drawn from the Torque Sensor by the PSoC:\\
 	$I_{signal} = \SI{5}{\milli \ampere}$
-	\item The current consumed by the MOSFET-driver's gate is calculated in \ref{sec:LoadSystem} and will not be examined in this section. The amount of current consumed is calculated as:\\
+	\item The current consumed by the MOSFET-driver's gate is calculated in section \vref{sec:LoadSystem} and will not be examined in this section. The amount of current consumed is calculated as:\\
 	$I_{gate} = \SI{3.90}{\ampere}$
 \end{itemize}
 
@@ -26,7 +26,7 @@ The total amount of current which is drawn at the 12 VDC line can be calculated 
 \end{equation}
 
 \textbf{5 VDC components}\\
-The amount of current consumed by the 5 VDC line is calculated in \vref{sec:LevelConverter} and will not be examined in this section. The amount of current consumed is calculated as:
+The amount of current consumed by the 5 VDC line is calculated in \vref{sec:LevelConverter} \fxnote{reference mangler} and will not be examined in this section. The amount of current consumed is calculated as:
 \begin{equation}
 	I_{5V} = \SI{613}{\milli \ampere}
 \end{equation}
@@ -51,6 +51,7 @@ The Voltage Adaptor is implemented \fxnote{Vi har vel ikke implementet det - JH}
 	\caption{Implemented circuit design on Rolling Road}
 	\label{fig:DesignVoltageAdaptor}
 \end{figure}
+\fxnote{Burde fusen ikke være før opsplittelsen af signalet? - TN}
 
 \subsection{Unit test} \fxnote{Unit Test (enheds-test) ikke unity} \fxnote{Når den kommer udfra stoler vi vel på det er 12V - JH}
 The Voltage Adaptor is tested using Analog Discovery's built-in oscilloscope. The average output-voltage is found to be \SI{11.998}{\volt}. The output is seen below.
