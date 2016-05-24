@@ -1,7 +1,9 @@
 \newpage
 \section{Data-flow and DMA}
 
-Before reading this section keep in mind that this section is a mix of both hardware and software.\\
+\fxnote{Omformuler - JH}
+
+Before reading this section keep in mind that this section is a mix of both hardware and software.\\ \fxnote{Så lig det et andet sted en SW - JH}
 There are a lot of data what goes through the PSoC, too get a better overview of have the data are measured too the data ends up on the PC a Data-flow diagram has been made. there are both digital and analog filters, and even some down-samplings.
 
 \subsection{Flow diagram}
@@ -13,7 +15,7 @@ There are a lot of data what goes through the PSoC, too get a better overview of
 	\label{fig:data_flow_diagram}
 \end{figure}
 
-As seening in \ref{fig:data_flow_diagram} it can be a little hard to get a overview of the data-flow. There are sensor (four if Power count for two because it measure both voltage and current) that are our data pipes, and output there are only 2 data pipes, one that goes all the way to the main PC, this data also goes through a moving average to make a more smooth for the user. The second output pipe has to be more fast because it is data to the PID regulator, and a too big time delay in a regulator, will make the system unstable.    
+As seen in \ref{fig:data_flow_diagram} it can be a little hard to get a overview of the data-flow. There are sensor (four if Power count for two because it measure both voltage and current) that are our data pipes, and output there are only 2 data pipes, one that goes all the way to the main PC, this data also goes through a moving average to make a more smooth for the user. The second output pipe has to be more fast because it is data to the PID regulator, and a too big time delay in a regulator, will make the system unstable.    
 
 \subsubsection{Power flow}  
 

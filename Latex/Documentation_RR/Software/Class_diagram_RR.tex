@@ -1,5 +1,12 @@
 \section{Class diagram}
 
+\fxnote{Hele det har afsnit burde blive auto-generated af doxygen (Så comments står inde i koden istedet) - JH}
+
+\fxnote{Der mangler en navngivnings standard, f.eks. hvis jeg gør brug af init() metoden, hvordan ved jeg hvor jeg skal find implementationen? Evt. følg psoc's egen <ModulNavn>\_<Function>(), så det ville blive ControllerClass\_Init() - JH}
+
+\fxnote{De fleste klasser har heller ikke sigende navne - JH}
+
+\fxnote{Skift designet på samtlige diagrammer! Ville være umuligt at læse i sort-hvid print, er allerede svært nu (Brug den klassiske hvid/lyse-blå i visio) - JH}
 \begin{figure}[H]
 	\centering
 	\includegraphics [width=6in]{Software/Pictures/klassediagram.png}
@@ -178,7 +185,7 @@ Sensor class: are measuring the efficiency of the test object.
 	\label{table:Class_description_PID_RR_PSoC}
 \end{table}
 
-\subsection{Sensor}
+\subsection{Sensor} \fxnote{What, "Sensor" er alt for generic, hver sensor ude fra burde have deres egen 'klasse' med deres egen 'driver'. Hvis vi skal ændre en sensor nu, skal der alt for meget til - JH}
 
 \begin{figure}[H]
 	\centering

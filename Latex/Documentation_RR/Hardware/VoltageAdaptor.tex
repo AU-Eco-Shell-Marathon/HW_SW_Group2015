@@ -1,7 +1,7 @@
 \section{Voltage Adaptor}
 The purpose of this block is to convert 230 VAC from the electrical mains to a 12 VDC supply voltage. This voltage can then be used to power the various electrical components in the system. Some of the components can draw power directly from the 12 VDC line while other components requires even lower voltages.
 
-\subsection{Design}
+\subsection{Design} \fxnote{Det virker mere som krav, ikke design - JH}
 As the voltage Adaptor supplies every component in the system, it is important that it is rated to handle the amount of current which is drawn.
 In order to calculate the minimum current rating:
 
@@ -43,7 +43,7 @@ The minimum amount of current which the adaptor must be able to deliver, can be 
 This means that the system can be supplied by any 12 VDC voltage adaptor which is rated to deliver a minium of \SI{4.58}{\ampere}.
 
 \subsection{Implementation}
-The Voltage Adaptor is implemented using a \fxnote{name of voltage adaptor}. The adaptor connects the Control-box with the electrical mains with a \SI{2.1}{\milli \meter} coaxial plug. For safety reasons the Rolling Road circuit design also contains a \SI{5}{\ampere} fuse on the supply line. Furthermore, the voltage adaptor also supplies the Level Converter - this line is not protected with a fuse. The final design which is implemented on the print is seen on Figure \ref{fig:DesignVoltageAdaptor} below.
+The Voltage Adaptor is implemented \fxnote{Vi har vel ikke implementet det - JH} using a \fxnote{name of voltage adaptor}. The adaptor connects the Control-box with the electrical mains with a \SI{2.1}{\milli \meter} coaxial plug. For safety reasons the Rolling Road circuit design also contains a \SI{5}{\ampere} fuse on the supply line. Furthermore, the voltage adaptor also supplies the Level Converter - this line is not protected with a fuse. The final design which is implemented on the print is seen on Figure \ref{fig:DesignVoltageAdaptor} below.
 
 \begin{figure}[H]
 	\centering
@@ -52,7 +52,7 @@ The Voltage Adaptor is implemented using a \fxnote{name of voltage adaptor}. The
 	\label{fig:DesignVoltageAdaptor}
 \end{figure}
 
-\subsection{Unity test}
+\subsection{Unit test} \fxnote{Unit Test (enheds-test) ikke unity} \fxnote{Når den kommer udfra stoler vi vel på det er 12V - JH}
 The Voltage Adaptor is tested using Analog Discovery's built-in oscilloscope. The average output-voltage is found to be \SI{11.998}{\volt}. The output is seen below.
 
 \begin{figure}[H]

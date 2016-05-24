@@ -1,8 +1,10 @@
-\section{Block description}
+\section{Block description} \fxnote{Ryk evt. ned på egen side - JH}
+
+\fxnote{Vil ikke mene det er nødvendigt at have "Description:" stående alle steder - JH}
 The blocks in the BDD are described as follows:
 \begin{itemize}
 	\item \textbf{Voltage Adaptor}\\
-	Description: This block converts 230 VAC to 12 VDC in order to control the system. This allows the system to be directly powered by the power grid.
+	Description: This block converts 230 VAC to 12 VDC in order to control the system. This allows the system to be directly powered by the power grid. \fxnote{Er det en del af systemet? (Får det til at lyde begræsende at man ikke selv kan komme med en 12V forsyning) - JH}
 	\item \textbf{Roll Stand}\\
 	Description: This block contains the various mechanical subsystems.
 	\begin{itemize}
@@ -14,13 +16,13 @@ The blocks in the BDD are described as follows:
 		Description: Converts the angular velocity and torque to electrical signals.
 	\end{itemize}
 	\item \textbf{Control Unit}\\
-	Description: Reads the Roll's angular velocity, torque, electrical power in the battery and mechanical power given to the Roll. Furthermore it controls the resistance in the Load System and sends the collected data to the Computer.
-	\item \textbf{Control System}\\
+	Description: \fxnote{Skal omformuleres, evt. noget med at den samler data fra alle sensorer og laver nogle udregninger på dem før den sender dem videre til computeren - JH} Reads the Roll's angular velocity, torque, electrical power in the battery and mechanical power given to the Roll. Furthermore it controls the resistance in the Load System and sends the collected data to the Computer.
+	\item \textbf{Control System}\fxnote{Mere sigende navn - JH} \\
 	Description: This block contains the various electrical subsystems.
 	\begin{itemize}
 		\item \textbf{Signal Converter}\\
-		Description: Converts the generated signals from the Torque Sensor to signals which are readable for the Control Unit.
-		\item \textbf{Level Converter}\\
+		Description: Converts the generated signals from the Torque Sensor to signals which are readable by the Control Unit.
+		\item \textbf{Level Converter} \fxnote{På navnet lyder det som det er et signal der bliver convertet, ikke en spændingsforsyning - JH} \\
 		Description: Converts the 12 VDC voltage to 5 VDC in order to power the control unit.
 		\item \textbf{Power Sensor}\\
 		Description: Converts electrical power from the vehicle's battery to signals which are readable for the Control Unit.
