@@ -55,33 +55,33 @@
 	& 
 	& \\ \hline	
 	AU2\_F9
-	& The car's BMS must be able to protect the cells of the battery from undervoltage and overvoltage. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1) \fxnote{reference to 2013BMS Documentation}
+	& The car's BMS must be able to protect the cells of the battery from undervoltage and overvoltage. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1)\cite{BMSDocumentation} (section 1.5.1.2).
 	& Connect a voltage between one of the BMS cell inputs and the reference pin. Try with both 1 V and 5 V. Test the two connections to "J9" on the analog front end board with a multimeter.
 	& The multimeter shows less than 20 V.
 	& 
 	& \\ \hline
 	AU2\_F10
-	& The car's BMS must be able to protect the battery from emitting overcurrent. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1) \fxnote{reference to 2013BMS Documentation}
+	& The car's BMS must be able to protect the battery from emitting overcurrent. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1)\cite{BMSDocumentation} (section 1.5.1.2).
 	& Connect a powersource which is emitting 40 A. Test the two connections to "J9" on the analog front end board with a multimeter. (Replace the fuse with a new one after the test of this requirement.)
 	& The multimeter shows less than 20 V.
 	& 
 	& \\ \hline
 	AU2\_F11
-	& The car's BMS must be able to balance the cells if needed. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.4) \fxnote{reference to 2013BMS Documentation}
+	& The car's BMS must be able to balance the cells if needed. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.4)\cite{BMSDocumentation} (section 1.5.1.2).
 	& Unbalance the cells of the battery. Connect the micro-USB to a PC and use for example Tera Term to see the cell voltages. Connect all the cells and wait for BMS to balance them again.
 	& The cell voltages slowly belances out. 
 	& 
 	& \\ \hline
 	AU2\_F12
-	& The car's BMS must be able to protect the battery from overheating. The threshold when discharging is 60 degrees celsius maximum. And when charging, the threshold is 45 degrees celsius maximum. This requirement is already implemented in the BMS from earlier projects. (BMS\_NF.2) \fxnote{reference to 2013BMS Documentation}
+	& The car's BMS must be able to protect the battery from overheating. The threshold when discharging is 60 degrees celsius maximum. And when charging, the threshold is 45 degrees celsius maximum. This requirement is already implemented in the BMS from earlier projects. (BMS\_NF.2) \cite{BMSDocumentation} (section 1.5.2.2).
 	& Warm the batteries up to above 60 degrees celsius without connecting the charger. Test the two connections to "J9" on the analog front end board with a multimeter. Try also when charging the batteries.
 	& The multimeter shows less than 20 V.
 	& 
 	& \\ \hline
 	AU2\_F13
-	& The car's BMS should be able to transfer data to the MCS via CAN-communication so the data can be collected on a SD-card. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.8) \fxnote{reference to 2013BMS Documentation}
-	& Connect a CAN-reader and see if the results matches what it should. As specified in the earlier documentation of the BMS. \fxnote{reference to 2013BMS Documentation}
-	& \fxnote{reference to 2013BMS Documentation}. 
+	& The car's BMS should be able to transfer data to the MCS via CAN-communication so the data can be collected on a SD-card. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.8)\cite{BMSDocumentation} (section 1.5.1.2).
+	& Connect a CAN-reader and see if the results matches what it should. As specified in the earlier documentation of the BMS\cite{BMSDocumentation} (section 4.2.2 page 91).
+	& \cite{BMSDocumentation} (section 4.2.2 page 91).
 	& 
 	& \\ \hline	
 \end{longtable}

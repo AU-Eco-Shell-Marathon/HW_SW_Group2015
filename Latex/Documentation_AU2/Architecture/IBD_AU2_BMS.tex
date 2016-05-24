@@ -45,7 +45,7 @@ Block interface description:
 	Description: A voltage which is proportional to the output current from the battery.
 \end{itemize}
 
-\textbf{Block :Analog Frontend}\\
+\textbf{Block :Analog Front End}\\
 Block interface description:
 \begin{itemize}
 	\item \textbf{CellVoltages:Voltage}\\
@@ -63,7 +63,7 @@ Block interface description:
 	\item \textbf{BatterySupplyA:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: Power coming from the battery that is protected by a fuse.
-	\item \textbf{Error:SPI}\\
+	\item \textbf{Data:SPI}\\
 	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
 	Description: Sends the measured analog data to the digital unit in order to be sent to a computer.
 	\item \textbf{DigSupply48V:Voltage}\\
@@ -116,7 +116,7 @@ Block interface description:
 \textbf{Block :Digital Unit}\\
 Block interface description:
 \begin{itemize}
-	\item \textbf{Error:SPI}\\
+	\item \textbf{Data:SPI}\\
 	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
 	Description: Sends the measured analog data to the Digital Unit in order to be sent to a computer via CAN later.
 	\item \textbf{:CAN}\\

@@ -87,9 +87,9 @@ Block interface description:
 	\item \textbf{PowerIn:Power}\\
 	Direction: [Battery Management System] $\rightarrow$ [Joulemeter] $\rightarrow$ [Motor Control System]\\
 	Description: Power delivered by the battery in order to propel the car. This connection is independent of the Joulemeter in case a Joulemeter is not connected the Motor Control System will still be supplied with power.
-	\item \textbf{BMSC:CAN}\\
-	Direction: [Battery Management System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables.
+	\item \textbf{:CAN}\\
+	Direction: [Battery Management System] $\leftrightarrow$ [Computer] \& [Motor Control System]\\
+	Description: CAN-communication with a computer or Motor Control System in order to gain information about various variables.
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltage indicating the temperature of the battery.
@@ -136,7 +136,7 @@ Block interface description:
 	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the driving-algorithm.
 	\item \textbf{MCSC:CAN}\\
 	Direction: [Motor Control System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
+	Description: CAN-communication with a computer or the Battery Management System in order to gain information about various variables and calibrate the system.
 	\item \textbf{SpeedButton:Force}\\
 	Direction: [External] $\rightarrow$ [Motor Control System]\\
 	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast-and-burn driving algorithm.
@@ -186,6 +186,6 @@ Block interface description:
 Block interface description:
 \begin{itemize}
 	\item \textbf{CANAU2:CAN}\\
-	Direction: [Motor Control System] and [Battery Management System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables and to calibrate the system.
+	Direction: [Motor Control System] \& [Battery Management System] $\leftrightarrow$ [Computer]\\
+	Description: CAN-communication with either the Motor Control System or the Battery Management System in order to gain information about various variables and to calibrate the system.
 \end{itemize}

@@ -9,14 +9,21 @@ The blocks in the BDD are described as follows:
 	\item \textbf{Battery Holder}\\
 	Description: A battery holder for the two batteries, which will be implemented in a serial connection and thereby understood as one battery. The battery implemented is a 2 times 6 celled battery with a nominal voltage on 3.7 V per cell. The battery is used as the power source.
 	\item \textbf{Battery Management System}\\
-	Description: The system manages the rechargable battery and protects the circuits and batteries from shorting. This is done by constantly surveying the current and temperature from the battery. If any parameter exceeds an allowable treshold, the system will block the current from the battery.
+	Description: The system manages the Propulsion Battery whilst protecting the circuits and the battery from shorting. This is done by constantly surveying the current and temperature from the battery. If any parameter exceeds a specified threshold, the system will isolate the battery.
 	\begin{itemize}
 		\item \textbf{Current Sensor}\\
 		Description: Senses value and direction of battery current, and presents this information to the Analog Front End.
 		\item \textbf{Analog Front End}\\
-		Description: Performs measurements and analog to digital conversion of cell voltages, battery temperatures and signal from current sensor. Furthermore, it handles cell balancing on requests from the Digital Unit, and redudant battery protection independent of the Digital Unit.
+		Description: This unit handles analog to digital conversions from the batteries, the temperature sensor as well as the current sensor.
 		\item \textbf{Digital Unit}\\
-		Description: Collects measured values from the Analog Unit, performs calculations gives estimations of the cell lifetime and battery parameters. Furthermore, it handles communication with external units.
+		Description: The Digital Unit commands the Analog Front End on what calculations to execute and when to collect data. Furthermore, it can communicate with the Motor Control System by using the CAN protocol and it has a built in USB interface, which can be used to debug on. 
+		\item \textbf{DC/DC Converter}\\
+		Description: The DC/DC Converter is responsible for converting a high voltage power supply to a lower voltage power supply.
+		\item \textbf{Isolation Switch}\\
+		Description: This unit is a relay that is controlled by the Battery Management System and the Emergency System. It has the ability to stop the propulsion of the vehicle.
+		\item \textbf{Analog Front End Extension Module}\\
+		Description: This unit allows the Analog Front End to measure more than 6 cells. 
+		
 	\end{itemize}
 	\item \textbf{Horn}\\
 	Description: A sound-making device which emits a tone when the driver activates it.
