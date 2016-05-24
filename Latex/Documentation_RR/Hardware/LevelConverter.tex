@@ -1,8 +1,9 @@
 \newpage
 \section{Level Converter}
+\label{sec:LevelConverter}
 The purpose of this block is to supply both the various 5 Volt components in the system. This is done by converting the 12 VDC from the Voltage Adaptor's output down.
 
-\subsection{Design} \fxnote{Lyder meget som krav til konverteren, ikke design - JH}
+\subsection{Analysis}
 In order to determine which component can be used to convert the voltage, the maximum current drawn by the 5 VDC components must be calculated. This is done by looking through the components' datasheets. It is assumed that all component operates at an ambient temperature of around \SI{25}{\celsius}. The current-values from the datasheet are selected by this temperature - or the closest specified temperature.
 \begin{itemize}
 	\item \textbf{The current transducers in the Power Sensor and Load System}\\
@@ -42,7 +43,7 @@ In order to determine which component can be used to convert the voltage, the ma
 		I_{PSoC} = \SI{500}{\milli \ampere}
 	\end{equation}
 	\item \textbf{Voltage divider for the PSoC's reference voltage}\\
-	The PSoC has a \SI{2.5}{\volt} reference-pin which is supplied by a voltage divider which consists of two \SI{10}{\kilo \ohm} resistors in series with the 5 VDC supply and ground. If it is assumed that no current flows into the pin then the total amount of current in the resistors can be found as: \fxnote{Er du sikker på den udregning? TN}
+	The PSoC has a \SI{2.5}{\volt} reference-pin which is supplied by a voltage divider which consists of two \SI{10}{\kilo \ohm} resistors in series with the 5 VDC supply and ground. If it is assumed that no current flows into the pin then the total amount of current in the resistors can be found as:
 	\begin{equation}
 		I_{VD} = \frac{V}{R} = \frac{\SI{5}{\volt}}{\SI{20}{\kilo \ohm}} = \SI{250}{\micro \ampere} 
 	\end{equation}
@@ -78,7 +79,7 @@ The circuit is built identically as the one seen in the regulator's application 
 \end{figure}
 
 \subsection{Unit test}
-The Level Converter is tested using Analog Discovery's built-in oscilloscope. The average output-voltage is found to be \SI{4.97}{\volt}. The output is seen below. \fxnote{Den skal vel testes med den udregnede strøm? (Den bliver godt varm ved det forbrug) - JH}
+The Level Converter is tested using Analog Discovery's built-in oscilloscope. The average output-voltage is found to be \SI{4.97}{\volt}. The output is seen below. There hasn't been performed any tests to find the output-current.
 
 \begin{figure}[H]
 	\centering

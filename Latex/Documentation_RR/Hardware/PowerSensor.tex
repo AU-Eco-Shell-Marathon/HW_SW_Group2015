@@ -79,9 +79,9 @@ The voltage divider can be designed by choosing either of the resistor's values.
 \end{equation}
 For simplicity the resistor's value is rounded to $\SI{1}{\kilo \ohm}$ which means that the highest voltage on the PSoC's input can be calculated as:
 \begin{equation}
-	V_{in} = \SI{50}{\volt} \cdot \frac{ \SI{10}{\kilo \ohm} }{ \SI{1}{\kilo \ohm} + \SI{10}{\kilo \ohm}} = \SI{4.545}{\volt}
+	V_{in} = \SI{50}{\volt} \cdot \frac{ \SI{1}{\kilo \ohm} }{ \SI{10}{\kilo \ohm} + \SI{1}{\kilo \ohm}} = \SI{4.545}{\volt}
 \end{equation}
-\fxnote{Tjek formler, burde der ikke den sidste stå 1/1+10 istedet? TN}
+
 \subsection{Implementation}
 The Power Sensor's circuit can be implemented by combining the two designs above. The product is seen on the circuit-diagram below. All four motor-connections can be connected to using banana-plugs. The voltage- and current-measurements are connected to the PSoC through analog low-pass filters.
 
@@ -92,7 +92,7 @@ The Power Sensor's circuit can be implemented by combining the two designs above
 	\label{fig:PowerSensor_circuit}
 \end{figure}
 
-The diodes D1 and D2 are of the type 1N4007\cite{1N4007} and are used to protect the circuit as the node between them becomes limited to a voltage in the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-current\fxnote{vel overvoltage de begrænser? TN} will flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons\cite{EMC}.
+The diodes D1 and D2 are of the type 1N4007\cite{1N4007} and are used to protect the circuit as the node between them becomes limited to a voltage in the range between \SI{-0.7}{\volt} and \SI{5.7}{\volt}. This means that a potential over-voltage will cause current to flow through these diodes instead of damaging subsequent circuits. The inductor L1 is added for EMC-reasons\cite{EMC}.
 
 \subsection{Unity test}
 \label{sec:PowerSensorTest}
