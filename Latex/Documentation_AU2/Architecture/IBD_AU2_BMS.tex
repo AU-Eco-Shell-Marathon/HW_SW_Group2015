@@ -15,19 +15,19 @@ The signals and protocols used to communicate between the blocks in BMS are spec
 Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Voltage}\\
-	Direction: [External] $\rightarrow$ [Analog Front End]\\
+	Direction: [External] $\rightarrow$ [Isolation Switch]\\
 	Description: Shuts down the system if a change in the voltage-level is measured from 48 V to 0 V. This happens when the corresponding Emergency Shutdown Switch(Emergency System) is pressed.
-	\item \textbf{MainSupply:Power}\\
-	Direction: [Analog Front End] $\rightarrow$ [External]\\
-	Description: The power from the battery which is delivered through the relay in the Analog Front End to the remaining electrical systems in the car. 
-	\item \textbf{BMSC:CAN}\\
+	\item \textbf{MainSupply:Power \& PowerIn:Power}\\
+	Direction: [Isolation Switch] $\rightarrow$ [External]\\
+	Description: The power from the battery which is delivered through the relay to the remaining electrical systems in the car. 
+	\item \textbf{:CAN}\\
 	Direction: [External] $\leftrightarrow$ [Digital Unit]\\
 	Description: CAN-communication with a computer in order to gain information about various variables.
 	\item \textbf{BatterySupplyA:Power}\\
 	Direction: [External] $\rightarrow$ [Current Sensor]\\
 	Description: Power coming from the battery that is protected by a fuse.
 	\item \textbf{CellVoltages:Voltage}\\
-	Direction: [External] $\rightarrow$ [Analog Front End]\\
+	Direction: [External] $\rightarrow$ [Analog Front End \& Analog Front End Extension Module]\\
 	Description: Voltages that indicate the voltage of the individual cells.
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
@@ -54,18 +54,21 @@ Block interface description:
 	\item \textbf{CurrentSense:Voltage}\\
 	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the output current from the battery.
-	\item \textbf{ShutDown:Voltage}\\
+	\item \textbf{IsolationControl:Voltage}\\
+	Direction: [Analog Front End] $\rightarrow$ [Isolation Switch]\\
+	Description: Wire that the Analog Front End uses to control the Isolation Switch. If and error occurs on the BMS the IsolationControl will follow the ShutDown connection.
+	\item \textbf{CellExtension:Voltage}\\
+	Direction: [Analog Front End Extension Module] $\rightarrow$ [Analog Front End]\\
+	Description: Signals containing information about cell voltages from the Extension Module.
+	\item \textbf{BatterySupplyA:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
-	Description: Shuts down the system if a change in the voltage-level is measured from 48 V to 0 V. This happens when the corresponding Emergency Shutdown Switch(Emergency System) is pressed.
+	Description: Power coming from the battery that is protected by a fuse.
 	\item \textbf{Error:SPI}\\
 	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
 	Description: Sends the measured analog data to the digital unit in order to be sent to a computer.
-	\item \textbf{DigSupply:Voltage}\\
-	Direction: [Analog Front End] $\rightarrow$ [Digital Unit]\\
-	Description: Power supply for the digital part of the system.
-	\item \textbf{MainSupply:Power}\\
-	Direction: [External] $\rightarrow$ [Analog Front End]\\
-	Description: The power from the battery which is delivered to the remaining electrical systems in the car.
+	\item \textbf{DigSupply48V:Voltage}\\
+	Direction: [Analog Front End] $\rightarrow$ [DC/DC Converter]\\
+	Description: Supply voltage from the Analog Front End which has to be converted to be used on the Digital Unit.
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the battery's temperature.
@@ -77,12 +80,9 @@ Block interface description:
 	\item \textbf{BatterySupplyA:Voltage}\\
 	Direction: [External] $\rightarrow$ [Isolation Switch]\\
 	Description: Power coming from the battery that is protected by a fuse.
-	\item \textbf{MainSupply:Power}\\
+	\item \textbf{MainSupply:Power \& PowerIn:Power}\\
 	Direction: [Isolation Switch] $\rightarrow$ [External]\\
-	Description: Power that comes from the battery, which is protected by the Isolation Switch.
-	\item \textbf{PowerIn:Power}\\
-	Direction: [Isolation Switch] $\rightarrow$ [External]\\
-	Description: Power that comes from the battery, which is protected by the Isolation Switch.
+	Description: The power from the battery which is delivered through the relay to the remaining electrical systems in the car. 
 	\item \textbf{ShutDown:Voltage}\\
 	Direction: [External] $\rightarrow$ [Isolation Switch]\\
 	Description: Shuts down the system if a change in the voltage-level is measured from 48 V to 0 V. This happens when the corresponding Emergency Shutdown Switch(Emergency System) is pressed.
@@ -119,11 +119,11 @@ Block interface description:
 	\item \textbf{Error:SPI}\\
 	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
 	Description: Sends the measured analog data to the Digital Unit in order to be sent to a computer via CAN later.
-	\item \textbf{BMSC:CAN}\\
+	\item \textbf{:CAN}\\
 	Direction: [External] $\leftrightarrow$ [Digital Unit]\\
 	Description: CAN-communication with a computer in order to gain information about various variables measured.
-	\item \textbf{DigSupply:Voltage}\\
-	Direction: [Analog Front End] $\rightarrow$ [Digital Unit]\\
-	Description: Power supply for the Digital Unit.
+	\item \textbf{DigSupply3.3:Voltage}\\
+	Direction: [DC/DC Converter] $\rightarrow$ [Digital Unit]\\
+	Description: A converted voltage to 3.3V which supplies circuits in the Digital Unit. 
 \end{itemize}
 
