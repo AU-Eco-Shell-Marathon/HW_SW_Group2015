@@ -8,10 +8,16 @@ To help create a GUI(Graphical User Interface) the WPF library which is a part o
 
 \subsection{Design}
 
-Initially MVVM and 3-layer was used as architectures. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files. It also makes it easy to change the datasource to a database for example later in the process, so of the website user story was to be implemented it would require little or no change to the 'backend'.
+Initially MVVM and 3-layer was used as architectures. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
+
+The Onion-Architecture heavily uses the repository pattern to abstract away from the data source. Making it easy to change the datasource to a database for example later in the process, so if the website user story was to be implemented it would require little or no change to the 'backend'.
 
 The communication with the Rolling Road is using the \fxnote{Forgot the name of the protocol} protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a uart connection, so only a Micro usb cable is needed to connect the two.
 
-To help debugging, a simple log was also implemented, it logs some of the users actions such as opening a new connection to the Rolling Road and catching any unhandled exceptions in case of a crash.
+To help debugging, a simple log was also implemented, it logs some of the users actions such as opening a new connection to the Rolling Road furthermore it also catches any unhandled exceptions in case of a crash.
+
+MVVM is a front-end architecture helping 
 
 \subsection{Implementation}
+
+\subsection{Testing}
