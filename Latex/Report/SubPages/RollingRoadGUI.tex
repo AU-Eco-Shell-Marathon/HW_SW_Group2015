@@ -25,14 +25,14 @@ To help debugging, a simple log was also implemented, it logs some of the users 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{SubPages/Images/First_GUI}
-\caption{First working graph}
+\caption{First working graph using the WPF-toolkit}
 \label{fig:First_GUI}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{SubPages/Images/Current_GUI}
-\caption{Current GUI}
+\caption{Current GUI using the D3 library}
 \label{fig:Current_GUI}
 \end{figure}
 
@@ -45,13 +45,22 @@ This helped immensely when developing the SP4RR-interpreter, since it was develo
 
 \subsection{Continuous Integration}
 
-From the start CI(Continuous Integration) was used to verify the code by running a series af test and code-analyzing tools, the steps used in the CI are as follows:
+From the start CI(Continuous Integration) was used to verify the code every time changes was detected in the repository. It was tested by running a series af code-tests and -analyzing tools, the steps used in the CI are as follows:
 
-\begin{itemize}
+\begin{enumerate}
 	\item Download all missing or out of date packages from Nuget
 	\item Build the project
 	\item Run all unit-tests
 	\item Calculate code-coverage
 	\item Duplicates finder
 	\item Inspection
-\end{itemize}
+\end{enumerate}
+
+Using CI also gives a history of the amount of test as seen in figure \vref{fig:CI_TestCount}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth]{SubPages/Images/CI_TestCount}
+\caption{A plot of test count. Y-Axis: Test-count, X-Axis: Build number}
+\label{fig:CI_TestCount}
+\end{figure}
