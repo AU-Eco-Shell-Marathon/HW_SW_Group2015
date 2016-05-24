@@ -1,13 +1,21 @@
-\chapter{FutureWork}
-There is plenty of futurework that can be done. The future work to be made will be divided into each subsystem to give a quick overview for future readers. 
+\chapter {Future Work}
+There is improvements to the system that can be done. The future improvements to be made will be divided into each subsystem to give a quick overview for future readers. 
 
-\subsection{AU2}
-text
+\subsection*{AU2}
+The following assumes a working system and thereby expecting the current system developed to be functional and operating.
 
-\subsection{Rolling Road}
-A major part in developing Rolling Road, would be to provide it with an active load system instead of the passive one already implemented. It will be realized to ensure a less reliant system. An active load system will make the overall system less dependent on the speed supplied by the unit on test. Furthermore it would make the system able to measure negative forces, which gives a more realistic simulation of the real world. In our specific case, it wasn't possible to complete a  geniune simulation run on the specific course being used in London since it had a downhill section. This could be defeated by implementing an active system. 
+Developments made to the circuit and software will mainly consist of optimization, when testing either on Rolling Road or on a test track. 
 
-\subsection{GUI}
+The PCB currently developed could be optimized, both by shrinking it in size, and spending more time placing the components in a more logical sense. At the same time EMC considerations could taking further into account. 
+
+The driving algorithm would be where most of the optimization lies, as this is what controls the motor which draws a current much larger than anything in the system and by optimizing the power delivered to the motor, the overall efficiency of the car can be increased. 
+
+Choosing the correct size of batteries would also better the car.\fxnote{kan man sige det?} Therefore doing some extensive testing, as to what batteries will prove to be best, could result in a better "fuel" efficiency. 
+
+\subsection*{Rolling Road}
+A major part in developing Rolling Road, would be to provide it with an active load system instead of the passive one already implemented. It will be realized to ensure a less reliant system. An active load system comprises of some form of active components that can supply the generator with energy contrary to using only passive components as it is now. An active load system will make the overall system less dependent on the speed supplied by the unit on test. Furthermore it would make the system able to measure negative forces, which gives a more realistic simulation of the real world. In our specific case, it wasn't possible to complete a  genuine simulation run on the specific course being used in London since it had a downhill section. This could be defeated by implementing an active system. 
+
+\subsection*{GUI}
 For further work with the Rolling Road GUI there can be implemented an even better display of the data than just the graph visualization. Furthermore there could be made website. In the following paragraphs the 2 mentioned upgrades will be explained. 
 
 The upgraded visualization of the data could include the user being able to plot a number of variables, e.g. speed and efficiency in a separate graph, so that information could be monitored separately. As a further upgrade to the system a number of calculations can be done by the program. These calculations could include a number of visualisations of the speed, e.g the average speed across the simulation. It could also include a greater deal of signal analysis such as averaging filters, smoothing out the values received. 
