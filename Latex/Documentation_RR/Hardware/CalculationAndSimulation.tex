@@ -2,11 +2,11 @@
 \section{Calculation and Simulation} %  of Rolling Roads regulator
 \label{sec:Calculation_and_Simulation}
 
-This section will go though the simulation of Rolling Roads regulator. First what kind of regulator what has been choose to Rolling Road and the calculation of the regulator and finally a simulation too see if it will work.
+This section will go though the simulation of Rolling Roads regulator. First what kind of regulator what has been choose for the Rolling Road and then the calculation of regulator and finally a simulation too see if it will work.
 
 \subsection{Calculation}
 
-choose a PID regulator, because it the most common used regulator.
+PID regulator, because it the most common used regulator.
 
 Before the constants of the PID regulator can be chosen, The transfer function of the load system has to be found first.
 
@@ -183,8 +183,8 @@ The top model in \ref{fig:sim_top} are a simulation of how the speed of a moving
 The first block on the left side "Speed (km/h)" are the speed that the test object runs with. The next two block are only used to make a more smooth speed curvy.\\
 The next thing what happening is that the speed are been convert to a rotational speed.\\
 Before the generator is there a Gear, and the rotating speed goes up.\\
-The next 3 blocks are the transformation in the generator and the load system, where the speed are converted to a torque.\\
-The torque are control with a PID regulator (see \ref{fig:sim_PSOC}). of course this part are controlling the current and not the torque, but it the same just a different scale. So just to get better overview it will been seem as it the torque that are been regulated and not the current.\\ 
+The next 3 blocks are the transformation in generator and load system, where the speed are converted to a torque.\\
+The torque are control with a PID regulator (see \ref{fig:sim_PSOC}). of course this part are controlling the current and not the torque, but it the same just a different scale. So just to get better overview it will seem as it the torque that are been regulated and not the current.\\ 
 After the PID regulator has regulated the torgue, the torque are send back to the object and are converted to a force.   
 
 \begin{figure}[H]

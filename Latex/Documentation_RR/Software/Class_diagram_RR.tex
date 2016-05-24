@@ -6,12 +6,13 @@
 	\caption{Class diagram of Rolling Road PSoC}
 	\label{fig:Class_diagram_RR_PSoC}
 \end{figure}
+\fxnote{Er ikke helt opdateret efter det sidste version af RR}
 
-The Class diagram of Rolling Road \vref{fig:Class_diagram_RR_PSoC}, there is 5 class, where all class are connect to the ControllerClass which control the flow in sequencing of the program.
-Uart class: is the class that communicate whit the control panel through UART. It both send new data and receive settings and commands from the control panel. 
-EEPROM class: make it possible to save data too the EEPROM on the PSoC. It can be PID parameters and offset values to all sensors.
-PID class: job is to regulate the load system, so the wanted Torque reached. 
-Sensor class: are measuring the efficiency of the test object. There is a couple sensor in this class, and the reason that it has not been split op is because it will be hard to control that all data is collected on the same time.
+The Class diagram of Rolling Road \vref{fig:Class_diagram_RR_PSoC}. 5 class where all class are connect to the ControllerClass which control the flow in sequencing of the program.\\
+Uart class: is the class that communicate with the control panel through UART. It both send new data and receive settings and commands from the control panel. \\
+EEPROM class: make it possible to save data too the EEPROM on the PSoC. It can be PID parameters and offset values to all sensors.\\
+PID class: job is to regulate the load system, so the wanted Torque is reached. \\
+Sensor class: are measuring the efficiency of the test object.
 
 \section{Class description}
 
@@ -31,12 +32,12 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
 		run
-		& Is the method what check if there is new data ready from the main PC or if where is a new sample ready to send to the main PC. Data from the PC can be PID values, wanted force value or commands to calibrate all sensors. 
+		& Is the method what check if there is new data ready from the main PC or if where is a new sample ready to send to the main PC. Data from the PC can be PID values, wanted force value or commands to ex. calibrate all sensors. 
 		\\ & It is also here that the main thread have to work, and should be placed in a while(1) loop. \\ 
 		\hline
 		
 		stop
-		& This method can be used to tell Rolling Road that no more information is wanted, and it don't have to regulate the load system. 
+		& This method are used to tell Rolling Road that no more information is wanted, and it don't have to regulate the load system. 
 		\\ \hline
 		
 		update
@@ -44,7 +45,7 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
 			\item {\large const struct PIDparameter *}
-			\subitem \textit{If this is not a null pointer, is it new PID values, an will be updated.}
+			\subitem \textit{If this is not a null pointer, it is new PID values, an will be updated.}
 			\item {\large const float *}
 			\subitem \textit{If this is not a null pointer, it is a new wanted force an will update the old value.}
 			\item {\large char}
@@ -57,7 +58,7 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		\\ \hline
 		
 		calibrate
-		& This method are used from the UART class so the main PC can signal to Rolling Road. That is shall perform a calibration of all sensor.
+		& This method are used from the UART class so the main PC can signal to Rolling Road. That it shall perform a calibration of all sensor.
 		\\ \hline
 	\end{tabular}
 	\caption{Class description ControllerClass}
@@ -83,39 +84,39 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		EEPROM\_read
 		& This method are used to read saved data from the EEPROM on the PSoC.
 		\\ & \textbf{Return parameter}
-		\\ & If the reading are successfully it will return 1. If it fails to read from the EEPROM it return 0. Note it will also fail if there is no saved data.
+		\\ & If the reading has succeeded it will return 1. If it fails to read from the EEPROM it return 0. Note it will also fail if there is no saved data.
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
 			\item {\large uint8}
 			\subitem \textit{this parameter is used to choose the data you want to read, It just the ID of the content that has been saved.}
 			\item {\large uint8*}
-			\subitem \textit{A pointer to a buf the data will be saved to. Note It will be a good idea to save it to the same data type}
+			\subitem \textit{A pointer to a buffer there the data will be saved to.}
 		\end{itemize}
 		\\ \hline
 		
 		EEPROM\_write
 		& This method make it possible to save data to the EEPROM.
 		\\ & \textbf{Return parameter}
-		\\ & if it return 1 it has successfully write the data to the EEPROM. If it return -1 it has failed.
+		\\ & if it return 1, it has successfully write the data to the EEPROM. If it return -1 it has failed.
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
 			\item {\large uint8}
-			\subitem \textit{this parameter is used to choose the data you want to save, It just the ID of the content that you want to save.}
+			\subitem \textit{this parameter is used to choose the data you want to save, It just the ID of the content you want to save.}
 			\item {\large uint8*}
-			\subitem \textit{A pointer to the data you want to saved. Note It will be a good idea to save it to the same data type as you have defined in the initializing}
+			\subitem \textit{A pointer to the data you want to saved. Note It will be a good idea to save it to the same data type, as you have defined in the initializing}
 		\end{itemize}
 		\\ \hline
 		
 		EEPROM\_init
-		& This method has to been run before using the two others methods. It will initializing the class.
+		& It will initializing the class.
 		\\ & \textbf{Return parameter}
 		\\ & If it don't return 1, something is wrong and where is probably not enough memory in the EEPROM. If this method don't return 1 don't use the other methods!   
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
 			\item {\large const size\_t *}
-			\subitem \textit{this parameter is used to send a array of sized of data that will be saved on the EEPROM. The index of the arrays elements is also theres IDs.}
+			\subitem \textit{this parameter is used to send a array of sizes of data that will be saved on the EEPROM. The index of the arrays elements is also their IDs.}
 			\item {\large uint8}
-			\subitem \textit{This parameter is used to tell have many elements there are in the array.}
+			\subitem \textit{This parameter is used to tell, have many elements there are in the array.}
 		\end{itemize}
 		\\ \hline
 
@@ -141,11 +142,11 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
 		PID\_init
-		& This method must be run first to initializing the class. 
+		& Initializing the class. 
 		\\ \hline
 		
 		PID\_tick
-		& This method should be executed periodic with constant time delay. This method holds all the calculation, and is here is calculate the PID value from the error of input- and sensor- value.
+		& This method should be executed periodic with constant time delay. 
 		\\ & \textbf{Return parameter}
 		\\ & The return parameter is only used to debug.
 		\\ & \textbf{Parameter list}
@@ -162,14 +163,14 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
 			\item {\large const struct PIDparameter *}
-			\subitem \textit{Change PID regulator parameter to the new PID values}
+			\subitem \textit{Change PID regulator parameter to a new sets of PID parameters}
 		\end{itemize} 
 		\\ \hline
 		
 		getPID\_ptr
-		& return a pointer to its PID values.
+		& return a pointer to its PID parameter.
 		\\ & \textbf{Return parameter (struct PIDparameter *)}
-		\\ & Return a pointer to the PID values. 
+		\\ & Return a pointer to the PID parameter. 
 		\\ \hline
 		
 	\end{tabular}
@@ -194,24 +195,23 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
 		getData
-		& It will return a data sample, if there is enough measure data. 
-		\\ & \textbf{Return parameter (char)}
-		\\ & If it return 1, it has return the measure data though the parameter list. If 0 where is no new data ready.
+		& It will return a data sample.
+		\\ & \textbf{Return parameter (void)}
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
 			\item {\large struct data *}
-			\subitem \textit{A pointer to where the data will be saved if where is enough measure data.}
+			\subitem \textit{A pointer to where the data will be saved.}
 		\end{itemize}
 		\\ \hline
 		
-		getTorque \fxnote{klasse diagram passer ikke sammen med klassebeskrivelse}
-		& Is used to get the Torque without calculate all others values. In this project it is used by the PID class, to get the Torque value with less latency.
+		getTorque
+		& Are used to get the Torque without calculate all others values. In this project it is used by the PID class, to get the Torque value with less latency.
 		\\ & \textbf{Return parameter (float)}
 		\\ & It return the Torque value in $ N*m $ 
 		\\ \hline
 		
 		getDistance
-		& Get the distance Rolling Road has rolled. 
+		& Gets the distance, Rolling Road has rolled. 
 		\\ & \textbf{Return parameter (int32)}
 		\\ & It return the distance in $ m $
 		\\ & \textbf{Parameter list}
@@ -220,15 +220,6 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 			\subitem \textit{If 1 it will reset the counter, if 0 it will just return the distance.}
 		\end{itemize}
 		\\ \hline
-		
-			setSNRdB
-			& Set a minimum SNR requirements, and will control the internal exponential average filter to meet the requirements.  
-			\\ & \textbf{Parameter list}
-			\\ & \begin{itemize}
-				\item {\large float}
-				\subitem \textit{SNRdB in a float value}
-			\end{itemize}
-			\\ \hline
 			
 			sensor\_init
 			& Initializing all sensor and DMA setup. It will also set offset value.   
@@ -248,11 +239,11 @@ Sensor class: are measuring the efficiency of the test object. There is a couple
 			\\ & \textbf{Parameter list}
 			\\ & \begin{itemize}
 				\item {\large int32*}
-				\subitem \textit{Return the offset value to the Voltage sensor.}
+				\subitem \textit{Return the offset value for the Voltage sensor.}
 				\item {\large int32}
-				\subitem \textit{Return the offset value to the Current sensor.}
+				\subitem \textit{Return the offset value for the Current sensor.}
 				\item {\large int32}
-				\subitem \textit{Return the offset value to the Torque sensor.}
+				\subitem \textit{Return the offset value for the Torque sensor.}
 			\end{itemize}
 			\\ \hline
 			

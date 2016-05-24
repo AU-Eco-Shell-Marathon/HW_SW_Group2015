@@ -1,7 +1,7 @@
 \newpage
 \section{Software PID regulator}
 
-The PID regulator are made in "c" and not implemented in a digital filter block, is because of a problem that is mention in Calculation and simulation section see page \pageref{sec:Calculation_and_Simulation}. The problem is that the "P" part is a function of speed. Where for it is implemented using "c" instead.\\
+The PID regulator are made in "c" and not implemented in a digital filter block, it is because of a problem that is mention in Calculation and simulation section see page \pageref{sec:Calculation_and_Simulation}. The problem is that the "P" part is a function of speed. Therefor it is implemented in "c" instead.\\
 
 \subsection{Code}
 
@@ -10,8 +10,8 @@ The mathematical equation for the PID regulator is:\\
 $ PID_{value} \left( s,rpm \right) = {\frac {P_{rpm}\,P}{rpm} \left( 1+{\frac {I}{s}}+ \left( D \right) s \right) } $\\
 
 There is somethings that is dangerous. \\
-First. Then the $ rpm $ value goes zero the $  PID_{value} \left( s,rpm \right) $ will be infinity big, this has to be provented, with a simple if sentence what control what the rpm is not under 1 rpm (line 5). \\
-Second. because the solution to generate the torque with passive components and the speed of the test object. It will not always be possible to reach the wanted torque, if the test object don't have engoft speed. This will generate a windup problem. To kill this problem we use back calculation that will use the previous value that has exceed the limit, and add it to the integral part. 
+First. Then the $ rpm $ value goes zero the $  PID_{value} \left( s,rpm \right) $ will be infinity big, this has to be provented, with a simple if sentence what control the rpm is not under 1 rpm (line 5). \\
+Second. because the solution to generate the torque with passive components and the speed of the test object. It will not always be possible to reach the wanted torque, if the test object don't have enough speed. This will generate a windup problem. To kill this problem we use back calculation that will use the previous value that has exceed the limit, and add it to the integral part. 
 
 
 \lstset{language=C}

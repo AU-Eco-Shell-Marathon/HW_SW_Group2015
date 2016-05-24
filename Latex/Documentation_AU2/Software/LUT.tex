@@ -1,7 +1,7 @@
 \newpage
 \section{Look up table}
 
-A look up table is a table for looking up some predefined values. In the AU2 it is use to look up the best speed for a specificity power. This a 2D-LUT because there is a table when the car is accelerating and a table when the car has meet the required speed. The second table will normally not been used because the coast and burn will normal be activated then the last table are in use. The look up table are build from the efficiency diagram figure \ref{fig:eff_maxon_36V}. 
+A look up table is a table for looking up some predefined values. In the AU2 it is use for looking up the best speed for a specificity power. It a 2D-LUT because there is a table for the car when it is accelerating and a table when the car has met the required speed. The second table will normally not been used, because the coast and burn will normal be activated then the last table are in use. The look up table are build from the efficiency diagram figure \ref{fig:eff_maxon_36V}. 
 
 \begin{figure}[H]
 	\centering
@@ -10,7 +10,7 @@ A look up table is a table for looking up some predefined values. In the AU2 it 
 	\label{fig:eff_maxon_36V}
 \end{figure}
 
-The diagram show where the efficiency is the best, and are use to make different ramp to hit the best efficiency and power consuming. Too see have the ramps are calculate see "AU2 M7BAC\_Optimering af drivlinje" but the different ramp that they have calculated are listed here figure \ref{fig:eff_maxon_36V_ramp1-3} \& \ref{fig:eff_maxon_36V_ramp4-6}.
+The diagram show where the efficiency is best, and ramp to hit the best efficiency and lowest power consuming. Too see have the ramps are calculate see "AU2 M7BAC\_Optimering af drivlinje" the different ramp that are calculated is listed here figure \ref{fig:eff_maxon_36V_ramp1-3} \& \ref{fig:eff_maxon_36V_ramp4-6}.
 
 \begin{figure}[H]
 	\centering
@@ -26,7 +26,7 @@ The diagram show where the efficiency is the best, and are use to make different
 	\label{fig:eff_maxon_36V_ramp4-6}
 \end{figure}
 
-The different ramps has been calculated have must energi there are using before hit the wanted speed figure \ref{fig:eff_maxon_36V_ramp_energy-consumption}.
+The power consuming of the ramps are listing here. The power consuming over the time it takes them to hit the wanted speed. figure \ref{fig:eff_maxon_36V_ramp_energy-consumption}.
 
 \begin{figure}[H]
 	\centering
@@ -35,7 +35,7 @@ The different ramps has been calculated have must energi there are using before 
 	\label{fig:eff_maxon_36V_ramp_energy-consumption}
 \end{figure}
 
-On the first look at \ref{fig:eff_maxon_36V_ramp_energy-consumption} it seems like the best choice would be ramp 6, but if this ramp are applied the power peak is $ \SI{450}{\watt} $! And it is just a $ \SI{200}{\watt} $ motor. 
+On the first look at \ref{fig:eff_maxon_36V_ramp_energy-consumption} it seems like the best choice would be ramp 6, but  this ramp has a power peak at $ \SI{450}{\watt} $! The motor can take $ \SI{200}{\watt} $. 
 
 \begin{equation}
 	\begin{split}
@@ -45,7 +45,7 @@ On the first look at \ref{fig:eff_maxon_36V_ramp_energy-consumption} it seems li
 	\end{split}
 \end{equation}
 
-To find out what ramp to use, the ramp must not exceed the power limit \ref{fig:eff_maxon_36V_Power_limit} and have the lowest energy consumption. The ramp 5 are choose but it exceed the power limit a little, but we can only count on that the machine engineer student knows what they are doing. 
+To find out what ramp to use, the ramp must not exceed the power limit \ref{fig:eff_maxon_36V_Power_limit} and have the lowest energy consumption. The ramp 5 are choose but it exceed the power limit a little.
 
 \begin{figure}[H]
 	\centering
@@ -56,7 +56,7 @@ To find out what ramp to use, the ramp must not exceed the power limit \ref{fig:
 
 \subsubsection{Calculation script - LUT}
 
-Now then the ramp is chosen it has be converted to the PSoC that controls the Motor. To do this a Matlab script has been made, where it just insert the motors Max-power and -peak power. Gear setup and max speed.    
+The ramp and only needs to be converted to the PSoC that controls the Motor. To this a Matlab script has been made, where it just insert the motors Max-power and -peak power. Gear setup and max speed.    
 \lstset{language=matlab}
 \begin{lstlisting}
 %% insert values
@@ -116,7 +116,7 @@ uint16 LUT_speed(const uint16 wanted_speed,const uint16 speed,const uint16 power
 }
 \end{lstlisting}
 
-It will first see if the speed are equal or grater then the wanted speed so it know that LUT to use. Now it will look up a speed value what match the power usage and return a new wanted speed value.
+It will first see if the speed is equal or grater then the wanted speed so it knows that LUT to use. Now it will look up a speed value what match the power usage and return a new wanted speed value.
 
 
 

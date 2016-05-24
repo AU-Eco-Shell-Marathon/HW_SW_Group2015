@@ -13,7 +13,7 @@ There are a lot of data what goes through the PSoC, too get a better overview of
 	\label{fig:data_flow_diagram}
 \end{figure}
 
-As seening in \ref{fig:data_flow_diagram} it can be a little hard to get a overview of the data-flow. There are sensor (four if Power count for two because it measure both voltage and current) that are our data pipes, and out there are only 2 data pipes, one that goes all the way to the main PC, this data also goes through a moving average to make a more smooth view for the user. The second output pipe has to be more fast because it is data to the PID regulator, and a too big time delay in a regulator, will make the system unstable.    
+As seening in \ref{fig:data_flow_diagram} it can be a little hard to get a overview of the data-flow. There are sensor (four if Power count for two because it measure both voltage and current) that are our data pipes, and output there are only 2 data pipes, one that goes all the way to the main PC, this data also goes through a moving average to make a more smooth for the user. The second output pipe has to be more fast because it is data to the PID regulator, and a too big time delay in a regulator, will make the system unstable.    
 
 \subsubsection{Power flow}  
 
