@@ -39,7 +39,7 @@ Not all 12 pins are needed to measure the torque and velocity correctly - in fac
 The Torque Sensor must be supplied with atleast 12 VDC, in order to power the internal micro-processor, and can therefore be supplied directly from the Voltage Adaptor in the Control-box. The sensor could also be supplied with higher DC-voltages (up to 28 VDC), but this would require an external power supply.
 
 \subsection{Analysis}
-The sensor is specified to be able to measure torque levels ranging from 0 to \SI{5}{\newton \meter} and angular velocity from 0 to \SI{30000}{rpm}\cite{TorqueSensor}. The sensor is able to measure these parameters regardless of the input-shaft's rotational direction. Thus the mathematical limits of the sensor range from \SI{-5}{\newton \meter} to \SI{+5}{\newton \meter} and \SI{-30000}{rpm} to \SI{+30000}{rpm}. \fxnote{Der kan vel ikke være en retning på omdrejninger - TN}
+The sensor is specified to be able to measure torque levels ranging from 0 to \SI{5}{\newton \meter} and angular velocity from 0 to \SI{30000}{rpm}\cite{TorqueSensor}. The sensor is able to measure these parameters regardless of the input-shaft's rotational direction. Thus the mathematical limits of the sensor range from \SI{-5}{\newton \meter} to \SI{+5}{\newton \meter} and \SI{-30000}{rpm} to \SI{+30000}{rpm}.
 
 \textbf{Torque}\\
 The Torque Sensor outputs the measured torque on Pin C (pin number 2). The output-signal is a DC-voltage which is proportional to the measured torque - as long as the input value lies withing the specified range. An input outside this range would cause the sensor to reach saturation. The output-voltage range from \SI{-5}{\volt} to \SI{+5}{\volt} and the relationship between the input and output can therefore be expressed mathematically as:
@@ -58,7 +58,7 @@ The motor used to built the Generator is specified to handle a maximum power of 
 \end{equation}
 The calculated torque lies well within the specified boundaries of the Torque Sensor\cite{TorqueSensor}.
 
-\textbf{Angular velocity}\\ \fxnote{ Vil det give mening at forklare om hvad forskellen på de 2 outputs er til de næste? TN}
+\textbf{Angular velocity}\\
 The Torque Sensor outputs the measured angular velocity on Pin G (Velocity A) and Pin B (Velocity B) - however only the signal from Pin G is used for calculations. The output-signal is a square-waved signal with a DC-offset of \SI{2.5}{\volt} and a peak-peak value of \SI{5}{\volt}. The input from Pin B is connected with the Rolling Road print, but isn't connected to any kind of measuring system. The pin is only connected for potential use in future builds.
 
 The output-signal changes level 360 times per axial revolution in the Torque Sensor. Thus the frequency of the signal is proportional to the angular velocity. The frequency of the output is given by the following equation:
@@ -67,6 +67,8 @@ The output-signal changes level 360 times per axial revolution in the Torque Sen
 		f_{sensor} = 360 \cdot \omega_{Roll}
 	\end{split}
 \end{equation}
+
+At AU2's cruise speed this frequency will be equal to \SI{6.282}{\kilo \hertz}.
 
 \subsection{Unit test}
 The Torque Sensor's unit test is performed in the previous documentation. Since there has been no changes made to the sensor in this system, the same test is used. For information about this test and it's result, the reader is referred to this documentation\cite{BAC_rullefelt}, on the section concerning the test (page 49 to 51).

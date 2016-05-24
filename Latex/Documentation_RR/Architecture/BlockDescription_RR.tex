@@ -1,32 +1,31 @@
-\section{Block description} \fxnote{Ryk evt. ned på egen side - JH}
-
-\fxnote{Vil ikke mene det er nødvendigt at have "Description:" stående alle steder - JH}
+\newpage
+\section{Block description}
 The blocks in the BDD are described as follows:
 \begin{itemize}
 	\item \textbf{Voltage Adaptor}\\
-	Description: This block converts 230 VAC to 12 VDC in order to control the system. This allows the system to be directly powered by the power grid. \fxnote{Er det en del af systemet? (Får det til at lyde begræsende at man ikke selv kan komme med en 12V forsyning) - JH}
+	This block converts 230 VAC to 12 VDC in order to control the system. This allows the system to be directly powered by the power grid.
 	\item \textbf{Roll Stand}\\
-	Description: This block contains the various mechanical subsystems.
+	This block contains the various mechanical subsystems.
 	\begin{itemize}
 		\item \textbf{Roll}\\
-		Description: The cylinder which is rotated by the vehicle.
+		The cylinder which is rotated by the vehicle.
 		\item \textbf{Generator}\\
-		Description: A DC-generator which generates a voltage proportional to the angular velocity.
+		A DC-generator which generates a voltage proportional to the angular velocity.
 		\item \textbf{Torque Sensor}\\
-		Description: Converts the angular velocity and torque to electrical signals.
+		Measures the mechanical power given from the subject's wheel (angular velocity and torque) and converts the measurements to electrical signals which can be read by the Control Unit.
 	\end{itemize}
 	\item \textbf{Control Unit}\\
-	Description: \fxnote{Skal omformuleres, evt. noget med at den samler data fra alle sensorer og laver nogle udregninger på dem før den sender dem videre til computeren - JH} Reads the Roll's angular velocity, torque, electrical power in the battery and mechanical power given to the Roll. Furthermore it controls the resistance in the Load System and sends the collected data to the Computer.
+	Measures the inputs from the sensors in the system in order to calculated the subject's performance. The results from the calculations are passed on to the computer using the UART-protocol specified in Section \vref{sec:UART}. Furthermore, it also regulates the Load System using an PID-controller.
 	\item \textbf{Control System}\fxnote{Mere sigende navn - JH} \\
-	Description: This block contains the various electrical subsystems.
+	This block contains the various electrical subsystems.
 	\begin{itemize}
 		\item \textbf{Signal Converter}\\
-		Description: Converts the generated signals from the Torque Sensor to signals which are readable by the Control Unit.
-		\item \textbf{Level Converter} \fxnote{På navnet lyder det som det er et signal der bliver convertet, ikke en spændingsforsyning - JH} \\
-		Description: Converts the 12 VDC voltage to 5 VDC in order to power the control unit.
+		Converts the generated signals from the Torque Sensor to signals which can be read correctly by the Control Unit.
+		\item \textbf{Level Converter}\\
+		Description: Converts the 12 VDC voltage to 5 VDC in order to power the components in the system which requires 5 V to function.
 		\item \textbf{Power Sensor}\\
-		Description: Converts electrical power from the vehicle's battery to signals which are readable for the Control Unit.
+		Measures the electrical power given to the subject's motor and converts the measurements to signals which can be read by the Control Unit.
 	\end{itemize}
 	\item \textbf{Load System}\\
-	Description: A separate electrical circuit which serves as a mechanical resistance in the generator.
+	An electrical system where the generated voltage from the Generator can be deposited by turning the electrical energy into heat.
 \end{itemize}
