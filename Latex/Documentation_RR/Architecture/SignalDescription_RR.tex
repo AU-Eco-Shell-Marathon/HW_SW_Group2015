@@ -4,22 +4,32 @@ The signals and protocols used to communicate between the blocks in Rolling Road
 \fxnote{Vil ikke mene det er nødvendigt med en direction på hver (Eller hvis det skal være der, burde det bare være IN, OUT osv.) - JH}
 
 \fxnote{Alle signaler skal vel have spænding eller lign. info (Det virker lidt tilfældigt om de har eller ej) - JH}
+	Voltage: \SI{}{\volt} to \SI{}{\volt}\\
+	Current: \SI{}{\ampere} to \SI{}{\milli \ampere}\\
+	Frequency: 
+
 
 \textbf{Block :Rolling Road}\\
 Block interface description:
 \begin{itemize}
 	\item \textbf{Supply230:Voltage}\\
 	Direction: [External] $\rightarrow$ [Voltage Adaptor]\\
-	Description: Voltage from the 230 VAC electrical mains.
+	Description: Extern power supply to the system from the electrical mains.\\
+	Voltage: \SI{230}{\volt}\\
+	Current: \SI{0}{\ampere} to \SI{5}{\ampere}\\
+	Frequency: DC
 	\item \textbf{ExternalMec:Power}\\
 	Direction: [External] $\rightarrow$ [Roll]\\
 	Description: Mechanical power from the vehicle's wheel.
 	\item \textbf{ExternalEl:Power}\\
 	Direction: [External] $\rightarrow$ [Power Sensor]\\
-	Description: Electrical power from the vehicle's battery.
+	Description: Electrical power delivered to the subject's motor. The power can be supplied by a battery or an external power source.\\
+	Voltage: \SI{0}{\volt} to \SI{50}{\volt}\\
+	Current: \SI{0}{\ampere} to \SI{4}{\ampere}\\
+	Frequency: DC
 	\item \textbf{UART}\\
-	Direction: [Control Unit] $\rightarrow$ [External]\\
-	Description: A signal which transmits data to the computer using the UART-protocol.
+	Direction: [Control Unit] $\leftrightarrow$ [External]\\
+	Description: A signal which transmits measured data from the Control Unit to the Computer and controls the Control Unit from the Computer. This is done using the UART-protocol.
 \end{itemize}
 	
 \textbf{Block :Voltage Adaptor}\\
@@ -27,20 +37,29 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{Supply230:Voltage}\\
 	Direction: [External] $\rightarrow$ [Voltage Adaptor]\\
-	Description: Voltage from the 230 VAC electrical mains.
+	Description: Extern power supply to the system from the electrical mains.\\
+	Voltage: \SI{230}{\volt}\\
+	Current: \SI{0}{\ampere} to \SI{5}{\ampere}\\
+	Frequency: DC
 	\item \textbf{Supply12:Voltage}\\
-	Direction: [Voltage Adaptor] $\rightarrow$ [Level Converter] \& [Torque Sensor]\\
-	Description: Converted supply voltage of 12 VDC.
+	Direction: [Voltage Adaptor] $\rightarrow$ [Level Converter] \& [Torque Sensor] \& [Load System]\\
+	Description: Converted power supply to components in the system.\\
+	Voltage: \SI{0}{\volt} to \SI{12}{\volt}\\
+	Current: \SI{0}{\ampere} to \SI{5}{\ampere}\\
+	Frequency: DC
 \end{itemize}
 		
 \textbf{Block :Level Converter}\\
 Block interface description:
 \begin{itemize}
 	\item \textbf{Supply12:Voltage}\\
-	Direction: [Voltage Adaptor] $\rightarrow$ [Level Converter]\\
-	Description: Converted supply voltage of 12 VDC.
+	Direction: [Voltage Adaptor] $\rightarrow$ [Level Converter] \& [Torque Sensor] \& [Load System]\\
+	Description: Converted power supply to components in the system.\\
+	Voltage: \SI{0}{\volt} to \SI{12}{\volt}\\
+	Current: \SI{0}{\ampere} to \SI{5}{\ampere}\\
+	Frequency: DC
 	\item \textbf{Supply5:Voltage}\\
-	Direction: [Level Converter] $\rightarrow$ [Load System] \& [Control Unit]\\
+	Direction: [Level Converter] $\rightarrow$ [Load System] \& [Control Unit] \& [Power Sensor]\\
 	Description: Converted supply voltage of 5 VDC.
 \end{itemize}
 			
