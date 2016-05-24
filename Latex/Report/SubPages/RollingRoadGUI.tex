@@ -6,20 +6,52 @@ The Rolling Road GUI helps control and visualize the data coming from the Rollin
 The application is developed in the .Net framework by Microsoft and the code itself is written in C\#.
 To help create a GUI(Graphical User Interface) the WPF library which is a part of the .Net framework was used, it uses XAML to layout the different views.
 
-\subsection{Design}
+\subsection{Design \& Considerations}
 
-Initially MVVM and 3-layer was used as architectures. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
+Initially the 3-layer architecture use for the back-end and MVVM was used as front-end architecture. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
 
 The Onion-Architecture heavily uses the repository pattern to abstract away from the data source. Making it easy to change the datasource to a database for example later in the process, so if the website user story was to be implemented it would require little or no change to the 'backend'.
 
-The communication with the Rolling Road is using the \fxnote{Forgot the name of the protocol} protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a uart connection, so only a Micro usb cable is needed to connect the two.
-
-To help debugging, a simple log was also implemented, it logs some of the users actions such as opening a new connection to the Rolling Road furthermore it also catches any unhandled exceptions in case of a crash.
-
-MVVM is a front-end architecture helping 
+The communication with the Rolling Road is using the SP4RR protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a uart connection, so only a Micro usb cable is needed to connect the two.
 
 \subsection{Implementation}
 
+Since some kind of plotting needed to be implemented, the search for a library started, the application originally used the WPF Toolkit data visualization, but after testing it, it appeared to have a huge memory leak when continuously updating the graph with new data. Therefor another library was required since it did not meet the requirements, and the D3 library was found and is still used. It's a free library with features such as zooming and screen-shoots. Even though it's outdated, it's the best library free library from WPF we were able to find. The first version using the WPF-Toolkit graph can be seen in figure \vref{fig:First_GUI} and the current version can be seen in figure \vref{fig:Current_GUI}
+
+%https://www.nuget.org/packages/WPFToolkit.DataVisualization/
+
+To help debugging, a simple log was also implemented, it logs some of the users actions such as opening a new connection to the Rolling Road furthermore it also catches any unhandled exceptions in case of a crash. It logs both to a tab in the application and a file.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{SubPages/Images/First_GUI}
+\caption{First working graph}
+\label{fig:First_GUI}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{SubPages/Images/Current_GUI}
+\caption{Current GUI}
+\label{fig:Current_GUI}
+\end{figure}
+
+
 \subsection{Testing}
 
-For testing the GUI Application unit tests was written using the NUnit 3.* framework and NSubstitute as the Mock-framework to help isolate units under test. 
+For testing the GUI Application unit tests was written using the NUnit 3.* framework and NSubstitute as the Mock-framework to help isolate units under test.
+
+This helped immensely when developing the SP4RR-interpreter, since it was developed before being able to integration test with the Rolling Road. It was done by mocking out the COM-Port stream and verifying the commands was sent and received as specified in SP4RR protocol definition.
+
+\subsection{Continuous Integration}
+
+From the start CI(Continuous Integration) was used to verify the code by running a series af test and code-analyzing tools, the steps used in the CI are as follows:
+
+\begin{itemize}
+	\item Download all missing or out of date packages from Nuget
+	\item Build the project
+	\item Run all unit-tests
+	\item Calculate code-coverage
+	\item Duplicates finder
+	\item Inspection
+\end{itemize}
