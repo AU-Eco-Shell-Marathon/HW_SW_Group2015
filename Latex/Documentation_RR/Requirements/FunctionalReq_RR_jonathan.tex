@@ -1,5 +1,5 @@
 \section{Functional Requirement Rolling Road}
-
+\fxnote{kan vi gøre noget ved afstanden mellem overskrift og tabel? - TN}
 \begin{table}[h!]
 	\label{FREQ_AU2}
 	\centering
@@ -10,19 +10,19 @@
 		& The system must be able to hold a constant force on the subject.
 		&  \\ \hline
 		RR\_F2
-		& The system must be able to change the desired force exerted the subject. 
+		& The system must be able to change the desired force exerted on the subject. 
 		&  \\ \hline
 		RR\_F3
 		& The system must turn off the Load System if the current through it exceeds 16 A.
 		&  \\ \hline
 		RR\_F4
-		& The system must be able to measure the power of the subject.
+		& The system must be able to measure the power of the subject on test.
 		&  \\ \hline
 		RR\_F5
-		& The system must be able to measure force and speed of the subject, to find the mechanical force.
+		& The system must be able to measure force and speed of the subject on test, (to find the mechanical force). \fxnote{Det i parentes er vel ligegyldigt - TN}
 		&  \\ \hline
 		RR\_F6
-		& The system must be able to calculate the efficiency of the subject. 
+		& The system must be able to calculate the efficiency of the subject on test. 
 		&  \\ \hline
 		RR\_F7
 		& The system must be able to adjust Rolling Road's sensor and set them all to zero. 
@@ -31,10 +31,10 @@
 		& The Load system must be controlled with a PID-regulator.
 		&  \\ \hline
 		RR\_F9
-		& The PID-regulator must have anti windup.
+		& The PID-regulator must have anti windup. \fxnote{Er det nødvendigt at have med som krav? - TN}
 		&  \\ \hline
 		RR\_F10
-		& The system must be able to remember settings after shutdown. Settings which Rolling Road must remember: PID-constants, desired force and offset values of all sensors.
+		& The system must be able to remember settings after shutdown. Settings which Rolling Road must remember: PID-constants, desired force and offset values of all sensors. \fxnote{Omformuler! - TN}
 		&  \\ \hline
 		RR\_F11
 		& The system must be controlled from the Computer through Serial communication.  
@@ -42,3 +42,4 @@
 	\end{tabular}
 	\caption{Functional requirements concerning Rolling Road}
 \end{table}
+\newpage
