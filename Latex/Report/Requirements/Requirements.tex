@@ -1,22 +1,26 @@
 \chapter{Requirements}
-Individual requirements has been made for the Aarhus University SEM2016 car (AU2), the Rolling Road and the Rolling Road GUI.
+Individual requirements has been made for the AU2, the Rolling Road and the Rolling Road GUI.
 
+\fxnote{Ref's mangler at blive sat ordenligt - JH}
 \section{AU2}
-Requirements for AU2 have been created with SEM2016 Global Rules Chapter 1 in mind\fxnote{SEM2016 Global Rules Chapter 1}. (Chapter 1 is the academic chapter of the race, with the academic rules and announcements). These requirements consists of non-functional requirements such as the pitch of tone the horn must emit when the AU2 car overtakes another car, or that the Motor Control System(MCS) must be able to measure the velocity within a range of 0-30 km/h and with a precision of $\pm$2 km/h. These non-functional requirements can be found in the AU2 documentation\fxnote{documentation AU2 section 2.2}. The requirements also consists of functional requirements such as the Battery Management System(BMS) must be able to protect the battery from undervoltages, overvoltages, overcurrents, too high temperatures and balance the battery cells if the cells' individual voltages are too different from eachother. A tabel with all the functional requirements can be found in the AU2 documentation\fxnote{documentation AU2 section 2.1}. CAN-communication between the BMS, the MCS and a PC, is not a requirement from the SEM2016 Rules. It is an extra requirement that has been made, since this will make it possible to transmit the data from the BMS to the MCS while driving and save this to a SDcard that can be inserted into a PC.
+Requirements for AU2 have been created with SEM2016 Global Rules Chapter 1 in mind\fxnote{SEM2016 Global Rules Chapter 1}. (Chapter 1 is the academic chapter of the race, with the academic rules and announcements). These requirements consists of non-functional requirements such as the pitch of tone the horn must emit when the AU2 car overtakes another car, or that the Motor Control System(MCS) must be able to measure the velocity within a range of 0-30 km/h and with a precision of $\pm$2 km/h. These non-functional requirements can be found in the AU2 documentation\fxnote{documentation AU2 section 2.2}. The requirements also consists of functional requirements such as the Battery Management System(BMS) must be able to protect the battery from undervoltages, overvoltages, overcurrents, too high temperatures and balance the battery cells if the cells' individual voltages are too different from eachother. A tabel with all the functional requirements can be found in the AU2 documentation\fxnote{documentation AU2 section 2.1}.\fxnote{Det næste stykke skal omformuleres lidt - JH} CAN-communication between the BMS, the MCS and a PC. It is not a requirement set by the SEM2016 Rules, but an extra requirement that has been made, since this will make it possible to transmit the data from the BMS to the MCS while driving and save this to a SDcard that can be inserted into a PC.
 
 \section{Rolling Road}
 Requirements for the Rolling Road can be found in the Rolling Road documentation\fxnote{documentation Rolling Road requirements}.
-These requirements consists of non-functional requirements such as the range of the voltages the tested motor is supplied with must be from 0-50 V, the settling time being 100ms, the maximum overshoot being 5\% and a maximum current through the Load System of 15 A.\\
-Where as the functional requirements are about how the Rolling Road operates such as the Rolling Road must be able to apply a constant force, but also must be able to change the desired force exerted to the subject. The Rolling Road must also be able to measure power, speed and force, and also calculate the efficiency of the subject and more.
+These requirements consists of non-functional requirements such as the voltage supplied to the motor under test must be in the range of 0-50V, the settling time being 100ms, the maximum overshoot being 5\% and a maximum current through the Load System of 15 A.\\
+Where as the functional requirements documents how the Rolling Road operates such as the Rolling Road must be able to apply a constant force, but must also be able to change the desired force exerted to the motor. The Rolling Road must also be able to measure power, speed and force, and also calculate the efficiency of the subject and more.
 
 \section{Rolling Road GUI}
-The Rolling Road GUI consists mostly of user stories, which explains the functional requirements from the user's view.
-This is a overview of the 5 user stories found in the Rolling Road GUI documentation\fxnote{documentation Rolling Road GUI Requirements}:\\
-US1: Collection of data control\\
-US2: Data readout\\
-US3: Graph display\\
-US4: Saving of data\\
-US5: Load and display saved data\\
-US6: Test session\\
-US7: Database storage\\
-US8: Webinterface\\
+The Rolling Road GUI consists mostly of user stories written in a Business Readable, Domain Specific Language, which explains the functional requirements from the user's view.
+This is an overview of the eight user stories found in the Rolling Road GUI documentation\fxnote{documentation Rolling Road GUI Requirements}:\fxnote{Beskriv evt. at US8 ikke var tiltænkt at skulle laves - JH}
+
+\begin{enumerate}[US1:]
+	\item Collection of data control
+	\item Data readout
+	\item Graph display
+	\item Saving of data
+	\item Load and display saved data
+	\item Test session
+	\item Database storage
+	\item Webinterface
+\end{enumerate}
