@@ -1,9 +1,9 @@
 % !TeX spellcheck = en_US
 \chapter{System description}
-The project is a collection of three individually developed systems, who as a whole makes it possible to test and control the AU2.
+The project is a collection of three individually developed systems, who as a whole makes it possible to test, control and optimize AU2.
 
 \section{AU2}
-The MCU(Motor control unit) can be seen in figure \vref{fig:SD_MCS} without the PSoC.
+The MCU(Motor control unit) \fxnote{skal det ikke være MCS?}can be seen in figure \vref{fig:SD_MCS} without the PSoC.\fxnote{med så stor beskrivelse af BMS, så kan vi vel også beskrive MCS lidt bedre}
 
 \begin{figure}[H]
 	\centering
@@ -12,7 +12,7 @@ The MCU(Motor control unit) can be seen in figure \vref{fig:SD_MCS} without the 
 	\label{fig:SD_MCS}
 \end{figure}
 
-The BMS(Battery management system) can be seen in figure \vref{fig:SD_BMS}, with the following components:
+The BMS(Battery management system) can be seen on figure \vref{fig:SD_BMS}, with the following components:
 
 \begin{enumerate}
 	\item Relay
@@ -31,7 +31,7 @@ The BMS(Battery management system) can be seen in figure \vref{fig:SD_BMS}, with
 \end{figure}
 
 \section{Rolling Road}
-The Controller-box containing the PCB and the PSoC can be seen in figure \vref{fig:SD_RR}. Around the edge of the box all external connections can be seen using banana-plugs, Coax 2.1mm and USB. 
+The Controll-box containing the PCB and the PSoC can be seen in figure \vref{fig:SD_RR}. Around the edge of the box all external connections can be seen. These are color-coded banana-plugs for easy inter-connectivity, a coax 2.1mm DC-plug for power-supply and a USB-port for the communication with the PSoC. 
 
 \begin{figure}[H]
 	\centering
@@ -41,7 +41,7 @@ The Controller-box containing the PCB and the PSoC can be seen in figure \vref{f
 \end{figure}
 
 
-The Physical stand containing the generator(right) and torque sensor(center) can be seen in figure \vref{fig:SS_RR_Roal}.
+The Physical stand containing the Roll (left), the Generator (right) and the Torque Sensor (center) can be seen on figure \vref{fig:SS_RR_Roal}.
 
 \begin{figure}[H]
 	\centering
@@ -50,7 +50,7 @@ The Physical stand containing the generator(right) and torque sensor(center) can
 	\label{fig:SS_RR_Roal}
 \end{figure}
 
-The Load-plate containing the super capacitor and the two power resistors:
+The Load-plate containing the super capacitor and the two power resistors can be seen on figure \vref{fig:SD_RR_Load}. This plate can be connected to the Control-box using the banana-plugs.
 
 \begin{figure}[H]
 	\centering
