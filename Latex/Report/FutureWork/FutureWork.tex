@@ -2,7 +2,7 @@
 There is improvements to the system that can be done. The future improvements to be made will be divided into each subsystem to give a quick overview for future readers. 
 
 \section{AU2}
-The following assumes a working system and thereby expecting the current system developed to be functional and operating.
+First off the future work must be to ensure that the already developed system is fully functional. This includes both the Motor controller and BMS.
 
 Developments made to the circuit and software will mainly consist of optimization, when testing either on Rolling Road or on a test track. 
 
@@ -10,10 +10,10 @@ The PCB currently developed could be optimized, both by shrinking it in size, an
 
 The driving algorithm would be where most of the optimization lies, as this is what controls the motor which draws a current much larger than anything in the system and by optimizing the power delivered to the motor, the overall efficiency of the car can be increased. 
 
-Choosing the correct size of batteries would also improve the efficiency. Therefore doing some extensive testing, as to what batteries will prove to be sufficient and therefore best, could result in a better "fuel" efficiency because of less weight.  \fxnote{der står øverst at vi tager udgangspunkt i et system der virker, men er det i orden?? Måske er det, i dont know? Lets discuss it!}
+Choosing the correct size of batteries would also improve the efficiency. Therefore doing some extensive testing, as to what batteries will prove to be sufficient and therefore best, could result in a better "fuel" efficiency because of less weight.  
 
 \section{Rolling Road}
-A major part in further development of Rolling Road, would be to provide it with an active load system instead of the passive one already implemented. It will be realized to ensure a less reliant system. An active load system comprises of some form of active components that can supply the generator with energy contrary to using only passive components as it is now.\fxnote{Den her sætning er sværd at forstå.} An active load system will make the overall system less dependent on the speed supplied by the unit on test.\fxnote{Why less speed dependent? mere info synes jeg.} Furthermore it would make the system able to measure negative forces, which gives a more realistic simulation of the real world. In our specific case, it was not possible to complete a genuine simulation run on the specific course being used in London since it had a downhill section. This could be executed by implementing an active system. 
+A major part in further development of Rolling Road, would be to provide it with an active load system instead of the passive one already implemented. It will be realized to ensure a less reliant system. An active load system comprises of some form of active components that can supply the generator with energy contrary to using only passive components as it is now. The purpose of an active load system is to supply the generator with a voltage, so that it can be controlled more precise. An active load system will make the overall system less dependent on the speed supplied by the unit on test. Furthermore it would make the system able to realise negative forces, which gives a more realistic simulation of the real world. In our specific case, it was not possible to complete a genuine simulation run on the specific course being used in London since it had a downhill section. This could be executed by implementing an active system. 
 
 \section{GUI}
 For further work with the Rolling Road GUI there can be implemented an even better display of the data than just the graph visualization. Furthermore a corresponding website could be implemented.\\
