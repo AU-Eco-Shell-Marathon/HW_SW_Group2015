@@ -19,7 +19,7 @@ Table \ref{FREQ_RR} will provide the functional requirements for the Rolling Roa
 		& The system must be able to measure the power of the subject on test.
 		&  \\ \hline
 		RR\_F5
-		& The system must be able to measure force and speed of the subject on test, (to find the mechanical force). \fxnote{Det i parentes er vel ligegyldigt - TN}
+		& The system must be able to measure force and speed of the subject on test.
 		&  \\ \hline
 		RR\_F6
 		& The system must be able to calculate the efficiency of the subject on test. 
@@ -28,16 +28,13 @@ Table \ref{FREQ_RR} will provide the functional requirements for the Rolling Roa
 		& The system must be able to adjust Rolling Road's sensor and set them all to zero. 
 		&  \\ \hline
 		RR\_F8
-		& The Load system must be controlled with a PID-regulator.
+		& The Load system contain a constant torque.
 		&  \\ \hline
 		RR\_F9
-		& The PID-regulator must have anti windup. \fxnote{Er det nødvendigt at have med som krav? - TN}
+		& The system must be able to remember settings after shutdown.
 		&  \\ \hline
 		RR\_F10
-		& The system must be able to remember settings after shutdown. Settings which Rolling Road must remember: PID-constants, desired force and offset values of all sensors. \fxnote{Omformuler! - TN}
-		&  \\ \hline
-		RR\_F11
-		& The system must be controlled from the Computer through Serial communication.  
+		& The system must be able to controlled through Serial communication.  
 		&  \\ \hline
 	\end{tabular}
 	\caption{Functional requirements concerning Rolling Road}

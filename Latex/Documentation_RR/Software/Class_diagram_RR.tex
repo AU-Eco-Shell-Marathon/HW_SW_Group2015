@@ -38,16 +38,16 @@ Sensor class: are measuring the efficiency of the test object.
 		\hline
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
-		run
+		ControllerClass\_run
 		& Is the method what check if there is new data ready from the main PC or if where is a new sample ready to send to the main PC. Data from the PC can be PID values, wanted force value or commands to ex. calibrate all sensors. 
 		\\ & It is also here that the main thread have to work, and should be placed in a while(1) loop. \\ 
 		\hline
 		
-		stop
+		ControllerClass\_stop
 		& This method are used to tell Rolling Road that no more information is wanted, and it don't have to regulate the load system. 
 		\\ \hline
 		
-		update
+		ControllerClass\_update
 		& Update method are called then new data for Rolling Road is received. This method is used by the UART class.
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
@@ -60,11 +60,11 @@ Sensor class: are measuring the efficiency of the test object.
 		\end{itemize}
 		\\ \hline
 		
-		init
+		ControllerClass\_init
 		& this method is used to initializing Rolling Road, and should be run in the start of the main function.  
 		\\ \hline
 		
-		calibrate
+		ControllerClass\_calibrate
 		& This method are used from the UART class so the main PC can signal to Rolling Road. That it shall perform a calibration of all sensor.
 		\\ \hline
 	\end{tabular}
@@ -165,7 +165,7 @@ Sensor class: are measuring the efficiency of the test object.
 		\end{itemize}
 		\\ \hline
 		
-		setPID
+		PID\_set
 		& This method can change the PID values.
 		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
@@ -174,7 +174,7 @@ Sensor class: are measuring the efficiency of the test object.
 		\end{itemize} 
 		\\ \hline
 		
-		getPID\_ptr
+		PID\_getPtr
 		& return a pointer to its PID parameter.
 		\\ & \textbf{Return parameter (struct PIDparameter *)}
 		\\ & Return a pointer to the PID parameter. 
@@ -185,7 +185,7 @@ Sensor class: are measuring the efficiency of the test object.
 	\label{table:Class_description_PID_RR_PSoC}
 \end{table}
 
-\subsection{Sensor} \fxnote{What, "Sensor" er alt for generic, hver sensor ude fra burde have deres egen 'klasse' med deres egen 'driver'. Hvis vi skal ændre en sensor nu, skal der alt for meget til - JH}
+\subsection{Sensor} 
 
 \begin{figure}[H]
 	\centering
@@ -201,7 +201,7 @@ Sensor class: are measuring the efficiency of the test object.
 		\hline
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
-		getData
+		Sensor\_getData
 		& It will return a data sample.
 		\\ & \textbf{Return parameter (void)}
 		\\ & \textbf{Parameter list}
@@ -211,13 +211,13 @@ Sensor class: are measuring the efficiency of the test object.
 		\end{itemize}
 		\\ \hline
 		
-		getTorque
+		Sensor\_getTorque
 		& Are used to get the Torque without calculate all others values. In this project it is used by the PID class, to get the Torque value with less latency.
 		\\ & \textbf{Return parameter (float)}
 		\\ & It return the Torque value in $ N*m $ 
 		\\ \hline
 		
-		getDistance
+		Sensor\_getDistance
 		& Gets the distance, Rolling Road has rolled. 
 		\\ & \textbf{Return parameter (int32)}
 		\\ & It return the distance in $ m $
@@ -228,7 +228,7 @@ Sensor class: are measuring the efficiency of the test object.
 		\end{itemize}
 		\\ \hline
 			
-			sensor\_init
+			Sensor\_init
 			& Initializing all sensor and DMA setup. It will also set offset value.   
 			\\ & \textbf{Parameter list}
 			\\ & \begin{itemize}
@@ -241,7 +241,7 @@ Sensor class: are measuring the efficiency of the test object.
 			\end{itemize}
 			\\ \hline
 			
-			sensor\_calibrate
+			Sensor\_calibrate
 			& Make a new calibration for Voltage-, Current and Torque sensor.    
 			\\ & \textbf{Parameter list}
 			\\ & \begin{itemize}

@@ -7,7 +7,7 @@ The filters are not treated as separate blocks due to the fact that the sensors 
 
 \subsection{Design}
 The Anti-aliasing filters are made up by analog low-pass filters. The different sensors in the system requires different kinds of anti-aliasing filters and a Matlab script is used to determine the best design for all the sensor.
-The script '\textit{ADC\_lowpassFilter}' will automatically find the best components to realized the Anti-aliasing filters from E12 values, and will make sure that it will suppress the aliasing down to the SNR of the ADC. \fxnote{sætning giver ikke mening, Suppres the aliasing down to the SNR? what - TN}
+The script '\textit{ADC\_lowpassFilter}' will automatically find the best components to realized the Anti-aliasing filters from E12 values, and will make sure that it will suppress the aliasing error down to the ADC SNR. 
 	
 \subsubsection*{Torque sensor}
 The script below is used to calculate the RC low-pass filter for the Torque Sensor. The script requires the following pieces of information: The sample frequency, the ADC's resolution (number of bits) and the desired cutoff-frequency.
@@ -52,7 +52,7 @@ And the low-pass filter's transfer function is:
 	
 	
 \subsubsection*{Power sensor}
-The signal of interest is the average value, because the PWM signal will be seen as noise signal, and must be filtered out, also because else the sample rate have to be around 512 times bigger then PWM frequency. \fxnote{omformulering tak - TN}
+The signal of interest is the average value and the noise signal is the PWM signal.  The PWM signal must be filtered out also because else the sample rate have to be around 512 times bigger then PWM frequency.
 	
 \begin{lstlisting}
 	ADC_fs=52500;

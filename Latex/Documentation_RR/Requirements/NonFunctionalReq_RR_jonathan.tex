@@ -14,7 +14,7 @@ Table \ref{NFREQ_RR} will provide the non-functional requirements for the Rollin
 		& The PCB is fitted inside the Control-box of the type 832-532 (\SI{16.5}{\centi \meter} x \SI{16.7}{\centi \meter})
 		& \\ \hline
 		RR\_NF3
-		& The current though the Load System does not exceed a maximum of 15 A.
+		& The current though the Load System must not exceed a maximum of 15 A.
 		& \\ \hline
 		RR\_NF4
 		& The Load system and the super capacitor are mounted on the separate Load-plate.
@@ -23,51 +23,30 @@ Table \ref{NFREQ_RR} will provide the non-functional requirements for the Rollin
 		& The maximum power delivered to the Load system must not exceed \SI{200}{\watt}.
 		& \\ \hline
 		RR\_NF6 
-		& Load system must be able to deliver these forces at a certain speed. See table: 
-		& \\ &
-		$\begin{array}{c|c}
-			Speed (km/h) & Max force (N) \\ 
-			18 & 19.25+2 \\ 
-			24.8 & 21.76+2 \\ 
-			30 & 22.59+2
-		\end{array} $
+		& Load system must be able to deliver these forces at a certain speed. See section \vref{fig:Force_and_speed}.
 		& \\ \hline
 		RR\_NF7
-		& Load system must be able to deliver these forces in a simulated run at a certain speed. See table:
-		& \\ &
-		$\begin{array}{c|c|c}
-			Speed (km/h) & Min force (N) & Max Force (N) \\ 
-			18 & 0 to (19.25+2) & 41.00 \\ 
-			24.8 & 0 to (21.76+2) & 49.37 \\ 
-			30 & 0 to (22.59+2) & 65.27
-		\end{array}$
+		& Load system regulator max steady state error $\pm$ 0.4 N. 
 		& \\ \hline
 		RR\_NF8
-		& Load system must deliver a constant force with max 0.4 N AC-RMS. \fxnote{Men er meningen ikke netop at kræftpåvirkelsen kan ændres? - TN}
-		& \\ \hline
+		& Settling time must be 100 ms for the Load system. 
+		&  \\ \hline
 		RR\_NF9
-		& PID settling time must be 100 ms. 
+		&  The max \%OS of the Load system must be 5\%. 
 		&  \\ \hline
 		RR\_NF10
-		& The max \%OS of the PID must be 5\%. 
-		&  \\ \hline
-		RR\_NF11
 		& Voltage sensor precision is max $\pm$ 50 mV and operates at a range of 0 V to 50 V. 
 		&  \\ \hline
-		RR\_NF12
+		RR\_NF11
 		& Current sensor precision is max $\pm$ 100 mA and operates at a range of 0 A to 16 A. 
 		&  \\ \hline
-		RR\_NF13
+		RR\_NF12
 		& Torque sensor precision is max $\pm$ 100 Nmm and operates at a range of $\pm$ 5 Nm. 
 		&  \\ \hline
-		RR\_NF14
-		& Minimum sample frequency of all sensors must be 2 kS/s.  
-		&  \\ \hline
-		RR\_NF15
+		RR\_NF13
 		& The tested motor must be supplied with a voltage in the range of 0 V to 50 V. 
 		&  \\ \hline
 	\end{tabular}
 	\caption{Non-functional requirements concerning Rolling Road}
 \end{table}
 
-\fxnote{Der skal mere forklaring til NF6 og NF7. De kan ikke bare stå alene på den måde, de giver ikke mening. - TN}

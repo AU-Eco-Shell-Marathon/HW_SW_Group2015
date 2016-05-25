@@ -9,52 +9,6 @@ The mathematical equation for the PID regulator is:\\
 
 $ PID_{value} \left( s,rpm \right) = {\frac {P_{rpm}\,P}{rpm} \left( 1+{\frac {I}{s}}+ \left( D \right) s \right) } $\\
 
-There is somethings that is dangerous. \\ \fxnote{Omformuler det næste stykke - JH}
-First. Then the $ rpm $ value goes zero the $  PID_{value} \left( s,rpm \right) $ will be infinity big, this has to be provented, with a simple if sentence what control the rpm is not under 1 rpm (line 5). \\
-Second. because the solution to generate the torque with passive components and the speed of the test object. It will not always be possible to reach the wanted torque, if the test object don't have enough speed. This will generate a windup problem. To kill this problem we use back calculation that will use the previous value that has exceed the limit, and add it to the integral part. 
-
-
-\lstset{language=C}\fxnote{Hvis de vil se implementationen kan de gå ind i kilde koden - JH}
-\begin{lstlisting}
-float *PID_tick(float sensor, float input, float RPM)
-{
-	err = (input - sensor);
-	
-	float P_RPM = (RPM <= 1.0f ? 0 : P_RPM_reciprocal / RPM) ;
-	
-	float PIDval = 0;
-	
-	//Proportional part
-	PIDval += P_RPM*parameter_.Kp*err;
-	
-	//intergral part
-	iState += P_RPM*parameter_.Kp*parameter_.Ki*err*dt + anti_windup_back_calc*dt;
-	PIDval += iState; 
-	
-	//differentiel
-	PIDval += P_RPM*parameter_.Kp*parameter_.Kd*((err-pre_err)/dt);
-	pre_err = err;
-	
-	//anti windup back calculation
-	anti_windup_back_calc = PIDval;
-	
-	if(PIDval > parameter_.MAX)
-		PIDval = parameter_.MAX;
-	else if(PIDval < parameter_.MIN)
-		PIDval = parameter_.MIN;
-	
-	anti_windup_back_calc = PIDval - anti_windup_back_calc;
-	// --- //
-	
-	//use PIDval
-	PWM_1_WriteCompare((uint8)PIDval);
-	
-	//Debug
-	PID_debug[0] = PIDval;
-	PID_debug[1] = err;
-	PID_debug[2] = anti_windup_back_calc;
-	return PID_debug;
-}
-\end{lstlisting}
-
-
+This is not stable. \\
+First. Then the $ rpm $ value goes to zero the $  PID_{value} \left( s,rpm \right) $ will go to infinity. This is prevented with limit the rpm value to minimum 1 rpm.\\
+Second. because the solution to generate the torque are with passive components and the speed of the test object. It will not always be possible to reach the wanted torque. If the test object don't have enough speed. This will generate a windup problem. To kill this problem we use back calculation. That will use the previous value that has exceed the limit, and add it to the integral part. 
