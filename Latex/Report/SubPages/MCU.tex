@@ -1,14 +1,15 @@
 \section{Motor Control Unit}
 
-The MCU (Motor Control Unit) task is to control AU2s motor so it hit the best efficiency as possible. To do this it is monitoring both the speed an power usage and regulating the current to the motor.\\
-It is also the MCU task to log information both from BMS unit and it own measure.\\
-And control all inputs from the driver. 
+The MCU's (Motor Control Unit)\fxnote{Flyt det op i list of terms} task is to control the motor as efficiently as possible. In order to do so monitoring both the speed and power usage is necessary to regulate the current efficiently to the motor.
+
+In extenstion it's also the MCU's task to log information about the BMS output, it's own measurements and all inputs from the driver, thereby making it possible to debug and analyze the run. 
+
 \subsection{Design}
+The first step in designing the software was to build a class diagram\fxnote{Det første var vel og finde ud af hvad der var krævet at MCU'ens software (Forskellige kører algoritmer, EEPROM osf.) - JH} to gain a overview of how to implement the MCU.
+The design took a lot of inspiration from the previous version of AU's MCU. This time a more objective-oriented version was made to get a better overview, also for the next person who has to take over the project.\fxnote{Kunne være rart med det omtalte klasse diagram - JH}
 
-The design process first step was to build a class diagram to get better view og how to implement the MCU.
-off cause the design got a lot inspiration from the last version of AU's MCU. This time a more objective version are made to get a better overview, also for the next person who has to take over the project.\\
-
-This time a LUT (Look Up Table) also have to be designed, so the car can run with the best efficiency as possible.\\
+\fxnote{Burde sætte op som en liste, men der mangler også nogle af de design overvejelser der er gjort - JH}
+A LUT (Look Up Table) also had to be designed and implemented  to make it possible to run the car at the best efficiency.\\
 
 A logger should also be design to the MCU so it can log all event and sensor values both from the MCU and BMS.\\ 
 
@@ -17,10 +18,15 @@ To get values from BMS a CAN has to be implemented.\\
 It is also important that there is a way to save and load settings. 
 \subsection{Implementation}
 
-To find the best efficiency as possible a LUT (Look Up table) is implemented, where the MCU can out from a speed find it most efficiency power usage, after that it can regulate the power using a PID regulator. LUT must first be made to do this, some calculation are made from some efficiency diagram for the AU transmission from motor to road. A script has been made to make this process easier for furtherer update.\\
+\fxnote{Omformuler - JH}
+To find the best efficiency as possible a LUT (Look Up table) is implemented, where the MCU can from a given speed find the most efficient power usage, after that it can regulate the power using a PID regulator. LUT must first be made to do this, some calculation are made from some efficiency diagram for the AU transmission from motor to road. A script has been made to make this process easier for furtherer update.\\
 
-A SD reader is also implemented so it is possible to log data from a run. It has been implemented using the library emFile.\\ For local settings like PID parameter a EEPROM is implemented using PSoCs owm EEPROM. The CAN communication are implemented using a CAN block what was all ready implemented into the PSoC. This made it possible to read data from the BMS.The PID regulator is implemented in c format. To get data from the sensors a DMA is setup.
+\fxnote{Igen, sæt det op som en liste, men synes der mangler nogle af udforinger stødt ind i undervejs - JH}
+An SD-card log was also to be implemented, making it possible to log data from a run. It has been implemented using the library emFile.
+
+For settings like the PID parameters the built-in EEPROM was used.
+The CAN communication are implemented using a CAN block what was all ready implemented into the PSoC. This made it possible to read data from the BMS.The PID regulator is implemented in c format. To get data from the sensors a DMA is setup.
 
 \subsection{Test}
 
-The Motor Control unit has not yet been tested because of some problem with the PCB.
+The Motor Control unit has yet been tested because of some problem with the PCB. \fxnote{Du nævnte du har siddet med Analog og testet noget af det, det kan du evt. skrive her - JH}
