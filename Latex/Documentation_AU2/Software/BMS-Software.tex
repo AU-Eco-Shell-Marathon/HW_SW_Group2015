@@ -24,7 +24,7 @@ The only function description that isn’t documented is the “CalculateSOC()�
 		\textbf{Function:} & \textbf{void CalculateSOC(void)}	\\\hline
 		Parameters	& None	\\\hline
 		Return Value	& None	\\\hline
-		Description of function	& After data has been collected this function can be called and the state of charge will be found by compared the value of the cell voltages and ten different levels of voltage. This way the state of charge will be represented from 1 to 10, where 1 is 10 percent and 10 is 100 percent \fxnote{JENS - når koden virkede fik vi SOC udskrifter der var omkring 40-45 med det halvt opladede batteri - Så forstår ikke hvorfor værdien går fra 1-10}.	\\\hline
+		Description of function	& After data has been collected this function can be called and the state of charge will be determined. The SOC value ranges from 0 to 100 percent, where a 100 percent symbolizes a fully charged battery. Nonetheless, a battery that has SOC values of 0 means that the battery is either disconnected or the cells' voltages are below 3.22 V. \\\hline
 	\end{tabular}
 	\caption{function description of the CalculateSOC function}
 \end{table}
@@ -49,7 +49,7 @@ This is some of the changes that seemingly happened in 2014 without being docume
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{Software/AddressAdditionsBMS.PNG}
-	\caption{Address additions to the Analog Front End Extension Module}
+	\caption{Address additions to the Analog Front End Extension Module can be found in the source code under frontend.c}
 	\label{fig:AddressAdditions_BMS}
 \end{figure}
 
@@ -75,7 +75,7 @@ After installing PCAN-view the CAN/USB converter (PCAN-USB from Peak-System) was
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{Software/SnipFromOlimexDatasheet.PNG}
-	\caption{Excerpt from OLIMEX AVR-CAN development board datasheet}
+	\caption{Excerpt from OLIMEX AVR-CAN development board datasheet \cite{BMSAVRCAN}.}
 	\label{fig:OLIMEX_AVR-CAN_BMS}
 \end{figure}
 

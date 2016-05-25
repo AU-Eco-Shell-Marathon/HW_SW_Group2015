@@ -10,36 +10,57 @@
 	& The horn must emit a sound equal or louder than 85 dBa when measured 4 meters horizontally from the vehicle.
 	& The horn button is pressed and the sound pressure level is measured using a decibel-meter.
 	& The decibel-meter shows a value above 85 dBa.
-	& 
-	& \\ \hline
+	& The decibel-meter shows a value at 71 dBa.
+	& Failed.\\ \hline
 	AU2\_NF2
 	& The tone emitted by the horn must have a pitch between 420 Hz and 420 kHz.
 	& The horn-button is pressed and the frequency is measured using an electronic tuner.
 	& The measured tone has a frequency which lies between 420 Hz and 420 kHz.
-	& 
-	& \\ \hline
+	& The electronic tuner measures a frequency of 2.5 kHz.
+	& Success.\\ \hline
 	AU2\_NF3
 	& The voltage from the battery must not exceed 48 V nominal and 60 V maximum.
-	& A multimeter is used to measure the maximum voltage of the battery. And note that the nominal voltage of the battery is 3.7V per cell, there is 12 cells in the battery, where the maximum is 4.2V per cell. 
+	& A multimeter is used to measure the maximum voltage of a fully charged battery. 
 	& The measured voltage is not above 60 V.
-	& 
-	& \\ \hline
+	& The measured voltage is 49.8 V.
+	& Success.\\ \hline
 	AU2\_NF4
 	& The capacity of the battery must not exceed 1,000 Wh.
-	& The capacity of the battery is measured with a power analyzer.
-	& The power analyzer shows a value below 1,000 Wh.
-	& 
-	& \\ \hline
+	& The capacity of the battery is measured with a Electronic Load.
+	& The Electronic Load shows a value below 1,000 Wh.
+	& This test was done in the previous documentation of BMS2013\cite{BMSBatteryTest}.
+	& Success.\\ \hline
 	AU2\_NF5
-	& The Motor Control Unit must be able to measure the vehicle's velocity with a precision of $\pm$2 km/h.
-	& The vehicle is accelerated up to a series of constant speeds. The measurements, which are stored on an internal SD-card, are compared to the input.
+	& The Motor Control System must be able to measure AU2's velocity within a 0-30 km/h range and with a precision of $\pm$2 km/h.
+	& AU2 is placed on the Rolling Road to measure the velocity. This velocity is compared to the internally measured velocity on AU2.
 	& The measured speed is identical to the vehicles speed.
-	& 
-	& \\ \hline			
+	& The body of AU2 is not completed. Therefore the test could not be executed successfully.
+	& Failed.\\ \hline		
 	AU2\_NF6
-	& There must be backups for all PCBs used in AU2. And at least two sets of batteries and motors. So that if something breaks it is fast to install a working backup version.
-	& Inspect the PCBs, their backup versions, the sets of batteries and motors.
-	& There are two versions of each PCB, battery-pair and motor.
+	& There must be backups for all PCBs used in AU2. And at least two sets of batteries and motors.
+	& Inspect the PCBs, their backup versions, the sets of batteries and motors, to insure that there are two working sets of each.
+	& There are two working versions of each PCB, battery-pair and motor.
+	& There are not two working versions of each PCB, battery-pair and motor.
+	& Failed.\\ \hline
+	AU2\_NF7	& The battery must be placed on a metal tray in order to prevent an eventual battery-fire that would damage the system.
+	& AU2 is inspected in order to determine if the battery is placed on a metal tray.
+	& The battery is located on the metal tray in AU2.
+	& The battery is located on the metal tray, but not in AU2. 
+	& Failed.\\ \hline
+	AU2\_NF8 
+	& The positive and negative circuits of the propulsion battery must be electrically isolated from the vehicle frame.
+	& AU2 is inspected in order to determine if the electrical systems are isolated from the frame of AU2.
+	& The systems are isolated from the frame of AU2.
+	& The body of AU2 is not completed. Therefore the test could not be executed successfully.
+	& Failed.\\ \hline
+	AU2\_NF9 
+	& The battery must be installed outside the cockpit behind the bulk head.
+	& AU2 is inspected in order to determine the location of the battery.
+	& The battery is isolated from the driver's compartment and behind the bulk head. 
+	& The body of AU2 is not completed. Therefore the test could not be executed successfully.
+	& Failed.\\ \hline
+	AU2\_NF10
+	& The threshold when discharging is 60 degrees celsius maximum. 
 	& 
 	& \\ \hline
 \end{longtable}

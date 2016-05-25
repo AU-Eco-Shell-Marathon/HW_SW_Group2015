@@ -6,7 +6,7 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Force}\\
 	Direction: [External] $\rightarrow$ [Emergency System]\\
-	Description: Can be triggered by pressing a button on the vehicle's frame. (This button is called the Emergency Shutdown Safety Switch)	
+	Description: Can be triggered by pressing the button on the vehicle's frame. (This button is also called the Emergency Shutdown Safety Switch)	
 	\item \textbf{HornOn:Force}\\
 	Direction: [External] $\rightarrow$ [Horn]\\
 	Description: The driver activates the system by pressing the corresponding button inside the vehicle's cockpit.
@@ -15,45 +15,47 @@ Block interface description:
 	Description: The sound emitted by the Horn.
 	\item \textbf{MotorPower:PowerMeas}\\
 	Direction: [Motor Control System] $\rightarrow$ [External]\\
-	Description: Power consumed by the motor. This connection is only relevant when AU2 is connected to Rolling Road.
+	Description: Power consumed by the motor. This connection is only relevant when AU2 is connected to Rolling Road. \fxnote{Er ikke i IBD!!!}
 	\item \textbf{MotorSpeed:Speed}\\
 	Direction: [Propulsion Motor] $\rightarrow$ [External]\\
 	Description: The velocity the Propulsion Motor has.
 	\item \textbf{MotorForce:Force}\\
 	Direction: [Propulsion Motor] $\rightarrow$ [External]\\
-	Description: The force the Propulsion Motor has.
-	\item \textbf{ForceResistance:Force}\\
+	Description: The force the Propulsion Motor has. \fxnote{Er ikke i IBD!!!}
+	\item \textbf{Resistance:Force}\\
 	Direction: [External] $\rightarrow$ [Propulsion Motor]\\
 	Description: The force the outside world effects the Propulsion Motor.
-	\item \textbf{CANAU2:CAN}\\
+	\item \textbf{:CAN}\\
 	Direction: [Battery Management System] and [Motor Control System] $\leftrightarrow$ [Computer]\\
 	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
 	\item \textbf{SpeedButton:Force}\\
 	Direction: [External] $\rightarrow$ [Motor Control System]\\
-	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast-and-burn driving algorithm.
+	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast-and-burn driving algorithm. \fxnote{Er ikke i IBD, men der er en ON/OFF button!!!}
 	\item \textbf{DataLog:SDcard}\\
 	Direction: [External] $\leftrightarrow$ [Motor Control System]\\
 	Description: SDcard can be inserted to record data.
 	\item \textbf{Battery:Battery}\\
 	Direction: [Battery Holder] $\leftrightarrow$ [External]\\
 	Description: The two batteries that is connect in series and thereby understood as one battery, supplying everything in the AU2 system with power.
-	\item \textbf{PowerOut:Power}\\
-	Direction: [Battery Holder] $\rightarrow$ [External]\\
-	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is going back into the AU2 system, so that the power can be put to use.
-	\item \textbf{PowerIn:Power}\\
-	Direction: [External] $\rightarrow$ [Battery Management System]\\
-	Description: Power running through the external Joulemeter connectors, which originally came from the battery, is then going straight through a fuse before and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
 \end{itemize}
 
 \textbf{Block :Emergency System}\\
 Block interface description:
 \begin{itemize}
-	\item \textbf{Button:Force}\\
+	\item \textbf{ShutDown:Force}\\
 	Direction: [External] $\rightarrow$ [Emergency System]\\
-	Description: Can be triggered by pressing a button on the vehicle's frame.
-	\item \textbf{Shutdown:Voltage}\\
+	Description: Can be triggered by pressing the button on the vehicle's frame.
+	\item \textbf{ShutDown:Voltage}\\
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
 	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, from 48 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.
+\end{itemize}
+
+\textbf{Block :Joulemeter}\\
+Block interface description:
+\begin{itemize}
+	\item \textbf{PowerIn:Power}\\
+	Direction: [Battery Management System] $\rightarrow$ [Joulemeter] $\rightarrow$ [Motor Control System]\\
+	Description: Power delivered by the battery in order to propel the car. This connection is independent of the Joulemeter in case a Joulemeter is not connected the Motor Control System will still be supplied with power.
 \end{itemize}
 
 \textbf{Block :Horn}\\
@@ -78,22 +80,26 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Voltage}\\
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
-	Description: The button-press triggers a short-circuit which corrosponds to a change in the voltage-level, which can be detected by the BMS.
+	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, from 48 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.
 	\item \textbf{MainSupply:Power}\\
 	Direction: [Battery Management System] $\rightarrow$ [Distribution Block]\\
-	Description: Power delivered by the battery in order to supply the electrical systems and propel the car.
-	\item \textbf{BMSC:CAN}\\
-	Direction: [Battery Management System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables.
+	Description: Power delivered by the battery in order to supply the Distribution Block.
+	\item \textbf{PowerIn:Power}\\
+	Direction: [Battery Management System] $\rightarrow$ [Joulemeter] $\rightarrow$ [Motor Control System]\\
+	Description: Power delivered by the battery in order to propel the car. This connection is independent of the Joulemeter in case a Joulemeter is not connected the Motor Control System will still be supplied with power.
+	\item \textbf{:CAN}\\
+	Direction: [Battery Management System] $\leftrightarrow$ [Computer] \& [Motor Control System]\\
+	Description: CAN-communication with a computer or Motor Control System in order to gain information about various variables.
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltage indicating the temperature of the battery.
-	\item \textbf{AnSupply:Voltage}\\
+	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
-	Description: Voltage indicating the battery's different cells's statuses and outputs.
-	\item \textbf{BatterySupply:Power}\\
-	Direction: [External] $\rightarrow$ [Battery Management System]\\
-	Description: Power running through the external Joulemeter connectors, which originally came from the battery, which is going straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
+	Description: Voltages that indicate the voltage of the individual cells.
+	\item \textbf{BatterySupplyA:Power}\\
+	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
+	Description: Power which is running straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
+	
 \end{itemize}
 
 \textbf{Block :Distribution Block}\\
@@ -120,8 +126,8 @@ Block interface description:
 	Direction: [Distribution Block] $\rightarrow$ [Motor Control System]\\
 	Description: Power supply for the various electrical systems in the Motor Control Systems.
 	\item \textbf{PowerIn:Power}\\
-	Direction: [Distribution Block] $\rightarrow$ [Motor Control System]\\
-	Description: Power delivered from the battery to propel the car.
+	Direction: [Battery Management System] $\rightarrow$ [Joulemeter] $\rightarrow$ [Motor Control System]\\
+	Description: Power delivered by the battery in order to propel the car. This connection is independent of the Joulemeter in case a Joulemeter is not connected the Motor Control System will still be supplied with power.
 	\item \textbf{HornPWM:PWM}\\
 	Direction: [Motor Control System] $\rightarrow$ [Horn]\\
 	Description: A PWM-signal with a frequency corresponding to the tone emitted by the horn.
@@ -130,7 +136,7 @@ Block interface description:
 	Description: The amount of power which the Motor Control System has evaluated in order for the car to follow the driving-algorithm.
 	\item \textbf{MCSC:CAN}\\
 	Direction: [Motor Control System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables and calibrate the system.
+	Description: CAN-communication with a computer or the Battery Management System in order to gain information about various variables and calibrate the system.
 	\item \textbf{SpeedButton:Force}\\
 	Direction: [External] $\rightarrow$ [Motor Control System]\\
 	Description: When the button is pressed, a signal is sent to the Motor Control System to engage the coast-and-burn driving algorithm.
@@ -165,12 +171,12 @@ Block interface description:
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltage indicating the temperature of the battery.
-	\item \textbf{AnSupply:Voltage}\\
+	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
-	Description: Voltage indicating the battery's different cell's statuses and outputs.
-	\item \textbf{BatterySupply:Power}\\
-	Direction: [Battery Holder] $\rightarrow$ [External]\\
-	Description: Power from the battery, which is going outside the system to Joulemeter connectors, so that the energy consumed can be inspected. Thereafter the power is of course going back into the AU2 system, so that the power can be put to use.
+	Description: Voltages that indicate the voltage of the individual cells.
+	\item \textbf{BatterySupplyA:Power}\\
+	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
+	Description: Power which is running straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
 	\item \textbf{Battery:Battery}\\
 	Direction: [Battery Holder] $\leftrightarrow$ [External]\\
 	Description: The two batteries is connected in series and thereby understood as one battery, supplying everything in the AU2 system with power.
@@ -180,6 +186,6 @@ Block interface description:
 Block interface description:
 \begin{itemize}
 	\item \textbf{CANAU2:CAN}\\
-	Direction: [Motor Control System] and [Battery Management System] $\leftrightarrow$ [Computer]\\
-	Description: CAN-communication with a computer in order to gain information about various variables and to calibrate the system.
+	Direction: [Motor Control System] \& [Battery Management System] $\leftrightarrow$ [Computer]\\
+	Description: CAN-communication with either the Motor Control System or the Battery Management System in order to gain information about various variables and to calibrate the system.
 \end{itemize}

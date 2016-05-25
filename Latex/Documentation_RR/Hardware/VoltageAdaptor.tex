@@ -1,7 +1,7 @@
 \section{Voltage Adaptor}
 The purpose of this block is to convert 230 VAC from the electrical mains to a 12 VDC supply voltage. This voltage can then be used to power the various electrical components in the system. Some of the components can draw power directly from the 12 VDC line while other components requires even lower voltages.
 
-\subsection{Design} \fxnote{Det virker mere som krav, ikke design - JH}
+\subsection{Analysis}
 As the voltage Adaptor supplies every component in the system, it is important that it is rated to handle the amount of current which is drawn.
 In order to calculate the minimum current rating:
 
@@ -26,7 +26,7 @@ The total amount of current which is drawn at the 12 VDC line can be calculated 
 \end{equation}
 
 \textbf{5 VDC components}\\
-The amount of current consumed by the 5 VDC line is calculated in \vref{sec:LevelConverter} \fxnote{reference mangler} and will not be examined in this section. The amount of current consumed is calculated as:
+The amount of current consumed by the 5 VDC line is calculated in \vref{sec:LevelConverter} and will not be examined in this section. The amount of current consumed is calculated as:
 \begin{equation}
 	I_{5V} = \SI{613}{\milli \ampere}
 \end{equation}
@@ -43,7 +43,7 @@ The minimum amount of current which the adaptor must be able to deliver, can be 
 This means that the system can be supplied by any 12 VDC voltage adaptor which is rated to deliver a minium of \SI{4.58}{\ampere}.
 
 \subsection{Implementation}
-The Voltage Adaptor is implemented \fxnote{Vi har vel ikke implementet det - JH} using a \fxnote{name of voltage adaptor}. The adaptor connects the Control-box with the electrical mains with a \SI{2.1}{\milli \meter} coaxial plug. For safety reasons the Rolling Road circuit design also contains a \SI{5}{\ampere} fuse on the supply line. Furthermore, the voltage adaptor also supplies the Level Converter - this line is not protected with a fuse. The final design which is implemented on the print is seen on Figure \ref{fig:DesignVoltageAdaptor} below.
+The Voltage Adaptor is implemented using a GS60A12-P1J adaptor from Mean Well. This adaptor is rated to be able to deliver a current up to \SI{5.0}{\ampere} and gives a \SI{50}{\hertz} sinusoidal output. The adaptor connects the Control-box with the electrical mains with a \SI{2.1}{\milli \meter} coaxial plug. For safety reasons the Rolling Road circuit design also contains a \SI{5}{\ampere} fuse on the supply line. Furthermore, the voltage adaptor also supplies the Level Converter - this line is not protected with a fuse. The final design which is implemented on the print is seen on Figure \ref{fig:DesignVoltageAdaptor} below.
 
 \begin{figure}[H]
 	\centering
@@ -51,9 +51,8 @@ The Voltage Adaptor is implemented \fxnote{Vi har vel ikke implementet det - JH}
 	\caption{Implemented circuit design on Rolling Road}
 	\label{fig:DesignVoltageAdaptor}
 \end{figure}
-\fxnote{Burde fusen ikke være før opsplittelsen af signalet? - TN}
 
-\subsection{Unit test} \fxnote{Unit Test (enheds-test) ikke unity} \fxnote{Når den kommer udfra stoler vi vel på det er 12V - JH}
+\subsection{Unit test}
 The Voltage Adaptor is tested using Analog Discovery's built-in oscilloscope. The average output-voltage is found to be \SI{11.998}{\volt}. The output is seen below.
 
 \begin{figure}[H]

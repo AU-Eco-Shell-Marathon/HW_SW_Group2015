@@ -1,0 +1,24 @@
+\chapter {Future Work}
+There is improvements to the system that can be done. The future improvements to be made will be divided into each subsystem to give a quick overview for future readers. 
+
+\section{AU2}
+The following assumes a working system and thereby expecting the current system developed to be functional and operating.
+
+Developments made to the circuit and software will mainly consist of optimization, when testing either on Rolling Road or on a test track. 
+
+The PCB currently developed could be optimized, both by shrinking it in size, and spending more time placing the components in a more logical sense. At the same time EMC considerations could be taken further into account. 
+
+The driving algorithm would be where most of the optimization lies, as this is what controls the motor which draws a current much larger than anything in the system and by optimizing the power delivered to the motor, the overall efficiency of the car can be increased. 
+
+Choosing the correct size of batteries would also improve the efficiency. Therefore doing some extensive testing, as to what batteries will prove to be sufficient and therefore best, could result in a better "fuel" efficiency because of less weight.  \fxnote{der står øverst at vi tager udgangspunkt i et system der virker, men er det i orden?? Måske er det, i dont know? Lets discuss it!}
+
+\section{Rolling Road}
+A major part in further development of Rolling Road, would be to provide it with an active load system instead of the passive one already implemented. It will be realized to ensure a less reliant system. An active load system comprises of some form of active components that can supply the generator with energy contrary to using only passive components as it is now.\fxnote{Den her sætning er sværd at forstå.} An active load system will make the overall system less dependent on the speed supplied by the unit on test.\fxnote{Why less speed dependent? mere info synes jeg.} Furthermore it would make the system able to measure negative forces, which gives a more realistic simulation of the real world. In our specific case, it was not possible to complete a genuine simulation run on the specific course being used in London since it had a downhill section. This could be executed by implementing an active system. 
+
+\section{GUI}
+For further work with the Rolling Road GUI there can be implemented an even better display of the data than just the graph visualization. Furthermore a corresponding website could be implemented.\\
+In the following paragraphs the two mentioned upgrades will be explained. 
+
+The upgraded visualisation of the data could include an option to plot a number of variables, e.g. speed and efficiency in a separate graph, so that information could be monitored separately. As a further upgrade to the system a number of calculations could be done by the program. These calculations could include a number of visualisations of the speed, e.g the average speed across the simulation. It could also include a greater deal of signal analysis such as averaging filters, smoothing out the values received. 
+
+The website that could be developed to work alongside the GUI, should be able to display the same as the actual program. Furthermore it should consist of a server that saves all previous runs that is uploaded to the website. This way all the simulation and test runs would be decentralized and be available at any computer.  

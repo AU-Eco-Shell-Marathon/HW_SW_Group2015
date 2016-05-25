@@ -1,7 +1,15 @@
 \newpage
 \section{CAN-Transceiver}
 \label{sec:CAN-Tranceiver}
-The CAN-transceiver is in place to ensure a proper transmission of the CAN signal. Even though the microcrontroller, used as MCU, contains a CAN controller it is still needed to implement a CAN transceiver, according to the protocol.\fxnote{forklar}
+The CAN-transceiver is in place to ensure a proper transmission of the CAN signal. Even though the microcrontroller, used as MCU, contains a CAN controller it is still needed to implement a CAN transceiver, according to the protocol as seen on the figure \vref{CAN_Network}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Hardware/Pictures/CAN_Network}
+	\caption{CAN Network overview}
+	\label{fig:CAN_Network}
+\end{figure}
+
 
 The CAN bus is used to communicate with BMS and a computer that can be connected to this bus. 
 
@@ -15,7 +23,7 @@ The design for the transceiver can be seen on figure \vref{fig:CAN_hw}. This des
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Hardware/Pictures/CAN_transceiver}
-	\caption{Horn hardware overview}
+	\caption{CAN transceiver overview}
 	\label{fig:CAN_hw}
 \end{figure}
 

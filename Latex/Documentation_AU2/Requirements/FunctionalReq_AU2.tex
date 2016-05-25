@@ -4,20 +4,16 @@ The functional requirements for AU2 are labeled and specified in the table below
 \begin{longtable}{|p{2 cm}|p{7 cm}|p{4 cm}|}
 		\hline
 		\textbf{Req. \#} & \textbf{Description} & \textbf{Comments} \\\hline
-		AU2\_F1		& The car must have one electric storage device, one motor and one control unit. &   \\\hline
-		AU2\_F2		& The car must be equipped with a built-in horn mounted towards the front of the vehicle, which can be activated by the driver in the cockpit. &   \\\hline
-		AU2\_F3		& The car must be equipped with an emergency shutdown mechanism, which must isolate the battery from the propulsion system when the button is pressed. &   \\\hline
-		AU2\_F4		& The car must include a "dead man's" safety switch which must be activated at all times in order for the car to drive. &   \\\hline
-		AU2\_F5	& The positive and negative circuits of the propulsion battery  must be electrically isolated from the vehicle frame. &   \\\hline
-		AU2\_F6		& The battery must be installed outside the cockpit behind a bulk head. &   \\\hline
-		AU2\_F7	& The car must be equipped with spade connectors that fit a joulemeter, which is to be located between the battery and the motor controller. The display must be readable from outside the vehicle's body. &   \\\hline
-		AU2\_F8	& The car should be equipped with a data-log, which is able to collect data concerning the power from the battery and the wheel's angular velocity. &   \\\hline
-		AU2\_F9	& The car must be equipped with a speedometer. &   \\\hline
-		AU2\_F10	& The car's BMS must be able to protect the cells of the battery from undervoltage and overvoltage. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1) \fxnote{reference to 2013BMS Documentation} &   \\\hline
-		AU2\_F11	& The car's BMS must be able to protect the battery from emitting overcurrent. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.1) \fxnote{reference to 2013BMS Documentation} &   \\\hline
-		AU2\_F12	& The car's BMS must be able to balance the cells if needed. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.4) \fxnote{reference to 2013BMS Documentation} &   \\\hline
-		AU2\_F13	& The car's BMS must be able to protect the battery from overheating. The threshold when discharging is 60 degrees celsius maximum. And when charging, the threshold is 45 degrees celsius maximum. This requirement is already implemented in the BMS from earlier projects. (BMS\_NF.2) \fxnote{reference to 2013BMS Documentation} &   \\\hline
-		AU2\_F14	& The car's BMS should be able to transfer data to the MCS via CAN-communication so the data can be collected on a SD-card. This requirement is already implemented in the BMS from earlier projects. (BMS\_F.8) \fxnote{reference to 2013BMS Documentation} &   \\\hline
+		AU2\_F1		& AU2 must have one electric storage device, one motor and one control unit for the motor. &   \\\hline
+		AU2\_F2		& AU2 must be equipped with a built-in horn mounted towards the front of the vehicle, which can be activated by the driver in the cockpit. &   \\\hline
+		AU2\_F3		& AU2 must be equipped with an emergency shutdown mechanism, which must isolate the battery from the propulsion system when the button is pressed. &   \\\hline
+		AU2\_F4		& AU2 must include a "dead man's" safety switch which must be activated at all times in order for the car to drive. &   \\\hline
+		AU2\_F5	& AU2 must be equipped with spade connectors that fit the joulemeter\cite{Joulemeter}, which is to be located between the Battery Management System(BMS) and the Motor Control System(MCS). The display must be readable from outside the vehicle's body. &   \\\hline
+		AU2\_F6	& AU2 should be equipped with a data-log, which is able to collect data concerning the power from the battery and the wheel's angular velocity. &   \\\hline
+		AU2\_F7	& AU2 must be equipped with a speedometer. &   \\\hline
+		AU2\_F8	& AU2's BMS must be able to protect the cells of the battery from undervoltage and overvoltage.  \cite{BMSDocumentation} (section 1.5.1.2). &   \\\hline
+		AU2\_F9	& AU"'s BMS must be able to protect the battery from emitting overcurrent. \cite{BMSDocumentation} (section 1.5.1.2). &   \\\hline
+		AU2\_F10	& AU2's BMS must be able to balance the cells if needed. \cite{BMSDocumentation} (section 1.5.1.2). &   \\\hline
+		AU2\_F11	& AU2's BMS must be able to protect the battery from overheating. \cite{BMSDocumentation} (section 1.5.2.2). &   \\\hline
+		AU2\_F12	& AU2's BMS should be able to transfer data to the MCS via CAN-communication. \cite{BMSDocumentation} (section 1.5.1.2). &   \\\hline
 \end{longtable}
-
-%AU2\_F5		& The battery must be placed on a metal tray in order to prevent an eventual battery-fire that would damage the system. &   \\\hline

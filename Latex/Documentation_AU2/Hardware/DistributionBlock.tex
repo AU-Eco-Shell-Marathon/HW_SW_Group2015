@@ -26,7 +26,7 @@ Figure \vref{fig:SMPS_control} shows the hardware implementation of the SMPS. Th
 	\label{fig:SMPS_control}
 \end{figure}
 
-There are various resistors can be changed and thereby change the different things e.g. the output voltage.\fxnote{omformuler} 
+There are various resistors that is connected to the IC, that can be changed. Changing the value of these resistors, gives the circuit a different mode of operation. This can be the input range or the output voltage. 
 
 The value of the resistor R8 on figure \vref{fig:SMPS_control} is calculated on the formula below. The value of this resistor decides the output of the SMPS.
 
@@ -46,6 +46,6 @@ This calculation yields a resistance of 318 k$\Omega$.
 The dimensions of the snubber circuits are standard sizes. Furthermore, there is used decoupling capacitors to reduce the ripple on the output and to ensure a steady current for the IC.
 
 \subsection{Unity test}
-There have been tested extensively on this module. All the tests have come up with at negative response. \fxnote{resultat af test skal stå bagefter testudførelse}
+The test is done by placing the a voltage source, either batteries or a voltage generator supplying 48V. Then measurements were made on the secondary side of the transformer, where output should be 5V. These test were non-succesful as no voltage was coming through the transformer and therefore the desired effect of this module fails to deliver. As this is very vital part on the PCB, as this is the supply voltage for all the modules. It has therefore had an extremely large priority in getting the entire PCB up and running. Even with this priority it was not possible to detect the problems with the module, but due to the importancy it is crucial to get up and running.  \\
+There have been tested extensively on this module. All the tests have come up with at negative response. A negative result meaning that the voltage is not corresponding to desired. 
 
-The test is done by placing the a voltage source, either batteries or a voltage generator supplying 48V. Then measurements were made on the secondary side of the transformer, where output should be 5V. These test were non-succesful as no voltage was coming through the transformer and therefore the desired effect of this module fails to deliver. As this is very vital part on the PCB, as this is the supply voltage for all the modules. It has therefore had an extremely large priority in getting the enitre PCB up and running. Even with this priority it was not possible to detect the problems with the module, but due to the importancy it is crucial to get up and running.  

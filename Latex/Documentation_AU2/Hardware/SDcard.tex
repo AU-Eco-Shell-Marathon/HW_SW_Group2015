@@ -3,7 +3,7 @@
 The SD-card is responsible for logging data. The data being logged onto the SD-card is both received from the BMS and from the MCU. The data being logged from the BMS is concerning the state of the batteries. The data being logged from the MCU is concerning the power used by the motor.
 
 \subsection{Design}
-Through the design phase it was discovered that purchasing a SD-card module online. This was done and there have no use for designing any hardware for this module.\fxnote{omformuler: opdagede du at du havde bestilt et modul}
+Through the design phase it was discovered that it is possible to purchase a SD-card module online. This was done and there have no use for designing any hardware for this module.
 
 The only considerations that must be taken into account when communicating with a SD-card, is that it is supplied by 3.3V and the MCU uses. This problem has is taken care of by the SD-card.
 
@@ -20,7 +20,7 @@ As seen on figure \vref{fig:SD} the hardware outlay to communicate with the SD-c
 \subsection{Implementation}
 The implementation of the SD-card reader is done away from the PCB. This is done so that reader is removable, in case that it is not needed to collect any data in that specific run and thereby not drawing any, albeit small, current.  
 
-The connection between the breakout board \fxnote{hvad er breakout-board?} used and the controller is via 6 connectors. Supply and ground for the board, and 4 wires used for data transfer. The data transfer works via the SPI protocol, so connections shown on figure \vref{fig:SD} corresponds to the following:
+The connection between the breakout board(SD-card) used and the controller is via 6 connectors. Supply and ground for the board, and 4 wires used for data transfer. The data transfer works via the SPI protocol, so connections shown on figure \vref{fig:SD} corresponds to the following:
 
 \begin{itemize}
 	\item{SD\_SS = Slave select}
