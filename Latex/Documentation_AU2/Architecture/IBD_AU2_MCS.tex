@@ -28,10 +28,10 @@ Block interface description:
 	\item \textbf{PowerOut:Power}\\
 	Direction: [Power Control] $\rightarrow$ [External]\\
 	Description: Power to supply the motor.
-	\item \textbf{MCSC:CAN}\\
+	\item \textbf{:CAN}\\
 	Direction: [CAN Transceiver] $\rightarrow$ [External]\\
 	Description: CAN connection to receive variables from BMS and to send to computer.
-	\item \textbf{Speedbutton:Force}\\
+	\item \textbf{OnOff:Force}\\
 	Direction: [External] $\rightarrow$ [Motor Controller]\\
 	Description: Button to control the driving algorithm.
 	\item \textbf{DataLog:SDcard}\\
@@ -72,10 +72,10 @@ Block interface description:
 	\item \textbf{SDwrite:SPI}\\
 	Direction: [Motor controller] $\rightarrow$ [SD-logger]\\
 	Description: Information being written to SD card.
-	\item \textbf{Speed:RPM}\\
+	\item \textbf{Speed:PPM}\\
 	Direction: [Speedometer] $\rightarrow$ [Motor controller]\\
 	Description: Square wave signal with a frequency corresponding to RPM.
-	\item \textbf{Speedbutton:Force}\\
+	\item \textbf{OnOff:Force}\\
 	Direction: [External] $\rightarrow$ [Motor controller]\\
 	Description: Button to control the driving algorithm.
 	\item \textbf{MCSC:CAN}\\
@@ -89,7 +89,7 @@ Block interface description:
 	\item \textbf{SupplyMCS:Voltage}\\
 	Direction: [External] $\rightarrow$ [Speedometer]\\
 	Description: Power supply to the block.
-	\item \textbf{Speed:RPM}\\
+	\item \textbf{Speed:PPM}\\
 	Direction: [Speedometer] $\rightarrow$ [Motor Controller]\\
 	Description: Square wave signal with a frequency corresponding to RPM.
 \end{itemize}
