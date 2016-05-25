@@ -1,4 +1,4 @@
-\section{RollingRoad} \fxnote{Meningen med det her afsnit er at nævne de vigtige ting i implementeringen, ikke bare ridse de forskellige delemner op, sådan har jeg forstået det hvert fald - TN}
+\section{RollingRoad}
 Many of the hardware-designs in Rolling Road has been re-used from the previous design\cite{BAC_rullefelt}. Much of the hardware-section in Rolling Road's documentation\cite{RR} is simply a cut-down version of the previous design where the relevant designs are re-used and calculations are checked for errors. One of the biggest start-up points was that the team had a lot of the earlier components at our disposal and the designs could relatively quickly be built. Some of the hardware-blocks will be discussed below:
 
 \textbf{Voltage Adaptor}\\ 
@@ -24,7 +24,7 @@ These filters are implemented between the Control Unit's ADC's and the signals t
 
 The measurements done by the Power Sensor are filtered through a 2. order low-pass filter. This is also done through two sets of resistors and capacitors - but with a voltage-buffer between them. These voltage-buffers are implemented using operational amplifiers of the type MCP6004\cite{MCP6004}.
 
-\textbf{Physical Stand, Control-box and Load-plate}\\
+\textbf{Physical implementation}\\
 As it is the hope and dream of the developers that Rolling Road can be used for many years ahead, the system was made to allow easy storage and easy transportation. This was done by building the system on as few parts as possible. The Torque Sensor and the Generator had already been mounted on a Physical Stand which in turn had been placed on a wooden frame which holds the test-subject in place. The Physical Stand remained as it was.
 
 Most of the electrical system is build on a designed PCB. This PCB is mounted inside a box (called Control-box) to protect the electrical systems from physical damage. The box contains connectors for easy connection with the other parts of the system.
