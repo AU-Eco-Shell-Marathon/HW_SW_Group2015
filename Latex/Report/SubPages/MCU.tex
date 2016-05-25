@@ -59,14 +59,14 @@ In the implementation process a lot of decision have to be made. The biggest que
 	A PID regulator because it has to be easy for everyone to tune. And it is also easy to calculate some PID constants, but because AU2 is not complete and has not got enough data of the car this isn't possible yet.\\
 	\subitem \textit{Where to implement the PID regulator}\\
 	The reason that it is not implemented in the digital filter block what would be the most optimal solution. Is because then implemented it on the software level it is easy to change the PID constant without recompiling. Of course then it has been tested and the PID constants are found, it would be smarter and less power consuming to use the digital filter block.\\
-	\subitem \textit{What to regulate}
+	\subitem \textit{What to regulate}\\
 	The input comes from the LUT. The feedback are the product from voltage- and current-sensor. The regulator will then regulate the motor with a PWM signal.\\
 	To get data from the sensor a DMA is setup. So no need for a interrupt routine every time a conversion is done. This will also save a lot of CPU time\\
 \end{enumerate}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics [width=6in]{../Documentation_AU2/Software/Pictures/LUT.eps}
+	\includegraphics [width=6in]{SubPages/Images/LUT.eps}
 	\caption{LUT plot - "Ramp" is the power use for a specific speed(red = without power loose, blue = with power loose) this table are used then accelerating. "Const" is the same but just then the car should hold a constant speed(red = without power loose, blue = with power loose). "LUT" is the 2D-look Up Table(blue = accelerating; red constant speed)}
 	\label{fig:LUT_plot}
 \end{figure}
@@ -78,7 +78,7 @@ The Motor Control unit has yet been tested because of some problem with the PCB.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics [width=4in]{SubPages\Images\SoftwareTestPSoC.jpg}
+	\includegraphics [width=4in]{SubPages/Images/SoftwareTestPSoC.jpg}
 	\caption{A simple test setup for the PSoC. Note more test has been made, this is just a picture of one of the first test that has been made.}
 	\label{fig:PSOC_test}
 \end{figure}

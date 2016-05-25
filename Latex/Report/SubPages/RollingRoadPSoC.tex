@@ -7,7 +7,7 @@ To communicate with the Rolling Road a serial connection can be established with
 \subsection{Design}
 The rolling road is made in c. because it is the only option where is beside Assembly, the architecture are design as a objective program with classes. But because c don't have classes and not a objective programming language. Header files with function prototypes was made instead. 
 
-Because it is easier to design it as a objective program. To design the solution, a class diagram was made see Rolling road doc\fxnote{lav reference}.\\
+Because it is easier to design it as a objective program. To design the solution a class diagram was made see Rolling road documentation \cite{RR}.\\
 
 The design of Rolling Road consist of three things: regulating, measure and communication. Where all these work together.\\
 
@@ -18,9 +18,11 @@ The flow-diagram gives a better overview of the Rolling Road and how data from t
 
 The different signals from the sensors goes though a couple of steps before they are calculated and passed on. To save as much CPU time as possible DMA is implemented in the torque-sensor because it is the most time critics sensor. Also because it is the feedback of the regulator.  
 
- Where are implemented some decimation filter in the design, because the sensor are measured with a high sample frequency around 50 kSample/s. Where the PID regulator only runs with 2 kSample/s and the data transmitting rate is around 2-100 Sample/s.
+ Where are implemented some decimation filter in the design, because the sensor are measured with a high sample frequency around 50 kSample/s. Where the PID regulator only runs with 2 kSample/s and the data transmitting rate is around 2-100 Sample/s (the rate can be change with a re-compiling).
  
-There is also implemented a small exponential moving average filter, that smooths all data before sending to the control unit.    
+There is also implemented a small exponential moving average filter, that smooths all data before sending to the control unit.  
+
+To implement the calibration first it set the exponential filter alpha value to the LSB (ca. $ \alpha = 0.004 $), after what it will wait for a few seconds and read from the sensor and use the value as a offset value. After it has finish it will reset the alpha value back again and saved the offset values. 
 
 \begin{figure}[H]
 	\centering
@@ -44,6 +46,6 @@ After a half hour test a efficiency diagram could be made from the data \ref{fig
 	\caption{efficiency diagram of the first test, the value is in \% efficiency.}
 	\label{fig:RR_first_test_result}
 \end{figure}
-This result is not close enough to the efficiency what was calculated by a mechanical-engineer. But the car is not in the best shape, and it was not fastened to the Rolling Road. So there is many places there is efficiency lost.
+This result is not close enough to the efficiency what was calculated by a mechanical-engineer \cite{BAC_zenith33}. But the car is not in the best shape, and it was not fastened to the Rolling Road. So there is many places there is efficiency lost.
 
 
