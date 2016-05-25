@@ -18,7 +18,6 @@
 	& The body of AU2 is not completed. Therefore the test could not be executed successfully.
 	& Failed.\\ \hline
 	AU2\_F3 
-	
 	& AU2 must be equipped with an emergency shutdown mechanism, which must isolate the battery from the propulsion system when the button is pressed.
 	& While the emergency shutdown button is pressed, then press the red button on the right hand steering handle.
 	& Power is no longer supplied to any electrical system and the status-LED turns off.
@@ -36,7 +35,6 @@
 	& The correct connectors are found between the battery and the motorcontroller and the display is located outside the vehicle's body.
 	& The connectors fit the joulemeter and are located between the BMS and MCS. But the body of AU2 is not completed. Therefore the test could not be fully executed.
 	& Failed.\\ \hline
-	& \\ \hline
 	AU2\_F6 
 	& AU2 should be equipped with a data-log, which is able to collect data concerning the power from the battery and the wheel's angular velocity.
 	& Locate a SD-card near the MCS, unplug the SD-card and test on a computer if the SD-card is not empty.  
@@ -51,13 +49,13 @@
 	& Failed.\\ \hline
 	AU2\_F8
 	& AU2's BMS must be able to protect the cells of the battery from undervoltage and overvoltage\cite{BMSDocumentation} (section 1.5.1.2).
-	& Connect a voltage between one of the BMS cell inputs and the reference pin. Try with both 1 V and 5 V. Test the two connections to "J9" on the Analog Front End board with a multimeter.
+	& Connect a voltage between one of the BMS cell inputs and the reference pin. Try with both 1 V and 5 V. Test the output of BMS with a multimeter, when emergency switch is pressed. .
 	& The multimeter shows 0 V $\pm$0.5 V.
 	& The multimeter shows 47.42 V.
 	& Failed.\\ \hline
 	AU2\_F9
 	& AU2's BMS must be able to protect the battery from emitting overcurrent\cite{BMSDocumentation} (section 1.5.1.2).
-	& Connect a powersource which is emitting 40 A and short circuit the speakon connector. Test the two connections to "J9" on the analog front end board with a multimeter. (Replace the fuse with a new one after the test of this requirement.)
+	& Connect a powersource which is emitting 40 A and short circuit the speakon connector. Test the output of BMS with a multimeter, when the emergency switch is pressed. (Replace the fuse with a new one after the test of this requirement.)
 	& The multimeter shows 0 V $\pm$0.5 V.
 	& The multimeter shows 0.02 V.
 	& Success.\\ \hline
@@ -69,7 +67,7 @@
 	& Failed.\\ \hline
 	AU2\_F11
 	& AU2's BMS must be able to protect the battery from overheating.\cite{BMSDocumentation} (section 1.5.2.2).
-	& Warm the temperature sensor up to above 60 degrees celsius without connecting the charger. Test the two connections to "J9" on the Analog Front End board with a multimeter. Try also while charging the batteries.
+	& Warm the temperature sensor up to above 60 degrees celsius without connecting the charger. Test the output of BMS with a multimeter, when the emergency switch is pressed. Try also while charging the batteries.
 	& The multimeter shows 0 V $\pm$0.5 V.
 	& The multimeter shows 47.42 V.
 	& Failed.\\ \hline
