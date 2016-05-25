@@ -10,7 +10,9 @@ To help create a GUI(Graphical User Interface) the WPF library which is a part o
 
 Initially the 3-layer architecture use for the back-end and MVVM was used as front-end architecture. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
 
-The Onion-Architecture heavily uses the repository pattern to abstract away from the data source. Making it easy to change the datasource to a database for example later in the process, so if the website user story was to be implemented it would require little or no change to the 'backend'.
+\fxnote{enten forklar lidt mere om 3-layer og Onion architecture eller referer til noget i dokumentationen der kan forklare hvad det er. JS}
+
+The Onion-Architecture heavily uses the repository pattern to abstract away from the data source.\fxnote{lyder fint men ved ikke hvad det betyder. JS} Making it easy to change the datasource to a database for example later in the process, so if the website user story was to be implemented it would require little or no change to the 'backend'.
 
 The communication with the Rolling Road is using the SP4RR protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a uart connection, so only a Micro usb cable is needed to connect the two.
 
@@ -41,7 +43,7 @@ To help debugging, a simple log was also implemented, it logs some of the users 
 
 For testing the GUI Application unit tests was written using the NUnit 3.* framework and NSubstitute as the Mock-framework to help isolate units under test.
 
-This helped immensely when developing the SP4RR-interpreter, since it was developed before being able to integration test with the Rolling Road. It was done by mocking out the COM-Port stream and verifying the commands was sent and received as specified in SP4RR protocol definition.
+This helped immensely when developing the SP4RR-interpreter, since it was developed before being able to integration test with the Rolling Road. It was done by mocking out the COM-Port stream and verifying the commands was sent and received as specified in SP4RR  protocol definition \fxnote{Ville være godt med en reference. JS}.
 
 \subsection{Continuous Integration}
 
@@ -58,7 +60,7 @@ From the start CI(Continuous Integration) was used to verify the code every time
 
 Using CI also gives a history of the amount of test as seen in figure \vref{fig:CI_TestCount}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.95\linewidth]{SubPages/Images/CI_TestCount}
 \caption{A plot of test count. Y-Axis: Test-count, X-Axis: Build number}
