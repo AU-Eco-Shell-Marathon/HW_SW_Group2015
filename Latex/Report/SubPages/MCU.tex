@@ -1,0 +1,26 @@
+\section{Motor Control Unit}
+
+The MCU (Motor Control Unit) task is to control AU2s motor so it hit the best efficiency as possible. To do this it is monitoring both the speed an power usage and regulating the current to the motor.\\
+It is also the MCU task to log information both from BMS unit and it own measure.\\
+And control all inputs from the driver. 
+\subsection{Design}
+
+The design process first step was to build a class diagram to get better view og how to implement the MCU.
+off cause the design got a lot inspiration from the last version of AU's MCU. This time a more objective version are made to get a better overview, also for the next person who has to take over the project.\\
+
+This time a LUT (Look Up Table) also have to be designed, so the car can run with the best efficiency as possible.\\
+
+A logger should also be design to the MCU so it can log all event and sensor values both from the MCU and BMS.\\ 
+
+To get values from BMS a CAN has to be implemented.\\
+
+It is also important that there is a way to save and load settings. 
+\subsection{Implementation}
+
+To find the best efficiency as possible a LUT (Look Up table) is implemented, where the MCU can out from a speed find it most efficiency power usage, after that it can regulate the power using a PID regulator. LUT must first be made to do this, some calculation are made from some efficiency diagram for the AU transmission from motor to road. A script has been made to make this process easier for furtherer update.\\
+
+A SD reader is also implemented so it is possible to log data from a run. It has been implemented using the library emFile.\\ For local settings like PID parameter a EEPROM is implemented using PSoCs owm EEPROM. The CAN communication are implemented using a CAN block what was all ready implemented into the PSoC. This made it possible to read data from the BMS.The PID regulator is implemented in c format. To get data from the sensors a DMA is setup.
+
+\subsection{Test}
+
+The Motor Control unit has not yet been tested because of some problem with the PCB.
