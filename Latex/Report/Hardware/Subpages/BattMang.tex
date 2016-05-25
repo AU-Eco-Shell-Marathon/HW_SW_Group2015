@@ -11,12 +11,15 @@ The Battery Management System consists of the following units:
 	\item{Current Sensor}
 \end{itemize}
 
+\fxnote{Jens skriv om hvad opgaven var og hvad det endte med --- Just understand ==> fix bms, document changes etc.}
+
 When developing the BMS a lot of problems came to light. Some of them required an extensive a mount of troubleshooting. In this section the most essential and time exhausting segments will be discussed. If a more detailed and descriptive troubleshooting process is sought-after then one can be found in the documentation\cite{AU2} (section 4.2.8).
 
 The general gist of the problems were that the Analog Front End and the Digital Unit were unable to work in conjunction with of one another. Furthermore, there is no existing documentation on the changes done in 2014 to the BMS thus troubleshooting problems was truly challenging.
-We were told that the BMS contained a functional CAN interface along with CAN bus - This is how the documentation portrays it. 
-
-However, the CAN bus did not work at all. This led us to believing that the software for the BMS was either outdated or the CAN function was commented out. A long search for the code was hereby commenced since the code that was available was an outdated version from the 2013 BMS Documentation\cite{BMSDocumentation}. In the end we got a hold of the updated code from the SEM 2014 team.
+We were told that the BMS contained a functional CAN interface along with CAN bus - This is how the documentation portrays it. However, the CAN bus did not work at all. This led us to believing that the software for the BMS was either outdated or the CAN function was commented out. A long search for the code was hereby commenced since the code that was available was an outdated version from the 2013 BMS Documentation\cite{BMSDocumentation}. In the end we got a hold of the updated code from the SEM 2014 team.
 
 However, when we were trying to test it an accident occurred which led to a fault on the Analog Front End as well as the Analog Front End Extension Module. This resulted the main battery ICs on both units to fry.
-From this moment on many different approaches were taken in trying to resolve the problems with the two units. However, the problems were still occurring after the dead ICs were replaced.
+From this moment on many different approaches were taken in trying to resolve the problems with the two units. However, due to no documentation existing for the BMS on the changes done from 2013 to 2014 it was very difficult to figure out the problems and possible fixes to be implemented. Therefore a lot of time was spent reverse engineering the changes as well as documenting them. 
+
+
+the problems persisted even after the dead ICs were replaced.
