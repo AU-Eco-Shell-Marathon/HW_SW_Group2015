@@ -1,8 +1,9 @@
 \section{SP4RR - Serial Protocol for Rolling Road}
 \label{sec:UART}
-\fxnote{Missing introduction}
-Each command is termintad by a newline character, and each value in a command is separated by a whitespace. \\
 
+This protocol is developed to help ensure a steady and reliable communication between the GUI and the PSoC. There is no error handling built into this protocol. The protocol helps ensure a uniform set of rules for how the communication will work. 
+
+Each command is termintad by a newline character, and each value in a command is separated by a whitespace. \\
 Overview of types:
 \begin{table}[h!]
 	\centering
@@ -16,7 +17,7 @@ Overview of types:
 	\caption{Overview for commands sent between PSoC og PC}
 \end{table}
 
-Overview of packets: \fxnote{Fix table}
+Overview of packets:
 \begin{table}[h!]
 	\centering
 	\label{Protocol:overviewRR}
@@ -27,7 +28,7 @@ Overview of packets: \fxnote{Fix table}
 		2  & Stop        		&            		& PC $\rightarrow$ PSoC	& 2        			\\
 		3  & Information 		& <double> ... <double>	& PSoC $\rightarrow$ PC & 3 2 3 	    	\\
 		4  & Torque control 	& <double>    			& PC $\rightarrow$ PSoC & 4 0.5  				\\
-		5  & PID control        & <double(P)> <double(I)> <double(D)> & PC $\leftrightarrow$ PSoC & 5 2.3 3.4 4.5 \\
+		5  & PID control        & \begin{tabular}[c]{@{}l@{}}<double(P)> <double(I)>\\ <double(D)>\end{tabular} & PC $\leftrightarrow$ PSoC & 5 2.3 3.4 4.5 \\
 		6  & Calibrate			&					& PC $\rightarrow$ PSoC & 6 \\ 
 	\end{tabular}
 	\caption{Overview for commands sent between PSoC and PC}
@@ -45,7 +46,7 @@ The handshake command is used to establish that the connection between the PC an
 "0\textvisiblespace RollingRoad"
 
 \subsection{Type description}
-The type description command will give the PC 3 kinds of information. The first character in the transmitted message will be the command number, here 1. The first real information sent here\fxnote{Omformuler - JH}, relates to the information command. The integer here sent, will define the place of the information in the information packet that is sent. The next thing that will be sent is the tpye the PC can expect, fx. time, torque etc. The final thing that will be send is the unit for this particular information.
+The type description command will give the PC 3 kinds of information. The first character in the transmitted message will be the command number, here 1. The actual information sent here, relates to the information command. The integer here sent, will define the place of the information in the information packet that is sent. The next thing that will be sent is the tpye the PC can expect, fx. time, torque etc. The final thing that will be send is the unit for this particular information.
 
 \textbf{Command layout:}
 
@@ -72,19 +73,29 @@ When stop command is issued and data transmission is once again wanted, the prot
 "2"
 
 \subsection{Information}
-The information command will be where all the information will be sent. Meaning that this command is going to be sent rapidly should be as short as possible. This is done by sending only the information needed, which is just the values of the information. To ensure that the PC and the PSoC communicates correctly here, the unit description command is used. \fxnote{Dem der læser dokumentationen kan vel næsten være ligeglade med hvorfor den er som den er, det skal bare vide hvordan de kan bruge den - JH}
+The information command will be where all the information will be sent. Meaning that this command is going to be sent rapidly should be as short as possible. This is done by sending only the information needed, which is just the values of the information. 
+
+\textbf{Command layout:}
+
+"3 2 4 3 "
 
 \subsection{Torque control}
 The torque control command  can change the input to the regulator. This is to change how much the generator is loaded and thereby how much the engine is strained. This parameter can be changed on the GUI. 
 
+\textbf{Command layout:}
+
+"4 3 "
+
 \subsection{PID control}
 PID control is used to control the P, I and D parameters of the regulator. These parameters can then be adjusted during runtime. Furthermore the latest regulator parameters will be saved on an EEPROM on the PSoC, which will be send to the PC on startup. This is done to ensure the PC have updated numbers to start with.
-          
+
+\textbf{Command layout:}
+
+"5 2.1 4.1 5.2"       
 
 In figure \ref{fig:SeqDiagram}, the flow of communication can be seen.
 Starting with the handshake initiated by the PC, replying with unit descriptions for this transfer. When the connection is established after the handshake, the PSoC will send the information with a frequency of 10 Hz. On the GUI, the user can choose to regulate the torque, which then will be send and understood on the PSoC. Furthermore, the user have the ability to stop the data transfer, by pressing the stop button or by closing the program. When the command Stop is send, the PSoC will cease the data transfer.
 
-\fxnote{Skal vidst opdateres med alle de nye commandoer}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\linewidth]{Protocol/SD_Protocol}
