@@ -11,12 +11,12 @@
 \end{figure}
 
 The class diagram on figure \ref{fig:Class_diagram_MCU} gives a overlook over the classes in MCU. The controller class "ControllerClass" controls the main functionality and make sure what the sequencing are done right. The Controller-class job is to feed information to the motorController class and log data. It will collect all it data from both the local sensors and from the BMS through CAN.\\
-MotorController class are controlling the motor and try to get the best efficiency as possible. To do what it has a Look up table "Motor\_lookUpTable" to find the best speed, for a specific Power. After, it will send the speed to PID regulator. The motorController has also build in a Coast and Burn see page \pageref{sec:Coast_and_Burn}\\
+MotorController class are controlling the motor and try to get the best efficiency as possible. To do what it has a Look up table "Motor\_lookUpTable" to find the best power, for a specific speed. After, it will send the power to PID regulator. The motorController has also build in a Burn and Coast see page \pageref{sec:Coast_and_Burn}\\ \fxnote{fix reference}
 
 \subsection{Class description}
 
 This sub section goes through all class in MCU, and give a overview over all methods.
-
+\fxnote{få opdateret alle diagrammer}
 \subsubsection{ControllerClass}
 
 \begin{figure}[H]
@@ -417,9 +417,9 @@ This sub section goes through all class in MCU, and give a overview over all met
 		\\ & \textbf{Parameter list (const uint16, const uint16)}
 		\\ & \begin{itemize}
 			\item {\large uint16}
-			\subitem \textit{wanted speed}
+			\subitem \textit{wanted power}
 			\item {\large uint16}
-			\subitem \textit{Measured speed}
+			\subitem \textit{Measured power}
 		\end{itemize}
 		\\ & \textbf{Return parameter (uint16)}
 		\\ & Return the bit value for the PWM signal to the motor.
@@ -456,18 +456,16 @@ This sub section goes through all class in MCU, and give a overview over all met
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
 		LUT\_speed
-		& A 2D look up table what will return the best speed from the power usage.
-		\\ & \textbf{Parameter list (const uint16, const uint16, const uint16)}
+		& A 2D look up table what will return the best power from the speed.
+		\\ & \textbf{Parameter list (const uint16, const uint16)}
 		\\ & \begin{itemize}
 			\item {\large const uint16}
 			\subitem \textit{The wanted speed.}
 			\item {\large const uint16}
 			\subitem \textit{The currently speed.}
-			\item {\large const uint16}
-			\subitem \textit{The currently power usage.}
 		\end{itemize}
 		\\ & \textbf{Return parameter (uint16)}
-		\\ & return the best speed to get the best efficiency.
+		\\ & return the best power to get the best efficiency.
 		\\ \hline
 		
 	\end{tabular}

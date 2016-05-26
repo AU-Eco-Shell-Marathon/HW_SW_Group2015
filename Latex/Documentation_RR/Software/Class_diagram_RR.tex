@@ -2,18 +2,17 @@
 
 \fxnote{Hele det har afsnit burde blive auto-generated af doxygen (Så comments står inde i koden istedet) - JH}
 
-\fxnote{Der mangler en navngivnings standard, f.eks. hvis jeg gør brug af init() metoden, hvordan ved jeg hvor jeg skal find implementationen? Evt. følg psoc's egen <ModulNavn>\_<Function>(), så det ville blive ControllerClass\_Init() - JH}
+%\fxnote{Der mangler en navngivnings standard, f.eks. hvis jeg gør brug af init() metoden, hvordan ved jeg hvor jeg skal find implementationen? Evt. følg psoc's egen <ModulNavn>\_<Function>(), så det ville blive ControllerClass\_Init() - JH}
 
 \fxnote{De fleste klasser har heller ikke sigende navne - JH}
 
-\fxnote{Skift designet på samtlige diagrammer! Ville være umuligt at læse i sort-hvid print, er allerede svært nu (Brug den klassiske hvid/lyse-blå i visio) - JH}
+%\fxnote{Skift designet på samtlige diagrammer! Ville være umuligt at læse i sort-hvid print, er allerede svært nu (Brug den klassiske hvid/lyse-blå i visio) - JH}
 \begin{figure}[H]
 	\centering
 	\includegraphics [width=6in]{Software/Pictures/klassediagram.png}
 	\caption{Class diagram of Rolling Road PSoC}
 	\label{fig:Class_diagram_RR_PSoC}
 \end{figure}
-\fxnote{Er ikke helt opdateret efter det sidste version af RR}
 
 The Class diagram of Rolling Road \vref{fig:Class_diagram_RR_PSoC}. 5 class where all class are connect to the ControllerClass which control the flow in sequencing of the program.\\
 Uart class: is the class that communicate with the control panel through UART. It both send new data and receive settings and commands from the control panel. \\
@@ -211,7 +210,7 @@ Sensor class: are measuring the efficiency of the test object.
 		\end{itemize}
 		\\ \hline
 		
-		Sensor\_getTorque
+		Sensor\_getTorque\fxnote{Skal have fixet - hilsten mig selv}
 		& Are used to get the Torque without calculate all others values. In this project it is used by the PID class, to get the Torque value with less latency.
 		\\ & \textbf{Return parameter (float)}
 		\\ & It return the Torque value in $ N*m $ 
