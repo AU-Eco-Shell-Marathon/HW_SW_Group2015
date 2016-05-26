@@ -5,29 +5,19 @@ A handful of students worked with the BMS between 2013 and 2014 and in that laps
 Therefore I've experienced first hand how it is extremely important to have an eminently well documented documentation when working with big systems. And this led me to acknowledge how important an engineers work is when it comes to documenting their work and explaining a system's capabilities. Every last detail has to be written down so that no one will be in doubt when trying to comprehend it. 
 
 \textbf{Digital Unit}\\
-This purpose of the Digital Unit is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell conditions. 
-
-If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. The Digital Unit is capable of communicating with external units. Furthermore, the Digital Unit utilizes galvanic isolation and is supplied by the DC/DC converter, which will be described in section 4.2.8 on page 39.
+This purpose of the Digital Unit is to handle the measured values from the Analog Front End to run calculations and approximations of cell conditions. If any conditions exceed a specific threshold then the Digital Unit is capable of isolating, and therefore protect, the Propulsion Batteries by utilizing the Isolation Switch.
 
 \textbf{Analog Front End}\\
-The purpose of this unit is that it performs calculations and analog to digital conversion of the battery's cell voltages, battery's temperature and the signal from the current sensor. Moreover, this unit manages cell balancing on request from the digital unit. 
+The purpose of the Analog Front End is that it collects data of the Propulsion Batteries' cell voltages, Propulsion Batteries' temperature and the Current Sensor. Furthermore, this unit transmits all the gathered data to the Digital Unit, who in return can request cell balancing. 
 
 \textbf{Analog Front End Extension Module}\\
-The Extension Module unit's purpose is that it gives the BMS the capability to support a
-larger amount of battery cells. Since the BMS Front End only supports 6 cells - and using
-the Extension Module the BMS can support up to 18 cells. 
+The Extension Module's purpose is that it gives the BMS the capability to utilize more than one battery.
 
 \textbf{Isolation Switch}\\
-The Isolation Switch has a very important functionality concerning the BMS. If anything
-goes wrong with the battery, which means it exceeds the SOA of any specified thresholds,
-then the Isolation Switch will prevent any current from flowing through it and to the
-distribution block.
+The Isolation Switch governs and protects the Propulsion Batteries by having the possibility of isolating them on command from the Analog Front End via the Digital Unit. 
 
 \textbf{DC/DC Converter}\\
-The purp ose of th e DC/DC Converter is to convert the battery voltage, wh ich is exp ected
-to b e around 44.4V nominal, to a lower voltage that is u sable by the other comp onents
-in the Digital unit. This includes the Galvanic Isolation and AVR-CAN circuit with its
-included parts.
+The purpose of th e DC/DC Converter is to convert the battery voltage, which is expected to b e around 44.4V nominal, to a lower voltage that is u sable by the other components in the Digital unit. This includes the Galvanic Isolation and AVR-CAN circuit with its included parts.
 
 \textbf{Current Sensor}\\
 The purpose of this unit is to measure the amount of current flowing through the sensor
