@@ -11,7 +11,7 @@
 \end{figure}
 
 The class diagram on figure \ref{fig:Class_diagram_MCU} gives a overlook over the classes in MCU. The controller class "ControllerClass" controls the main functionality and make sure what the sequencing are done right. The Controller-class job is to feed information to the motorController class and log data. It will collect all it data from both the local sensors and from the BMS through CAN.\\
-MotorController class are controlling the motor and try to get the best efficiency as possible. To do what it has a Look up table "Motor\_lookUpTable" to find the best power, for a specific speed. After, it will send the power to PID regulator. The motorController has also build in a Burn and Coast see page \pageref{sec:Coast_and_Burn}\\ \fxnote{fix reference}
+MotorController class are controlling the motor and try to get the best efficiency as possible. To do what it has a Look up table "Motor\_lookUpTable" to find the best power, for a specific speed. After, it will send the power to PID regulator. The motorController has also build in a Burn and Coast see page \vref{sec:Coast_and_Burn}
 
 \subsection{Class description}
 
