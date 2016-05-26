@@ -9,7 +9,7 @@ To help create a GUI(Graphical User Interface) the WPF library which is a part o
 \subsection{Design \& Considerations}
 Initially the 3-layer architecture was used for the back-end and MVVM was used as front-end architecture. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
 
-The Onion Architecture heavily uses the repository pattern to abstract away from the data source \fxnote{Omformuler, abstract away lyder forkert}, making it easy to change the data source to a database for example. If later in the process, the website user story was to be implemented\fxnote{Omformuler fra punktum hertil} it would require little or no change to the back-end.
+The Onion Architecture heavily uses the repository pattern to help abstract the data source, making it easy to change the data source to a database for example. This is helpful if for example the website user story was to be implemented where a database would be needed.
 
 The communication with the Rolling Road is using the SP4RR protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a UART connection, so only a Micro-USB cable is needed to connect the two.
 
