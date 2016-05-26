@@ -1,9 +1,9 @@
 % !TeX spellcheck = en_US
-\chapter{System description}
+\chapter{System descriptions}
 The project is a collection of three individually developed systems, who as a whole makes it possible to test, control and optimize AU2.
 
 \section{AU2}
-The MCU(Motor control unit) \fxnote{skal det ikke være MCS?}can be seen in figure \vref{fig:SD_MCS} without the PSoC.\fxnote{med så stor beskrivelse af BMS, så kan vi vel også beskrive MCS lidt bedre}
+The MCS(Motor Control System) can be seen in figure \vref{fig:SD_MCS} without the PSoC. Around the edge, connections for: CAN, SD-Card, Horn, Battery and Motor can be seen.
 
 \begin{figure}[H]
 	\centering
@@ -15,12 +15,13 @@ The MCU(Motor control unit) \fxnote{skal det ikke være MCS?}can be seen in figu
 The BMS(Battery management system) can be seen on figure \vref{fig:SD_BMS}, with the following components:
 
 \begin{enumerate}
-	\item Relay
+	\item Isolation Switch
 	\item Digital Unit
-	\item Digital Unit
-	\item Analog frontend
+	\item Digital Unit \fxnote{kan man lave de to i en samlet box, Jonas?}
+	\item Analog Front End Extension Module(above) \& Analog Front End(under)
 	\item Current sensor
 	\item Batteries
+	\item DC/DC Converter
 \end{enumerate}
 
 \begin{figure}[H]
@@ -31,7 +32,7 @@ The BMS(Battery management system) can be seen on figure \vref{fig:SD_BMS}, with
 \end{figure}
 
 \section{Rolling Road}
-The Controll-box containing the PCB and the PSoC can be seen in figure \vref{fig:SD_RR}. Around the edge of the box all external connections can be seen. These are color-coded banana-plugs for easy inter-connectivity, a coax 2.1mm DC-plug for power-supply and a USB-port for the communication with the PSoC. 
+The Control-box containing the PCB and the PSoC can be seen in figure \vref{fig:SD_RR}. Around the edge of the box all external connections can be seen. These are color-coded banana-plugs for easy interconnectivity, a coax 2.1mm DC-plug for power-supply and a USB-port for the communication with the PSoC. 
 
 \begin{figure}[H]
 	\centering
@@ -61,7 +62,7 @@ The Load-plate containing the super capacitor and the two power resistors can be
 
 \newpage
 \section{Rolling Road GUI}
-The rolling road live-data display, where some simulated data has been collected and displayed to the used. To the left all the control would be available if connected to the Rolling Road, and to the right the latest readings from the Rolling Road can be seen.
+The Rolling Road live-data display, where simulated data has been collected and displayed to the user. To the left all the control would be available if connected to the Rolling Road, and to the right the latest readings from the Rolling Road can be seen.
 
 \begin{figure}[H]
 	\centering

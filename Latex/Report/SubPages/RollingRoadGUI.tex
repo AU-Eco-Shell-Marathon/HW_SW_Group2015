@@ -7,20 +7,16 @@ The application is developed in the .Net framework by Microsoft and the code its
 To help create a GUI(Graphical User Interface) the WPF library which is a part of the .Net framework was used, it uses XAML to layout the different views.
 
 \subsection{Design \& Considerations}
-Initially the 3-layer architecture use for the back-end and MVVM was used as front-end architecture. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
+Initially the 3-layer architecture was used for the back-end and MVVM was used as front-end architecture. But later in the development cycle, the 3-layer architecture was changed to the Onion Architecture to help manage the many source files.
 
-\fxnote{enten forklar lidt mere om 3-layer og Onion architecture eller referer til noget i dokumentationen der kan forklare hvad det er. JS}
+The Onion Architecture heavily uses the repository pattern to help abstract the data source, making it easy to change the data source to a database for example. This is helpful if for example the website user story was to be implemented where a database would be needed.
 
-The Onion-Architecture heavily uses the repository pattern to abstract away from the data source.\fxnote{lyder fint men ved ikke hvad det betyder. JS} Making it easy to change the datasource to a database for example later in the process, so if the website user story was to be implemented it would require little or no change to the 'backend'.
-
-The communication with the Rolling Road is using the SP4RR protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a uart connection, so only a Micro usb cable is needed to connect the two.
+The communication with the Rolling Road is using the SP4RR protocol over a UART serial connection. In this case a USB-UART converter built into the PSoC is used to supply the computer with a UART connection, so only a Micro-USB cable is needed to connect the two.
 
 \subsection{Implementation}
-Since some kind of plotting needed to be implemented, the search for a library started, the application originally used the WPF Toolkit data visualization\cite{WPf_Toolkit}, but after testing it, it appeared to have a huge memory leak when continuously updating the graph with new data. Therefor another library was required since it did not meet the requirements, and the D3(Dynamic Data Display) library\cite{WPf_D3} was found and is still used. It's a free library with features such as zooming and screen-shoots. Even though it's outdated, it's the best library free library from WPF we were able to find. The first version using the WPF-Toolkit graph can be seen in figure \vref{fig:First_GUI} and the current version can be seen in figure \vref{fig:Current_GUI}
+Since some kind of plotting needed to be implemented, the search for a library started, the application originally used the WPF Toolkit data visualization\cite{WPf_Toolkit}, but after testing it, it appeared to have a huge memory leak when continuously updating the graph with new data. Therefore another library was required since it did not meet the requirements, and the D3(Dynamic Data Display) library\cite{WPf_D3} was found and it is still used. It's a free library with features such as zooming and screenshots. Even though it's outdated, it's the best free library from WPF that could be found. The first version using the WPF-Toolkit graph can be seen in figure \vref{fig:First_GUI} and the current version can be seen in figure \vref{fig:Current_GUI}
 
-%https://www.nuget.org/packages/WPFToolkit.DataVisualization/
-
-To help debugging, a simple log was also implemented, it logs some of the users actions such as opening a new connection to the Rolling Road furthermore it also catches any unhandled exceptions in case of a crash. It logs both to a tab in the application and a file.
+To help debugging, a simple log was also implemented. It logs the users actions, such as opening a new connection to the Rolling Road. Furthermore it also catches any unhandled exceptions in case of a crash. It logs both to a tab in the application and to a file.
 
 \begin{figure}[h!]
 \centering
@@ -38,13 +34,13 @@ To help debugging, a simple log was also implemented, it logs some of the users 
 
 
 \subsection{Testing}
-For testing the GUI Application unit tests was written using the NUnit 3.* framework and NSubstitute as the Mock-framework to help isolate units under test.
+For testing the GUI Application, unit tests was written using the NUnit 3.* framework and NSubstitute as the Mock-framework to help isolate units under test.
 
-This helped immensely when developing the SP4RR-interpreter, since it was developed before being able to integration test with the Rolling Road. It was done by mocking out the COM-Port stream and verifying the commands was sent and received as specified in SP4RR  protocol definition\cite{RR}.
+This helped immensely when developing the SP4RR-interpreter, since it was developed before being able to perform integration test with the Rolling Road. It was done by mocking out the COM-Port stream and verifying the commands was sent and received as specified in SP4RR  protocol definition\cite{RR}.
 
 \subsection{Continuous Integration}
 
-From the start CI(Continuous Integration) was used to verify the code every time changes was detected in the repository. It was tested by running a series af code-tests and -analyzing tools, the steps used in the CI are as follows:
+From the start CI(Continuous Integration) was used to verify the code every time changes was detected in the repository. It was tested by running a series of code-test and code-analyzing tools, the steps used in the CI are as follows:
 
 \begin{enumerate}
 	\item Download all missing or out of date packages from Nuget
