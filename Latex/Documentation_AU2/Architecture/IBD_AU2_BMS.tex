@@ -16,7 +16,8 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Voltage}\\
 	Direction: [External] $\rightarrow$ [Isolation Switch]\\
-	Description: Shuts down the system if a change in the voltage-level is measured from 48 V to 0 V. This happens when the corresponding Emergency Shutdown Switch(Emergency System) is pressed.
+	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, which is a voltage depending on the Propulsion Batery level of charge. This voltage can therefore range from up to 50.4 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.\\
+	Voltage level: 0-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{MainSupply:Power \& PowerIn:Power}\\
 	Direction: [Isolation Switch] $\rightarrow$ [External]\\
 	Description: The power from the battery which is delivered through the relay to the remaining electrical systems in the car. 
@@ -25,10 +26,12 @@ Block interface description:
 	Description: CAN-communication with a computer in order to gain information about various variables.
 	\item \textbf{BatterySupplyA:Power}\\
 	Direction: [External] $\rightarrow$ [Current Sensor]\\
-	Description: Power coming from the battery that is protected by a fuse.
+	Description: Power coming from the battery that is protected by a fuse.\\
+	Voltage level: 36-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End \& Analog Front End Extension Module]\\
-	Description: Voltages that indicate the voltage of the individual cells.
+	Description: Voltages that indicate the voltage of the individual cells.\\
+	Voltage level: 2-4.5 V +/- 4mV at 24\textsuperscript{o}C\cite{BMSDocumentation}. 
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the battery's temperature.
@@ -42,7 +45,8 @@ Block interface description:
 	Description: Power coming from the battery that is protected by a fuse.
 	\item \textbf{CurrentSense:Voltage}\\
 	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
-	Description: A voltage which is proportional to the output current from the battery.
+	Description: A voltage which is proportional to the output current from the battery.\\
+	Voltage level: IN 5 V +/- 0.2 V. OUT 0-2.5 V\cite{BMSDocumentation}. 
 \end{itemize}
 
 \textbf{Block :Analog Front End}\\
@@ -50,25 +54,30 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
-	Description: Voltages that indicate the voltage of the individual cells.
+	Description: Voltages that indicate the voltage of the individual cells.\\
+	Voltage level: 2-4.5 V +/- 4mV at 24\textsuperscript{o}C\cite{BMSDocumentation}. 
 	\item \textbf{CurrentSense:Voltage}\\
 	Direction: [Current Sensor] $\rightarrow$ [Analog Front End]\\
-	Description: A voltage which is proportional to the output current from the battery.
+	Description: A voltage which is proportional to the output current from the battery.\\
+	Voltage level: IN 5 V +/- 0.2 V. OUT 0-2.5 V\cite{BMSDocumentation}. 
 	\item \textbf{IsolationControl:Voltage}\\
 	Direction: [Analog Front End] $\rightarrow$ [Isolation Switch]\\
-	Description: Wire that the Analog Front End uses to control the Isolation Switch. If and error occurs on the BMS the IsolationControl will follow the ShutDown connection.
+	Description: Wire that the Analog Front End uses to control the Isolation Switch. If and error occurs on the BMS the IsolationControl will follow the ShutDown connection.\\
+	Voltage level: 0-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{CellExtension:Voltage}\\
 	Direction: [Analog Front End Extension Module] $\rightarrow$ [Analog Front End]\\
 	Description: Signals containing information about cell voltages from the Extension Module.
 	\item \textbf{BatterySupplyA:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
-	Description: Power coming from the battery that is protected by a fuse.
+	Description: Power coming from the battery that is protected by a fuse.\\
+	Voltage level: 36-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{Data:SPI}\\
 	Direction: [Analog Front End] $\leftrightarrow$ [Digital Unit]\\
 	Description: Sends the measured analog data to the digital unit in order to be sent to a computer.
 	\item \textbf{DigSupply48V:Voltage}\\
 	Direction: [Analog Front End] $\rightarrow$ [DC/DC Converter]\\
-	Description: Supply voltage from the Analog Front End which has to be converted to be used on the Digital Unit.
+	Description: Supply voltage from the Analog Front End which has to be converted to be used on the Digital Unit.\\
+	Voltage level: 36-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{TempSense:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End]\\
 	Description: A voltage which is proportional to the battery's temperature.
@@ -79,16 +88,19 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{BatterySupplyA:Voltage}\\
 	Direction: [External] $\rightarrow$ [Isolation Switch]\\
-	Description: Power coming from the battery that is protected by a fuse.
+	Description: Power coming from the battery that is protected by a fuse.\\
+	Voltage level: 36-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{MainSupply:Power \& PowerIn:Power}\\
 	Direction: [Isolation Switch] $\rightarrow$ [External]\\
 	Description: The power from the battery which is delivered through the relay to the remaining electrical systems in the car. 
 	\item \textbf{ShutDown:Voltage}\\
 	Direction: [External] $\rightarrow$ [Isolation Switch]\\
-	Description: Shuts down the system if a change in the voltage-level is measured from 48 V to 0 V. This happens when the corresponding Emergency Shutdown Switch(Emergency System) is pressed.
+	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, which is a voltage depending on the Propulsion Batery level of charge. This voltage can therefore range from up to 50.4 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.\\
+	Voltage level: 0-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{IsolationControl:Voltage}\\
 	Direction: [Analog Front End] $\rightarrow$ [Isolation Switch]\\
-	Description: Wire that the Analog Front End uses to control the Isolation Switch. If and error occurs on the BMS the IsolationControl will follow the ShutDown connection.  
+	Description: Wire that the Analog Front End uses to control the Isolation Switch. If and error occurs on the BMS the IsolationControl will follow the ShutDown connection.  \\
+	Voltage level: 0-50.4 V (Depending on the Propulsion Battery's charge).
 \end{itemize}
 
 \textbf{Block :DC/DC Converter}\\
@@ -97,9 +109,11 @@ Block interface description:
 	\item \textbf{DigSupply48V:Voltage}\\
 	Direction: [Analog Front End] $\rightarrow$ [DC/DC Converter]\\
 	Description: Supply voltage from the Analog Front End which has to be converted to be used on the Digital Unit.
+	Voltage level: 36-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{DigSupply3.3V:Voltage}\\
 	Direction: [DC/DC Converter] $\rightarrow$ [Digital Unit]\\
-	Description: A converted voltage to 3.3V which supplies circuits in the Digital Unit. 
+	Description: A converted voltage to 3.3V which supplies circuits in the Digital Unit.\\
+	Voltage level: 0-3.3 V.
 \end{itemize}
 
 \textbf{Block :Analog Front End Extension Module}\\
@@ -107,7 +121,8 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [External] $\rightarrow$ [Analog Front End Extension Module]\\
-	Description: Voltages that indicate the voltage of the individual cells.
+	Description: Voltages that indicate the voltage of the individual cells.\\
+	Voltage level: 2-4.5 V +/- 4mV at 24\textsuperscript{o}C\cite{BMSDocumentation}. 
 	\item \textbf{CellExtension:Voltage}\\
 	Direction: [Analog Front End Extension Module] $\rightarrow$ [Analog Front End]\\
 	Description: Signals containing information about cell voltages from the Extension Module. 
@@ -124,6 +139,7 @@ Block interface description:
 	Description: CAN-communication with a computer in order to gain information about various variables measured.
 	\item \textbf{DigSupply3.3:Voltage}\\
 	Direction: [DC/DC Converter] $\rightarrow$ [Digital Unit]\\
-	Description: A converted voltage to 3.3V which supplies circuits in the Digital Unit. 
+	Description: A converted voltage to 3.3V which supplies circuits in the Digital Unit. \\
+	Voltage level: 0-3.3 V. 
 \end{itemize}
 
