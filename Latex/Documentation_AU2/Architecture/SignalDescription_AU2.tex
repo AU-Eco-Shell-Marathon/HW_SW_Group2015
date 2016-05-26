@@ -34,6 +34,7 @@ Block interface description:
 	\item \textbf{Battery:Battery}\\
 	Direction: [Battery Holder] $\leftrightarrow$ [External]\\
 	Description: The two batteries that is connected in series and thereby understood as one battery, supplying everything in the AU2 system with power.
+	Voltage level: 36-50.4 V (Depending on the Propulsion Battery's charge).
 \end{itemize}
 
 \textbf{Block :Emergency System}\\
@@ -44,7 +45,9 @@ Block interface description:
 	Description: Can be triggered by pressing the button on the vehicle's frame.
 	\item \textbf{ShutDown:Voltage}\\
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
-	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, from 48 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.
+	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, which is a voltage depending on the Propulsion Batery level of charge. This voltage can therefore range from up to 50.4 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.\\
+	Voltage level: 0-50.4 V (Depending on the Propulsion Battery's charge).
+	
 \end{itemize}
 
 \textbf{Block :Joulemeter}\\
@@ -77,7 +80,8 @@ Block interface description:
 \begin{itemize}
 	\item \textbf{ShutDown:Voltage}\\
 	Direction: [Emergency System] $\rightarrow$ [Battery Management System]\\
-	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, from 48 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.
+	Description: The button-press triggers an open-circuit which corresponds to a change in the voltage-level, which is a voltage depending on the Propulsion Batery level of charge. This voltage can therefore range from up to 50.4 V to 0 V. This opens the relay inside the BMS so power can't escape the BMS.\\
+	Voltage level: 0-50.4 V (Depending on the Propulsion Battery's charge).
 	\item \textbf{MainSupply:Power}\\
 	Direction: [Battery Management System] $\rightarrow$ [Distribution Block]\\
 	Description: Power delivered by the battery in order to supply the Distribution Block.
@@ -165,6 +169,7 @@ Block interface description:
 	\item \textbf{CellVoltages:Voltage}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Voltages that indicate the voltage of the individual cells.
+	Voltage level: 2-4.5 V +/- 4mV at 24\textsuperscript{o}C\cite{BMSDocumentation}. 
 	\item \textbf{BatterySupplyA:Power}\\
 	Direction: [Battery Holder] $\rightarrow$ [Battery Management System]\\
 	Description: Power which is running straight through a fuse before the Battery Management System and thereafter used for powering up the Battery Management System. And the power is also going into a relay, which when activated powers up the rest of the system. The relay is activated and deactivated by the Battery Management System.
