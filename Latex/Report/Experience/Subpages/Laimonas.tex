@@ -1,10 +1,13 @@
 \section{Laimonas I. Bendikas}
 I have managed to attain an extensive amount of knowledge pertaining to the course of the 4. semester project. This knowledge includes, however, is not limited to great hardware and software interpretation, debugging and reverse engineering experience.\\
-A majority of the time I have been working with the Battery Management System, which proved to be a great struggle. A lot of time was spent reading the previous documentation and understanding the system. However, a handful of students worked with the BMS between 2013 and 2014. And in that lapse of time many changes were committed to the BMS, however, many of those have not been documented at all. This was very frustrating when problems started arising during the term. It made it very difficult to debug the system and a lot of reverse engineering had to be done due to that fact.\\
+A majority of the time I have been working with the Battery Management System, which proved to be a great struggle. A lot of time was spent reading the previous documentation and understanding the system. On top of that we were supposed to provide duplicate prints for the system - prints were not done due to us not participating in SEM, however it took a lot of time to find fitting components for the new prints.\\
+A handful of students worked with the BMS between 2013 and 2014 and in that lapse of time many changes were committed to the BMS, however, many of those have not been documented at all. This was very frustrating when problems started arising during the semester. It made it very difficult to debug the system and a lot of reverse engineering had to be done due to that fact.\\
 Therefore I've experienced first hand how it is extremely important to have an eminently well documented documentation when working with big systems. And this led me to acknowledge how important an engineers work is when it comes to documenting their work and explaining a system's capabilities. Every last detail has to be written down so that no one will be in doubt when trying to comprehend it. 
 
 \textbf{Digital Unit}\\
-This unit's purpose is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell and battery parameters. If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. The Digital Unit is capable of communicating with external units. Furthermore, the Digital Unit utilizes galvanic isolation and is supplied by the DC/DC converter, which will be described in section 4.2.8 on page 39.
+This purpose of the Digital Unit is to gather the measured values from the Analog Front End and thereafter run calculations and approximations of cell conditions. 
+
+If any of these parameters exceeds a specific threshold then the Digital Unit is capable of utilizing the Isolation Switch to prevent damages to the rest of the vehicle's system. The Digital Unit is capable of communicating with external units. Furthermore, the Digital Unit utilizes galvanic isolation and is supplied by the DC/DC converter, which will be described in section 4.2.8 on page 39.
 
 \textbf{Analog Front End}\\
 The purpose of this unit is that it performs calculations and analog to digital conversion of the battery's cell voltages, battery's temperature and the signal from the current sensor. Moreover, this unit manages cell balancing on request from the digital unit. 
@@ -16,8 +19,8 @@ the Extension Module the BMS can support up to 18 cells.
 
 \textbf{Isolation Switch}\\
 The Isolation Switch has a very important functionality concerning the BMS. If anything
-goes wrong with the battery, which means it exceeds the SOA of any specied thresholds,
-then the Isolation Switch will prevent any current from owing through it and to the
+goes wrong with the battery, which means it exceeds the SOA of any specified thresholds,
+then the Isolation Switch will prevent any current from flowing through it and to the
 distribution block.
 
 \textbf{DC/DC Converter}\\
@@ -27,7 +30,7 @@ in the Digital unit. This includes the Galvanic Isolation and AVR-CAN circuit wi
 included parts.
 
 \textbf{Current Sensor}\\
-The purp ose of this unit is to measure the amount of current owing through the sensor
+The purpose of this unit is to measure the amount of current flowing through the sensor
 as well as the di recti on of the current. The data that the sensor generates is sent to and
 handled by the Analog Front End
 
