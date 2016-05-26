@@ -3,7 +3,7 @@
 The project is a collection of three individually developed systems, who as a whole makes it possible to test, control and optimize AU2.
 
 \section{AU2}
-The MCS(Motor Control System) can be seen in figure \vref{fig:SD_MCS} without the PSoC. Around the edge, connections for: CAN, SD-Card, Horn, Battery and Motor can be seen.
+The Motor Control System(MCS) can be seen in figure \vref{fig:SD_MCS} without the PSoC. Around the edge, connections for: CAN, SD-Card, Horn, Battery and Motor can be seen.
 
 \begin{figure}[H]
 	\centering
@@ -12,15 +12,15 @@ The MCS(Motor Control System) can be seen in figure \vref{fig:SD_MCS} without th
 	\label{fig:SD_MCS}
 \end{figure}
 
-The BMS(Battery management system) can be seen on figure \vref{fig:SD_BMS}, with the following components:
+The Battery Management System(BMS) observes and makes sure that the Propulsion Battery is kept within safe operating thresholds. This is done by utilizing the units listed below on figure \vref{fig:SD_BMS}, which analyze the cell voltages, temperature and current flow of the Propulsion Battery.
 
 \begin{enumerate}
 	\item Isolation Switch
 	\item Digital Unit
 	\item Digital Unit \fxnote{kan man lave de to i en samlet box, Jonas?}
-	\item Analog Front End Extension Module(above) \& Analog Front End(under)
+	\item Analog Front End Extension Module(above) \& Analog Front End(below)
 	\item Current sensor
-	\item Batteries
+	\item Propulsion Battery (Consists of two batteries)
 	\item DC/DC Converter
 \end{enumerate}
 
