@@ -1,5 +1,5 @@
 \section{Battery Management System}
-In the following paragraphs the hardware implemented for the Battery Management System for AU2 will be discussed. 
+In the following paragraphs the hardware implemented for the Battery Management System for AU2 will be discussed. Please note that the BMS was handed from previous students that had been working with it.
 
 The Battery Management System consists of the following units:
 \begin{itemize}
@@ -11,18 +11,18 @@ The Battery Management System consists of the following units:
 	\item{Current Sensor}
 \end{itemize}
 
-Please note that the BMS was handed from previous students that had been working with it. \fxnote{Jens skriv om hvad opgaven var og hvad det endte med --- Just understand BMS ==> fix bms, document changes etc.}
+INSERT SHORT DESCRIPTION OF EACH HERE
+
+\fxnote{Quick description of BMS / overview of its functions unless this is done in the system description - Quick description of each systems would be nice if this section is to follow Rolling Road}
 
 The assignment that was given was to make a duplicate PCB and to understand the BMS so that questions involving the BMS could be answered at the SEM2016. The reason for this is that if something went wrong to the SEM2016 race, the BMS could quickly be replaced with a fully functional duplicate.
 
 When testing the BMS a lot of problems came to light. Some of them required an extensive amount of troubleshooting. In this section the most essential and time consuming segments will be discussed. If a more detailed and descriptive troubleshooting process is sought-after then one can be found in the documentation\cite{AU2}(Section 4.2.10).
 
-The general gist of the problems were that in the end of the semester the Analog Front End and the Digital Unit were unable to work fully functionally in conjunction with one another. The hardware had no issues when the semester started, but at that time the software that was given was an outdated version from the 2013 BMS Documentation\cite{BMSDocumentation}, which only works with one battery. Furthermore, there was no existing documentation on the changes done in 2014 to the BMS thus troubleshooting problems were truly challenging.
-We were told that the BMS contained a functional CAN interface along with CAN bus - This is how the documentation from 2013 portrays it. However, the CAN bus did not work at all. This led us to believe that the software for the BMS was either outdated or the CAN function was commented out. A long search for the code was hereby commenced. In the end we got a hold of the updated code from the SEM 2014 team. However, when we were trying to test it an accident occurred which led to a fault on the Analog Front End as well as the Analog Front End Extension Module. This caused the main battery ICs on both units to fry.
-From this moment on many different approaches were taken in trying to resolve the problems with the Analog Front End and Analog Front End Extension Module. However, due to no documentation existing for the BMS on the changes done from 2013 to 2014 it was very difficult to figure out the problems and possible fixes that needs to be implemented. Therefore a lot of time was spent reverse engineering the changes as well as documenting them. 
+In the start of the project, the hardware had no issues, but at that time the software that was given was an outdated version from the 2013 BMS Documentation\cite{BMSDocumentation}, which only works with one battery. Furthermore, there was no existing documentation on the changes done in 2014 to the BMS thus troubleshooting problems were truly challenging.
+We were told that the BMS contained a functional CAN interface along with CAN bus - This is how the documentation from 2013 portrays it. However, the CAN bus did not work at all. This led us to believe that the software for the BMS was either outdated or the CAN function was commented out. A long search for the code was hereby commenced. In the end we got a hold of the updated code from the SEM 2014 team. However, when we were trying to test it an accident occurred which led to a fault on the Analog Front End as well as the Analog Front End Extension Module. This caused the Battery Monitor ICs on both Analog Front End units to fry.
+After replacing The Battery Monitor ICs the system still didn't work. One or more components must therefore have been destroyed when the ICs were fried. From this moment on many different approaches were taken in trying to resolve the problems with the Analog Front End and Analog Front End Extension Module. However, it was very difficult to figure out the problems and possible fixes that needed to be implemented due to no documentation existing for the BMS on the changes done from 2013 to 2014. Therefore a lot of time was spent reverse engineering the changes as well as documenting them. 
 
 One of the units that had to be reverse engineered was the DC/DC Converter. It had a completely different circuit composition than what is described in the 2013 BMS Documentation\cite{BMSDocumentation}(Section 3.1.6.2). Therefore it was documented and described in the new documentation\cite{AU2}(Section 4.2.8). 
 
-\fxnote{Quick description of BMS / overview of its functions unless this is done in the system description - Quick description of each systems would be nice if this section is to follow Rolling Road}
-
-Future improvements
+It was very time consuming to fully understand the BMS because of the changes in 2014 that was not documented. By documenting the changes we have made the system much easier to understand and work with, so it can be used in future Shell Eco-Marathons. The problem that needs to be fixed in the future is the hardware that have been destroyed. One of the possible approaches would be to make a duplicate PCB with working components, since the duplicate PCB then should work. This way the old PCB could be fixed by analysing the working duplicate PCB. The problem with this approach is if there are SMD components that have been changed in 2014, which have not been discovered and documented. Time was short and to finish this report and the corresponding documentation had to become of highest priority. This meant we did not have time to execute this approach.
