@@ -26,7 +26,7 @@ The only function description that isn’t documented is the “CalculateSOC()�
 		Return Value	& None	\\\hline
 		Description of function	& After data has been collected this function can be called and the state of charge will be determined. The SOC value ranges from 0 to 100 percent, where a 100 percent symbolizes a fully charged battery. Nonetheless, a battery that has SOC values of 0 means that the battery is either disconnected or the cells' voltages are below 3.22 V. \\\hline
 	\end{tabular}
-	\caption{function description of the CalculateSOC function}
+	\caption{Function description of the CalculateSOC function}
 \end{table}
 
 The rest of the changes made from 2013 to 2014 that are worth mentioning are the following definitions:\\
@@ -42,14 +42,14 @@ The rest of the changes made from 2013 to 2014 that are worth mentioning are the
 		Icharge\_max	& 8000	& 15000	\\\hline
 		Idischarge\_max	& 25000	& 55000	\\\hline
 	\end{tabular}
-	\caption{Overview of the changes since 2013}
+	\caption{Overview of the changes from 2014 to 2013}
 \end{table}
 
 This is some of the changes that seemingly happened in 2014 without being documented. The most important change that was made in 2014 is not revealed yet though. This change is the addition of the addresses to the Analog Front End Extension Module that was added in 2014 for measuring the second battery's voltage levels:\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{Software/AddressAdditionsBMS.PNG}
-	\caption{Address additions to the Analog Front End Extension Module can be found in the source code under frontend.c}
+	\caption{Address additions to the Analog Front End Extension Module. This can be found in the source code inside frontend.c}
 	\label{fig:AddressAdditions_BMS}
 \end{figure}
 
@@ -74,7 +74,7 @@ Now only the CAN-communication is needed to be tested. For testing the CAN-commu
 After installing PCAN-view the CAN/USB converter (PCAN-USB from Peak-System) was connected from the OLIMEX AVR-CAN development board to a PC. PCAN-view did not receive any information from the CAN-communication. To be sure Analog Discovery was used on the CAN connector to see if anything was sent out. WaveForms' Digital Logic Analyzer was used after the CANL, CANH, VIN and GND pins were connected to Analog Discovery:\\
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Software/SnipFromOlimexDatasheet.PNG}
+	\includegraphics[width=0.45\linewidth]{Software/SnipFromOlimexDatasheet.PNG}
 	\caption{Excerpt from OLIMEX AVR-CAN development board datasheet \cite{BMSAVRCAN}.}
 	\label{fig:OLIMEX_AVR-CAN_BMS}
 \end{figure}
@@ -86,4 +86,4 @@ After knowing the CAN-communication was not programmed properly to the Digital U
 Contact was made with Jonas Nyborg yet again, but after a few days the BMS software that Nyborg sent was still outdated, with the words; "If anybody has the newest BMS software version saved, it would be AU Campus Herning and their SEM2014 dropbox". This was discussed with Carl Jakobsen and the day after this dropbox was declared non-existent.\\
 Since the BMS software was not ready for SEM2016 and the BMS software for SEM2014 was not to be found, the group tried to rebuild the changes made in 2014, so that the BMS software also would work with multiple batteries operating at the same time. In this process the group learned a lot about the BMS software, but after many tries of programming and testing a wire from the Analog Front End Extension Module was connected wrongly to the Analog Front End, which resulted in the destruction of the "BQ76PL536A-Q1" \cite{BMSBattIC} on each board. This was also explained earlier in the BMS hardware section.\\
 A few days after contact was made with Simon Møiniche Skov, a person who worked on the SEM2014 project. He was asked if he had the newest version of the BMS software. A meeting with him took place and the software version was received. This version was the one used in SEM2014, the one that was sought and the one that has been discussed earlier of which changes that were made to this version compared to the well documented SEM2013 version.\\
-Since the software version that was tested earlier and is now found and secured, the software should be ready for use, but the CAN-communication could not be tested before the Analog Front End and Analog Front End Extension Module could be fixed.\\  
+Since the software version that was tested earlier and is now found and secured, the software should be ready for use, but the CAN-communication could not be tested before the Analog Front End and Analog Front End Extension Module could be fixed. 
