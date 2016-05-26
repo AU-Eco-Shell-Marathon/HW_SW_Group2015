@@ -65,6 +65,7 @@ The balancing circuit is connected to the Battery Monitor IC where it has output
 There are two different instances where the cells can be balanced. This can be done either by connecting a charger to handle the balancing of the cells - this includes both discharging and charging. However, when no charger is connected the cells can only be balanced by discharging each individual cell. This is done to keep the cells within the recommended SOA, which is in between 3-4.2V.
 
 \subsubsection{Battery Monitor IC}
+\label{sec:BatMonIC}
 The heart of the BMS is the bq76PL536A-Q1 Battery Monitoring IC (new chip used since 2014 instead of the one on figure \vref{fig:frontendOverview}). It was chosen as it offers very low quiescent current, secondary protection, high precision voltage measurements and has the choice of stacking several IC's to attain support of a respective number of cells. The core functionality of this said chip is that it can receive and handle a lot of commands at the same time. As you see on figure \vref{fig:frontendOverview} it's connected to several circuits. Its job is, among other things, to receive a vast amount of data from its surroundings / connected circuits. Example of data could be data requests from the Digital Unit, cell voltages, current sensor signal, cell temperature signal balancing requests from the Digital Unit and more. With all of this data the Battery Monitoring IC converts this data through its ADC's where it sends the data to the Digital Unit. It can also perform the balancing if it receives a request. Furthermore, it is possible for it to drive the Isolation Switch, which means that in an event where the SOA is exceeded, it can cut off the power from the battery supply to the rest of the vehicle.
 
 A change that was spotted on the Battery Monitor IC was that two capacitors were connected from pin 49 and 50 on the IC and then each one separately to R60 and R61. This change is limited to the Analog Front End and is not found on the Analog Front End Extension Module.
@@ -170,6 +171,10 @@ It was attempted to reverse engineer this component that has been completely swa
 \end{figure}
 
 On figure \vref{fig:BMSDCDCNEW} a circuitry drawing can be seen for the reverse engineered circuit. It is said with confidence that this matches the DC/DC circuit that has been implemented, except for the value of C3, which we we're unable to identify. Here we can see that the high voltages comes from J8, which is located on the Analog Front End. It then is converted to 3.3V, where J12 is connected to the Digital Unit and supplies the before mentioned units.
+
+\subsection{BMS changes from 2013 to 2014 and obsolete components}
+The changes made in 2014 were not documented. This means that it has been very hard to locate some of the changes in BMS. That almost everything in BMS is implemented with small SMD components, makes it even harder to spot changes. At least three changes has been spotted; the Isolation Switch\vref{sec:IsoSwitch}, the DC/DC Converter\vref{sec:DCDCNEW} and the capacitors going to R60 and R61 on the Battery Monitor IC\vref{sec:BatMonIC}.\\
+Another problem is that a few of the components used in 2013 and 2014 have gone obsolete. This means that replacements have been found for backups and replacement PCBs. For example the F-RAM component\vref{BMSDigUnit}.
 
 \subsection{Unit test}
 In this section a description of each of the elaborated units' tests will be given below. 
