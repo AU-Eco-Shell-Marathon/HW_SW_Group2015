@@ -1,15 +1,16 @@
 \chapter{Requirements}
 Individual requirements has been made for the AU2, the Rolling Road and the Rolling Road GUI.
 
-The reason for not using the old car developed, Zenith 33, was due to changes in the requirements set forth by Shell. These requires that the car must be able to steer on the frontwheels which Zenith 33 had no room to implement. Furthermore a new car would be improved in regards to drag coefficients and weight.
+The reason for not using the old car developed, Zenith33, was due to changes in the requirements set forth by Shell. These requires that the car must be able to steer on the frontwheels which Zenith33 had no room to implement. Furthermore a new car should be improved in regards to drag coefficients and weight.
 
 \section{AU2}
 Requirements for AU2 have been created with SEM2016 Global Rules Chapter 1 in mind\cite{ShellRequirements}. (Chapter 1 is the academic chapter of the race, with the academic rules and announcements). These requirements consists of non-functional requirements such as the pitch of tone the horn must emit when the AU2 car overtakes another car, or that the Motor Control System(MCS) must be able to measure the velocity within a range of 0-30 km/h and with a precision of $\pm$2 km/h. These non-functional requirements can be found in the AU2 documentation\cite{AU2} (section 2.2). The requirements also consists of functional requirements such as the Battery Management System(BMS) must be able to protect the battery from undervoltages, overvoltages, overcurrents, too high temperatures and balancing the battery cells if the cells' individual voltage-levels are too different from eachother. A tabel with all the functional requirements can be found in the AU2 documentation\cite{AU2} (section 2.1). The CAN-communication works between the BMS, the MCS and a PC. It is not a requirement set by the SEM2016 Rules, but an extra requirement that has been made, since this will make it possible to transmit the data from the BMS to the MCS while driving and save this to a SD-card that can be inserted into a PC.
 
 \section{Rolling Road}
 Requirements for the Rolling Road can be found in the Rolling Road documentation\cite{RR}.
-These requirements consists of non-functional requirements such as the voltage supplied to the motor under test must be in the range of 0-50V, the settling time being 100ms, the maximum overshoot being 5\% and a maximum current through the Load System of 15 A.\\
-Where as the functional requirements documents how the Rolling Road operates such as the Rolling Road must be able to apply a constant force, but must also be able to change the desired force exerted to the motor. The Rolling Road must also be able to measure power, speed and force, and also calculate the efficiency of the subject and more.
+These requirements consists of non-functional requirements such as the voltage supplied to the motor under test must be in the range of 0 - \SI{50}{\volt}, the settling time being less than \SI{100}{\milli \second}, the maximum overshoot being 5\% and a maximum current through the Load System of \SI{15}{\ampere}.
+
+Where as the functional requirements specifies how the Rolling Road operates; such as the Rolling Road must be able to apply a constant force, but must also be able to change the desired force exerted to the motor. The Rolling Road must also be able to measure power, speed and force, and also calculate the efficiency of the subject and more.
 
 \newpage
 \section{Rolling Road GUI}
