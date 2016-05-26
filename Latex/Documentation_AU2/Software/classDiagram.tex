@@ -2,7 +2,7 @@
 \section{Class diagram}
 \label{sec:class_diagram}
 
-\fxnote{Meget af det følgende burde genereres af doxygen - JH}
+%\fxnote{Meget af det følgende burde genereres af doxygen - JH}
 \begin{figure}[H]
 	\centering
 	\includegraphics [width=6in]{Software/Pictures/class-diagram.png}
@@ -16,7 +16,7 @@ MotorController class are controlling the motor and try to get the best efficien
 \subsection{Class description}
 
 This sub section goes through all class in MCU, and give a overview over all methods.
-\fxnote{få opdateret alle diagrammer}
+%\fxnote{få opdateret alle diagrammer}
 \subsubsection{ControllerClass}
 
 \begin{figure}[H]
@@ -32,13 +32,13 @@ This sub section goes through all class in MCU, and give a overview over all met
 		\hline
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
-		init
+		ControllerClass\_init
 		& This method will initialize the entire MCU.
 		\\ & \textbf{Parameter list ()}
 		\\ & \textbf{Return parameter (void)}
 		\\ \hline
 		
-		run
+		ControllerClass\_run
 		& This method checking if there is some new status from the pedal, or have received new information from the BMS, if yes it will log the information. 
 		\\ & \textbf{Parameter list ()}
 		\\ & \textbf{Return parameter (void)}
