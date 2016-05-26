@@ -11,9 +11,28 @@ The Battery Management System consists of the following units:
 	\item{Current Sensor}
 \end{itemize}
 
-INSERT SHORT DESCRIPTION OF EACH HERE
+\textbf{Digital Unit}\\
+The Digital Unit handles the measured values from the Analog Front End to run calculations and approximations of cell conditions. If any conditions exceed a specific threshold then the Digital Unit is capable of isolating, and therefore protect, the Propulsion Batteries by utilizing the Isolation Switch.
 
-\fxnote{Quick description of BMS / overview of its functions unless this is done in the system description - Quick description of each systems would be nice if this section is to follow Rolling Road}
+\textbf{Analog Front End}\\
+The purpose of the Analog Front End is that it collects data of the Propulsion Batteries' cell voltages, Propulsion Batteries' temperature and the Current Sensor. Furthermore, this unit transmits all the gathered data to the Digital Unit, who in return can request cell balancing. 
+
+\textbf{Analog Front End Extension Module}\\
+The Extension Module's purpose is that it gives the BMS the capability to utilize more than one battery.
+
+\textbf{Isolation Switch}\\
+The Isolation Switch governs and protects the Propulsion Batteries by having the possibility of isolating them on command from the Analog Front End via the Digital Unit. 
+
+\textbf{DC/DC Converter}\\
+The DC/DC Converter converts the Propulsion Batteries' high voltage to a lower voltage that is then usable by the Digital unit and the components it contains.
+
+\textbf{Current Sensor}\\
+The Current Sensor can measure the amount of current flowing through the it by using a pair of shunt resistors. 
+
+\textbf{Propulsion Batteries}\\
+The Propulsion Batteries delivers electrical energy to supply the Propulsion Motor contained in the Motor Control System as well as the rest of the systems in AU2.
+
+\fxnote{Quick description of BMS / overview of its functions unless this is done in the system description}
 
 The assignment that was given was to make a duplicate PCB and to understand the BMS so that questions involving the BMS could be answered at the SEM2016. The reason for this is that if something went wrong to the SEM2016 race, the BMS could quickly be replaced with a fully functional duplicate.
 
