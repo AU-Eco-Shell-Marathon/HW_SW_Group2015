@@ -4,9 +4,9 @@ The purpose of the Motorcontroller is to adjust the speed of the vehicle. In thi
 Aside from controlling the motor, this circuitry also senses the voltage and current consumption of the motor. This data is going to the PSoC and is here analyzed. There is, amongst other things, an overcurrent protection built in, to secure the PCB. For more information on this subject see \vref{sec:measurements}.
 
 \subsection{Design}
-There are several design considerations to take into account when designing this motorcontroller. The primary and most important feature to this design is the MOSFET that is used. Furthermore the resistor placed between the driver and the MOSFET, decides the amount of current going into the MOSFET and by that how fast it switches(more on this later). On figure \vref{Motorcontroller} it is dubbed 'R18'. 
+There are several design considerations to take into account when designing this motorcontroller. The primary and most important feature to this design is the MOSFET that is used. Furthermore the resistor placed between the driver and the MOSFET, decides the amount of current going into the MOSFET and by that how fast it switches(more on this later). On figure \vref{fig:Motorcontroller} it is dubbed 'R18'. 
 
-The figure below(\vref{Motorcontroller}) shows a snippet of the motorcontroller. The parts left out are the measurements as discussed in \vref{sec:measurements}.
+The figure below(\vref{fig:Motorcontroller}) shows a snippet of the motorcontroller. The parts left out are the measurements as discussed in \vref{sec:measurements}.
 
 There are three components at use here:
 
@@ -18,15 +18,14 @@ There are three components at use here:
 
 The design considerations when using these specific components will be discussed here. Furthermore the components specific application purpose will be mentioned. Lastly, it will be explained as to why this component was chosen.  
 
-\textbf{IRFB7530} \cite{IRFB7530}
-
+\textbf{IRFB7530} \cite{IRFB7530}\\
 When using a MOSFET to control a DC-motor, there are numerous precautions that must be taken into account. Most of the precautions will be mentioned further down, when designing the MOSFET driver. 
 
 The MOSFET is the most wide-spread and reckoned way to control a DC-motor and therefore it is chosen here as well. Since the car is not required to run in reverse, it is implemented as a single component and not a H-bridge. This eases the implementation greatly.
 
 This specific component is chosen as it consist of a very low on resistance and thereby the power dissipated in the component will be lower than for a similar MOSFET with a higher on resistance. The maximum on resistance, as described by the datasheet is mere 2 m$\Omega$. Due to a lower power dissipation the heatshink reqiured by the MOSFET to keep it within its operating range, can be smaller or even obsolete. When choosing a MOSFET with a low on resistance, as this is the case, it will come with a very high input capacitance. This is caused by the manufactoring proces of a MOSFET and the values are inversely proportional with each other. For this reason also it has been chosen to implement a MOSFET driver. 
 
-The chosen MOSFET is overdimensioned for this purpose, as it can both endure a much higher current and voltage, than what the motor will operate at. This is done, as the stress that it will be put under during the race will be great and a breakdown would be more or less catastrophic. The specifications can be seen on the table in figure \vref{MOSFET}. 
+The chosen MOSFET is overdimensioned for this purpose, as it can both endure a much higher current and voltage, than what the motor will operate at. This is done, as the stress that it will be put under during the race will be great and a breakdown would be more or less catastrophic. The specifications can be seen on the table in figure \vref{fig:MOSFET}.
 
 The chosen MOSFET is in the TO-200 housing. This housing is chosen, so that if it is needed to mount the MOSFET on a heat sink it can be done conveniently.  
 
