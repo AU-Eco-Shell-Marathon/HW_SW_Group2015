@@ -5,7 +5,7 @@ A handful of students worked with the BMS between 2013 and 2014 and in that laps
 Therefore I've experienced first hand how it is extremely important to have an eminently well documented documentation when working with big systems. And this led me to acknowledge how important an engineers work is when it comes to documenting their work and explaining a system's capabilities. Every last detail has to be written down so that no one will be in doubt when trying to comprehend it. 
 
 \textbf{Digital Unit}\\
-This purpose of the Digital Unit is to handle the measured values from the Analog Front End to run calculations and approximations of cell conditions. If any conditions exceed a specific threshold then the Digital Unit is capable of isolating, and therefore protect, the Propulsion Batteries by utilizing the Isolation Switch.
+The Digital Unit handles the measured values from the Analog Front End to run calculations and approximations of cell conditions. If any conditions exceed a specific threshold then the Digital Unit is capable of isolating, and therefore protect, the Propulsion Batteries by utilizing the Isolation Switch.
 
 \textbf{Analog Front End}\\
 The purpose of the Analog Front End is that it collects data of the Propulsion Batteries' cell voltages, Propulsion Batteries' temperature and the Current Sensor. Furthermore, this unit transmits all the gathered data to the Digital Unit, who in return can request cell balancing. 
@@ -17,12 +17,10 @@ The Extension Module's purpose is that it gives the BMS the capability to utiliz
 The Isolation Switch governs and protects the Propulsion Batteries by having the possibility of isolating them on command from the Analog Front End via the Digital Unit. 
 
 \textbf{DC/DC Converter}\\
-The purpose of th e DC/DC Converter is to convert the battery voltage, which is expected to b e around 44.4V nominal, to a lower voltage that is u sable by the other components in the Digital unit. This includes the Galvanic Isolation and AVR-CAN circuit with its included parts.
+The DC/DC Converter converts the Propulsion Batteries' high voltage to a lower voltage that is then usable by the Digital unit and the components it contains.
 
 \textbf{Current Sensor}\\
-The purpose of this unit is to measure the amount of current flowing through the sensor
-as well as the di recti on of the current. The data that the sensor generates is sent to and
-handled by the Analog Front End
+The Current Sensor can measure the amount of current flowing through the it by using a pair of shunt resistors. 
 
 \textbf{Propulsion Batteries}\\
-The purpose of this unit is to deliver electrical energy to supply the Propulsion Motor contained in the Motor Control System as well as the rest of the systems in the vehicle.
+The Propulsion Batteries delivers electrical energy to supply the Propulsion Motor contained in the Motor Control System as well as the rest of the systems in AU2.
