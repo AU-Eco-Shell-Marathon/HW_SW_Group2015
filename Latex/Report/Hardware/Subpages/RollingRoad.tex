@@ -13,10 +13,7 @@ The Torque Sensor is used to measure the test-subject's angular velocity and tor
 \textbf{Level Converter}\\
 As not every component in the system could be supplied with 12 VDC there was a need for a Level Converter which could convert this voltage to 5 VDC. The choice fell on the LM7805\cite{LM7805} as a lot of the members in the team had experience using this component in prior systems.
 
-\textbf{Power Sensor}\\
-This system measures the amount of electrical power fed into the test-subject's motor. This was done through a LTS 15-NP current transducer\cite{CurrentTransducer}, which measured the current, and a voltage-divider, which measured the voltage. The current transducer had been implemented in the previous system and it was found that it was an easy component to use.
-
-\textbf{Load System}\\ \fxnote{JEg vil sige udvid dette afsnit og genovervej om alle de andre afsnit er nødvendige - TN}
+\textbf{Load System}\\
 The most complex system in Rolling Road is the Load System. At first glance this system must simply handle the generated electrical power and dissipate it into heat using power resistors\cite{PowerResistor}. The amount of power dissipated could be controlled using a MOSFET\cite{IRFP260N} which switched on and off in order to control the average amount of current flowing into the resistors. However, due to the excessive amount of power generated, the internal reactance in the inductor and the high switching-frequency of the MOSFET some problems arose. These problems came in the form of voltage- and current-transients which had to be reduced in order to get a stable system. This led to the inclusion of a super capacitor\cite{SuperCapacitor} and a snubber-circuit\cite{Snubber}.
 
 \textbf{Anti-aliasing filter}\\
