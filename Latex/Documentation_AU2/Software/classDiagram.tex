@@ -185,22 +185,43 @@ This sub section goes through all class in MCU, and give a overview over all met
 		\hline
 		\textbf{methods} & \textbf{Description} \\ \hline
 		
-		update
-		& description
-		\\ & \textbf{Parameter list (int8,int8)}
+		Logger\_Init & Initializes the logger \\ \hline
+				
+		Logger\_Write
+		&  Writes to the debug log, which outputs to the UART and File if the SD-card i available.
+		\\ & \textbf{Parameter list}
 		\\ & \begin{itemize}
-			\item {\large int8}
-			\subitem \textit{something.}
+			\item {\large const char *}
+			\subitem \textit{The zero terminated string to write to the log}
 		\end{itemize}
-		\\ & \textbf{Return parameter (int8)}
-		\\ & it will return .
+		\\ \hline
+				
+		Logger\_LogData
+		&  Writes a variable amount of data to the data-log file on the SD-card.
+		\\ & \textbf{Parameter list}
+		\\ & \begin{itemize}
+			\item {\large int}
+			\subitem \textit{The number of datapoints in the following list}
+			\item {\large ...}
+			\subitem \textit{The list of datapoints}
+		\end{itemize}
 		\\ \hline
 		
+		Logger\_Exit
+		&  Closes open log files. \\ \hline
+			
+		Logger\_WriteToDebugUart
+		&  Write to the UART, but not the SD-card log.
+		\\ & \textbf{Parameter list}
+		\\ & \begin{itemize}
+			\item {\large const char *}
+			\subitem \textit{The zero terminated string to write to the log}
+		\end{itemize}
+		\\ \hline
 	\end{tabular}
 	\caption{Class description Logger}
 	\label{table:Class_description_Logger_MCU}
 \end{table}
-\fxnote{Skal udfyldes}
 
 
 \subsubsection{CAN}
