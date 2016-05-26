@@ -81,7 +81,6 @@ The design will be build based on that the PWM frequency is greater then 2000Hz,
 \end{lstlisting}
 
 The result from the script are: (Note this is a 2. order low-pass filter)
-	
 \begin{equation}
 	\begin{split}
 	R &= \SI{68}{\kilo\Omega}\\
@@ -90,7 +89,6 @@ The result from the script are: (Note this is a 2. order low-pass filter)
 \end{equation}
 	
 And the transfer function is: 
-	
 \begin{equation}
 	T_{{AAF\_power}}(s) = \frac{15020}{{(s + 122.56)}^{2}}
 \end{equation}
@@ -103,7 +101,6 @@ And the transfer function is:
 \end{figure}
 
 \subsection{Implementation}
-
 Anti-aliasing filter will be realized in the implementation process. To implement the 2. order low-pass filter a buffer is needed, to realize the circuit. As a buffer the IC MCP6004 are used.
 	
 \subsubsection*{Torque Sensor}
@@ -127,6 +124,3 @@ There is not much too add to the torque sensor because it all ready has a buffer
 \end{figure}
 	
 The power sensor need a couple of buffer to make the 2. order low-pass filters. The reason what the I\_power\_sensor don't need a buffer in front of it is because the sensor all ready have a buffer inside of it.   
-
-\subsection{Unity test}
-Text \fxnote{Skal have udført en test når printet er færdigt!}

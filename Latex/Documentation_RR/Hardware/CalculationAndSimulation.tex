@@ -5,7 +5,6 @@
 This section will go though the simulation of Rolling Roads regulator. First what kind of regulator what has been choose for the Rolling Road and then the calculation of regulator and finally a simulation too see if it will work.
 
 \subsection{Calculation}
-
 PID regulator, because it the most common used regulator.
 
 Before the constants of the PID regulator can be chosen, The transfer function of the load system has to be found first.
@@ -115,22 +114,20 @@ First step is to find the wanted Phase margin and the minimum Omega bandwidth. T
 \end{lstlisting} 
 
 And the result are fund, and now it is just to find have much gain there is needed to get this $ \phi_{m} $. And find the $ \omega _{\phi _{m}} $ to determine the value of the "I" part. If the $ \omega _{\phi _{m}} $ is too small a "D" part is also needed. 
-
 \begin{equation}
 	\begin{split}
-		\phi_{m}= 71.6 + ( -7 )\\
-		\omega_{{BW}_{{min}}}= 60.7
+		\phi_{m} &= 71.6 + ( -7 )\\
+		\omega_{{BW}_{{min}}} &= 60.7
 	\end{split}
 \end{equation}
 
-The values for the PID regulator is: 
-
+The values for the PID-regulator is: 
 \begin{equation}
 	\begin{split}
-		P = 1035.1\\
-		I = 81.6\\
-		\omega _{\phi _{m}}=816\\
-		P_{{rpm}} \left( v_{{rpm}} \right) = \frac{188.7}{v_{{rpm}}}
+		P &= 1035.1\\
+		I &= 81.6\\
+		\omega _{\phi _{m}} &= 816\\
+		P_{{rpm}} \left( v_{{rpm}} \right) &= \frac{188.7}{v_{{rpm}}}
 	\end{split}
 \end{equation}
 
@@ -147,14 +144,13 @@ Note there is no need for a "D" part because the PI regulator is fast enough ($ 
 In \ref{fig:Open_loop_bode_close_loop_step_load_system} there are three plots, the "Bode Diagram" is the open loop plot of the load system and the PI regulator, it seems like it should be alright, but in the step response to the left, there are $ 8.8 \% $ OS this it not good. But the settling time is more then 3 times smaller when required. Where is one more thing what is gonna be a problem, see on the right step response (It a step response of PID values), because it is a PWM signal, it can max be 1!. So the PI regulator are saturate, this will make the settling time slower in the real life. 
 
 There is just one thing left again, the PI regulator is in site of a PSoC 5LP, and therefor it is a digital regulator. First step in this conversion is to find a good sampling time. The sampling time is determined by Åstrøm and Wittenmark:
-
 \begin{equation}
 \begin{split}
-	\frac{0.15}{\omega _{\phi _{m}}} \leq T_{s} \leq \frac{0.5}{\omega _{\phi _{m}}}\\
-	Ts_{max} = 6.1275 \times 10^{-4}\\
-	Ts_{min} = 1.8382 \times 10^{-4}\\
-	Fs_{max} = 5440\\
-	Fs_{min} = 1632
+	\frac{0.15}{\omega _{\phi _{m}}} &\leq T_{s} \leq \frac{0.5}{\omega _{\phi _{m}}}\\
+	Ts_{max} &= 6.1275 \times 10^{-4}\\
+	Ts_{min} &= 1.8382 \times 10^{-4}\\
+	Fs_{max} &= 5440\\
+	Fs_{min} &= 1632
 \end{split}
 \end{equation}
 

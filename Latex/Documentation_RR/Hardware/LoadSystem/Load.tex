@@ -1,7 +1,6 @@
 \subsection{Load}
 \label{sec:Loadsystem_load}
-The Load serves no other function than converting generated electrical energy to thermic energy (heat). This is done by using power resistors.\\
-But then this is saying it impotent to choose the right setup.\\
+The Load serves no other function than converting generated electrical energy to thermic energy (heat). This is done by using power resistors. But then this is saying it impotent to choose the right setup.
 
 \large List of things that has to be in order before using the load system!
 \begin{itemize}
@@ -38,8 +37,7 @@ Max_watt                = 200;      %(W)
 R_load_max_watt         = 250;      %(W)
 \end{lstlisting}
 
-Note: There has been made a script that automatic calculate the best setup. (LoadSystem.m)\fxnote{mangler reference}\\
-\\
+Note: There has been made a script that automatic calculate the best setup. (LoadSystem.m)\fxnote{mangler reference}.
 
 The next step is to see how fast the Rolling Road is gonna rotate, then a test object are on it. In this example the test object is AU2. Then done the question is. Are there a need for gear-set to get a better rotating speed to generate a voltage what is closer to the nominal voltage?
 
@@ -68,7 +66,7 @@ The result from this part is:
 \end{split}
 \end{equation}
 
-It is clear. Gear option is the best option because it is closer to the nominal voltage.\\
+It is clear. Gear option is the best option because it is closer to the nominal voltage.
 
 The next step is to find out the best setup of the power resistor. With some calculation the best result is using two power resistor parallel. 
 
@@ -93,14 +91,13 @@ I_max = RR_Vb_max / Load_setup(best,1)
 
 \begin{equation}
 	\begin{split}
-		R_{load} = \SI{1.203}{\Omega}\\
-		Power_{max} = \SI{273.98}{\watt}\\
-		I_{max} = \SI{15.09}{A}
+		R_{load} &= \SI{1.203}{\Omega}\\
+		Power_{max} &= \SI{273.98}{\watt}\\
+		I_{max} &= \SI{15.09}{A}
 	\end{split}
 \end{equation}
 
-Have to notify that this is not possible because it will cause a melt down of the Rolling Road.\\
-That will result in max use of $ 73 \% $ then it runs at top speed!\\
+Have to notify that this is not possible because it will cause a melt down of the Rolling Road. That will result in max use of $ 73 \% $ then it runs at top speed!\\
 
 After the limitation and calculate with $ Power_{max} = \SI{200}{\watt} $. The max torque, force and current can be calculated.
 
@@ -122,14 +119,13 @@ end
 \end{lstlisting}
 
 The last results:
-
 \begin{equation}
 \begin{split}
-Power_{max} = \SI{200}{\watt}\\
-I_{max} = \SI{11.02}{A}\\
-torque_{generator} = \SI{0.42}{\newton \metre}\\
-torque_{max} = \SI{1.82}{\newton \metre}\\
-force_{max} = \SI{24.00}{\newton}
+Power_{max} &= \SI{200}{\watt}\\
+I_{max} &= \SI{11.02}{A}\\
+torque_{generator} &= \SI{0.42}{\newton \metre}\\
+torque_{max} &= \SI{1.82}{\newton \metre}\\
+force_{max} &= \SI{24.00}{\newton}
 \end{split}
 \end{equation}
 
