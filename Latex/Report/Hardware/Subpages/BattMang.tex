@@ -1,5 +1,5 @@
 \section{Battery Management System}
-In the following paragraphs the hardware implemented for the Battery Management System for AU2 will be discussed. Please note that the BMS was handed from previous students that had been working with it.
+This section discuss the hardware implemented in the Battery Management system designed for AU2. It should be noted that the BMS was handed over from previous students who had been working with it in order to compete in SEM 2013.
 
 The Battery Management System consists of the following units:
 \begin{itemize}
@@ -16,30 +16,30 @@ The Battery Management System consists of the following units:
 The Digital Unit handles the measured values from the Analog Front End to run calculations and approximations of cell conditions. If any conditions exceed a specific threshold then the Digital Unit is capable of isolating, and therefore protect, the Propulsion Batteries by utilizing the Isolation Switch.
 
 \textbf{Analog Front End}\\
-The purpose of the Analog Front End is that it collects data of the Propulsion Batteries' cell voltages, Propulsion Batteries' temperature and the Current Sensor. Furthermore, this unit transmits all the gathered data to the Digital Unit, who in return can request cell balancing. 
+The purpose of the Analog Front End is to collect data about the Propulsion Batteries' cell voltages, the Propulsion Batteries' temperature and the current measured by the Current Sensor. Furthermore, this unit transmits all the gathered data to the Digital Unit, who in return can request cell balancing. 
 
 \textbf{Analog Front End Extension Module}\\
-The Extension Module's purpose is that it gives the BMS the capability to utilize more than one battery.
+The Extension Module's purpose is to give the BMS the capability to utilize more than one battery.
 
 \textbf{Isolation Switch}\\
 The Isolation Switch governs and protects the Propulsion Batteries by having the possibility of isolating them on command from the Analog Front End via the Digital Unit. 
 
 \textbf{DC/DC Converter}\\
-The DC/DC Converter converts the Propulsion Batteries' high voltage to a lower voltage that is then usable by the Digital unit and the components it contains.
+The DC/DC Converter converts the Propulsion Batteries' high voltage to a lower voltage which can then be used to supply the Digital unit and the components which it contains.
 
 \textbf{Current Sensor}\\
-The Current Sensor can measure the amount of current flowing through the it by using a pair of shunt resistors. 
+The Current Sensor measures the amount of current flowing out of the batteries by using a pair of shunt resistors. 
 
 \textbf{Propulsion Batteries}\\
 The Propulsion Batteries delivers electrical energy through the Battery Management System to supply the Propulsion Motor as well as the rest of the systems in AU2.
 
 \subsection{Implementation and documentation of BMS}
-The assignment that was given was to make a duplicate PCB and to understand the BMS so that questions involving the BMS could be answered at the SEM2016. The reason for this is that if something went wrong to the SEM2016 race, the BMS could quickly be replaced with a fully functional duplicate.
+The assignment that was given was to make a duplicate PCB and to understand the BMS so that questions involving the BMS could be answered at the SEM2016. The reason for this is that if something went wrong to the SEM2016 race, the BMS could quickly be repaired or replaced with a fully functional duplicate.
 
-When testing the BMS a lot of problems came to light. Some of them required an extensive amount of troubleshooting. In this section the most essential and time consuming segments will be discussed. If a more detailed and descriptive troubleshooting process is sought-after then one can be found in the documentation\cite{AU2}(Section 4.2.10).
+During the testing of the BMS a lot of problems came to light. Some of them required an extensive amount of troubleshooting. In this section the most essential and time consuming segments will be discussed. If a more detailed and descriptive troubleshooting process is sought-after then one can be found in the documentation\cite{AU2}(Section 4.2.10).
 
-In the start of the project, the hardware had no issues, but at that time the software that was given was an outdated version from the 2013 BMS Documentation\cite{BMSDocumentation}, which only works with one battery. Furthermore, there was no existing documentation on the changes done in 2014 to the BMS thus troubleshooting problems were truly challenging.
-We were told that the BMS contained a functional CAN interface along with CAN bus - This is how the documentation from 2013 portrays it. However, the CAN bus did not work at all. This led us to believe that the software for the BMS was either outdated or the CAN function was commented out. A long search for the code was hereby commenced. In the end we got a hold of the updated code from the SEM 2014 team. However, when we were trying to test it an accident occurred which led to a fault on the Analog Front End as well as the Analog Front End Extension Module. This caused the Battery Monitor ICs on both Analog Front End units to fry.
+At the start of the project, the hardware had no issues, but at that time the software that was given was an outdated version from the 2013 BMS Documentation\cite{BMSDocumentation}, which only worked with one battery. It was clear that there had been changes made to the BMS, but there was no existing documentation on the changes done in 2014 to the BMS thus troubleshooting problems were truly a challenge.
+We were told that the BMS contained a functional CAN-interface along with a CAN-bus - as this was how the documentation from 2013 portrayed it. However, the CAN bus did not work at all. This led us to believe that the software for the BMS was either outdated or the CAN function was commented out. A long search for the code was hereby commenced. In the end we got a hold of the updated code from the SEM 2014 team. However, when we were trying to test it an accident occurred which led to a fault on the Analog Front End as well as the Analog Front End Extension Module. This caused the Battery Monitor ICs on both Analog Front End units to fry.
 After replacing The Battery Monitor ICs the system still didn't work. One or more components must therefore have been destroyed when the ICs were fried. From this moment on many different approaches were taken in trying to resolve the problems with the Analog Front End and Analog Front End Extension Module. However, it was very difficult to figure out the problems origin and therefore also hard to come up with possible fixes that needed to be implemented due to no documentation existing for the changes made in 2014 on the BMS. Therefore a lot of time was spent reverse engineering the changes as well as documenting them. 
 
 One of the units that had to be reverse engineered was the DC/DC Converter. It had a completely different circuit composition than what is described in the 2013 BMS Documentation\cite{BMSDocumentation}(Section 3.1.6.2). Therefore it was documented and described in the new documentation\cite{AU2}(Section 4.2.8). 
