@@ -1,53 +1,54 @@
-\section{Motor Control Unit}
+\section{Motor Control System}
 
-The MCU's task is to control the motor as efficiently as possible. In order to do so monitoring both the speed and power usage is necessary to regulate the current efficiently to the motor.
+The MCS's task is to control the motor as efficiently as possible. 
 
-In extenstion it's also the MCU's task to log information about the BMS output, it's own measurements and all inputs from the driver, thereby making it possible to debug and analyze the run. 
+In extenstion it's also the MCS's task to log information about the BMS output, it's own measurements, thereby making it possible to debug and analyze the run. \\
+And handle all input there comes from the driver.
 
 \subsection{Design}
 
-First step is to find out what solution that should be used, to build the MCU. 
+First step is to find out what solution that should be used, to build the MCS. 
 
-\begin{enumerate} %\fxnote{Det første var vel og finde ud af hvad der var krævet at MCU'ens software (Forskellige kører algoritmer, EEPROM osf.) - JH}
+\begin{enumerate}
 	\item \textbf{Get the best efficiency}\\
-	To get the best efficiency a LUT must be implemented so the MCU can look up power usage for a specific speed. To make it even more efficiency a burn and coast algorithm must also be implemented. \\
+	To get the best efficiency a LUT must be implemented so the MCS can look up power usage for a specific speed. To make it even more efficiency a burn and coast algorithm must also be implemented. \\
 	\item \textbf{Get information from other devices (only BMS for now) in the AU2}\\
 	To get information from the BMS a communication has to been made. To do this a CAN connection are made to the BMS. The reason what a CAN are choose is because it work as bus connection and more devices can be linked together in the future version.\\
 	\item \textbf{Log information and events}\\
 	A logger has to be design, so what information from a run can be analyze. Also log events so it is easier to find bugs.\\
 	\item \textbf{Can be control by the driver}\\
-	It is important what it is possible to start or stop the motor. To do this a button is implemented so it is possible to tell MCU if the car should drive or not. Therefor this also has to be designed.\\
+	It is important what it is possible to start or stop the motor. To do this a button is implemented so it is possible to tell MCS if the car should drive or not. Therefor this also has to be designed.\\
 	\item \textbf{Save local sitting}\\
-	The MCU must save local sittings in case that the a short power failure or the car are shutdown. Example PID parameter.\\
+	The MCS must save local sittings in case that the a short power failure or the car are shutdown. Example PID parameter.\\
 \end{enumerate}
 
-Next step is to design a class diagram to get a better overview of have the classes should be linked. See figure \vref{fig:Class_diagram_MCU}.
+Next step is to design a class diagram to get a better overview of have the classes should be linked. See figure \vref{fig:Class_diagram_MCS}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics [width=6in]{../Documentation_AU2/Software/Pictures/class-diagram.png}
-	\caption{Class diagram of the MCU}
-	\label{fig:Class_diagram_MCU}
+	\caption{Class diagram of the MCS}
+	\label{fig:Class_diagram_MCS}
 \end{figure}
 
 \subsection{Implementation}
 
 In the implementation process a lot of decision have to be made. The biggest question is there should the different things be implemented. software level, top-design level or circuit design level. \\
 
-\begin{enumerate} %\fxnote{Det første var vel og finde ud af hvad der var krævet at MCU'ens software (Forskellige kører algoritmer, EEPROM osf.) - JH}
+\begin{enumerate} %\fxnote{Det første var vel og finde ud af hvad der var krævet at MCS'ens software (Forskellige kører algoritmer, EEPROM osf.) - JH}
 	\item \textbf{Look Up Table}\\
 	The implementation process of the LUT. Some decision should be made before implementation.\\
 	\subitem \textit{What kind of LUT?}\\
-	A 2D-LUT are implemented so the MCU has two Look Up tables, one then it is accelerating and one to then it has to hold a constant speed.\\
-	\subitem \textit{How to generate the LUT}\\
+	A 2D-LUT are implemented so the MCS has two Look Up tables, one then it is accelerating and one to then it has to hold a constant speed.\\
+	\subitem \textit{How to generate the LUT?}\\
 	To generate the LUT (see figure \vref{fig:LUT_plot}) a Matlab script\cite{LUTscript} is made. Where it is just to read from a efficiency diagram for the AU transmission from motor to road  (see \cite{BAC_zenith33}) and insert the best ramp for the acceleration and constant. There the script will create a header file with a 2D LUT.\\
-	This will also make it very easy to load a new LUT into the MCU. Just have recompile the MCU.\\
-	\subitem \textit{Implementation to the PSoC}\\
+	This will also make it very easy to load a new LUT into the MCS. Just have recompile the MCS.\\
+	\subitem \textit{Implementation to the PSoC?}\\
 	To use the header file a function is made to read from the LUT. It is the function job to also find out what table it should use.\\	
 	\item \textbf{burn and coast}
-	This is implemented in the motorController class as a state-machine. There it switch between using the accelerating LUT and then hit the wanted speed it turn off the motor to it has fall below a specify speed value where it is switching back again. 
+	This is implemented in the motorController class as a state-machine. There it switch between using the accelerating LUT and then hit the wanted speed it turn off the motor to it has fall below a specify speed value where it is switching back again. \\
 	\item \textbf{Get information from other devices (only BMS for now) in the AU2}\\
-	To implement this. The build in CAN in the PSoC 5LP is used. 
+	To implement this. The build in CAN in the PSoC 5LP is used.\\
 	\item \textbf{Log information and events}\\
 	To log a SD card is implemented so to read and write from it a library was used. The library "emFile" made it possible to read or write from and to a fat32 devices.\\
 	\item \textbf{Can be control by the driver}\\
