@@ -1,9 +1,0 @@
-\textbf{Noise reduction in velocity-signal}\\
-The output-signal for the measured angular velocity lies between the $0$ to $+5 V$ range and can therefore be measured correctly by the PSoC without rescaling. However, the electrical noise in the signal must be reduced, in order to let the PSoC measure correctly.
-
-The noise can be reduced with a low-pass filter, but if it is assumed that the amplitude of the noise is low enough it can also be reduced using a comparator with hysteresis. This comparator must be fast enough to convert the signal and the highest frequency of the velocity-signal must be calculated.
-
-From the analysis of the Generator it was found that the rolls angular velocity $\omega_{Roll}$ is equal to 1047 rpm - when AU2 runs at cruise speed (maximum velocity). This velocity will create a velocity-signal with the highest frequency. This frequency can be found as:
-\begin{equation}
-	f_{v} = 360 \frac{pulses}{rotation} \cdot \frac{\omega_{Roll}}{60\frac{seconds}{minutes}} = \SI{6.282}{\kilo \hertz}
-\end{equation}
